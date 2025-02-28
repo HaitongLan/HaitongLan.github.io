@@ -862,6 +862,32 @@ c_1&amp;amp;c_2&amp;amp;c_3
 \end{array}\right|$,该行列式不为0.&lt;br&gt;
 $\cdots$&lt;br&gt;
 以此类推，$n$ 维欧氏空间的向量组线性无关的条件是否为行列式不等零？&lt;/p&gt;
+&lt;h3 id=&#34;向量组的秩&#34;&gt;向量组的秩
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1 (极大线性无关组).&lt;/strong&gt; 在线性空间 $V$ 中，向量的集合称为向量族，向量的有限集合称为向量组．设 $S$ 是向量族，若在 $S$ 中存在一组向量 $\left\{\alpha_1, \alpha_2, \cdots, \alpha_r\right\}$ 满足如下条件：&lt;br&gt;
+（1） $\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_r$ 线性无关；&lt;br&gt;
+（2）$S$ 中任意一个向量都可以用 $\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_r$ 线性表示，&lt;br&gt;则称 $\left\{\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_r\right\}$ 是向量族 $S$ 的极大线性无关组，简称极大无关组．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2.&lt;/strong&gt; $S$ 为一个向量组且至少包含一个非零向量，则 $S$ 的极大线性无关组存在。&lt;/p&gt;
+&lt;p&gt;随便举一些例子我们可以发现，向量组的极大线性无关组可能不同，但是这些极大无关组中的元素数量相同，该结论对一般的向量是否存在。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; 设 $A,B$ 为 $S$ 的向量组，$A$中任意向量都是 $B$中向量的线性组合，如果 $A$中的向量线性无关，则 $\# A \leq \# B$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该命题的逆否命题非常有用：若元素多的向量组可以被元素少的向量组线性表示，则元素多的向量组线性相关。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 4.&lt;/strong&gt; 若 $A,B$ 为两个线性无关的向量组，并且所有元素均可以互相线性表示，则 $\# A = \# B$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 由该推论不难得到：若 $A,B$ 都为某向量组的极大无关组，则 $\# A = \# B$.&lt;/p&gt;
+&lt;p&gt;极大线性无关组中元素的个数在一定程度上反应了向量本身的性质，并且可以作为向量族线性无关程度的度量，我们给出如下定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 5(向量组的秩).&lt;/strong&gt; 向量组 $S$中极大无关组的向量个数被称为 $S$ 的秩，被记为$rank(S)$ 或 $r(S)$. &lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 只含有零向量的向量族没有极大线性无关组，我们约定 $r\left(\{0\}\right) = 0$&lt;/p&gt;
+&lt;p&gt;定义了向量组的秩后，我们介绍一个关于秩的定理，并将秩这一概念应用于线性空间这一向量族之中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 6 (向量组等价关系).&lt;/strong&gt; 如果 $A,B$ 两个向量组可以互相线性表示，则 $A,B$ 向量组等价。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 9.&lt;/strong&gt; 等价的向量组具有相同的秩。&lt;/p&gt;
+&lt;p&gt;现在我们将秩这一概念推广到线性空间的维度：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 10 (线性空间的维度).&lt;/strong&gt; 设 $V$ 是数域 $\mathbb{K}$ 上的线性空间，若在 $V$ 中存在&lt;strong&gt;线性无关&lt;/strong&gt;的向量 $e_1, e_2, \cdots, e_n$ ，使得 $V$ 中&lt;strong&gt;任一向量&lt;/strong&gt;均可表示为这组向量的线性组合，则称 $\left\{e_1, e_2\right.$, $\left.\cdots, e_n\right\}$ 是 $V$ 的一组基，线性空间 $V$ 称为 $n$ 维线性空间（$\dim_{\mathbb{K}}(V) = n$）．如果不存在有限个向量组成 $V$ 的一组基，则称 $V$ 是无限维线性空间．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 可见，将向量族变为线性空间，极大线性无关组就是线性空间的基，向量族的秩(极大无关组的元素个数)就是线性空间的维度。&lt;/p&gt;
+&lt;p&gt;如果已知线性空间(向量族)的维度(秩)为 $n$,那么不需要再去寻找基(极大无关组)，使其满足两个条件，接下来的定理告诉我们，只需要找到一个条件即可：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 11.&lt;/strong&gt; $n$ 维线性空间 $V$, $\{e_1,e_2,\cdots,e_n\}$ 为给定向量组，若下列条件之一成立，则该向量组为 $V$的一组基：&lt;br&gt;
+（1） $\{e_1,e_2,\cdots,e_n\}$线性无关。&lt;br&gt;
+（2） $V$ 中任意向量可以表示为 $\{e_1,e_2,\cdots,e_n\}$的线性组合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 12(基扩张定理).&lt;/strong&gt; 设 $n$ 维线性空间 $V$，则&lt;br&gt;
+（1）$V$ 中任意 $m$ 个线性无关的向量可以扩张为 $V$ 的一组基。&lt;br&gt;
+（2）$V$ 中的任意一个子空间的基可以扩张为 $V$ 的一组基。&lt;/p&gt;
 &lt;h2 id=&#34;第四章-线性映射&#34;&gt;第四章 线性映射
 &lt;/h2&gt;&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
 &lt;/h2&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
