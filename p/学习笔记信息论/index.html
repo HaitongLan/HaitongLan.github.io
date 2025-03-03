@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学陈伯宁老师信息论课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-02-18T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-02-18T00:21:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-02-18T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-02-18T21:44:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
 <meta name="twitter:title" content="学习笔记|信息论">
 <meta name="twitter:description" content="台湾交通大学陈伯宁老师信息论课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
@@ -106,7 +106,13 @@
     <li><a href="#课程介绍">课程介绍</a></li>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#overview-on-suprema-and-limits">Overview on Suprema and Limits</a></li>
-    <li><a href="#overview-in-probability-and-random-processes">Overview in Probability and Random Processes</a></li>
+    <li><a href="#overview-in-probability-and-random-processes">Overview in Probability and Random Processes</a>
+      <ol>
+        <li><a href="#random-variables-and-random-processes">Random Variables and Random Processes</a></li>
+        <li><a href="#properties-of-random-processes">Properties of random processes</a></li>
+        <li><a href="#convergence-of-sequences-of-random-variables">Convergence of Sequences of Random Variables</a></li>
+      </ol>
+    </li>
     <li><a href="#information-measures-for-discrete-systems">Information Measures for Discrete Systems</a></li>
     <li><a href="#lossless-data-compression">Lossless Data Compression</a></li>
     <li><a href="#data-transmission-and-channel-capacity">Data Transmission and Channel Capacity</a></li>
@@ -192,7 +198,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    6 minute read
                 </time>
             </div>
         
@@ -237,15 +243,113 @@ $$\text{Min Compression rate} = \text{entropy of } (Z_1,Z_2,\cdots,Z_n)$$
 香农虽然回答了该问题，说明<strong>信息的压缩有一个极限</strong>，但是并没有给出具体的编码方式，直到50年之后turbo码的出现才第一次逼近了这个极限。值得注意的是，在逼近这个极限时，压缩编码$U_1,\cdots,U_n$是渐进均匀分布的，且是 i.i.d.的随机变量，该定理也进一步方便了后续的信道编码处理与分析。</p>
 <p>香农第二定律研究了信息在含有噪声的信道下传输的特性，从很多领域中我们都可以看到<strong>可靠传输</strong>这样的概念，但是真正严谨的可靠性传输并不是指0差错，而是可以用 $\epsilon-\sigma$ 语言去描述的渐进无差错概率，而差错不可能是0，因为香农研究在大样本背景下的编码和通信。</p>
 <p>所以对于信源将原始信息 $Z$ 压缩为的 $U$,我们必须进一步将其编码，添加冗余，使其在信道中即使受了噪声影响，通过接收端的解码也可以恢复原来的信息，这就是Channel encoder的作用，一般而言，信源和信道编码器都是分开研究的，不过也有学者将二者放在一起进行研究。</p>
-<p>那么是否真的有这样一种编码，可以让<strong>差错概率渐进为0</strong>吗，香农第二定律回答了该问题：$$
+<p>那么是否真的有这样一种编码，可以让 <strong>差错概率渐进为0</strong> 吗，香农第二定律回答了该问题：
+$$
 \text{Channel capacity is the max reliable transmission code rate for a noisy channel.}
 $$
 香农是从数学的角度定义了互信息，然后证明该定理的，但是与第一定律一样，并没有得出具体的编码形式，而是证明了确有编码可以达到该效果。（这里的描述是不严谨的，但是可以方便我们很快的了解香农的工作）</p>
 <p>至于香农第三定律，需要引入更多的名词才能介绍。</p>
 <p>香农的信息论并不只是简单的这三条定理，其定理证明的背后也蕴含着一套方法论，就是不找出具体的方法，但是从数学上证明确有此事，这样的方法论也融合到了很多的学科之中。</p>
 <h2 id="overview-on-suprema-and-limits">Overview on Suprema and Limits
-</h2><h2 id="overview-in-probability-and-random-processes">Overview in Probability and Random Processes
-</h2><h2 id="information-measures-for-discrete-systems">Information Measures for Discrete Systems
+</h2><p><strong>Definition 1(Upper bound of a set).</strong><br>
+$\mathcal{A} \subset \mathbb{R}$ is bounded above $\Longleftrightarrow(\exists u \in \mathbb{R})$ such that $(\forall a \in \mathcal{A}), a \leq u$.</p>
+<p><strong>Definition 2(Least upper bound or supremum).</strong>  Suppose $\mathcal{A}$ is a non-empty subset of $\mathbb{R}$. Then, we say that a real number $s$ is a least upper bound or supremum of $\mathcal{A}$ if $s$ is an upper bound of the set $\mathcal{A}$ and if $s \leq s^{\prime}$ for each upper bound $s^{\prime}$ of $\mathcal{A}$. In this case, we write $s=\sup \mathcal{A}$; other notations are $s=\sup _{x \in \mathcal{A}} x$ and $s=\sup {x: x \in \mathcal{A}}$.</p>
+<p><strong>Completeness Axiom 3(Least upper bound property).</strong>  Let $\mathcal{A}$ be a non-empty subset of $\mathbb{R}$ that is bounded above. Then $\mathcal{A}$ has a least upper bound.</p>
+<p><strong>Definition 3 (Maximum)</strong> If $supA ∈ \mathcal{A}$, then supA is also called the maximum of
+$A$ and is denoted by $\max A$. However, if $supA \notin A$, then we say that the maximum
+of $A$ does not exist.</p>
+<p><strong>Property 4 (Properties of the supremum).</strong></p>
+<ol>
+<li>
+<p>The supremum of any set in $\mathbb{R} \cup{-\infty, \infty}$ always exits.</p>
+</li>
+<li>
+<p>If $-\infty&lt;\sup \mathcal{A}&lt;\infty$, then $(\forall \varepsilon&gt;0)\left(\exists a_0 \in \mathcal{A}\right) a_0&gt;\sup \mathcal{A}-\varepsilon$.</p>
+</li>
+<li>
+<p>If $\sup \mathcal{A}=\infty$, then $(\forall L \in \mathbb{R})\left(\exists B_0 \in \mathcal{A}\right) B_0&gt;L$.</p>
+</li>
+<li>
+<p>If $\sup \mathcal{A}=-\infty$, then $\mathcal{A}$ is empty.</p>
+</li>
+</ol>
+<p>对于 Infimum and Minimum，定义以及性质与上述一致，不再赘述。</p>
+<p><strong>Property 5 (Properties of the supremum and infimum).</strong> $A,B\subset \mathbb{R}$:</p>
+<ol>
+<li>$\sup (A+B) = \sup(A)+\sup(B)$</li>
+<li>$\sup(kA) = k\sup(A)$</li>
+<li>$\sup(A) = -\inf(-A)$</li>
+<li>$\sup(A\cdot B)\ge \sup(A)\cdot\sup(B)$</li>
+</ol>
+<p>在通信序列中，经常需要分析序列极限，然而可能会遇到极限不存在的情况，影响分析，如何使得极限必然存在呢？</p>
+<p><strong>Definition 6 (limsup and liminf)。</strong> The limit supremum of $\left\{a_n\right\}_{n=1}^{\infty}$ is the extended real number in $\mathbb{R} \cup{-\infty, \infty}$ defined by
+$$
+\limsup _{n \rightarrow \infty} a_n:=\lim_{n \rightarrow \infty}\left(\sup _{k \geq n} a_k\right),
+$$
+and the limit infimum of $\left\{a_n\right\}_{n=1}^{\infty}$ is the extended real number defined by
+$$
+\liminf _{n \rightarrow \infty} a_n:=\lim _{n \rightarrow \infty}\left(\inf _{k \geq n} a_k\right)
+$$
+Some also use the notations $\overline{\lim }$ and $\underline{\mathrm{lim}}$ to denote limsup and liminf, respectively.</p>
+<p><strong>Lemma 7 (Limit).</strong> For a sequence $\left\{a_n\right\}_{n=1}^{\infty}$,
+$$
+\lim _{n \rightarrow \infty} a_n=L \Longleftrightarrow \limsup _{n \rightarrow \infty} a_n=\liminf _{n \rightarrow \infty} a_n=L
+$$</p>
+<p><strong>Property 8 .</strong> 都大则大，都小则小，避免耦合：
+$$
+\begin{aligned}
+\liminf _{n \rightarrow \infty} a_n+\liminf _{n \rightarrow \infty} b_n &amp; \leq \liminf _{n \rightarrow \infty}\left(a_n+b_n\right) \\
+&amp; \leq \limsup _{n \rightarrow \infty} a_n+\liminf _{n \rightarrow \infty} b_n \\
+&amp; \leq \limsup _{n \rightarrow \infty}\left(a_n+b_n\right) \\
+&amp; \leq \limsup _{n \rightarrow \infty} a_n+\limsup _{n \rightarrow \infty} b_n .
+\end{aligned}
+$$</p>
+<h2 id="overview-in-probability-and-random-processes">Overview in Probability and Random Processes
+</h2><h3 id="random-variables-and-random-processes">Random Variables and Random Processes
+</h3><p><strong>Def 1(r.v.).</strong> A random variable $X$ defined over the probability space $(\Omega, \mathcal{F}, P)$ is a real-valued function $X: \Omega \rightarrow \mathbb{R}$ that is measurable (or $\mathcal{F}$-measurable), i.e., satisfying the property that
+$$
+X^{-1}((-\infty, t]):=\{\omega \in \Omega: X(\omega) \leq t\} \in \mathcal{F}
+$$
+for each real $t$.<br>
+<strong>Remark.</strong> r.v.是$\mathcal{F}\textbf{可测映射}$</p>
+<p><strong>Def 2(Borel sets).</strong> he Borel $\sigma$-field of $\mathbb{R}$, denoted by $\mathscr{B}(\mathbb{R})$, is the smallest $\sigma$-field of subsets of $\mathbb{R}$ containing all open intervals in $\mathbb{R}$. The elements of $\mathscr{B}(\mathbb{R})$ are called Borel sets.</p>
+<p><strong>Def 3(r.v.诱导的测度).</strong> For any random variable $X$, we use $P_X$ to denote the probability distribution on $\mathscr{B}(\mathbb{R})$ induced by $X$, given by
+$$
+P_X(B):=\operatorname{Pr}[X \in B]=P(w \in \Omega: X(w) \in B), \quad B \in \mathscr{B}(\mathbb{R})
+$$
+Note that the quantities $P_X(B), B \in \mathscr{B}(\mathbb{R})$, fully characterize the random variable $X$ as they determine the probabilities of all events that concern $X$.<br>
+<strong>Remark.</strong> 在很多概率的书籍中，$P_X$ 专用来表示随机变量诱导的测度，用来对 $X$ 映射到的可测集合操作，$P$表示原始概率空间上的测度，用来对 $\mathcal{F}$ 进行操作，而 $\operatorname{Pr}$侧重于描述随机变量事件的概率（the probability that）。</p>
+<p>这里不严格的定义随机过程，而是强调离散时间随机过程，即以序列 $I$ 表示的随机变量的集合 $\{X_i\mid i\in I\}$为随机过程。</p>
+<h3 id="properties-of-random-processes">Properties of random processes
+</h3><p><strong>Definition 1($\mathbb{T}$-invariant).</strong> An event $E$ is said to be $\mathbb{T}$-invariant with respect to the left-shift (or shift transformation) $\mathbb{T}: \mathcal{X}^{\infty} \rightarrow \mathcal{X}^{\infty}$ if
+$$
+\mathbb{T} E \subseteq E
+$$
+where
+$$
+\mathbb{T} E:={\mathbb{T} \boldsymbol{x}: \boldsymbol{x} \in E} \quad \text { and } \quad \mathbb{T} \boldsymbol{x}:=\mathbb{T}\left(x_1, x_2, x_3, \ldots\right)=\left(x_2, x_3, \ldots\right) .
+$$
+<strong>Remark.</strong> 可以定义该映射的逆映射：$\mathbb{T}^{-1} E:=\left\{\boldsymbol{x} \in \mathcal{X}^{\infty}: \mathbb{T} \boldsymbol{x} \in E\right\}$。这里是以通信系统为目的讨论的，所以强调了对事件的移位操作，强调时不变，对于概率论视角或者遍历论视角，更统一的方法是定义$\mathbb{T}$不变测度。</p>
+<p><strong>Def 2(Ergodic sets).</strong> 对于事件 $E$,若 $\mathbb{T} E = E = \mathbb{T}^{-1} E$,称该事件为 Ergodic sets。</p>
+<p><strong>Def 3(随机过程的分类)</strong></p>
+<ol>
+<li><strong>Memoryless</strong>: A random process or a source $X$ is said to be memoryless if thesequence of random variables $X_i$ is i.i.d.</li>
+<li><strong>Stationary process</strong>: Aprocess is said to be stationary (or strictly stationary)if the probability of every sequence or event is unchanged by a left (time) shift.</li>
+<li><strong>Ergodic process</strong>: A process is said to be ergodic if any ergodic set  in $\mathcal{F}_X$ has probability either 1 or 0.</li>
+</ol>
+<p><a href="https://imgse.com/i/pEGHy59"><img src="https://s21.ax1x.com/2025/03/03/pEGHy59.png" alt="pEGHy59.png" border="0" /></a></p>
+<p><strong>Remark.</strong> 遍历性与平稳性没有关系，平稳性说的是分布不随时间变化(i.d.),遍历性说的是该系统是封闭的，即该性质得以让我们从任何一点观察一随机过程，只要观察的时间足够长(SLLN),就可以推断该随机过程的分布。遍历性可以保证样本均值收敛到常数，但是未必是期望。</p>
+<p><strong>Theorem 4(Pointwise ergodic theorem)</strong> Consider a discrete-time stationary random process, $\boldsymbol{X}=\left\{X_n\right\}_{n=1}^{\infty}$. For real-valued function $f(\cdot)$ on $\mathbb{R}$ with finite mean (i.e., $\left|E\left[f\left(X_n\right)\right]\right|&lt;\infty$ ), there exists a random variable $Y$ such that
+$$
+\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f\left(X_k\right)=Y \quad \text { with probability } 1
+$$
+If, in addition to stationarity, the process is also ergodic, then
+$$
+\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f\left(X_k\right)=E\left[f\left(X_1\right)\right] \quad \text { with probability } 1 .
+$$
+<strong>Remark.</strong> 一些工程类教材经常把该定理当作遍历性的定义，因为借助遍历性这一概念只是想利用SLLN，但是这样的定义是狭隘的，从该定义出发难以探索遍历性的其他性质。</p>
+<h3 id="convergence-of-sequences-of-random-variables">Convergence of Sequences of Random Variables
+</h3><h2 id="information-measures-for-discrete-systems">Information Measures for Discrete Systems
 </h2><h2 id="lossless-data-compression">Lossless Data Compression
 </h2><h2 id="data-transmission-and-channel-capacity">Data Transmission and Channel Capacity
 </h2><h2 id="differential-entropy-and-gaussian-channels">Differential Entropy and Gaussian Channels
@@ -275,7 +379,19 @@ $$
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Feb 18, 2025 21:44 CST
+        </span>
+    </section></footer>
 
 <footer class="article-footer">
     <section>

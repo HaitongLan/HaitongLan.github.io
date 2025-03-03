@@ -363,7 +363,7 @@ $$
 $$
 \hat{\theta} =\argmin_{\theta\in\Theta} D_{k L}\left(f_\theta(x) \| f_{\hat{\theta}}(x)\right)
 $$
-其中,$f_\theta(x) $ 和 $f_{\hat{\theta}}(x)$ 分别表示真实分布和估计分布。
+其中,$f_\theta(x) $ 和 $f_{\hat{\theta}}(x)$ 分别表示真实分布和估计分布。&lt;br&gt;
 &lt;strong&gt;Remark 2.&lt;/strong&gt; 凡所发生，皆应发生。最大似然估计就是找到使得当前事件发生概率最大的估计量。&lt;/p&gt;
 &lt;p&gt;在给出具体例子之前，我们引入顺序统计量的概念和一个定理：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Def 3(Order statistics).&lt;/strong&gt; Let $\left(X_1, \ldots, X_n\right)$ be a random sample with d.f. F and p.d.f. f.
@@ -956,7 +956,172 @@ $,$r(C) \geq r(A)+r(B)$.&lt;/li&gt;
 &lt;li&gt;$A\in M_{m\times n}(\mathbb{K})$,$B\in M_{n\times p}(\mathbb{K})$,
 则 $r(A)+r(B)-n\leq r(AB)\leq min\{r(A),r(B)\}$,前一个不等式为Sylvesten不等式。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;第四章-线性映射&#34;&gt;第四章 线性映射
+&lt;h3 id=&#34;坐标向量&#34;&gt;坐标向量
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;引理 1.&lt;/strong&gt; $n$ 维线性空间 $V$, $\{e_1,\cdots,e_n\}$ 为基底，若 $\alpha\in V$,则
+$\alpha$ 的表示唯一。&lt;/p&gt;
+&lt;p&gt;该定理告诉我们，如果我们固定基底的顺序，则线性空间的每一个元素可以用一个数组来表示，
+数组中的第 $i$ 个元素对应第 $i$个坐标，该有序数组为在给定基底下的坐标向量。&lt;br&gt;
+从向量到有序数组是一个映射，将其表达为 $\phi:V\rightarrow K^n$,即从线性空间
+到列空间的映射(也可以映射到行空间)，该映射是一个一一对应关系(双射，单射加满射)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2(同构).&lt;/strong&gt; 设 $U,V$ 为 $K$ 上的线性空间，并且有 $\phi:V\rightarrow U$ 的双射，
+若对于 $\alpha,\beta\in V$,满足以下条件&lt;br&gt;
+（1）. $\phi(\alpha+\beta) = \phi(\alpha)+\phi(\beta)$&lt;br&gt;
+（2）. $\phi(k\alpha) = k\phi(\alpha)$&lt;br&gt;
+则称 $\phi:V\rightarrow U$为线性同构，简称 $V$同构于 $U$,记为 $V \cong U$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这两个条件也可以理解为该映射保持了线性空间中的线性组合关系；
+前文中定义的 $\phi:V\rightarrow K^n$就是一种线性同构。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; 设 $\phi:V\rightarrow U$ 为线性同构，有&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$V$ 空间中的线性组合映射为 $U$空间的线性组合，且不同向量的线性相关关系不变。&lt;/li&gt;
+&lt;li&gt;若 $\phi:V\rightarrow K^n$，$\{\alpha_1,\cdots,\alpha_n\}$ 为 $V$中的一组
+向量，若映射为 $\{\tilde{\alpha_1},\cdots,\tilde{\alpha_n}\}$，则两个向量组
+的秩相同且极大无关组的指标一致。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;注.&lt;/strong&gt; 由于线性同构不改变向量的线性关系，所以可以通过将向量映射为有序数组的方式，
+运用矩阵去便捷的求取一些量，例如秩，线性关系，极大无关组。&lt;/p&gt;
+&lt;h3 id=&#34;基变换与过渡矩阵&#34;&gt;基变换与过渡矩阵
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(过渡矩阵).&lt;/strong&gt; 设 $\left\{e_1, e_2, \cdots, e_n\right\}$ 是数
+域 $\mathbb{K}$ 上线性空间 $V$ 的一组基，
+$\left\{f_1, f_2\right.$ ， $\left.\cdots, f_n\right\}$ 是另一组基，则 $f_1, f_2, \cdots, f_n$ 可用 $e_1, e_2, \cdots, e_n$ 的下列线性组合表示：
+$$
+\left\{\begin{array}{c}
+\boldsymbol{f}_1=a_{11} \boldsymbol{e}_1+a_{21} e_2+\cdots+a_{n1} \boldsymbol{e}_n \\
+\boldsymbol{f}_2=a_{12} \boldsymbol{e}_1+a_{22} \boldsymbol{e}_2+\cdots+a_{n2} \boldsymbol{e}_n \\
+\cdots \cdots \cdots \cdots \\
+\boldsymbol{f}_n=a_{n 1} \boldsymbol{e}_1+a_{2n} \boldsymbol{e}_2+\cdots+a_{n n} \boldsymbol{e}_n
+\end{array}\right.
+$$
+上述表示式中 $e_i$ 的系数组成了一个元素在 $\mathbb{K}$ 上的 $n$ 阶矩阵，这个矩阵的&lt;strong&gt;转置&lt;/strong&gt;
+$$
+\boldsymbol{A}=\left(\begin{array}{cccc}
+a_{11} &amp;amp; a_{12} &amp;amp; \cdots &amp;amp; a_{1n} \\
+a_{21} &amp;amp; a_{22} &amp;amp; \cdots &amp;amp; a_{2n} \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+a_{n1} &amp;amp; a_{n2} &amp;amp; \cdots &amp;amp; a_{n n}
+\end{array}\right)
+$$
+称为从基 $\left\{\boldsymbol{e}_1, \boldsymbol{e}_2, \cdots, \boldsymbol{e}_n\right\}$
+到基 $\left\{\boldsymbol{f}_1, \boldsymbol{f}_2, \cdots, \boldsymbol{f}_n\right\}$ 的过渡矩阵．
+&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 使用列分块的方式将基向量组成一个矩阵 $\left(e_1, e_2, \cdots, e_n\right)$,用该方法可以
+将上述定义该写为 $(f_1,\cdots,f_n) = (e_1,\cdots,e_n)A$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 2.&lt;/strong&gt; 设向量 $\alpha$在 $\left\{e_1, e_2, \cdots, e_n\right\}$ 基底下的坐标
+为 $(\lambda_1,\cdots,\lambda_n)^{&amp;rsquo;}$,在 $\left\{f_1, f_2, \cdots, f_n\right\}$ 基底下的坐标
+为 $(\mu_1,\cdots,\mu_n)^{&amp;rsquo;}$,若过渡矩阵的定义与上述一致，则有
+$$
+\left(\begin{array}{c}
+\lambda_1 \\
+\lambda_2 \\
+\vdots \\
+\lambda_n
+\end{array}\right)=A\left(\begin{array}{c}
+\mu_1 \\
+\mu_2 \\
+\vdots \\
+\mu_n
+\end{array}\right)
+$$
+&lt;strong&gt;证明.&lt;/strong&gt;
+$$
+\begin{aligned}
+\alpha &amp;amp; =\left(\begin{array}{llll}
+e_1 &amp;amp; e_2 &amp;amp; \cdots &amp;amp; e_n
+\end{array}\right)\left(\begin{array}{c}
+\lambda_1 \\
+\lambda_2 \\
+\vdots \\
+\lambda_n
+\end{array}\right) . \\
+&amp;amp; =\left(\begin{array}{llll}
+f_1 &amp;amp; f_2 &amp;amp; \cdots &amp;amp; f_n
+\end{array}\right)\left(\begin{array}{c}
+\mu_1 \\
+\mu_2 \\
+\vdots \\
+\mu_n
+\end{array}\right) . \\
+&amp;amp; =\left(\begin{array}{llll}
+e_1 &amp;amp; e_2 &amp;amp; \cdots &amp;amp; e_n
+\end{array}\right) A\left(\begin{array}{c}
+\mu_n \\
+\mu_2 \\
+\vdots \\
+\mu_n
+\end{array}\right)
+\end{aligned}
+$$
+最后一步直接用了过渡矩阵的定义。&lt;strong&gt;QED&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; 线性空间 $V_K$,取三组基：$\left\{e_1, e_2, \cdots, e_n\right\}$，
+$\left\{f_1, f_2, \cdots, f_n\right\}$
+，$\left\{g_1, g_2, \cdots, g_n\right\}$,定义从$e\rightarrow f$的过渡矩阵$A$,
+从$f\rightarrow g$的过渡矩阵$B$,从$e\rightarrow g$的过渡矩阵$X$有&lt;br&gt;
+（1）任何过渡矩阵非异&lt;br&gt;
+（2）$X = AB$&lt;BR&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 使用定理3的第二条求过渡矩阵是很有帮助的，若题目直接给两个基底，可以找
+标准基底到这两个基底的过渡矩阵，再利用该定理求出需要求得的过渡矩阵，值得注意的是，
+标准基底到任何基底的过渡矩阵都是直接将其他基底以列向量的形式拼成矩阵，因为标准基底
+拼成的矩阵为单位阵。&lt;/p&gt;
+&lt;h3 id=&#34;线性子空间&#34;&gt;线性子空间
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(子空间).&lt;/strong&gt; $V_K$ 为线性空间，$V_0$ 为 $V$ 的非空子集，若 $\forall \alpha\beta\in V_0$,
+$\forall k\in K$,有 $\alpha+\beta \in V_0,k\alpha\in V_0$,则称 $V_0$ 为 $V$ 的线性子空间，
+简称为子空间。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; &lt;br&gt;
+（1）. 线性子空间的条件就是满足向量线性运算的封闭性，线性子空间本身也是线性空间，
+既 $V_0$在 $V_K$ 的加法和数乘下是 $K$上的线性空间，因此将其称作子线性空间
+也没什么不好的。&lt;br&gt;
+（2）. 所有的线性空间都含有至少两个线性子空间；零空间$\{0\}$和全空间 $V$,我们将这两个
+子空间称作平凡子空间，其余的子空间称作非平凡子空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(子空间的维度).&lt;/strong&gt; 若 $V_0$ 为 $V$ 的子空间，则有
+$$
+0\leq\dim V_0\leq\dim V
+$$
+若 $V_0$ 为非平凡子空间，则不等号变为严格不等号。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 3(交空间，和空间)&lt;/strong&gt; 设 $V_1,V_2$ 为 $V$ 的子空间，定义 $V_1,V_2$ 的交为
+集合交 $V_1\cap V_2 = \{ \alpha\mid \alpha\in V_1,\alpha\in V_2\}$,定义二者的和为
+$ V_1+V_2 = \{\alpha+\beta\mid \alpha\in V_1,\beta\in V_2\}$。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 交空间与和空间都是 $V$ 的子空间，虽然有并空间这一说，
+但是并空间一般不是子空间，实际上，若使用张成子空间的概念，有$L(V_1\cup V_2) = V_1+V_2$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4(张成子空间).&lt;/strong&gt; $S$ 为线性空间 $V$ 中的一个向量族，$S\subseteq V$,记
+$L(S)$ 为 $S$ 中所有可能的线性组合构成的集合，即
+$$
+L(S) = \{\lambda_1\alpha_1+\cdots+\lambda_m\alpha_m\mid \lambda_i\in K,\alpha_i\in S,0\leq i\leq m\}
+$$
+容易证明，$L(S)$ 为 $V$ 的子空间，称 $L(S)$ 为 $S$ 张成的子空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5.&lt;/strong&gt; 定理5包含两个定理：&lt;br&gt;
+（1）$L(S)$ 是 $V$ 中包含 $S$ 的最小子空间。&lt;br&gt;
+（2）若 $S$ 存在极大无关组 $\{\alpha_1,\cdots,\alpha_r\}$,
+则 $L(S) = L(\{\alpha_1,\cdots,\alpha_r\})$,且
+$\{\alpha_1,\cdots,\alpha_r\}$ 为 $L(S)$ 的基，有 $\dim L(S) = r(S)$。&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 6(维度公式).&lt;/strong&gt; 设 $V_1,V_2$ 为 $V$ 的子空间，有$$\dim (V_1+V_2) = \dim V_1+\dim V_2-\dim(V_1\cap V_2)$$&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理成立蕴含着 $V_1+V_2$ 的基底可以由 $V_1,V_2,V_1\cap V_2$ 的基底拼接而成(需要去掉重复部分)。注意
+若 $V_1\cap V_2 = \{0\}$，则有 $\dim (V_1+V_2) = \dim V_1+\dim V_2$，这样的性质是很好的，
+我们是否可以推广这一性质呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 7(直和).&lt;/strong&gt; 设 $V_1, V_2, \cdots, V_m$ 是线性空间 $V$ 的子空间，若对一切 $i(i=$ $1,2, \cdots, m)$ ，
+$$
+\begin{aligned}
+&amp;amp; V_i \cap\left(V_1+\cdots+V_{i-1}+V_{i+1}+\cdots+V_m\right)=0
+\end{aligned}
+$$
+则称和 $V_1+V_2+\cdots+V_m$ 为直接和，简称直和，记为
+$$
+V_1 \oplus V_2 \oplus \cdots \oplus V_m
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 等式右边的 $0$指的是 $\{0\}$,而不是空集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 8.&lt;/strong&gt; 设 $V_1, V_2, \cdots, V_m$ 是线性空间 $V$ 的子空间，$V_0=V_1+V_2+\cdots+$ $V_m$ ，则下列命题等价：&lt;br&gt;
+（1）$V_0=V_1 \oplus V_2 \oplus \cdots \oplus V_m$ 是直和；&lt;br&gt;
+（2）对任意的 $2 \leq i \leq m$ ，
+$$
+V_i \cap\left(V_1+V_2+\cdots+V_{i-1}\right)=0
+$$&lt;br&gt;
+（3） $\operatorname{dim}\left(V_1+V_2+\cdots+V_m\right)=\operatorname{dim} V_1+\operatorname{dim} V_2+\cdots+\operatorname{dim} V_{m i}$&lt;br&gt;
+（4）$V_1, V_2, \cdots, V_m$ 的一组基可以拼成 $V_0$ 的一组基；&lt;br&gt;
+（5）分块表示唯一：$V_0$ 中的向量表示为 $V_1, V_2, \cdots, V_m$ 中的向量之和时其表示唯一，即苦 $\alpha \in$ $V_0$ 且
+$$
+\alpha=v_1+v_2+\cdots+v_m=u_1+u_2+\cdots+u_m
+$$
+其中 $\boldsymbol{v}_i, \boldsymbol{u}_i \in V_i$ ，则 $\boldsymbol{u}_i=\boldsymbol{v}_i(i=1,2, \cdots, m)$ ．&lt;/p&gt;
+&lt;h3 id=&#34;求解线性方程组&#34;&gt;求解线性方程组
+&lt;/h3&gt;&lt;h2 id=&#34;第四章-线性映射&#34;&gt;第四章 线性映射
 &lt;/h2&gt;&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
 &lt;/h2&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
