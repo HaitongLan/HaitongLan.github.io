@@ -137,7 +137,7 @@ $$
 &lt;li&gt;&lt;strong&gt;Stationary process&lt;/strong&gt;: Aprocess is said to be stationary (or strictly stationary)if the probability of every sequence or event is unchanged by a left (time) shift.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ergodic process&lt;/strong&gt;: A process is said to be ergodic if any ergodic set  in $\mathcal{F}_X$ has probability either 1 or 0.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;https://imgse.com/i/pEGHy59&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/03/03/pEGHy59.png&#34; alt=&#34;pEGHy59.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgse.com/i/pEJ9sat&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/03/04/pEJ9sat.png&#34; alt=&#34;pEJ9sat.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; 遍历性与平稳性没有关系，平稳性说的是分布不随时间变化(i.d.),遍历性说的是该系统是封闭的，即该性质得以让我们从任何一点观察一随机过程，只要观察的时间足够长(SLLN),就可以推断该随机过程的分布。遍历性可以保证样本均值收敛到常数，但是未必是期望。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Theorem 4(Pointwise ergodic theorem)&lt;/strong&gt; Consider a discrete-time stationary random process, $\boldsymbol{X}=\left\{X_n\right\}_{n=1}^{\infty}$. For real-valued function $f(\cdot)$ on $\mathbb{R}$ with finite mean (i.e., $\left|E\left[f\left(X_n\right)\right]\right|&amp;lt;\infty$ ), there exists a random variable $Y$ such that
 $$
@@ -147,9 +147,93 @@ If, in addition to stationarity, the process is also ergodic, then
 $$
 \lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f\left(X_k\right)=E\left[f\left(X_1\right)\right] \quad \text { with probability } 1 .
 $$
-&lt;strong&gt;Remark.&lt;/strong&gt; 一些工程类教材经常把该定理当作遍历性的定义，因为借助遍历性这一概念只是想利用SLLN，但是这样的定义是狭隘的，从该定义出发难以探索遍历性的其他性质。&lt;/p&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt;
+一些工程类教材经常把该定理当作遍历性的定义，
+因为借助遍历性这一概念只是想利用SLLN，但是这样的定义是狭隘的，
+从该定义出发难以探索遍历性的其他性质。Birkhoff 逐点遍历定理保证了，
+我们可以用单个轨道的时间均值来估计总体数学期望，这让遍历性在实际应用中非常重要。&lt;/p&gt;
 &lt;h3 id=&#34;convergence-of-sequences-of-random-variables&#34;&gt;Convergence of Sequences of Random Variables
-&lt;/h3&gt;&lt;h2 id=&#34;information-measures-for-discrete-systems&#34;&gt;Information Measures for Discrete Systems
+&lt;/h3&gt;&lt;p&gt;为了介绍LLN，有必要先介绍随机变量序列的收敛：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1 (Convergence modes for random sequences).&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Pointwise convergence&lt;/strong&gt; on $\Omega$. $\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ pointwise on $\Omega$ if
+$$
+\lim _{n \rightarrow \infty} X_n(\omega)=X(\omega) \text { for all } \omega \in \Omega
+$$
+This notion of convergence, which is familiar to us from real analysis,
+is denoted by $X_n \xrightarrow{p . w .} X$.该收敛并没有考虑随机的因素，而是考虑映射
+$X$ 本身的收敛。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Almost sure convergence&lt;/strong&gt; or convergence with probability 1. $\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ with probability 1 , if
+$$
+P\left\{\omega \in \Omega: \lim _{n \rightarrow \infty} X_n(\omega)=X(\omega)\right\}=1
+$$
+Almost sure convergence is denoted by $X_n \xrightarrow{\text { a.s. }} X$; note that it is nothing but a probabilistic version of pointwise convergence.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Convergencein probability&lt;/strong&gt;.
+$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in probability, if for any $\varepsilon&amp;gt;0$,
+$$
+\lim _{n \rightarrow \infty} P\left\{\omega \in \Omega:\left|X_n(\omega)-X(\omega)\right|&amp;gt;\varepsilon\right\}=\lim _{n \rightarrow \infty} \operatorname{Pr}\left\{\left|X_n-X\right|&amp;gt;\varepsilon\right\}=0
+$$
+This mode of convergence is denoted by $X_n \xrightarrow{p} X$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Convergence in $r$ th mean&lt;/strong&gt;.
+$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in $r$ th mean, if
+$$
+\lim _{n \rightarrow \infty} E\left[\left|X-X_n\right|^r\right]=0
+$$
+This is denoted by $X_n \xrightarrow{\mathcal{L}_r} X$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Convergence in distribution&lt;/strong&gt;.
+$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in distribution, if
+$$
+\lim _{n \rightarrow \infty} F_{X_n}(x)=F_X(x)
+$$
+for every continuity point of $F(x)$, where
+$$
+F_{X_n}(x)=\operatorname{Pr}\left\{X_n \leq x\right\} \quad \text { and } \quad F_X(x)=\operatorname{Pr}\{X \leq x\}
+$$
+We denote this notion of convergence by $X_n \xrightarrow{d} X$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;这张图片表明了几种收敛的关系：
+&lt;a href=&#34;https://imgse.com/i/pEJ92RS&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/03/04/pEJ92RS.png&#34; alt=&#34;pEJ92RS.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem B. 9 (Monotone convergence theorem)&lt;/strong&gt;&lt;br&gt;
+$\left.\begin{array}{l}
+\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\
+\text { (ii) }(\forall n) Y \leq X_n \leq X_{n+1} \\
+\text { (iii) } E[|Y|]&amp;lt;\infty\end{array}\right\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem B. 10 (Dominated convergence theorem)&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;$\left.\begin{array}{l}\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\
+\text { (ii) }(\forall n)\left|X_n\right| \leq Y \\
+\text { (iii) } E[|Y|]&amp;lt;\infty\end{array}\right\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.&lt;/p&gt;
+&lt;p&gt;The implication of $X_n \xrightarrow{L_1} X$ to $E\left[X_n\right] \rightarrow E[X]$ can be easily seen from
+$$
+\left|E\left[X_n\right]-E[X]\right|=\left|E\left[X_n-X\right]\right| \leq E\left[\left|X_n-X\right|\right] .
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Observation B. 8 (Uniqueness of convergence).&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If $X_n \xrightarrow{p . w .} X$ and $X_n \xrightarrow{p . w .} Y$, then $X=Y$ pointwise. That is, $(\forall \omega \in \Omega)$ $X(\omega)=Y(\omega)$.&lt;/li&gt;
+&lt;li&gt;If $X_n \xrightarrow{\text { a.s. }} X$ and $X_n \xrightarrow{\text { a.s. }} Y$ (or $X_n \xrightarrow{p} X$ and $X_n \xrightarrow{p} Y$ ) (or $X_n \xrightarrow{\mathcal{L}_r} X$ and $X_n \xrightarrow{\mathcal{L}_r} Y$ ), then $X=Y$ with probability 1. That is, $\operatorname{Pr}\{X=Y\}=1$.&lt;/li&gt;
+&lt;li&gt;$X_n \xrightarrow{d} X$ and $X_n \xrightarrow{d} Y$, then $F_X(x)=F_Y(x)$ for all $x$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;ergodicity-and-laws-of-large-numbersclt&#34;&gt;Ergodicity and Laws of Large Numbers，CLT
+&lt;/h3&gt;&lt;p&gt;这里不再对LLN进行详细叙述，而是重点放在叙述LLN核遍历性的关系。&lt;/p&gt;
+&lt;p&gt;$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
+WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛。&lt;/p&gt;
+&lt;p&gt;逐点遍历原理是SLLN的一种。&lt;/p&gt;
+&lt;p&gt;直观地说，遍历性意味着系统没有“可分解的部分”，任何在变换
+𝑇 下保持不变的子集，要么几乎处处包含所有样本点，要么几乎处处不包含任何样本点。
+如果一个事件 𝐴是
+𝑇-不变的，那么它要么几乎处处发生（概率 1），要么几乎处处不发生（概率 0）。&lt;/p&gt;
+&lt;p&gt;我们总可以定义一些 𝑇-不变事件，这些事件是必然存在的，不在乎会不会发生
+(统计量平均收敛于常数就是这样的一个不变事件)，于是我们就可以对这样的事件进行测量，
+如果是普通是事件，根据我们测量的环境不同，可能会发生变化(不同样本轨道的统计特性不同)，
+但是如果是 𝑇-不变事件，就可以保证该事件要么不发生，要么对于所有样本点发生，这也保证了
+不同的环境测量出的事件一致，这是SLLN或者逐点遍历原理的一种现实意义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem B. 15 (Central limit theorem)&lt;/strong&gt; If $\left\{X_n\right\}_{n=1}^{\infty}$ is a sequence of i.i.d. random variables with finite common marginal mean $\mu$ and variance $\sigma^2$, then&lt;/p&gt;
+&lt;p&gt;$$
+\frac{1}{\sqrt{n}} \sum_{i=1}^n\left(X_i-\mu\right) \xrightarrow{d} Z \sim \mathcal{N}\left(0, \sigma^2\right)
+$$&lt;/p&gt;
+&lt;p&gt;where the convergence is in distribution (as $n \rightarrow \infty$ ) and $Z \sim \mathcal{N}\left(0, \sigma^2\right)$ is a Gaussian distributed random variable with mean 0 and variance $\sigma^2$.&lt;/p&gt;
+&lt;h2 id=&#34;information-measures-for-discrete-systems&#34;&gt;Information Measures for Discrete Systems
 &lt;/h2&gt;&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
 &lt;/h2&gt;&lt;h2 id=&#34;data-transmission-and-channel-capacity&#34;&gt;Data Transmission and Channel Capacity
 &lt;/h2&gt;&lt;h2 id=&#34;differential-entropy-and-gaussian-channels&#34;&gt;Differential Entropy and Gaussian Channels

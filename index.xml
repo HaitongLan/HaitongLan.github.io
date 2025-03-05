@@ -1479,7 +1479,80 @@ $$
 &lt;p&gt;我们可以在该代数上定义映射的幂，通过一系列定义（详见书本）可以发现，该定义和矩阵的运算规则极其相似，
 线性映射和矩阵到底有何关系，是否可以通过一些方法将二者联系起来呢？&lt;/p&gt;
 &lt;h3 id=&#34;线性映射与矩阵&#34;&gt;线性映射与矩阵
-&lt;/h3&gt;&lt;h3 id=&#34;线性映射的像与核&#34;&gt;线性映射的像与核
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定理 1(线性扩张定理).&lt;/strong&gt; 设 $V,U$ 是 $K$ 上的两个线性空间，$\{e_1,\cdots,e_n\}$为 $V$ 的一组基，$\{f_1,\cdots,f_n\}$ 为 $U$ 中的一组向量，则存在唯一的线性映射 $\phi:V\rightarrow U $,使得 $\phi(e_i) = f_i$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理表示，只要定义线性映射在基向量上的取值，就可以扩张到整个线性空间，所以定义线性映射时，常常只说明在基向量上的映射。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2(表示矩阵).&lt;/strong&gt; 设 $\left\{e_1, e_2, \cdots, e_n\right\}$ 是数
+域 $\mathbb{K}$ 上线性空间 $V$ 的一组基，
+$\left\{f_1, f_2\right.$ ， $\left.\cdots, f_m\right\}$ 是 $U$ 上的一组基，线性映射$\phi:V\rightarrow U $ 设：
+$$
+\left\{\begin{array}{c}
+\phi(e_1)=a_{11} \boldsymbol{f}_1+a_{21} f_2+\cdots+a_{m1} \boldsymbol{f}_m \\
+\phi(e_2)=a_{12} \boldsymbol{f}_1+a_{22} \boldsymbol{f}_2+\cdots+a_{m2} \boldsymbol{f}_m \\
+\cdots \cdots \cdots \cdots \\
+\phi(e_n)=a_{n 1} \boldsymbol{f}_1+a_{2n} \boldsymbol{f}_2+\cdots+a_{m n} \boldsymbol{f}_m
+\end{array}\right.
+$$
+上述表示式中 $f_i$ 的系数组成了一个元素在 $\mathbb{K}$ 上的 $n$ 阶矩阵，这个矩阵的&lt;strong&gt;转置&lt;/strong&gt;
+$$
+\boldsymbol{A}=\left(\begin{array}{cccc}
+a_{11} &amp;amp; a_{12} &amp;amp; \cdots &amp;amp; a_{1n} \\
+a_{21} &amp;amp; a_{22} &amp;amp; \cdots &amp;amp; a_{2n} \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+a_{m1} &amp;amp; a_{m2} &amp;amp; \cdots &amp;amp; a_{n n}
+\end{array}\right)
+$$
+称为给定基下线性映射 $\phi$ 的过渡矩阵。
+&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 与过渡矩阵类似，可以将该表达式写为 $(\phi(e_1),\cdots,\phi(e_n)) = (e_1,\cdots,e_n)A$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3(坐标的线性映射).&lt;/strong&gt; 设向量 $\alpha$在 $\left\{e_1, e_2, \cdots, e_n\right\}$ 基底下的坐标
+为 $(\lambda_1,\cdots,\lambda_n)^{&amp;rsquo;}$,在 $\left\{f_1, f_2, \cdots, f_n\right\}$ 基底下经过线性映射 $\phi$ 的坐标
+为 $(\mu_1,\cdots,\mu_n)^{&amp;rsquo;}$,若表示矩阵的定义与上述一致，则有
+$$
+\left(\begin{array}{c}
+\mu_1 \\
+\mu_2 \\
+\vdots \\
+\mu_n
+\end{array}\right)=A\left(\begin{array}{c}
+\lambda_1 \\
+\lambda_2 \\
+\vdots \\
+\lambda_n
+\end{array}\right)
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 这里与基变换略有不同，基变换是矩阵乘新坐标得到旧坐标，这里是矩阵乘原像得到像，顺序不一样。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 4(线性映射与矩阵).&lt;/strong&gt; 定义映射 $T:\mathcal{L}(U,V)\rightarrow M_{m\times n}(K)$,
+$\phi$ 在给定基下的表示矩阵为 $A$,映射 $T$ 具有如下性质：&lt;br&gt;
+（1）映射 $T$ 是满射，单射，是一一对应，是线性同构&lt;br&gt;
+（2）设 $\varphi \in \mathcal{L}(V, U), T(\varphi)=\boldsymbol{A}$ 是 $\varphi$ 在给定基下的表示矩阵．我们约定用 $\varphi_A$ 表示从 $\mathbb{K}_n \rightarrow \mathbb{K}_m$ 的线性映射，即若 $\boldsymbol{x} \in \mathbb{K}_n$ ，则 $\varphi_A(x)=A x$ ．于是有，$\eta_2 \varphi=\varphi_A \eta_1$ ，即有下图所示的交换图．
+$$
+\begin{CD}
+V @&amp;gt;\varphi&amp;gt;&amp;gt; U \\
+@V\eta_1VV @VV\eta_2V \\
+\mathbb{K}_n @&amp;gt;\varphi_A&amp;gt;&amp;gt; \mathbb{K}_m
+\end{CD}
+$$
+&lt;strong&gt;注.&lt;/strong&gt; $T$ 为线性同构意味着线性映射和表示矩阵一一对应：矩阵就意味着线性映射，任何一个线性映射都可以写为矩阵的形式；交换图意味着我们可以将几何问题等价的看作代数问题。&lt;/p&gt;
+&lt;p&gt;映射 $T$ 似乎不只是线性同构，我们在上一节中注意到，线性映射和矩阵有很多相似之处。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5.&lt;/strong&gt; 设线性映射 $\phi:V\rightarrow U$,$\varphi:U\rightarrow W$,则有
+$$
+T(\varphi\circ\phi) = T(\varphi)T(\phi)
+$$&lt;/p&gt;
+&lt;p&gt;可见，这两个线性空间之间存在乘法的相容性，矩阵乘法的意义是线性变换的复合，映射 $T$ 是 $K$ 上的代数！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 6.&lt;/strong&gt; 定义映射 $T:\mathcal{L}(V)\rightarrow M_{n}(K)$,有&lt;br&gt;
+（1）$T(1_V) = I_N$&lt;br&gt;
+（2）$\phi\in\mathcal{L}(V)$,则 $\phi$ 自同构 $\iff T(\phi)$可逆，且有 $T(\phi^{-1})  = T(\phi)^{-1}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 7(矩阵相似).&lt;/strong&gt; 设 $A,B\in M_n(K)$,若存在 $n$ 阶非异阵，使得
+$$B = P^{-1}AP$$
+则称 $A$ 与 $B$ 相似，记为 $A\approx B$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 相似是等价关系，满足自反性、对称性、传递性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 8(线性变换在不同基下的表示矩阵相似).&lt;/strong&gt;  $V$ 是数域 $\mathbb{K}$ 上的线性空间，$\varphi \in \mathcal{L}(V)$ ，又设 $\left\{e_1, e_2, \cdots, e_n\right\}$和 $\left\{f_1, f_2, \cdots, f_n\right\}$ 是 $V$ 的两组基且从 $\left\{e_1, e_2, \cdots, e_n\right\}$ 到 $\left\{f_1, f_2, \cdots, f_n\right\}$ 的过渡矩阵为 $P$ ．若 $\varphi$ 在基 $\left\{e_1, e_2, \cdots, e_n\right\}$ 下的表示矩阵为 $A$ ，在基 $\left\{f_1, f_2, \cdots, f_n\right\}$下的表示矩阵为 $\boldsymbol{B}$ ，则
+$$
+B=P^{-1} A P
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我们自然会有这样的问题：既然线性变换可以在不同基底下表示且满足相似关系，那么是否存在一个矩阵可以更简单的描述线性变换呢，或者说，任意一个矩阵是否相似于一个比较简单的矩阵？&lt;/p&gt;
+&lt;h3 id=&#34;线性映射的像与核&#34;&gt;线性映射的像与核
 &lt;/h3&gt;&lt;h3 id=&#34;不变子空间&#34;&gt;不变子空间
 &lt;/h3&gt;&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
 &lt;/h2&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
