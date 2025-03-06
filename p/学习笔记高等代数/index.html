@@ -11,7 +11,7 @@
 <meta property='og:description' content="复旦大学谢启鸿老师高等代数学课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-03T21:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-06T21:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
 <meta name="twitter:title" content="学习笔记|高等代数">
 <meta name="twitter:description" content="复旦大学谢启鸿老师高等代数学课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
@@ -219,7 +219,7 @@
 
 
                 <time class="article-time--reading">
-                    33 minute read
+                    34 minute read
                 </time>
             </div>
         
@@ -1218,7 +1218,34 @@ $$</p>
 <hr>
 <p>我们自然会有这样的问题：既然线性变换可以在不同基底下表示且满足相似关系，那么是否存在一个矩阵可以更简单的描述线性变换呢，或者说，任意一个矩阵是否相似于一个比较简单的矩阵？</p>
 <h3 id="线性映射的像与核">线性映射的像与核
-</h3><h3 id="不变子空间">不变子空间
+</h3><p><strong>定义 1(像与核).</strong> $\phi:V\rightarrow U$线性映射，则有<br>
+（1）$\phi$ 的像：$Im\phi = \{\phi(v)\mid v\in V\}$<br>
+（2）$\phi$ 的核：$\ker\phi = \{v\in V\mid \phi(v) = 0_U\}$<br>
+称 $\dim Im\phi$ 为 $\phi$ 的秩，记为 $r(\phi)$;称 $\dim \ker \phi$ 为 $\phi$ 的零度。<br>
+<strong>注.</strong> 像与核是针对线性映射而言的，以下描述默认映射为线性映射 $\phi:V\rightarrow U$。</p>
+<p><strong>引理 2(像空间，核空间).</strong> $Im \phi$ 为 $U$ 的子空间，$\ker \phi$ 为 $V$ 的子空间，
+所以称它们为像空间和核空间。</p>
+<p>使用像空间和核空间有一个好处，就是可以利用二者的性质推断映射的性质：</p>
+<p><strong>定理 3.</strong> 若 $\phi$ 为满射，则 $\dim Im\phi = \dim U$;若 $\phi$ 为单射，则 $\dim \ker \phi = 0$，即 $\ker \phi$ 为零子空间。</p>
+<p><strong>命题 4(线性映射的限制).</strong>  设 $\varphi: V \rightarrow U$ 为线性映射，$V^{\prime} \subseteq V, U^{\prime} \subseteq U$ 为子空间且满足 $\varphi\left(V^{\prime}\right) \subseteq U^{\prime}$ ，则通过定义域的限制可得线性映射 $\varphi^{\prime}: V^{\prime} \rightarrow U^{\prime}$ ，使得 $\varphi^{\prime}$ 与 $\varphi$ 具有相同的映射法则．进一步，若 $\varphi$ 是单映射，则 $\varphi^{\prime}$ 也是单映射．</p>
+<p>映射的秩和零度可以利用上一节的交换图来推导，即将线性映射和其对应的矩阵联系起来：</p>
+<p><strong>定理 5.</strong> 设 $V, U$ 分别是数域 $\mathbb{K}$ 上的 $n$ 维和 $m$ 维线性空间，又设 $\left\{e_1, e_2\right.$ ， $\left.\cdots, e_n\right\}$ 是 $V$ 的基，$\left\{f_1, f_2, \cdots, f_m\right\}$ 是 $U$ 的基．设 $\varphi$ 是 $V \rightarrow U$ 的线性映射，它在给定基下的表示矩阵为 $A$ ，则
+$$
+\operatorname{dim} \operatorname{Im} \varphi=\operatorname{rank}(\boldsymbol{A}), \quad \operatorname{dim} \operatorname{Ker} \varphi=n-\operatorname{rank}(\boldsymbol{A})
+$$
+<strong>注.</strong> 该定理尤为重要，其中的思想可以表示为：将线性映射和矩阵联系在一起，则$\ker \phi$ 是 $Ax = 0$ 的解空间(可以利用解空间的结构定理判断维度); $\operatorname{Im}\phi$ 是 $A$ 的列向量张成的子空间，可以用 $A$ 的秩判断维度。</p>
+<p><strong>一些推论.</strong> 由定理5得到的一些推论如下(线性映射的定义与定理5一致)：</p>
+<ol>
+<li>$n = \dim V  = \dim\operatorname{Im}\phi+\dim \ker \phi$.</li>
+<li>$\phi$ 为满射 $\iff r(A) = \dim U = m$,$A$ 行满秩。</li>
+<li>$\phi$ 为单射 $\iff r(A) = \dim V = n$,$A$ 列满秩。</li>
+<li>若 $\dim V = \dim U = n$,则 $\phi$同构 $\iff\phi$ 单射$\iff\phi$ 满射。</li>
+<li>$\phi\in\mathcal{L}(V)$,则 $\phi$ 是单射 $\iff\phi$ 满射$\iff\phi$ 在任意基底下的表示矩阵非异。</li>
+</ol>
+<hr>
+<p><strong>关于像空间和列空间的计算</strong> <br>
+有些题目会给出线性映射的表示矩阵或者线性映射本身，要求计算线性映射的像空间和核空间，此时只需记住定理5的注：$\ker \phi$ 是 $Ax = 0$ 的解空间; $\operatorname{Im}\phi$ 是 $A$ 的列向量张成的子空间。按照求解线性方程组的方法找解空间的基础解系和 $A$ 的列向量的极大无关组经过线性映射得到的表示，再进行线性组合即可；注意映射的像空间和核空间元素是抽象的向量而不是坐标向量。</p>
+<h3 id="不变子空间">不变子空间
 </h3><h2 id="第五章-多项式">第五章 多项式
 </h2><h2 id="第六章-特征值">第六章 特征值
 </h2><h2 id="第七章-相似标准型">第七章 相似标准型
@@ -1260,7 +1287,7 @@ $$</p>
 
 
         <span>
-            Last updated on Mar 03, 2025 21:00 CST
+            Last updated on Mar 06, 2025 21:00 CST
         </span>
     </section></footer>
 

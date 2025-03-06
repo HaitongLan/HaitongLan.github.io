@@ -564,28 +564,30 @@ $$
 \hat{h(\theta)} = h(\hat{\theta})
 $$&lt;/p&gt;
 &lt;h3 id=&#34;umvue&#34;&gt;UMVUE
-&lt;/h3&gt;&lt;p&gt;现在我们有了两种点估计的方法，矩估计方法和最大似然估计方法，我们可以得到一些估计量，并且判断它们的无偏性和一致性，但是如何进一步评判一个统计量的好坏仍然是现在不知道的，接下来我们要定义一种对统计量好坏的度量，先启发的想，方差代表了统计量测度集中的程度，对于点估计而言，我们自然是希望方差越小越好：
+&lt;/h3&gt;&lt;p&gt;现在我们有了两种点估计的方法，矩估计方法和最大似然估计方法，我们可以得到一些估计量，并且判断它们的无偏性和一致性，但是如何进一步评判一个统计量的好坏仍然是现在不知道的，接下来我们要定义一种对统计量好坏的度量，先启发的想，方差代表了统计量测度集中的程度，对于点估计而言，我们自然是希望方差越小越好：&lt;/p&gt;
+&lt;div&gt;
 $$
 \begin{aligned}
-MSE(\hat{\theta})&amp;amp; =\mathrm{E}&lt;em&gt;\theta\left[(\hat{\theta}-\theta)^2\right] \\
-&amp;amp; =\mathrm{E}&lt;/em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]+\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)^2\right] \\
-&amp;amp; =\mathrm{E}&lt;em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]\right)^2+2\left(\hat{\theta}-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]\right)\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)+\left(\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]-\theta\right)^2\right] \\
-&amp;amp; =\mathrm{E}&lt;/em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]\right)^2\right]+\mathrm{E}&lt;/em&gt;\theta\left[2\left(\hat{\theta}-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]\right)\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)\right]+\mathrm{E}&lt;em&gt;\theta\left[\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)^2\right] \\
-&amp;amp; =\mathrm{E}&lt;em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]\right)^2\right]+2\left(\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]-\theta\right) \mathrm{E}&lt;/em&gt;\theta\left[\hat{\theta}-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]\right]+\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)^2 \\
-&amp;amp; =\mathrm{E}&lt;em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]\right)^2\right]+2\left(\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]-\theta\right)\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]\right)+\left(\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]-\theta\right)^2 \\
-&amp;amp; =\mathrm{E}&lt;em&gt;\theta\left[\left(\hat{\theta}-\mathrm{E}&lt;/em&gt;\theta[\hat{\theta}]\right)^2\right]+\left(\mathrm{E}&lt;em&gt;\theta[\hat{\theta}]-\theta\right)^2 \
-&amp;amp; =\operatorname{Var}&lt;/em&gt;\theta(\hat{\theta})+\operatorname{Bias}_\theta(\hat{\theta}, \theta)^2
+MSE(\hat{\theta})&amp; =\mathrm{E}_\theta\left[(\hat{\theta}-\theta)^2\right] \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]+\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2\right] \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)^2+2\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)+\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2\right] \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)^2\right]+\mathrm{E}_\theta\left[2\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)\right]+\mathrm{E}_\theta\left[\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2\right] \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)^2\right]+2\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right) \mathrm{E}_\theta\left[\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right]+\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2 \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)^2\right]+2\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)\left(\mathrm{E}_\theta[\hat{\theta}]-\mathrm{E}_\theta[\hat{\theta}]\right)+\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2 \\\
+&amp; =\mathrm{E}_\theta\left[\left(\hat{\theta}-\mathrm{E}_\theta[\hat{\theta}]\right)^2\right]+\left(\mathrm{E}_\theta[\hat{\theta}]-\theta\right)^2 \\\
+&amp; =\operatorname{Var}_\theta(\hat{\theta})+\operatorname{Bias}_\theta(\hat{\theta}, \theta)^2
 \end{aligned}
 $$
-于是有以下定义：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Def 1(UMVUE).&lt;/strong&gt; An unbiased estimator $\hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right)$ is called a &lt;strong&gt;uniformly minimum variance unbiased estimator&lt;/strong&gt; (UMVUE) or best estimator if for any unbiased estimator $\hat{\theta^&lt;em&gt;}$, we have
+&lt;/div&gt;
+&lt;p&gt;于是有以下定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 1(UMVUE).&lt;/strong&gt; An unbiased estimator $\hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right)$ is called a &lt;strong&gt;uniformly minimum variance unbiased estimator&lt;/strong&gt; (UMVUE) or best estimator if for any unbiased estimator $\hat{\theta^{*}}$, we have
 $$
-\operatorname{Var}&lt;em&gt;\theta \hat{\theta} \leq \operatorname{Var}&lt;/em&gt;\theta \hat{\theta}^&lt;/em&gt;, \text { for } \theta \in \Theta
+Var_\theta \hat{\theta} \leq Var_\theta \hat{\theta}^{*}, \text { for } \theta \in \Theta
 $$
-( $\hat{\theta}$ is uniformly better than $\hat{\theta^*}$ in variance.)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Lemma 2 (Uniqueness of UMVUE).&lt;/strong&gt; Assume that a UMVUE for $\theta$ exists and is denoted by $T^&lt;em&gt;$. Then $T^&lt;/em&gt;$ is unique.&lt;/p&gt;
+( $\hat{\theta}$ is uniformly better than $\hat{\theta^{*}}$ in variance.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 2 (Uniqueness of UMVUE).&lt;/strong&gt; Assume that a UMVUE for $\theta$ exists and is denoted by $T^{*}$. Then $T^{*}$ is unique.&lt;/p&gt;
 &lt;p&gt;对于如何寻找这个统计量，我们将会引入两种方式，这里先介绍第一种：Cramer-Rao lower bound for variance of unbiased estimator :&lt;/p&gt;
-&lt;p&gt;Some regularity conditions:&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Some regularity conditions:&lt;/strong&gt;&lt;br&gt;
 (a) Parameter space $\Theta$ is an open interval. $(a, \infty),(a, b),(b, \infty)$, a,b are constants not depending on $\theta$.&lt;br&gt;
 (b) Set ${x: f(x, \theta)=0}$ is independent of $\theta$.&lt;br&gt;
 (c) $\int \frac{\partial f(x, \theta)}{\partial \theta} d x=\frac{\partial}{\partial \theta} \int f(x, \theta) d x=0$&lt;br&gt;
@@ -594,11 +596,13 @@ $$
 \int t \frac{\partial f(x, \theta)}{\partial \theta} d x=\frac{\partial}{\partial \theta} \int t f(x, \theta) d x
 $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Thm 3(Cramer-Rao (C-R)).&lt;/strong&gt;  Suppose that the regularity conditions hold.
-If $\hat{\tau}(\theta)=t\left(X_1, \ldots, X_n\right)$ is unbiased for $\tau(\theta)$, then
+If $\hat{\tau}(\theta)=t\left(X_1, \ldots, X_n\right)$ is unbiased for $\tau(\theta)$, then&lt;/p&gt;
+&lt;div&gt;
 $$
-\operatorname{Var}&lt;em&gt;\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{n E&lt;/em&gt;\theta\left[\left(\frac{\partial \ln f(x, \theta)}{\partial \theta}\right)^2\right]}=\frac{\left(\tau^{\prime}(\theta)\right)^2}{-n E_\theta\left[\left(\frac{\partial^2 \ln f(x, \theta)}{\partial \theta^2}\right)\right]} \text { for } \theta \in \Theta
+\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{n E_\theta\left[\left(\frac{\partial \ln f(x, \theta)}{\partial \theta}\right)^2\right]}=\frac{\left(\tau^{\prime}(\theta)\right)^2}{-n E_\theta\left[\left(\frac{\partial^2 \ln f(x, \theta)}{\partial \theta^2}\right)\right]} \text { for } \theta \in \Theta
 $$
-&lt;strong&gt;Remark.&lt;/strong&gt; C-R bound同样可以表示为 $\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{nI(\theta)}$,其中 $I(\theta)$ 为 Fisher information。若我们可以找到一个无偏统计量，使得该无偏统计量的方差为 C-R bound，则该统计量就是 UMVUE，并且我们定义这个统计量为 efficient estimator(有效估计量)，是所有无偏估计量中最有效的统计量，并且定义，C-R bound 比上真实估计量的方差为 efficiency。&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; C-R bound同样可以表示为 $\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{nI(\theta)}$,其中 $I(\theta)$ 为 Fisher information。若我们可以找到一个无偏统计量，使得该无偏统计量的方差为 C-R bound，则该统计量就是 UMVUE，并且我们定义这个统计量为 efficient estimator(有效估计量)，是所有无偏估计量中最有效的统计量，并且定义，C-R bound 比上真实估计量的方差为 efficiency。&lt;/p&gt;
 &lt;h2 id=&#34;continue-to-point-estimation-umvue&#34;&gt;Continue to Point Estimation-UMVUE
 &lt;/h2&gt;&lt;p&gt;我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，因为我们只是去验证而不是去寻找，本章节我们将引入充分统计量(Sufficient statistics) 的概念，并发掘一套寻找UMVUE的方法。&lt;/p&gt;
 &lt;h2 id=&#34;confidence-interval&#34;&gt;Confidence Interval
