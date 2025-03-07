@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学陈伯宁老师信息论课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-02-18T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-02-18T21:44:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-02-18T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-07T13:00:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
 <meta name="twitter:title" content="学习笔记|信息论">
 <meta name="twitter:description" content="台湾交通大学陈伯宁老师信息论课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E4%BF%A1%E6%81%AF%E8%AE%BA/cover.png' />
@@ -112,6 +112,7 @@
         <li><a href="#properties-of-random-processes">Properties of random processes</a></li>
         <li><a href="#convergence-of-sequences-of-random-variables">Convergence of Sequences of Random Variables</a></li>
         <li><a href="#ergodicity-and-laws-of-large-numbersclt">Ergodicity and Laws of Large Numbers，CLT</a></li>
+        <li><a href="#lagrange-multipliers-technique-and-kkt-conditions">Lagrange Multipliers Technique and KKT Conditions</a></li>
       </ol>
     </li>
     <li><a href="#information-measures-for-discrete-systems">Information Measures for Discrete Systems</a></li>
@@ -199,7 +200,7 @@
 
 
                 <time class="article-time--reading">
-                    8 minute read
+                    10 minute read
                 </time>
             </div>
         
@@ -416,9 +417,40 @@ $$</p>
 <li>$X_n \xrightarrow{d} X$ and $X_n \xrightarrow{d} Y$, then $F_X(x)=F_Y(x)$ for all $x$.</li>
 </ol>
 <h3 id="ergodicity-and-laws-of-large-numbersclt">Ergodicity and Laws of Large Numbers，CLT
-</h3><p>这里不再对LLN进行详细叙述，而是重点放在叙述LLN核遍历性的关系。</p>
-<p>$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
-WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛。</p>
+</h3><p><strong>Theorem B. 13 (Weak law of large numbers)</strong> Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of uncorrelated random variables with common mean $E\left[X_i\right]=\mu$. If the variables also have common variance, or more generally,</p>
+<div>
+$$
+\lim_{n \rightarrow \infty} \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}\left[X_i\right]=0, \quad\left(\text { equivalently }, \frac{\mathrm{X}_1+\cdots+\mathrm{X}_{\mathrm{n}}}{\mathrm{n}} \xrightarrow{\mathcal{L}_2}-\right)
+$$
+</div>
+<p>then the sample average
+$$
+\frac{X_1+\cdots+X_n}{n}
+$$
+converges to the mean $\mu$ in <strong>probability</strong>.
+<br>
+Proof By Chebyshev&rsquo;s inequality,</p>
+<div>
+$$
+\operatorname{Pr}\left\{\left|\frac{1}{n} \sum_{i=1}^n X_i-\mu\right| \geq \varepsilon\right\} \leq \frac{1}{n^2 \varepsilon^2} \sum_{i=1}^n \operatorname{Var}\left[X_i\right]
+$$
+</div>
+<p>Note that the right-hand side of the above Chebyshev&rsquo;s inequality is just the second moment of the difference between the $n$-sample average and the mean $\mu$. Thus, the variance constraint is equivalent to the statement that $X_n \xrightarrow{\mathcal{L}_2} \mu$ <strong>implies</strong> $X_n \xrightarrow{p} \mu$.</p>
+<p><strong>Theorem B. 14 (Kolmogorov&rsquo;s strong law of large numbers)</strong> Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of independent random variables with common mean $E\left[X_n\right]=\mu$. If either</p>
+<ol>
+<li>$X_n$ &rsquo;s are identically distributed; or</li>
+<li>$X_n$ &rsquo;s are square-integrable  with variances satisfying
+$$
+\sum_{i=1}^{\infty} \frac{\operatorname{Var}\left[X_i\right]}{i^2}&lt;\infty
+$$</li>
+</ol>
+<p>then
+$$
+\frac{X_1+\cdots+X_n}{n} \xrightarrow{\text { a.s. }} \mu .
+$$
+<strong>Remark.</strong>
+$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
+WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛,Kolmogorov&rsquo;s strong law of large numbers对函数序列极限依然适用。</p>
 <p>逐点遍历原理是SLLN的一种。</p>
 <p>直观地说，遍历性意味着系统没有“可分解的部分”，任何在变换
 𝑇 下保持不变的子集，要么几乎处处包含所有样本点，要么几乎处处不包含任何样本点。
@@ -434,6 +466,47 @@ WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.�
 \frac{1}{\sqrt{n}} \sum_{i=1}^n\left(X_i-\mu\right) \xrightarrow{d} Z \sim \mathcal{N}\left(0, \sigma^2\right)
 $$</p>
 <p>where the convergence is in distribution (as $n \rightarrow \infty$ ) and $Z \sim \mathcal{N}\left(0, \sigma^2\right)$ is a Gaussian distributed random variable with mean 0 and variance $\sigma^2$.</p>
+<h3 id="lagrange-multipliers-technique-and-kkt-conditions">Lagrange Multipliers Technique and KKT Conditions
+</h3><p><strong>Definition B. 16 (Convexity)</strong> Consider a <strong>convex set</strong> $ \mathcal{O} \in \mathbb{R}^m$, where $m$ is a fixed positive integer. Then, a function $f: \mathcal{O} \rightarrow \mathbb{R}$ is said to be convex over $\mathcal{O}$ if for every $\underline{x}, \underline{y}$ in $\mathcal{O}$ and $0 \leq \lambda \leq 1$,
+$$
+f(\lambda \underline{x}+(1-\lambda) \underline{y}) \leq \lambda f(\underline{x})+(1-\lambda) f(\underline{y})
+$$
+Furthermore, a function $f$ is said to be <strong>strictly convex</strong> if equality holds only when $\lambda=0$ or $\lambda=1$.<br>
+<strong>Remark.</strong> 凸集对线性凸组合保持封闭，函数的凸性是针对定义域和函数特性而言的，值得注意的式，满足convex的函数在凸集上二阶导非负。</p>
+<p><strong>Definition B. 17 (Concavity)</strong> A function $f$ is concave if $-f$ is convex.</p>
+<p><strong>Theorem B. 18 (Jensen&rsquo;s inequality)</strong> If $f: \mathcal{O} \rightarrow \mathbb{R}$ is convex over a convex set $\mathcal{O} \subset \mathbb{R}^m$, and $\underline{X}=\left(X_1, X_2, \ldots, X_m\right)^T$ is an m-dimensional random vector with alphabet $\mathcal{X} \subset \mathcal{O}$, then
+$$
+\mathbb{E}[f(\underline{X})] \geq f(\mathbb{E}[\underline{X}])
+$$
+Moreover, if $f$ is strictly convex, then <strong>equality</strong> in the above inequality immediately implies $\underline{X}=E[\underline{X}]$ with probability 1.</p>
+<p>接下来考虑优化问题：Optimization of a function $f(\boldsymbol{x})$ over $\boldsymbol{x}=\left(x_1, \ldots, x_n\right) \in \mathcal{X} \subseteq \mathbb{R}^n$
+$$
+\min _{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}),
+$$
+where
+$$
+\mathcal{Q}:=\left\{\boldsymbol{x} \in \mathcal{X}: g_i(\boldsymbol{x}) \leq 0 \text { for } 1 \leq i \leq m \text { and } h_i(\boldsymbol{x})=0 \text { for } 1 \leq j \leq \ell\right\}
+$$
+可以利用拉格朗日乘子法，将该问题转化为无约束的对偶问题：</p>
+<div>
+$$
+L(\boldsymbol{\lambda}, \boldsymbol{\nu}):=\min _{x \in \mathcal{X}}\left(f(\boldsymbol{x})+\sum_{i=1}^m \lambda_i g_i(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j h_j(\boldsymbol{x})\right)=\min _{x \in \mathcal{X}} L(\boldsymbol{x} ; \boldsymbol{\lambda}, \boldsymbol{\nu}) .
+$$
+</div>
+<p>称该函数为拉格朗日对偶函数，可以证明是一个 concave 的函数，其中$\lambda,\mu$ 为拉格朗日乘子，并且非负，则有</p>
+<div>
+$$
+L(\boldsymbol{\lambda}, \boldsymbol{\nu}) \leq \min _{\boldsymbol{x} \in \mathcal{Q}}\left(f(\boldsymbol{x})+\sum_{i=1}^m \lambda_i g_i(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j h_j(\boldsymbol{x})\right) \leq \min _{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}) .
+$$
+</div>
+<p>如果上式等号成立，我们就可以通过优化对偶问题找到原优化问题的解，在特定条件下，KKT条件就是使得等式成立的条件(此时对偶问题为强对偶)：</p>
+<p><strong>Definition B. 19 (Karush-Kuhn-Tucker (KKT) condition)</strong> Point $\boldsymbol{x}=\left(x_1\right.$, $\left.\ldots, x_n\right)$ and multipliers $\boldsymbol{\lambda}=\left(\lambda_1, \ldots, \lambda_m\right)$ and $\boldsymbol{\nu}=\left(\nu_1, \ldots, \nu_{\ell}\right)$ are said to satisfy the KKT condition if</p>
+<div>
+$$
+\begin{cases}g_i(\boldsymbol{x}) \leq 0, \quad \lambda_i \geq 0, \quad \lambda_i g_i(\boldsymbol{x})=0 & i=1, \ldots, m \\ h_j(\boldsymbol{x})=0 & j=1, \ldots, \ell \\ \frac{\partial L}{\partial x_k}(\boldsymbol{x} ; \boldsymbol{\lambda}, \boldsymbol{\nu})=\frac{\partial f}{\partial x_k}(\boldsymbol{x})+\sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_k}(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j \frac{\partial h_j}{\partial x_k}(\boldsymbol{x})=0 & k=1, \ldots, n\end{cases}
+$$
+</div>
+<p><strong>Remark.</strong> （1）如果 $f,g$ 为凸函数，$h$是不过原点的直线，那么等式成立 $\iff$ KKT条件。<br>（2）对于任意的 $f,g,h$ 函数，有 等式成立 $\Rightarrow$ KKT条件。</p>
 <h2 id="information-measures-for-discrete-systems">Information Measures for Discrete Systems
 </h2><h2 id="lossless-data-compression">Lossless Data Compression
 </h2><h2 id="data-transmission-and-channel-capacity">Data Transmission and Channel Capacity
@@ -474,7 +547,7 @@ $$</p>
 
 
         <span>
-            Last updated on Feb 18, 2025 21:44 CST
+            Last updated on Mar 07, 2025 13:00 CST
         </span>
     </section></footer>
 

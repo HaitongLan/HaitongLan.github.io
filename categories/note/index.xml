@@ -426,8 +426,8 @@ $$&lt;/li&gt;
 即
 $$M_{\bar{X}}(t)M_{X_1-\bar{X},\ldots,X_n-\bar{X}}(t_1,\ldots,t_n) = M_{\bar{X},X_1-\bar{X},\ldots,X_n-\bar{X}}(t,t_1,\ldots,t_n)$$.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Problem in statistics&lt;/strong&gt;:&lt;br&gt;
+&lt;h2 id=&#34;statistical-inference---point-estimation&#34;&gt;Statistical Inference - Point Estimation
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Problem in statistics&lt;/strong&gt;:&lt;br&gt;
 A random variables $X$ with p.d.f. of the form $f(x, \theta)$ where function $f$ is known but parameter $\theta$ is unknown. We want to gain knowledge about $\theta$.&lt;br&gt;
 What we have for inference:&lt;br&gt;
 There is a random sample $X_1, \ldots, X_n$ from $f(x, \theta)$.
@@ -436,15 +436,14 @@ $$
 \text { Estimation }\left\{\begin{array}{l}
 \text { Point estimation: } \hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right) \\
 \text { Interval estimation: } \\
-\text { Find statistics } T_1=t_1\left(X_1, \ldots, X_n\right), T_2=t_2\left(X_1, \ldots, X_n\right) \\
+\text { Find statistics } T_1=t_1\left(X_1, \ldots, X_n\right), T_2=t_2\left(X_1, \ldots\right) \\
 \text { such that } 1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)
 \end{array}\right. \\
 \text { Hypothesis testing: } H_0: \theta=\theta_0 \text { or } H_0: \theta \geq \theta_0 . \\
 \text { Want to find a rule to decide if we accept or reject } H_0 .
 \end{array}\right.
 $$&lt;/p&gt;
-&lt;h2 id=&#34;statistical-inference---point-estimation&#34;&gt;Statistical Inference - Point Estimation
-&lt;/h2&gt;&lt;h3 id=&#34;unbiased-and-consistent&#34;&gt;Unbiased and consistent
+&lt;h3 id=&#34;unbiased-and-consistent&#34;&gt;Unbiased and consistent
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Def 1（估计量）.&lt;/strong&gt; We call a statistic $\hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right)$ an &lt;strong&gt;estimator&lt;/strong&gt; of parameter $\theta$ if it is used to estimate $\theta$. If $X_1=x_1, \ldots, X_n=x_n$ are observed, then $\hat{\theta}=\hat{\theta}\left(x_1, \ldots, x_n\right)$ is called an &lt;strong&gt;estimate&lt;/strong&gt; of $\theta$.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Def 2(无偏估计).&lt;/strong&gt; We call an estimator $\theta$ unbiased for $\theta$ if it satisfies
 $$
@@ -604,7 +603,53 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; C-R bound同样可以表示为 $\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{nI(\theta)}$,其中 $I(\theta)$ 为 Fisher information。若我们可以找到一个无偏统计量，使得该无偏统计量的方差为 C-R bound，则该统计量就是 UMVUE，并且我们定义这个统计量为 efficient estimator(有效估计量)，是所有无偏估计量中最有效的统计量，并且定义，C-R bound 比上真实估计量的方差为 efficiency。&lt;/p&gt;
 &lt;h2 id=&#34;continue-to-point-estimation-umvue&#34;&gt;Continue to Point Estimation-UMVUE
-&lt;/h2&gt;&lt;p&gt;我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，因为我们只是去验证而不是去寻找，本章节我们将引入充分统计量(Sufficient statistics) 的概念，并发掘一套寻找UMVUE的方法。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，
+因为我们只是去验证而不是去寻找，本章节我们将引入充分统计量(Sufficient statistics)
+的概念，并发掘一套寻找UMVUE的方法。&lt;/p&gt;
+&lt;h3 id=&#34;sufficient-statistics-and-coditional-expectation&#34;&gt;Sufficient statistics and Coditional expectation
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Def 1(Sufficient statistics).&lt;/strong&gt; Let $X_1;\cdots ;X_n$ be a random sample from a distribution with p.d.f
+$f(x; \theta); \theta \in \Theta$. We call a statistic $U = u(X_1;\cdots ;X_n)$ a
+Sufficient statistics if, for any
+value $U = u$, the conditional p.d.f $f(X_1;\cdots ;X_n;\theta\mid u)$ and its
+domain all &lt;strong&gt;not
+depend on&lt;/strong&gt; parameter $\theta$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 可以认为充分统计量蕴含的随机样本中关于原始分布的所有信息。&lt;/p&gt;
+&lt;p&gt;实际上，随机样本全体以及其顺序统计量全体都是充分统计量，但是我们却很少会直接用它们当作统计量，
+因为这样的统计量维度太高，难以应用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 2(minimal sufficient statistics).&lt;/strong&gt; If $U = u(X_1;\cdots ;X_n)$ is a Sufficient statistics
+with smallest dimension,
+it is called the minimal sufficient statistics.&lt;/p&gt;
+&lt;p&gt;判断充分统计量并不是一种很简单的事情，有些条件分布的 p.d.f. 难以计算，下面的分解定理将会
+极大的简化充分统计量的判断：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm 3(Factorization Theorem).&lt;/strong&gt;
+Let $X_1, \ldots, X_n$ be a random sample from a distribution with p.d.f
+$f(x, \theta)$. A statistic $U=u\left(X_1, \ldots, X_n\right)$ is
+sufficient for $\theta$ $\iff$ there exists functions $K_1, K_2 \geq 0$
+such that the joint p.d.f of $X_1, \ldots, X_n$ may be formulated as
+$$f\left(x_1, \ldots, x_n, \theta\right)=K_1\left(u\left(X_1, \ldots, X_n\right),
+\theta\right) K_2\left(x_1, \ldots, x_n\right)$$ where $K_2$ is not a function
+of $\theta$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 使用该方法判断统计量的充分性，甚至连条件概率都不用计算，只需计算联合分布是否可以拆分
+即可，该定理同样适应高维的情况，可以判断高维充分统计量；另外，充分统计量可能以多种形式存在，不唯一。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 4(Conditional expectation,variance).&lt;/strong&gt; Conditional expectation of $Y$ given $X=x$ is
+$$
+\mathrm{E}(Y \mid x)=\int_{-\infty}^{\infty} y f(y \mid x) d y
+$$
+The random conditional expectation $\mathrm{E}(Y \mid X)$ is function $\mathrm{E}(Y \mid x)$ with x replaced by X.
+Conditional variance of Y given $X=x$ is
+$$
+\operatorname{Var}(Y \mid x)=\mathrm{E}\left[(Y-\mathrm{E}(Y \mid x))^2 \mid x\right]=\mathrm{E}\left(Y^2 \mid x\right)-(\mathrm{E}(Y \mid x))^2
+$$
+The conditional variance $\operatorname{Var}(Y \mid X)$ is $\operatorname{Var}(Y \mid x)$ replacing x by X .&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 给定 $X = x$ 的条件下，条件期望和方差都是 $x$ 的函数，若给定条件换为随机变量，
+条件期望和方差为随机变量，并且可以看作条件的函数；在严格的测度论定义中，取代given条件的位置是随机
+变量生成的 $\sigma-$代数，可以理解为一种信息流。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm 5.&lt;/strong&gt; Let $Y$ and $X$ be two r.v.&amp;rsquo;s.&lt;br&gt;
+(a) $E[E(Y \mid x)]=E(Y)$&lt;br&gt;
+(b) $\operatorname{Var}(Y)=E(\operatorname{Var}(Y \mid X))+\operatorname{Var}(E(Y \mid X))$&lt;br&gt;
+&lt;strong&gt;Reamrk.&lt;/strong&gt;(1)可以看作tower性质的一个特例；
+(2)可以得出一个不等式 $\operatorname{Var}(Y)\geq\operatorname{Var}(E(Y \mid X))$,
+可以直观的理解为，依据已经发生事件做出的判断相比于直接对事件本身做出判断的方差更小，更可靠。&lt;/p&gt;
 &lt;h2 id=&#34;confidence-interval&#34;&gt;Confidence Interval
 &lt;/h2&gt;</description>
         </item>
@@ -1598,7 +1643,34 @@ $$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;我们自然会有这样的问题：既然线性变换可以在不同基底下表示且满足相似关系，那么是否存在一个矩阵可以更简单的描述线性变换呢，或者说，任意一个矩阵是否相似于一个比较简单的矩阵？&lt;/p&gt;
 &lt;h3 id=&#34;线性映射的像与核&#34;&gt;线性映射的像与核
-&lt;/h3&gt;&lt;h3 id=&#34;不变子空间&#34;&gt;不变子空间
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(像与核).&lt;/strong&gt; $\phi:V\rightarrow U$线性映射，则有&lt;br&gt;
+（1）$\phi$ 的像：$Im\phi = \{\phi(v)\mid v\in V\}$&lt;br&gt;
+（2）$\phi$ 的核：$\ker\phi = \{v\in V\mid \phi(v) = 0_U\}$&lt;br&gt;
+称 $\dim Im\phi$ 为 $\phi$ 的秩，记为 $r(\phi)$;称 $\dim \ker \phi$ 为 $\phi$ 的零度。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 像与核是针对线性映射而言的，以下描述默认映射为线性映射 $\phi:V\rightarrow U$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 2(像空间，核空间).&lt;/strong&gt; $Im \phi$ 为 $U$ 的子空间，$\ker \phi$ 为 $V$ 的子空间，
+所以称它们为像空间和核空间。&lt;/p&gt;
+&lt;p&gt;使用像空间和核空间有一个好处，就是可以利用二者的性质推断映射的性质：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; 若 $\phi$ 为满射，则 $\dim Im\phi = \dim U$;若 $\phi$ 为单射，则 $\dim \ker \phi = 0$，即 $\ker \phi$ 为零子空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 4(线性映射的限制).&lt;/strong&gt;  设 $\varphi: V \rightarrow U$ 为线性映射，$V^{\prime} \subseteq V, U^{\prime} \subseteq U$ 为子空间且满足 $\varphi\left(V^{\prime}\right) \subseteq U^{\prime}$ ，则通过定义域的限制可得线性映射 $\varphi^{\prime}: V^{\prime} \rightarrow U^{\prime}$ ，使得 $\varphi^{\prime}$ 与 $\varphi$ 具有相同的映射法则．进一步，若 $\varphi$ 是单映射，则 $\varphi^{\prime}$ 也是单映射．&lt;/p&gt;
+&lt;p&gt;映射的秩和零度可以利用上一节的交换图来推导，即将线性映射和其对应的矩阵联系起来：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5.&lt;/strong&gt; 设 $V, U$ 分别是数域 $\mathbb{K}$ 上的 $n$ 维和 $m$ 维线性空间，又设 $\left\{e_1, e_2\right.$ ， $\left.\cdots, e_n\right\}$ 是 $V$ 的基，$\left\{f_1, f_2, \cdots, f_m\right\}$ 是 $U$ 的基．设 $\varphi$ 是 $V \rightarrow U$ 的线性映射，它在给定基下的表示矩阵为 $A$ ，则
+$$
+\operatorname{dim} \operatorname{Im} \varphi=\operatorname{rank}(\boldsymbol{A}), \quad \operatorname{dim} \operatorname{Ker} \varphi=n-\operatorname{rank}(\boldsymbol{A})
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 该定理尤为重要，其中的思想可以表示为：将线性映射和矩阵联系在一起，则$\ker \phi$ 是 $Ax = 0$ 的解空间(可以利用解空间的结构定理判断维度); $\operatorname{Im}\phi$ 是 $A$ 的列向量张成的子空间，可以用 $A$ 的秩判断维度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一些推论.&lt;/strong&gt; 由定理5得到的一些推论如下(线性映射的定义与定理5一致)：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$n = \dim V  = \dim\operatorname{Im}\phi+\dim \ker \phi$.&lt;/li&gt;
+&lt;li&gt;$\phi$ 为满射 $\iff r(A) = \dim U = m$,$A$ 行满秩。&lt;/li&gt;
+&lt;li&gt;$\phi$ 为单射 $\iff r(A) = \dim V = n$,$A$ 列满秩。&lt;/li&gt;
+&lt;li&gt;若 $\dim V = \dim U = n$,则 $\phi$同构 $\iff\phi$ 单射$\iff\phi$ 满射。&lt;/li&gt;
+&lt;li&gt;$\phi\in\mathcal{L}(V)$,则 $\phi$ 是单射 $\iff\phi$ 满射$\iff\phi$ 在任意基底下的表示矩阵非异。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;关于像空间和列空间的计算&lt;/strong&gt; &lt;br&gt;
+有些题目会给出线性映射的表示矩阵或者线性映射本身，要求计算线性映射的像空间和核空间，此时只需记住定理5的注：$\ker \phi$ 是 $Ax = 0$ 的解空间; $\operatorname{Im}\phi$ 是 $A$ 的列向量张成的子空间。按照求解线性方程组的方法找解空间的基础解系和 $A$ 的列向量的极大无关组经过线性映射得到的表示，再进行线性组合即可；注意映射的像空间和核空间元素是抽象的向量而不是坐标向量。&lt;/p&gt;
+&lt;h3 id=&#34;不变子空间&#34;&gt;不变子空间
 &lt;/h3&gt;&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
 &lt;/h2&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
