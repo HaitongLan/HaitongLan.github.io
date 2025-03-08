@@ -215,9 +215,40 @@ $$&lt;/p&gt;
 &lt;li&gt;$X_n \xrightarrow{d} X$ and $X_n \xrightarrow{d} Y$, then $F_X(x)=F_Y(x)$ for all $x$.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;ergodicity-and-laws-of-large-numbersclt&#34;&gt;Ergodicity and Laws of Large Numbers，CLT
-&lt;/h3&gt;&lt;p&gt;这里不再对LLN进行详细叙述，而是重点放在叙述LLN核遍历性的关系。&lt;/p&gt;
-&lt;p&gt;$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
-WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Theorem B. 13 (Weak law of large numbers)&lt;/strong&gt; Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of uncorrelated random variables with common mean $E\left[X_i\right]=\mu$. If the variables also have common variance, or more generally,&lt;/p&gt;
+&lt;div&gt;
+$$
+\lim_{n \rightarrow \infty} \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}\left[X_i\right]=0, \quad\left(\text { equivalently }, \frac{\mathrm{X}_1+\cdots+\mathrm{X}_{\mathrm{n}}}{\mathrm{n}} \xrightarrow{\mathcal{L}_2}-\right)
+$$
+&lt;/div&gt;
+&lt;p&gt;then the sample average
+$$
+\frac{X_1+\cdots+X_n}{n}
+$$
+converges to the mean $\mu$ in &lt;strong&gt;probability&lt;/strong&gt;.
+&lt;br&gt;
+Proof By Chebyshev&amp;rsquo;s inequality,&lt;/p&gt;
+&lt;div&gt;
+$$
+\operatorname{Pr}\left\{\left|\frac{1}{n} \sum_{i=1}^n X_i-\mu\right| \geq \varepsilon\right\} \leq \frac{1}{n^2 \varepsilon^2} \sum_{i=1}^n \operatorname{Var}\left[X_i\right]
+$$
+&lt;/div&gt;
+&lt;p&gt;Note that the right-hand side of the above Chebyshev&amp;rsquo;s inequality is just the second moment of the difference between the $n$-sample average and the mean $\mu$. Thus, the variance constraint is equivalent to the statement that $X_n \xrightarrow{\mathcal{L}_2} \mu$ &lt;strong&gt;implies&lt;/strong&gt; $X_n \xrightarrow{p} \mu$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem B. 14 (Kolmogorov&amp;rsquo;s strong law of large numbers)&lt;/strong&gt; Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of independent random variables with common mean $E\left[X_n\right]=\mu$. If either&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$X_n$ &amp;rsquo;s are identically distributed; or&lt;/li&gt;
+&lt;li&gt;$X_n$ &amp;rsquo;s are square-integrable  with variances satisfying
+$$
+\sum_{i=1}^{\infty} \frac{\operatorname{Var}\left[X_i\right]}{i^2}&amp;lt;\infty
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;then
+$$
+\frac{X_1+\cdots+X_n}{n} \xrightarrow{\text { a.s. }} \mu .
+$$
+&lt;strong&gt;Remark.&lt;/strong&gt;
+$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
+WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛,Kolmogorov&amp;rsquo;s strong law of large numbers对函数序列极限依然适用。&lt;/p&gt;
 &lt;p&gt;逐点遍历原理是SLLN的一种。&lt;/p&gt;
 &lt;p&gt;直观地说，遍历性意味着系统没有“可分解的部分”，任何在变换
 𝑇 下保持不变的子集，要么几乎处处包含所有样本点，要么几乎处处不包含任何样本点。
@@ -233,6 +264,47 @@ WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.�
 \frac{1}{\sqrt{n}} \sum_{i=1}^n\left(X_i-\mu\right) \xrightarrow{d} Z \sim \mathcal{N}\left(0, \sigma^2\right)
 $$&lt;/p&gt;
 &lt;p&gt;where the convergence is in distribution (as $n \rightarrow \infty$ ) and $Z \sim \mathcal{N}\left(0, \sigma^2\right)$ is a Gaussian distributed random variable with mean 0 and variance $\sigma^2$.&lt;/p&gt;
+&lt;h3 id=&#34;lagrange-multipliers-technique-and-kkt-conditions&#34;&gt;Lagrange Multipliers Technique and KKT Conditions
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition B. 16 (Convexity)&lt;/strong&gt; Consider a &lt;strong&gt;convex set&lt;/strong&gt; $ \mathcal{O} \in \mathbb{R}^m$, where $m$ is a fixed positive integer. Then, a function $f: \mathcal{O} \rightarrow \mathbb{R}$ is said to be convex over $\mathcal{O}$ if for every $\underline{x}, \underline{y}$ in $\mathcal{O}$ and $0 \leq \lambda \leq 1$,
+$$
+f(\lambda \underline{x}+(1-\lambda) \underline{y}) \leq \lambda f(\underline{x})+(1-\lambda) f(\underline{y})
+$$
+Furthermore, a function $f$ is said to be &lt;strong&gt;strictly convex&lt;/strong&gt; if equality holds only when $\lambda=0$ or $\lambda=1$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 凸集对线性凸组合保持封闭，函数的凸性是针对定义域和函数特性而言的，值得注意的式，满足convex的函数在凸集上二阶导非负。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition B. 17 (Concavity)&lt;/strong&gt; A function $f$ is concave if $-f$ is convex.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem B. 18 (Jensen&amp;rsquo;s inequality)&lt;/strong&gt; If $f: \mathcal{O} \rightarrow \mathbb{R}$ is convex over a convex set $\mathcal{O} \subset \mathbb{R}^m$, and $\underline{X}=\left(X_1, X_2, \ldots, X_m\right)^T$ is an m-dimensional random vector with alphabet $\mathcal{X} \subset \mathcal{O}$, then
+$$
+\mathbb{E}[f(\underline{X})] \geq f(\mathbb{E}[\underline{X}])
+$$
+Moreover, if $f$ is strictly convex, then &lt;strong&gt;equality&lt;/strong&gt; in the above inequality immediately implies $\underline{X}=E[\underline{X}]$ with probability 1.&lt;/p&gt;
+&lt;p&gt;接下来考虑优化问题：Optimization of a function $f(\boldsymbol{x})$ over $\boldsymbol{x}=\left(x_1, \ldots, x_n\right) \in \mathcal{X} \subseteq \mathbb{R}^n$
+$$
+\min _{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}),
+$$
+where
+$$
+\mathcal{Q}:=\left\{\boldsymbol{x} \in \mathcal{X}: g_i(\boldsymbol{x}) \leq 0 \text { for } 1 \leq i \leq m \text { and } h_i(\boldsymbol{x})=0 \text { for } 1 \leq j \leq \ell\right\}
+$$
+可以利用拉格朗日乘子法，将该问题转化为无约束的对偶问题：&lt;/p&gt;
+&lt;div&gt;
+$$
+L(\boldsymbol{\lambda}, \boldsymbol{\nu}):=\min _{x \in \mathcal{X}}\left(f(\boldsymbol{x})+\sum_{i=1}^m \lambda_i g_i(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j h_j(\boldsymbol{x})\right)=\min _{x \in \mathcal{X}} L(\boldsymbol{x} ; \boldsymbol{\lambda}, \boldsymbol{\nu}) .
+$$
+&lt;/div&gt;
+&lt;p&gt;称该函数为拉格朗日对偶函数，可以证明是一个 concave 的函数，其中$\lambda,\mu$ 为拉格朗日乘子，并且非负，则有&lt;/p&gt;
+&lt;div&gt;
+$$
+L(\boldsymbol{\lambda}, \boldsymbol{\nu}) \leq \min _{\boldsymbol{x} \in \mathcal{Q}}\left(f(\boldsymbol{x})+\sum_{i=1}^m \lambda_i g_i(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j h_j(\boldsymbol{x})\right) \leq \min _{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}) .
+$$
+&lt;/div&gt;
+&lt;p&gt;如果上式等号成立，我们就可以通过优化对偶问题找到原优化问题的解，在特定条件下，KKT条件就是使得等式成立的条件(此时对偶问题为强对偶)：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition B. 19 (Karush-Kuhn-Tucker (KKT) condition)&lt;/strong&gt; Point $\boldsymbol{x}=\left(x_1\right.$, $\left.\ldots, x_n\right)$ and multipliers $\boldsymbol{\lambda}=\left(\lambda_1, \ldots, \lambda_m\right)$ and $\boldsymbol{\nu}=\left(\nu_1, \ldots, \nu_{\ell}\right)$ are said to satisfy the KKT condition if&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{cases}g_i(\boldsymbol{x}) \leq 0, \quad \lambda_i \geq 0, \quad \lambda_i g_i(\boldsymbol{x})=0 &amp; i=1, \ldots, m \\ h_j(\boldsymbol{x})=0 &amp; j=1, \ldots, \ell \\ \frac{\partial L}{\partial x_k}(\boldsymbol{x} ; \boldsymbol{\lambda}, \boldsymbol{\nu})=\frac{\partial f}{\partial x_k}(\boldsymbol{x})+\sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_k}(\boldsymbol{x})+\sum_{j=1}^{\ell} \nu_j \frac{\partial h_j}{\partial x_k}(\boldsymbol{x})=0 &amp; k=1, \ldots, n\end{cases}
+$$
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; （1）如果 $f,g$ 为凸函数，$h$是不过原点的直线，那么等式成立 $\iff$ KKT条件。&lt;br&gt;（2）对于任意的 $f,g,h$ 函数，有 等式成立 $\Rightarrow$ KKT条件。&lt;/p&gt;
 &lt;h2 id=&#34;information-measures-for-discrete-systems&#34;&gt;Information Measures for Discrete Systems
 &lt;/h2&gt;&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
 &lt;/h2&gt;&lt;h2 id=&#34;data-transmission-and-channel-capacity&#34;&gt;Data Transmission and Channel Capacity

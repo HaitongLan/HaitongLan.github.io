@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学陳鄰安老师统计学课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-06T20:10:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-08T18:05:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
 <meta name="twitter:title" content="学习笔记|数理统计">
 <meta name="twitter:description" content="台湾交通大学陳鄰安老师统计学课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
@@ -122,9 +122,9 @@
     <li><a href="#continue-to-point-estimation-umvue">Continue to Point Estimation-UMVUE</a>
       <ol>
         <li><a href="#sufficient-statistics-and-coditional-expectation">Sufficient statistics and Coditional expectation</a></li>
+        <li><a href="#completeness">Completeness</a></li>
       </ol>
     </li>
-    <li><a href="#confidence-interval">Confidence Interval</a></li>
   </ol>
 </nav>
         </div>
@@ -205,7 +205,7 @@
 
 
                 <time class="article-time--reading">
-                    11 minute read
+                    15 minute read
                 </time>
             </div>
         
@@ -589,10 +589,8 @@ domain all <strong>not
 depend on</strong> parameter $\theta$.<br>
 <strong>Remark.</strong> 可以认为充分统计量蕴含的随机样本中关于原始分布的所有信息。</p>
 <p>实际上，随机样本全体以及其顺序统计量全体都是充分统计量，但是我们却很少会直接用它们当作统计量，
-因为这样的统计量维度太高，难以应用。</p>
-<p><strong>Def 2(minimal sufficient statistics).</strong> If $U = u(X_1;\cdots ;X_n)$ is a Sufficient statistics
-with smallest dimension,
-it is called the minimal sufficient statistics.</p>
+因为这样的统计量维度太高，难以应用。另外，充分统计量的函数也是充分统计量（该函数不可引入 $\theta$）。</p>
+<p><strong>Def 2(minimal sufficient statistics).</strong> A statistic $T$ is minimal sufficient if $T$ is sufficient, and for every sufficient statistic $\tilde{T}$ there exists a function $f$ such that $T=f(\tilde{T})$ (a.e. $\mathcal{P}$ ). Here (a.e. $\mathcal{P}$ ) means that the set where equality fails is a null set for every $P \in \mathcal{P}$.</p>
 <p>判断充分统计量并不是一种很简单的事情，有些条件分布的 p.d.f. 难以计算，下面的分解定理将会
 极大的简化充分统计量的判断：</p>
 <p><strong>Thm 3(Factorization Theorem).</strong>
@@ -624,8 +622,109 @@ The conditional variance $\operatorname{Var}(Y \mid X)$ is $\operatorname{Var}(Y
 <strong>Reamrk.</strong>(1)可以看作tower性质的一个特例；
 (2)可以得出一个不等式 $\operatorname{Var}(Y)\geq\operatorname{Var}(E(Y \mid X))$,
 可以直观的理解为，依据已经发生事件做出的判断相比于直接对事件本身做出判断的方差更小，更可靠。</p>
-<h2 id="confidence-interval">Confidence Interval
-</h2>
+<h3 id="completeness">Completeness
+</h3><p><strong>Thm 1(Rao-Blackwell).</strong> If $\hat{\tau}\left(X_1, \ldots, X_n\right)$ is unbiased for $\tau(\theta)$ and $U$ is a sufficient statistic, then<br>
+(a) $E_\theta\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]$ is a statistic.<br>
+(b) $E_\theta\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]$ is unbiased for $\tau(\theta)$.<br>
+(c) $Var_\theta\left(E\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]\right) \leq Var_\theta\left(\hat{\tau}\left(X_1, \ldots, X_n\right)\right), \forall \theta \in \Theta$.<br>
+<strong>Remark.</strong> 若 $U$ 不是充分统计量，则 $E_\theta\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]$ 未必是统计量，因为可能与 $\theta$ 相关。</p>
+<p>If $\hat{\tau}(\theta)$ is an unbiased estimator for $\tau(\theta)$ and $U_1, U_2, \ldots$ are sufficient statistics, then we can improve $\hat{\tau}(\theta)$ with the following fact:</p>
+<div>
+$$
+\begin{aligned}
+\operatorname{Var}_\theta\left(\mathrm{E}\left[\hat{\tau}(\theta) \mid U_1\right]\right) & \leq \operatorname{Var}_\theta \hat{\tau}(\theta) \\
+\operatorname{Var}_\theta \mathrm{E}\left(\mathrm{E}\left(\hat{\tau}(\theta) \mid U_1\right) \mid U_2\right) & \leq \operatorname{Var}_\theta \mathrm{E}\left(\hat{\tau}(\theta) \mid U_1\right) \\
+\operatorname{Var}_\theta \mathrm{E}\left[\mathrm{E}\left(\mathrm{E}\left(\hat{\tau}(\theta) \mid U_1\right) \mid U_2\right) \mid U_3\right] & \leq \operatorname{Var}_\theta \mathrm{E}\left(\mathrm{E}\left(\hat{\tau}(\theta) \mid U_1\right) \mid U_2\right)
+\end{aligned}
+$$
+</div>
+<p>Will this process ends with Cramer-Rao lower bound ? This can be solved with &ldquo;complete statistic&rdquo;.</p>
+<p>事实上，由Rao-Blackwell保证，无偏估计量只需given一个充分统计量，就可以保证防擦好不大于任意无偏估计量的方差，即上述过程中条件期望的方差都是相等的，在后文中我们还将说明，若given的充分统计量满足完备性的条件，则上述过程中的条件期望在概率1的意义下都是同一个r.v.。</p>
+<p>为了引入完备统计量的概念，我们先引入完备分布族：</p>
+<p><strong>Def 2(完备分布族).</strong>
+设 $X$ 所在的分布族为 $\mathcal{F}=\{p(x ; \theta): \theta \in \Theta\}$ ，如果对任何实值函数 $\varphi(x)$ ，由期望
+$$
+\mathrm{E}_\theta \varphi(X)=0, \quad \forall \theta \in \Theta
+$$
+为 0 可以推出随机变量为 0 ，即</p>
+<p>$$
+\mathrm{P}_\theta\{\varphi(X)=0\}=1, \quad \forall \theta \in \Theta
+$$
+那么这个分布族称为完备分布族．<br>
+<strong>Remark.</strong> 上述定义可以由积分诱导的内积来表述，即 $&lt;\phi,f_X&gt; = 0\Rightarrow \phi = 0(a.s.),\forall \theta$,任何一个与分布 $f_X$ 正交的函数必定等于0(a.s.)，可见分布 $f_X$ 已经张成的整个函数空间，这也是完备性的来源，是由正交函数论中的完备演化来的。</p>
+<p><strong>例1</strong> 二项分布族 $\{B(n, p): 0&lt;p&lt;1\}$（n已知）是完备的．<br>
+解： 依照定义，假设 $\varphi(X)$ 期望为 0 ，则</p>
+<div>
+$$
+\mathrm{E}_p \varphi(X)=\sum_{x=0}^n \varphi(x)\binom{n}{x} p^x(1-p)^{n-x}=0, \quad \forall p \in(0,1)
+$$
+</div>
+<p>作相同变换，约去非零常数（好像已经是第三次用到了）
+$$
+\sum_{x=0}^n\binom{n}{x} \varphi(x) \theta^x=0, \quad \forall \theta&gt;0
+$$
+这是关于 $\theta$ 的多项式，而 $\binom{n}{x}$ 不为 0 ，也就只能 $\varphi(x)$ 为 0 了，所以依照定义就有 n 已知的二项分布族是完备的．</p>
+<p><strong>例2</strong> 正态分布族 $\left\{N\left(0, \sigma^2\right): \sigma&gt;0\right\}$ 不是完备的．<br>
+解: 只需找一个反例，取 $\varphi(X)=X$ ，它的期望显然为 0 ，但是随机变量取 0 的概率为
+$$
+\mathrm{P}_\theta{\varphi(X)=0}=0 \neq 1
+$$
+因此该分布族不是完备的．</p>
+<p>这两个例子中的分布族都是由一个随机变量诱导出的，自然而然的，我们想以统计量诱导出的分布族的完备性来定义统计量的完备性：<strong>如果一个统计量，它诱导出的分布族是完备的，那么它是完备统计量</strong>。</p>
+<p>对比讲义上的解释：<br>
+<strong>Def 3(complete statistic).</strong> $X_1, \ldots, X_n$ is random sample from $f(x, \theta)$. $A$ statistic $U=u\left(X_1, \ldots, X_n\right)$ is a complete statistic if for any function $h(U)$ such that
+$$
+E_\theta(h(U))=0, \forall \theta \in\Theta \text{ ,then } P_\theta(h(U)=0)=1, \text{for } \theta \in \Theta
+$$</p>
+<p>两种定义方式是等价的，但是由诱导出的分布族来定义更方便我们理解完备性的由来</p>
+<p>那么完备性有没有什么对于统计的特殊意义呢？事实上，如果充分统计量表示统计量包含了样本中关于 $\theta$的所有信息，完备统计量就是不包含无用于推断 $\theta$ 的随机信息，有下面两个定理来帮助理解：</p>
+<p><strong>Thm 4.</strong> If $T$ is <strong>complete and sufficient</strong>, then $T$ is <strong>minimal sufficient</strong>.<br><strong>Remark.</strong> 将该定理反过来说是不对的，即最小充分统计量不一定是完备的。</p>
+<p><strong>Def 5(Ancillary statistic).</strong> 设 $P_\theta$ 是一概率模型，其中 $\theta$ 是参数。若对于来自样本的数据 $\mathbf{Y}$ ，统计量 $T(\mathbf{Y})$ 的分布不依赖于 $\theta$ ，则称 $T(\mathbf{Y})$ 是关于 $\theta$ 的辅助统计量。这即是说，对于任何博雷尔集 $A$ ，有 $P_\theta(T(\mathbf{Y}) \in A)=\mu(A)$ ，其中 $\mu(\cdot)$ 是不依赖于 $\theta$ 的概率测度。</p>
+<p><strong>Theorem 5(Basu).</strong> If $T$ is complete and sufficient for $\mathcal{P}=\left\{P_\theta: \theta \in\Omega\right\}$, and if $V$ is ancillary, then $T$ and $V$ are independent under $P_\theta$ for any $\theta \in \Omega$.<br>
+<strong>Remark.</strong> Basu 定理表示，完备充分统计量与辅助统计量独立，说明该统计量既包含了样本中所有关于 $\theta$ 的信息，又不包含 $\theta$ 以外的信息，该信息量是相当 “紧致” 的，这也与定理4中完备充分统计量是最小充分统计量的说法相互映照。</p>
+<p>完备充分统计量具有很好的性质，充分性可以由分解定理快速的验证，但是完备性却难以验证，但是若是分布满足指数族分布，就有下面的充分性定理帮助验证：</p>
+<p><strong>Thm 6.</strong> Let $X_1, \ldots, X_n$ be a random sample from $f(x, \theta)$ which belongs to an exponential family as
+$$
+f(x, \theta)=e^{a(x) b(\theta)+c(\theta)+d(x)}, l&lt;x&lt;q
+$$
+Then $\sum^n a\left(X_i\right)$ is a complete statistic.<br>
+<strong>Remark.</strong> 对上述等式再运用分解定理，不难发现， $\sum^n a\left(X_i\right)$ 其实是完备充分统计量.</p>
+<p>铺垫了那么多之后，我们引出寻找UMVUE的主定理：</p>
+<p><strong>Thm 7(Lehmann-Scheffe).</strong>
+Let $X_1, \ldots, X_n$ be a random sample from $f(x, \theta)$. Suppose that $U=u\left(X_1, \ldots, X_n\right)$ is a <strong>complete and sufficient</strong> statistic. If $\hat{\tau}=t(U)$ is <strong>unbiased</strong> for $\tau(\theta)$, then $\hat{\tau}$ is the <strong>unique</strong> function of $U$ unbiased for $\tau(\theta)$ and is a UMVUE of $\tau(\theta)$. (Unbiased function of complete and sufficient statistic is UMVUE.)<br>
+<strong>Remark 1.</strong> 这里的 unique 指的是若有两个 UMVUE $X$ 和 $Y$,则 $P(X=Y) = 1$.<br>
+<strong>Remark 2.</strong> 在该定理的证明中，完备性保证了唯一，充分性保证了统计量的存在,Rao-Blackwell 定理保证了方差最小，该定理将前面的知识都联系在了一起，我们所定义的无偏性、充分性、完备性都是有用的，值得注意的是，UMVUE无法保证一致性。</p>
+<hr>
+<p><strong>Method:</strong> Two ways in constructing UMVUE based on a complete and sufficient statistic $U$ :<br>
+(a) If $T$ is unbiased for $\tau(\theta)$, then $\mathrm{E}(T \mid U)$ is the UMVUE of $\tau(\theta)$. This is easy to define but difficult to transform it in a simple form.<br>
+(b) If there is a constant such that $\mathrm{E}(U)=f \circ \theta$, then $T=f^{-1}\circ U$ is the UMVUE of $\theta$.</p>
+<p><strong>Example :</strong><br>
+(a)Let $X_1, \ldots, X_n$ be a random sample from $U(0, \theta)$.</p>
+<p>Want UMVUE of $\theta$.<br>
+<strong>sol:</strong> $Y_n=\max \left\{X_1, \ldots, X_n\right\}$ is a complete and sufficient statistic .<br>
+The p.d.f of $Y_n$ is
+$$
+\begin{aligned}
+f_{Y_n}(y, \theta) &amp; =n\left(\frac{y}{\theta}\right)^{n-1} \frac{1}{\theta}=n \frac{y^{n-1}}{\theta^n}, 0&lt;y&lt;\theta \\
+\mathrm{E}\left(Y_n\right) &amp; =\int_0^\theta y n \frac{y^{n-1}}{\theta^n} d y=\frac{n}{n+1} \theta .
+\end{aligned}
+$$
+We then have $\mathrm{E}\left(\frac{n+1}{n} Y_n\right)=\frac{n+1}{n} \mathrm{E}\left(Y_n\right)=\theta$.
+<br>
+So, $\frac{n+1}{n} Y_n$ is the UMVUE of $\theta$.</p>
+<p>(b) $X_1, \ldots, X_n \stackrel{i i d}{\sim} \operatorname{Possion}(\lambda)$.
+Want UMVUE of $e^{-\lambda}$.<br>
+<strong>sol:</strong> The p.d.f of X is
+$$
+f(x, \lambda)=\frac{1}{x!} \lambda^x e^{-\lambda}=e^{x \ln \lambda-\lambda-\ln x!}
+$$
+$\Rightarrow \sum_{i=1}^n X_i$ is complete and sufficient.<br>
+$\mathrm{E}\left(I\left(X_1=0\right)\right)=P\left(X_1=0\right)=f(0, \lambda)=e^{-\lambda}$ where $I\left(X_1=0\right)$ is an indicator function.<br>
+$\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$<br>
+$\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.</p>
+<hr>
+<p>上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。</p>
+
 </section>
 
 
@@ -660,7 +759,7 @@ The conditional variance $\operatorname{Var}(Y \mid X)$ is $\operatorname{Var}(Y
 
 
         <span>
-            Last updated on Mar 06, 2025 20:10 CST
+            Last updated on Mar 08, 2025 18:05 CST
         </span>
     </section></footer>
 
