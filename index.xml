@@ -757,7 +757,7 @@ $$
 \mathrm{E}_p \varphi(X)=\sum_{x=0}^n \varphi(x)\binom{n}{x} p^x(1-p)^{n-x}=0, \quad \forall p \in(0,1)
 $$
 &lt;/div&gt;
-&lt;p&gt;作相同变换，约去非零常数（好像已经是第三次用到了）
+&lt;p&gt;作相同变换，约去非零常数
 $$
 \sum_{x=0}^n\binom{n}{x} \varphi(x) \theta^x=0, \quad \forall \theta&amp;gt;0
 $$
@@ -1793,7 +1793,8 @@ V @&amp;gt;\varphi&amp;gt;&amp;gt; U \\
 \mathbb{K}_n @&amp;gt;\varphi_A&amp;gt;&amp;gt; \mathbb{K}_m
 \end{CD}
 $$
-&lt;strong&gt;注.&lt;/strong&gt; $T$ 为线性同构意味着线性映射和表示矩阵一一对应：矩阵就意味着线性映射，任何一个线性映射都可以写为矩阵的形式；交换图意味着我们可以将几何问题等价的看作代数问题。&lt;/p&gt;
+&lt;strong&gt;注 1.&lt;/strong&gt; $T$ 为线性同构意味着线性映射和表示矩阵一一对应：矩阵就意味着线性映射，任何一个线性映射都可以写为矩阵的形式；交换图意味着我们可以将几何问题等价的看作代数问题。&lt;br&gt;
+&lt;strong&gt;注 2.&lt;/strong&gt; 该交换图是几何和代数之间的桥梁，有了该定理，当遇到几何问题时，可以将其翻译成代数语言进行证明，或者遇到代数问题时，可以将其翻译成几何语言进行证明。&lt;/p&gt;
 &lt;p&gt;映射 $T$ 似乎不只是线性同构，我们在上一节中注意到，线性映射和矩阵有很多相似之处。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 5.&lt;/strong&gt; 设线性映射 $\phi:V\rightarrow U$,$\varphi:U\rightarrow W$,则有
 $$
@@ -1842,8 +1843,79 @@ $$
 &lt;p&gt;&lt;strong&gt;关于像空间和列空间的计算&lt;/strong&gt; &lt;br&gt;
 有些题目会给出线性映射的表示矩阵或者线性映射本身，要求计算线性映射的像空间和核空间，此时只需记住定理5的注：$\ker \phi$ 是 $Ax = 0$ 的解空间; $\operatorname{Im}\phi$ 是 $A$ 的列向量张成的子空间。按照求解线性方程组的方法找解空间的基础解系和 $A$ 的列向量的极大无关组经过线性映射得到的表示，再进行线性组合即可；注意映射的像空间和核空间元素是抽象的向量而不是坐标向量。&lt;/p&gt;
 &lt;h3 id=&#34;不变子空间&#34;&gt;不变子空间
-&lt;/h3&gt;&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
-&lt;/h2&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(不变子空间).&lt;/strong&gt; 设 $\varphi$ 是线性空间 $V$ 上的线性变换，$U$ 是 $V$ 的子空间，若 $U$ 适合条件
+$$
+\varphi(U) \subseteq U
+$$
+则称 $U$ 是 $\varphi$ 的不变子空间（或 $\varphi$－不变子空间）．这时把 $\varphi$ 的定义域限制在 $U$ 上，则 $\varphi$ 在 $U$ 上定义了一个线性变换，称为由 $\varphi$ 诱导出的线性变换，或称为 $\varphi$ 在 $U$上的限制，记为 $\left.\varphi\right|_U$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 可以证明，$0,V,\ker \phi,Im\phi$ 都是 $\phi$不变子空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 2.&lt;/strong&gt; $\phi\in \mathcal{L}(V),U = L(\alpha_1,\cdots,\alpha_m)$是张成的子空间，则 $U$ 是 $\phi$不变子空间 $\iff$ $\phi(\alpha_i)\in U$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; 设 $U$ 是 $V$ 上线性变换 $\varphi$ 的不变子空间，且设 $U$ 的基为 $\left\{e_1, e_2\right.$ ， $\left.\cdots, e_r\right\}$ 。将 $\left\{e_1, e_2, \cdots, e_r\right\}$ 扩充为 $V$ 的一组基 $\left\{e_1, e_2, \cdots, e_r, e_{r+1}, \cdots, e_n\right\}$ ，则 $\varphi$ 在这组基下的表示矩阵是分块上三角阵:$\left(\begin{array}{ll}
+A_{r\times r} &amp;amp; B \\
+0 &amp;amp; D
+\end{array}\right)$&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理的逆命题同样成立，$\varphi$ 在一组基底下的表示矩阵为上述分块上三角阵，则这组基的前 $r$ 个基底张成的线性空间是 $\phi$ 不变子空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 4.&lt;/strong&gt;  设 $V=V_1 \oplus V_2$ 且 $V_1, V_2$ 都是线性变换 $\varphi$ 的不变子空间．又 $\left\{e_1, \cdots, e_r\right\}$ 是 $V_1$ 的基，$\left\{e_{r+1}, \cdots, e_n\right\}$ 是 $V_2$ 的基，则 $\varphi$ 在基 $\left\{e_1, e_2, \cdots, e_n\right\}$下的表示矩阵为分块对角阵
+$$
+\left(\begin{array}{cc}
+A_1 &amp;amp; O \\
+O &amp;amp; A_2
+\end{array}\right)
+$$
+其中 $\boldsymbol{A}_1$ 为 $r$ 阶方阵， $\boldsymbol{A}_2$ 为 $n-r$ 阶方阵。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理同样可以推广到高维状态的分块对角阵，若每一个直和元素都是一维度的不变子空间，则该分块对角阵就是对角阵。&lt;/p&gt;
+&lt;h2 id=&#34;第五章-多项式&#34;&gt;第五章 多项式
+&lt;/h2&gt;&lt;h3 id=&#34;一元多项式代数与整除&#34;&gt;一元多项式代数与整除
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(一元多项式).&lt;/strong&gt; 设 $\mathbb{K}$ 是数域，$x$ 为一个形式符号（称为未定元），若 $a_0, a_1, \cdots, a_n \in$ $\mathbb{K}\left(a_n \neq 0, n \geq 0\right)$ ，称形式表达式
+$$
+a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+为数域 $\mathbb{K}$ 上关于未定元 $x$ 的一元 $n$ 次多项式． $\mathbb{K}$ 上的一元多项式全体记为 $\mathbb{K}[x]$ ．&lt;/p&gt;
+&lt;p&gt;多项式并不是函数，而只是一个抽象的元素的定义，我们可以对该抽象元素定义加法和数乘，其定义方式和性质都与我们的直觉一致，这里不再描述。&lt;/p&gt;
+&lt;p&gt;可以证明，$K[x]$ 是 $K$ 上的线性空间，并且在乘法的定义下，是 $K$ 上的代数，并且是交换代数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(多项式的次数).&lt;/strong&gt; $f(x),g(x)\in K[x],\deg f(x)$ 为 $f(x)$ 的首项次数，有&lt;br&gt;
+（1）$\deg(f(x)g(x)) = \deg f(x)+\deg g(x)$&lt;br&gt;
+（2）$\deg(f(x)+g(x))\leq \max\{\deg f(x),\deg g(x)\}$&lt;/p&gt;
+&lt;p&gt;接下来对比 $K[x]$ 与整数环之间有没有相同的性质，整数环中可以定义整除，每个元素都可以写成若干素数的乘积，并且还有最小公倍数、最大公因数等等定义，现在放在多项式空间中研究这些性质。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 3(整除).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x]$ ，若存在 $h(x) \in \mathbb{K}[x]$ ，使
+$$
+f(x)=g(x) h(x)
+$$
+则称 $g(x)$ 是 $f(x)$ 的因式，或 $g(x)$ 可以整除 $f(x)$ ，或 $f(x)$ 可以被 $g(x)$ 整除，记为 $g(x) \mid f(x)$ ．否则称 $g(x)$ 不能整除 $f(x)$ ，或 $f(x)$ 不能被 $g(x)$ 整除．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4(相伴).&lt;/strong&gt; 若 $f(x) = cg(x),0\neq c\in K$, 则称 $f(x)$ 与 $g(x)$ 相伴，记为 $f(x)\sim g(x)$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 相伴是等价关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5(带余数除法).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x], g(x) \neq 0_2$ 则必&lt;strong&gt;存在唯一&lt;/strong&gt;的 $q(x), r(x) \in$ $\mathbb{K}[x]$ ，使
+$$
+f(x)=g(x) q(x)+r(x)
+$$
+且 $\operatorname{deg} r(x)&amp;lt;\operatorname{deg} g(x)$ ．&lt;/p&gt;
+&lt;h3 id=&#34;最大公因式&#34;&gt;最大公因式
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(g.c.d.,l.c.m.).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x]$ ，若 $d(x)$ 是 $f(x)$ 与 $g(x)$ 的公因式，且对 $f(x)$ 与 $g(x)$ 的任一公因式 $h(x)$ 均有 $h(x) \mid d(x)$ ，则称 $d(x)$ 为 $f(x)$ 与 $g(x)$ 的最大公因式（或称 $d(x)$ 为 $f(x), g(x)$ 的 g．c．d．），记为 $d(x)=(f(x), g(x))=g.c.d.(f(x),g(x))$&lt;br&gt;
+同理，若 $m(x)$ 是 $f(x)$ 与 $g(x)$ 的公倍式，且对 $f(x)$ 与 $g(x)$ 的任一公倍式 $l(x)$ 均有 $m(x) \mid l(x)$ ，则称 $m(x)$ 为 $f(x)$ 与 $g(x)$ 的最小公倍式（或称 $m(x)$ 为 $f(x), g(x)$ 的 l．c．m．），记为 $m(x)=[f(x), g(x)] = l.c.m.(f(x),g(x)) $&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定义可以推广到一个序列的最大公因式和最小公倍式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(辗转相除法求最大公因式).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x]$ ，则 $f(x)$ 与 $g(x)$ 的最大公因式 $d(x)$ &lt;strong&gt;必存在&lt;/strong&gt;，且有 $u(x), v(x) \in \mathbb{K}[x]$ ，使
+$$
+f(x) u(x)+g(x) v(x)=d(x)
+$$
+&lt;strong&gt;注 1.&lt;/strong&gt; 该定理的证明过程可以作为一种寻找最大公因式的方式，由于余式的次数小于除式子，所以可以构造
+$$
+\begin{gathered}
+f(x)=g(x) q_1(x)+r_1(x),\deg r_1(x)&amp;lt;\deg g(x) \\
+g(x)=r_1(x) q_2(x)+r_2(x),\deg r_2(x)&amp;lt;\deg r_1(x) \\
+r_1(x)=r_2(x) q_3(x)+r_3(x),\deg r_3(x)&amp;lt;\deg r_2 \\
+\ldots \cdots \cdots \cdots \\
+r_{s-2}(x)=r_{s-1}(x) q_s(x)+r_s(x) ,0=\deg r_s(x)&amp;lt;\deg r_{s-1}(x)
+\end{gathered}
+$$
+总可以迭代到一定的次数，使得 $r_s = 0$,此时 $r_{s-1}$就是最大公因式，即 $d(x)$,将该过程第一个式子的 $r_1$ 代入第二个式子后，将 $r_2$ 代入第三个式子，以此类推，便可以得到如下形式：
+$$
+f(x) u(x)+g(x) v(x)=r_{s-1}(x)
+$$
+该过程就是Enclid辗转相除法。&lt;br&gt;
+&lt;strong&gt;注 2.&lt;/strong&gt; 该定理并不表示最大公因式唯一，容易证明，不同的最大公因式是相伴关系，于是我们定义以后说的最大公因式都是首一多项式，即最高次项前面的系数为1，如此定义的最大公因式唯一，同理，也可以这样定义最小公倍式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3(多项式序列的最大公因式).&lt;/strong&gt; 设 $f_1(x), f_2(x), \cdots, f_m(x) \in \mathbb{K}[x]$ ，则  $$\left(\left(f_1(x), f_2(x)\right), f_3(x), \cdots, f_m(x)\right)=\left(f_1(x), f_2(x), \cdots, f_m(x)\right)$$
+&lt;strong&gt;注.&lt;/strong&gt; 通过该定理可以对问题的规模进行降维，再两两多项式使用辗转相除法寻找最大公因式，从而迭代的找到多项式序列的最大公因式。&lt;/p&gt;
+&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
 &lt;/h2&gt;&lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
 &lt;/h2&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
