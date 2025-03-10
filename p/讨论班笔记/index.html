@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="课题组讨论班学习以及感想">
+<title>讨论班笔记</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.3992df218c917ad7ef00e79bf94b2b168ae28760447801f38a3033814fd3f1b7.css">
+<meta property='og:title' content="讨论班笔记">
+<meta property='og:description' content="课题组讨论班学习以及感想">
+<meta property='og:url' content='http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='Haitong Lan'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-10T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-10T19:24:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg' />
+<meta name="twitter:title" content="讨论班笔记">
+<meta name="twitter:description" content="课题组讨论班学习以及感想"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+<style>
+    :root {
+        --article-font-family: "Noto Serif", var(--base-font-family);
+    }
+</style>
+<script>  
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended">
+
+
+        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#高等概率论">高等概率论</a>
+      <ol>
+        <li><a href="#probability-space">Probability Space</a></li>
+        <li><a href="#random-variables">Random Variables</a></li>
+        <li><a href="#monotone-class-theoremset-theoretic-version">Monotone Class Theorem(set-theoretic version)</a></li>
+        <li><a href="#independent">Independent</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/">
+                
+                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" alt="Featured image of post 讨论班笔记" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/note/" >
+                Note
+            </a>
+        
+            <a href="/categories/math/" >
+                Math
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/">讨论班笔记</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            课题组讨论班学习以及感想
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 10, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="高等概率论">高等概率论
+</h2><p>在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。</p>
+<h3 id="probability-space">Probability Space
+</h3><p>概率测度是从 $\sigma-$域到 $\mathbb{R}$ 的映射，为了定义概率，需要先定义事件：</p>
+<p><strong>Definition 1</strong> ( $\sigma$-algebra or $\sigma$-field). Let $\Omega$ be a non-empty set and $\mathcal{F}$ be a collection of the subsets of $\Omega$. Then we say $\mathcal{F}$ is a $\sigma$-algebra or a $\sigma$-field on $\Omega$ if it satisfies the following axioms:<br>
+（1） $\varnothing \in \mathcal{F}, \Omega \in \mathcal{F}$;<br>
+（2） If $A \in \mathcal{F}$, then $A^c \in \mathcal{F}$;<br>
+（3） If $A_i \in \mathcal{F}, i=1,2, \cdots$, then $\bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$.<br>
+IF $\mathcal{F}$ is a $\sigma$-algebra on $\Omega$ and $A \in \mathcal{F}$, then we say $A$ is a event, $\Omega$ is the sample space, $(\Omega, \mathcal{F})$ is a <strong>measurable space</strong>.</p>
+<p><strong>Definition 2 (Probability Measure).</strong> Let $(\Omega, \mathcal{F})$ be a measurable space, a mapping $\mathbb{P}: \mathcal{F} \rightarrow \mathbb{R}$ is called a <strong>probability measure</strong> if it satisfies the following axioms:<br>
+（1） $\mathbb{P}(\varnothing)=0$;<br>
+（2） If $A_i \in \mathcal{F}, i=1,2, \cdots$ are pairwise disjoint, then
+$$
+\mathbb{P}\left(\bigcup_{i=1}^{\infty} A_i\right)=\sum_{i=1}^{\infty} \mathbb{P}\left(A_i\right)
+$$
+（3） $\mathbb{P}(\Omega)=1$.<br>
+And if a set function $\mu$ on $\mathcal{F}$ only satisfies （1） and （2）, we say it is a measure on $\mathcal{F}$.</p>
+<p>这时便定义出了概率测度，对于任意一个测度 $\mu,(\Omega,\mathcal{F},\mu)$ 为一个measure space,若该测度是一个概率测度，则 $\mu,(\Omega,\mathcal{F},\mu)$是一个probability space.</p>
+<p><strong>Note.</strong> 概率测度的公理（2）为可列可加性，我们可以注意到是无穷个集合 $A_i$ 的并可以进行拆分，事实上，历史中有另外一种定义，是有限可加性，可列可加性比有限可加性更强，事实上，可列可加性=有限可加性$+$连续性，这种连续性是一种集合上的连续，并非函数的连续，这种可列可加性将会更方便我们对集合的操作，因为概率测度本身就是一个set function，从事件域到 $\mathbb{R}$ 的映射。</p>
+<p><strong>Proposition 3</strong> If $\mu$ is a finite additivity and finite set function on a $\sigma-$ algebra $\mathcal{F}$, then the followings are equivalent:<br>
+(i) $\mu$ is countably additive;<br>
+(ii) $\mu$ is continuous from below;<br>
+(iii) $\mu$ is continuous from above;<br>
+(iv) $\mu$ is continuous from above at $\varnothing$.</p>
+<p><strong>Definition 4(最小生成 $\sigma$ 域).</strong> Let $\mathcal{C}$ be a collection of sets on $\Omega$, then the smallest $\sigma$ - algebra that contains $\mathcal{C}$ is called the the $\sigma-$ algebra generated by $\mathcal{C}$, denoted by $\sigma(\mathcal{C})$.</p>
+<p><strong>Definition 5 (Borel $\sigma$ - algebra).</strong> Let $\mathcal{C}$ be the collection of all <strong>open sets</strong> on $\mathbb{R}$, then the $\sigma-$ algebra generated by $\mathcal{C}$ is called the Borel $\sigma$ - algebra on $\mathbb{R}$, which is denoted by
+$$
+\mathcal{B}(\mathbb{R})=\sigma(\mathcal{C})
+$$</p>
+<h3 id="random-variables">Random Variables
+</h3><p><strong>Definition 1(可测函数的定义).</strong> 设 $\left(X, \Sigma_X\right)$ 与 $\left(Y, \Sigma_Y\right)$ 为可测空间。函数 $f: X \rightarrow Y$ 对任意 $B \in \Sigma_Y$ 若满足：
+$$
+f^{-1}(B) \in \Sigma_X
+$$
+则称 $f$ 为一个 $\Sigma_X-\Sigma_Y$ 可测函数。</p>
+<p><strong>Definition 2(Random Variable).</strong> A random variable $X$ on $(\Omega, \mathcal{F})$ is a <strong>measurable function</strong> $X:(\Omega, \mathcal{F}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$, namely for all $B \in \mathcal{B}(\mathbb{R})$,
+$$
+X^{-1}(B)={\omega \in \Omega \mid X(\omega) \in B} \in \mathcal{F}
+$$
+<strong>Remark.</strong> 映射 $X:\Omega\rightarrow\mathbb{R}$，但是通常会写做 $X:(\Omega, \mathcal{F}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$，因为 $X$ 不止是一个映射，而是一个保持可测结构的映射，即映射的原像也是可测集。</p>
+<p>下面我们来考虑随机变量的分布是什么，初等概率论中可能将分布狭义的指定为分布函数，其实在严格的概率论中，分布指<strong>随机变量诱导出的概率测度</strong>，在更一般的角度说，随机变量符合的法则（law）也是分布（例如从复杂分布中采样，该分布的含义可能不单单是概率测度，还可能是另外能代表概率测度的东西，是随机变量服从的法则）。</p>
+<p><strong>Definition 3 (Distribution of Random Variables).</strong> The <strong>distribution or law</strong> of a random variable $X$ is a probability measure $\mu_X=\mathbb{P} X^{-1}$ on $(\Omega, \mathcal{F})$ defined as
+$$
+\mu_X(A):=\left(\mathbb{P} X^{-1}\right)(A)=\mathbb{P}\left(X^{-1}(A)\right)=\mathbb{P}(X \in A), \quad \forall A \in \mathcal{F}
+$$
+<strong>Note.</strong> The distribution of random variable $X$ is a measure on $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ induced by $X$ :
+$$
+X:(\Omega, \mathcal{F}, \mathbb{P}) \rightarrow\left(\mathbb{R}, \mathcal{B}(\mathbb{R}), \mu_X\right)
+$$
+hence it is also called the <strong>image measure induced by</strong> $X$.</p>
+<h3 id="monotone-class-theoremset-theoretic-version">Monotone Class Theorem(set-theoretic version)
+</h3><p>If we want to show that a $\sigma$-algebra $\mathcal{F}$ satisfying property $P$, we can define a &ldquo;good set&rdquo;:
+$$
+\mathcal{G}={A \in \mathcal{F} ; A \text { satisfies property } P} \subseteq \mathcal{F}
+$$
+And then we just need to show that $\mathcal{G}=\mathcal{F}$. Usually, we have the condition or easy to prove that a sub-class $\mathcal{C}$ which can generate $\mathcal{F}$ satisfies property $P$, that is to say,
+$$
+\mathcal{G} \supset \mathcal{C}
+$$
+Hence if we can show that $\mathcal{G}$ is a $\sigma$-algebra, then we have
+$$
+\mathcal{G}=\sigma(\mathcal{G}) \supset \sigma(\mathcal{C})=\mathcal{F}
+$$
+which follows that $\mathcal{G}=\mathcal{F}$ and we get the desired result. The following theorem is an example and it serves as the theoretical guarantee for the uniqueness of the Carathéodory extension theorem.</p>
+<p><strong>Theorem 1.</strong> If $\mathbb{P}$ and $\mathbb{Q}$ are both probability measure on $(\Omega, \mathcal{F})$ and $\mathcal{C}$ is a sub-class of $\mathcal{F}$ such that $\sigma(\mathcal{C})=\mathcal{F}$ and
+$$
+\mathbb{P}(A)=\mathbb{Q}(A), \quad \forall A \in \mathcal{C}
+$$
+then $\mathbb{P} \equiv \mathbb{Q}$ on $\mathcal{F}$.</p>
+<p>在大多数情况下，证明一个子集的集合是 $\sigma-$代数是十分困难的，下面介绍一种方便证明某集合是 $\sigma-$代数的方法。</p>
+<p><strong>Definition 2($\pi$ - system).</strong>  Let $\mathcal{C}$ be a collection of subsets of $\Omega$, we say $\mathcal{C}$ is a $\pi$-system if $A, B \in \mathcal{C}$, then $A \cap B \in \mathcal{C}$.</p>
+<p><strong>Definition 3($\lambda$-system).</strong> Let $\mathcal{C}$ be a collection of subsets of $\Omega$, we say $\mathcal{C}$ is a $\lambda$-system if<br>
+(1) $\Omega \in \mathcal{C}$;<br>
+(2) If $A, B \in \mathcal{C}, A \subset B$, then $B \backslash A \in \mathcal{C}$;<br>
+(3) If $A_n \in \mathcal{C}, n=1,2, \cdots$ and $A_n \uparrow A$, then $A \in \mathcal{C}$.<br></p>
+<p><strong>Theorem 4 $(\pi+\lambda=\sigma)$.</strong> Let $\mathcal{C}$ be a collection of subsets of $\Omega$. If $\mathcal{C}$ is both a $\pi$-system and a $\lambda$-system.</p>
+<p><strong>Definition 5.</strong> Let $\mathcal{C}$ be a collection of subsets of $\Omega$. We say the smallest $\lambda-$ system that contains $\mathcal{C}$ is the $\lambda-$ system generated by $\mathcal{C}$ and denoted by $\lambda(\mathcal{C})$.</p>
+<p>The following theorem is the famous $\pi-\lambda$ theorem given by Dynkin.</p>
+<p><strong>Theorem 1.3 ( $\pi-\lambda$ Theorem).</strong> Let $\mathcal{C}$ be a collection of subsets of $\Omega$. If $\mathcal{C}$ is a $\pi-$ system, then
+$$
+\lambda(\mathcal{C})=\sigma(\mathcal{C})
+$$
+By $\pi-\lambda$ theorem, if we have shown that
+$$
+\mathcal{G} \supset \mathcal{C},
+$$
+where $\mathcal{G}$ is the good set defined by us ( and $\mathcal{G}$ is $\lambda-$system) and $\mathcal{C}$ satisfies the desired property $P$ and $\sigma(\mathcal{C})=\mathcal{F}$, then we have
+$$
+\mathcal{G}=\lambda(\mathcal{G}) \supset \lambda(\mathcal{C})=\sigma(\mathcal{C})=\mathcal{F}
+$$
+hence we get the desired result.</p>
+<p>定理1同样可以由 $\pi-\lambda$ 定理来证明。</p>
+<h3 id="independent">Independent
+</h3><p>本章节从事件的独立开始，研究随机变量的独立性。
+<strong>Definition 1(事件、子集组的独立).</strong> Let $A_t \in \mathcal{F}, t \in T$, we say $A_t, t \in T$ are independent if for all $n \in \mathbb{N}_{+}$and all choices $t_1, \cdots, t_n \in T$, we have
+$$
+\mathbb{P}\left(A_{t_1} \cap A_{t_2} \cap \cdots \cap A_{t_n}\right)=\mathbb{P}\left(A_{t_1}\right) \mathbb{P}\left(A_{t_2}\right) \cdots \mathbb{P}\left(A_{t_n}\right)
+$$
+Let $\mathcal{E}_t, t \in T$ be a family of subsets of $\Omega$, we say $\mathcal{E}_t, t \in T$ are independent if for all choices $A_t \in \mathcal{E}_t, A_t, t \in T$ are independent.</p>
+<p><strong>Definition 2(r.v.生成的 $\sigma-$ 代数)).</strong> 设 $X:(\Omega, \mathcal{F}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ 是一个随机变量，即 $X$ 是一个可测映射。由 $X$ 生成的 $\sigma$－代数 记作 $\sigma(X)$ ，定义为：
+$$
+\sigma(X)=\sigma\left(X^{-1}(B) \mid B \in \mathcal{B}(\mathbb{R})\right)
+$$
+即，$X$ 的生成 $\sigma$－代数是所有形如 $X^{-1}(B)$ 的集合所生成的最小 $\sigma$－代数，其中 $B$ 取遍 $\mathbb{R}$ 上的 Borel $\sigma$－代数。</p>
+<p>有了子集组的定义和最小生成 $\sigma-$代数的定义，现在我们来定义随机变量的独立：</p>
+<p><strong>Definition 3(r.v.的独立).</strong> Let $X_t, t \in T$ be a family of random variables, then we say $X_t, t \in T$ are independent if $\sigma\left(X_t\right), t \in T$ are independent.</p>
+<p><strong>Question.</strong> Recall the classical probability theory, we define two random variables $X_t, t \in T$ are independent if for all $n \in \mathbb{N}_{+}$and all choices of $t_1, \cdots, t_n \in T$,
+$$
+\mathbb{P}\left(X_{t_1} \leq x_1, \cdots, X_{t_n} \leq x_n\right)=\mathbb{P}\left(X_{t_1} \leq x_1\right) \cdots \mathbb{P}\left(X_{t_n} \leq x_n\right)
+$$
+So what is the relationship between two definitions? And what is the advantages of definition 3?</p>
+<p>容易看出，通过取特定的事件 $A_{t_i}$,初等概率论中的定义是 Definition 3 的简单推广，实际上，通过下面的定理，可以证明，这两种定义是等价定义：</p>
+<p><strong>Theorem 4 (Independent Class Extension Theorem).</strong> If $\mathcal{E}_t, t \in T$ are independent, then $\lambda\left(\mathcal{E}_t\right), t \in T$ are independent. Moreover, if $\mathcal{E}_t, t \in T$ are $\pi$-systems, then $\sigma\left(\mathcal{E}_t\right), t \in T$ are independent.</p>
+<p>For all $t \in T$, let
+$$
+\mathcal{E}_t=\left\{\left(-\infty, x_t\right] ; x_t \in \mathbb{R}\right\}
+$$
+Clearly, $\mathcal{E}_t$ is a $\pi$-system and $\sigma\left(\mathcal{E}_t\right)=\mathcal{B}(\mathbb{R})$, for all $t \in T$. By the independent class extension theorem, we know that definition of elementary probability theory implies definition 3. Hence, they are <strong>equivalent</strong>.</p>
+<p>现在来解释相互独立的随机变量经过“特定性质”的映射后依然相互独立的现象。</p>
+<p><strong>Theorem 5.</strong> Let $X_t:(\Omega, \mathcal{F}) \rightarrow\left(E_t, \mathcal{E}_t\right), t \in T$ be measurable and independent. Then for any <strong>measurable functions</strong> $g_t:\left(E_t, \mathcal{E}_t\right) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$, we have $g\left(X_t\right), t \in T$ are independent.</p>
+<p><strong>Proof.</strong> For all $n \in \mathbb{N}_{+}$, all choices of $t_1, \cdots, t_n \in T$ and $B_{t_1}, \cdots, B_{t_n} \in \mathcal{B}(\mathbb{R})$, we have</p>
+<div>
+$$
+\begin{aligned}
+\mathbb{P}\left(g_{t_1}\left(X_{t_1}\right) \in B_{t_1}, \cdots, g_{t_n}\left(X_{t_n}\right) \in B_{t_n}\right) & =\mathbb{P}\left(X_{t_1} \in g_{t_1}^{-1}\left(B_{t_1}\right), \cdots, X_{t_n} \in g_{t_n}^{-1}\left(B_{t_n}\right)\right) \\
+& =\mathbb{P}\left(X_{t_1} \in g_{t_1}^{-1}\left(B_{t_1}\right)\right) \cdots \mathbb{P}\left(X_{t_n} \in g_{t_n}^{-1}\left(B_{t_n}\right)\right) \\
+& =\mathbb{P}( g _ { t _ { 1 } } ( X _ { t _ { 1 } } ) \in B _ { t _ { 1 } } ) \cdots \mathbb { P } \left(g_{t_n}\left(X_{t_n}\right) \in B_{t_n}\right)
+\end{aligned}
+$$
+</div>
+<p><strong>QED</strong>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/note/">Note</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+<footer class="article-footer">
+    <section>
+        Page views:<span id="busuanzi_value_page_pv">Loading</span>
+    </section>
+</footer>
+
+
+    
+        
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
+    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
+    crossorigin="anonymous"
+/>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+    onload="
+    window.addEventListener('DOMContentLoaded', function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: true}
+            ]
+        });
+    });
+"></script>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|信息论</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/cover.png" loading="lazy" data-key="" data-hash="/post_file/数理统计/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|数理统计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e9%ab%98%e7%ad%89%e4%bb%a3%e6%95%b0/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/高等代数/cover.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|高等代数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/bayesian-signal-processing/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/Bayesian_signal_processing/cover.png" loading="lazy" data-key="" data-hash="/post_file/Bayesian_signal_processing/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bayesian signal processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/course-notes/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/cover.png" loading="lazy" data-key="" data-hash="/post_file/课程笔记/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Course notes</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Haitong&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script>
+<script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+<script defer src="https://cn.vercount.one/js"></script>
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(http://localhost:1313/icons/backTop.svg);
+    }
+</style>
+
+
+<style>
+    #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+
+    </body>
+</html>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+
