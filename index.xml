@@ -13,8 +13,10 @@
         <pubDate>Mon, 10 Mar 2025 19:24:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 讨论班笔记" /&gt;&lt;h2 id=&#34;高等概率论&#34;&gt;高等概率论
-&lt;/h2&gt;&lt;p&gt;在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 讨论班笔记" /&gt;&lt;h2 id=&#34;高等概率论一&#34;&gt;高等概率论（一）
+&lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论（一），见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Seminar Information&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。&lt;/p&gt;
 &lt;h3 id=&#34;probability-space&#34;&gt;Probability Space
 &lt;/h3&gt;&lt;p&gt;概率测度是从 $\sigma-$域到 $\mathbb{R}$ 的映射，为了定义概率，需要先定义事件：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Definition 1&lt;/strong&gt; ( $\sigma$-algebra or $\sigma$-field). Let $\Omega$ be a non-empty set and $\mathcal{F}$ be a collection of the subsets of $\Omega$. Then we say $\mathcal{F}$ is a $\sigma$-algebra or a $\sigma$-field on $\Omega$ if it satisfies the following axioms:&lt;br&gt;
@@ -2054,6 +2056,69 @@ $$
 &lt;strong&gt;注 2.&lt;/strong&gt; 该定理并不表示最大公因式唯一，容易证明，不同的最大公因式是相伴关系，于是我们定义以后说的最大公因式都是首一多项式，即最高次项前面的系数为1，如此定义的最大公因式唯一，同理，也可以这样定义最小公倍式。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 3(多项式序列的最大公因式).&lt;/strong&gt; 设 $f_1(x), f_2(x), \cdots, f_m(x) \in \mathbb{K}[x]$ ，则  $$\left(\left(f_1(x), f_2(x)\right), f_3(x), \cdots, f_m(x)\right)=\left(f_1(x), f_2(x), \cdots, f_m(x)\right)$$
 &lt;strong&gt;注.&lt;/strong&gt; 通过该定理可以对问题的规模进行降维，再两两多项式使用辗转相除法寻找最大公因式，从而迭代的找到多项式序列的最大公因式。&lt;/p&gt;
+&lt;p&gt;现在转而描述一种的多项式关系:互素：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4(互素).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x]$ ，若 $(f(x), g(x))=1$ ，则称 $f(x)$ 与 $g(x)$ 互素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5(互素的一个充要条件).&lt;/strong&gt; 设 $f(x), g(x) \in \mathbb{K}[x]$ ，则 $f(x)$ 与 $g(x)$ 互素的底分必要条件是存在 $u(x), v(x) \in \mathbb{K}[x]$ ，使
+$$
+f(x) u(x)+g(x) v(x)=1 .
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 6(互素的相关性质).&lt;/strong&gt; 互素多项式有一些很好的性质：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;若 $f_1(x)\mid g(x),f_2(x)\mid g(x)$,且 $(f_1(x),f_2(x)) = 1$,则
+$$
+f_1(x)f_2(x)\mid g(x)
+$$&lt;/li&gt;
+&lt;li&gt;若 $(f(x),g(x)) = 1$,且 $f(x)\mid g(x)h(x)$,则
+$$
+f(x)\mid h(x).
+$$&lt;/li&gt;
+&lt;li&gt;若 $(f(x),g(x)) = d(x),f(x) = f_1(x)d(x),g(x) = g_1(x)d(x)$,则$$(f_1(x),g_1(x)) = 1.$$&lt;/li&gt;
+&lt;li&gt;设 $(f(x), g(x))=d(x)$ ，则
+$$
+(t(x) f(x), t(x) g(x))=t(x) d(x)
+$$&lt;/li&gt;
+&lt;li&gt;若 $\left(f_1(x), g(x)\right)=1,\left(f_2(x), g(x)\right)=1$, 则
+$$
+\left(f_1(x) f_2(x), g(x)\right)=1
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;定理 7(最大公倍式的存在性).&lt;/strong&gt; 设 $f(x), g(x)$ 是非零多项式，则
+$$
+f(x) g(x) \sim(f(x), g(x))[f(x), g(x)]
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 该定理不仅表明了最大公倍式的存在性，并且给出了其相伴的多项式的计算公式，即 $\frac{f(x)g(x)}{(f(x),g(x))}$.&lt;/p&gt;
+&lt;p&gt;书中的该章节还有中国剩余定理的描述，这里省去。&lt;/p&gt;
+&lt;h3 id=&#34;因式分解&#34;&gt;因式分解
+&lt;/h3&gt;&lt;p&gt;整数环内，任意整数可以拆分称素数的乘积，对于多项式是否有该性质？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1(可约).&lt;/strong&gt; 设 $f(x)$ 是数域 $\mathbb{K}$ 上的非常数多项式，若 $f(x)$ 可以分解为两个&lt;strong&gt;次数小于&lt;/strong&gt; $f(x)$ 次数的 $\mathbb{K}$ 上多项式之积，则称 $f(x)$ 是 $\mathbb{K}$ 上的可约多项式．否则，称 $f(x)$ 为 $\mathbb{K}$ 上的不可约多项式．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 上述定理中的次数小于 $f(x)\iff$ 次数大于0；不可约也可以等价为因子只有非零常数 $c$ 和 $cf(x)$.可约与不可约依赖于数域 $K$ 的选取。&lt;/p&gt;
+&lt;p&gt;现在先来研究不可约多项式的一些性质：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 2(性质).&lt;/strong&gt; 不可约多项式的一些性质：&lt;br&gt;
+（1）可约多项式 $f(x)$,任意多项式 $g(x)$,则 $(f(x),g(x)) = 1$ 或 $f(x)\mid g(x)$.&lt;br&gt;
+（2）(素性) 设 $p(x)$ 是 $\mathbb{K}$ 上的不可约多项式，$f(x), g(x)$ 是 $\mathbb{K}$ 上的多项式且 $p(x) \mid f(x) g(x)$ ，则或者 $p(x) \mid f(x)$ ，或者 $p(x) \mid g(x)$ ．&lt;br&gt;
+（3）(素性的推广) 设 $p(x)$ 为不可约多项式且
+$$
+p(x) \mid f_1(x) f_2(x) \cdots f_m(x)
+$$
+则 $p(x)$ 必可整除其中某个 $f_i(x)$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3(因式分解定理).&lt;/strong&gt; 设 $f(x)$ 是数域 $\mathbb{K}$ 上的多项式且 $\operatorname{deg} f(x) \geq 1$ ，则&lt;br&gt;
+（1）$f(x)$ 可分解为有限个 $\mathbb{K}$ 上的&lt;strong&gt;不可约&lt;/strong&gt;多项式之积；&lt;br&gt;
+（2）若
+$$
+f(x)=p_1(x) p_2(x) \cdots p_s(x)=q_1(x) q_2(x) \cdots q_t(x)
+$$
+是 $f(x)$ 的两个不可约分解，即 $p_i(x), q_j(x)$ 都是 $\mathbb{K}$ 上的次数大于零的不可约多项式，则 $s=t$ ，且经过适当调换因式的次序以后，有
+$$
+q_i(x) \sim p_i(x), i=1,2, \cdots, s
+$$&lt;/p&gt;
+&lt;p&gt;上述定理表明，任一多项式可唯一地分解为若干个不可约多项式之积．这里唯一是在&lt;strong&gt;相伴意义下的唯一&lt;/strong&gt;，即相应的多项式可以差一个常数因子。如果把分解式中相同或仅差一个常数的因式合并在一起，就得到了一个＂标准分解＂式：
+$$
+f(x)=c p_1(x)^{e_1} p_2(x)^{e_2} \cdots p_m(x)^{e_m},
+$$
+其中 $c \neq 0, p_i(x)$ 是&lt;strong&gt;互异&lt;/strong&gt;的首一不可约多项式，$e_i \geq 1(i=1,2, \cdots, m)$ ．（对于首一的不可约多项式，互异$\iff$ 互素）&lt;/p&gt;
+&lt;p&gt;根据标准因式分解的形式也可以定义重因式和单因式，这仅仅是在从理论的角度上保证因式分解的存在性，但是对于实际给出的一个多项式，想得到它的因式分解是很难的，想判定重因式也是很难的，于是我们引入了“形式导数”的定义，该定义与函数的导数定义一致，这里不再叙述，值得注意的是，对于多项式来说，有 $\deg f^{&amp;rsquo;}(x) = \deg f(x)-1$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 4(重因式的判定).&lt;/strong&gt; （1）设 $d(x)=\left(f(x), f^{\prime}(x)\right)$ ，则 $f(x) / d(x)$ 是一个没有重因式的多项式，且这个多项式的不可约因式与 $f(x)$ 的不可约因式相同（不计重数）．&lt;br&gt;
+（2）$f(x)$没有重因式 $\iff$ $(f(x),f^{&amp;rsquo;}(x)) = 1.$&lt;/p&gt;
 &lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
 &lt;/h2&gt;&lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
