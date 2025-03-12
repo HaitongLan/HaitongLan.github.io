@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学陳鄰安老师统计学课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-08T18:05:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-12T18:15:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
 <meta name="twitter:title" content="学习笔记|数理统计">
 <meta name="twitter:description" content="台湾交通大学陳鄰安老师统计学课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png' />
@@ -125,6 +125,12 @@
         <li><a href="#completeness">Completeness</a></li>
       </ol>
     </li>
+    <li><a href="#confidence-interval">Confidence Interval</a>
+      <ol>
+        <li><a href="#order-statistic-t-distribution">Order statistic, t-distribution</a></li>
+        <li><a href="#confidence-interval-1">Confidence Interval</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -205,7 +211,7 @@
 
 
                 <time class="article-time--reading">
-                    15 minute read
+                    19 minute read
                 </time>
             </div>
         
@@ -724,6 +730,133 @@ $\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$<br>
 $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.</p>
 <hr>
 <p>上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。</p>
+<h2 id="confidence-interval">Confidence Interval
+</h2><p>在谈置信区间之间，我们先补充一些必要的概率论知识。</p>
+<h3 id="order-statistic-t-distribution">Order statistic, t-distribution
+</h3><p>首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：</p>
+<p>设 $(X_1,\cdots,X_n)\in \mathscr{A},$ 映射到的 $(Y_1,\cdots,Y_n)\in \mathscr{B}$ ,we can represent $\mathscr{A}$ as the <strong>union</strong> of a finite number, say $k$, of mutually disjoint sets $A_1, A_2, \ldots, A_k$ so that
+$$
+y_1=u_1\left(x_1, x_2, \ldots, x_n\right), \ldots, \quad y_n=u_n\left(x_1, x_2, \ldots, x_n\right)
+$$
+define a <strong>one-to-one transformation</strong> of each $A_i$ onto $\mathscr{B}$. Thus, to each point in there will correspond exactly one point in each of $A_1, A_2, \ldots, A_k$. Let
+$$
+\begin{aligned}
+&amp; x_1=w_{1 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp; x_2=w_{2 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp; \vdots \\
+&amp; x_n=w_{n i}\left(y_1, y_2, \ldots, y_n\right),
+\end{aligned}
+$$
+denote the $k$ groups of $n$ inverse functions, one group for each of these $k$ transformations. Let the first partial derivatives be continuous and let each
+$$
+J_i=\left|\begin{array}{cccc}
+\frac{\partial w_{1 i}}{\partial y_1} &amp; \frac{\partial w_{1 i}}{\partial y_2} &amp; \cdots &amp; \frac{\partial w_{1 i}}{\partial y_n} \\
+\frac{\partial w_{2 i}}{\partial y_1} &amp; \frac{\partial w_{2 i}}{\partial y_2} &amp; \cdots &amp; \frac{\partial w_{2 i}}{\partial y_n} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\frac{\partial w_{n i}}{\partial y_1} &amp; \frac{\partial w_{n i}}{\partial y_2} &amp; \cdots &amp; \frac{\partial w_{n i}}{\partial y_n}
+\end{array}\right|, i=1,2, \ldots, k
+$$
+be not identically equal to zero in $\mathscr{B}$. From a consideration of the probability of the union of $k$ mutually exclusive events and by applying the change of variable technique to the probability of each of these events, it can be seen that the joint p.d.f. of $Y_1=u_1\left(X_1, X_2, \ldots, X_n\right)$,
+$$
+\begin{aligned}
+&amp; Y_2=u_2\left(X_1, X_2, \ldots, X_n\right), \ldots, Y_n=u_n\left(X_1, X_2, \ldots, X_n\right), \text { is given by } \\
+&amp; g\left(y_1, y_2, \ldots, y_n\right)=\sum_{i=1}^k\left|J_i\right| h\left[w_1\left(y_1, \ldots, y_n\right), \ldots, w_{n i}\left(y_1, \ldots, y_n\right)\right]
+\end{aligned}
+$$
+provided that $\left(y_1, y_2, \ldots, y_n\right) \in \mathscr{B}$, and equals zero elsewhere.<br>
+<strong>Remark.</strong> 即对 $\mathscr{B}$ 来说，每一个元素都会同时对应 $\mathscr{A}$ 中的 $k$ 个元素，将这 $k$ 个元素所在的区域划分，算出来的概率再进行累加，就是我们需要获得的 p.d.f.</p>
+<p>引入该变数转换的原因是，顺序统计量与原来的随机样本就不是 $1-1$ 的函数转换，因为随机样本的大小我们是未知的，若有 $n$ 个样本则可以产生 $n!$ 中排列组合的逆映射方式，通过上述方法对顺序统计量的联合p.d.f.求解，有
+$$
+\begin{aligned}
+f\left(y_1, y_2, \ldots, y_n\right)&amp;=  (n!) f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) , \quad a&lt;y_1&lt;y_2&lt;\cdots&lt;y_n&lt;b, \\
+&amp; =0 \quad \text { elsewhere. }
+\end{aligned}
+$$
+重述之前的定理:<br>
+<strong>Thm 1(两个顺序统计量的pdf).</strong> Let $\left(X_1, \ldots, X_n\right)$ be a random sample from a &ldquo;continuous distribution&rdquo; with p.d.f. $f(x)$ and d.f $F(x)$. Then the p.d.f. of $Y_n=\max \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_n(y)=n(F(y))^{n-1} f(y)
+$$
+and the p.d.f. of $Y_1=\min \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_1(y)=n(1-F(y))^{n-1} f(y)
+$$</p>
+<p>有了 $p.d.f.$ 之后，我们可以通过与之前完全不同的方式求得边缘分布，直接简单粗暴的积分即可，但是对于顺序统计量的积分，积分的顺序会极大的简化运算：大的顺序统计量从大向小积分，小的顺序统计量从小向大积分，这样会使得积分的上下限变得明了，给出一个具体的例子：</p>
+<p><strong>EX.</strong> it is easy to express the marginal p.d.f. of any order statistic, say $Y_k$, in terms of $F(x)$ and $f(x)$. This is done by evaluating the integral
+$$
+g_k\left(y_k\right)=\int_a^{y_k} \cdots \int_a^{y_2} \int_{y_k}^b \cdots \int_{y_{n-1}}^b n!f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) d y_n \cdots
+$$
+$$
+d y_{k+1} d y_1 \cdots d y_{k-1}
+$$
+The result is
+$$
+\begin{aligned}
+g_k\left(y_k\right) &amp; =\frac{n!}{(k-1)!(n-k)!}\left[F\left(y_k\right)\right]^{k-1}\left[1-F\left(y_k\right)\right]^{n-k} f\left(y_k\right),\quad a&lt;y_k&lt;b, \\
+&amp; =0  \text { elsewhere. }
+\end{aligned}
+$$</p>
+<p>注意，顺序统计量之间未必是独立的，所以计算某两个顺序统计量的联合分布时，依然需要计算积分，这时的积分技巧与上述相同，这里直接给出答案（详细解答可看hogg的书籍）：
+$$
+\begin{aligned}
+f_{i j}\left(y_i, y_j\right)=\frac{n!}{(i-1)!(i-i-1)!(n-j)!}
+&amp; \left[F\left(y_i\right)\right]^{i-1}\left[F\left(y_j\right)-F\left(y_i\right)\right]^{j-i-1}\left[1-F\left(y_j\right)\right]^{n-j} f\left(y_i\right) f\left(y_j\right)
+\end{aligned}
+$$
+for $a&lt;y_i&lt;y_j&lt;b$, and zero elsewhere.</p>
+<p>现在来引入t分布，t分布在以后的问题中会经常遇到：</p>
+<p><strong>Def 2(t分布).</strong> If $Z \sim N(0,1)$ and $\chi^2(r)$ are independent, we call the distribution of the r.v.
+$$
+T=\frac{Z}{\sqrt{\frac{\chi^2(r)}{r}}}
+$$
+a t-distribution with $r$ degrees of freedom.<br>
+<strong>Remark.</strong> t分布是偶对称分布，有 $f_T(-x) = f_T(x)$,另外，t分布只与其自由度 $r$ 相关，由 $r$ 所唯一确定，考虑到我们之前曾经提到 $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2$,可以将任意一个正态分布标准化为标准正态分布，再比上 $\sqrt{\frac{S^2}{n-1}}=\frac{S}{\sigma}$ 来得到 t分布。</p>
+<h3 id="confidence-interval-1">Confidence Interval
+</h3><p>之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：</p>
+<p><strong>Def 1(C.I.).</strong> Suppose that we have a random sample from $f(x, \theta)$. For $0&lt;\alpha&lt;1$, if there exists two statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ satisfying
+$$
+1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)
+$$
+We call the random interval $\left(T_1, T_2\right)$ a $100(1-\alpha) \%$ <strong>confidence interval（C.I.）</strong> of parameter $\theta$. <br>
+<strong>Remark.</strong> $100(1-\alpha) \%$  又叫做 confidence coefficient,这个概率的含义是一个有意思的事情，它并不是说观测出某一组随机样本，它们的 $\theta$ 在置信区间内的概率是$100(1-\alpha) %$ ，因为对于已经观测出来的样本，他存在的概率只有 $0$ 或 $1$,这个概率的含义是：如果我们可以 Re-sampling 很多样本，那么在很多样本中，$\theta$ 属于置信区间的概率(频率比总实验次数) 为 $100(1-\alpha) \%$ .</p>
+<p>Constructing C.I. by <strong>pivotal quantity（枢轴量，关键量）</strong>:</p>
+<p><strong>Def 2(pivotal quantity).</strong> A function of random sample and parameter, $Q=q\left(X_1, \ldots, X_n, \theta\right)$, is called a pivotal quantity if its distribution is <strong>independen</strong>t of $\theta$(与 $\theta$ 无关系).</p>
+<p>满足定义的枢轴量会有很多，哪些枢轴量对寻找置信区间有帮助呢？下面的一段话回答了这个问题：</p>
+<p>With a pivotal quantity $q\left(X_1, \ldots, X_n, \theta\right)$, there exists $a, b$ such that
+$$
+1-\alpha=P\left(a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b\right), \forall \theta \in \Theta
+$$
+The interest of pivotal quantity is that there exists statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ with the following 1-1 transformation
+$$
+a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b  \iff T_1 \leq \theta \leq T_2
+$$
+Then we have $1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)$ and $\left(T_1, T_2\right)$ is a $100(1-\alpha) %$ C.I. for $\theta$</p>
+<p><strong>Remark.</strong> 现在来思考一下枢轴量的必要性，我们需要找到一个随机区间，使得参数属于该区间的概率为一个常数，该条件需要对所有的参数空间成立，如果一开始的枢轴量是依赖于 $\theta$ 的，那么该概率常数必然与 $\theta$ 相关，就违反了我们的条件；我们感兴趣的枢轴量是可以一对一的转化成 $T_1 \leq \theta \leq T_2$的形式的，举个例子说明这一点：</p>
+<p><strong>EX.</strong>  $X_1, \ldots, X_n \stackrel{i i d}{\sim} N\left(\mu, \sigma^2\right)$. $\mu,\sigma$ 为参数，求 $\mu$ 的置信区间。
+$$
+\begin{gathered}
+\left\{\begin{array} { l }
+{ \overline { X } \sim N ( \mu , \frac { \sigma ^ { 2 } } { n } ) } \\
+{ \frac { ( n - 1 ) s ^ { 2 } } { \sigma ^ { 2 } } \sim \chi ^ { 2 } ( n - 1 ) }
+\end{array} \text { indep. } \Rightarrow \left\{\begin{array}{l}
+\frac{\overline{X}-\mu}{\sigma / \sqrt{n}} \sim N(0,1) \\
+\frac{(n-1) s^2}{\sigma^2} \sim \chi^2(n-1)
+\end{array}\right.\right. \text { indep. } \\
+T=\frac{\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2}{\sigma^2(n-1)}}}=\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t(n-1)
+\end{gathered}
+$$
+Let $t_{\frac{\alpha}{2}}$ satisfies</p>
+<div>
+$$
+\begin{aligned}
+1-\alpha & =P\left(-t_{\frac{\alpha}{2}} \leq \frac{\bar{X}-\mu}{s / \sqrt{n}} \leq t_{\frac{\alpha}{2}}\right) \\
+& =P\left(-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \bar{X}-\mu \leq t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right) \\
+& =P\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \mu \leq \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)
+\end{aligned}
+$$
+</div>
+<p>$\Rightarrow\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}, \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)$ is a $100(1-\alpha) %$ C.I. for $\mu$.<br>
+<strong>Remark.</strong> 可见，由于 $T$ 可以将 $\mu$ 剥离出来，而保证 $T_1,T_2$ 都是统计量，这才使得 $T$ 成为了我们感兴趣的枢轴量，若我们只是将 $\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$ 当作枢轴量，是找不到置信区间的。</p>
 
 </section>
 
@@ -759,7 +892,7 @@ $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ i
 
 
         <span>
-            Last updated on Mar 08, 2025 18:05 CST
+            Last updated on Mar 12, 2025 18:15 CST
         </span>
     </section></footer>
 

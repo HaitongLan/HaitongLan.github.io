@@ -11,7 +11,7 @@
 <meta property='og:description' content="复旦大学谢启鸿老师高等代数学课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-06T21:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-12T22:00:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
 <meta name="twitter:title" content="学习笔记|高等代数">
 <meta name="twitter:description" content="复旦大学谢启鸿老师高等代数学课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
@@ -138,6 +138,11 @@
         <li><a href="#一元多项式代数与整除">一元多项式代数与整除</a></li>
         <li><a href="#最大公因式">最大公因式</a></li>
         <li><a href="#因式分解">因式分解</a></li>
+        <li><a href="#多项式函数">多项式函数</a></li>
+        <li><a href="#复系数实系数有理系数多项式">复系数、实系数、有理系数多项式</a></li>
+        <li><a href="#多元多项式">多元多项式</a></li>
+        <li><a href="#对称多项式">对称多项式</a></li>
+        <li><a href="#结式和判别式">结式和判别式</a></li>
       </ol>
     </li>
     <li><a href="#第六章-特征值">第六章 特征值</a></li>
@@ -225,7 +230,7 @@
 
 
                 <time class="article-time--reading">
-                    40 minute read
+                    45 minute read
                 </time>
             </div>
         
@@ -240,14 +245,7 @@
     <section class="article-content">
     
     
-    <!-- <style>
-body {
-    font-family: '微软雅黑', sans-serif; /* 使用微软雅黑作为首选字体,如果不可用则回退到无衬线字体 */
-    --article-font-size: 3.5
-    line-height: 1.6; /* 设置行间距为字体大小的1.6倍,提高可读性 */
-}
-</style> -->
-<h2 id="课程介绍">课程介绍
+    <h2 id="课程介绍">课程介绍
 </h2><p>谢启鸿老师高等代数学，参考网站：<a class="link" href="https://www.cnblogs.com/torsor"  target="_blank" rel="noopener"
     >谢启鸿高等代数官方博客</a>,b站课程：<a class="link" href="https://www.bilibili.com/video/BV1mJ411r7ZB/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
     >数学专业 高等代数学-复旦大学-谢启鸿-高清</a>。</p>
@@ -1388,7 +1386,89 @@ $$
 <p>根据标准因式分解的形式也可以定义重因式和单因式，这仅仅是在从理论的角度上保证因式分解的存在性，但是对于实际给出的一个多项式，想得到它的因式分解是很难的，想判定重因式也是很难的，于是我们引入了“形式导数”的定义，该定义与函数的导数定义一致，这里不再叙述，值得注意的是，对于多项式来说，有 $\deg f^{&rsquo;}(x) = \deg f(x)-1$。</p>
 <p><strong>命题 4(重因式的判定).</strong> （1）设 $d(x)=\left(f(x), f^{\prime}(x)\right)$ ，则 $f(x) / d(x)$ 是一个没有重因式的多项式，且这个多项式的不可约因式与 $f(x)$ 的不可约因式相同（不计重数）．<br>
 （2）$f(x)$没有重因式 $\iff$ $(f(x),f^{&rsquo;}(x)) = 1.$</p>
-<h2 id="第六章-特征值">第六章 特征值
+<h3 id="多项式函数">多项式函数
+</h3><p>将多项式看作函数，一些定义和运算规则与直觉中一致;设 $f(x)\in K[x]$,若 $f(b) = 0$,则 $b$ 为 $f(x)$ 的一个根或者零点，$b\in K$。</p>
+<p>由多项式的带余除法定理，我们立刻可以得到以下定理：<br>
+<strong>定理 1（余数定理）.</strong> 设 $f(x) \in \mathbb{K}[x], b \in \mathbb{K}$ ，则存在 $g(x) \in \mathbb{K}[x]$ 使
+$$
+f(x)=(x-b) g(x)+f(b) .
+$$
+特别，$b$ 是 $f(x)$ 的根当且仅当 $(x-b) \mid f(x)$ ．</p>
+<p>仿照多项式重因子的定义，我们也可以将 $x-b$ 作为因子定义重根，这里不再以定义的形式写出，简单类比一下即可。</p>
+<p><strong>引理 2.</strong> 设 $f(x)$ 是数域 $\mathbb{K}$ 上的不可约多项式且 $\operatorname{deg} f(x) \geq 2$ ，则 $f(x)$在 $\mathbb{K}$ 中没有根。<br>
+<strong>注.</strong> 该定理可以简单的判定多项式根的情况，但不可约往往是难以判定的，因此适用范围有限。</p>
+<p><strong>定理 3（根的个数）.</strong> 若 $f(x)$ 是数域 $\mathbb{K}$ 上的 $n$ 次多项式，则 $f(x)$ 在 $\mathbb{K}$ 中最多只有 $n$个根。<br>
+<strong>注.</strong> 这应该是很符合直觉的一个定理，当 $n$ 次多项式所有根都为单根时，应恰好有 $n$ 个根，若出现重根的话，应少于 $n$ 个。</p>
+<p><strong>定理 4.</strong> 设 $f(x)$ 与 $g(x)$ 是 $\mathbb{K}$ 上的次数不超过 $n$ 的两个多项式，若存在 $\mathbb{K} $ 上 $ n+1$ 个不同的数 $b_1, b_2, \cdots, b_{n+1}$ ，使
+$$
+f\left(b_i\right)=g\left(b_i\right), i=1,2, \cdots, n+1
+$$
+则 $f(x)=g(x)$ ．<br>
+<strong>注.</strong> 该定理实际上回答了一个问题，若我们可以在数域 $K$ 中找到 $n+1$ 个不同的数对两个多项式进行判定，若它们的函数值相等，则可以由函数相等推断多项式相等，但是对于更一般的域来说，我们未必能找到 $n+1$ 个不同的元素，对于高等代数课程而言，我们所讨论的数域，使得多项式函数相等$\iff$多项式相等。</p>
+<h3 id="复系数实系数有理系数多项式">复系数、实系数、有理系数多项式
+</h3><p>在前几个章节的讨论中，我们遇到了很多次可约、不可约，但是并没有讨论究竟什么时候一个多项式是不可约的，这个问题是传统代数学中最重要的一个问题，虽然可能在现代代数学中是容易解释的，我们将在这一小节判断 $\mathbb{C},\mathbb{R},\mathbb{Q}$ 上的多项式是否可约。</p>
+<hr>
+<p><strong>（一）$f(x)\in \mathbb{C}[x]$</strong></p>
+<p><strong>定理 1（代数学基本定理）.</strong> 对于 $f(x)\in \mathbb{C}，\deg f(x)\geq 1$,以下命题等价：<br>
+（1）$f(x)$ 至少有一个复根。<br>
+（2）不可约多项式都是一次多项式。<br>
+（3）任何复系数多项式都可以分解成一次多项式的乘积。<br>
+（4）任意 $n$ 次复系数多项式恰好有 $n$ 个复根(记重数)。</p>
+<p>该章节还有韦达定理的内容，这里暂不介绍。</p>
+<p>对于方程的求根公式，Galois证明，高于四次的方程一般没有求根公式（某些特殊的除外）。</p>
+<p>现在我们得到了 $\mathbb{C}[x]$ 上多项式的可约与不可约情况：不可约多项式一定是一次多项式。</p>
+<hr>
+<p><strong>（二）$f(x)\in \mathbb{R}[x]$</strong></p>
+<p><strong>定理 1（虚根成对存在）.</strong> 设
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是实系数多项式，若复数 $a+b \mathrm{i}(b \neq 0)$ 是其根，则 $a-b \mathrm{i}$ 也是它的根．</p>
+<p>虚根不能作为 $\mathbb{R}$ 上的根，但是可以推导出下面的定理：</p>
+<p><strong>定理 2（$\mathbb{R}[x]$ 上的不可约多项式）.</strong> 实数域上的不可约多项式为一次多项式或判别式 $\Delta$ 小于 $0$ 的二次多项式。</p>
+<p>由因式分解定理，任何多项式都可以拆分成不可约多项式的乘积，则实系数可以拆分成一次多项式和判别式小于 $0$ 的二次多项式的乘积。</p>
+<hr>
+<p><strong>（三）$f(x)\in \mathbb{Q}[x]$</strong></p>
+<p>有理系数多项式是最复杂的情况，为了讨论有理系数多项式，我们先讨论整数多项式作为铺垫。</p>
+<p><strong>定理 1.</strong> 设有 $n$ 次整系数多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+则有理数 $\frac{q}{p}$ 是 $ f(x)$ 的根的<strong>必要条件</strong>是 $p\left|a_n, q\right| a_0$ ，其中 $p, q$ 是互素的整数。<br>
+<strong>注.</strong> 该定理是一条非常有用的定理，本人愿称其为猜根定理，通过该定理可以找 $a_0$ 的因子比上 $a_0$ 的因子作为根代入检查是否确实为根；又因为该定理为根的必要条件，若尝试了所有的组合都不是根，则 $f(x)$ 没有有理根。</p>
+<p>对于 $\mathbb{C}[x],\mathbb{R}[x]$（次数大于2）,存在根$\iff$可约，但是对于 $\mathbb{Q}[x]$,存在根$\Rightarrow$ 可约，没有充分性。</p>
+<p>对于有理系数多项式，我们有一些方式将其化简：通分$\Rightarrow$整数多项式,然后再本原化$\Rightarrow$本原多项式，本原多项式即整系数多项式所有系数的最大公约数为1，我们总可以对系数比上其最大公约数，完成本原化；易得，通过通分和本原化之后，多项式的可约不可约情况是不变的。</p>
+<p><strong>定理 2(Gauss引理).</strong> 两个本原多项式的乘积仍然是本原多项式。</p>
+<p>使用Gauss引理可以推导出下面的定理：</p>
+<p><strong>定理 3.</strong> $f(x)$ 为整系数多项式，则 $f(x)$ 在 $\mathbb{Q}$ 上可约$\iff$ $f(x)$ 在整数环上可约（即可以分解成两个次数较低的整系数多项式之积）。<br>
+<strong>注.</strong> 我们在前面说明了任何一个有理系数多项式的可约性都和其通分再本原后的本原化多项式一致，现在对于一个整数多项式，又有了该定理，事情一直在往简化的方向发展。</p>
+<p>但是判断一个有理系数的可约性和不可约性仍然是很难的，有很多的判定定理存在，但是都无法做到判断所有的有理系数多项式，这里给出一个常用的判定定理：</p>
+<p><strong>定理 4（Eisenstein 判别法）</strong> 设多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是整系数多项式，$a_n \neq 0, n \geq 1, p$ 是一个素数．若 $p \mid a_i(i=0,1, \cdots, n-1)$ ，但 $p$不能整除 $a_n$ 且 $p^2$ 不能整除 $a_0$ ，则 $f(x)$ 在有理数域上不可约．<br>
+<strong>注.</strong> Eisenstein 判别法只是充分条件，他可以判定一个符合上述条件的整系数多项式不可约。</p>
+<p>Eisenstein判别法需要的条件很强，下面举一个例子：</p>
+<p><strong>例.</strong> 若 $p$ 为素数，证明：
+$$
+f(x)=x^{p-1}+x^{p-2}+\cdots+x+1
+$$
+在有理数域上不可约．<br>
+<strong>证明</strong> 作变量代换
+$$
+x=y+1 \text {, }
+$$
+得
+$$
+f(x)=\frac{x^p-1}{x-1}=\frac{(y+1)^p-1}{y}=y^{p-1}+\mathrm{C}_p^1 y^{p-2}+\mathrm{C}_p^2 y^{p-3}+\cdots+\mathrm{C}_p^{p-1} .
+$$
+注意 $p \mid \mathrm{C}_p^i(1 \leq i \leq p-1), p$ 不能整除首项系数 $1, p^2$ 不能整除 $\mathrm{C}_p^{p-1}=p$ ，因此，上述关于 $y$ 的多项式在有理数域上不可约，从而 $f(x)$ 在有理数域上也不可约．<br>
+<strong>注.</strong> 用Eisenstein判别法时，上述 $x=y+c$ 是常见的变换方法，该变换方式保持可约性，证明非常简单，这里省去。</p>
+<h3 id="多元多项式">多元多项式
+</h3><h3 id="对称多项式">对称多项式
+</h3><h3 id="结式和判别式">结式和判别式
+</h3><h2 id="第六章-特征值">第六章 特征值
 </h2><h2 id="第七章-相似标准型">第七章 相似标准型
 </h2><h2 id="第八章-二次型">第八章 二次型
 </h2><h2 id="第九章-内积空间">第九章 内积空间
@@ -1428,7 +1508,7 @@ $$
 
 
         <span>
-            Last updated on Mar 06, 2025 21:00 CST
+            Last updated on Mar 12, 2025 22:00 CST
         </span>
     </section></footer>
 

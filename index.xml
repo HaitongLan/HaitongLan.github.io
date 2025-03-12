@@ -14,7 +14,7 @@
         
         <guid>http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 讨论班笔记" /&gt;&lt;h2 id=&#34;高等概率论一&#34;&gt;高等概率论（一）
-&lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论（一），见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论（一），讲义和视频见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Seminar Information&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。&lt;/p&gt;
 &lt;h3 id=&#34;probability-space&#34;&gt;Probability Space
@@ -963,6 +963,133 @@ $\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$&lt;br&gt;
 $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。&lt;/p&gt;
+&lt;h2 id=&#34;confidence-interval&#34;&gt;Confidence Interval
+&lt;/h2&gt;&lt;p&gt;在谈置信区间之间，我们先补充一些必要的概率论知识。&lt;/p&gt;
+&lt;h3 id=&#34;order-statistic-t-distribution&#34;&gt;Order statistic, t-distribution
+&lt;/h3&gt;&lt;p&gt;首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：&lt;/p&gt;
+&lt;p&gt;设 $(X_1,\cdots,X_n)\in \mathscr{A},$ 映射到的 $(Y_1,\cdots,Y_n)\in \mathscr{B}$ ,we can represent $\mathscr{A}$ as the &lt;strong&gt;union&lt;/strong&gt; of a finite number, say $k$, of mutually disjoint sets $A_1, A_2, \ldots, A_k$ so that
+$$
+y_1=u_1\left(x_1, x_2, \ldots, x_n\right), \ldots, \quad y_n=u_n\left(x_1, x_2, \ldots, x_n\right)
+$$
+define a &lt;strong&gt;one-to-one transformation&lt;/strong&gt; of each $A_i$ onto $\mathscr{B}$. Thus, to each point in there will correspond exactly one point in each of $A_1, A_2, \ldots, A_k$. Let
+$$
+\begin{aligned}
+&amp;amp; x_1=w_{1 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp;amp; x_2=w_{2 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp;amp; \vdots \\
+&amp;amp; x_n=w_{n i}\left(y_1, y_2, \ldots, y_n\right),
+\end{aligned}
+$$
+denote the $k$ groups of $n$ inverse functions, one group for each of these $k$ transformations. Let the first partial derivatives be continuous and let each
+$$
+J_i=\left|\begin{array}{cccc}
+\frac{\partial w_{1 i}}{\partial y_1} &amp;amp; \frac{\partial w_{1 i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{1 i}}{\partial y_n} \\
+\frac{\partial w_{2 i}}{\partial y_1} &amp;amp; \frac{\partial w_{2 i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{2 i}}{\partial y_n} \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+\frac{\partial w_{n i}}{\partial y_1} &amp;amp; \frac{\partial w_{n i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{n i}}{\partial y_n}
+\end{array}\right|, i=1,2, \ldots, k
+$$
+be not identically equal to zero in $\mathscr{B}$. From a consideration of the probability of the union of $k$ mutually exclusive events and by applying the change of variable technique to the probability of each of these events, it can be seen that the joint p.d.f. of $Y_1=u_1\left(X_1, X_2, \ldots, X_n\right)$,
+$$
+\begin{aligned}
+&amp;amp; Y_2=u_2\left(X_1, X_2, \ldots, X_n\right), \ldots, Y_n=u_n\left(X_1, X_2, \ldots, X_n\right), \text { is given by } \\
+&amp;amp; g\left(y_1, y_2, \ldots, y_n\right)=\sum_{i=1}^k\left|J_i\right| h\left[w_1\left(y_1, \ldots, y_n\right), \ldots, w_{n i}\left(y_1, \ldots, y_n\right)\right]
+\end{aligned}
+$$
+provided that $\left(y_1, y_2, \ldots, y_n\right) \in \mathscr{B}$, and equals zero elsewhere.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 即对 $\mathscr{B}$ 来说，每一个元素都会同时对应 $\mathscr{A}$ 中的 $k$ 个元素，将这 $k$ 个元素所在的区域划分，算出来的概率再进行累加，就是我们需要获得的 p.d.f.&lt;/p&gt;
+&lt;p&gt;引入该变数转换的原因是，顺序统计量与原来的随机样本就不是 $1-1$ 的函数转换，因为随机样本的大小我们是未知的，若有 $n$ 个样本则可以产生 $n!$ 中排列组合的逆映射方式，通过上述方法对顺序统计量的联合p.d.f.求解，有
+$$
+\begin{aligned}
+f\left(y_1, y_2, \ldots, y_n\right)&amp;amp;=  (n!) f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) , \quad a&amp;lt;y_1&amp;lt;y_2&amp;lt;\cdots&amp;lt;y_n&amp;lt;b, \\
+&amp;amp; =0 \quad \text { elsewhere. }
+\end{aligned}
+$$
+重述之前的定理:&lt;br&gt;
+&lt;strong&gt;Thm 1(两个顺序统计量的pdf).&lt;/strong&gt; Let $\left(X_1, \ldots, X_n\right)$ be a random sample from a &amp;ldquo;continuous distribution&amp;rdquo; with p.d.f. $f(x)$ and d.f $F(x)$. Then the p.d.f. of $Y_n=\max \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_n(y)=n(F(y))^{n-1} f(y)
+$$
+and the p.d.f. of $Y_1=\min \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_1(y)=n(1-F(y))^{n-1} f(y)
+$$&lt;/p&gt;
+&lt;p&gt;有了 $p.d.f.$ 之后，我们可以通过与之前完全不同的方式求得边缘分布，直接简单粗暴的积分即可，但是对于顺序统计量的积分，积分的顺序会极大的简化运算：大的顺序统计量从大向小积分，小的顺序统计量从小向大积分，这样会使得积分的上下限变得明了，给出一个具体的例子：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EX.&lt;/strong&gt; it is easy to express the marginal p.d.f. of any order statistic, say $Y_k$, in terms of $F(x)$ and $f(x)$. This is done by evaluating the integral
+$$
+g_k\left(y_k\right)=\int_a^{y_k} \cdots \int_a^{y_2} \int_{y_k}^b \cdots \int_{y_{n-1}}^b n!f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) d y_n \cdots
+$$
+$$
+d y_{k+1} d y_1 \cdots d y_{k-1}
+$$
+The result is
+$$
+\begin{aligned}
+g_k\left(y_k\right) &amp;amp; =\frac{n!}{(k-1)!(n-k)!}\left[F\left(y_k\right)\right]^{k-1}\left[1-F\left(y_k\right)\right]^{n-k} f\left(y_k\right),\quad a&amp;lt;y_k&amp;lt;b, \\
+&amp;amp; =0  \text { elsewhere. }
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;注意，顺序统计量之间未必是独立的，所以计算某两个顺序统计量的联合分布时，依然需要计算积分，这时的积分技巧与上述相同，这里直接给出答案（详细解答可看hogg的书籍）：
+$$
+\begin{aligned}
+f_{i j}\left(y_i, y_j\right)=\frac{n!}{(i-1)!(i-i-1)!(n-j)!}
+&amp;amp; \left[F\left(y_i\right)\right]^{i-1}\left[F\left(y_j\right)-F\left(y_i\right)\right]^{j-i-1}\left[1-F\left(y_j\right)\right]^{n-j} f\left(y_i\right) f\left(y_j\right)
+\end{aligned}
+$$
+for $a&amp;lt;y_i&amp;lt;y_j&amp;lt;b$, and zero elsewhere.&lt;/p&gt;
+&lt;p&gt;现在来引入t分布，t分布在以后的问题中会经常遇到：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 2(t分布).&lt;/strong&gt; If $Z \sim N(0,1)$ and $\chi^2(r)$ are independent, we call the distribution of the r.v.
+$$
+T=\frac{Z}{\sqrt{\frac{\chi^2(r)}{r}}}
+$$
+a t-distribution with $r$ degrees of freedom.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; t分布是偶对称分布，有 $f_T(-x) = f_T(x)$,另外，t分布只与其自由度 $r$ 相关，由 $r$ 所唯一确定，考虑到我们之前曾经提到 $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2$,可以将任意一个正态分布标准化为标准正态分布，再比上 $\sqrt{\frac{S^2}{n-1}}=\frac{S}{\sigma}$ 来得到 t分布。&lt;/p&gt;
+&lt;h3 id=&#34;confidence-interval-1&#34;&gt;Confidence Interval
+&lt;/h3&gt;&lt;p&gt;之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 1(C.I.).&lt;/strong&gt; Suppose that we have a random sample from $f(x, \theta)$. For $0&amp;lt;\alpha&amp;lt;1$, if there exists two statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ satisfying
+$$
+1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)
+$$
+We call the random interval $\left(T_1, T_2\right)$ a $100(1-\alpha) \%$ &lt;strong&gt;confidence interval（C.I.）&lt;/strong&gt; of parameter $\theta$. &lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; $100(1-\alpha) \%$  又叫做 confidence coefficient,这个概率的含义是一个有意思的事情，它并不是说观测出某一组随机样本，它们的 $\theta$ 在置信区间内的概率是$100(1-\alpha) %$ ，因为对于已经观测出来的样本，他存在的概率只有 $0$ 或 $1$,这个概率的含义是：如果我们可以 Re-sampling 很多样本，那么在很多样本中，$\theta$ 属于置信区间的概率(频率比总实验次数) 为 $100(1-\alpha) \%$ .&lt;/p&gt;
+&lt;p&gt;Constructing C.I. by &lt;strong&gt;pivotal quantity（枢轴量，关键量）&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 2(pivotal quantity).&lt;/strong&gt; A function of random sample and parameter, $Q=q\left(X_1, \ldots, X_n, \theta\right)$, is called a pivotal quantity if its distribution is &lt;strong&gt;independen&lt;/strong&gt;t of $\theta$(与 $\theta$ 无关系).&lt;/p&gt;
+&lt;p&gt;满足定义的枢轴量会有很多，哪些枢轴量对寻找置信区间有帮助呢？下面的一段话回答了这个问题：&lt;/p&gt;
+&lt;p&gt;With a pivotal quantity $q\left(X_1, \ldots, X_n, \theta\right)$, there exists $a, b$ such that
+$$
+1-\alpha=P\left(a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b\right), \forall \theta \in \Theta
+$$
+The interest of pivotal quantity is that there exists statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ with the following 1-1 transformation
+$$
+a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b  \iff T_1 \leq \theta \leq T_2
+$$
+Then we have $1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)$ and $\left(T_1, T_2\right)$ is a $100(1-\alpha) %$ C.I. for $\theta$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; 现在来思考一下枢轴量的必要性，我们需要找到一个随机区间，使得参数属于该区间的概率为一个常数，该条件需要对所有的参数空间成立，如果一开始的枢轴量是依赖于 $\theta$ 的，那么该概率常数必然与 $\theta$ 相关，就违反了我们的条件；我们感兴趣的枢轴量是可以一对一的转化成 $T_1 \leq \theta \leq T_2$的形式的，举个例子说明这一点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EX.&lt;/strong&gt;  $X_1, \ldots, X_n \stackrel{i i d}{\sim} N\left(\mu, \sigma^2\right)$. $\mu,\sigma$ 为参数，求 $\mu$ 的置信区间。
+$$
+\begin{gathered}
+\left\{\begin{array} { l }
+{ \overline { X } \sim N ( \mu , \frac { \sigma ^ { 2 } } { n } ) } \\
+{ \frac { ( n - 1 ) s ^ { 2 } } { \sigma ^ { 2 } } \sim \chi ^ { 2 } ( n - 1 ) }
+\end{array} \text { indep. } \Rightarrow \left\{\begin{array}{l}
+\frac{\overline{X}-\mu}{\sigma / \sqrt{n}} \sim N(0,1) \\
+\frac{(n-1) s^2}{\sigma^2} \sim \chi^2(n-1)
+\end{array}\right.\right. \text { indep. } \\
+T=\frac{\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2}{\sigma^2(n-1)}}}=\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t(n-1)
+\end{gathered}
+$$
+Let $t_{\frac{\alpha}{2}}$ satisfies&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+1-\alpha &amp; =P\left(-t_{\frac{\alpha}{2}} \leq \frac{\bar{X}-\mu}{s / \sqrt{n}} \leq t_{\frac{\alpha}{2}}\right) \\
+&amp; =P\left(-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \bar{X}-\mu \leq t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right) \\
+&amp; =P\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \mu \leq \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;$\Rightarrow\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}, \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)$ is a $100(1-\alpha) %$ C.I. for $\mu$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 可见，由于 $T$ 可以将 $\mu$ 剥离出来，而保证 $T_1,T_2$ 都是统计量，这才使得 $T$ 成为了我们感兴趣的枢轴量，若我们只是将 $\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$ 当作枢轴量，是找不到置信区间的。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -971,14 +1098,7 @@ $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ i
         <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg" alt="Featured image of post 学习笔记|高等代数" /&gt;&lt;!-- &lt;style&gt;
-body {
-    font-family: &#39;微软雅黑&#39;, sans-serif; /* 使用微软雅黑作为首选字体,如果不可用则回退到无衬线字体 */
-    --article-font-size: 3.5
-    line-height: 1.6; /* 设置行间距为字体大小的1.6倍,提高可读性 */
-}
-&lt;/style&gt; --&gt;
-&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+        <description>&lt;img src="http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg" alt="Featured image of post 学习笔记|高等代数" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;谢启鸿老师高等代数学，参考网站：&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/torsor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;谢启鸿高等代数官方博客&lt;/a&gt;,b站课程：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1mJ411r7ZB/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;数学专业 高等代数学-复旦大学-谢启鸿-高清&lt;/a&gt;。&lt;/p&gt;
@@ -2119,7 +2239,89 @@ $$
 &lt;p&gt;根据标准因式分解的形式也可以定义重因式和单因式，这仅仅是在从理论的角度上保证因式分解的存在性，但是对于实际给出的一个多项式，想得到它的因式分解是很难的，想判定重因式也是很难的，于是我们引入了“形式导数”的定义，该定义与函数的导数定义一致，这里不再叙述，值得注意的是，对于多项式来说，有 $\deg f^{&amp;rsquo;}(x) = \deg f(x)-1$。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;命题 4(重因式的判定).&lt;/strong&gt; （1）设 $d(x)=\left(f(x), f^{\prime}(x)\right)$ ，则 $f(x) / d(x)$ 是一个没有重因式的多项式，且这个多项式的不可约因式与 $f(x)$ 的不可约因式相同（不计重数）．&lt;br&gt;
 （2）$f(x)$没有重因式 $\iff$ $(f(x),f^{&amp;rsquo;}(x)) = 1.$&lt;/p&gt;
-&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
+&lt;h3 id=&#34;多项式函数&#34;&gt;多项式函数
+&lt;/h3&gt;&lt;p&gt;将多项式看作函数，一些定义和运算规则与直觉中一致;设 $f(x)\in K[x]$,若 $f(b) = 0$,则 $b$ 为 $f(x)$ 的一个根或者零点，$b\in K$。&lt;/p&gt;
+&lt;p&gt;由多项式的带余除法定理，我们立刻可以得到以下定理：&lt;br&gt;
+&lt;strong&gt;定理 1（余数定理）.&lt;/strong&gt; 设 $f(x) \in \mathbb{K}[x], b \in \mathbb{K}$ ，则存在 $g(x) \in \mathbb{K}[x]$ 使
+$$
+f(x)=(x-b) g(x)+f(b) .
+$$
+特别，$b$ 是 $f(x)$ 的根当且仅当 $(x-b) \mid f(x)$ ．&lt;/p&gt;
+&lt;p&gt;仿照多项式重因子的定义，我们也可以将 $x-b$ 作为因子定义重根，这里不再以定义的形式写出，简单类比一下即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 2.&lt;/strong&gt; 设 $f(x)$ 是数域 $\mathbb{K}$ 上的不可约多项式且 $\operatorname{deg} f(x) \geq 2$ ，则 $f(x)$在 $\mathbb{K}$ 中没有根。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理可以简单的判定多项式根的情况，但不可约往往是难以判定的，因此适用范围有限。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（根的个数）.&lt;/strong&gt; 若 $f(x)$ 是数域 $\mathbb{K}$ 上的 $n$ 次多项式，则 $f(x)$ 在 $\mathbb{K}$ 中最多只有 $n$个根。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这应该是很符合直觉的一个定理，当 $n$ 次多项式所有根都为单根时，应恰好有 $n$ 个根，若出现重根的话，应少于 $n$ 个。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4.&lt;/strong&gt; 设 $f(x)$ 与 $g(x)$ 是 $\mathbb{K}$ 上的次数不超过 $n$ 的两个多项式，若存在 $\mathbb{K} $ 上 $ n+1$ 个不同的数 $b_1, b_2, \cdots, b_{n+1}$ ，使
+$$
+f\left(b_i\right)=g\left(b_i\right), i=1,2, \cdots, n+1
+$$
+则 $f(x)=g(x)$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理实际上回答了一个问题，若我们可以在数域 $K$ 中找到 $n+1$ 个不同的数对两个多项式进行判定，若它们的函数值相等，则可以由函数相等推断多项式相等，但是对于更一般的域来说，我们未必能找到 $n+1$ 个不同的元素，对于高等代数课程而言，我们所讨论的数域，使得多项式函数相等$\iff$多项式相等。&lt;/p&gt;
+&lt;h3 id=&#34;复系数实系数有理系数多项式&#34;&gt;复系数、实系数、有理系数多项式
+&lt;/h3&gt;&lt;p&gt;在前几个章节的讨论中，我们遇到了很多次可约、不可约，但是并没有讨论究竟什么时候一个多项式是不可约的，这个问题是传统代数学中最重要的一个问题，虽然可能在现代代数学中是容易解释的，我们将在这一小节判断 $\mathbb{C},\mathbb{R},\mathbb{Q}$ 上的多项式是否可约。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（一）$f(x)\in \mathbb{C}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（代数学基本定理）.&lt;/strong&gt; 对于 $f(x)\in \mathbb{C}，\deg f(x)\geq 1$,以下命题等价：&lt;br&gt;
+（1）$f(x)$ 至少有一个复根。&lt;br&gt;
+（2）不可约多项式都是一次多项式。&lt;br&gt;
+（3）任何复系数多项式都可以分解成一次多项式的乘积。&lt;br&gt;
+（4）任意 $n$ 次复系数多项式恰好有 $n$ 个复根(记重数)。&lt;/p&gt;
+&lt;p&gt;该章节还有韦达定理的内容，这里暂不介绍。&lt;/p&gt;
+&lt;p&gt;对于方程的求根公式，Galois证明，高于四次的方程一般没有求根公式（某些特殊的除外）。&lt;/p&gt;
+&lt;p&gt;现在我们得到了 $\mathbb{C}[x]$ 上多项式的可约与不可约情况：不可约多项式一定是一次多项式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（二）$f(x)\in \mathbb{R}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（虚根成对存在）.&lt;/strong&gt; 设
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是实系数多项式，若复数 $a+b \mathrm{i}(b \neq 0)$ 是其根，则 $a-b \mathrm{i}$ 也是它的根．&lt;/p&gt;
+&lt;p&gt;虚根不能作为 $\mathbb{R}$ 上的根，但是可以推导出下面的定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（$\mathbb{R}[x]$ 上的不可约多项式）.&lt;/strong&gt; 实数域上的不可约多项式为一次多项式或判别式 $\Delta$ 小于 $0$ 的二次多项式。&lt;/p&gt;
+&lt;p&gt;由因式分解定理，任何多项式都可以拆分成不可约多项式的乘积，则实系数可以拆分成一次多项式和判别式小于 $0$ 的二次多项式的乘积。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（三）$f(x)\in \mathbb{Q}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有理系数多项式是最复杂的情况，为了讨论有理系数多项式，我们先讨论整数多项式作为铺垫。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1.&lt;/strong&gt; 设有 $n$ 次整系数多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+则有理数 $\frac{q}{p}$ 是 $ f(x)$ 的根的&lt;strong&gt;必要条件&lt;/strong&gt;是 $p\left|a_n, q\right| a_0$ ，其中 $p, q$ 是互素的整数。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理是一条非常有用的定理，本人愿称其为猜根定理，通过该定理可以找 $a_0$ 的因子比上 $a_0$ 的因子作为根代入检查是否确实为根；又因为该定理为根的必要条件，若尝试了所有的组合都不是根，则 $f(x)$ 没有有理根。&lt;/p&gt;
+&lt;p&gt;对于 $\mathbb{C}[x],\mathbb{R}[x]$（次数大于2）,存在根$\iff$可约，但是对于 $\mathbb{Q}[x]$,存在根$\Rightarrow$ 可约，没有充分性。&lt;/p&gt;
+&lt;p&gt;对于有理系数多项式，我们有一些方式将其化简：通分$\Rightarrow$整数多项式,然后再本原化$\Rightarrow$本原多项式，本原多项式即整系数多项式所有系数的最大公约数为1，我们总可以对系数比上其最大公约数，完成本原化；易得，通过通分和本原化之后，多项式的可约不可约情况是不变的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(Gauss引理).&lt;/strong&gt; 两个本原多项式的乘积仍然是本原多项式。&lt;/p&gt;
+&lt;p&gt;使用Gauss引理可以推导出下面的定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; $f(x)$ 为整系数多项式，则 $f(x)$ 在 $\mathbb{Q}$ 上可约$\iff$ $f(x)$ 在整数环上可约（即可以分解成两个次数较低的整系数多项式之积）。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 我们在前面说明了任何一个有理系数多项式的可约性都和其通分再本原后的本原化多项式一致，现在对于一个整数多项式，又有了该定理，事情一直在往简化的方向发展。&lt;/p&gt;
+&lt;p&gt;但是判断一个有理系数的可约性和不可约性仍然是很难的，有很多的判定定理存在，但是都无法做到判断所有的有理系数多项式，这里给出一个常用的判定定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4（Eisenstein 判别法）&lt;/strong&gt; 设多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是整系数多项式，$a_n \neq 0, n \geq 1, p$ 是一个素数．若 $p \mid a_i(i=0,1, \cdots, n-1)$ ，但 $p$不能整除 $a_n$ 且 $p^2$ 不能整除 $a_0$ ，则 $f(x)$ 在有理数域上不可约．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; Eisenstein 判别法只是充分条件，他可以判定一个符合上述条件的整系数多项式不可约。&lt;/p&gt;
+&lt;p&gt;Eisenstein判别法需要的条件很强，下面举一个例子：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例.&lt;/strong&gt; 若 $p$ 为素数，证明：
+$$
+f(x)=x^{p-1}+x^{p-2}+\cdots+x+1
+$$
+在有理数域上不可约．&lt;br&gt;
+&lt;strong&gt;证明&lt;/strong&gt; 作变量代换
+$$
+x=y+1 \text {, }
+$$
+得
+$$
+f(x)=\frac{x^p-1}{x-1}=\frac{(y+1)^p-1}{y}=y^{p-1}+\mathrm{C}_p^1 y^{p-2}+\mathrm{C}_p^2 y^{p-3}+\cdots+\mathrm{C}_p^{p-1} .
+$$
+注意 $p \mid \mathrm{C}_p^i(1 \leq i \leq p-1), p$ 不能整除首项系数 $1, p^2$ 不能整除 $\mathrm{C}_p^{p-1}=p$ ，因此，上述关于 $y$ 的多项式在有理数域上不可约，从而 $f(x)$ 在有理数域上也不可约．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 用Eisenstein判别法时，上述 $x=y+c$ 是常见的变换方法，该变换方式保持可约性，证明非常简单，这里省去。&lt;/p&gt;
+&lt;h3 id=&#34;多元多项式&#34;&gt;多元多项式
+&lt;/h3&gt;&lt;h3 id=&#34;对称多项式&#34;&gt;对称多项式
+&lt;/h3&gt;&lt;h3 id=&#34;结式和判别式&#34;&gt;结式和判别式
+&lt;/h3&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
 &lt;/h2&gt;&lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
 &lt;/h2&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
