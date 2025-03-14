@@ -7,13 +7,252 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Mon, 10 Mar 2025 19:24:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/note/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>讨论班笔记</title>
-        <link>http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/</link>
+        <lastBuildDate>Fri, 14 Mar 2025 19:24:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/note/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>学习笔记|随机分析</title>
+        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</link>
+        <pubDate>Fri, 14 Mar 2025 19:24:05 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</guid>
+        <description>&lt;img src="http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png" alt="Featured image of post 学习笔记|随机分析" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+&lt;/h2&gt;&lt;p&gt;台湾交通大学吴庆堂老师随机分析，课程视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;amp;share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;金融随机分析&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;期望与积分&#34;&gt;期望与积分
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition 1.21.&lt;/strong&gt; The function
+$$
+\mathbb{I}_A(\omega)= \begin{cases}0, &amp;amp; \text { if } \omega \notin A \\ 1, &amp;amp; \text { if } \omega \in A\end{cases}
+$$
+is called the indicator function of $A$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 1.22.&lt;/strong&gt; The indicator function $\mathbb{I}_A$ is a &lt;strong&gt;random variable if and only if&lt;/strong&gt; $A \in \mathcal{F}$.&lt;/p&gt;
+&lt;p&gt;严格的定义积分，需要从最简单的情况开始，即形状类似为阶跃函数的非负随机变量，然后减少阶跃平台的长度（取极限），得到简单情况的积分，再构造 $X = X^{+}-X^{-}$,使得 $X^{+},X^{-}$ 都非负的方式满足一般的r.v.，如此便可以严格的定义积分，这里直接给出定义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.26.&lt;/strong&gt; Consider a general random variable $X$. Then we can write $X$ as
+$$
+X=X^{+}-X^{-}
+$$
+where $X^{+}=X \vee 0, X^{-}=(-X) \vee 0$.&lt;br&gt;
+(1) Unless both of $\mathbb{E}\left[X^{+}\right]$and $\mathbb{E}\left[X^{-}\right]$are $+\infty$, we define&lt;br&gt;
+$$
+\mathbb{E}[X]=\mathbb{E}\left[X^{+}\right]-\mathbb{E}\left[X^{-}\right]
+$$
+(2) If $\mathbb{E}|X|=\mathbb{E}\left[X^{+}\right]+\mathbb{E}\left[X^{-}\right]&amp;lt;\infty, X$ has a finite expectation. We denote by
+$$
+\mathbb{E}[X]=\int_{\Omega} X d \mathbb{P}=\int_{\Omega} X(\omega) \mathbb{P}(d \omega)
+$$
+(3) For $A \in \mathcal{F}$, define
+$$
+\int_A X d \mathbb{P}=\mathbb{E}\left[X \mathbb{I}_A\right]
+$$
+which is called the integral of $X$ with respect to $\mathbb{P}$ over $A$.&lt;br&gt;
+(4) $X$ is &lt;strong&gt;integrable&lt;/strong&gt; with respect to $\mathbb{P}$ over $A$ if the integral exists and is finite.&lt;/p&gt;
+&lt;p&gt;这种积分为 Lebesgue integral，是一种带测度的积分，与黎曼积分的定义方式不同：黎曼积分是在定义域上进行切分，而Lebesgue integral是对值域进行切分，并且其横坐标是带有测度的，对于随机变量来说，横坐标的测度和为 $1$.可以将 Lebesgue integral理解为求一种面积（或者高度，因为横坐标全体的测度为1）.&lt;/p&gt;
+&lt;p&gt;Lebesgue integral和黎曼积分的性质有很多相似之处，这里对一些符合直觉的性质就不一一列举，下面给出一个Lebesgue integral独有的性质：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 1.29.&lt;/strong&gt;(Absolute Integrability)
+$$
+\int_A X d \mathbb{P}&amp;lt;\infty \quad \Longleftrightarrow \quad \int_A|X| d \mathbb{P}&amp;lt;\infty .
+$$&lt;/p&gt;
+&lt;h3 id=&#34;条件期望和条件概率&#34;&gt;条件期望和条件概率
+&lt;/h3&gt;&lt;p&gt;初等概率论中没有条件期望是随机变量的概念，所定义的条件概率也仅仅是数值，只可以处理对于某一特定条件下的概率，但是条件期望应该是对所以可能发生的事件作为given来说的，所以我们有必要更严谨的处理这一点。&lt;/p&gt;
+&lt;p&gt;吴庆堂老师关于条件期望的定义讲的很棒，本人看过一些高等概率论的讲义，均没有吴庆堂老师老师的定义方式更加循循善诱，吴庆堂老师先从普通的集合条件概率开始，然后构造 $\Omega$ 的 decomposition 作为条件,再构造由离散型r.v.诱导的decomposition，最后根据直觉定义以 $\sigma-$代数作为条件的条件期望，再诱导出条件概率，十分精彩，现在我们来也拙略的模仿这种形式，依照直觉导出条件期望这个在初等概率论中触不可及的名词。&lt;/p&gt;
+&lt;p&gt;基于集合的条件概率是容易定义的，基于随机变量的确定取值求取条件概率也是初等概率论中就提到的东西，我们这里从$\Omega$ 的 decomposition开始，进行描述。&lt;/p&gt;
+&lt;p&gt;Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Let $\mathcal{D}=\left\{D_1, D_2, \ldots, D_n\right\}$ satisfy&lt;br&gt;
+(1) $\mathcal{D}$ is a decomposition of $\Omega$, i.e.,
+$$
+D_1 \cup D_2 \cup \cdots \cup D_n=\Omega, \quad D_i \cap D_j=\emptyset \quad \text { for } i \neq j ;
+$$
+(2) $D_i \in \mathcal{F}$ for all $i$;&lt;br&gt;
+(3) $\mathbb{P}\left(D_i\right)&amp;gt;0$ for all $i$.&lt;br&gt;
+Therefore, for $A \in \mathcal{F}$, the conditional probability $\mathbb{P}\left(A \mid D_i\right)$ is well-defined for all $i$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.12.&lt;/strong&gt; The &lt;strong&gt;conditional probability&lt;/strong&gt; of a set $A \in \mathcal{F}$ with respect to the &lt;strong&gt;decomposition&lt;/strong&gt; $\mathcal{D}$ is defined by
+$$
+\mathbb{P}(A \mid \mathcal{D})=\sum_{i=1}^n \mathbb{P}\left(A \mid D_i\right) \mathbb{I}_{D_i}
+$$
+&lt;strong&gt;Remark.&lt;/strong&gt;  $\mathbb{P}(A \mid \mathcal{D})$ is a random variable and
+$$
+\mathbb{P}(A \mid \mathcal{D})=\sum_{i=1}^n \mathbb{P}\left(A \mid D_i\right) \mathbb{I}_{D_i}
+$$
+This implies that if $\omega \in D_i, \mathbb{P}(A \mid \mathcal{D})(\omega)=\mathbb{P}\left(A \mid D_i\right)$.&lt;/p&gt;
+&lt;p&gt;这种方式就是把整个 $\Omega$ 划分为互不相交的 $D_i$,&lt;strong&gt;不同的 $D_i$ 上条件概率有不同的取值&lt;/strong&gt;，这不正像一个离散型的随机变量呢，所以用离散型随机变量诱导划分 $\Omega$ 是很自然的行为：&lt;/p&gt;
+&lt;p&gt;Let
+$$
+Y=\sum_{i=1}^n y_i \mathbb{I}_{D_i}
+$$
+where $y_1, y_2, \ldots, y_n$ are distinct constants, and $\left\{D_1, D_2, \ldots, D_n\right\}$ is a decomposition of $\Omega$ with $\mathbb{P}\left(D_i\right)&amp;gt;0$ for all $i$. Then
+$$
+D_i=\left\{Y=y_i\right\}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.15.&lt;/strong&gt;&lt;br&gt;
+(1) $\mathcal{D}_Y=\left\{D_1, D_2, \ldots, D_n\right\}$ is called the decomposition induced by $Y$.&lt;br&gt;
+(2) $\mathbb{P}(A \mid Y):=\mathbb{P}\left(A \mid \mathcal{D}_Y\right)$ is called the conditional probability of $A$ with respect to the random variable $Y$. Moreover, we denote by $\mathbb{P}\left(A \mid Y=y_i\right)$ the conditional probability $\mathbb{P}\left(A \mid D_i\right)$.&lt;/p&gt;
+&lt;p&gt;实际上，该离散型随机变量的功能就是划分样本空间，所以事件 $A$ 在不同的划分后样本空间上自然会有不同的取值，这种定义方式可以代替上述简单的划分，所以，这两种定义本质上是同一种定义，它们诱导出的条件期望非常直观：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.17.&lt;/strong&gt; The conditional expectation of $X$ with respect to a decomposition $\mathcal{D}=\left\{D_1, D_2, \ldots, D_n\right\}$ is defined by
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\sum_{i=1}^m x_i \mathbb{P}\left(A_i \mid \mathcal{D}\right)
+$$
+&lt;strong&gt;Remark.&lt;/strong&gt; 一种对该公式的理解：
+$$
+\begin{aligned}
+\mathbb{E}[X \mid \mathcal{D}] &amp;amp; =\sum_{i=1}^m x_i \mathbb{P}\left(A_i \mid \mathcal{D}\right)=\sum_{i=1} x_i \sum_{j=1}^n \mathbb{P}\left(A_i \mid D_j\right) \mathbb{I}_{D_j} \\
+&amp;amp; =\sum_{j=1}^n \mathbb{E}\left[\sum_{i=1}^m x_i \mathbb{I}_{A_i} \mid D_j\right] \mathbb{I}_{D_j}=\sum_{j=1}^n \mathbb{E}\left[X \mid D_j\right] \mathbb{I}_{D_j} .
+\end{aligned}
+$$
+其中用到了一种性质：$\mathbb{E}\left[\mathbb{I}_A \mid \mathcal{D}\right]=\mathbb{P}(A \mid \mathcal{D})$，并假设 $X$ 就是上面公式中的随机变量；通过该公式可以明了的看出条件期望是随机变量，在不同的 $D_i$ 下有不同的值。&lt;/p&gt;
+&lt;p&gt;这里给出一个例子强化我们的直觉：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example 2.20.&lt;/strong&gt; Let $(\Omega, \mathcal{F}, \mathbb{P})=\left([0,1], \mathcal{B}_1, m\right), \mathcal{D}=\{[0,1 / 2),[1 / 2,1]\}=\left\{D_1, D_2\right\}$ and
+$$
+X=\mathbb{I}_{[0,1.3]}+2 \mathbb{I}_{(1 / 3,2 / 3)}+3 \mathbb{I}_{[2 / 3,1]} .
+$$
+we have
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\mathbb{E}\left[X \mid D_1\right] \mathbb{I}_{D_1}+\mathbb{E}\left[X \mid D_2\right] \mathbb{I}_{D_2}
+$$
+Moreover,
+$$
+\begin{aligned}
+\mathbb{E}\left[X \mid D_1\right] &amp;amp; =\mathbb{P}\left([0,1 / 3] \mid D_1\right)+2 \mathbb{P}\left((1 / 3,2 / 3) \mid D_1\right)+3 \mathbb{P}\left([2 / 3,1] \mid D_1\right) \\
+&amp;amp; =\frac{1 / 3}{1 / 2}+2 \cdot \frac{1 / 6}{1 / 2}=\frac{4}{3}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\mathbb{E}\left[X \mid D_2\right] &amp;amp; =\mathbb{P}\left([0,1 / 3] \mid D_2\right)+2 \mathbb{P}\left((1 / 3,2 / 3) \mid D_2\right)+3 \mathbb{P}\left([2 / 3,1] \mid D_2\right) \\
+&amp;amp; =2 \cdot \frac{1 / 6}{1 / 2}+3 \cdot \frac{1 / 3}{1 / 2}=\frac{8}{3}
+\end{aligned}
+$$
+Thus,
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\frac{4}{3} \mathbb{I}_{D_1}+\frac{8}{3} \mathbb{I}_{D_2}
+$$
+&lt;a href=&#34;https://imgse.com/i/pEaQrZj&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/03/14/pEaQrZj.png&#34; alt=&#34;pEaQrZj.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+该图像告诉我们一点：条件期望在给定区间 $($D_1,D_2$)$ 下的面积和原有面积一致，高度是其带比例平均。&lt;/p&gt;
+&lt;p&gt;有了这些直觉，我们再给出条件期望的定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.21.&lt;/strong&gt; The conditional expectation of $X$ with respect to $\mathcal{G}$ is a nonnegative random variable denoted by $\mathbb{E}[X \mid \mathcal{G}]$ or $\mathbb{E}[X \mid \mathcal{G}](\omega)$, such that&lt;br&gt;
+(i) $\mathbb{E}[X \mid \mathcal{G}]$ is $\mathcal{G}$-measurable $\iff\{\mathbb{E}[X \mid \mathcal{G}] \leq C\} \in \mathcal{G}$ for all $C$.&lt;br&gt;
+(ii) For all $A \in \mathcal{G}$,
+$$
+\int_A \mathbb{E}[X \mid \mathcal{G}] d \mathbb{P}=\int_A X d \mathbb{P}
+$$
+&lt;strong&gt;Remark.&lt;/strong&gt; 第一个条件说明给定 $\mathcal{G}$ 可以求得条件期望；第二个条件说明条件期望的平均高度（或者面积）和原来的随机变量的高度（或者面积）一致。&lt;/p&gt;
+&lt;p&gt;我们不加讨论的说明这一点：在排除零测集的意义下，条件期望存在且唯一。这说明条件期望是Well-define的，我们现在来思考这样的条件期望是否符合我们的“直觉”。&lt;/p&gt;
+&lt;p&gt;定义的条件（1）是毋庸置疑的，当我们给定了划分的具体区域，是可以求得条件期望的具体值的，这句话其实隐含了一件事情：$\sigma-$域可以看作对 $\Omega$ 的划分！为什么对于一般的随机变量条件期望如此难定义，正是因为对样本空间难以划分，given的条件可以将 $\Omega$ 划分为极其复杂的程度，所以我们需要更强力的 $\sigma-$域对这种划分进行描述，按照以前的情况，即
+$\mathcal{G} = \sigma (\left\{D_1,D_2,\cdots,D_n\right\}) $.&lt;/p&gt;
+&lt;p&gt;从另外一个角度来理解，$\sigma-$域表示一种information，在这里，就是指随机变量在given的information下的期望值，不同的information自然会有不同的期望值。&lt;/p&gt;
+&lt;p&gt;我们现在给出一个例子，来理解这个定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example 2.23.&lt;/strong&gt; (1) Consider a probability space $\left([0,1], \mathcal{B}_1, m\right)$. Let $X$ be uniformly distributed on $[0,1]$ and let
+$$
+\mathcal{G}=\sigma\left(\left\{0 \leq X&amp;lt;\frac{1}{2}\right\},\left\{\frac{1}{2} \leq X \leq 1\right\}\right)
+$$&lt;/p&gt;
+&lt;p&gt;Sol:Using the definition of condition expectation: By Definition 2.21 (i),
+we see that
+$$
+\mathbb{E}[X \mid \mathcal{G}]=c_1 \mathbb{I}_{\left\{0 \leq X&amp;lt;\frac{1}{2}\right\}}+c_2 \mathbb{I}_{\left\{\frac{1}{2} \leq X \leq 1\right\}}
+$$
+For $A=\left\{0 \leq X&amp;lt;\frac{1}{2}\right\}$,&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+\int_A \mathbb{E}[X \mid \mathcal{G}] d \mathbb{P} &amp; =c_1 \mathbb{P}\left(\left\{0 \leq X&lt;\frac{1}{2}\right\}\right)=\frac{c_1}{2} \\
+\int_A X d \mathbb{P} &amp; =\int_0^{1 / 2} x d x=\left.\frac{1}{2} x^2\right|_{x=0} ^{1 / 2}=\frac{1}{8}
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;By Definition 2.21 (ii), we see that
+$$
+\frac{c_1}{2}=\frac{1}{8}
+$$
+Hence, $c_1=1 / 4$. Similarly, we can get $c_2=3 / 4$.
+Thus,
+$$
+\mathbb{E}[X \mid \mathcal{G}]=\frac{1}{4} \mathbb{I}_{\left\{0 \leq X&amp;lt;\frac{1}{2}\right\}}+\frac{3}{4} \mathbb{I}_{\left\{\frac{1}{2} \leq X \leq 1\right\}}
+$$&lt;/p&gt;
+&lt;p&gt;可见，由于 $\sigma-$域的划分，每个划分区域有不同的条件期望，由于 $\sigma-$域可以描述复杂的划分，上述定义也可以应对更复杂的情况，而定义中的条件（2），则是可以帮助我们求得条件概率具体值的必要条件：面积一致。&lt;/p&gt;
+&lt;p&gt;上述定义的是非负的情况，很简单的可以推广到一般的条件期望：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.24.&lt;/strong&gt; The conditional expectation $\mathbb{E}[X \mid \mathcal{G}]$, or $\mathbb{E}[X \mid \mathcal{G}](\omega)$, of any random variable with respect to the $\sigma$-algebra $\mathcal{G}$, is defined by
+$$
+\mathbb{E}[X \mid \mathcal{G}]=\mathbb{E}\left[X^{+} \mid \mathcal{G}\right]-\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]
+$$
+if $\min \left\{\mathbb{E}\left[X^{+} \mid \mathcal{G}\right], \mathbb{E}\left[X^{-} \mid \mathcal{G}\right]\right\}&amp;lt;\infty \mathbb{P}$-a.s. On the set of sample points for which $\mathbb{E}\left[X^{+} \mid \mathcal{G}\right]=$ $\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]=\infty, \mathbb{E}\left[X^{+} \mid \mathcal{G}\right]-\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]$ is given by an arbitrary value.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.25.&lt;/strong&gt; Let $B \in \mathcal{F}$. The &lt;strong&gt;conditional probability&lt;/strong&gt; of $B$ with respect to $\mathcal{G}$ is defined by
+$$
+\mathbb{P}(B \mid \mathcal{G})=\mathbb{E}\left[\mathbb{I}_B \mid \mathcal{G}\right]
+$$&lt;/p&gt;
+&lt;p&gt;下面给出条件期望的性质，这些性质在后面的分析中非常有用：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 2.26.&lt;/strong&gt;&lt;br&gt;
+(1) If $X \equiv C \mathbb{P}$-a.s., then $\mathbb{E}[X \mid \mathcal{G}]=C \mathbb{P}$-a.s.&lt;br&gt;
+(2) If $X \leq Y \mathbb{P}$-a.s., then $\mathbb{E}[X \mid \mathcal{G}] \leq \mathbb{E}[Y \mid \mathcal{G}] \mathbb{P}$-a.s.&lt;br&gt;
+(3) $|\mathbb{E}[X \mid \mathcal{G}]| \leq \mathbb{E}[|X| \mid \mathcal{G}] \mathbb{P}$-a.s.&lt;br&gt;
+(4) For constants $a, b$ with $a \mathbb{E}[X]+b \mathbb{E}[Y]&amp;lt;\infty$, then
+$$
+\mathbb{E}[a X+b Y]=a \mathbb{E}[X]+b \mathbb{E}[Y]
+$$
+(5) Consider the trivial $\sigma$-algebra $\mathcal{F}^{*}=\{\emptyset, \Omega\}$. Then
+$$
+\mathbb{E}\left[X \mid \mathcal{F}^{*}\right]=\mathbb{E}[X], \quad \mathbb{P} \text { - a.s. }
+$$
+(6) If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X \mid \mathcal{G}]=X$.&lt;br&gt;
+(7) $\mathbb{E}[\mathbb{E}[X \mid \mathcal{G}]]=\mathbb{E}[X]$.&lt;br&gt;
+(8) (Tower property) If $\mathcal{G}_1 \subset \mathcal{G}_2$, then
+$$
+\mathbb{E}\left[\mathbb{E}\left[X \mid \mathcal{G}_1\right] \mid \mathcal{G}_2\right]=\mathbb{E}\left[X \mid \mathcal{G}_1\right]=\mathbb{E}\left[\mathbb{E}\left[X \mid \mathcal{G}_2\right] \mid \mathcal{G}_1\right]
+$$
+(9) Let $Y$ be $\mathcal{G}$-measurable with $\mathbb{E}|X|&amp;lt;\infty, \mathbb{E}|X Y|&amp;lt;\infty$. Then
+$$
+\mathbb{E}[X Y \mid \mathcal{G}]=Y \mathbb{E}[X \mid \mathcal{G}], \quad \mathbb{P} \text { - a.s. }
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 2.28.&lt;/strong&gt; Denote
+$$
+\sigma(Y)=\left\{\{\omega: Y(\omega) \in B\}: B \in \mathcal{B}^1\right\}=\sigma(\{Y \leq r\}): r \in \mathbb{R} .
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 2.29.&lt;/strong&gt; If $Y$(means $\sigma(Y)$) and a $ \sigma$-algebra $\mathcal{G}$ are independent ,
+$$
+\mathbb{E}[Y \mid \mathcal{G}]=\mathbb{E}[Y]
+$$&lt;/p&gt;
+&lt;h2 id=&#34;离散鞅&#34;&gt;离散鞅
+&lt;/h2&gt;&lt;h3 id=&#34;鞅&#34;&gt;鞅
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition 2.30(信息流).&lt;/strong&gt;
+(1) A sequence of $\sigma$-algebra $\left(\mathcal{F}_n\right)_{n \geq 1}$ is called a filtration if $\mathcal{F}_n \subseteq$ $\mathcal{F}_{n+1}$ for all $n \geq 1$.&lt;br&gt;
+(2) A probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}_n\right)$ is called a filtered probability space, and is denoted by $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ or $\left(\Omega, \mathcal{F},\left(\mathcal{F}_n\right), \mathbb{P}\right)$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2．32（鞅）.&lt;/strong&gt; Let $\left(X_n\right)_{n \geq 1}$ be a sequence of random variables and $\left(\mathcal{F}_n\right)_{n \geq 1}$ is a filtration．We say $\left(X_n, \mathcal{F}_n\right)$ is a martingale（平赌，鞅 or say $\left(X_n\right)$ is a martingale with respect to $\left(\mathcal{F}_n\right),\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－martingale）if&lt;br&gt;
+（a）（适应性）$X_n \in \mathcal{F}_n$ for all $n$ ，i．e．，$\left(X_n\right)$ is $\left(\mathcal{F}_n\right)$－adapted,measurable；&lt;br&gt;
+（b） （可积）$\mathbb{E}\left|X_n\right|&amp;lt;\infty$ for all $n$ ；&lt;br&gt;
+（c）(鞅性)$X_n=\mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right), \mathbb{P}$－a．s．for all $n$ ．&lt;br&gt;
+&lt;strong&gt;Remark 2.33.&lt;/strong&gt; The condition (c) in Definition 2.32 is equivalent to&lt;br&gt;
+$\left(c^{\prime}\right) X_n=\mathbb{E}\left(X_m \mid \mathcal{F}_n\right)$ for all $m&amp;gt;n$.&lt;br&gt;
+$\left(\mathrm{c}^{\prime \prime}\right) \int_A X_n d \mathbb{P}=\int_A X_m d \mathbb{P}$ for all $A \in \mathcal{F}_n$ and for all $m&amp;gt;n$.&lt;/p&gt;
+&lt;p&gt;鞅和其信息流以及测度息息相关，我们可以通过一些测度变换的手段，让鞅变成非鞅，也可以让非鞅变成鞅。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2．37&lt;/strong&gt;．保持鞅定义的第一第二条，有：&lt;br&gt;
+（1）$\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－submartingale（优赌，下鞅）if $X_n \leq \mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right)$ for all $n P$－a．s．&lt;br&gt;
+（2）$\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－supermartingale（劣赌，上鞅）if $X_n \geq \mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right)$ for all $n P$－a．s．&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 鞅既是上鞅也是下鞅。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 2.39(构造下鞅).&lt;/strong&gt; Let $\left(X_n, \mathcal{F}_n\right)$ be a submartingale and let $\varphi$ be an increasing convex function defined on $\mathbb{R}$. If $\varphi\left(X_n\right)$ is integrable for all $n$, then $\left(\varphi\left(X_n\right)\right)$ is a submartingale w.r.t. $\mathcal{F}_n$.&lt;/p&gt;
+&lt;h3 id=&#34;鞅变换和doob分解&#34;&gt;鞅变换和Doob分解
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition 2.45（可预测过程）.&lt;/strong&gt; If $M_n \in \mathcal{F}_{n-1}$ for all $n$, we say that the stochastic process $\left(M_n\right)$ is an $\left(\mathcal{F}_n\right)$-&lt;strong&gt;predictable process&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.46(鞅变换).&lt;/strong&gt;&lt;br&gt;
+(1) Let $\left(X_n, \mathcal{F}_n\right)$ be a stochastic process and let $M=\left(M_n, \mathcal{F}_{n-1}\right)$&lt;br&gt;
+be a predictable process, then the stochastic process
+$$
+(M \cdot X)_n=M_0 X_0+\sum_{i=1}^n M_i\left(X_i-X_{i-1}\right)
+$$
+is called the &lt;strong&gt;transform&lt;/strong&gt; of $X$ by $M$.&lt;br&gt;
+(2) If, in addition, $X$ is a martingale, we say that $M \cdot X$ is a &lt;strong&gt;martingale transform&lt;/strong&gt;.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 若 $M_n$ 可积分，则上述变换是鞅变换。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 2.48（增长过程）.&lt;/strong&gt; A sequence of random variables $\left(Z_n\right)$ is called an &lt;strong&gt;increasing process&lt;/strong&gt; if&lt;br&gt;
+(1) $Z_1=0$ and $Z_n \leq Z_{n+1}$ for all $n \geq 1$.&lt;br&gt;
+(2) $\mathbb{E}\left(Z_n\right)&amp;lt;\infty$ for all $n$.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 2.50 (Doob decomposition).&lt;/strong&gt; Any &lt;strong&gt;submartingale&lt;/strong&gt; $\left(X_n, \mathcal{F}_n\right)$ can be written as
+$$
+X_n=Y_n+Z_n,
+$$
+where $\left(Y_n, \mathcal{F}_n\right)$ is a &lt;strong&gt;martingale&lt;/strong&gt; and $\left(Z_n\right)$ is an &lt;strong&gt;increasing predictable process&lt;/strong&gt;.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 下鞅可以分解为增长过程和鞅，这也是符合直觉的定理。值得注意的是，这种分解是唯一的。&lt;/p&gt;
+&lt;h3 id=&#34;停时&#34;&gt;停时
+&lt;/h3&gt;</description>
+        </item>
+        <item>
+        <title>学习笔记|课题组讨论班</title>
+        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</link>
         <pubDate>Mon, 10 Mar 2025 19:24:05 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/%E8%AE%A8%E8%AE%BA%E7%8F%AD%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 讨论班笔记" /&gt;&lt;h2 id=&#34;高等概率论一&#34;&gt;高等概率论（一）
+        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</guid>
+        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 学习笔记|课题组讨论班" /&gt;&lt;h2 id=&#34;高等概率论一&#34;&gt;高等概率论（一）
 &lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论（一），讲义和视频见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Seminar Information&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。&lt;/p&gt;
@@ -49,7 +288,8 @@ $$&lt;/p&gt;
 $$
 f^{-1}(B) \in \Sigma_X
 $$
-则称 $f$ 为一个 $\Sigma_X-\Sigma_Y$ 可测函数。&lt;/p&gt;
+则称 $f$ 为一个 $\Sigma_X-\Sigma_Y$ 可测函数。&lt;BR&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 可测都是针对 $\sigma-$域来说的，即映射的原像在 $\sigma-$域中。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Definition 2(Random Variable).&lt;/strong&gt; A random variable $X$ on $(\Omega, \mathcal{F})$ is a &lt;strong&gt;measurable function&lt;/strong&gt; $X:(\Omega, \mathcal{F}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$, namely for all $B \in \mathcal{B}(\mathbb{R})$,
 $$
 X^{-1}(B)={\omega \in \Omega \mid X(\omega) \in B} \in \mathcal{F}
@@ -963,6 +1203,133 @@ $\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$&lt;br&gt;
 $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。&lt;/p&gt;
+&lt;h2 id=&#34;confidence-interval&#34;&gt;Confidence Interval
+&lt;/h2&gt;&lt;p&gt;在谈置信区间之间，我们先补充一些必要的概率论知识。&lt;/p&gt;
+&lt;h3 id=&#34;order-statistic-t-distribution&#34;&gt;Order statistic, t-distribution
+&lt;/h3&gt;&lt;p&gt;首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：&lt;/p&gt;
+&lt;p&gt;设 $(X_1,\cdots,X_n)\in \mathscr{A},$ 映射到的 $(Y_1,\cdots,Y_n)\in \mathscr{B}$ ,we can represent $\mathscr{A}$ as the &lt;strong&gt;union&lt;/strong&gt; of a finite number, say $k$, of mutually disjoint sets $A_1, A_2, \ldots, A_k$ so that
+$$
+y_1=u_1\left(x_1, x_2, \ldots, x_n\right), \ldots, \quad y_n=u_n\left(x_1, x_2, \ldots, x_n\right)
+$$
+define a &lt;strong&gt;one-to-one transformation&lt;/strong&gt; of each $A_i$ onto $\mathscr{B}$. Thus, to each point in there will correspond exactly one point in each of $A_1, A_2, \ldots, A_k$. Let
+$$
+\begin{aligned}
+&amp;amp; x_1=w_{1 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp;amp; x_2=w_{2 i}\left(y_1, y_2, \ldots, y_n\right), \\
+&amp;amp; \vdots \\
+&amp;amp; x_n=w_{n i}\left(y_1, y_2, \ldots, y_n\right),
+\end{aligned}
+$$
+denote the $k$ groups of $n$ inverse functions, one group for each of these $k$ transformations. Let the first partial derivatives be continuous and let each
+$$
+J_i=\left|\begin{array}{cccc}
+\frac{\partial w_{1 i}}{\partial y_1} &amp;amp; \frac{\partial w_{1 i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{1 i}}{\partial y_n} \\
+\frac{\partial w_{2 i}}{\partial y_1} &amp;amp; \frac{\partial w_{2 i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{2 i}}{\partial y_n} \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+\frac{\partial w_{n i}}{\partial y_1} &amp;amp; \frac{\partial w_{n i}}{\partial y_2} &amp;amp; \cdots &amp;amp; \frac{\partial w_{n i}}{\partial y_n}
+\end{array}\right|, i=1,2, \ldots, k
+$$
+be not identically equal to zero in $\mathscr{B}$. From a consideration of the probability of the union of $k$ mutually exclusive events and by applying the change of variable technique to the probability of each of these events, it can be seen that the joint p.d.f. of $Y_1=u_1\left(X_1, X_2, \ldots, X_n\right)$,
+$$
+\begin{aligned}
+&amp;amp; Y_2=u_2\left(X_1, X_2, \ldots, X_n\right), \ldots, Y_n=u_n\left(X_1, X_2, \ldots, X_n\right), \text { is given by } \\
+&amp;amp; g\left(y_1, y_2, \ldots, y_n\right)=\sum_{i=1}^k\left|J_i\right| h\left[w_1\left(y_1, \ldots, y_n\right), \ldots, w_{n i}\left(y_1, \ldots, y_n\right)\right]
+\end{aligned}
+$$
+provided that $\left(y_1, y_2, \ldots, y_n\right) \in \mathscr{B}$, and equals zero elsewhere.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 即对 $\mathscr{B}$ 来说，每一个元素都会同时对应 $\mathscr{A}$ 中的 $k$ 个元素，将这 $k$ 个元素所在的区域划分，算出来的概率再进行累加，就是我们需要获得的 p.d.f.&lt;/p&gt;
+&lt;p&gt;引入该变数转换的原因是，顺序统计量与原来的随机样本就不是 $1-1$ 的函数转换，因为随机样本的大小我们是未知的，若有 $n$ 个样本则可以产生 $n!$ 中排列组合的逆映射方式，通过上述方法对顺序统计量的联合p.d.f.求解，有
+$$
+\begin{aligned}
+f\left(y_1, y_2, \ldots, y_n\right)&amp;amp;=  (n!) f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) , \quad a&amp;lt;y_1&amp;lt;y_2&amp;lt;\cdots&amp;lt;y_n&amp;lt;b, \\
+&amp;amp; =0 \quad \text { elsewhere. }
+\end{aligned}
+$$
+重述之前的定理:&lt;br&gt;
+&lt;strong&gt;Thm 1(两个顺序统计量的pdf).&lt;/strong&gt; Let $\left(X_1, \ldots, X_n\right)$ be a random sample from a &amp;ldquo;continuous distribution&amp;rdquo; with p.d.f. $f(x)$ and d.f $F(x)$. Then the p.d.f. of $Y_n=\max \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_n(y)=n(F(y))^{n-1} f(y)
+$$
+and the p.d.f. of $Y_1=\min \left\{X_1, \ldots, X_n\right\}$ is
+$$
+g_1(y)=n(1-F(y))^{n-1} f(y)
+$$&lt;/p&gt;
+&lt;p&gt;有了 $p.d.f.$ 之后，我们可以通过与之前完全不同的方式求得边缘分布，直接简单粗暴的积分即可，但是对于顺序统计量的积分，积分的顺序会极大的简化运算：大的顺序统计量从大向小积分，小的顺序统计量从小向大积分，这样会使得积分的上下限变得明了，给出一个具体的例子：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EX.&lt;/strong&gt; it is easy to express the marginal p.d.f. of any order statistic, say $Y_k$, in terms of $F(x)$ and $f(x)$. This is done by evaluating the integral
+$$
+g_k\left(y_k\right)=\int_a^{y_k} \cdots \int_a^{y_2} \int_{y_k}^b \cdots \int_{y_{n-1}}^b n!f\left(y_1\right) f\left(y_2\right) \cdots f\left(y_n\right) d y_n \cdots
+$$
+$$
+d y_{k+1} d y_1 \cdots d y_{k-1}
+$$
+The result is
+$$
+\begin{aligned}
+g_k\left(y_k\right) &amp;amp; =\frac{n!}{(k-1)!(n-k)!}\left[F\left(y_k\right)\right]^{k-1}\left[1-F\left(y_k\right)\right]^{n-k} f\left(y_k\right),\quad a&amp;lt;y_k&amp;lt;b, \\
+&amp;amp; =0  \text { elsewhere. }
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;注意，顺序统计量之间未必是独立的，所以计算某两个顺序统计量的联合分布时，依然需要计算积分，这时的积分技巧与上述相同，这里直接给出答案（详细解答可看hogg的书籍）：
+$$
+\begin{aligned}
+f_{i j}\left(y_i, y_j\right)=\frac{n!}{(i-1)!(i-i-1)!(n-j)!}
+&amp;amp; \left[F\left(y_i\right)\right]^{i-1}\left[F\left(y_j\right)-F\left(y_i\right)\right]^{j-i-1}\left[1-F\left(y_j\right)\right]^{n-j} f\left(y_i\right) f\left(y_j\right)
+\end{aligned}
+$$
+for $a&amp;lt;y_i&amp;lt;y_j&amp;lt;b$, and zero elsewhere.&lt;/p&gt;
+&lt;p&gt;现在来引入t分布，t分布在以后的问题中会经常遇到：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 2(t分布).&lt;/strong&gt; If $Z \sim N(0,1)$ and $\chi^2(r)$ are independent, we call the distribution of the r.v.
+$$
+T=\frac{Z}{\sqrt{\frac{\chi^2(r)}{r}}}
+$$
+a t-distribution with $r$ degrees of freedom.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; t分布是偶对称分布，有 $f_T(-x) = f_T(x)$,另外，t分布只与其自由度 $r$ 相关，由 $r$ 所唯一确定，考虑到我们之前曾经提到 $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2$,可以将任意一个正态分布标准化为标准正态分布，再比上 $\sqrt{\frac{S^2}{n-1}}=\frac{S}{\sigma}$ 来得到 t分布。&lt;/p&gt;
+&lt;h3 id=&#34;confidence-interval-1&#34;&gt;Confidence Interval
+&lt;/h3&gt;&lt;p&gt;之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 1(C.I.).&lt;/strong&gt; Suppose that we have a random sample from $f(x, \theta)$. For $0&amp;lt;\alpha&amp;lt;1$, if there exists two statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ satisfying
+$$
+1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)
+$$
+We call the random interval $\left(T_1, T_2\right)$ a $100(1-\alpha) \%$ &lt;strong&gt;confidence interval（C.I.）&lt;/strong&gt; of parameter $\theta$. &lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; $100(1-\alpha) \%$  又叫做 confidence coefficient,这个概率的含义是一个有意思的事情，它并不是说观测出某一组随机样本，它们的 $\theta$ 在置信区间内的概率是$100(1-\alpha) %$ ，因为对于已经观测出来的样本，他存在的概率只有 $0$ 或 $1$,这个概率的含义是：如果我们可以 Re-sampling 很多样本，那么在很多样本中，$\theta$ 属于置信区间的概率(频率比总实验次数) 为 $100(1-\alpha) \%$ .&lt;/p&gt;
+&lt;p&gt;Constructing C.I. by &lt;strong&gt;pivotal quantity（枢轴量，关键量）&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 2(pivotal quantity).&lt;/strong&gt; A function of random sample and parameter, $Q=q\left(X_1, \ldots, X_n, \theta\right)$, is called a pivotal quantity if its distribution is &lt;strong&gt;independen&lt;/strong&gt;t of $\theta$(与 $\theta$ 无关系).&lt;/p&gt;
+&lt;p&gt;满足定义的枢轴量会有很多，哪些枢轴量对寻找置信区间有帮助呢？下面的一段话回答了这个问题：&lt;/p&gt;
+&lt;p&gt;With a pivotal quantity $q\left(X_1, \ldots, X_n, \theta\right)$, there exists $a, b$ such that
+$$
+1-\alpha=P\left(a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b\right), \forall \theta \in \Theta
+$$
+The interest of pivotal quantity is that there exists statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ with the following 1-1 transformation
+$$
+a \leq q\left(X_1, \ldots, X_n, \theta\right) \leq b  \iff T_1 \leq \theta \leq T_2
+$$
+Then we have $1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)$ and $\left(T_1, T_2\right)$ is a $100(1-\alpha) %$ C.I. for $\theta$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; 现在来思考一下枢轴量的必要性，我们需要找到一个随机区间，使得参数属于该区间的概率为一个常数，该条件需要对所有的参数空间成立，如果一开始的枢轴量是依赖于 $\theta$ 的，那么该概率常数必然与 $\theta$ 相关，就违反了我们的条件；我们感兴趣的枢轴量是可以一对一的转化成 $T_1 \leq \theta \leq T_2$的形式的，举个例子说明这一点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EX.&lt;/strong&gt;  $X_1, \ldots, X_n \stackrel{i i d}{\sim} N\left(\mu, \sigma^2\right)$. $\mu,\sigma$ 为参数，求 $\mu$ 的置信区间。
+$$
+\begin{gathered}
+\left\{\begin{array} { l }
+{ \overline { X } \sim N ( \mu , \frac { \sigma ^ { 2 } } { n } ) } \\
+{ \frac { ( n - 1 ) s ^ { 2 } } { \sigma ^ { 2 } } \sim \chi ^ { 2 } ( n - 1 ) }
+\end{array} \text { indep. } \Rightarrow \left\{\begin{array}{l}
+\frac{\overline{X}-\mu}{\sigma / \sqrt{n}} \sim N(0,1) \\
+\frac{(n-1) s^2}{\sigma^2} \sim \chi^2(n-1)
+\end{array}\right.\right. \text { indep. } \\
+T=\frac{\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2}{\sigma^2(n-1)}}}=\frac{\bar{X}-\mu}{s / \sqrt{n}} \sim t(n-1)
+\end{gathered}
+$$
+Let $t_{\frac{\alpha}{2}}$ satisfies&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+1-\alpha &amp; =P\left(-t_{\frac{\alpha}{2}} \leq \frac{\bar{X}-\mu}{s / \sqrt{n}} \leq t_{\frac{\alpha}{2}}\right) \\
+&amp; =P\left(-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \bar{X}-\mu \leq t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right) \\
+&amp; =P\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}} \leq \mu \leq \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;$\Rightarrow\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}, \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)$ is a $100(1-\alpha) %$ C.I. for $\mu$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 可见，由于 $T$ 可以将 $\mu$ 剥离出来，而保证 $T_1,T_2$ 都是统计量，这才使得 $T$ 成为了我们感兴趣的枢轴量，若我们只是将 $\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$ 当作枢轴量，是找不到置信区间的。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -971,14 +1338,7 @@ $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ i
         <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg" alt="Featured image of post 学习笔记|高等代数" /&gt;&lt;!-- &lt;style&gt;
-body {
-    font-family: &#39;微软雅黑&#39;, sans-serif; /* 使用微软雅黑作为首选字体,如果不可用则回退到无衬线字体 */
-    --article-font-size: 3.5
-    line-height: 1.6; /* 设置行间距为字体大小的1.6倍,提高可读性 */
-}
-&lt;/style&gt; --&gt;
-&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+        <description>&lt;img src="http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg" alt="Featured image of post 学习笔记|高等代数" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;谢启鸿老师高等代数学，参考网站：&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/torsor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;谢启鸿高等代数官方博客&lt;/a&gt;,b站课程：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1mJ411r7ZB/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;数学专业 高等代数学-复旦大学-谢启鸿-高清&lt;/a&gt;。&lt;/p&gt;
@@ -2120,9 +2480,85 @@ $$
 &lt;p&gt;&lt;strong&gt;命题 4(重因式的判定).&lt;/strong&gt; （1）设 $d(x)=\left(f(x), f^{\prime}(x)\right)$ ，则 $f(x) / d(x)$ 是一个没有重因式的多项式，且这个多项式的不可约因式与 $f(x)$ 的不可约因式相同（不计重数）．&lt;br&gt;
 （2）$f(x)$没有重因式 $\iff$ $(f(x),f^{&amp;rsquo;}(x)) = 1.$&lt;/p&gt;
 &lt;h3 id=&#34;多项式函数&#34;&gt;多项式函数
-&lt;/h3&gt;&lt;h3 id=&#34;复系数多项式&#34;&gt;复系数多项式
-&lt;/h3&gt;&lt;h3 id=&#34;实系数多项式和有理系数多项式&#34;&gt;实系数多项式和有理系数多项式
-&lt;/h3&gt;&lt;h3 id=&#34;多元多项式&#34;&gt;多元多项式
+&lt;/h3&gt;&lt;p&gt;将多项式看作函数，一些定义和运算规则与直觉中一致;设 $f(x)\in K[x]$,若 $f(b) = 0$,则 $b$ 为 $f(x)$ 的一个根或者零点，$b\in K$。&lt;/p&gt;
+&lt;p&gt;由多项式的带余除法定理，我们立刻可以得到以下定理：&lt;br&gt;
+&lt;strong&gt;定理 1（余数定理）.&lt;/strong&gt; 设 $f(x) \in \mathbb{K}[x], b \in \mathbb{K}$ ，则存在 $g(x) \in \mathbb{K}[x]$ 使
+$$
+f(x)=(x-b) g(x)+f(b) .
+$$
+特别，$b$ 是 $f(x)$ 的根当且仅当 $(x-b) \mid f(x)$ ．&lt;/p&gt;
+&lt;p&gt;仿照多项式重因子的定义，我们也可以将 $x-b$ 作为因子定义重根，这里不再以定义的形式写出，简单类比一下即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 2.&lt;/strong&gt; 设 $f(x)$ 是数域 $\mathbb{K}$ 上的不可约多项式且 $\operatorname{deg} f(x) \geq 2$ ，则 $f(x)$在 $\mathbb{K}$ 中没有根。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理可以简单的判定多项式根的情况，但不可约往往是难以判定的，因此适用范围有限。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（根的个数）.&lt;/strong&gt; 若 $f(x)$ 是数域 $\mathbb{K}$ 上的 $n$ 次多项式，则 $f(x)$ 在 $\mathbb{K}$ 中最多只有 $n$个根。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这应该是很符合直觉的一个定理，当 $n$ 次多项式所有根都为单根时，应恰好有 $n$ 个根，若出现重根的话，应少于 $n$ 个。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4.&lt;/strong&gt; 设 $f(x)$ 与 $g(x)$ 是 $\mathbb{K}$ 上的次数不超过 $n$ 的两个多项式，若存在 $\mathbb{K} $ 上 $ n+1$ 个不同的数 $b_1, b_2, \cdots, b_{n+1}$ ，使
+$$
+f\left(b_i\right)=g\left(b_i\right), i=1,2, \cdots, n+1
+$$
+则 $f(x)=g(x)$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理实际上回答了一个问题，若我们可以在数域 $K$ 中找到 $n+1$ 个不同的数对两个多项式进行判定，若它们的函数值相等，则可以由函数相等推断多项式相等，但是对于更一般的域来说，我们未必能找到 $n+1$ 个不同的元素，对于高等代数课程而言，我们所讨论的数域，使得多项式函数相等$\iff$多项式相等。&lt;/p&gt;
+&lt;h3 id=&#34;复系数实系数有理系数多项式&#34;&gt;复系数、实系数、有理系数多项式
+&lt;/h3&gt;&lt;p&gt;在前几个章节的讨论中，我们遇到了很多次可约、不可约，但是并没有讨论究竟什么时候一个多项式是不可约的，这个问题是传统代数学中最重要的一个问题，虽然可能在现代代数学中是容易解释的，我们将在这一小节判断 $\mathbb{C},\mathbb{R},\mathbb{Q}$ 上的多项式是否可约。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（一）$f(x)\in \mathbb{C}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（代数学基本定理）.&lt;/strong&gt; 对于 $f(x)\in \mathbb{C}，\deg f(x)\geq 1$,以下命题等价：&lt;br&gt;
+（1）$f(x)$ 至少有一个复根。&lt;br&gt;
+（2）不可约多项式都是一次多项式。&lt;br&gt;
+（3）任何复系数多项式都可以分解成一次多项式的乘积。&lt;br&gt;
+（4）任意 $n$ 次复系数多项式恰好有 $n$ 个复根(记重数)。&lt;/p&gt;
+&lt;p&gt;该章节还有韦达定理的内容，这里暂不介绍。&lt;/p&gt;
+&lt;p&gt;对于方程的求根公式，Galois证明，高于四次的方程一般没有求根公式（某些特殊的除外）。&lt;/p&gt;
+&lt;p&gt;现在我们得到了 $\mathbb{C}[x]$ 上多项式的可约与不可约情况：不可约多项式一定是一次多项式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（二）$f(x)\in \mathbb{R}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（虚根成对存在）.&lt;/strong&gt; 设
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是实系数多项式，若复数 $a+b \mathrm{i}(b \neq 0)$ 是其根，则 $a-b \mathrm{i}$ 也是它的根．&lt;/p&gt;
+&lt;p&gt;虚根不能作为 $\mathbb{R}$ 上的根，但是可以推导出下面的定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（$\mathbb{R}[x]$ 上的不可约多项式）.&lt;/strong&gt; 实数域上的不可约多项式为一次多项式或判别式 $\Delta$ 小于 $0$ 的二次多项式。&lt;/p&gt;
+&lt;p&gt;由因式分解定理，任何多项式都可以拆分成不可约多项式的乘积，则实系数可以拆分成一次多项式和判别式小于 $0$ 的二次多项式的乘积。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;（三）$f(x)\in \mathbb{Q}[x]$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有理系数多项式是最复杂的情况，为了讨论有理系数多项式，我们先讨论整数多项式作为铺垫。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1.&lt;/strong&gt; 设有 $n$ 次整系数多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+则有理数 $\frac{q}{p}$ 是 $ f(x)$ 的根的&lt;strong&gt;必要条件&lt;/strong&gt;是 $p\left|a_n, q\right| a_0$ ，其中 $p, q$ 是互素的整数。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理是一条非常有用的定理，本人愿称其为猜根定理，通过该定理可以找 $a_0$ 的因子比上 $a_0$ 的因子作为根代入检查是否确实为根；又因为该定理为根的必要条件，若尝试了所有的组合都不是根，则 $f(x)$ 没有有理根。&lt;/p&gt;
+&lt;p&gt;对于 $\mathbb{C}[x],\mathbb{R}[x]$（次数大于2）,存在根$\iff$可约，但是对于 $\mathbb{Q}[x]$,存在根$\Rightarrow$ 可约，没有充分性。&lt;/p&gt;
+&lt;p&gt;对于有理系数多项式，我们有一些方式将其化简：通分$\Rightarrow$整数多项式,然后再本原化$\Rightarrow$本原多项式，本原多项式即整系数多项式所有系数的最大公约数为1，我们总可以对系数比上其最大公约数，完成本原化；易得，通过通分和本原化之后，多项式的可约不可约情况是不变的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(Gauss引理).&lt;/strong&gt; 两个本原多项式的乘积仍然是本原多项式。&lt;/p&gt;
+&lt;p&gt;使用Gauss引理可以推导出下面的定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3.&lt;/strong&gt; $f(x)$ 为整系数多项式，则 $f(x)$ 在 $\mathbb{Q}$ 上可约$\iff$ $f(x)$ 在整数环上可约（即可以分解成两个次数较低的整系数多项式之积）。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 我们在前面说明了任何一个有理系数多项式的可约性都和其通分再本原后的本原化多项式一致，现在对于一个整数多项式，又有了该定理，事情一直在往简化的方向发展。&lt;/p&gt;
+&lt;p&gt;但是判断一个有理系数的可约性和不可约性仍然是很难的，有很多的判定定理存在，但是都无法做到判断所有的有理系数多项式，这里给出一个常用的判定定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4（Eisenstein 判别法）&lt;/strong&gt; 设多项式
+$$
+f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots+a_1 x+a_0
+$$
+是整系数多项式，$a_n \neq 0, n \geq 1, p$ 是一个素数．若 $p \mid a_i(i=0,1, \cdots, n-1)$ ，但 $p$不能整除 $a_n$ 且 $p^2$ 不能整除 $a_0$ ，则 $f(x)$ 在有理数域上不可约．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; Eisenstein 判别法只是充分条件，他可以判定一个符合上述条件的整系数多项式不可约。&lt;/p&gt;
+&lt;p&gt;Eisenstein判别法需要的条件很强，下面举一个例子：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例.&lt;/strong&gt; 若 $p$ 为素数，证明：
+$$
+f(x)=x^{p-1}+x^{p-2}+\cdots+x+1
+$$
+在有理数域上不可约．&lt;br&gt;
+&lt;strong&gt;证明&lt;/strong&gt; 作变量代换
+$$
+x=y+1 \text {, }
+$$
+得
+$$
+f(x)=\frac{x^p-1}{x-1}=\frac{(y+1)^p-1}{y}=y^{p-1}+\mathrm{C}_p^1 y^{p-2}+\mathrm{C}_p^2 y^{p-3}+\cdots+\mathrm{C}_p^{p-1} .
+$$
+注意 $p \mid \mathrm{C}_p^i(1 \leq i \leq p-1), p$ 不能整除首项系数 $1, p^2$ 不能整除 $\mathrm{C}_p^{p-1}=p$ ，因此，上述关于 $y$ 的多项式在有理数域上不可约，从而 $f(x)$ 在有理数域上也不可约．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 用Eisenstein判别法时，上述 $x=y+c$ 是常见的变换方法，该变换方式保持可约性，证明非常简单，这里省去。&lt;/p&gt;
+&lt;h3 id=&#34;多元多项式&#34;&gt;多元多项式
 &lt;/h3&gt;&lt;h3 id=&#34;对称多项式&#34;&gt;对称多项式
 &lt;/h3&gt;&lt;h3 id=&#34;结式和判别式&#34;&gt;结式和判别式
 &lt;/h3&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值

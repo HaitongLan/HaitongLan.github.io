@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="台湾交通大学吴庆堂老师随机分析课程笔记,">
+<title>学习笔记|随机分析</title>
+
+<link rel='canonical' href='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.3992df218c917ad7ef00e79bf94b2b168ae28760447801f38a3033814fd3f1b7.css">
+<meta property='og:title' content="学习笔记|随机分析">
+<meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记,">
+<meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
+<meta property='og:site_name' content='Haitong Lan'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+<meta name="twitter:title" content="学习笔记|随机分析">
+<meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记,"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+<style>
+    :root {
+        --article-font-family: "Noto Serif", var(--base-font-family);
+    }
+</style>
+<script>  
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended">
+
+
+        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#课程介绍">课程介绍</a></li>
+    <li><a href="#期望与积分">期望与积分</a>
+      <ol>
+        <li><a href="#条件期望和条件概率">条件期望和条件概率</a></li>
+      </ol>
+    </li>
+    <li><a href="#离散鞅">离散鞅</a>
+      <ol>
+        <li><a href="#鞅">鞅</a></li>
+        <li><a href="#鞅变换和doob分解">鞅变换和Doob分解</a></li>
+        <li><a href="#停时">停时</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
+                
+                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" alt="Featured image of post 学习笔记|随机分析" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/note/" >
+                Note
+            </a>
+        
+            <a href="/categories/math/" >
+                Math
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">学习笔记|随机分析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            台湾交通大学吴庆堂老师随机分析课程笔记,
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 14, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="课程介绍">课程介绍
+</h2><p>台湾交通大学吴庆堂老师随机分析，课程视频：<a class="link" href="https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
+    >金融随机分析</a>.</p>
+<h2 id="期望与积分">期望与积分
+</h2><p><strong>Definition 1.21.</strong> The function
+$$
+\mathbb{I}_A(\omega)= \begin{cases}0, &amp; \text { if } \omega \notin A \\ 1, &amp; \text { if } \omega \in A\end{cases}
+$$
+is called the indicator function of $A$.</p>
+<p><strong>Remark 1.22.</strong> The indicator function $\mathbb{I}_A$ is a <strong>random variable if and only if</strong> $A \in \mathcal{F}$.</p>
+<p>严格的定义积分，需要从最简单的情况开始，即形状类似为阶跃函数的非负随机变量，然后减少阶跃平台的长度（取极限），得到简单情况的积分，再构造 $X = X^{+}-X^{-}$,使得 $X^{+},X^{-}$ 都非负的方式满足一般的r.v.，如此便可以严格的定义积分，这里直接给出定义。</p>
+<p><strong>Definition 1.26.</strong> Consider a general random variable $X$. Then we can write $X$ as
+$$
+X=X^{+}-X^{-}
+$$
+where $X^{+}=X \vee 0, X^{-}=(-X) \vee 0$.<br>
+(1) Unless both of $\mathbb{E}\left[X^{+}\right]$and $\mathbb{E}\left[X^{-}\right]$are $+\infty$, we define<br>
+$$
+\mathbb{E}[X]=\mathbb{E}\left[X^{+}\right]-\mathbb{E}\left[X^{-}\right]
+$$
+(2) If $\mathbb{E}|X|=\mathbb{E}\left[X^{+}\right]+\mathbb{E}\left[X^{-}\right]&lt;\infty, X$ has a finite expectation. We denote by
+$$
+\mathbb{E}[X]=\int_{\Omega} X d \mathbb{P}=\int_{\Omega} X(\omega) \mathbb{P}(d \omega)
+$$
+(3) For $A \in \mathcal{F}$, define
+$$
+\int_A X d \mathbb{P}=\mathbb{E}\left[X \mathbb{I}_A\right]
+$$
+which is called the integral of $X$ with respect to $\mathbb{P}$ over $A$.<br>
+(4) $X$ is <strong>integrable</strong> with respect to $\mathbb{P}$ over $A$ if the integral exists and is finite.</p>
+<p>这种积分为 Lebesgue integral，是一种带测度的积分，与黎曼积分的定义方式不同：黎曼积分是在定义域上进行切分，而Lebesgue integral是对值域进行切分，并且其横坐标是带有测度的，对于随机变量来说，横坐标的测度和为 $1$.可以将 Lebesgue integral理解为求一种面积（或者高度，因为横坐标全体的测度为1）.</p>
+<p>Lebesgue integral和黎曼积分的性质有很多相似之处，这里对一些符合直觉的性质就不一一列举，下面给出一个Lebesgue integral独有的性质：</p>
+<p><strong>Proposition 1.29.</strong>(Absolute Integrability)
+$$
+\int_A X d \mathbb{P}&lt;\infty \quad \Longleftrightarrow \quad \int_A|X| d \mathbb{P}&lt;\infty .
+$$</p>
+<h3 id="条件期望和条件概率">条件期望和条件概率
+</h3><p>初等概率论中没有条件期望是随机变量的概念，所定义的条件概率也仅仅是数值，只可以处理对于某一特定条件下的概率，但是条件期望应该是对所以可能发生的事件作为given来说的，所以我们有必要更严谨的处理这一点。</p>
+<p>吴庆堂老师关于条件期望的定义讲的很棒，本人看过一些高等概率论的讲义，均没有吴庆堂老师老师的定义方式更加循循善诱，吴庆堂老师先从普通的集合条件概率开始，然后构造 $\Omega$ 的 decomposition 作为条件,再构造由离散型r.v.诱导的decomposition，最后根据直觉定义以 $\sigma-$代数作为条件的条件期望，再诱导出条件概率，十分精彩，现在我们来也拙略的模仿这种形式，依照直觉导出条件期望这个在初等概率论中触不可及的名词。</p>
+<p>基于集合的条件概率是容易定义的，基于随机变量的确定取值求取条件概率也是初等概率论中就提到的东西，我们这里从$\Omega$ 的 decomposition开始，进行描述。</p>
+<p>Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Let $\mathcal{D}=\left\{D_1, D_2, \ldots, D_n\right\}$ satisfy<br>
+(1) $\mathcal{D}$ is a decomposition of $\Omega$, i.e.,
+$$
+D_1 \cup D_2 \cup \cdots \cup D_n=\Omega, \quad D_i \cap D_j=\emptyset \quad \text { for } i \neq j ;
+$$
+(2) $D_i \in \mathcal{F}$ for all $i$;<br>
+(3) $\mathbb{P}\left(D_i\right)&gt;0$ for all $i$.<br>
+Therefore, for $A \in \mathcal{F}$, the conditional probability $\mathbb{P}\left(A \mid D_i\right)$ is well-defined for all $i$.</p>
+<p><strong>Definition 2.12.</strong> The <strong>conditional probability</strong> of a set $A \in \mathcal{F}$ with respect to the <strong>decomposition</strong> $\mathcal{D}$ is defined by
+$$
+\mathbb{P}(A \mid \mathcal{D})=\sum_{i=1}^n \mathbb{P}\left(A \mid D_i\right) \mathbb{I}_{D_i}
+$$
+<strong>Remark.</strong>  $\mathbb{P}(A \mid \mathcal{D})$ is a random variable and
+$$
+\mathbb{P}(A \mid \mathcal{D})=\sum_{i=1}^n \mathbb{P}\left(A \mid D_i\right) \mathbb{I}_{D_i}
+$$
+This implies that if $\omega \in D_i, \mathbb{P}(A \mid \mathcal{D})(\omega)=\mathbb{P}\left(A \mid D_i\right)$.</p>
+<p>这种方式就是把整个 $\Omega$ 划分为互不相交的 $D_i$,<strong>不同的 $D_i$ 上条件概率有不同的取值</strong>，这不正像一个离散型的随机变量呢，所以用离散型随机变量诱导划分 $\Omega$ 是很自然的行为：</p>
+<p>Let
+$$
+Y=\sum_{i=1}^n y_i \mathbb{I}_{D_i}
+$$
+where $y_1, y_2, \ldots, y_n$ are distinct constants, and $\left\{D_1, D_2, \ldots, D_n\right\}$ is a decomposition of $\Omega$ with $\mathbb{P}\left(D_i\right)&gt;0$ for all $i$. Then
+$$
+D_i=\left\{Y=y_i\right\}
+$$</p>
+<p><strong>Definition 2.15.</strong><br>
+(1) $\mathcal{D}_Y=\left\{D_1, D_2, \ldots, D_n\right\}$ is called the decomposition induced by $Y$.<br>
+(2) $\mathbb{P}(A \mid Y):=\mathbb{P}\left(A \mid \mathcal{D}_Y\right)$ is called the conditional probability of $A$ with respect to the random variable $Y$. Moreover, we denote by $\mathbb{P}\left(A \mid Y=y_i\right)$ the conditional probability $\mathbb{P}\left(A \mid D_i\right)$.</p>
+<p>实际上，该离散型随机变量的功能就是划分样本空间，所以事件 $A$ 在不同的划分后样本空间上自然会有不同的取值，这种定义方式可以代替上述简单的划分，所以，这两种定义本质上是同一种定义，它们诱导出的条件期望非常直观：</p>
+<p><strong>Definition 2.17.</strong> The conditional expectation of $X$ with respect to a decomposition $\mathcal{D}=\left\{D_1, D_2, \ldots, D_n\right\}$ is defined by
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\sum_{i=1}^m x_i \mathbb{P}\left(A_i \mid \mathcal{D}\right)
+$$
+<strong>Remark.</strong> 一种对该公式的理解：
+$$
+\begin{aligned}
+\mathbb{E}[X \mid \mathcal{D}] &amp; =\sum_{i=1}^m x_i \mathbb{P}\left(A_i \mid \mathcal{D}\right)=\sum_{i=1} x_i \sum_{j=1}^n \mathbb{P}\left(A_i \mid D_j\right) \mathbb{I}_{D_j} \\
+&amp; =\sum_{j=1}^n \mathbb{E}\left[\sum_{i=1}^m x_i \mathbb{I}_{A_i} \mid D_j\right] \mathbb{I}_{D_j}=\sum_{j=1}^n \mathbb{E}\left[X \mid D_j\right] \mathbb{I}_{D_j} .
+\end{aligned}
+$$
+其中用到了一种性质：$\mathbb{E}\left[\mathbb{I}_A \mid \mathcal{D}\right]=\mathbb{P}(A \mid \mathcal{D})$，并假设 $X$ 就是上面公式中的随机变量；通过该公式可以明了的看出条件期望是随机变量，在不同的 $D_i$ 下有不同的值。</p>
+<p>这里给出一个例子强化我们的直觉：</p>
+<p><strong>Example 2.20.</strong> Let $(\Omega, \mathcal{F}, \mathbb{P})=\left([0,1], \mathcal{B}_1, m\right), \mathcal{D}=\{[0,1 / 2),[1 / 2,1]\}=\left\{D_1, D_2\right\}$ and
+$$
+X=\mathbb{I}_{[0,1.3]}+2 \mathbb{I}_{(1 / 3,2 / 3)}+3 \mathbb{I}_{[2 / 3,1]} .
+$$
+we have
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\mathbb{E}\left[X \mid D_1\right] \mathbb{I}_{D_1}+\mathbb{E}\left[X \mid D_2\right] \mathbb{I}_{D_2}
+$$
+Moreover,
+$$
+\begin{aligned}
+\mathbb{E}\left[X \mid D_1\right] &amp; =\mathbb{P}\left([0,1 / 3] \mid D_1\right)+2 \mathbb{P}\left((1 / 3,2 / 3) \mid D_1\right)+3 \mathbb{P}\left([2 / 3,1] \mid D_1\right) \\
+&amp; =\frac{1 / 3}{1 / 2}+2 \cdot \frac{1 / 6}{1 / 2}=\frac{4}{3}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\mathbb{E}\left[X \mid D_2\right] &amp; =\mathbb{P}\left([0,1 / 3] \mid D_2\right)+2 \mathbb{P}\left((1 / 3,2 / 3) \mid D_2\right)+3 \mathbb{P}\left([2 / 3,1] \mid D_2\right) \\
+&amp; =2 \cdot \frac{1 / 6}{1 / 2}+3 \cdot \frac{1 / 3}{1 / 2}=\frac{8}{3}
+\end{aligned}
+$$
+Thus,
+$$
+\mathbb{E}[X \mid \mathcal{D}]=\frac{4}{3} \mathbb{I}_{D_1}+\frac{8}{3} \mathbb{I}_{D_2}
+$$
+<a href="https://imgse.com/i/pEaQrZj"><img src="https://s21.ax1x.com/2025/03/14/pEaQrZj.png" alt="pEaQrZj.png" border="0" /></a>
+该图像告诉我们一点：条件期望在给定区间 $($D_1,D_2$)$ 下的面积和原有面积一致，高度是其带比例平均。</p>
+<p>有了这些直觉，我们再给出条件期望的定义：</p>
+<p><strong>Definition 2.21.</strong> The conditional expectation of $X$ with respect to $\mathcal{G}$ is a nonnegative random variable denoted by $\mathbb{E}[X \mid \mathcal{G}]$ or $\mathbb{E}[X \mid \mathcal{G}](\omega)$, such that<br>
+(i) $\mathbb{E}[X \mid \mathcal{G}]$ is $\mathcal{G}$-measurable $\iff\{\mathbb{E}[X \mid \mathcal{G}] \leq C\} \in \mathcal{G}$ for all $C$.<br>
+(ii) For all $A \in \mathcal{G}$,
+$$
+\int_A \mathbb{E}[X \mid \mathcal{G}] d \mathbb{P}=\int_A X d \mathbb{P}
+$$
+<strong>Remark.</strong> 第一个条件说明给定 $\mathcal{G}$ 可以求得条件期望；第二个条件说明条件期望的平均高度（或者面积）和原来的随机变量的高度（或者面积）一致。</p>
+<p>我们不加讨论的说明这一点：在排除零测集的意义下，条件期望存在且唯一。这说明条件期望是Well-define的，我们现在来思考这样的条件期望是否符合我们的“直觉”。</p>
+<p>定义的条件（1）是毋庸置疑的，当我们给定了划分的具体区域，是可以求得条件期望的具体值的，这句话其实隐含了一件事情：$\sigma-$域可以看作对 $\Omega$ 的划分！为什么对于一般的随机变量条件期望如此难定义，正是因为对样本空间难以划分，given的条件可以将 $\Omega$ 划分为极其复杂的程度，所以我们需要更强力的 $\sigma-$域对这种划分进行描述，按照以前的情况，即
+$\mathcal{G} = \sigma (\left\{D_1,D_2,\cdots,D_n\right\}) $.</p>
+<p>从另外一个角度来理解，$\sigma-$域表示一种information，在这里，就是指随机变量在given的information下的期望值，不同的information自然会有不同的期望值。</p>
+<p>我们现在给出一个例子，来理解这个定义：</p>
+<p><strong>Example 2.23.</strong> (1) Consider a probability space $\left([0,1], \mathcal{B}_1, m\right)$. Let $X$ be uniformly distributed on $[0,1]$ and let
+$$
+\mathcal{G}=\sigma\left(\left\{0 \leq X&lt;\frac{1}{2}\right\},\left\{\frac{1}{2} \leq X \leq 1\right\}\right)
+$$</p>
+<p>Sol:Using the definition of condition expectation: By Definition 2.21 (i),
+we see that
+$$
+\mathbb{E}[X \mid \mathcal{G}]=c_1 \mathbb{I}_{\left\{0 \leq X&lt;\frac{1}{2}\right\}}+c_2 \mathbb{I}_{\left\{\frac{1}{2} \leq X \leq 1\right\}}
+$$
+For $A=\left\{0 \leq X&lt;\frac{1}{2}\right\}$,</p>
+<div>
+$$
+\begin{aligned}
+\int_A \mathbb{E}[X \mid \mathcal{G}] d \mathbb{P} & =c_1 \mathbb{P}\left(\left\{0 \leq X<\frac{1}{2}\right\}\right)=\frac{c_1}{2} \\
+\int_A X d \mathbb{P} & =\int_0^{1 / 2} x d x=\left.\frac{1}{2} x^2\right|_{x=0} ^{1 / 2}=\frac{1}{8}
+\end{aligned}
+$$
+</div>
+<p>By Definition 2.21 (ii), we see that
+$$
+\frac{c_1}{2}=\frac{1}{8}
+$$
+Hence, $c_1=1 / 4$. Similarly, we can get $c_2=3 / 4$.
+Thus,
+$$
+\mathbb{E}[X \mid \mathcal{G}]=\frac{1}{4} \mathbb{I}_{\left\{0 \leq X&lt;\frac{1}{2}\right\}}+\frac{3}{4} \mathbb{I}_{\left\{\frac{1}{2} \leq X \leq 1\right\}}
+$$</p>
+<p>可见，由于 $\sigma-$域的划分，每个划分区域有不同的条件期望，由于 $\sigma-$域可以描述复杂的划分，上述定义也可以应对更复杂的情况，而定义中的条件（2），则是可以帮助我们求得条件概率具体值的必要条件：面积一致。</p>
+<p>上述定义的是非负的情况，很简单的可以推广到一般的条件期望：</p>
+<p><strong>Definition 2.24.</strong> The conditional expectation $\mathbb{E}[X \mid \mathcal{G}]$, or $\mathbb{E}[X \mid \mathcal{G}](\omega)$, of any random variable with respect to the $\sigma$-algebra $\mathcal{G}$, is defined by
+$$
+\mathbb{E}[X \mid \mathcal{G}]=\mathbb{E}\left[X^{+} \mid \mathcal{G}\right]-\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]
+$$
+if $\min \left\{\mathbb{E}\left[X^{+} \mid \mathcal{G}\right], \mathbb{E}\left[X^{-} \mid \mathcal{G}\right]\right\}&lt;\infty \mathbb{P}$-a.s. On the set of sample points for which $\mathbb{E}\left[X^{+} \mid \mathcal{G}\right]=$ $\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]=\infty, \mathbb{E}\left[X^{+} \mid \mathcal{G}\right]-\mathbb{E}\left[X^{-} \mid \mathcal{G}\right]$ is given by an arbitrary value.</p>
+<p><strong>Definition 2.25.</strong> Let $B \in \mathcal{F}$. The <strong>conditional probability</strong> of $B$ with respect to $\mathcal{G}$ is defined by
+$$
+\mathbb{P}(B \mid \mathcal{G})=\mathbb{E}\left[\mathbb{I}_B \mid \mathcal{G}\right]
+$$</p>
+<p>下面给出条件期望的性质，这些性质在后面的分析中非常有用：</p>
+<p><strong>Proposition 2.26.</strong><br>
+(1) If $X \equiv C \mathbb{P}$-a.s., then $\mathbb{E}[X \mid \mathcal{G}]=C \mathbb{P}$-a.s.<br>
+(2) If $X \leq Y \mathbb{P}$-a.s., then $\mathbb{E}[X \mid \mathcal{G}] \leq \mathbb{E}[Y \mid \mathcal{G}] \mathbb{P}$-a.s.<br>
+(3) $|\mathbb{E}[X \mid \mathcal{G}]| \leq \mathbb{E}[|X| \mid \mathcal{G}] \mathbb{P}$-a.s.<br>
+(4) For constants $a, b$ with $a \mathbb{E}[X]+b \mathbb{E}[Y]&lt;\infty$, then
+$$
+\mathbb{E}[a X+b Y]=a \mathbb{E}[X]+b \mathbb{E}[Y]
+$$
+(5) Consider the trivial $\sigma$-algebra $\mathcal{F}^{*}=\{\emptyset, \Omega\}$. Then
+$$
+\mathbb{E}\left[X \mid \mathcal{F}^{*}\right]=\mathbb{E}[X], \quad \mathbb{P} \text { - a.s. }
+$$
+(6) If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X \mid \mathcal{G}]=X$.<br>
+(7) $\mathbb{E}[\mathbb{E}[X \mid \mathcal{G}]]=\mathbb{E}[X]$.<br>
+(8) (Tower property) If $\mathcal{G}_1 \subset \mathcal{G}_2$, then
+$$
+\mathbb{E}\left[\mathbb{E}\left[X \mid \mathcal{G}_1\right] \mid \mathcal{G}_2\right]=\mathbb{E}\left[X \mid \mathcal{G}_1\right]=\mathbb{E}\left[\mathbb{E}\left[X \mid \mathcal{G}_2\right] \mid \mathcal{G}_1\right]
+$$
+(9) Let $Y$ be $\mathcal{G}$-measurable with $\mathbb{E}|X|&lt;\infty, \mathbb{E}|X Y|&lt;\infty$. Then
+$$
+\mathbb{E}[X Y \mid \mathcal{G}]=Y \mathbb{E}[X \mid \mathcal{G}], \quad \mathbb{P} \text { - a.s. }
+$$</p>
+<p><strong>Remark 2.28.</strong> Denote
+$$
+\sigma(Y)=\left\{\{\omega: Y(\omega) \in B\}: B \in \mathcal{B}^1\right\}=\sigma(\{Y \leq r\}): r \in \mathbb{R} .
+$$</p>
+<p><strong>Proposition 2.29.</strong> If $Y$(means $\sigma(Y)$) and a $ \sigma$-algebra $\mathcal{G}$ are independent ,
+$$
+\mathbb{E}[Y \mid \mathcal{G}]=\mathbb{E}[Y]
+$$</p>
+<h2 id="离散鞅">离散鞅
+</h2><h3 id="鞅">鞅
+</h3><p><strong>Definition 2.30(信息流).</strong>
+(1) A sequence of $\sigma$-algebra $\left(\mathcal{F}_n\right)_{n \geq 1}$ is called a filtration if $\mathcal{F}_n \subseteq$ $\mathcal{F}_{n+1}$ for all $n \geq 1$.<br>
+(2) A probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}_n\right)$ is called a filtered probability space, and is denoted by $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ or $\left(\Omega, \mathcal{F},\left(\mathcal{F}_n\right), \mathbb{P}\right)$.</p>
+<p><strong>Definition 2．32（鞅）.</strong> Let $\left(X_n\right)_{n \geq 1}$ be a sequence of random variables and $\left(\mathcal{F}_n\right)_{n \geq 1}$ is a filtration．We say $\left(X_n, \mathcal{F}_n\right)$ is a martingale（平赌，鞅 or say $\left(X_n\right)$ is a martingale with respect to $\left(\mathcal{F}_n\right),\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－martingale）if<br>
+（a）（适应性）$X_n \in \mathcal{F}_n$ for all $n$ ，i．e．，$\left(X_n\right)$ is $\left(\mathcal{F}_n\right)$－adapted,measurable；<br>
+（b） （可积）$\mathbb{E}\left|X_n\right|&lt;\infty$ for all $n$ ；<br>
+（c）(鞅性)$X_n=\mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right), \mathbb{P}$－a．s．for all $n$ ．<br>
+<strong>Remark 2.33.</strong> The condition (c) in Definition 2.32 is equivalent to<br>
+$\left(c^{\prime}\right) X_n=\mathbb{E}\left(X_m \mid \mathcal{F}_n\right)$ for all $m&gt;n$.<br>
+$\left(\mathrm{c}^{\prime \prime}\right) \int_A X_n d \mathbb{P}=\int_A X_m d \mathbb{P}$ for all $A \in \mathcal{F}_n$ and for all $m&gt;n$.</p>
+<p>鞅和其信息流以及测度息息相关，我们可以通过一些测度变换的手段，让鞅变成非鞅，也可以让非鞅变成鞅。</p>
+<p><strong>Definition 2．37</strong>．保持鞅定义的第一第二条，有：<br>
+（1）$\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－submartingale（优赌，下鞅）if $X_n \leq \mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right)$ for all $n P$－a．s．<br>
+（2）$\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－supermartingale（劣赌，上鞅）if $X_n \geq \mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right)$ for all $n P$－a．s．<br>
+<strong>Remark.</strong> 鞅既是上鞅也是下鞅。</p>
+<p><strong>Theorem 2.39(构造下鞅).</strong> Let $\left(X_n, \mathcal{F}_n\right)$ be a submartingale and let $\varphi$ be an increasing convex function defined on $\mathbb{R}$. If $\varphi\left(X_n\right)$ is integrable for all $n$, then $\left(\varphi\left(X_n\right)\right)$ is a submartingale w.r.t. $\mathcal{F}_n$.</p>
+<h3 id="鞅变换和doob分解">鞅变换和Doob分解
+</h3><p><strong>Definition 2.45（可预测过程）.</strong> If $M_n \in \mathcal{F}_{n-1}$ for all $n$, we say that the stochastic process $\left(M_n\right)$ is an $\left(\mathcal{F}_n\right)$-<strong>predictable process</strong>.</p>
+<p><strong>Definition 2.46(鞅变换).</strong><br>
+(1) Let $\left(X_n, \mathcal{F}_n\right)$ be a stochastic process and let $M=\left(M_n, \mathcal{F}_{n-1}\right)$<br>
+be a predictable process, then the stochastic process
+$$
+(M \cdot X)_n=M_0 X_0+\sum_{i=1}^n M_i\left(X_i-X_{i-1}\right)
+$$
+is called the <strong>transform</strong> of $X$ by $M$.<br>
+(2) If, in addition, $X$ is a martingale, we say that $M \cdot X$ is a <strong>martingale transform</strong>.<br>
+<strong>Remark.</strong> 若 $M_n$ 可积分，则上述变换是鞅变换。</p>
+<p><strong>Definition 2.48（增长过程）.</strong> A sequence of random variables $\left(Z_n\right)$ is called an <strong>increasing process</strong> if<br>
+(1) $Z_1=0$ and $Z_n \leq Z_{n+1}$ for all $n \geq 1$.<br>
+(2) $\mathbb{E}\left(Z_n\right)&lt;\infty$ for all $n$.<br></p>
+<p><strong>Theorem 2.50 (Doob decomposition).</strong> Any <strong>submartingale</strong> $\left(X_n, \mathcal{F}_n\right)$ can be written as
+$$
+X_n=Y_n+Z_n,
+$$
+where $\left(Y_n, \mathcal{F}_n\right)$ is a <strong>martingale</strong> and $\left(Z_n\right)$ is an <strong>increasing predictable process</strong>.<br>
+<strong>Remark.</strong> 下鞅可以分解为增长过程和鞅，这也是符合直觉的定理。值得注意的是，这种分解是唯一的。</p>
+<h3 id="停时">停时
+</h3>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/note/">Note</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+<footer class="article-footer">
+    <section>
+        Page views:<span id="busuanzi_value_page_pv">Loading</span>
+    </section>
+</footer>
+
+
+    
+        
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
+    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
+    crossorigin="anonymous"
+/>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+    onload="
+    window.addEventListener('DOMContentLoaded', function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: true}
+            ]
+        });
+    });
+"></script>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|课题组讨论班</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|信息论</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/cover.png" loading="lazy" data-key="" data-hash="/post_file/数理统计/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|数理统计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e9%ab%98%e7%ad%89%e4%bb%a3%e6%95%b0/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/高等代数/cover.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|高等代数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/bayesian-signal-processing/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/Bayesian_signal_processing/cover.png" loading="lazy" data-key="" data-hash="/post_file/Bayesian_signal_processing/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bayesian signal processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Haitong&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script>
+<script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+<script defer src="https://cn.vercount.one/js"></script>
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(http://localhost:1313/icons/backTop.svg);
+    }
+</style>
+
+
+<style>
+    #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+
+    </body>
+</html>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+
