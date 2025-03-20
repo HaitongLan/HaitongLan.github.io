@@ -11,7 +11,7 @@
 <meta property='og:description' content="复旦大学谢启鸿老师高等代数学课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-18T19:51:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-20T21:23:00&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
 <meta name="twitter:title" content="学习笔记|高等代数">
 <meta name="twitter:description" content="复旦大学谢启鸿老师高等代数学课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/cover.jpg' />
@@ -151,7 +151,13 @@
         <li><a href="#极小多项式与-cayley-hamilton-定理">极小多项式与 Cayley-Hamilton 定理</a></li>
       </ol>
     </li>
-    <li><a href="#第七章-相似标准型">第七章 相似标准型</a></li>
+    <li><a href="#第七章-相似标准型">第七章 相似标准型</a>
+      <ol>
+        <li><a href="#多项式矩阵">多项式矩阵</a></li>
+        <li><a href="#矩阵的法式以及不变因子">矩阵的法式以及不变因子</a></li>
+        <li><a href="#有理标准型">有理标准型</a></li>
+      </ol>
+    </li>
     <li><a href="#第八章-二次型">第八章 二次型</a></li>
     <li><a href="#第九章-内积空间">第九章 内积空间</a></li>
     <li><a href="#第十章-双线性型">第十章 双线性型</a></li>
@@ -235,7 +241,7 @@
 
 
                 <time class="article-time--reading">
-                    51 minute read
+                    57 minute read
                 </time>
             </div>
         
@@ -1471,8 +1477,25 @@ $$
 注意 $p \mid \mathrm{C}_p^i(1 \leq i \leq p-1), p$ 不能整除首项系数 $1, p^2$ 不能整除 $\mathrm{C}_p^{p-1}=p$ ，因此，上述关于 $y$ 的多项式在有理数域上不可约，从而 $f(x)$ 在有理数域上也不可约．<br>
 <strong>注.</strong> 用Eisenstein判别法时，上述 $x=y+c$ 是常见的变换方法，该变换方式保持可约性，证明非常简单，这里省去。</p>
 <h3 id="多元多项式以及对称多项式">多元多项式以及对称多项式
-</h3><h3 id="结式和判别式">结式和判别式
-</h3><h2 id="第六章-特征值">第六章 特征值
+</h3><p>对称多项式即多元多项式的一种，任意对换两个不同的未定元的位置，多项式保持不变。</p>
+<p>在对称多项式中，有一类基本的多项式，称为初等对称多项式．它们是这样定义的：</p>
+<p>$$
+\begin{aligned}
+&amp; \sigma_1=x_1+x_2+\cdots+x_n=\sum_{i=1}^n x_i \\
+&amp; \sigma_2=x_1 x_2+x_1 x_3+\cdots+x_{n-1} x_n=\sum_{1 \leq i&lt;j \leq n} x_i x_j, \\
+&amp; \cdots \cdots \cdots \cdots \cdots \\
+&amp; \sigma_n=x_1 x_2 \cdots x_n
+\end{aligned}
+$$
+这 $n$ 个多项式称为 $n$ 元初等对称多项式．初等对称多项式之所以重要，是因为我们有下列定理。</p>
+<p><strong>定理 1(对称多项式基本定理).</strong> 设 $f\left(x_1, x_2, \cdots, x_n\right)$ 是数域 $\mathbb{K}$ 上的对称多项式，则必存在 $\mathbb{K}$ 上唯一的一个多项式 $g\left(y_1, y_2, \cdots, y_n\right)$ ，使
+$$
+f\left(x_1, x_2, \cdots, x_n\right)=g\left(\sigma_1, \sigma_2, \cdots, \sigma_n\right)
+$$</p>
+<p>另外一个非常重要的定理就是Newton公式，以后有时间补上。</p>
+<h3 id="结式和判别式">结式和判别式
+</h3><p>可以构造一种特殊的行列式，将多项式有无公共根问题转化为多项式的求解问题，并且发展出多项式的判别式理论，当判别式为0时，多项式有重根。</p>
+<h2 id="第六章-特征值">第六章 特征值
 </h2><h3 id="特征值和特征向量">特征值和特征向量
 </h3><p>我们之前曾经提出过一个问题，可不可以选取一组合适的基底，使得线性映射在该基底下的表示矩阵更加简单，现在考虑线性映射对应的矩阵为对角阵的情形。</p>
 <p>这里不加推导的说明，当表示矩阵为对角阵时，我们很方便确定线性映射的核空间和像空间，并且矩阵对于某些向量的乘积就是简单的数乘，给出以下定义：</p>
@@ -1516,7 +1539,8 @@ $$
 <p><strong>命题 7</strong> 由定理6可以由如下推论：<br>
 （1）设 $n$ 阶矩阵 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n, f(x)$ 是一个多项式，则 $f(\boldsymbol{A})$ 的全部特征值为 $f\left(\lambda_1\right), f\left(\lambda_2\right), \cdots, f\left(\lambda_n\right)$ ．<br>
 （2）设 $n$ 阶矩阵 $\boldsymbol{A}$ 适合 个多项式 $g(x)$ ，即 $g(\boldsymbol{A})=O$ ，则 $\boldsymbol{A}$ 的任一特征值 $\lambda_0$ 也必适合 $g(x)$ ，即 $g\left(\lambda_0\right)=0$ ．<br>
-（3） 设 $n$ 阶矩阵 $\boldsymbol{A}$ 是可逆阵，且 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，则 $A^{-1}$ 的全部特征值为 $\lambda_1^{-1}, \lambda_2^{-1}, \cdots, \lambda_n^{-1}$ ．</p>
+（3） 设 $n$ 阶矩阵 $\boldsymbol{A}$ 是可逆阵，且 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，则 $A^{-1}$ 的全部特征值为 $\lambda_1^{-1}, \lambda_2^{-1}, \cdots, \lambda_n^{-1}$ ．<br>
+<strong>注.</strong> 这些推论尤为重要，在后续的计算和证明中起到很大的作用，特别是（1）和（2）.</p>
 <h3 id="对角化">对角化
 </h3><p>我们已经够知道任意一个矩阵都复相似于上三角矩阵，那什么样的矩阵相似于一个对角阵？对于可以找到一组基，使得线性变换 $\varphi$ 的表示矩阵为对角阵，则称该<strong>线性变换$\varphi$可对角化</strong>，该描述等价于方阵相似于对角阵。</p>
 <p><strong>定理 1（充要条件一）.</strong> $\varphi$ 可对角化 $\iff \varphi$ 有 $n$ 个线性无关的特征向量。</p>
@@ -1559,7 +1583,64 @@ $$</p>
 <strong>注.</strong> 由这些推论，若 $A$ 具有 $n$ 个不同的特征值，则极小多项式就是特征多项式；事实上，若 $A$ 可对角化，极小多项式是特征多项式的退化形式（所有的重根变为单根）。该反命题将在下一章说明：极小多项式没有重根$\iff$矩阵可以对角化。</p>
 <p>如何求得极小多项式，还得等到下一章完全解答。</p>
 <h2 id="第七章-相似标准型">第七章 相似标准型
-</h2><h2 id="第八章-二次型">第八章 二次型
+</h2><p>如果说秩是矩阵相抵关系中的全系不变量（可以理解为充要条件：秩相同，必然相抵；相抵，必然秩相同），有了秩，就可以作为判断相抵关系的一个充要条件，那么相似关系的充要条件是什么呢，值得注意的是，相似的矩阵有相同的特征多项式，但是有相同特征多项式的矩阵并不是相似的，特征多项式只是相似不变量，并不是相似关系的全系不变量，同样的，极小多项式也只是相似不变量。</p>
+<p>本章节将从寻找矩阵相似的全系不变量出发，构造出矩阵的相似标准型。</p>
+<h3 id="多项式矩阵">多项式矩阵
+</h3><p>上一章节中我们发现，矩阵的特征矩阵 $\lambda I - A$ 可以构造出特征多项式，有着特殊的意义，我们自然会想，该特征多项式是否蕴含着一种全系不变量，为了深入探讨这点，在本小节中我们先引入多项式矩阵的概念，用来描述特征多项式。</p>
+<p>相似是一种特殊的相抵关系，所以通过相抵关系来寻找相似的全系不变量也是情理之中的。</p>
+<p>本小节需要定义 $\lambda-$矩阵，也是多项式矩阵，故名思意，矩阵里面的每个元素都是多项式，我们同样可以定义 $\lambda-$矩阵的初等变换，第一类（交换）和第二类（数乘非0常数）初等变换都和正常的矩阵一致，对于第三类初等变换，变为了乘多项式 $f(\lambda)$ 加到其他一行（列）上，若两个多项式矩阵可以通过有限次初等变换后相等，则称二者<strong>相抵</strong>。</p>
+<p>同样可以定义多项式矩阵的逆阵，该定义也是符合直觉的，即乘积等于 $I_n$(数值矩阵)，值得注意的是，普通矩阵的一些性质在未经过证明前不可以直接套用过来，例如矩阵可逆$\iff$满秩，对于多项式矩阵来说，矩阵满秩仍然可逆有矩阵不可逆。</p>
+<p>我们还可以由其他的视角看多项式矩阵，即矩阵多项式，将 $\lambda$ 提出来，矩阵作为系数，通过该思想可以证明如下定理，也是本小节的主定理：</p>
+<p><strong>定理 1(“相似即相抵”).</strong> 矩阵相似$\iff$特征矩阵相抵。<br>
+<strong>注.</strong> 这是在本章节讨论的第一个等价关系，该定理其实是来之不易的，详细推导还需要证明很多的引理，不过引理都是为了定理服务的，我们直接阐述该定理即可。</p>
+<h3 id="矩阵的法式以及不变因子">矩阵的法式以及不变因子
+</h3><p>我们自然希望将多项式矩阵研究的更加透彻，透彻到足以得到让我们满足的 $\lambda I-A$ 矩阵的一些性质，根据我们在学习矩阵时的思想，自然会想找到其相抵标准型。</p>
+<p><strong>定理 1（相抵标准型）.</strong> 设 $\boldsymbol{A}(\lambda)$ 是一个 $n$ 阶 $\lambda$－矩阵，则 $\boldsymbol{A}(\lambda)$ 相抵于对角阵
+$$
+\operatorname{diag}\left\{d_1(\lambda), d_2(\lambda), \cdots, d_r(\lambda) ; 0, \cdots, 0\right\}
+$$
+其中 $d_i(\lambda)$ 是非零首一多项式且 $d_i(\lambda) \mid d_{i+1}(\lambda)(i=1,2, \cdots, r-1)$ ．<br>
+<strong>注.</strong> 该定理中的对角阵即为多项式矩阵的法式或相抵标准型，其中 $r$ 为多项式矩阵的秩，对于长方阵也是可以定义的，与上述描述一致，但是我们引入多项式矩阵只是想解决相似标准型的问题，相似标准型又是针对线性变换而言的，所以这里更侧重于方阵。</p>
+<p><strong>定理 2(多项式矩阵可逆的等价条件).</strong> $A(\lambda)$ 为 $n$ 阶 $\lambda-$阵，以下五个条件等价：<br>
+（1）$A(\lambda)$ 可逆<br>
+（2）$|A(\lambda)|$ 为非零常数<br>
+（3）$A(\lambda)$ 的相抵标准型为 $I_n$<br>
+（4）$A(\lambda)$ 只通过初等行变换，或者只通过初等列变换就可以得到 $I_n$<br>
+（5）$A(\lambda)$ 可以写为初等矩阵的乘积<br>
+<strong>注.</strong> 注意第（2）条和数值矩阵不同，这里强调非零常数，是因为要使得其不包含未定元 $\lambda$.</p>
+<p><strong>推论 3(特征多项式的相抵标准型).</strong> 设 $\boldsymbol{A}$ 是数域 $\mathbb{K}$ 上的 $n$ 阶矩阵，则 $\boldsymbol{A}$ 的特征矩阵 $\lambda I_n-\boldsymbol{A}$ 必相抵于
+$$
+\operatorname{diag}\left\{1, \cdots, 1, d_1(\lambda), \cdots, d_m(\lambda)\right\}
+$$
+其中 $d_i(\lambda) \mid d_{i+1}(\lambda)(i=1,2, \cdots, m-1)$ ．<br>
+<strong>注.</strong> 该定理最重要的一点是特征矩阵必然相抵于一个满秩多项式矩阵；但是我们可以发现，这里非常强调 $1$ 在相抵标准型中的地位，是因为有以下情况存在：</p>
+<ul>
+<li>若相抵标准型中的所有元素的次数（多项式未定元次数） $\deg d_i(\lambda)\geq 1$,则 $A$ 必然为纯量阵！</li>
+</ul>
+<p>纯量矩阵是易于研究的，我们如此强调 $1$ 的地位，就是为了对一般的矩阵进行讨论。</p>
+<hr>
+<p><strong>特征矩阵的相抵标准型的计算方法</strong>：</p>
+<ol>
+<li>将全部元素中次数最低的元素放置在第一行第一列，目标将第一行第一列除了该元素以外的元素消去：若最低次数元素为常数，直接可以消去其他元素；若最低次数元素为多项式，利用多项式的余数定理，余数多项式的次数必然小于除数，则可以用该次数最低的多项式作为除数，去处以其他的同行同列元素，以达到在同行同列元素中出现次数更小的元素的目的，再将此元素放在首位，直至出现非零常数。</li>
+<li>对第一行第一列消去之后，再对降低阶数后的 $n-1$ 阶矩阵进行处理，循环利用上述步骤，直到达到相抵标准型。</li>
+</ol>
+<hr>
+<p>基于上述我们对特征多项式矩阵的所有研究，现在来引入一个相似关系下的全系不变量（下面的叙述与书中的顺序不同，只会介绍最重要的东西，而忽视其中的引理和一些定义）。</p>
+<p>我们已经知道了矩阵相似$\iff$特征矩阵相抵，如果能找到特征矩阵相抵关系的全系不变量，就相当于找到了矩阵相似的全系不变量。</p>
+<p><strong>定义 4（不变因子）.</strong> 多项式矩阵的相抵标准型中对角线位置上的非零元素被称为多项式矩阵的不变因子，即 $d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda)$.<br>
+<strong>注.</strong> 书中的定义与该定义不同，但是容易验证两者为等价定义，该定义更方便我们去理解不变因子组的本质。</p>
+<p><strong>定理 5(全系不变量).</strong> 我们并不非常严格的说明一个定理，而是用以下语句来描述：<br></p>
+<ol>
+<li>相抵的 $\lambda-$矩阵有相同的不变因子.<br></li>
+<li>不变因子相同的多项式矩阵必然相抵，加上第一条即：多项式矩阵的相抵标准型（法式）和不变因子组<strong>唯一确定</strong>。<br></li>
+<li>多项式矩阵相抵$\iff$其相抵标准型一致$\iff$其不变因子组一致</li>
+</ol>
+<p>有了全系不变量和之前叙述的充要条件，我们很容易得到如下定理：</p>
+<p><strong>定理 6（充要条件）.</strong> 矩阵相似$\iff$特征矩阵相抵$\iff$特征矩阵具有相同的不变因子。</p>
+<p>因为引入多项式矩阵本身就是为了处理相似问题，所以直接将 $\lambda I-A$ 的不变因子称为 $A$ 的不变因子。</p>
+<h3 id="有理标准型">有理标准型
+</h3><p>我们在之前的章节中得到了一个全系不变量，现在我们将使用该全系不变量构造一个相对简单的矩阵，并与给定的矩阵满足相似关系。</p>
+<h2 id="第八章-二次型">第八章 二次型
 </h2><h2 id="第九章-内积空间">第九章 内积空间
 </h2><h2 id="第十章-双线性型">第十章 双线性型
 </h2>
@@ -1597,7 +1678,7 @@ $$</p>
 
 
         <span>
-            Last updated on Mar 18, 2025 19:51 CST
+            Last updated on Mar 20, 2025 21:23 CST
         </span>
     </section></footer>
 

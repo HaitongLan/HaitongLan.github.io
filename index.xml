@@ -244,9 +244,99 @@ $$
 where $\left(Y_n, \mathcal{F}_n\right)$ is a &lt;strong&gt;martingale&lt;/strong&gt; and $\left(Z_n\right)$ is an &lt;strong&gt;increasing predictable process&lt;/strong&gt;.&lt;br&gt;
 &lt;strong&gt;Remark.&lt;/strong&gt; 下鞅可以分解为增长过程和鞅，这也是符合直觉的定理。值得注意的是，这种分解是唯一的。&lt;/p&gt;
 &lt;h3 id=&#34;停时&#34;&gt;停时
-&lt;/h3&gt;&lt;h2 id=&#34;随机过程&#34;&gt;随机过程
-&lt;/h2&gt;&lt;h2 id=&#34;连续鞅&#34;&gt;连续鞅
-&lt;/h2&gt;</description>
+&lt;/h3&gt;&lt;p&gt;Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}&lt;em&gt;t\right)&lt;/em&gt;{t=0,1,2, \ldots, T}$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 5.1(停时).&lt;/strong&gt; A random variable $\tau: \Omega \longrightarrow{0,1,2, \ldots, T} \cup{+\infty}$ is called a stopping time with respect to $\mathbb{F}$ if
+$$
+{\tau=t} \in \mathcal{F}_t
+$$
+for all $t$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 可见，停时是一个随机变量，引入停时就是因为我们想描述截止到事件发生时间的信息量，注意，该定义是离散时间的停时，我们在后续章节会定义连续时间的停时。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 5.4（停时生成的$\sigma$代数）.&lt;/strong&gt; Let $\tau$ be a stopping time, then
+$$
+\mathcal{F}_\tau:=\left\{A \in \mathcal{F}: A \cap\{\tau \leq t\} \in \mathcal{F}_t \text { for all } t \leq T\right\}
+$$
+is called the $\sigma$-algebra of events determined prior to the stopping time $\tau$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 具体的例子可以在课程的讲义上找，这里用一种直观的方式说明：该 $\sigma$代数是使得截止到当前停止时间能获得的最细分的 $\sigma$代数，即我们在停时时刻能得到的最大信息量（由我们在条件期望章节的直观：$\sigma$代数就是信息量，就是将空间进行划分，这种定义可以基于现有的观测，将空间分的最细）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 5.7（停时诱导的随机变量）.&lt;/strong&gt; Let $\tau$ be a stopping time, then the random variable
+$$
+X_\tau(\omega):=X_{\tau(\omega)}(\omega)
+$$
+is $\mathcal{F}_\tau$-measurable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 5.8（停时过程）.&lt;/strong&gt; For a stochastic process $X=\left(X_t\right)_{0 \leq t \leq T}$ and a stopping time $\tau$, the stopped process $X^\tau=\left(X_t^\tau\right)_{0 \leq t \leq T}$ is defined by
+$$
+X_t^\tau=X_{\tau \wedge t}:= \begin{cases}X_\tau, &amp;amp; \text { if } \tau \leq t \\ X_t, &amp;amp; \text { if } \tau&amp;gt;t\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 5.9(停时鞅).&lt;/strong&gt; Let $M$ be an adapted process with $M_t \in L^1(\mathbb{Q})$ for each $t$. Then the following statements are equivalent.&lt;br&gt;
+(1) $M$ is a $\mathbb{Q}$-martingale;&lt;br&gt;
+(2) For any stopping time $\tau$, the stopped process $M_{\tau \wedge t}$ is a $\mathbb{Q}$-martingale;&lt;br&gt;
+(3) $\mathbb{E}_{\mathbb{Q}}\left[M_{\tau \wedge t}\right]=M_0$ for any stopping time $\tau$.&lt;/p&gt;
+&lt;h2 id=&#34;连续鞅&#34;&gt;连续鞅
+&lt;/h2&gt;&lt;p&gt;从离散时间随机过程到连续时间随机过程发生了非常大的跳跃，最主要是因为域流 $\mathcal{F}_t$ 的理解变得困难，我们无法举出一些很好的例子，只能沿用从离散观点带来的直觉。&lt;/p&gt;
+&lt;h3 id=&#34;连续时间随机过程&#34;&gt;连续时间随机过程
+&lt;/h3&gt;&lt;p&gt;Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $I \subset[0, \infty)$ be an interval．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 7．1（随机过程）．&lt;/strong&gt; A real－valued stochastic process $X=\left(X_t\right)_{t \in I}$ is a family of random variables $\left(X_t: t \in I\right)$ on $(\Omega, \mathcal{F})$ ．
+．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 7.2 (经典解释方法：二元函数).&lt;/strong&gt;（1）We may regard the stochastic process $X$ as a function of two variables
+$$
+\begin{aligned}
+X: I \times \Omega &amp;amp; \longrightarrow \mathbb{R} \\
+(t, \omega) &amp;amp; \longmapsto X_t(\omega)
+\end{aligned}
+$$
+（2）For fixed $\omega \in \Omega$ ，then
+$$
+t \longmapsto X_t(\omega)
+$$
+is a function：$I \longrightarrow \mathbb{R}$ ，which is called a &lt;strong&gt;path&lt;/strong&gt; of $X$ ．&lt;br&gt;
+（3）For fixed $t \in I$ ，then
+$$
+\omega \longmapsto X_t(\omega)
+$$
+is a function：$\Omega \longrightarrow \mathbb{R}$ ，which is a &lt;strong&gt;random variable&lt;/strong&gt;．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 7．3（usual condition）．&lt;/strong&gt;（1）A filtration $\mathbb{F}=\left(\mathcal{F}_t\right)_{t \in I}$ is a family of $\sigma$－algebras satisfying
+$$
+\mathcal{F}_s \subseteq \mathcal{F}_t
+$$
+for all $s, t \in I$ with $s \leq t$ ．&lt;br&gt;
+（2）A filtration is called right－continuous if
+$$
+\mathcal{F}_t=\mathcal{F}_{t+}:=\bigcap_{s&amp;gt;t} \mathcal{F}_s
+$$
+（3）The $\sigma$－algebra $\mathcal{F}$ is complete if $A \in \mathcal{F}$ with $\mathbb{P}(A)=0$ and $B \subset A$ implies $B \in \mathcal{F}$ ． （$A$ 可测，则 $A$ 的子集可测，完备性描述了我们可以由事件的概率得到最大的信息，可以与统计学或者其他学科中的完备性类比，信息张满了整个空间）&lt;br&gt;
+（4）The filtration $\mathbb{F}$ is complete if $\mathcal{F}$ is complete and every null set in $\mathcal{F}$ is contained in $\mathcal{F}_t$ for all $t \in I\left(\right.$ or contained in $\left.\mathcal{F}_0\right) .$&lt;br&gt;
+（5） $\mathbb{F}$ is said to satisfy the &lt;strong&gt;usual condition&lt;/strong&gt; if $\mathbb{F}$ is right－continuous and complete．（这是一种非常好的性质，在该性质下，可以避免很多由于零测集所带来的异常）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 7.4(适应，可测，渐进可测).&lt;/strong&gt;
+(1) The stochastic process $X$ is &lt;strong&gt;adapted&lt;/strong&gt; to $\mathbb{F}$ if, for each $t \geq 0$, $X_t$ is $\mathcal{F}_t$-measurable.&lt;br&gt;
+(2) The stochastic process $X$ is called &lt;strong&gt;measurable&lt;/strong&gt; if the mapping
+$$
+\begin{aligned}
+([0, \infty) \times \Omega, \mathcal{B}([0, \infty)) \otimes \mathcal{F}) &amp;amp; \longrightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R})) \\
+(t, \omega) &amp;amp; \longmapsto X_t(\omega)
+\end{aligned}
+$$
+is measurable, i.e., for each $A \in \mathcal{B}$, the set
+$$
+\left\{(t, \omega): X_t(\omega) \in A\right\} \in \mathcal{B}([0, \infty)) \otimes \mathcal{F}
+$$
+(3) The stochastic process $X$ is called &lt;strong&gt;progressively measurable&lt;/strong&gt; with respect to $\mathbb{F}$ if
+$$
+\begin{aligned}
+\left([0, t] \times \Omega, \mathcal{B}([0, t]) \otimes \mathcal{F}_t\right) &amp;amp; \longrightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R})) \\
+(s, \omega) &amp;amp; \longmapsto X_s(\omega)
+\end{aligned}
+$$
+is measurable for all $t \geq 0$, i.e., for each $t \geq 0, A \in \mathcal{B}(\mathbb{R})$, the set
+$$
+\left\{(s, \omega): 0 \leq s \leq t, \omega \in \Omega, X_s(\omega) \in A\right\} \in \mathcal{B}([0, t]) \otimes \mathcal{F}
+$$
+&lt;strong&gt;Remark.&lt;/strong&gt; 尽管直观看起来渐进可测的时间被限制了，但是适应+可测=渐进可测。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 7.6（停时）.&lt;/strong&gt; A random variable $T: \Omega \longrightarrow I \cup{\infty}$ is called a stopping time with respect to $\mathbb{F}$ if
+$$
+\{T \leq t\} \in \mathcal{F}_t, \quad \text { for all } t \in I
+$$&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 该定义是包含离散情况的停时定义的，实际上，在离散情况下，这两者等价。&lt;/p&gt;
+&lt;p&gt;剩下的就是定义停时生成的 $\sigma-$代数 $\mathcal{F}_T$，这一点的定义与离散情况下的一致，我们也只能借用离散型的直观去想象该 $\sigma-$代数：即到达时间 $T$ 所能获得的最细分（最多的）信息量。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>学习笔记|课题组讨论班</title>
@@ -2561,8 +2651,25 @@ $$
 注意 $p \mid \mathrm{C}_p^i(1 \leq i \leq p-1), p$ 不能整除首项系数 $1, p^2$ 不能整除 $\mathrm{C}_p^{p-1}=p$ ，因此，上述关于 $y$ 的多项式在有理数域上不可约，从而 $f(x)$ 在有理数域上也不可约．&lt;br&gt;
 &lt;strong&gt;注.&lt;/strong&gt; 用Eisenstein判别法时，上述 $x=y+c$ 是常见的变换方法，该变换方式保持可约性，证明非常简单，这里省去。&lt;/p&gt;
 &lt;h3 id=&#34;多元多项式以及对称多项式&#34;&gt;多元多项式以及对称多项式
-&lt;/h3&gt;&lt;h3 id=&#34;结式和判别式&#34;&gt;结式和判别式
-&lt;/h3&gt;&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
+&lt;/h3&gt;&lt;p&gt;对称多项式即多元多项式的一种，任意对换两个不同的未定元的位置，多项式保持不变。&lt;/p&gt;
+&lt;p&gt;在对称多项式中，有一类基本的多项式，称为初等对称多项式．它们是这样定义的：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp; \sigma_1=x_1+x_2+\cdots+x_n=\sum_{i=1}^n x_i \\
+&amp;amp; \sigma_2=x_1 x_2+x_1 x_3+\cdots+x_{n-1} x_n=\sum_{1 \leq i&amp;lt;j \leq n} x_i x_j, \\
+&amp;amp; \cdots \cdots \cdots \cdots \cdots \\
+&amp;amp; \sigma_n=x_1 x_2 \cdots x_n
+\end{aligned}
+$$
+这 $n$ 个多项式称为 $n$ 元初等对称多项式．初等对称多项式之所以重要，是因为我们有下列定理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1(对称多项式基本定理).&lt;/strong&gt; 设 $f\left(x_1, x_2, \cdots, x_n\right)$ 是数域 $\mathbb{K}$ 上的对称多项式，则必存在 $\mathbb{K}$ 上唯一的一个多项式 $g\left(y_1, y_2, \cdots, y_n\right)$ ，使
+$$
+f\left(x_1, x_2, \cdots, x_n\right)=g\left(\sigma_1, \sigma_2, \cdots, \sigma_n\right)
+$$&lt;/p&gt;
+&lt;p&gt;另外一个非常重要的定理就是Newton公式，以后有时间补上。&lt;/p&gt;
+&lt;h3 id=&#34;结式和判别式&#34;&gt;结式和判别式
+&lt;/h3&gt;&lt;p&gt;可以构造一种特殊的行列式，将多项式有无公共根问题转化为多项式的求解问题，并且发展出多项式的判别式理论，当判别式为0时，多项式有重根。&lt;/p&gt;
+&lt;h2 id=&#34;第六章-特征值&#34;&gt;第六章 特征值
 &lt;/h2&gt;&lt;h3 id=&#34;特征值和特征向量&#34;&gt;特征值和特征向量
 &lt;/h3&gt;&lt;p&gt;我们之前曾经提出过一个问题，可不可以选取一组合适的基底，使得线性映射在该基底下的表示矩阵更加简单，现在考虑线性映射对应的矩阵为对角阵的情形。&lt;/p&gt;
 &lt;p&gt;这里不加推导的说明，当表示矩阵为对角阵时，我们很方便确定线性映射的核空间和像空间，并且矩阵对于某些向量的乘积就是简单的数乘，给出以下定义：&lt;/p&gt;
@@ -2606,7 +2713,8 @@ $$
 &lt;p&gt;&lt;strong&gt;命题 7&lt;/strong&gt; 由定理6可以由如下推论：&lt;br&gt;
 （1）设 $n$ 阶矩阵 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n, f(x)$ 是一个多项式，则 $f(\boldsymbol{A})$ 的全部特征值为 $f\left(\lambda_1\right), f\left(\lambda_2\right), \cdots, f\left(\lambda_n\right)$ ．&lt;br&gt;
 （2）设 $n$ 阶矩阵 $\boldsymbol{A}$ 适合 个多项式 $g(x)$ ，即 $g(\boldsymbol{A})=O$ ，则 $\boldsymbol{A}$ 的任一特征值 $\lambda_0$ 也必适合 $g(x)$ ，即 $g\left(\lambda_0\right)=0$ ．&lt;br&gt;
-（3） 设 $n$ 阶矩阵 $\boldsymbol{A}$ 是可逆阵，且 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，则 $A^{-1}$ 的全部特征值为 $\lambda_1^{-1}, \lambda_2^{-1}, \cdots, \lambda_n^{-1}$ ．&lt;/p&gt;
+（3） 设 $n$ 阶矩阵 $\boldsymbol{A}$ 是可逆阵，且 $\boldsymbol{A}$ 的全部特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，则 $A^{-1}$ 的全部特征值为 $\lambda_1^{-1}, \lambda_2^{-1}, \cdots, \lambda_n^{-1}$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这些推论尤为重要，在后续的计算和证明中起到很大的作用，特别是（1）和（2）.&lt;/p&gt;
 &lt;h3 id=&#34;对角化&#34;&gt;对角化
 &lt;/h3&gt;&lt;p&gt;我们已经够知道任意一个矩阵都复相似于上三角矩阵，那什么样的矩阵相似于一个对角阵？对于可以找到一组基，使得线性变换 $\varphi$ 的表示矩阵为对角阵，则称该&lt;strong&gt;线性变换$\varphi$可对角化&lt;/strong&gt;，该描述等价于方阵相似于对角阵。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 1（充要条件一）.&lt;/strong&gt; $\varphi$ 可对角化 $\iff \varphi$ 有 $n$ 个线性无关的特征向量。&lt;/p&gt;
@@ -2649,7 +2757,64 @@ $$&lt;/p&gt;
 &lt;strong&gt;注.&lt;/strong&gt; 由这些推论，若 $A$ 具有 $n$ 个不同的特征值，则极小多项式就是特征多项式；事实上，若 $A$ 可对角化，极小多项式是特征多项式的退化形式（所有的重根变为单根）。该反命题将在下一章说明：极小多项式没有重根$\iff$矩阵可以对角化。&lt;/p&gt;
 &lt;p&gt;如何求得极小多项式，还得等到下一章完全解答。&lt;/p&gt;
 &lt;h2 id=&#34;第七章-相似标准型&#34;&gt;第七章 相似标准型
-&lt;/h2&gt;&lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
+&lt;/h2&gt;&lt;p&gt;如果说秩是矩阵相抵关系中的全系不变量（可以理解为充要条件：秩相同，必然相抵；相抵，必然秩相同），有了秩，就可以作为判断相抵关系的一个充要条件，那么相似关系的充要条件是什么呢，值得注意的是，相似的矩阵有相同的特征多项式，但是有相同特征多项式的矩阵并不是相似的，特征多项式只是相似不变量，并不是相似关系的全系不变量，同样的，极小多项式也只是相似不变量。&lt;/p&gt;
+&lt;p&gt;本章节将从寻找矩阵相似的全系不变量出发，构造出矩阵的相似标准型。&lt;/p&gt;
+&lt;h3 id=&#34;多项式矩阵&#34;&gt;多项式矩阵
+&lt;/h3&gt;&lt;p&gt;上一章节中我们发现，矩阵的特征矩阵 $\lambda I - A$ 可以构造出特征多项式，有着特殊的意义，我们自然会想，该特征多项式是否蕴含着一种全系不变量，为了深入探讨这点，在本小节中我们先引入多项式矩阵的概念，用来描述特征多项式。&lt;/p&gt;
+&lt;p&gt;相似是一种特殊的相抵关系，所以通过相抵关系来寻找相似的全系不变量也是情理之中的。&lt;/p&gt;
+&lt;p&gt;本小节需要定义 $\lambda-$矩阵，也是多项式矩阵，故名思意，矩阵里面的每个元素都是多项式，我们同样可以定义 $\lambda-$矩阵的初等变换，第一类（交换）和第二类（数乘非0常数）初等变换都和正常的矩阵一致，对于第三类初等变换，变为了乘多项式 $f(\lambda)$ 加到其他一行（列）上，若两个多项式矩阵可以通过有限次初等变换后相等，则称二者&lt;strong&gt;相抵&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;同样可以定义多项式矩阵的逆阵，该定义也是符合直觉的，即乘积等于 $I_n$(数值矩阵)，值得注意的是，普通矩阵的一些性质在未经过证明前不可以直接套用过来，例如矩阵可逆$\iff$满秩，对于多项式矩阵来说，矩阵满秩仍然可逆有矩阵不可逆。&lt;/p&gt;
+&lt;p&gt;我们还可以由其他的视角看多项式矩阵，即矩阵多项式，将 $\lambda$ 提出来，矩阵作为系数，通过该思想可以证明如下定理，也是本小节的主定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1(“相似即相抵”).&lt;/strong&gt; 矩阵相似$\iff$特征矩阵相抵。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这是在本章节讨论的第一个等价关系，该定理其实是来之不易的，详细推导还需要证明很多的引理，不过引理都是为了定理服务的，我们直接阐述该定理即可。&lt;/p&gt;
+&lt;h3 id=&#34;矩阵的法式以及不变因子&#34;&gt;矩阵的法式以及不变因子
+&lt;/h3&gt;&lt;p&gt;我们自然希望将多项式矩阵研究的更加透彻，透彻到足以得到让我们满足的 $\lambda I-A$ 矩阵的一些性质，根据我们在学习矩阵时的思想，自然会想找到其相抵标准型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（相抵标准型）.&lt;/strong&gt; 设 $\boldsymbol{A}(\lambda)$ 是一个 $n$ 阶 $\lambda$－矩阵，则 $\boldsymbol{A}(\lambda)$ 相抵于对角阵
+$$
+\operatorname{diag}\left\{d_1(\lambda), d_2(\lambda), \cdots, d_r(\lambda) ; 0, \cdots, 0\right\}
+$$
+其中 $d_i(\lambda)$ 是非零首一多项式且 $d_i(\lambda) \mid d_{i+1}(\lambda)(i=1,2, \cdots, r-1)$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理中的对角阵即为多项式矩阵的法式或相抵标准型，其中 $r$ 为多项式矩阵的秩，对于长方阵也是可以定义的，与上述描述一致，但是我们引入多项式矩阵只是想解决相似标准型的问题，相似标准型又是针对线性变换而言的，所以这里更侧重于方阵。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2(多项式矩阵可逆的等价条件).&lt;/strong&gt; $A(\lambda)$ 为 $n$ 阶 $\lambda-$阵，以下五个条件等价：&lt;br&gt;
+（1）$A(\lambda)$ 可逆&lt;br&gt;
+（2）$|A(\lambda)|$ 为非零常数&lt;br&gt;
+（3）$A(\lambda)$ 的相抵标准型为 $I_n$&lt;br&gt;
+（4）$A(\lambda)$ 只通过初等行变换，或者只通过初等列变换就可以得到 $I_n$&lt;br&gt;
+（5）$A(\lambda)$ 可以写为初等矩阵的乘积&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 注意第（2）条和数值矩阵不同，这里强调非零常数，是因为要使得其不包含未定元 $\lambda$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 3(特征多项式的相抵标准型).&lt;/strong&gt; 设 $\boldsymbol{A}$ 是数域 $\mathbb{K}$ 上的 $n$ 阶矩阵，则 $\boldsymbol{A}$ 的特征矩阵 $\lambda I_n-\boldsymbol{A}$ 必相抵于
+$$
+\operatorname{diag}\left\{1, \cdots, 1, d_1(\lambda), \cdots, d_m(\lambda)\right\}
+$$
+其中 $d_i(\lambda) \mid d_{i+1}(\lambda)(i=1,2, \cdots, m-1)$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理最重要的一点是特征矩阵必然相抵于一个满秩多项式矩阵；但是我们可以发现，这里非常强调 $1$ 在相抵标准型中的地位，是因为有以下情况存在：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若相抵标准型中的所有元素的次数（多项式未定元次数） $\deg d_i(\lambda)\geq 1$,则 $A$ 必然为纯量阵！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;纯量矩阵是易于研究的，我们如此强调 $1$ 的地位，就是为了对一般的矩阵进行讨论。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;特征矩阵的相抵标准型的计算方法&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将全部元素中次数最低的元素放置在第一行第一列，目标将第一行第一列除了该元素以外的元素消去：若最低次数元素为常数，直接可以消去其他元素；若最低次数元素为多项式，利用多项式的余数定理，余数多项式的次数必然小于除数，则可以用该次数最低的多项式作为除数，去处以其他的同行同列元素，以达到在同行同列元素中出现次数更小的元素的目的，再将此元素放在首位，直至出现非零常数。&lt;/li&gt;
+&lt;li&gt;对第一行第一列消去之后，再对降低阶数后的 $n-1$ 阶矩阵进行处理，循环利用上述步骤，直到达到相抵标准型。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;基于上述我们对特征多项式矩阵的所有研究，现在来引入一个相似关系下的全系不变量（下面的叙述与书中的顺序不同，只会介绍最重要的东西，而忽视其中的引理和一些定义）。&lt;/p&gt;
+&lt;p&gt;我们已经知道了矩阵相似$\iff$特征矩阵相抵，如果能找到特征矩阵相抵关系的全系不变量，就相当于找到了矩阵相似的全系不变量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4（不变因子）.&lt;/strong&gt; 多项式矩阵的相抵标准型中对角线位置上的非零元素被称为多项式矩阵的不变因子，即 $d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda)$.&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 书中的定义与该定义不同，但是容易验证两者为等价定义，该定义更方便我们去理解不变因子组的本质。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5(全系不变量).&lt;/strong&gt; 我们并不非常严格的说明一个定理，而是用以下语句来描述：&lt;br&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;相抵的 $\lambda-$矩阵有相同的不变因子.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;不变因子相同的多项式矩阵必然相抵，加上第一条即：多项式矩阵的相抵标准型（法式）和不变因子组&lt;strong&gt;唯一确定&lt;/strong&gt;。&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;多项式矩阵相抵$\iff$其相抵标准型一致$\iff$其不变因子组一致&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有了全系不变量和之前叙述的充要条件，我们很容易得到如下定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 6（充要条件）.&lt;/strong&gt; 矩阵相似$\iff$特征矩阵相抵$\iff$特征矩阵具有相同的不变因子。&lt;/p&gt;
+&lt;p&gt;因为引入多项式矩阵本身就是为了处理相似问题，所以直接将 $\lambda I-A$ 的不变因子称为 $A$ 的不变因子。&lt;/p&gt;
+&lt;h3 id=&#34;有理标准型&#34;&gt;有理标准型
+&lt;/h3&gt;&lt;p&gt;我们在之前的章节中得到了一个全系不变量，现在我们将使用该全系不变量构造一个相对简单的矩阵，并与给定的矩阵满足相似关系。&lt;/p&gt;
+&lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
 &lt;/h2&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
 &lt;/h2&gt;&lt;h2 id=&#34;第十章-双线性型&#34;&gt;第十章 双线性型
 &lt;/h2&gt;</description>

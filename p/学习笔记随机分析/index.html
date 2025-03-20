@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-20T22:18:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
 <meta name="twitter:title" content="学习笔记|随机分析">
 <meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
@@ -116,8 +116,11 @@
         <li><a href="#停时">停时</a></li>
       </ol>
     </li>
-    <li><a href="#随机过程">随机过程</a></li>
-    <li><a href="#连续鞅">连续鞅</a></li>
+    <li><a href="#连续鞅">连续鞅</a>
+      <ol>
+        <li><a href="#连续时间随机过程">连续时间随机过程</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -198,7 +201,7 @@
 
 
                 <time class="article-time--reading">
-                    8 minute read
+                    11 minute read
                 </time>
             </div>
         
@@ -444,9 +447,99 @@ $$
 where $\left(Y_n, \mathcal{F}_n\right)$ is a <strong>martingale</strong> and $\left(Z_n\right)$ is an <strong>increasing predictable process</strong>.<br>
 <strong>Remark.</strong> 下鞅可以分解为增长过程和鞅，这也是符合直觉的定理。值得注意的是，这种分解是唯一的。</p>
 <h3 id="停时">停时
-</h3><h2 id="随机过程">随机过程
-</h2><h2 id="连续鞅">连续鞅
-</h2>
+</h3><p>Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}<em>t\right)</em>{t=0,1,2, \ldots, T}$.</p>
+<p><strong>Definition 5.1(停时).</strong> A random variable $\tau: \Omega \longrightarrow{0,1,2, \ldots, T} \cup{+\infty}$ is called a stopping time with respect to $\mathbb{F}$ if
+$$
+{\tau=t} \in \mathcal{F}_t
+$$
+for all $t$.<br>
+<strong>Remark.</strong> 可见，停时是一个随机变量，引入停时就是因为我们想描述截止到事件发生时间的信息量，注意，该定义是离散时间的停时，我们在后续章节会定义连续时间的停时。</p>
+<p><strong>Definition 5.4（停时生成的$\sigma$代数）.</strong> Let $\tau$ be a stopping time, then
+$$
+\mathcal{F}_\tau:=\left\{A \in \mathcal{F}: A \cap\{\tau \leq t\} \in \mathcal{F}_t \text { for all } t \leq T\right\}
+$$
+is called the $\sigma$-algebra of events determined prior to the stopping time $\tau$.<br>
+<strong>Remark.</strong> 具体的例子可以在课程的讲义上找，这里用一种直观的方式说明：该 $\sigma$代数是使得截止到当前停止时间能获得的最细分的 $\sigma$代数，即我们在停时时刻能得到的最大信息量（由我们在条件期望章节的直观：$\sigma$代数就是信息量，就是将空间进行划分，这种定义可以基于现有的观测，将空间分的最细）。</p>
+<p><strong>Lemma 5.7（停时诱导的随机变量）.</strong> Let $\tau$ be a stopping time, then the random variable
+$$
+X_\tau(\omega):=X_{\tau(\omega)}(\omega)
+$$
+is $\mathcal{F}_\tau$-measurable.</p>
+<p><strong>Definition 5.8（停时过程）.</strong> For a stochastic process $X=\left(X_t\right)_{0 \leq t \leq T}$ and a stopping time $\tau$, the stopped process $X^\tau=\left(X_t^\tau\right)_{0 \leq t \leq T}$ is defined by
+$$
+X_t^\tau=X_{\tau \wedge t}:= \begin{cases}X_\tau, &amp; \text { if } \tau \leq t \\ X_t, &amp; \text { if } \tau&gt;t\end{cases}
+$$</p>
+<p><strong>Theorem 5.9(停时鞅).</strong> Let $M$ be an adapted process with $M_t \in L^1(\mathbb{Q})$ for each $t$. Then the following statements are equivalent.<br>
+(1) $M$ is a $\mathbb{Q}$-martingale;<br>
+(2) For any stopping time $\tau$, the stopped process $M_{\tau \wedge t}$ is a $\mathbb{Q}$-martingale;<br>
+(3) $\mathbb{E}_{\mathbb{Q}}\left[M_{\tau \wedge t}\right]=M_0$ for any stopping time $\tau$.</p>
+<h2 id="连续鞅">连续鞅
+</h2><p>从离散时间随机过程到连续时间随机过程发生了非常大的跳跃，最主要是因为域流 $\mathcal{F}_t$ 的理解变得困难，我们无法举出一些很好的例子，只能沿用从离散观点带来的直觉。</p>
+<h3 id="连续时间随机过程">连续时间随机过程
+</h3><p>Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $I \subset[0, \infty)$ be an interval．</p>
+<p><strong>Definition 7．1（随机过程）．</strong> A real－valued stochastic process $X=\left(X_t\right)_{t \in I}$ is a family of random variables $\left(X_t: t \in I\right)$ on $(\Omega, \mathcal{F})$ ．
+．</p>
+<p><strong>Remark 7.2 (经典解释方法：二元函数).</strong>（1）We may regard the stochastic process $X$ as a function of two variables
+$$
+\begin{aligned}
+X: I \times \Omega &amp; \longrightarrow \mathbb{R} \\
+(t, \omega) &amp; \longmapsto X_t(\omega)
+\end{aligned}
+$$
+（2）For fixed $\omega \in \Omega$ ，then
+$$
+t \longmapsto X_t(\omega)
+$$
+is a function：$I \longrightarrow \mathbb{R}$ ，which is called a <strong>path</strong> of $X$ ．<br>
+（3）For fixed $t \in I$ ，then
+$$
+\omega \longmapsto X_t(\omega)
+$$
+is a function：$\Omega \longrightarrow \mathbb{R}$ ，which is a <strong>random variable</strong>．</p>
+<p><strong>Definition 7．3（usual condition）．</strong>（1）A filtration $\mathbb{F}=\left(\mathcal{F}_t\right)_{t \in I}$ is a family of $\sigma$－algebras satisfying
+$$
+\mathcal{F}_s \subseteq \mathcal{F}_t
+$$
+for all $s, t \in I$ with $s \leq t$ ．<br>
+（2）A filtration is called right－continuous if
+$$
+\mathcal{F}_t=\mathcal{F}_{t+}:=\bigcap_{s&gt;t} \mathcal{F}_s
+$$
+（3）The $\sigma$－algebra $\mathcal{F}$ is complete if $A \in \mathcal{F}$ with $\mathbb{P}(A)=0$ and $B \subset A$ implies $B \in \mathcal{F}$ ． （$A$ 可测，则 $A$ 的子集可测，完备性描述了我们可以由事件的概率得到最大的信息，可以与统计学或者其他学科中的完备性类比，信息张满了整个空间）<br>
+（4）The filtration $\mathbb{F}$ is complete if $\mathcal{F}$ is complete and every null set in $\mathcal{F}$ is contained in $\mathcal{F}_t$ for all $t \in I\left(\right.$ or contained in $\left.\mathcal{F}_0\right) .$<br>
+（5） $\mathbb{F}$ is said to satisfy the <strong>usual condition</strong> if $\mathbb{F}$ is right－continuous and complete．（这是一种非常好的性质，在该性质下，可以避免很多由于零测集所带来的异常）</p>
+<p><strong>Definition 7.4(适应，可测，渐进可测).</strong>
+(1) The stochastic process $X$ is <strong>adapted</strong> to $\mathbb{F}$ if, for each $t \geq 0$, $X_t$ is $\mathcal{F}_t$-measurable.<br>
+(2) The stochastic process $X$ is called <strong>measurable</strong> if the mapping
+$$
+\begin{aligned}
+([0, \infty) \times \Omega, \mathcal{B}([0, \infty)) \otimes \mathcal{F}) &amp; \longrightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R})) \\
+(t, \omega) &amp; \longmapsto X_t(\omega)
+\end{aligned}
+$$
+is measurable, i.e., for each $A \in \mathcal{B}$, the set
+$$
+\left\{(t, \omega): X_t(\omega) \in A\right\} \in \mathcal{B}([0, \infty)) \otimes \mathcal{F}
+$$
+(3) The stochastic process $X$ is called <strong>progressively measurable</strong> with respect to $\mathbb{F}$ if
+$$
+\begin{aligned}
+\left([0, t] \times \Omega, \mathcal{B}([0, t]) \otimes \mathcal{F}_t\right) &amp; \longrightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R})) \\
+(s, \omega) &amp; \longmapsto X_s(\omega)
+\end{aligned}
+$$
+is measurable for all $t \geq 0$, i.e., for each $t \geq 0, A \in \mathcal{B}(\mathbb{R})$, the set
+$$
+\left\{(s, \omega): 0 \leq s \leq t, \omega \in \Omega, X_s(\omega) \in A\right\} \in \mathcal{B}([0, t]) \otimes \mathcal{F}
+$$
+<strong>Remark.</strong> 尽管直观看起来渐进可测的时间被限制了，但是适应+可测=渐进可测。</p>
+<p><strong>Definition 7.6（停时）.</strong> A random variable $T: \Omega \longrightarrow I \cup{\infty}$ is called a stopping time with respect to $\mathbb{F}$ if
+$$
+\{T \leq t\} \in \mathcal{F}_t, \quad \text { for all } t \in I
+$$<br>
+<strong>Remark.</strong> 该定义是包含离散情况的停时定义的，实际上，在离散情况下，这两者等价。</p>
+<p>剩下的就是定义停时生成的 $\sigma-$代数 $\mathcal{F}_T$，这一点的定义与离散情况下的一致，我们也只能借用离散型的直观去想象该 $\sigma-$代数：即到达时间 $T$ 所能获得的最细分（最多的）信息量。</p>
+
 </section>
 
 
@@ -471,7 +564,19 @@ where $\left(Y_n, \mathcal{F}_n\right)$ is a <strong>martingale</strong> and $\l
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Mar 20, 2025 22:18 CST
+        </span>
+    </section></footer>
 
 <footer class="article-footer">
     <section>
