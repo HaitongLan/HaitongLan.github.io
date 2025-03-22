@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-20T22:18:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-22T22:18:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
 <meta name="twitter:title" content="学习笔记|随机分析">
 <meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
@@ -116,9 +116,25 @@
         <li><a href="#停时">停时</a></li>
       </ol>
     </li>
+    <li><a href="#连续时间随机过程">连续时间随机过程</a>
+      <ol>
+        <li><a href="#随机过程">随机过程</a></li>
+        <li><a href="#一致收敛一致可积">一致收敛，一致可积</a></li>
+      </ol>
+    </li>
     <li><a href="#连续鞅">连续鞅</a>
       <ol>
-        <li><a href="#连续时间随机过程">连续时间随机过程</a></li>
+        <li><a href="#鞅与局部鞅">鞅与局部鞅</a></li>
+        <li><a href="#doob-mayer-decoposition">Doob-Mayer decoposition</a></li>
+        <li><a href="#半鞅">半鞅</a></li>
+      </ol>
+    </li>
+    <li><a href="#布朗运动">布朗运动</a>
+      <ol>
+        <li><a href="#从随机游走到布朗运动">从随机游走到布朗运动</a></li>
+        <li><a href="#布朗运动的样本轨道">布朗运动的样本轨道</a></li>
+        <li><a href="#指数鞅">指数鞅</a></li>
+        <li><a href="#高维布朗运动">高维布朗运动</a></li>
       </ol>
     </li>
   </ol>
@@ -201,7 +217,7 @@
 
 
                 <time class="article-time--reading">
-                    11 minute read
+                    16 minute read
                 </time>
             </div>
         
@@ -473,9 +489,9 @@ $$</p>
 (1) $M$ is a $\mathbb{Q}$-martingale;<br>
 (2) For any stopping time $\tau$, the stopped process $M_{\tau \wedge t}$ is a $\mathbb{Q}$-martingale;<br>
 (3) $\mathbb{E}_{\mathbb{Q}}\left[M_{\tau \wedge t}\right]=M_0$ for any stopping time $\tau$.</p>
-<h2 id="连续鞅">连续鞅
+<h2 id="连续时间随机过程">连续时间随机过程
 </h2><p>从离散时间随机过程到连续时间随机过程发生了非常大的跳跃，最主要是因为域流 $\mathcal{F}_t$ 的理解变得困难，我们无法举出一些很好的例子，只能沿用从离散观点带来的直觉。</p>
-<h3 id="连续时间随机过程">连续时间随机过程
+<h3 id="随机过程">随机过程
 </h3><p>Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $I \subset[0, \infty)$ be an interval．</p>
 <p><strong>Definition 7．1（随机过程）．</strong> A real－valued stochastic process $X=\left(X_t\right)_{t \in I}$ is a family of random variables $\left(X_t: t \in I\right)$ on $(\Omega, \mathcal{F})$ ．
 ．</p>
@@ -539,7 +555,123 @@ $$
 $$<br>
 <strong>Remark.</strong> 该定义是包含离散情况的停时定义的，实际上，在离散情况下，这两者等价。</p>
 <p>剩下的就是定义停时生成的 $\sigma-$代数 $\mathcal{F}_T$，这一点的定义与离散情况下的一致，我们也只能借用离散型的直观去想象该 $\sigma-$代数：即到达时间 $T$ 所能获得的最细分（最多的）信息量。</p>
-
+<h3 id="一致收敛一致可积">一致收敛，一致可积
+</h3><p><strong>Definition B．4（一致收敛）.</strong> $\left(f_n\right)$ is said to <strong>converge uniformly</strong> to $f$ on A ，if for all $\varepsilon&gt;0$ ，there exists an $N=N(\varepsilon)&gt;0$（independent of x），such that for $n \geq N$ ，
+$$
+\left|f_n(x)-f(x)\right|&lt;\varepsilon
+$$
+for every $x \in A$ ．<br>
+<strong>Remark.</strong> 若 $N$ 是与 $x$ 有关的，则为逐点收敛，没有像一致收敛一样比较好的性质。一致收敛反应了集合 $A$ 内的所有点都以一样的速度收敛到某函数，而不是有的收敛很快，有的收敛很慢。</p>
+<p><strong>Def B.7（等价定义）.</strong> $f_n \longrightarrow f$ uniformly on $A$, if and only if
+$$
+\sup_{x \in A}\left|f_n(x)-f(x)\right| \longrightarrow 0 \quad \text { as } n \longrightarrow \infty
+$$
+<strong>Remark.</strong> 该等价定义或许比上述定义更加好用，因为该定义直观的反应了收敛到0的速度相当的一致，不会出现有的数已经收敛到了0，有的数还没有。</p>
+<p>为什么想定义一致收敛呢，就是因为我们像利用如下性质：</p>
+<p><strong>Theorem B.9（一致收敛的性质）.</strong> Assume $f_n \longrightarrow f$ uniformly on $\Omega$.<br>
+(1) If each $f_n$ is <strong>continuous</strong> at $c \in \Omega$, then $f$ is <strong>continuous</strong> at $c$. This implies that if $\left(f_n\right)$ is a sequence of continuous function, its limit function $f$ is continuous.
+Furthermore, if $c$ is an accumulation point, then
+$$
+\lim_{x \rightarrow c} \lim_{n \rightarrow \infty} f_n(x)=\lim_{n \rightarrow \infty} \lim_{x \rightarrow c} f_n(x) .
+$$
+(2) If each $f_n$ is integrable on $(\Omega, \mathcal{F}, \mathbb{P}), f$ is also integrable and
+$$
+\int_{\Omega} \lim_{n \rightarrow \infty} f_n d \mathbb{P}=\lim_{n \rightarrow \infty} \int_{\Omega} f_n d \mathbb{P} .
+$$</p>
+<p>我们会在以后的学习中碰到多次一致可积：</p>
+<p><strong>Definition 7．13（一致可积）.</strong> A family of random variables $\left(Y_\alpha\right)_{\alpha \in \Lambda}$ is called uniformly integrable （u．i．）if
+$$
+\lim_{c \rightarrow \infty} \sup_{\alpha \in \Lambda} \int_{\left\{\left|Y_\alpha\right|&gt;c\right\}}\left|Y_\alpha\right| d \mathbb{P}=0
+$$
+<strong>Remark.</strong> 直观的理解该定义，该定义反映了一组随机变量序列积分收敛的情况相当的一致，还可以理解为，这组随机变量的分布没有重尾性质，重尾分布反应了一种不可积分的形态。</p>
+<p>我们可以给出一致可积的等价定义,可以从中看出绝对值可积只是一致可积的一个条件：</p>
+<p><strong>Def 7.14(等价定义).</strong> $\left(Y_\alpha\right)_{\alpha \in \Lambda}$ is uniformly integrable if and only if it satisfies the following two conditions:<br>
+(i) $\sup_{\alpha \in \Lambda} \mathbb{E}\left|Y_\alpha\right|&lt;\infty$;<br>
+(ii) For all $\varepsilon&gt;0$, there exists $\delta=\delta(\varepsilon)&gt;0$ such that for $E \in \mathcal{F}$,
+$$
+\int_E\left|Y_\alpha\right| d \mathbb{P}&lt;\varepsilon, \quad \text { for all } \alpha \in \Lambda
+$$
+whenever $\mathbb{P}(E)&lt;\delta$.</p>
+<p>我们今后谈论的随机过程大多数都是一致可积的，例如 $Z\in L^1(\mathbb{P})$,则 $\{\mathbb{E}[Z\mid \mathcal{g}],\mathcal{g}\in \mathcal{F}\}$ 一致可积。</p>
+<h2 id="连续鞅">连续鞅
+</h2><h3 id="鞅与局部鞅">鞅与局部鞅
+</h3><p><strong>Definition 7.16（鞅）.</strong> (1) A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a martingale (with respect to $\mathbb{P}$ and $\mathbb{F}$ ) if<br>
+(a) $X_t \in L^1(\mathbb{P})$ for all $t \geq 0$;<br>
+(b) $X$ is adapted;<br>
+(c) For $0 \leq s \leq t&lt;\infty$,<br>
+$$
+\mathbb{E}\left[X_t \mid \mathcal{F}_s\right]=X_s, \quad \mathbb{P} \text {-a.s. }
+$$
+<strong>Remark.</strong> 上鞅和下鞅的定义与离散鞅一致。</p>
+<p><strong>Theorem 7.18 (Optional Stopping Theorem，可选停时定理、可选采样定理).</strong><br>
+Let $X=\left(X_t\right)$ be a <strong>right-continuous, uniformly integrable martingale</strong> and let $S$ and $T$ be stopping times with $S \leq T$, then $X_S, X_T \in L^1(\mathbb{P})$ and
+$$
+\mathbb{E}\left[X_T \mid \mathcal{F}_S\right]=X_S, \quad \mathbb{P}-\text { a.s. }
+$$
+<strong>Remark.</strong> 将该定理应用到停时过程上（$\min\{T,t\}$必然是一个停时），则满足条件的鞅的停时也是鞅。</p>
+<p>鞅具有很好的性质，我们想用鞅描述更多的随机过程，首先我们就要反思鞅的本质到底是什么，平赌便是一个很好的说明，即鞅在下一时刻的变化量应该不会特别大，那么对于一般的随机过程，我们是否可以通过对时间的限制（对于增量大的区域，将时间限制在之前，阻止增量发生），使其变为一个鞅呢，下方的定义告诉我们这种方式是存在的：</p>
+<p><strong>Definition 7.24（局部鞅）.</strong> An <strong>adapted, right-continuous</strong> stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a local martingale, if there exists a sequence of <strong>stopping times</strong> $\left(T_n\right)$ with $T_n \uparrow \infty$ $\mathbb{P}$-a.s. such that the stopped process
+$$
+X^{T_n} I_{\left\{T_n&gt;0\right\}}=\left(X_{t \wedge T_n} I_{\left\{T_n&gt;0\right\}}\right)_{t \geq 0}
+$$
+is a (uniformly integrable) martingale with respect to $\left(\mathcal{F}_t\right)$.</p>
+<p>所有鞅都是停时鞅，这是显然的，那么满足什么条件的停时鞅才是鞅呢？</p>
+<p><strong>Thm 7.28(停时鞅何时为鞅).</strong> A local martingale with
+$$
+\sup_{0 \leq r \leq t}\left|X_r\right| \in L^1(\mathbb{P})
+$$
+for all $t \geq 0$, is a martingale.<br>
+<strong>Remark.</strong> 这也符合我们的直觉，一个随机变量绝对可积，也正意味着其变化量不会特别大，如果一个停时鞅满足这点，也可以通过控制收敛定理证明其是鞅。</p>
+<h3 id="doob-mayer-decoposition">Doob-Mayer decoposition
+</h3><p>在离散情况的Doob分解中，我们用到了可预测的概念，对于连续的情况我们需要重新定义可预测这一概念。</p>
+<p><strong>Definition 7.30（可预测）.</strong> Let $\bar{\Omega}=\Omega \times(0, \infty)$.<br>
+(1) $\mathcal{P}$ is called a previsible $\sigma$-algebra if it is <strong>generated</strong> by all <strong>left-continuous, adapted</strong> process on $\bar{\Omega}$.<br>
+(2) A stochastic process $X$ is called <strong>previsible</strong> if $X$ is <strong>measurable</strong> with respect to a previsible $\sigma$-algebra $\mathcal{P}$ over $\bar{\Omega}$.<br>
+<strong>Remark.</strong> （1）该定理需要细细品味，其实也是符合直观的，只有通过定义 $\sigma$代数才能完全的说明可预测这一点，因为并不是所有的随机过程轨道都是左连续的。<br>
+（2）If $\mathbb{F}$ satisfies the usual condition, every previsible process is adapted to $\left(\mathcal{F}_{t-}\right)$.</p>
+<p><strong>Theorem 7.34 (Doob-Meyer decomposition).</strong> Let $X=\left(X_t\right)_{t \geq 0}$ be a <strong>right-continuous supermartingale</strong> and the collection of random variables
+$\left\{X_T: T\right.$ is a stopping time with $\left.\mathbb{P}(T&lt;\infty)=1\right\}$
+is uniformly integrable. Then $X$ admits a <strong>unique</strong> decomposition
+$$
+X_t=X_0+M_t-A_t
+$$
+where $M$ is a <strong>right-continuous, uniformly integrable martingale</strong> with $M_0=0$ and $A$ is an <strong>increasing, right-continuous, previsible</strong> process with $A_0=0$.</p>
+<p>连续Doob分解虽然与离散情况类似，但是因为其条件太多，也容易让人困扰，我们主要想用Doob分解的一条推论来自然的引出随机过程的二次变差：</p>
+<p>先说明一个Notation，若 $\mathcal{M}^2$ 是所有满足 $\sup_{t \geq 0} \mathbb{E}\left[M_t^2\right]&lt;\infty$的鞅的集合（另外还有right-continuous, left-limit exists-RCLL条件）,则 $\mathcal{M}_0^2=\left\{M \in \mathcal{M}^2: M_0=0\right\}$ ;</p>
+<p><strong>Corollary 7.35（预见过程就是二次变差）.</strong> Let $M \in \mathcal{M}^2$ be right-continuous. Then there exists a unique right continuous previsible process
+$\langle M\rangle=\left(\langle M\rangle_t\right)_{t \geq 0}$ with $\langle M\rangle_0=0$ such that the process $M^2-$ $\langle M\rangle$ is a martingale.<br>
+<strong>Remark.</strong> 定理中提到的 $\langle M\rangle_t$ 正是 $M_t$ 二次变差过程，可见，不严谨的说，上鞅 $-$ 二次变差 = 鞅，一般通过鞅加凸函数的方法构造上鞅，即 $f(X_t)$,这样便可以通过一些手段求得 $X_t$ 的二次变差。</p>
+<p>对于为什么叫做二次变差，我们先看下面的定理：</p>
+<p><strong>Thm 7.37(二次变差等价定义).</strong> Let $M \in \mathcal{M}^{2, c}$. For partition $\Pi$ of $[0, t]$, set
+$$
+|\Pi|:=\max_{1 \leq k \leq m}\left|t_k-t_{k-1}\right|,
+$$
+we have
+$$
+\lim _{|\Pi| \rightarrow 0} \sum_{k=1}^m\left|M_{t_k}-M_{t_{k-1}}\right|^2=\langle M\rangle_t \quad \text { in probability }
+$$
+<strong>Remark.</strong> 大部分的随机分析教材都将该定义作为二阶变差的定义，可以发现，该定义和正常微积分中的定义就类似起来，他表述了一个函数变化的平方之和，值得注意的是，若函数的 $n$ 阶变差有限，则 所有小于 $n$ 的变差为 $\infty$.</p>
+<p>使用上述定理的等价定义也可以拓展二阶变差的定义，不一定非要在一个二次可积的鞅上进行二阶变差的构造，而是对所有的随机过程都可以，我们先按照Doob分解的方式定义协变差，再去探讨二次变差的性质,作者这里采取了一种更自洽的定义方式，与讲义中不同，可能会不够严谨（忽略了可积以及连续的描述）：</p>
+<p><strong>Def(cross variation or quadratic covariation).</strong> 随机过程 $M_t,N_t\in \mathcal{M}^2$,则 $M_tN_t-&lt;M,N&gt;_t$ 是一个鞅，$&lt;M,N&gt;_t$ 为 $M_t,N_t$ 的协变差。</p>
+<p>这样定义的好处是我们可以更自然的推导出讲义中的定义，而不是直接的下一个不明所以的定义再去解释:
+$(M_t+N_t)^2-\langle M+N\langle_t$ 应该是一个鞅，展开计算可以得到 $\langle M+N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t+2\langle M, N\rangle_{t}$,同理 $\langle M-N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t-2\langle M, N\rangle_{t}$,将二者联立便可以求得其等价定义：</p>
+<p><strong>Definition 7.38（协变差）.</strong> Let $M, N \in \mathcal{M}^2$. Then the process
+$$
+\langle M, N\rangle:=\frac{1}{4}(\langle M+N\rangle-\langle M-N\rangle)
+$$
+is called a cross variation (or quadratic covariation) of $M$ and $N$.</p>
+<p><strong>Properties 7．39(二次变差的性质)．</strong><br>
+（1）$\langle M, M\rangle_t=\langle M\rangle_t$ ．<br>
+（2） $\lim _{|\Pi| \rightarrow 0} \sum_{k=1}^m\left(M_{t_k}-M_{t_{k-1}}\right)\left(N_{t_k}-N_{t_{k-1}}\right)=\langle M, N\rangle_t$ in probability．<br>
+（3）$c$ 为常数，则 $\langle cM \rangle_t = c^2\langle M\rangle_t$(可以利用杜布分解的推论证明)<br>
+（4）$M_t,N_t$ 独立，则 $\langle M,N \rangle_t = 0$.</p>
+<h3 id="半鞅">半鞅
+</h3><h2 id="布朗运动">布朗运动
+</h2><h3 id="从随机游走到布朗运动">从随机游走到布朗运动
+</h3><h3 id="布朗运动的样本轨道">布朗运动的样本轨道
+</h3><h3 id="指数鞅">指数鞅
+</h3><h3 id="高维布朗运动">高维布朗运动
+</h3>
 </section>
 
 
@@ -574,7 +706,7 @@ $$<br>
 
 
         <span>
-            Last updated on Mar 20, 2025 22:18 CST
+            Last updated on Mar 22, 2025 22:18 CST
         </span>
     </section></footer>
 
