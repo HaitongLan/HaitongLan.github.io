@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-22T22:18:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-23T20:12:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
 <meta name="twitter:title" content="学习笔记|随机分析">
 <meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
@@ -217,7 +217,7 @@
 
 
                 <time class="article-time--reading">
-                    16 minute read
+                    20 minute read
                 </time>
             </div>
         
@@ -640,7 +640,7 @@ where $M$ is a <strong>right-continuous, uniformly integrable martingale</strong
 <p>先说明一个Notation，若 $\mathcal{M}^2$ 是所有满足 $\sup_{t \geq 0} \mathbb{E}\left[M_t^2\right]&lt;\infty$的鞅的集合（另外还有right-continuous, left-limit exists-RCLL条件）,则 $\mathcal{M}_0^2=\left\{M \in \mathcal{M}^2: M_0=0\right\}$ ;</p>
 <p><strong>Corollary 7.35（预见过程就是二次变差）.</strong> Let $M \in \mathcal{M}^2$ be right-continuous. Then there exists a unique right continuous previsible process
 $\langle M\rangle=\left(\langle M\rangle_t\right)_{t \geq 0}$ with $\langle M\rangle_0=0$ such that the process $M^2-$ $\langle M\rangle$ is a martingale.<br>
-<strong>Remark.</strong> 定理中提到的 $\langle M\rangle_t$ 正是 $M_t$ 二次变差过程，可见，不严谨的说，上鞅 $-$ 二次变差 = 鞅，一般通过鞅加凸函数的方法构造上鞅，即 $f(X_t)$,这样便可以通过一些手段求得 $X_t$ 的二次变差。</p>
+<strong>Remark.</strong> 定理中提到的 $\langle M\rangle_t$ 正是 $M_t$ 二次变差过程，可见，不严谨的说，下鞅 $-$ 二次变差 = 鞅，一般通过鞅加凸函数的方法构造下鞅，即 $f(X_t)$,这样便可以通过一些手段求得 $X_t$ 的二次变差。</p>
 <p>对于为什么叫做二次变差，我们先看下面的定理：</p>
 <p><strong>Thm 7.37(二次变差等价定义).</strong> Let $M \in \mathcal{M}^{2, c}$. For partition $\Pi$ of $[0, t]$, set
 $$
@@ -654,7 +654,7 @@ $$
 <p>使用上述定理的等价定义也可以拓展二阶变差的定义，不一定非要在一个二次可积的鞅上进行二阶变差的构造，而是对所有的随机过程都可以，我们先按照Doob分解的方式定义协变差，再去探讨二次变差的性质,作者这里采取了一种更自洽的定义方式，与讲义中不同，可能会不够严谨（忽略了可积以及连续的描述）：</p>
 <p><strong>Def(cross variation or quadratic covariation).</strong> 随机过程 $M_t,N_t\in \mathcal{M}^2$,则 $M_tN_t-&lt;M,N&gt;_t$ 是一个鞅，$&lt;M,N&gt;_t$ 为 $M_t,N_t$ 的协变差。</p>
 <p>这样定义的好处是我们可以更自然的推导出讲义中的定义，而不是直接的下一个不明所以的定义再去解释:
-$(M_t+N_t)^2-\langle M+N\langle_t$ 应该是一个鞅，展开计算可以得到 $\langle M+N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t+2\langle M, N\rangle_{t}$,同理 $\langle M-N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t-2\langle M, N\rangle_{t}$,将二者联立便可以求得其等价定义：</p>
+$(M_t+N_t)^2-\langle M+N\rangle_t$ 应该是一个鞅，展开计算可以得到 $\langle M+N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t+2\langle M, N\rangle_{t}$,同理 $\langle M-N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t-2\langle M, N\rangle_{t}$,将二者联立便可以求得其等价定义：</p>
 <p><strong>Definition 7.38（协变差）.</strong> Let $M, N \in \mathcal{M}^2$. Then the process
 $$
 \langle M, N\rangle:=\frac{1}{4}(\langle M+N\rangle-\langle M-N\rangle)
@@ -666,12 +666,117 @@ is called a cross variation (or quadratic covariation) of $M$ and $N$.</p>
 （3）$c$ 为常数，则 $\langle cM \rangle_t = c^2\langle M\rangle_t$(可以利用杜布分解的推论证明)<br>
 （4）$M_t,N_t$ 独立，则 $\langle M,N \rangle_t = 0$.</p>
 <h3 id="半鞅">半鞅
-</h3><h2 id="布朗运动">布朗运动
+</h3><p>在定义随即微积分的时候，我们会用到半鞅的概念，该概念是对鞅和局部鞅的进一步推广。</p>
+<p><strong>Definition 7.40（半鞅）.</strong> A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a <strong>semimartingale (半鞅)</strong> if $X$ is an adapted process with the decomposition
+$$
+X_t=X_0+M_t+A_t
+$$
+where $\left(M_t\right)$ is a local martingale with $M_0=0$ and $\left(A_t\right)$ is an adapted, RCLL process of bounded variation.<br>
+<strong>Remark.</strong> 若 $X$ 连续，半鞅分解唯一。</p>
+<p>对于半鞅的具体例子我们需要在随机微分方程里去做介绍，现在先介绍一个关于半鞅的定理，通过该定理可以得到一个比较有意思的推论。</p>
+<p><strong>Lemma 7.42（连续有界变差鞅是常数）.</strong> A continuous local martingale of bounded variation is constant $\mathbb{P}$-a.s.</p>
+<p><strong>Remark 7.43(连续非常数鞅必然无界变差).</strong> A continuous non-constant local martingale is not of bounded variation.</p>
+<p>布朗运动是连续非常数鞅，其没有有界变差，所以是不可以对布朗运动定义黎曼积分的，正因为如此，我们需要在后续章节引入随即微积分。</p>
+<h2 id="布朗运动">布朗运动
 </h2><h3 id="从随机游走到布朗运动">从随机游走到布朗运动
-</h3><h3 id="布朗运动的样本轨道">布朗运动的样本轨道
-</h3><h3 id="指数鞅">指数鞅
-</h3><h3 id="高维布朗运动">高维布朗运动
-</h3>
+</h3><p>$X_t$ 是以 $\frac{1}{2}$ 的概率取 $\{1,-1\}$ 的随机变量。</p>
+<p><strong>Definition 8.1（随机游走）.</strong> Define
+$$
+\begin{aligned}
+&amp; M_0=0 \\
+&amp; M_k=\sum_{i=1}^k X_i, \quad k=1,2,3, \cdots
+\end{aligned}
+$$
+The process $\left(M_k\right)_{k \geq 0}$ is a <strong>symmetric random walk</strong>.<br></p>
+<p>我们希望构造一个连续的随机过程，那么就需要对该随机游走过程的时间进行压缩，将抛硬币的时间变得无限短，而且也要对抛硬币的权重进行压缩，否则在时间压缩下将会使得其数值累计到无穷。</p>
+<p><strong>Definition 8.5(缩放随机游走).</strong> Fixed a positive integer $n$, define the <strong>scaled symmetric random walk</strong>,
+$$
+W_t^{(n)}=\frac{1}{\sqrt{n}} M_{n t}
+$$
+Provided $n t$ is an integer. If $n t \notin \mathbb{N}$, define $W_t^{(n)}$ by linear interpolation.</p>
+<p>非常容易验证，该随机过程有独立增量，是一个鞅，从0开始，并且由于CLT的作用，使得任意独立增量都服从正态分布。</p>
+<p>这种使用随机游走去逼近布朗运动可以提供给我们直觉，方便我们定义想要去构造的布朗运动，尽管布朗运动的构造方法有很多种，我们提供一种最常用的：</p>
+<p><strong>Definition 8.8（布朗运动）.</strong> A stochastic process $W=\left(W_t\right)_{t \geq 0}$ is called a standard Brownian motion (BM) if<br>
+(1) $W_0=0 \mathbb{P}$-a.s.<br>
+(2) $\left(W_t\right)$ has independent increments, i.e., for $0 \leq t_1 \leq t_2 \leq \cdots \leq t_m$,<br>
+$$
+W_{t_1}, W_{t_2}-W_{t_1}, W_{t_3}-W_{t_2}, \ldots, W_{t_m}-W_{t_{m-1}}
+$$
+are independent<br>
+(3) For $0 \leq s&lt;t, W_t-W_s \sim \mathcal{N}(0, t-s)$.<br>
+(4) The  sample path is continuous<br>
+<strong>Remark.</strong> 布朗运动和缩放随机游走大部分地方是相同的，但是有些极限行为不一样，随机游走是通过线性插值定义的，但是布朗运动没有任何一个区间是线性的，且独立增量不需要用CLT去逼近正态分布。</p>
+<p>为了方便说明布朗运动的鞅性，我们有必要引入布朗域流：</p>
+<p><strong>Definition 8.13（布朗域流）.</strong> A filtration for Brownian motion (or Brownian filtration) is a collection of $\sigma$-algebra $\mathcal{F}_t, t \geq 0$, satisfying<br>
+(i) (information accumulates) $\mathcal{F}_s \subseteq \mathcal{F}_t$ for all $s \leq t$;<br>
+(ii) (adaptivity) For each $t \geq 0, W_t$ is $\mathcal{F}_t$-measurable;<br>
+(iii) (independent of future increment) For $0 \leq s \leq t, W_t-W_s$ is independent of $\mathcal{F}_s$.</p>
+<p>介绍两个基础的性质：$\mathbb{E}\left[W_s W_t\right]=s \wedge t$，布朗运动关于其域流是鞅。</p>
+<h3 id="布朗运动的样本轨道">布朗运动的样本轨道
+</h3><p><strong>Theorem 8.16.</strong> 处处不可微，处处不单调
+(1) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is <strong>nowhere differentiable</strong>.<br>
+(2) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is <strong>monotone in no interval</strong>.</p>
+<p><strong>Theorem 8.17 (Law of Iterated logarithm).</strong> For almost every $\omega \in \Omega$, we have</p>
+<div>
+$$
+\begin{aligned}
+& \text { (1) } \limsup _{t \downarrow 0} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=1 \\
+& \liminf _{t \downarrow 0} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=-1 \\
+& \text { (2) } \limsup _{t \rightarrow \infty} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=1 \\
+& \liminf _{t \rightarrow \infty} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=-1
+\end{aligned}
+$$
+</div>
+<p>重对数定理表明了一阶布朗运动是存在其“极限振幅”的，并不会无规则的扩散到无穷远处，这实际也暗示着我们后文种提到的常返性。</p>
+<p>个人认为布朗运动最重要的一条定理，正是因为该定理，才会引出了随即微积分：</p>
+<p><strong>Theorem 8.18（布朗运动的二阶变差）.</strong> The quadratic variation of the standard Brownian motion is given by
+$\langle W\rangle_t=t \quad \mathbb{P}-$ a.s. $\quad$ for all $t \geq 0$.<br>
+<strong>Remark.</strong> 在上文中我们曾提到过两种二阶变差的定义，即从变差的角度定义和从Doob分解的角度定义，二者都可以导出布朗运动的二阶变差。</p>
+<p>在随即微积分中，我们将以来下方的注解：</p>
+<p><strong>Remark 8.19.</strong> Let $\Pi=\left\{t_0, t_1, t_2, \cdots, t_n\right\}$ be a partition of $[0, t]$. Then</p>
+<div>
+$$
+\begin{gathered}
+\lim _{\|\Pi\| \rightarrow 0} \sum_{i=0}^{n-1}\left(W_{t_{i+1}}-W_{t_i}\right)^2=t \\
+\lim _{\|\Pi\|} \sum_{i=0}^{n-1}\left(W_{t_{i+1}}-W_{t_i}\right)\left(t_{i+1}-t_i\right)=0
+\end{gathered}
+$$
+</div>
+<p>$$
+\lim _{|\Pi|} \sum_{i=0}^{n-1}\left(t_{i+1}-t_i\right)^2=0
+$$
+We write informally
+$$
+\begin{gathered}
+d W_t \cdot d W_t=d t \\
+d W_t \cdot d t=0 \\
+d t \cdot d t=0
+\end{gathered}
+$$</p>
+<h3 id="指数鞅">指数鞅
+</h3><p>对于实际的一些问题，我们可能想找到一种只有正值的鞅。</p>
+<p><strong>Definition 8.21（指数鞅）.</strong> Let $\left(W_t\right)$ be a Brownian motion with filtration $\left(\mathcal{F}_t\right), \sigma \in \mathbb{R}$. The exponential martingale corresponding to $\sigma$ is defined by
+$$
+Z_t=\exp \left(\sigma W_t-\frac{\sigma^2}{2} t\right)
+$$</p>
+<p><strong>Theorem 8.22（指数鞅是鞅）.</strong> $\left(Z_t, \mathcal{F}_t\right)_{t \geq 0}$ is a martingale.</p>
+<p>上述定理的证明很有意思，用到了正态分布的mgf。</p>
+<h3 id="高维布朗运动">高维布朗运动
+</h3><p>有了一维的布朗运动，我们很容易定义高维的布朗运动，但是高维的布朗运动可能并不是如此的直观，因为高维空间实在是太大了。</p>
+<p><strong>Definition 8.23（高维布朗运动）.</strong> A $d$-dimensional stochastic process $B=\left(B_t\right)_{t \geq 0}=\left(\left(B_t^1, B_t^2, \cdots, B_t^d\right)\right)_{t \geq 0}$ is called a $\underline{d \text {-dimensional Brownian motion }}$ if every $\left(B_t^i\right)_{t \geq 0}$ is a 1 -dimensional Brownian motion and $\left(B_t^1\right),\left(B_t^2\right), \ldots,\left(B_t^d\right)$ are <strong>independent</strong>.</p>
+<p>布朗运动是鞅，鞅什么时候能是布朗运动，下面定理告诉了我们这一点：</p>
+<p><strong>Theorem 8.25 (Lévy Theorem).</strong> Let $M=\left(M^1, M^2, \cdots, M^d\right)$ be a d-dimensional <strong>continuous local martingale</strong> with respect to $\left(\mathcal{F}_t\right)$ and $M_0=0 \mathbb{P}$-a.s. If
+$$
+\left\langle M^i, M^j\right\rangle_t=\delta_{i j} t, \quad \text { for } \quad 1 \leq i, j \leq d
+$$
+then $M$ is a d-dimensional Brownian motion.</p>
+<p>值得注意的是，在测度变换的证明中Lévy Theorem起到了重要的作用，注意对一维情况的使用。</p>
+<p>局部鞅可以通过控制收敛定理得到鞅，同样也可以通过定义停时得到布朗运动，这里暂不介绍。下面介绍布朗运动在高维空间中有意思的一点。</p>
+<p><strong>Thm 8.28（布朗运动的常返性）.</strong> Let $B$ be a $d$-dimensional Brownian motion starting from 0.<br>
+(1) If $d=1, B_t(\omega)$ visits 0 <strong>infinite many times</strong>(0点常返).
+(2) If $d=2, B_t(\omega)$ does not hit the origin after time 0 , however it <strong>hits every ball with center at the origin</strong>（0点邻域常返）.<br>
+(3) If $d \geq 3,\left|B_t(\omega)\right| \longrightarrow \infty$ as $t \rightarrow \infty$(非常返，必定跑到无穷远处，即使一维布朗运动有重对数定理作为sup，但是高维情况仍然不是可以想象到的).</p>
+
 </section>
 
 
@@ -706,7 +811,7 @@ is called a cross variation (or quadratic covariation) of $M$ and $N$.</p>
 
 
         <span>
-            Last updated on Mar 22, 2025 22:18 CST
+            Last updated on Mar 23, 2025 20:12 CST
         </span>
     </section></footer>
 

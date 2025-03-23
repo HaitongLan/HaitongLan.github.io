@@ -421,7 +421,7 @@ where $M$ is a &lt;strong&gt;right-continuous, uniformly integrable martingale&l
 &lt;p&gt;先说明一个Notation，若 $\mathcal{M}^2$ 是所有满足 $\sup_{t \geq 0} \mathbb{E}\left[M_t^2\right]&amp;lt;\infty$的鞅的集合（另外还有right-continuous, left-limit exists-RCLL条件）,则 $\mathcal{M}_0^2=\left\{M \in \mathcal{M}^2: M_0=0\right\}$ ;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Corollary 7.35（预见过程就是二次变差）.&lt;/strong&gt; Let $M \in \mathcal{M}^2$ be right-continuous. Then there exists a unique right continuous previsible process
 $\langle M\rangle=\left(\langle M\rangle_t\right)_{t \geq 0}$ with $\langle M\rangle_0=0$ such that the process $M^2-$ $\langle M\rangle$ is a martingale.&lt;br&gt;
-&lt;strong&gt;Remark.&lt;/strong&gt; 定理中提到的 $\langle M\rangle_t$ 正是 $M_t$ 二次变差过程，可见，不严谨的说，上鞅 $-$ 二次变差 = 鞅，一般通过鞅加凸函数的方法构造上鞅，即 $f(X_t)$,这样便可以通过一些手段求得 $X_t$ 的二次变差。&lt;/p&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 定理中提到的 $\langle M\rangle_t$ 正是 $M_t$ 二次变差过程，可见，不严谨的说，下鞅 $-$ 二次变差 = 鞅，一般通过鞅加凸函数的方法构造下鞅，即 $f(X_t)$,这样便可以通过一些手段求得 $X_t$ 的二次变差。&lt;/p&gt;
 &lt;p&gt;对于为什么叫做二次变差，我们先看下面的定理：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Thm 7.37(二次变差等价定义).&lt;/strong&gt; Let $M \in \mathcal{M}^{2, c}$. For partition $\Pi$ of $[0, t]$, set
 $$
@@ -435,7 +435,7 @@ $$
 &lt;p&gt;使用上述定理的等价定义也可以拓展二阶变差的定义，不一定非要在一个二次可积的鞅上进行二阶变差的构造，而是对所有的随机过程都可以，我们先按照Doob分解的方式定义协变差，再去探讨二次变差的性质,作者这里采取了一种更自洽的定义方式，与讲义中不同，可能会不够严谨（忽略了可积以及连续的描述）：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Def(cross variation or quadratic covariation).&lt;/strong&gt; 随机过程 $M_t,N_t\in \mathcal{M}^2$,则 $M_tN_t-&amp;lt;M,N&amp;gt;_t$ 是一个鞅，$&amp;lt;M,N&amp;gt;_t$ 为 $M_t,N_t$ 的协变差。&lt;/p&gt;
 &lt;p&gt;这样定义的好处是我们可以更自然的推导出讲义中的定义，而不是直接的下一个不明所以的定义再去解释:
-$(M_t+N_t)^2-\langle M+N\langle_t$ 应该是一个鞅，展开计算可以得到 $\langle M+N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t+2\langle M, N\rangle_{t}$,同理 $\langle M-N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t-2\langle M, N\rangle_{t}$,将二者联立便可以求得其等价定义：&lt;/p&gt;
+$(M_t+N_t)^2-\langle M+N\rangle_t$ 应该是一个鞅，展开计算可以得到 $\langle M+N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t+2\langle M, N\rangle_{t}$,同理 $\langle M-N\rangle_{t}=\langle M\rangle_t +\langle N\rangle_t-2\langle M, N\rangle_{t}$,将二者联立便可以求得其等价定义：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Definition 7.38（协变差）.&lt;/strong&gt; Let $M, N \in \mathcal{M}^2$. Then the process
 $$
 \langle M, N\rangle:=\frac{1}{4}(\langle M+N\rangle-\langle M-N\rangle)
@@ -447,12 +447,117 @@ is called a cross variation (or quadratic covariation) of $M$ and $N$.&lt;/p&gt;
 （3）$c$ 为常数，则 $\langle cM \rangle_t = c^2\langle M\rangle_t$(可以利用杜布分解的推论证明)&lt;br&gt;
 （4）$M_t,N_t$ 独立，则 $\langle M,N \rangle_t = 0$.&lt;/p&gt;
 &lt;h3 id=&#34;半鞅&#34;&gt;半鞅
-&lt;/h3&gt;&lt;h2 id=&#34;布朗运动&#34;&gt;布朗运动
+&lt;/h3&gt;&lt;p&gt;在定义随即微积分的时候，我们会用到半鞅的概念，该概念是对鞅和局部鞅的进一步推广。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 7.40（半鞅）.&lt;/strong&gt; A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a &lt;strong&gt;semimartingale (半鞅)&lt;/strong&gt; if $X$ is an adapted process with the decomposition
+$$
+X_t=X_0+M_t+A_t
+$$
+where $\left(M_t\right)$ is a local martingale with $M_0=0$ and $\left(A_t\right)$ is an adapted, RCLL process of bounded variation.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 若 $X$ 连续，半鞅分解唯一。&lt;/p&gt;
+&lt;p&gt;对于半鞅的具体例子我们需要在随机微分方程里去做介绍，现在先介绍一个关于半鞅的定理，通过该定理可以得到一个比较有意思的推论。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 7.42（连续有界变差鞅是常数）.&lt;/strong&gt; A continuous local martingale of bounded variation is constant $\mathbb{P}$-a.s.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 7.43(连续非常数鞅必然无界变差).&lt;/strong&gt; A continuous non-constant local martingale is not of bounded variation.&lt;/p&gt;
+&lt;p&gt;布朗运动是连续非常数鞅，其没有有界变差，所以是不可以对布朗运动定义黎曼积分的，正因为如此，我们需要在后续章节引入随即微积分。&lt;/p&gt;
+&lt;h2 id=&#34;布朗运动&#34;&gt;布朗运动
 &lt;/h2&gt;&lt;h3 id=&#34;从随机游走到布朗运动&#34;&gt;从随机游走到布朗运动
-&lt;/h3&gt;&lt;h3 id=&#34;布朗运动的样本轨道&#34;&gt;布朗运动的样本轨道
-&lt;/h3&gt;&lt;h3 id=&#34;指数鞅&#34;&gt;指数鞅
-&lt;/h3&gt;&lt;h3 id=&#34;高维布朗运动&#34;&gt;高维布朗运动
-&lt;/h3&gt;</description>
+&lt;/h3&gt;&lt;p&gt;$X_t$ 是以 $\frac{1}{2}$ 的概率取 $\{1,-1\}$ 的随机变量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.1（随机游走）.&lt;/strong&gt; Define
+$$
+\begin{aligned}
+&amp;amp; M_0=0 \\
+&amp;amp; M_k=\sum_{i=1}^k X_i, \quad k=1,2,3, \cdots
+\end{aligned}
+$$
+The process $\left(M_k\right)_{k \geq 0}$ is a &lt;strong&gt;symmetric random walk&lt;/strong&gt;.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;我们希望构造一个连续的随机过程，那么就需要对该随机游走过程的时间进行压缩，将抛硬币的时间变得无限短，而且也要对抛硬币的权重进行压缩，否则在时间压缩下将会使得其数值累计到无穷。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.5(缩放随机游走).&lt;/strong&gt; Fixed a positive integer $n$, define the &lt;strong&gt;scaled symmetric random walk&lt;/strong&gt;,
+$$
+W_t^{(n)}=\frac{1}{\sqrt{n}} M_{n t}
+$$
+Provided $n t$ is an integer. If $n t \notin \mathbb{N}$, define $W_t^{(n)}$ by linear interpolation.&lt;/p&gt;
+&lt;p&gt;非常容易验证，该随机过程有独立增量，是一个鞅，从0开始，并且由于CLT的作用，使得任意独立增量都服从正态分布。&lt;/p&gt;
+&lt;p&gt;这种使用随机游走去逼近布朗运动可以提供给我们直觉，方便我们定义想要去构造的布朗运动，尽管布朗运动的构造方法有很多种，我们提供一种最常用的：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.8（布朗运动）.&lt;/strong&gt; A stochastic process $W=\left(W_t\right)_{t \geq 0}$ is called a standard Brownian motion (BM) if&lt;br&gt;
+(1) $W_0=0 \mathbb{P}$-a.s.&lt;br&gt;
+(2) $\left(W_t\right)$ has independent increments, i.e., for $0 \leq t_1 \leq t_2 \leq \cdots \leq t_m$,&lt;br&gt;
+$$
+W_{t_1}, W_{t_2}-W_{t_1}, W_{t_3}-W_{t_2}, \ldots, W_{t_m}-W_{t_{m-1}}
+$$
+are independent&lt;br&gt;
+(3) For $0 \leq s&amp;lt;t, W_t-W_s \sim \mathcal{N}(0, t-s)$.&lt;br&gt;
+(4) The  sample path is continuous&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 布朗运动和缩放随机游走大部分地方是相同的，但是有些极限行为不一样，随机游走是通过线性插值定义的，但是布朗运动没有任何一个区间是线性的，且独立增量不需要用CLT去逼近正态分布。&lt;/p&gt;
+&lt;p&gt;为了方便说明布朗运动的鞅性，我们有必要引入布朗域流：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.13（布朗域流）.&lt;/strong&gt; A filtration for Brownian motion (or Brownian filtration) is a collection of $\sigma$-algebra $\mathcal{F}_t, t \geq 0$, satisfying&lt;br&gt;
+(i) (information accumulates) $\mathcal{F}_s \subseteq \mathcal{F}_t$ for all $s \leq t$;&lt;br&gt;
+(ii) (adaptivity) For each $t \geq 0, W_t$ is $\mathcal{F}_t$-measurable;&lt;br&gt;
+(iii) (independent of future increment) For $0 \leq s \leq t, W_t-W_s$ is independent of $\mathcal{F}_s$.&lt;/p&gt;
+&lt;p&gt;介绍两个基础的性质：$\mathbb{E}\left[W_s W_t\right]=s \wedge t$，布朗运动关于其域流是鞅。&lt;/p&gt;
+&lt;h3 id=&#34;布朗运动的样本轨道&#34;&gt;布朗运动的样本轨道
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Theorem 8.16.&lt;/strong&gt; 处处不可微，处处不单调
+(1) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is &lt;strong&gt;nowhere differentiable&lt;/strong&gt;.&lt;br&gt;
+(2) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is &lt;strong&gt;monotone in no interval&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 8.17 (Law of Iterated logarithm).&lt;/strong&gt; For almost every $\omega \in \Omega$, we have&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+&amp; \text { (1) } \limsup _{t \downarrow 0} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=1 \\
+&amp; \liminf _{t \downarrow 0} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=-1 \\
+&amp; \text { (2) } \limsup _{t \rightarrow \infty} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=1 \\
+&amp; \liminf _{t \rightarrow \infty} \frac{W_t(\omega)}{\sqrt{2 t \log \log (1 / t)}}=-1
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;重对数定理表明了一阶布朗运动是存在其“极限振幅”的，并不会无规则的扩散到无穷远处，这实际也暗示着我们后文种提到的常返性。&lt;/p&gt;
+&lt;p&gt;个人认为布朗运动最重要的一条定理，正是因为该定理，才会引出了随即微积分：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 8.18（布朗运动的二阶变差）.&lt;/strong&gt; The quadratic variation of the standard Brownian motion is given by
+$\langle W\rangle_t=t \quad \mathbb{P}-$ a.s. $\quad$ for all $t \geq 0$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 在上文中我们曾提到过两种二阶变差的定义，即从变差的角度定义和从Doob分解的角度定义，二者都可以导出布朗运动的二阶变差。&lt;/p&gt;
+&lt;p&gt;在随即微积分中，我们将以来下方的注解：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 8.19.&lt;/strong&gt; Let $\Pi=\left\{t_0, t_1, t_2, \cdots, t_n\right\}$ be a partition of $[0, t]$. Then&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{gathered}
+\lim _{\|\Pi\| \rightarrow 0} \sum_{i=0}^{n-1}\left(W_{t_{i+1}}-W_{t_i}\right)^2=t \\
+\lim _{\|\Pi\|} \sum_{i=0}^{n-1}\left(W_{t_{i+1}}-W_{t_i}\right)\left(t_{i+1}-t_i\right)=0
+\end{gathered}
+$$
+&lt;/div&gt;
+&lt;p&gt;$$
+\lim _{|\Pi|} \sum_{i=0}^{n-1}\left(t_{i+1}-t_i\right)^2=0
+$$
+We write informally
+$$
+\begin{gathered}
+d W_t \cdot d W_t=d t \\
+d W_t \cdot d t=0 \\
+d t \cdot d t=0
+\end{gathered}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;指数鞅&#34;&gt;指数鞅
+&lt;/h3&gt;&lt;p&gt;对于实际的一些问题，我们可能想找到一种只有正值的鞅。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.21（指数鞅）.&lt;/strong&gt; Let $\left(W_t\right)$ be a Brownian motion with filtration $\left(\mathcal{F}_t\right), \sigma \in \mathbb{R}$. The exponential martingale corresponding to $\sigma$ is defined by
+$$
+Z_t=\exp \left(\sigma W_t-\frac{\sigma^2}{2} t\right)
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 8.22（指数鞅是鞅）.&lt;/strong&gt; $\left(Z_t, \mathcal{F}_t\right)_{t \geq 0}$ is a martingale.&lt;/p&gt;
+&lt;p&gt;上述定理的证明很有意思，用到了正态分布的mgf。&lt;/p&gt;
+&lt;h3 id=&#34;高维布朗运动&#34;&gt;高维布朗运动
+&lt;/h3&gt;&lt;p&gt;有了一维的布朗运动，我们很容易定义高维的布朗运动，但是高维的布朗运动可能并不是如此的直观，因为高维空间实在是太大了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 8.23（高维布朗运动）.&lt;/strong&gt; A $d$-dimensional stochastic process $B=\left(B_t\right)_{t \geq 0}=\left(\left(B_t^1, B_t^2, \cdots, B_t^d\right)\right)_{t \geq 0}$ is called a $\underline{d \text {-dimensional Brownian motion }}$ if every $\left(B_t^i\right)_{t \geq 0}$ is a 1 -dimensional Brownian motion and $\left(B_t^1\right),\left(B_t^2\right), \ldots,\left(B_t^d\right)$ are &lt;strong&gt;independent&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;布朗运动是鞅，鞅什么时候能是布朗运动，下面定理告诉了我们这一点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 8.25 (Lévy Theorem).&lt;/strong&gt; Let $M=\left(M^1, M^2, \cdots, M^d\right)$ be a d-dimensional &lt;strong&gt;continuous local martingale&lt;/strong&gt; with respect to $\left(\mathcal{F}_t\right)$ and $M_0=0 \mathbb{P}$-a.s. If
+$$
+\left\langle M^i, M^j\right\rangle_t=\delta_{i j} t, \quad \text { for } \quad 1 \leq i, j \leq d
+$$
+then $M$ is a d-dimensional Brownian motion.&lt;/p&gt;
+&lt;p&gt;值得注意的是，在测度变换的证明中Lévy Theorem起到了重要的作用，注意对一维情况的使用。&lt;/p&gt;
+&lt;p&gt;局部鞅可以通过控制收敛定理得到鞅，同样也可以通过定义停时得到布朗运动，这里暂不介绍。下面介绍布朗运动在高维空间中有意思的一点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm 8.28（布朗运动的常返性）.&lt;/strong&gt; Let $B$ be a $d$-dimensional Brownian motion starting from 0.&lt;br&gt;
+(1) If $d=1, B_t(\omega)$ visits 0 &lt;strong&gt;infinite many times&lt;/strong&gt;(0点常返).
+(2) If $d=2, B_t(\omega)$ does not hit the origin after time 0 , however it &lt;strong&gt;hits every ball with center at the origin&lt;/strong&gt;（0点邻域常返）.&lt;br&gt;
+(3) If $d \geq 3,\left|B_t(\omega)\right| \longrightarrow \infty$ as $t \rightarrow \infty$(非常返，必定跑到无穷远处，即使一维布朗运动有重对数定理作为sup，但是高维情况仍然不是可以想象到的).&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>学习笔记|课题组讨论班</title>
@@ -2930,6 +3035,104 @@ $$
 &lt;p&gt;因为引入多项式矩阵本身就是为了处理相似问题，所以直接将 $\lambda I-A$ 的不变因子称为 $A$ 的不变因子。&lt;/p&gt;
 &lt;h3 id=&#34;有理标准型&#34;&gt;有理标准型
 &lt;/h3&gt;&lt;p&gt;我们在之前的章节中得到了一个全系不变量，现在我们将使用该全系不变量构造一个相对简单的矩阵，并与给定的矩阵满足相似关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 1&lt;/strong&gt; 设 $r$ 阶矩阵
+$$
+F(f(\lambda))=\left(\begin{array}{ccccc}
+0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+-a_r &amp;amp; -a_{r-1} &amp;amp; -a_{r-2} &amp;amp; \cdots &amp;amp; -a_1
+\end{array}\right)
+$$
+则&lt;br&gt;
+1）$F$ 的行列式因子为
+$$
+1, \cdots, 1, f(\lambda)
+$$
+其中共有 $r-1$ 个 $1, ~ f(\lambda)=\lambda^r+a_1 \lambda^{r-1}+\cdots+a_r$&lt;br&gt;
+2）$F$ 的极小多项式等于 $f(\lambda)$ 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（有理标准型）.&lt;/strong&gt; 设 $A\in M_n(K)$ 的不变因子组为
+$$
+1,\cdots,1,d_1(\lambda),\cdots,d_k(\lambda)
+$$
+则 $A$ 必然相似于
+$$
+diag\{F(d_1(\lambda)),F(d_2(\lambda)),\cdots,F(d_k(\lambda))\}
+$$
+该对角阵被称为有理标准型。&lt;/p&gt;
+&lt;p&gt;计算有理标准型的方式很明了，即计算不变因子，再求其有理块，拼在一起。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 3（极小多项式，特征多项式，不变因子）&lt;/strong&gt; 不变因子同上，有&lt;br&gt;
+(1)$d_1(\lambda)d_2(\lambda)\cdots d_k(\lambda) = |\lambda I-A|$&lt;br&gt;
+(2)$d_k(\lambda)$ 为矩阵的极小多项式。&lt;/p&gt;
+&lt;p&gt;可见，特征多项式是不变因子的乘积，极小多项式是其中的一个不变因子，二者明显都不是全系不变量，合起来也不是。&lt;/p&gt;
+&lt;p&gt;有理块的阶数和 $d_i(\lambda)$ 的阶数一致，若不变因子的阶数大，有理标准型未必简单，直观的想法就是将不变因子因式分解。&lt;/p&gt;
+&lt;h3 id=&#34;初等因子和jordon标准型&#34;&gt;初等因子和Jordon标准型
+&lt;/h3&gt;&lt;p&gt;由于需要对不变因子进行因式分解，我们想将其化简为最简单的形式，由于代数基本定理的遍历性，我们在本章节将数域限制在复数域 $\mathbb{C}$ 上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（初等因子）.&lt;/strong&gt; 设 $n$ 阶 $A$ 的非常数不变因子为 $d_1(\lambda), d_2(\lambda), \ldots, d_k(\lambda)$ ，在数域上将分解为互不相同的首一的一次因式方幂的乘积，所有这些一次因式方幂称为矩阵 $A$ 的初等因子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例&lt;/strong&gt;：设 12 阶矩阵的不变因子是
+$$
+1,1, \cdots, 1,(\lambda-1)^2,(\lambda-1)^2(\lambda+1),(\lambda-1)^2(\lambda+1)\left(\lambda^2+1\right)^2
+$$
+则它的初等因子：$$(\lambda-1)^2,(\lambda-1)^2,(\lambda-1)^2, \lambda+1, \lambda+1,(\lambda-i)^2,(\lambda+i)^2$$&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 初等因子组还有另外一个等价定义，或者说存在定理：若可以将特征矩阵化为对角阵，再分解对角线上的多项式为一次因式的方幂的乘积，从中选出一次因式的方幂即为初等因子组。&lt;/p&gt;
+&lt;p&gt;初等因子与不变因子的表示是可以互逆的，也就是说，初等因子也是矩阵相似的全系不变量，而且要比不变因子更加简单。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 2(Jordon 块的初等因子组).&lt;/strong&gt; $r$ 阶矩阵
+$$
+J=\left(\begin{array}{ccccc}
+\lambda_0 &amp;amp; 1 &amp;amp; &amp;amp; &amp;amp; \\
+&amp;amp; \lambda_0 &amp;amp; 1 &amp;amp; &amp;amp; \\
+&amp;amp; &amp;amp; \ddots &amp;amp; \ddots &amp;amp; 1 \\
+&amp;amp; &amp;amp; &amp;amp; \ddots &amp;amp; 1 \\
+&amp;amp; &amp;amp; &amp;amp; &amp;amp; \lambda_0
+\end{array}\right) \triangleq J_r\left(\lambda_0\right)
+$$
+的初等因子组为 $\left(\lambda-\lambda_0\right)^r$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（Jordon标准型）.&lt;/strong&gt; 设 $\boldsymbol{A}$ 是复数域上的矩阵且 $\boldsymbol{A}$ 的初等因子组为
+$$
+\left(\lambda-\lambda_1\right)^{r_1},\left(\lambda-\lambda_2\right)^{r_2}, \cdots,\left(\lambda-\lambda_k\right)^{r_k}
+$$
+则 $\boldsymbol{A}$ 相似于分块对角阵：
+$$
+\boldsymbol{J}=\left(\begin{array}{llll}
+\boldsymbol{J}_{r_1}(\lambda_1) &amp;amp; &amp;amp; &amp;amp; \\
+&amp;amp; \boldsymbol{J}_{r_2}(\lambda_2) &amp;amp; &amp;amp; \\
+&amp;amp; &amp;amp; \ddots &amp;amp; \\
+&amp;amp; &amp;amp; &amp;amp; \boldsymbol{J}_{r_k}(\lambda_k)
+\end{array}\right)
+$$
+&lt;strong&gt;注.&lt;/strong&gt; Jordon块的顺序可以互相交换而不影响相似关系，因为初等因子不变。&lt;/p&gt;
+&lt;p&gt;下面整理出来的定义可以让我们更好的理解对角化，极小多项式和初等因子：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 4.&lt;/strong&gt; 设 $\boldsymbol{A}$ 是 $n$ 阶复矩阵，则下列结论等价：&lt;BR&gt;
+（1） $\boldsymbol{A}$ 可对角化；(等价于初等因子都是一阶)&lt;BR&gt;
+（2） $\boldsymbol{A}$ 的极小多项式无重根；&lt;BR&gt;
+（3） $\boldsymbol{A}$ 的初等因子都是一次多项式．&lt;/p&gt;
+&lt;p&gt;Jordon标准型的构造也是简单的，即找到初等因子组再构建Jordon块，但是考虑我们之前的问题，Jordon标准型作为该线性映射的最简单的表示矩阵，我么可不可以求出与原来基底的过渡矩阵呢？&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;考虑 $P^{-1}AP = J$,有 $AP=PJ$ ,同求对角化的过渡矩阵一致，将 $P$ 写为分块列向量的形式，代入具体的数值 $J$ 构造线性方程组，我们可以求得一些齐次线性方程组（特征值对应的），然后选取解空间内特殊的解去求解其他非齐次线性方程组（广义特征值对应的），直到求得 $P$ 的一组解，即 $P$ 是不唯一的，下面展示课本上一道例题的部分过程，可以帮助唤醒记忆：&lt;/p&gt;
+&lt;p&gt;$$
+A P=P J
+$$
+设 $\boldsymbol{P}=\left(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\right)$ ，其中 $\boldsymbol{\alpha}_i$ 是四维列向量，代入得
+$$
+\left(\boldsymbol{A} \alpha_1, \boldsymbol{A} \boldsymbol{\alpha}_2, \boldsymbol{A} \boldsymbol{\alpha}_3, \boldsymbol{A} \boldsymbol{\alpha}_4\right)=\left(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\right)\left(\begin{array}{cccc}
+1 &amp;amp; 1 &amp;amp; &amp;amp; \\
+0 &amp;amp; 1 &amp;amp; &amp;amp; \\
+&amp;amp; &amp;amp; 1 &amp;amp; 1 \\
+&amp;amp; &amp;amp; 0 &amp;amp; 1
+\end{array}\right)
+$$
+化成方程组为
+$$
+\begin{aligned}
+&amp;amp; (\boldsymbol{A}-\boldsymbol{I}) \boldsymbol{\alpha}_1=\mathbf{0} \\
+&amp;amp; (\boldsymbol{A}-\boldsymbol{I}) \boldsymbol{\alpha}_2=\boldsymbol{\alpha}_1 \\
+&amp;amp; (\boldsymbol{A}-\boldsymbol{I}) \boldsymbol{\alpha}_3=\mathbf{0} \\
+&amp;amp; (\boldsymbol{A}-\boldsymbol{I}) \boldsymbol{\alpha}_4=\boldsymbol{\alpha}_3
+\end{aligned}
+$$
+由于 $\alpha_1, \boldsymbol{\alpha}_3$ 都是 $\boldsymbol{A}$ 的属于特征值 1 的特征向量，故 $\boldsymbol{\alpha}_2, \boldsymbol{\alpha}_4$ 称为属于特征值 1的广义特征向量 我们可取方程组 $(A-I) x=0$ 的两个线性无关的解分别作为 $\alpha_1, \boldsymbol{\alpha}_3$（注悉不能取线性相关的两个解，因为 $\boldsymbol{P}$ 是非异阵），然后再分别求出 $\alpha_2, \alpha_4$ （注意诸 $\alpha_i$ 的解可能不唯一，只需取比较简单的一组解）即可．经计算可得 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
 &lt;/h2&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
 &lt;/h2&gt;&lt;h2 id=&#34;第十章-双线性型&#34;&gt;第十章 双线性型
