@@ -565,8 +565,8 @@ then $M$ is a d-dimensional Brownian motion.&lt;/p&gt;
         <pubDate>Mon, 10 Mar 2025 19:24:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 学习笔记|课题组讨论班" /&gt;&lt;h2 id=&#34;高等概率论一&#34;&gt;高等概率论（一）
-&lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论（一），讲义和视频见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="http://localhost:1313/post_file/%E8%AE%A8%E8%AE%BA%E7%8F%AD/cover.jpg" alt="Featured image of post 学习笔记|课题组讨论班" /&gt;&lt;h2 id=&#34;高等概率论&#34;&gt;高等概率论
+&lt;/h2&gt;&lt;p&gt;王拓学长分享的高等概率论，讲义和视频见讨论班网页 &lt;a class=&#34;link&#34; href=&#34;http://tuowang.top/seminar/Seminar_Information.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Seminar Information&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independent分别是什么，为什么 $X_1,X_2,X_3$ 独立，对于某些函数，有 $f(X_1,X_2)$ 和 $X_3$ 独立。&lt;/p&gt;
 &lt;h3 id=&#34;probability-space&#34;&gt;Probability Space
@@ -699,7 +699,8 @@ $$
 $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;QED&lt;/strong&gt;.&lt;/p&gt;
-</description>
+&lt;h3 id=&#34;expectationintegral-and-probability-density&#34;&gt;Expectation,integral and probability density
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>学习笔记|信息论</title>
@@ -1643,6 +1644,73 @@ $$
 &lt;/div&gt;
 &lt;p&gt;$\Rightarrow\left(\bar{X}-t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}, \bar{X}+t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right)$ is a $100(1-\alpha) %$ C.I. for $\mu$.&lt;br&gt;
 &lt;strong&gt;Remark.&lt;/strong&gt; 可见，由于 $T$ 可以将 $\mu$ 剥离出来，而保证 $T_1,T_2$ 都是统计量，这才使得 $T$ 成为了我们感兴趣的枢轴量，若我们只是将 $\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$ 当作枢轴量，是找不到置信区间的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EX.&lt;/strong&gt; 同样是上述例子，找 $\sigma^2$ 的C.I.,需要利用 $\frac{(n-1)S^2}{\sigma^2}\sim \chi^2(n-1)$ 来当枢轴量。&lt;/p&gt;
+&lt;p&gt;另外，有时候还需找到样本均值的差的C.I.，即 $\mu_1-\mu_2$ 的 C.I.，还是那一套方法，构造枢轴量，然后化简。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这里总结一下常见的枢轴量选取：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;推断 $\mu$, 方差已知,构造标准正态分布作为枢轴量；方差未知，先构造标准正态分布，再构造t分布消去 $\sigma^2$作为枢轴量。&lt;/li&gt;
+&lt;li&gt;推断 $\sigma^2$,构造 $\chi^2$分布作为枢轴量。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;近似置信区间&#34;&gt;近似置信区间
+&lt;/h3&gt;&lt;p&gt;在有些时候我们并不知道母体分布，需要使用大样本理论去推断参数的近似置信区间。&lt;/p&gt;
+&lt;p&gt;下面介绍一些简单的大样本理论，首先说明一点，之前我们提到了mgf唯一对应随机变量的分布，其实这种对应是分布函数意义上的确定，也就是在分布函数的意义上相等，如果用mgf进行极限分布的推断，只可以得到依分布收敛的结果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1 （连续性定理）.&lt;/strong&gt; 令随机变量 $X_n$ 和 $X$ 的 CDF $F_n$ 和 $F$ 为对应它们的矩母函数为 $\phi_n$ 和 $\phi$ ．那么， $\phi_n(t) \rightarrow \phi(t) \forall t\iff X_n \xrightarrow{\mathcal{D}} X$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（经典CLT）.&lt;/strong&gt; 令 $\left\{X_n\right\}$ 为均值为 $\mu$ ，方差为 $\sigma^2&amp;lt;\infty$ 的i．i．d随机变量序列．那么，
+$$
+\frac{\overline{ X } -\mu}{\sigma \sqrt{n}} \xrightarrow{\mathcal{D}} Z
+$$
+这里 $Z \sim N(0,1)$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理3 （连续映射定理）.&lt;/strong&gt; 令 $g: \mathbb{R}^{\mathrm{p}} \mapsto \mathbb{R}^{\mathrm{m}}$ 为在集合 C 中几乎处处连续的映射。如果 $\mathrm{X}_{\mathrm{n}}$ 依概率／几乎处处收玫 $/$ 依分布收敛到 X ，则 $g\left(\mathrm{X}_{\mathrm{n}}\right)$ 依概率／几乎处处收玫／依分布收敛到 $g(\mathrm{X})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4（Slutsky&amp;rsquo;s theorem）.&lt;/strong&gt; 设 $\left(X_n\right),\left(Y_n\right)$ 为随机标量，向量或矩阵序列。若 $\left(X_n\right)$ 依分布收敛至随机元素 $X$ ，且 $\left(Y_n\right)$ 依概率收敛至常数 $c$ ，则&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\left(X_n+Y_n\right) \xrightarrow{d} X+c ;$&lt;/li&gt;
+&lt;li&gt;$\left(X_n Y_n\right) \xrightarrow{d} X c$ ；&lt;/li&gt;
+&lt;li&gt;$\left(X_n / Y_n\right) \xrightarrow{d} X / c$, 若 $c$ 可逆。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在讨论近似区间估计的问题，这类问题实际上很简单，即我们对样本的分布一无所知，但可以由CLT保证当样本量趋于无穷时，$\frac{\overline{ X } -\mu}{\sigma \sqrt{n}} \xrightarrow{\mathcal{D}} Z$，我们唯一需要做的就是构造 $\frac{\overline{ X } -\mu}{\sigma \sqrt{n}}$,但是这种枢轴量是无意义的，我们可以进一步构造 $\frac{\sigma}{S}\frac{\overline{ X } -\mu}{\sigma \sqrt{n}}$,再由Slutsky定理（$S^2$依概率收敛到 $\sigma^2$，另外一半式子依分布收敛到标准正态分布）、连续映射定理（$S$依概率收敛到 $\sigma$）以及CLT得到 $\frac{\overline{ X } -\mu}{S \sqrt{n}}$依分布收敛到标准正态分布，则可以反解出 $\mu$ 的近似置信区间。&lt;/p&gt;
+&lt;p&gt;一般而言，对于 $\mu$ 的近似区间估计，最后都会将分母的 $\sigma$ 换成 $S$,再由Slutsky定理保证收敛。&lt;/p&gt;
+&lt;h2 id=&#34;假设检验&#34;&gt;假设检验
+&lt;/h2&gt;&lt;p&gt;我们所说的统计模型可以分为估计和假设检验两类，假设检验是不可以用估计的方法去做的。&lt;/p&gt;
+&lt;p&gt;在统计推断中, 参数的估计量的导
+出是基于一些原则(例如无偏性、不变性、充分性、替代原理、似然原理、Bayes
+原理等), 而不是基于损失函数和风险函数.&lt;/p&gt;
+&lt;h3 id=&#34;基本模型&#34;&gt;基本模型
+&lt;/h3&gt;&lt;p&gt;Hogg 的书中这一部分描写的有点让人困扰，接下来使用邵军老师数理统计的内容,这部分内容的写法更加偏向于描述而不是下定义：&lt;/p&gt;
+&lt;p&gt;设 $X$ 是取自总体 $P \in \mathcal{P}$ 的一个样本．&lt;strong&gt;统计决策&lt;/strong&gt;是指我们观察 $X$ 之后采取的行动，例如，关于 $P$ 的结论或 $P$ 的特征．贯穿本节，我们用 $\mathbb{A}$ 表示可允许行动的集合。设 $\mathcal{F}_{\mathbf{A}}$ 是 $\mathbb{A}$ 上的 $\sigma$ 域。可测空间 $\left(\mathbb{A}, \mathcal{F}_{\mathbf{A}}\right)$ 称为行动空间。设 $\mathscr{X}$ 是 $X$ 的值域， $\mathcal{F}_{\mathscr{X}}$ 是 $\mathscr{X}$ 的一个 $\sigma$ 域。&lt;strong&gt;决策准则&lt;/strong&gt;是 $\left(\mathscr{X}, \mathcal{F}_{\mathscr{X}}\right)$ 到 $\left(\mathbb{A}, \mathcal{F}_{\mathrm{A}}\right)$ 上的一个可测函数（统计量）$T$ 。如果决策准则 $T$ 已选定，则一旦观测到 $X$ 我们就可采取行动 $T(X) \in \mathbb{A}$ ．&lt;/p&gt;
+&lt;p&gt;设 $\mathcal{P}$ 是一分布族， $\mathcal{P}_0 \subset \mathcal{P}, \mathcal{P}_1=\left\{P \in \mathcal{P}: P \notin \mathcal{P}_0\right\}$ ．&lt;strong&gt;假设检验问题&lt;/strong&gt;可描述为确定下面两种说法哪一个为真：
+$$
+H_0: P \in \mathcal{P}_0 \quad \text { 对 } \quad H_1: P \in \mathcal{P}_1 \text {. }
+$$
+这里，$H_0$ 称为&lt;strong&gt;原假设&lt;/strong&gt;(有时也称为零假设和虚无假设，一般是保守的，也是主要去论证的)，而 $H_1$ 称为&lt;strong&gt;备择假设&lt;/strong&gt;．这个问题的行动空间仅有两个元素，即， $\mathbb{A}=\{0,1\}$ ，其中 0 是接受 $H_0$ 的行动，而 1 是拒绝 $H_0$ 的行动．&lt;strong&gt;决策准则(Rule)称为检验(Test)&lt;/strong&gt;．因为检验 $T(X)$ 是 $\mathscr{X}$ 到 $\{0,1\}$ 的函数，它一定有形式 $I_C(X)$ ，其中 $C \in \mathcal{F}_{\mathscr{X}}$ 称为 $H_0$ 对 $H_1$ 的&lt;strong&gt;拒绝域或临界域&lt;/strong&gt;．&lt;/p&gt;
+&lt;p&gt;检验给出的假设 $H_0$ 对 $H_1$ ，我们只可能犯&lt;strong&gt;两类统计错误&lt;/strong&gt;：当 $H_0$ 为真时拒绝 $H_0$（称为&lt;strong&gt;第 I 类错误&lt;/strong&gt;）以及当 $H_0$ 为假时接受 $H_0$（称为&lt;strong&gt;第 II 类错误&lt;/strong&gt;）．在统计推断中，检验 $T$, 一 个 $\mathscr{X}$ 到 $\{0,1\}$ 的&lt;strong&gt;统计量&lt;/strong&gt;，可由犯两类错误的概率来进行评价：
+$$
+\alpha_T(P)=P(T(X)=1), \quad P \in \mathcal{P}_0
+$$
+和
+$$
+1-\alpha_T(P)=P(T(X)=0), \quad P \in \mathcal{P}_1
+$$
+分别记作 $\alpha_T(\theta)$ 和 $1-\alpha_T(\theta)$(注意，这里的 $P \in \mathcal{P}_0$ 是为了表示错误发生的条件，$\alpha_T(P)$ 本身就指的是在给定 $P$ 下拒绝 $H_0$ 的概率，在有些书中也称&lt;strong&gt;效用函数&lt;/strong&gt;，Power function) ，若 $P$ 是参数为 $\theta$ 的参数族。然而，即使对一个很简单的问题和很简单的检验类，&lt;strong&gt;最优决策准则（检验）不存在&lt;/strong&gt;。也就是说，犯两种错误的概率不能同时最小化．而且，对固定的样本量，这两类犯错误概率不能同时以一固定的 $\alpha \in(0,1)$ 为界．&lt;/p&gt;
+&lt;p&gt;因此，寻找＂最优＂检验的通常办法是将犯其中一个错误的概率限定在一个小的界 $\alpha$ 内，如 $\alpha_T(P), P \in \mathcal{P}_0$ ，然后试图最小化犯另一个错误的概率 $1-\alpha_T(P), P \in \mathcal{P}_1$ ，在以下约束条件下，
+$$
+\sup _{P \in \mathcal{P}_0} \alpha_T(P) \leqslant \alpha
+$$
+上界 $\alpha$ 称为&lt;strong&gt;显著性水平&lt;/strong&gt;．左侧称为检验 $T$ 的&lt;strong&gt;检验水准&lt;/strong&gt;（size）。显著性水平应为正数。&lt;/p&gt;
+&lt;p&gt;接下来我们介绍一种&lt;strong&gt;更加一般&lt;/strong&gt;的观点：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;一个假设的检验是一个取值为 $[0,1]$ 的统计量 $T(X)$ ．当观测值 $X=x$ 时，我们以 $T(x)$ 的概率拒绝 $H_0$ ，以 $1-T(x)$ 的概率接受 $H_0$ ．若 $T(X)=1$ 或 0 a．s． $\mathcal{P}$ ，则 $T(X)$ 是一个&lt;strong&gt;非随机化检验&lt;/strong&gt;．否则 $T(X)$ 是一个&lt;strong&gt;随机化检验&lt;/strong&gt;．对于给定的检验 $T(X)$ ，它的&lt;strong&gt;势函数&lt;/strong&gt;(上述效用函数)定义为
+$$
+\beta_T(P)=E_P[T(X)], \quad P \in \mathcal{P} .
+$$
+若 $P \in \mathcal{P}_0$ ，它是 $T(X)$ 的犯第 I 类错误的概率；若 $P \in \mathcal{P}_1$ ，它是 $H_1$ 成立时，正确拒绝 $H_0$ 的概率，即检验的 power，$1-\beta_T(P)$ 为犯第 II 类错误的概率．（该定义可以涵盖上述的非随机检验的效用函数，也可以涵盖随机化检验，是更一般版本的power function）&lt;/p&gt;
+&lt;p&gt;当样本量固定时，我们不能同时使犯两类错误的概率达到最小．我们的办法是在所有 $P \in \mathcal{P}_1$ 和所有满足下面条件的 $T$ 上最大化势函数 $\beta_T(P)$（即最小化犯第 II 类错误的概率）(这种方法被称为&lt;strong&gt;MP检验，最优势，最大效力&lt;/strong&gt;)，
+$$
+\sup _{P \in \mathcal{P}_0} \beta_T(P) \leqslant \alpha
+$$
+其中 $\alpha \in[0,1]$ 是给定的显著性水平．注意到之前我们定义了的左侧为 $T$ 的检验水准（size）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1(UMP).&lt;/strong&gt; 检验水准为 $\alpha$ 的检验 $T_{*}$ 是&lt;strong&gt;一致最优势（UMP）检验&lt;/strong&gt;，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．&lt;/p&gt;
 </description>
         </item>
         <item>
