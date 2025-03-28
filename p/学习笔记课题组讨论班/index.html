@@ -192,7 +192,7 @@
 
 
                 <time class="article-time--reading">
-                    5 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -342,7 +342,94 @@ $$
 </div>
 <p><strong>QED</strong>.</p>
 <h3 id="expectationintegral-and-probability-density">Expectation,integral and probability density
-</h3>
+</h3><p>本小节将介绍期望，并且讨论到拉东尼古丁定理和R-N导数，并且最后给出一个初等概率论回答不了的问题的答案。</p>
+<p>期望是一种勒贝格积分，可以参考我的另一个<a class="link" href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/#%E6%9C%9F%E6%9C%9B%E4%B8%8E%E7%A7%AF%E5%88%86"  target="_blank" rel="noopener"
+    >博客文章</a>，这里补充一个引理：</p>
+<p><strong>Lemma 1.5（简单函数逼近一般函数）.</strong> Let $(\Omega, \mathcal{F}, \mu)$ be a measure space and $f$ be nonnegative and $\mathcal{F}$ measurable, then there exists a nonnegative sequence of simple measurable functions $f_n$ such that $0 \leq f_n \uparrow f$.</p>
+<p><strong>Note 1.4（关于积分的一些记法）.</strong> The integral can be also denoted by
+$$
+\mu(f):=\int_{\Omega} f \mathrm{~d} \mu:=\int_{\Omega} f(\omega) \mathrm{d} \mu(\omega):=\int_{\Omega} f(\omega) \mu(\mathrm{d} \omega):=\int_{\Omega} \mu(\mathrm{d} \omega) f(\omega)
+$$
+When $\mu$ is Lebesgue measure $m$, we often omit &quot; $m$ &quot; and denote the integral by
+$$
+\int_{\mathbb{R}} f(x) \mathrm{d} m(x):=\int_{\mathbb{R}} f(x) \mathrm{d} x
+$$</p>
+<p><strong>Definition 1.22 (Absolutely continuous).</strong> Let $(\Omega, \mathcal{F})$ be a measurable space, $\mu$ be a measure on $\mathcal{F}$ and $\nu$ be a signed measurable on $\mathcal{F}$. If
+$$
+\mu(A)=0 \Longrightarrow \nu(A)=0, \quad \forall A \in \mathcal{F}
+$$
+then we say $\nu$ is absolutely continuous with respect to measurable $\mu$ and we denote $\nu \ll \mu$.</p>
+<p><strong>Theorem 1.15 (Radon-Nikodym Theorem).</strong> Let $(\Omega, \mathcal{F})$ be a measurable space, $\mu$ is a $\sigma$-finite measure on $\mathcal{F}$ and $\nu$ is a signed measure on $\mathcal{F}$. If
+$$
+\nu \ll \mu
+$$
+then there exists a measurable function $f$ whose integral exists with respect to $\mu$ such that
+$$
+\nu=f \cdot \mu
+$$
+Moreover, $f$ is unique $\mu-$ a.e. and it is called the Radon-Nikodym derivative of $\nu$ with respect to $\mu$ denoted by
+$$
+f=\frac{\mathrm{d} \nu}{\mathrm{~d} \mu}
+$$</p>
+<p><strong>Note 1.5（随机变量的pdf是诱导概率测度相对于勒贝格测度的R-N导数）.</strong> Recall that the law of a random variable $X$ is a probability measure $\mu_X$ on $(\Omega, \mathcal{F})$ defined as
+$$
+\mu_X(A):=\left(\mathbb{P} X^{-1}\right)(A)=\mathbb{P}\left(X^{-1}(A)\right)=\mathbb{P}(X \in A), \quad \forall A \in \mathcal{F}
+$$
+If $\mu_X \ll m$ (namely if $m(A)=0$, then $\mu_X(A)=0$ ), then the Randon-Nikodym derivative $\frac{\mathrm{d} \mu_X}{\mathrm{~d} m}$ exists and we say the law of random variable $X$ has <strong>density</strong>
+$$
+p_X=\frac{\mathrm{d} \mu_X}{\mathrm{~d} m}
+$$
+那么对于 $A\in \mathcal{B}(\mathbb{R})$,有
+$$
+\mu_X(A) = \int_A p_x d m(x) = \int_A p_x d x
+$$</p>
+<p><strong>Theorem 1.16 (Chain Rule).</strong> Let $(\Omega, \mathcal{F}, \mu)$ be a measure space, $f, g$ be non-negative $\mathcal{F}$ measurable functions and $\nu=f . \mu$. Then the integral of $g$ with respect to $\nu$ exists $\iff$ the integral of $g f$ with respect to $\mu$ exists, and then
+$$
+\nu(g)=\mu(g f)
+$$</p>
+<p><strong>Note 1.6(Chain Rule 表示了关于R-N导数的链式法则).</strong> Let
+$$
+\lambda(A)=\nu\left(g 1_A\right)
+$$
+then by chain rule,
+$$
+\lambda(A)=\nu\left(g 1_A\right)=\mu\left(g f 1_A\right)
+$$
+We have
+$$
+g=\frac{\mathrm{d} \lambda}{\mathrm{~d} \nu}, \quad f=\frac{\mathrm{d} \nu}{\mathrm{~d} \mu}, \quad g f=\frac{\mathrm{d} \lambda}{\mathrm{~d} \mu}
+$$
+Hence the chain rule and Radon-Nikodym theorem show that
+$$
+\frac{\mathrm{d} \lambda}{\mathrm{~d} \mu}=\frac{\mathrm{d} \lambda}{\mathrm{~d} \nu} \cdot \frac{\mathrm{~d} \nu}{\mathrm{~d} \mu} \quad \mu-a . e .
+$$</p>
+<p>有链式法则的保证，在一些测度变换的运算中，将R-N导数记作形式导数，进行测度之间的运算是非常便捷的，可以利用普通微积分中一些很好的性质。</p>
+<p><strong>Question 1.3.</strong> In basic probability theory, we know if a random variable $X$ has density $\rho$, that is
+$$
+\mathbb{P}(X \in B)=\int_B \rho(x) \mathrm{d} x
+$$
+Then why the expectation value of $X$ is
+$$
+\mathbb{E}[X]=\int_{\mathbb{R}} x \rho(x) \mathrm{d} x ?
+$$
+Moreover, if $h: \mathbb{R} \rightarrow \mathbb{R}$ is a measurable function then why
+$$
+\mathbb{E}[h(X)]=\int_{\mathbb{R}} h(x) \rho(x) \mathrm{d} x ?
+$$</p>
+<p><strong>Theorem 1.17 (Integral Transformation).</strong> Let $X:(\Omega, \mathcal{F}, \mathbb{P}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ be measurable, and $h:(\mathbb{R}, \mathcal{B}(\mathbb{R})) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ be a measurable function, then the integral of $h(X)$ with respect to measure $\mathbb{P}$ exists if and only if the integral of $h$ with respect to image measure $\mathbb{P} X^{-1}$ exists, and for all $B \in \mathcal{B}(\mathbb{R})$, we have
+$$
+\int_{X^{-1}(B)} h(X) \mathrm{d} \mathbb{P}=\int_B h \mathrm{~d}\left(\mathbb{P} X^{-1}\right)
+$$
+<strong>Proof.</strong> For $A \in \mathcal{B}(\mathbb{R})$ and $h=1_A$ then
+$$
+\int_{X^{-1}(B)} 1_A(X) \mathrm{d} \mathbb{P}=\int_{\Omega} 1_{X^{-1}(A \cap B)} \mathrm{d} \mathbb{P}=\mathbb{P}\left(X^{-1}(A \cap B)\right)=\left(\mathbb{P} X^{-1}\right)(A \cap B)=\int_E 1_{A \cap B} \mathrm{~d}\left(\mathbb{P} X^{-1}\right)=\int_B h \mathrm{~d}\left(\mathbb{P} X^{-1}\right)
+$$
+Then by Typical Method in Measure Theory, we get the desired result.<strong>QED</strong></p>
+<p>利用该定理，可以回答上面提出的问题：
+$$
+\mathbb{E}[h(X)]=\int_{\Omega} h(X) \mathrm{d} \mathbb{P}=\int_{\mathbb{R}} h(x) \mathrm{d}\left(\mathbb{P} X^{-1}\right)=\int_{\mathbb{R}} h(x) \frac{\mathrm{d} \mathbb{P} X^{-1}}{\mathrm{~d} m(x)} \cdot \mathrm{~d} m(x)=\int_{\mathbb{R}} h(x) \rho(x) \mathrm{d} x .
+$$</p>
+
 </section>
 
 

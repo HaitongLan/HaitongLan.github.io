@@ -557,7 +557,13 @@ then $M$ is a d-dimensional Brownian motion.&lt;/p&gt;
 (1) If $d=1, B_t(\omega)$ visits 0 &lt;strong&gt;infinite many times&lt;/strong&gt;(0点常返).
 (2) If $d=2, B_t(\omega)$ does not hit the origin after time 0 , however it &lt;strong&gt;hits every ball with center at the origin&lt;/strong&gt;（0点邻域常返）.&lt;br&gt;
 (3) If $d \geq 3,\left|B_t(\omega)\right| \longrightarrow \infty$ as $t \rightarrow \infty$(非常返，必定跑到无穷远处，即使一维布朗运动有重对数定理作为sup，但是高维情况仍然不是可以想象到的).&lt;/p&gt;
-</description>
+&lt;h2 id=&#34;随机微积分&#34;&gt;随机微积分
+&lt;/h2&gt;&lt;p&gt;绝大多数随机微积分的教材都是从布朗运动出发，本课程从鞅出发，并扩展到对半鞅的随机微积分，由于布朗运动是鞅，所以该随机微积分的定义是相当广泛的，先介绍引入随机微积分的必要性，为什么不能用普通的微积分表示对鞅的积分。&lt;/p&gt;
+&lt;h3 id=&#34;简单过程随机微积分&#34;&gt;简单过程随机微积分
+&lt;/h3&gt;&lt;h3 id=&#34;鞅局部鞅半鞅随即微积分&#34;&gt;鞅、局部鞅、半鞅随即微积分
+&lt;/h3&gt;&lt;h3 id=&#34;伊藤引理与鞅表示定理&#34;&gt;伊藤引理与鞅表示定理
+&lt;/h3&gt;&lt;h2 id=&#34;测度变换&#34;&gt;测度变换
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>学习笔记|课题组讨论班</title>
@@ -3201,10 +3207,117 @@ $$
 $$
 由于 $\alpha_1, \boldsymbol{\alpha}_3$ 都是 $\boldsymbol{A}$ 的属于特征值 1 的特征向量，故 $\boldsymbol{\alpha}_2, \boldsymbol{\alpha}_4$ 称为属于特征值 1的广义特征向量 我们可取方程组 $(A-I) x=0$ 的两个线性无关的解分别作为 $\alpha_1, \boldsymbol{\alpha}_3$（注悉不能取线性相关的两个解，因为 $\boldsymbol{P}$ 是非异阵），然后再分别求出 $\alpha_2, \alpha_4$ （注意诸 $\alpha_i$ 的解可能不唯一，只需取比较简单的一组解）即可．经计算可得 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;jordon标准型的进一步讨论和应用&#34;&gt;Jordon标准型的进一步讨论和应用
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定理 1（Jordon标准型、几何重数、代数重数）.&lt;/strong&gt; 线性变换 $\varphi$ 的特征值 $\lambda_1$ 的几何重数等于 $\varphi$ 的 Jordan 标准型中属于特征值 $\lambda_1$ 的 Jordan 块的个数，$\lambda_1$ 的代数重数等于所有属于特征值 $\lambda_1$ 的 Jordan 块的阶数之和。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（循环子空间）.&lt;/strong&gt; 设 $V_0$ 是线性空间 $V$ 的 $r$ 维子空间，$\psi$ 是 $V$ 上的线性变険．若存在 $\alpha \in V_0$ ，使 $\left\{\boldsymbol{\alpha}, \boldsymbol{\psi}(\boldsymbol{\alpha}), \cdots, \boldsymbol{\psi}^{r-1}(\boldsymbol{\alpha})\right\}$ 构成 $V_0$ 的一组基，则称 $V_0$ 为关于线性变换 $\psi$ 的循环子空间．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 每个Jordon块对应的特征向量和广义特征向量张成的子空间（并非特征子空间）关于映射 $\varphi-\lambda_i I$ 构成一个循环子空间 $V_i$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 3（根子空间）.&lt;/strong&gt; 设 $\lambda_0$ 是 $n$ 维复线性空间 $V$ 上线性变换 $\varphi$ 的特征值，则
+$$
+\begin{aligned}
+R\left(\lambda_0\right) &amp;amp; = V_1\oplus V_2\oplus\cdots\oplus V_s\\
+&amp;amp;=\left\{v \in V \mid\left(\varphi-\lambda_0 I\right)^n(v)=0\right\}
+\end{aligned}
+$$
+构成了 $V$ 的一个子空间，称为属于特征值 $\lambda_0$ 的根子空间．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这里其实描述了两种等价定义，第一种定义更方便我们理解根子空间是一个属于特征值的空间，每个特征值都会有一个根子空间，这个子空间可以由特征值对应的每个Jordon块张成的循环子空间直和构成。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4(全空间的两种直和分解).&lt;/strong&gt; 设 $\varphi$ 是 $n$ 维复线性空间 $V$ 上的线性变换．&lt;br&gt;
+（1）若 $\varphi$ 的初等因子组为
+$$
+\left(\lambda-\lambda_1\right)^{r_1},\left(\lambda-\lambda_2\right)^{r_2}, \cdots,\left(\lambda-\lambda_k\right)^{r_k}
+$$
+则 $V$ 可分解为 $k$ 个不变子空间的直和：
+$$
+V=V_1 \oplus V_2 \oplus \cdots \oplus V_k
+$$
+其中 $V_i$ 是维数等于 $r_i$ 的关于 $\varphi-\lambda_i \boldsymbol{I}$ 的循环子空间；&lt;br&gt;
+（2）若 $\lambda_1, \cdots, \lambda_s$ 是 $\varphi$ 的全体不同特征值，则 $V$ 可分解为 $s$ 个不变子空间的直和：
+$$
+V=R\left(\lambda_1\right) \oplus R\left(\lambda_2\right) \oplus \cdots \oplus R\left(\lambda_3\right)
+$$
+其中 $R\left(\lambda_i\right)$ 是 $\lambda_i$ 的根子空间，$R\left(\lambda_i\right)$ 的维数等于 $\lambda_i$ 的重数，且每个 $R\left(\lambda_i\right)$ 又可分解为若干个 $V_j$ 的直和。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;推论 5（对角化的充要条件）.&lt;/strong&gt; 线性映射可对角化$\iff$对于所有特征值 $\lambda_i$,有 $R(\lambda_i) =  V_{\lambda_i}$,其中 $V_{\lambda_i}$ 为 $\lambda_i$ 的特征子空间。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 从直观的角度来理解该定理其实非常简单，根子空间可以化为属于该特征值的Jordon块对应的子空间的直和，若这些直和等于特征子空间，则显示特征向量张满了整个空间，是一种代数重数等于几何重数的表示；使用全空间分解的视角，全空间本来可以表示为根子空间的分解，若根子空间等价于特征子空间，则全空间可以分解为特征子空间，矩阵自然可以对角化。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 6（Jordan－Chevalley 分解）&lt;/strong&gt; 设 $\boldsymbol{A}$ 是 $n$ 阶复矩阵，则 $\boldsymbol{A}$ 可分解为 $A=B+C$ ，其中 $B, C$ 适合下面条件：&lt;br&gt;
+（1）$B$ 是一个可对角化矩阵；&lt;br&gt;
+（2）$C$ 是一个幂零阵；&lt;br&gt;
+（3） $\boldsymbol{B C}=\boldsymbol{C B}$ ；&lt;br&gt;
+（4） $\boldsymbol{B}, \boldsymbol{C}$ 均可表示为 $\boldsymbol{A}$ 的多项式．&lt;br&gt;
+不仅如此，上述满足条件 $(1) \sim(3)$ 的分解是唯一的．&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;方法论.&lt;/strong&gt; 求证一个一般的矩阵问题，可以将其转化为 Jordon 标准型，再证明Jordon块满足该问题，进而返回到Jordon标准型满足该问题，一般的矩阵也满足。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;过渡矩阵.&lt;/strong&gt; 在上一小节中我们谈到了过渡矩阵如何去求，事实上广义特征向量有时并不是很好去求，如果我们直接拿求得的其他特征向量去求的话，事实上，我们需要从特征子空间里拿非零向量，使得该广义特征向量存在才可以，需要我们在特征子空间内任取合适的特征向量。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;矩阵函数&#34;&gt;矩阵函数
+&lt;/h3&gt;&lt;p&gt;本课程使用幂级数收敛的方式定义了矩阵函数，并且讨论了该级数的收敛问题，本质上是依赖于泰勒公式的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（矩阵级数）.&lt;/strong&gt; 设 $f(z)=\sum_{i=0} a_i z^i$ 是复幂级数，则&lt;br&gt;
+（1）方阵幂级数 $f(\boldsymbol{X})$ 收敛的充分必要条件是对任一非异阵 $\boldsymbol{P}, f\left(P^{-1} X P\right)$都收敛，这时
+$$
+f\left(\boldsymbol{P}^{-1} \boldsymbol{X} \boldsymbol{P}\right)=\boldsymbol{P}^{-1} f(\boldsymbol{X}) \boldsymbol{P}
+$$
+（2）若 $\boldsymbol{X}=\operatorname{diag}\left\{\boldsymbol{X}_1, \cdots, \boldsymbol{X}_k\right\}$ ，则 $f(\boldsymbol{X})$ 收敛的充分必要条件是 $f\left(\boldsymbol{X}_1\right), \cdots$ ， $f\left(\boldsymbol{X}_k\right)$ 都收敛，这时
+$$
+f(\boldsymbol{X})=\operatorname{diag}\left\{f\left(\boldsymbol{X}_1\right), \cdots, f\left(\boldsymbol{X}_k\right)\right\}
+$$
+（3）若 $f(z)$ 的收敛半径为 $r, J_0$ 是特征值为 $\lambda_0$ 的 $n$ 所 Jordan 块，
+则当 $\left|\lambda_0\right|&amp;lt;r$ 时 $f\left(J_0\right)$ 收敛，且&lt;/p&gt;
+&lt;div&gt;
+$$
+f\left(J_0\right)=\left(\begin{array}{ccccc}
+f\left(\lambda_0\right) &amp; \frac{1}{1!} f^{\prime}\left(\lambda_0\right) &amp; \frac{1}{2!} f^{(2)}\left(\lambda_0\right) &amp; \cdots &amp; \frac{1}{(n-1)!} f^{(n-1)}\left(\lambda_0\right) \\
+&amp; f\left(\lambda_0\right) &amp; \frac{1}{1!} f^{\prime}\left(\lambda_0\right) &amp; \cdots &amp; \frac{1}{(n-2)!} f^{(n-2)}\left(\lambda_0\right) \\
+&amp; &amp; f\left(\lambda_0\right) &amp; \cdots &amp; \frac{1}{(n-3)!} f^{(n-3)}\left(\lambda_0\right) \\
+&amp; &amp; &amp; \ddots &amp; \vdots \\
+&amp; &amp; &amp; \ddots &amp; f\left(\lambda_0\right)
+\end{array}\right) .
+$$
+&lt;/div&gt;
+&lt;p&gt;上述矩阵完全是将矩阵带入泰勒多项式后运算获得的，实际上是对每个元素都进行了运算（因为恰巧由上一节的矩阵分解定理，可以使得矩阵在特征值这一点展开后只需要处理幂零阵，这给了我们很大的便利）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（矩阵级数收敛判定）.&lt;/strong&gt; 设 $f(z)$ 是复幂级数，收敛半径为 $r$ ．设 $\boldsymbol{A}$ 是 $n$ 阶复方阵，特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，定义 $\boldsymbol{A}$ 的谱半径
+$$
+\rho(\boldsymbol{A})=\max _{1 \leq i \leq n}\left|\lambda_i\right|
+$$
+（1）若 $\rho(\boldsymbol{A})&amp;lt;r$ ，则 $f(\boldsymbol{A})$ 收敛；&lt;br&gt;
+（2）若 $\rho(\boldsymbol{A})&amp;gt;r$ ，则 $f(\boldsymbol{A})$ 发散；&lt;br&gt;
+（3）若 $\rho(\boldsymbol{A})=r$ ，则 $f(\boldsymbol{A})$ 收敛的充分必要条件是：对上个定义中得到的每个元素都收敛。&lt;br&gt;
+（4）若 $f(\boldsymbol{A})$ 收敛，则 $f(\boldsymbol{A})$ 的特征值为
+$$
+f\left(\lambda_1\right), f\left(\lambda_2\right), \ldots, f\left(\lambda_n\right)
+$$&lt;/p&gt;
+&lt;p&gt;可见，矩阵的特征值在很大的程度上代表了整个矩阵，矩阵函数的定义本质上就是在特征值处进行了多项式展开，事实上，一些矩阵的特征值估计方法就显示了特征值不会离对应矩阵行元素的距离太远。&lt;/p&gt;
 &lt;h2 id=&#34;第八章-二次型&#34;&gt;第八章 二次型
-&lt;/h2&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
-&lt;/h2&gt;&lt;h2 id=&#34;第十章-双线性型&#34;&gt;第十章 双线性型
-&lt;/h2&gt;</description>
+&lt;/h2&gt;&lt;h3 id=&#34;二次型与矩阵合同&#34;&gt;二次型与矩阵合同
+&lt;/h3&gt;&lt;p&gt;$n$ 元二次齐次多项式为二次型，同数学物理方法的思路一样，我们想把二次型通过线性变换变为比较简单的形式(没有混合项)。&lt;/p&gt;
+&lt;p&gt;值得注意的是，我们可以定义一个映射把二次型化简问题转化为矩阵化简问题：&lt;/p&gt;
+&lt;p&gt;映射 $\varphi:\{K上n阶对称阵\}\rightarrow \{n元二次型\}$,对于具体元素来说，$A\mapsto x^{&amp;rsquo;}Ax$,可以证明，这种映射是一种一一对应关系，则我们可以用对称阵来研究二次型问题。则上述二次型化简问题可以转化为：&lt;/p&gt;
+&lt;p&gt;线性空间中，当前基底为 $e$,坐标向量为 $x$,是否存在一组基底 $f$,从 $e$ 到 $f$ 的过渡矩阵为 $C$ ,$f$ 下的新坐标向量为 $y$,则 $x=Cy$,则 $x^{&amp;rsquo;}Ax = y^{&amp;rsquo;}C^{&amp;rsquo;}ACy$,使得坐标向量 $y$ 下的二次型表示矩阵 $C^{&amp;rsquo;}AC$ 为对角阵。&lt;/p&gt;
+&lt;p&gt;上述问题即通过基变换将表示矩阵转化为对角阵，我们现在将该问题中的元素抽象出来：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（矩阵合同）.&lt;/strong&gt; 设 $\boldsymbol{A}, \boldsymbol{B}$ 是数域 $\mathbb{K}$ 上的 $n$ 阶矩阵，若存在 $n$ 阶非异阵 $C$，使
+$$
+B=C^{\prime} A C
+$$
+则称 $B$ 与 $A$ 是合同的，或称 $B$ 与 $A$ 具有合同关系．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 容易证明，合同关系是等价关系。&lt;/p&gt;
+&lt;p&gt;为了保证在变换的过程中矩阵的对称性，我们引入如下初等变换概念：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 2（初等合同变换）.&lt;/strong&gt; 对称阵 $\boldsymbol{A}$ 的下列变换都是合同变换（即变换前后的矩阵合同）：&lt;br&gt;
+（1）对换 $\boldsymbol{A}$ 的第 $i$ 行与第 $j$ 行，再对换第 $i$ 列与第 $j$ 列；&lt;br&gt;
+（2）将非零常数 $k$ 乘以 $\boldsymbol{A}$ 的第 $i$ 行，再将 $k$ 乘以第 $i$ 列；&lt;br&gt;
+（3）将 $\boldsymbol{A}$ 的第 $i$ 行乘以 $k$ 加到第 $j$ 行上，再将第 $i$ 列乘以 $k$ 加到第 $j$ 列上．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3(对称阵必定合同于对角阵).&lt;/strong&gt; 设 $A$ 是数域 $\mathbb{K}$ 上的 $n$ 阶对称阵，则必存在 $\mathbb{K}$ 上的 $n$ 阶非异阵 $C$ ，使 $C^{\prime} A C$ 为对角阵。&lt;/p&gt;
+&lt;h3 id=&#34;二次型的化简&#34;&gt;二次型的化简
+&lt;/h3&gt;&lt;h3 id=&#34;惯性定理&#34;&gt;惯性定理
+&lt;/h3&gt;&lt;h3 id=&#34;正定型与正定矩阵&#34;&gt;正定型与正定矩阵
+&lt;/h3&gt;&lt;h3 id=&#34;hermite型&#34;&gt;Hermite型
+&lt;/h3&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
+&lt;/h2&gt;&lt;h3 id=&#34;内积空间的概念&#34;&gt;内积空间的概念
+&lt;/h3&gt;&lt;h3 id=&#34;内积的表示和正交基&#34;&gt;内积的表示和正交基
+&lt;/h3&gt;&lt;h3 id=&#34;伴随&#34;&gt;伴随
+&lt;/h3&gt;&lt;h3 id=&#34;内积空间的同构正交变换和酉变换&#34;&gt;内积空间的同构、正交变换和酉变换
+&lt;/h3&gt;&lt;h3 id=&#34;自伴随算子&#34;&gt;自伴随算子
+&lt;/h3&gt;&lt;h3 id=&#34;复正规算子&#34;&gt;复正规算子
+&lt;/h3&gt;&lt;h3 id=&#34;实正规算子&#34;&gt;实正规算子
+&lt;/h3&gt;&lt;h3 id=&#34;谱分解与极分解&#34;&gt;谱分解与极分解
+&lt;/h3&gt;&lt;h3 id=&#34;奇异值分解&#34;&gt;奇异值分解
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>Course notes</title>
