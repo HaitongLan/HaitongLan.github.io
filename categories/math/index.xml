@@ -16,6 +16,9 @@
         <description>&lt;img src="http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png" alt="Featured image of post 学习笔记|随机分析" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;台湾交通大学吴庆堂老师随机分析，课程视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;amp;share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;金融随机分析&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;参考网站：(國立交通大學開放式課程 (NCTU OCW))[http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;amp;gid=1&amp;amp;nid=234&amp;amp;page=3].&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;期望与积分&#34;&gt;期望与积分
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition 1.21.&lt;/strong&gt; The function
 $$
@@ -559,10 +562,180 @@ then $M$ is a d-dimensional Brownian motion.&lt;/p&gt;
 (3) If $d \geq 3,\left|B_t(\omega)\right| \longrightarrow \infty$ as $t \rightarrow \infty$(非常返，必定跑到无穷远处，即使一维布朗运动有重对数定理作为sup，但是高维情况仍然不是可以想象到的).&lt;/p&gt;
 &lt;h2 id=&#34;随机微积分&#34;&gt;随机微积分
 &lt;/h2&gt;&lt;p&gt;绝大多数随机微积分的教材都是从布朗运动出发，本课程从鞅出发，并扩展到对半鞅的随机微积分，由于布朗运动是鞅，所以该随机微积分的定义是相当广泛的，先介绍引入随机微积分的必要性，为什么不能用普通的微积分表示对鞅的积分。&lt;/p&gt;
-&lt;h3 id=&#34;简单过程随机微积分&#34;&gt;简单过程随机微积分
-&lt;/h3&gt;&lt;h3 id=&#34;鞅局部鞅半鞅随即微积分&#34;&gt;鞅、局部鞅、半鞅随即微积分
-&lt;/h3&gt;&lt;h3 id=&#34;伊藤引理与鞅表示定理&#34;&gt;伊藤引理与鞅表示定理
-&lt;/h3&gt;&lt;h2 id=&#34;测度变换&#34;&gt;测度变换
+&lt;p&gt;Let $I=[0, \infty), M \in \mathcal{M}^{2, \text { loc }}$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Goal&lt;/strong&gt;．Define an integral $\int H_s d M_s$ for a martingale $M$ and some suitable process $H$ ．&lt;/p&gt;
+&lt;p&gt;最先的想法：Consider the Riemann-Stieltjes（R-S.） integral
+$$
+\int_0^t f(s) d \alpha(s)=\lim _{n \rightarrow \infty} \sum_{i=1}^{\infty} f\left(t_i^*\right)\left(\alpha\left(t_{i+1}\right)-\alpha\left(t_i\right)\right)
+$$
+where $f$ is continuous，$\alpha$ is of &lt;strong&gt;bounded variation&lt;/strong&gt; and $t_i^* \in\left[t_i, t_{i+1}\right]$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Question．&lt;/strong&gt; 能否仿照这种做法来定义 $\int H_s d M_s$ 呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Answer．&lt;/strong&gt; No，if $M$ is a continuous non-constant local martingale， then $M$ is &lt;strong&gt;not of bounded variation&lt;/strong&gt;．&lt;/p&gt;
+&lt;p&gt;正因为非常数鞅不是有界变差过程，会导致区间分割的时候取左端点积分还是右端点积分会导致数值的不同，这也是需要定义随机微积分的必要性，有很多种随机微积分的定法，比如取左端点（Ito integral），中点（Fisk-Stratonovich integral），右端点（backward Itˆo integral），但是最常用的随机微积分是伊藤微积分，它具有一些很好的性质（其他的定义不具有的），就是积分后保持鞅性。&lt;/p&gt;
+&lt;h3 id=&#34;关于鞅的随机微积分&#34;&gt;关于鞅的随机微积分
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Def 9.1（简单过程）.&lt;/strong&gt; Define $\mathcal{E}^b=$ the collection of all &lt;strong&gt;bounded previsible&lt;/strong&gt; (与定义中轨道的左连续对应) simple processes, i.e., all processes $H$ of the form
+$$
+H_t(\omega)=\sum_{i=0}^{n-1} h^i(\omega) \mathbb{I}_{\left(t_i, t_{i+1}\right]}(t)
+$$
+with $n \geq 1,0 \leq t_0&amp;lt;t_1&amp;lt;\cdots&amp;lt;t_n \leq \infty$, and $h^i$ are bounded and $\mathcal{F}_{t_i}$-measurable for all $i$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 9.2（简单过程随机微积分）.&lt;/strong&gt; For $H \in \mathcal{E}^b$, we define the stochastic integral by
+$$
+(H \cdot M)_t:=\int_0^t H_s d M_s=\sum_{i=0}^{n-1} h^i\left(M_{t_{i+1} \wedge t}-M_{t_i \wedge t}\right)
+$$
+for $0 \leq t \leq \infty$.&lt;/p&gt;
+&lt;p&gt;将简单过程代入上述定义，容易发现该随机微积分的定义是自洽的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 9.4.&lt;/strong&gt; Fo $H \in \mathcal{E}^b, H \cdot M \in \mathcal{M}_0^2$(积分后保持鞅性). Moreover, if $M$ is continuous, $H \cdot M$ is continuous, i.e., $H \cdot M \in \mathcal{M}_0^{2, c}$, and
+$$
+\mathbb{E}\left[(\int_0^{\infty} H_s d M_s)^2\right]=\mathbb{E}\left[\int_0^{\infty} H_s^2 d\langle M\rangle_s\right]
+$$&lt;/p&gt;
+&lt;p&gt;现在对简单过程的随机微积分进行&lt;strong&gt;推广&lt;/strong&gt;，一种自然的想法就是利用简单的随机过程去逼近一些复杂的随机过程,现在我们想用简单随机过程序列 $H_t^{(n)}$ 逼近一般随机过程 $H_t$,可以构造柯西序列判断收敛性：&lt;/p&gt;
+&lt;div&gt;
+$\begin{aligned} \mathbb{E}\left[\left(\int_0^T H_s^{(n)} d M_s-\int_0^T H_s^{(m)} d M_s\right)^2\right] &amp; =\mathbb{E}\left[\left(\int_0^T\left(H_s^{(n)}-H_s^{(m)}\right) d M_s\right)^2\right] \\ &amp; =\mathbb{E}\left[\int_0^T\left|H_s^{(n)}-H_s^{(m)}\right|^2 d\langle M\rangle_s\right] \overset{?}{\longrightarrow} 0\end{aligned}$
+&lt;/div&gt;
+&lt;p&gt;as $m, n \rightarrow \infty$. Thus, $\left(\int_0^T H_s^{(n)} d M_s\right)_{n \in \mathbb{N}}$ is a Cauchy sequence in $L^2(\Omega, \mathcal{F}, \mathbb{P})$, which implies that this sequence converges in $L^2$.&lt;/p&gt;
+&lt;p&gt;如果上述问号的表达式收敛，则我们可以定义 $L^2$ 意义下收敛的普通过程随机微积分，下面的定理回答了这一点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 9.8（柯西序列的收敛（Square-integrable processes）.&lt;/strong&gt; If $M \in \mathcal{M}_0^{2, c}, H$ is progressively measurable and satisfies
+$$
+\mathbb{E}\left[\int_0^T H_s^2 d\langle M\rangle_s\right]&amp;lt;\infty, \quad \text { for each } T&amp;gt;0
+$$
+then there exists a sequence of simple processes $H^{(n)}$ such that
+$$
+\sup _{T&amp;gt;0} \lim _{n \rightarrow \infty} \mathbb{E}\left[\int_0^T\left|H_s^{(n)}-H_s\right|^2 d\langle M\rangle_s\right]=0
+$$&lt;/p&gt;
+&lt;p&gt;也就是说，只要被积的随机过程满足上述条件，我们就可以定义从简单随机过程微积分到一般随机过程微积分的逼近，我们用以下符号来表示这些可积随机过程的集合：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Notation 9.9（可积随机过程）.&lt;/strong&gt; For $0&amp;lt;T&amp;lt;\infty$, denote&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+\mathcal{L}_T^{*} &amp; =\text { the class if all bounded progressively measurable processes such that Thm 9.8 holds } \\\
+\mathcal{L}^{*} &amp; =\bigcap_{T \geq 0} \mathcal{L}_T^{*} .
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;现在可以自然对对二次可积过程进行随机微积分（关于鞅）的定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 9.11（普通随机过程的随机微积分）.&lt;/strong&gt; For $H \in \mathcal{L}_T^*$, the stochastic integral of $H$ with respect to the martingale $M \in \mathcal{M}^{2, c}$ is defined by
+$$
+\int_0^T H_s d M_s:=\lim _{n \rightarrow \infty} \int_0^T H_s^{(n)} d M_s, \quad \text { in } L^2-\text { sense }
+$$
+where $H^{(n)}$ is a sequence of simple processes satisfying.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 很可惜的一点时，该随机微积分是在 $L^2$ 的意义下收敛的，而不是更强的收敛条件；值得说明的而是，该定义是well-define的；其实我们对被积函数的要求还是很强的，要求其渐进可测而且满足上述定理，有一些其他的随机微积分可以推广被积函数的选择，不过性质也会稍差，我们不考虑那些。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 9.13（随机微积分的性质）.&lt;/strong&gt; Let $H, K \in \mathcal{L}_T^{*}, \alpha, \beta \in \mathbb{R}, M \in \mathcal{M}^{2, c}$. Then&lt;br&gt;
+(1) If $H$ is $\left(\mathcal{F}_t\right)$-adapted, then $\left(\int_0^t H_s d M_s\right)_{0 \leq t&amp;lt;T}$ is a square-integrable martingale.&lt;br&gt;
+(2) $\int_0^T\left(\alpha H_s+\beta K_s\right) d M_s=\alpha \int_0^T H_s d M_s+\beta \int_0^T K_s d M_s$.&lt;br&gt;
+(3) $\mathbb{E}\left[\left(\int_0^T H_s d M_s\right)^2\right]=\mathbb{E}\left[\int_0^T H_s^2 d\langle M\rangle_s\right]$.&lt;br&gt;
+(4) $\mathbb{E}\left[\left(\int_s^t H_u d M_u\right)^2 \mid \mathcal{F}_s\right]=\mathbb{E}\left[\int_s^t H_u^2 d\langle M\rangle_u \mid \mathcal{F}_s\right]$.&lt;br&gt;
+(5) $\left\langle\int_0 H_s d M_s\right\rangle_t=\int_0^t H_s^2 d\langle M\rangle_u$.&lt;br&gt;
+(6) Let $H \in \mathcal{L}^{*}(M), G \in \mathcal{L}^{*}\left(\int H d M\right)$, i.e.,
+$$
+\mathbb{E}\left[\int_0^T H_u^2 d\langle M\rangle_u\right]&amp;lt;\infty,
+$$
+and
+$$
+\mathbb{E}\left[\int_0^T G_u^2 d\left\langle\int_0 H d M\right\rangle_u\right]&amp;lt;\infty
+$$
+for all $T&amp;gt;0$, then $G H \in \mathcal{L}^{*}(M)$ and
+$$
+\int_0^t G_u d\left(\int_0^u H_v d M_v\right)=\int_0^t G_u H_u d M_u
+$$
+(7) If $M, N \in \mathcal{M}^{2, c}$ and $H \in \mathcal{L}^*(M)$, then
+$$
+\left\langle\int_0 H_u d M_u, \int_0 K_u d N_u\right\rangle_t=\int_0^t H_u K_u d\langle M, N\rangle_u,
+$$
+i.e.(鞅的等价条件),
+$$
+\mathbb{E}\left[\int_s^t H_u d M_u \cdot \int_s^t K_u d N_u \mid \mathcal{F}_s\right]=\mathbb{E}\left[\int_s^t H_u K_u d\langle M, N\rangle_u \mid \mathcal{F}_s\right] .
+$$
+In particular, if $K \equiv 1$,
+$$
+\left\langle\int_0 H_u d M_u, N\right\rangle_t=\int_0^t H_u d\langle M, N\rangle_u \quad \mathbb{P} \text {-a.s. }
+$$
+for al $0 \leq t&amp;lt;\infty$.
+&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 这些性质的推导非常有意思，可以把条件期望还有鞅的许多性质联系起来，可以仔细看一看吴老师的讲义以及一些参考书籍.另外注意，由Doob分解，$\langle M\rangle_t$ 是有界变差过程，对于该过程的微积分并不是随机微积分，而是R-S.积分，随机微积分的应用场景并不是针对随机过程的微积分，而是针对非有界变差随机过程的微积分。&lt;/p&gt;
+&lt;p&gt;随机微积分中有类似于Cauchy-Schwarz不等式的存在：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm 9.16 (Kunita-Watanabe).&lt;/strong&gt; If $M, N \in \mathcal{M}^{2, c}, H \in \mathcal{L}^{*}(M), K \in \mathcal{L}^{*}(N)$, then
+$$
+\int_0^t\left|H_u K_u\right| d\langle M, N\rangle_u \leq\left(\int_0^t H_u^2 d\langle M\rangle_u\right)^{1 / 2}\left(\int_0^t K_u^2 d\langle N\rangle_u\right)^{1 / 2}
+$$
+$\mathbb{P}$-a.s.&lt;/p&gt;
+&lt;h3 id=&#34;局部鞅半鞅随机微积分&#34;&gt;局部鞅、半鞅随机微积分
+&lt;/h3&gt;&lt;p&gt;利用局部鞅的性质，选择一组停时，便可以将对局部鞅的积分转化为对鞅的积分：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 9.18(局部鞅随机微积分).&lt;/strong&gt; For $M \in \mathcal{M}^{c, \text { loc }}$ and $X \in \mathcal{L}^*(M)$, the stochastic integral of $X$ with respect to $M$ is defined by
+$$
+\int_0^t X_s d M_s=\int_0^t X_s I_{\left\{T_n \geq s\right\}} d M_{s \wedge T_n} \quad \text { on }\left\{0 \leq t \leq T_n\right\}
+$$
+where $\left(T_n\right)$ is a nondecreasing sequence of stopping times such that $\left(M_{t \wedge T_n}, \mathcal{F}_t\right)$ is a martingale for each $n \geq 1$ and $\mathbb{P}\left(\lim _{n \longrightarrow \infty} T_n=\infty\right)=1$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 9.19.&lt;/strong&gt; Let $M \in \mathcal{M}^{\text {c,loc }}$ and $X, Y \in \mathcal{L}^*(M)$. Then&lt;br&gt;
+(1) $\left(\int_0^t X_u d M_u\right)$ is a continuous local martingale.&lt;br&gt;
+(2) $\left\langle\int_0 X_s d M_s\right\rangle_t=\int_0^t X_s^2 d\langle M\rangle_s \quad \mathbb{P}-$ a.s.&lt;br&gt;
+(3) 关于期望的性质一般不成立。&lt;/p&gt;
+&lt;p&gt;现在拓展到半鞅，假设半鞅 $X_t=X_0+M_t^X+A_t^X$，定义如下,看着就像把半鞅拆开了：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Def 9.21（半鞅的随机微积分）.&lt;/strong&gt; For $H \in \mathcal{L}^*\left(M^X\right)$,
+$$
+\int_0^t H_s d X_s=\int_0^t H_s d M_s^X+\int_0^t H_s d A_s^X \cdot
+$$&lt;/p&gt;
+&lt;p&gt;半鞅对于分析一些带跳过程的随机微积分非常重要，但是本课程暂时不涉及带跳过程，笔者也将这些定理省略掉。对于半鞅，我们无法利用Doob分解给出直观的二阶变差定义，需要采取实分析中最广泛的二阶变差定义（在鞅的章节我们已经提到，这里强调一下）：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 9.22（二阶变差）.&lt;/strong&gt; 设 $X_t$ 是定义在概率空间 $(\Omega, \mathcal{F}, \mathbb{P})$ 上的实值随机过程，时间陬非负实数。其二次变差也是一个随机过程，记做 $[X]_t$ ，定义为
+$$
+[X]_t=\lim _{|P| \rightarrow 0} \sum_{k=1}^n\left(X_{t_k}-X_{t_{k-1}}\right)^2
+$$
+其中 P 取遍区间 $[0, \mathrm{t}]$ 所有的划分，范数 $|P|$ 等于 P 中最长的子区间的长度，极限使用依概率收敛来定义。&lt;/p&gt;
+&lt;p&gt;更一般地，两个过程 $X$ 和 $Y$ 的协变差（或称互变差）为
+$$
+[X, Y]_t=\lim _{|P| \rightarrow 0} \sum_{k=1}^n\left(X_{t_k}-X_{t_{k-1}}\right)\left(Y_{t_k}-Y_{t_{k-1}}\right)
+$$&lt;/p&gt;
+&lt;p&gt;类似前面两种定法，半鞅随机微积分也有如下定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm 9.26.&lt;/strong&gt; If $X$ and $Y$ are semimartingale, $H \in \mathcal{L}_T^{*}$, then
+$$
+\left[\int_0 H_u d X_u, Y\right]_t=\int_0^t H_u d[X, Y]_u
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充&lt;/strong&gt; ：随机微积分的微分形式都是不严格的，但是却可以很好的辅助我们的计算，容易通过和普通微积分一样的思想得到 $d X_t\ Y_t = d[X,Y]_t$，在以后的推导中我们也常常使用这一点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thm（ito等距）.&lt;/strong&gt; 设 ${X(u), u \in[0, s]}$ 和 ${Y(u), u \in[0, t]}$ 是 $V$ 中的随机过程，其中 $0 \leq s \leq t$ ，则
+$$
+\begin{aligned}
+&amp;amp; \operatorname{Cov}\left(\int_0^s X(u) d B(u), \int_0^t Y(u) d B(u)\right) \\
+= &amp;amp; \int_0^s E[X(u) Y(u)] d u
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;伊藤引理与鞅表示定理&#34;&gt;伊藤引理与鞅表示定理
+&lt;/h3&gt;&lt;p&gt;伊藤引理，就是随机微积分中的链式法则。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 9.27 (one-dimensional Itô Formula, continuous form).&lt;/strong&gt; Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a $C^2$-function and let $X=\left(X_t, \mathcal{F}_t\right)$ be a continuous semimartingale with the decomposition
+$$
+X_t=X_0+M_t+A_t
+$$
+where $M$ is a local martingale and $A$ is of bounded variation. Then
+$$
+\begin{aligned}
+f\left(X_t\right) &amp;amp; =f\left(X_0\right)+\int_0^t f^{\prime}\left(X_s\right) d X_s+\frac{1}{2} \int_0^t f^{\prime \prime}\left(X_s\right) d[X, X]_s \\
+&amp;amp; =f\left(X_0\right)+\int_0^t f^{\prime}\left(X_s\right) d M_s+\int_0^t f^{\prime}\left(X_s\right) d A_s+\frac{1}{2} \int_0^t f^{\prime \prime}\left(X_s\right) d\langle M\rangle_s
+\end{aligned}
+$$
+P-a.s.
+&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; ito引理也说明了，若 $X_t$ 是一个半鞅，则对于
+二阶连续函数 $f$,$f(X_t)$ 也是个半鞅。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 9.31 (multi-dimensional Itô formula, continuous local martingale).&lt;/strong&gt; Let $X=$ $\left(X^1, X^2, \ldots, X^n\right)$ be a vector of local martingales in $\mathcal{M}^{c, l o c}$. Let $f:[0, \infty) \times \mathbb{R}^n \longrightarrow \mathbb{R}$ be a $C^{1,2}$-function. Then&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+f\left(t, X_t\right)=f\left(0, X_0\right)+\int_0^t \frac{\partial}{\partial t} &amp;amp; f\left(s, X_s\right) d s+\sum_{i=1}^n \int_0^t \frac{\partial}{\partial x_i} f\left(s, X_s\right) d X_s^i \\
+&amp;amp; +\frac{1}{2} \sum_{i, j=1}^n \int_0^t \frac{\partial^2}{\partial x_i \partial x_j} f\left(s, X_s\right) d\left\langle X^i, X^j\right\rangle_s
+\end{aligned}
+$$
+for all $t$.&lt;/p&gt;
+&lt;p&gt;此外，还有矩阵形式的ito引理以及对于带跳过程的ito引理，这里暂不列出；ito引理可以极大的帮助我们求解一些简单的SDE，在一些情况下，随机微积分也有像普通微积分一样的分部积分，不过都是ito引理的推论，全用ito引理即可。&lt;/p&gt;
+&lt;p&gt;通过之前随机微积分的铺垫，我们发现，一个鞅/局部鞅/半鞅经过随机微积分后鞅性不改变，那么是否任意一个鞅都可以表示为关于鞅的随机微积分呢，即下面的问题：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Question.&lt;/strong&gt; If $M$ is a martingale, does there exist $X \in \mathcal{L}^*$ and a Brownian motion $W$ such that
+$$
+M_t=M_0+\int_0^t X_s d M_s ?
+$$&lt;/p&gt;
+&lt;p&gt;答案就是鞅表示定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 9.40 (Martingale Representation Theorem).&lt;/strong&gt; Let $\left(W_t\right)$ be an n-dimensional Brownian motion with respect to $\left(\mathcal{F}_t^W\right)$ and let $\left(M_t\right)$ be a square-integrable martingale with respect to $\mathbb{P}$ and $\left(\mathcal{F}_t^W\right)$. Then there exists a unique $H^i \in \mathcal{L}^*$ for all $i$ such that
+$$
+M_t=\mathbb{E}\left[M_0\right]+\sum_{i=1}^n \int_0^t H_s^i d W_s^i, \quad \mathbb{P}-a . s
+$$
+for all $t \geq 0$.&lt;br&gt;
+&lt;strong&gt;Remark.&lt;/strong&gt; 域流相同意味着信息量相同，可以使用随机微积分来表示也是合理的事情。值得注意的是，虽然我们可以从理论层面上进行说明，但是定理中提到的 $H_t$ 是非常难找的。&lt;/p&gt;
+&lt;h2 id=&#34;测度变换&#34;&gt;测度变换
 &lt;/h2&gt;</description>
         </item>
         <item>
@@ -706,7 +879,94 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;QED&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;expectationintegral-and-probability-density&#34;&gt;Expectation,integral and probability density
-&lt;/h3&gt;</description>
+&lt;/h3&gt;&lt;p&gt;本小节将介绍期望，并且讨论到拉东尼古丁定理和R-N导数，并且最后给出一个初等概率论回答不了的问题的答案。&lt;/p&gt;
+&lt;p&gt;期望是一种勒贝格积分，可以参考我的另一个&lt;a class=&#34;link&#34; href=&#34;https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/#%E6%9C%9F%E6%9C%9B%E4%B8%8E%E7%A7%AF%E5%88%86&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;博客文章&lt;/a&gt;，这里补充一个引理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 1.5（简单函数逼近一般函数）.&lt;/strong&gt; Let $(\Omega, \mathcal{F}, \mu)$ be a measure space and $f$ be nonnegative and $\mathcal{F}$ measurable, then there exists a nonnegative sequence of simple measurable functions $f_n$ such that $0 \leq f_n \uparrow f$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note 1.4（关于积分的一些记法）.&lt;/strong&gt; The integral can be also denoted by
+$$
+\mu(f):=\int_{\Omega} f \mathrm{~d} \mu:=\int_{\Omega} f(\omega) \mathrm{d} \mu(\omega):=\int_{\Omega} f(\omega) \mu(\mathrm{d} \omega):=\int_{\Omega} \mu(\mathrm{d} \omega) f(\omega)
+$$
+When $\mu$ is Lebesgue measure $m$, we often omit &amp;quot; $m$ &amp;quot; and denote the integral by
+$$
+\int_{\mathbb{R}} f(x) \mathrm{d} m(x):=\int_{\mathbb{R}} f(x) \mathrm{d} x
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 1.22 (Absolutely continuous).&lt;/strong&gt; Let $(\Omega, \mathcal{F})$ be a measurable space, $\mu$ be a measure on $\mathcal{F}$ and $\nu$ be a signed measurable on $\mathcal{F}$. If
+$$
+\mu(A)=0 \Longrightarrow \nu(A)=0, \quad \forall A \in \mathcal{F}
+$$
+then we say $\nu$ is absolutely continuous with respect to measurable $\mu$ and we denote $\nu \ll \mu$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 1.15 (Radon-Nikodym Theorem).&lt;/strong&gt; Let $(\Omega, \mathcal{F})$ be a measurable space, $\mu$ is a $\sigma$-finite measure on $\mathcal{F}$ and $\nu$ is a signed measure on $\mathcal{F}$. If
+$$
+\nu \ll \mu
+$$
+then there exists a measurable function $f$ whose integral exists with respect to $\mu$ such that
+$$
+\nu=f \cdot \mu
+$$
+Moreover, $f$ is unique $\mu-$ a.e. and it is called the Radon-Nikodym derivative of $\nu$ with respect to $\mu$ denoted by
+$$
+f=\frac{\mathrm{d} \nu}{\mathrm{~d} \mu}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note 1.5（随机变量的pdf是诱导概率测度相对于勒贝格测度的R-N导数）.&lt;/strong&gt; Recall that the law of a random variable $X$ is a probability measure $\mu_X$ on $(\Omega, \mathcal{F})$ defined as
+$$
+\mu_X(A):=\left(\mathbb{P} X^{-1}\right)(A)=\mathbb{P}\left(X^{-1}(A)\right)=\mathbb{P}(X \in A), \quad \forall A \in \mathcal{F}
+$$
+If $\mu_X \ll m$ (namely if $m(A)=0$, then $\mu_X(A)=0$ ), then the Randon-Nikodym derivative $\frac{\mathrm{d} \mu_X}{\mathrm{~d} m}$ exists and we say the law of random variable $X$ has &lt;strong&gt;density&lt;/strong&gt;
+$$
+p_X=\frac{\mathrm{d} \mu_X}{\mathrm{~d} m}
+$$
+那么对于 $A\in \mathcal{B}(\mathbb{R})$,有
+$$
+\mu_X(A) = \int_A p_x d m(x) = \int_A p_x d x
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 1.16 (Chain Rule).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, \mu)$ be a measure space, $f, g$ be non-negative $\mathcal{F}$ measurable functions and $\nu=f . \mu$. Then the integral of $g$ with respect to $\nu$ exists $\iff$ the integral of $g f$ with respect to $\mu$ exists, and then
+$$
+\nu(g)=\mu(g f)
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note 1.6(Chain Rule 表示了关于R-N导数的链式法则).&lt;/strong&gt; Let
+$$
+\lambda(A)=\nu\left(g 1_A\right)
+$$
+then by chain rule,
+$$
+\lambda(A)=\nu\left(g 1_A\right)=\mu\left(g f 1_A\right)
+$$
+We have
+$$
+g=\frac{\mathrm{d} \lambda}{\mathrm{~d} \nu}, \quad f=\frac{\mathrm{d} \nu}{\mathrm{~d} \mu}, \quad g f=\frac{\mathrm{d} \lambda}{\mathrm{~d} \mu}
+$$
+Hence the chain rule and Radon-Nikodym theorem show that
+$$
+\frac{\mathrm{d} \lambda}{\mathrm{~d} \mu}=\frac{\mathrm{d} \lambda}{\mathrm{~d} \nu} \cdot \frac{\mathrm{~d} \nu}{\mathrm{~d} \mu} \quad \mu-a . e .
+$$&lt;/p&gt;
+&lt;p&gt;有链式法则的保证，在一些测度变换的运算中，将R-N导数记作形式导数，进行测度之间的运算是非常便捷的，可以利用普通微积分中一些很好的性质。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Question 1.3.&lt;/strong&gt; In basic probability theory, we know if a random variable $X$ has density $\rho$, that is
+$$
+\mathbb{P}(X \in B)=\int_B \rho(x) \mathrm{d} x
+$$
+Then why the expectation value of $X$ is
+$$
+\mathbb{E}[X]=\int_{\mathbb{R}} x \rho(x) \mathrm{d} x ?
+$$
+Moreover, if $h: \mathbb{R} \rightarrow \mathbb{R}$ is a measurable function then why
+$$
+\mathbb{E}[h(X)]=\int_{\mathbb{R}} h(x) \rho(x) \mathrm{d} x ?
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 1.17 (Integral Transformation).&lt;/strong&gt; Let $X:(\Omega, \mathcal{F}, \mathbb{P}) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ be measurable, and $h:(\mathbb{R}, \mathcal{B}(\mathbb{R})) \rightarrow(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ be a measurable function, then the integral of $h(X)$ with respect to measure $\mathbb{P}$ exists if and only if the integral of $h$ with respect to image measure $\mathbb{P} X^{-1}$ exists, and for all $B \in \mathcal{B}(\mathbb{R})$, we have
+$$
+\int_{X^{-1}(B)} h(X) \mathrm{d} \mathbb{P}=\int_B h \mathrm{~d}\left(\mathbb{P} X^{-1}\right)
+$$
+&lt;strong&gt;Proof.&lt;/strong&gt; For $A \in \mathcal{B}(\mathbb{R})$ and $h=1_A$ then
+$$
+\int_{X^{-1}(B)} 1_A(X) \mathrm{d} \mathbb{P}=\int_{\Omega} 1_{X^{-1}(A \cap B)} \mathrm{d} \mathbb{P}=\mathbb{P}\left(X^{-1}(A \cap B)\right)=\left(\mathbb{P} X^{-1}\right)(A \cap B)=\int_E 1_{A \cap B} \mathrm{~d}\left(\mathbb{P} X^{-1}\right)=\int_B h \mathrm{~d}\left(\mathbb{P} X^{-1}\right)
+$$
+Then by Typical Method in Measure Theory, we get the desired result.&lt;strong&gt;QED&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;利用该定理，可以回答上面提出的问题：
+$$
+\mathbb{E}[h(X)]=\int_{\Omega} h(X) \mathrm{d} \mathbb{P}=\int_{\mathbb{R}} h(x) \mathrm{d}\left(\mathbb{P} X^{-1}\right)=\int_{\mathbb{R}} h(x) \frac{\mathrm{d} \mathbb{P} X^{-1}}{\mathrm{~d} m(x)} \cdot \mathrm{~d} m(x)=\int_{\mathbb{R}} h(x) \rho(x) \mathrm{d} x .
+$$&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>学习笔记|信息论</title>

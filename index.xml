@@ -16,6 +16,9 @@
         <description>&lt;img src="http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png" alt="Featured image of post 学习笔记|随机分析" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;台湾交通大学吴庆堂老师随机分析，课程视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;amp;share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;金融随机分析&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;参考网站：(國立交通大學開放式課程 (NCTU OCW))[http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;amp;gid=1&amp;amp;nid=234&amp;amp;page=3].&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;期望与积分&#34;&gt;期望与积分
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition 1.21.&lt;/strong&gt; The function
 $$
@@ -3560,16 +3563,216 @@ $$
 （2）将非零常数 $k$ 乘以 $\boldsymbol{A}$ 的第 $i$ 行，再将 $k$ 乘以第 $i$ 列；&lt;br&gt;
 （3）将 $\boldsymbol{A}$ 的第 $i$ 行乘以 $k$ 加到第 $j$ 行上，再将第 $i$ 列乘以 $k$ 加到第 $j$ 列上．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 3(对称阵必定合同于对角阵).&lt;/strong&gt; 设 $A$ 是数域 $\mathbb{K}$ 上的 $n$ 阶对称阵，则必存在 $\mathbb{K}$ 上的 $n$ 阶非异阵 $C$ ，使 $C^{\prime} A C$ 为对角阵。&lt;/p&gt;
-&lt;h3 id=&#34;二次型的化简&#34;&gt;二次型的化简
-&lt;/h3&gt;&lt;h3 id=&#34;惯性定理&#34;&gt;惯性定理
-&lt;/h3&gt;&lt;h3 id=&#34;正定型与正定矩阵&#34;&gt;正定型与正定矩阵
-&lt;/h3&gt;&lt;h3 id=&#34;hermite型&#34;&gt;Hermite型
-&lt;/h3&gt;&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
-&lt;/h2&gt;&lt;h3 id=&#34;内积空间的概念&#34;&gt;内积空间的概念
-&lt;/h3&gt;&lt;h3 id=&#34;内积的表示和正交基&#34;&gt;内积的表示和正交基
-&lt;/h3&gt;&lt;h3 id=&#34;伴随&#34;&gt;伴随
-&lt;/h3&gt;&lt;h3 id=&#34;内积空间的同构正交变换和酉变换&#34;&gt;内积空间的同构、正交变换和酉变换
-&lt;/h3&gt;&lt;h3 id=&#34;自伴随算子&#34;&gt;自伴随算子
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;二次型的化简&lt;/strong&gt; ：我们已经知道了一个对称阵必定合同于一个对角阵，那在给定一个对称阵的情况下，如何化简得到一个对角阵呢？&lt;/p&gt;
+&lt;p&gt;方法很简单，构造
+$
+\left(\begin{array}{c:c}
+A&amp;amp;I
+\end{array}\right)
+$
+对 $A$ 矩阵进行非异矩阵 $C^{&amp;rsquo;}$ 的左乘和 $C$ 的右乘，即对 $A$ 进行合同变换，将 $A$ 化作对角阵后，由初等变换的性质，虚线右侧为 $C^{&amp;rsquo;}$.&lt;/p&gt;
+&lt;p&gt;在合同变换的过程中，需要不断地使左上角的元素非零，这点可以很容易的使用初等对称变化达到。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;惯性定理&#34;&gt;惯性定理
+&lt;/h3&gt;&lt;p&gt;对角阵并不是一个合同关系下最简单的矩阵，是可以进一步化简的，所以我们需要按照与上一章同样的方法，找到矩阵合同的全系不变量。&lt;/p&gt;
+&lt;p&gt;先对实数的情况进行讨论，通过一些简单的线性映射，可以使得矩阵合同于
+$
+diag\{1,\cdots,1,-1,\cdots,-1,0,\cdots,0\}
+$
+我们将该对角阵称作对称阵或者二次型的规范标准型，并且有以下定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1.&lt;/strong&gt; 设 $f\left(x_1, x_2, \cdots, x_n\right)$ 是一个实二次型，若它能化为形如上式的形状，则称 $r$ 是该二次型的秩（对角线非零数），$p$ 是它的正惯性指数（正1数量），$q=r-p$ 是它的负惯性指数，$s=p-q$ 称为 $f$ 的符号差．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（全系不变量）.&lt;/strong&gt; 秩与符号差（或正负惯性指数，他们两两确认）是实对称阵在合同关系下的全系不变量。&lt;/p&gt;
+&lt;p&gt;对于复数的情况，因为有代数学基本定理的保证，任何数都可以开平方，那么秩就是其全系不变量。&lt;/p&gt;
+&lt;h3 id=&#34;正定型与正定矩阵&#34;&gt;正定型与正定矩阵
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1（正定型与正定矩阵）.&lt;/strong&gt; 对于任意一个 Hermitian 矩阵 $A$&lt;br&gt;
+1．$\forall x \neq 0, x^{&amp;rsquo;} A x&amp;gt;0$ ，则称 $A$ 为正定矩阵&lt;br&gt;
+2．$\forall x \neq 0, x^{&amp;rsquo;} A x \geq 0$ ，则称 $A$ 为半正定矩阵&lt;br&gt;
+3．$\forall x \neq 0, x^{&amp;rsquo;} A x&amp;lt;0$ ，则称 $A$ 为负定矩阵&lt;br&gt;
+4．$\forall x \neq 0, x^{&amp;rsquo;} A x \leq 0$ ，则称 $A$ 为半负定矩阵&lt;br&gt;
+5．若二次型可能取正值，也可能取负值，则称 $A$ 为不定矩阵&lt;br&gt;
+正定矩阵对应的二次型就是正定型，其他同样命名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（正定的等价说法）.&lt;/strong&gt; $n$ 阶实对称阵 $A$ 是正定阵当且仅当它合同于单位阵 $I_n ; A$ 是负交体当业仅当它合同于 $-I_n ; \boldsymbol{A}$ 是半正定阵当且仅当 $\boldsymbol{A}$ 合同于下列对角阵：
+$$
+\left(\begin{array}{ll}
+I_r &amp;amp; O \\
+O &amp;amp; O
+\end{array}\right)
+$$
+$A$ 是半负定阵当且仅当 $\boldsymbol{A}$ 合同于下列对角阵：
+$$
+\left(\begin{array}{cc}
+-I_r &amp;amp; O \\
+O &amp;amp; O
+\end{array}\right)
+$$
+不定矩阵则合同于
+$$
+\left(\begin{array}{ccc}
+I_p &amp;amp; O &amp;amp; O \\
+O &amp;amp; -I_q &amp;amp;O \\
+O &amp;amp; O &amp;amp;O
+\end{array}\right)
+$$&lt;/p&gt;
+&lt;p&gt;正定矩阵的负数就是负定矩阵，所以只需要讨论正定矩阵和半正定矩阵即可，先讨论正定矩阵的情况：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（正定的等价条件）.&lt;/strong&gt; $A$ 为 $n$ 阶实对称阵，以下说法等价：&lt;br&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$A$ 正定&lt;/li&gt;
+&lt;li&gt;$A$ 合同于 $I_n$&lt;/li&gt;
+&lt;li&gt;存在非异阵 $C$，s.t. $A = C^{&amp;rsquo;}C$&lt;/li&gt;
+&lt;li&gt;$A$ 的顺序主子式全部大于0&lt;/li&gt;
+&lt;li&gt;$A$ 的主子式全部大于0（可以推断出主对角线元素全部大于0）&lt;/li&gt;
+&lt;li&gt;$A$ 的特征值全部大于0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来讨论半正定矩阵，事实上，&lt;strong&gt;如果将正定矩阵看作一个开集，那么半正定矩阵就是这个开集的边缘&lt;/strong&gt;，我们可以利用正定矩阵去逼近任意半正定矩阵，该点由以下引理说明：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理 4（半正定矩阵的等价条件）&lt;/strong&gt; $A$ 半正定$\iff \forall t\in \mathbb{R^{+}},A+tI$ 为正定矩阵。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5（半正定的等价条件）.&lt;/strong&gt; $A$ 为 $n$ 阶实对称阵，以下说法等价：&lt;br&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$A$ 半正定&lt;/li&gt;
+&lt;li&gt;$A$ 合同于 $diag\{1,\cdots,1,0\cdots,0\}$&lt;/li&gt;
+&lt;li&gt;存在实矩阵 $C$，s.t. $A = C^{&amp;rsquo;}C$&lt;/li&gt;
+&lt;li&gt;$A$ 的所有主子式全部大于等于0&lt;/li&gt;
+&lt;li&gt;$A$ 的特征值全部大于等于0&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;hermite型&#34;&gt;Hermite型
+&lt;/h3&gt;&lt;p&gt;矩阵和二次型具有非常重要的意义，我们将该理论推广到复数域上，定义Hermite型：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（Hermite型和Hermite矩阵）.&lt;/strong&gt; Hermite 型看成是复数域上的二次齐次函数
+$$
+f\left(x_1, x_2, \cdots, x_n\right)=\sum_{j=1}^n \sum_{i=1}^n a_{i j} \bar{x}_i x_j
+$$
+其中 $\bar{a}_{i j}=a_{j i}$ ．Hermite 型虽然系数是复数且变元 $x_i$ 是复数域上的变元，但作为函数它的值却总是实数，这点从 Hermite 型的定义即可看出．Hermite 型可写成如下的矩阵相乘的形式：
+$$
+f\left(x_1, x_2, \cdots, x_n\right)=\overline{\boldsymbol{x}}^{\prime} \boldsymbol{A} \boldsymbol{x}
+$$
+且满足 $\bar{A^{&amp;rsquo;}} = A$,这样的矩阵为Hermite矩阵。&lt;/p&gt;
+&lt;p&gt;和二次型同样定义的思路，定义复相合 $\bar{C^{&amp;rsquo;}AC}$,得出Hermite矩阵必然可以复相合于一个对角阵的定理，全系不变量以及正定的一些判定，和上述几乎一致。&lt;/p&gt;
+&lt;h2 id=&#34;第九章-内积空间&#34;&gt;第九章 内积空间
+&lt;/h2&gt;&lt;p&gt;在线性空间上定义长度的度量。&lt;/p&gt;
+&lt;h3 id=&#34;内积空间的概念&#34;&gt;内积空间的概念
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1（欧氏空间）.&lt;/strong&gt; 设 $V$ 是实数域上的线性空间，若存在某种规则，使对 $V$ 中任意一组有序向量 $\{\alpha, \beta\}$ ，都唯一地对应一个实数，记为 $(\alpha, \beta)$ ，且适合如下规则：&lt;br&gt;
+（1）对称性：$(\boldsymbol{\beta}, \boldsymbol{\alpha})=(\boldsymbol{\alpha}, \boldsymbol{\beta})$ ；&lt;br&gt;
+(2)第一变元的线性：$(\boldsymbol{\alpha}+\boldsymbol{\beta}, \boldsymbol{\gamma})=(\boldsymbol{\alpha}, \boldsymbol{\gamma})+(\boldsymbol{\beta}, \boldsymbol{\gamma}) ;$&lt;br&gt;
+（3）第一变元的线性：$(c \boldsymbol{\alpha}, \boldsymbol{\beta})=c(\boldsymbol{\alpha}, \boldsymbol{\beta}), c$ 为任一实数；&lt;br&gt;
+（4）正定性：$(\alpha, \alpha) \geq 0$ 且等号成立当且仅当 $\alpha=0$&lt;br&gt;
+则称在 $V$ 上定义了一个内积，实数 $(\boldsymbol{\alpha}, \boldsymbol{\beta})$ 称为 $\alpha$ 与 $\boldsymbol{\beta}$ 的内积．线性空间 $V$ 称为实内积空间。有限维实内积空间称为 Euclid 空间，简称为欧氏空间&lt;/p&gt;
+&lt;p&gt;对复数域上的线性空间，我们也可以定义内积．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（酉空间）.&lt;/strong&gt; 设 $V$ 是复数域上的线性空间，若存在某种规则，使对 $V$ 中任意一组有序向量 $\{\boldsymbol{\alpha}, \boldsymbol{\beta}\}$ ，都唯一地对应一个复数，记为 $(\boldsymbol{\alpha}, \boldsymbol{\beta})$ ，且适合如下规则：&lt;br&gt;
+（1）$(\boldsymbol{\beta}, \boldsymbol{\alpha})=\overline{(\boldsymbol{\alpha}, \boldsymbol{\beta})}$ ；&lt;br&gt;
+（2）$(\alpha+\beta, \gamma)=(\alpha, \gamma)+(\beta, \gamma)$ ；&lt;br&gt;
+（3）$(c \boldsymbol{\alpha}, \boldsymbol{\beta})=c(\boldsymbol{\alpha}, \boldsymbol{\beta}), c$ 为任一复数；&lt;br&gt;
+（4）$(\alpha, \alpha) \geq 0$ 且等号成立当且仅当 $\alpha=0$ ，&lt;br&gt;
+则称在 $V$ 上定义了一个内积，复数 $(\boldsymbol{\alpha}, \boldsymbol{\beta})$ 称为 $\alpha$ 与 $\boldsymbol{\beta}$ 的内积。线性空间 $V$ 称为复内积空间。有限维复内积空间称为酉空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例&lt;/strong&gt; 矩阵空间的Frobenius内积：$(A,B) = Tr(AB^{&amp;rsquo;})$&lt;/p&gt;
+&lt;p&gt;由内积可以定理范数 $||\alpha|| = (\alpha,\alpha)^{\frac{1}{2}}$ 和距离 $d(\alpha,\beta) = ||\alpha-\beta||$,并且定义夹角余弦 $\cos(\theta) = \frac{|(\alpha,\beta)|}{||\alpha|| ||\beta||}$,由夹角余弦等于0定义&lt;strong&gt;正交&lt;/strong&gt;，&lt;strong&gt;两两正交的向量组必定线性无关&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;一些简单的内积和它们的不等式我们就不提了。&lt;/p&gt;
+&lt;h3 id=&#34;内积的表示和正交基&#34;&gt;内积的表示和正交基
+&lt;/h3&gt;&lt;p&gt;内积的定义是多种多样的，用何种的基底表示该内积会更加简单呢？&lt;/p&gt;
+&lt;p&gt;用向量内积的性质，很容易给出这个问题的答案．当 $V$ 是欧氏空间时，
+$$
+(\boldsymbol{\alpha}, \boldsymbol{\beta})=\left(\sum_{i=1}^n a_i \boldsymbol{v}_i, \sum_{j=1}^n b_j \boldsymbol{v}_j\right)=\sum_{i, j=1}^n a_i g_{i j} b_j
+$$
+我们把上述结论写成矩阵形式：
+$$
+(\boldsymbol{\alpha}, \boldsymbol{\beta})=\left(a_1, a_2, \cdots, a_n\right)\left(\begin{array}{cccc}
+g_{11} &amp;amp; g_{12} &amp;amp; \cdots &amp;amp; g_{1 n} \\
+g_{21} &amp;amp; g_{22} &amp;amp; \cdots &amp;amp; g_{2 n} \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+g_{n 1} &amp;amp; g_{n 2} &amp;amp; \cdots &amp;amp; g_{n n}
+\end{array}\right)\left(\begin{array}{c}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{array}\right)
+$$
+其中矩阵&lt;/p&gt;
+&lt;div&gt;
+$$
+\boldsymbol{G}=\left(\begin{array}{cccc}
+g_{11} &amp; g_{12} &amp; \cdots &amp; g_{1 n} \\
+g_{21} &amp; g_{22} &amp; \cdots &amp; g_{2 n} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+g_{n 1} &amp; g_{n 2} &amp; \cdots &amp; g_{n n}
+\end{array}\right)=\left(\begin{array}{cccc}
+\left(\boldsymbol{v}_1, \boldsymbol{v}_1\right) &amp; \left(\boldsymbol{v}_1, \boldsymbol{v}_2\right) &amp; \cdots &amp; \left(\boldsymbol{v}_1, \boldsymbol{v}_n\right) \\
+\left(\boldsymbol{v}_2, \boldsymbol{v}_1\right) &amp; \left(\boldsymbol{v}_2, \boldsymbol{v}_2\right) &amp; \cdots &amp; \left(\boldsymbol{v}_2, \boldsymbol{v}_n\right) \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\left(\boldsymbol{v}_n, \boldsymbol{v}_1\right) &amp; \left(\boldsymbol{v}_n, \boldsymbol{v}_2\right) &amp; \cdots &amp; \left(\boldsymbol{v}_n, \boldsymbol{v}_n\right)
+\end{array}\right)
+$$
+&lt;/div&gt;
+&lt;p&gt;称为基向量 $\left\{\boldsymbol{v}_1, \boldsymbol{v}_2, \cdots, \boldsymbol{v}_n\right\}$ 的 Gram矩阵或内积空间 $V$ 在给定基下的度量矩阵,容易验证该矩阵为正定矩阵．&lt;/p&gt;
+&lt;p&gt;于是，我们得到了内积在给定基下的表示：
+$$
+(\alpha, \beta)=x^{\prime} G y
+$$
+其中 $x, y$ 分别是向量 $\boldsymbol{\alpha}, \boldsymbol{\beta}$ 在给定基下的坐标向量．
+考虑复数情况时：
+$
+(\alpha, \beta)=x^{\prime} G \bar{y}
+$
+实际上，内积和Gram矩阵存在一一对应的关系，&lt;strong&gt;研究内积就是研究Gram矩阵&lt;/strong&gt;，研究何时内积的表达最简单，就是研究基底是什么时，Gram矩阵最简单，我们自然&lt;strong&gt;希望Gram矩阵是单位阵&lt;/strong&gt;，如此便可以将所有的内积表示为&lt;strong&gt;标准内积&lt;/strong&gt;的形式($(\alpha,\beta) = x^{&amp;rsquo;}y$).&lt;/p&gt;
+&lt;p&gt;显然，标准正交基下，Gram矩阵为单位阵，碰巧的是，&lt;strong&gt;标准正交基在有限维内积空间内是一定存在的&lt;/strong&gt;，可以使用&lt;strong&gt;Gram-Schmidt方法&lt;/strong&gt;将一组线性无关向量转化为标准正交基，核心思想就是不断减去向其他正交基的投影分量。&lt;/p&gt;
+&lt;p&gt;其实，如果只想正交化不必那么麻烦，假设有基底 $e,f$,从 $e$ 到 $f$ 的过渡矩阵为 $C$,则有
+$G_f = C^{&amp;rsquo;}G_eC$,即&lt;strong&gt;不同基底下的Gram矩阵合同&lt;/strong&gt;，且通过过渡矩阵合同，则使用上一章中的合同对角化方法即可。但是对于分析一些性质来说，Gram-Schmidt方法依然是最重要的方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（正交补空间，正交和）.&lt;/strong&gt; 设 $U$ 是内积空间 $V$ 的子空间，令
+$$
+U^{\perp}=\{\boldsymbol{v} \in V \mid(\boldsymbol{v}, U)=0\}
+$$
+这里 $(\boldsymbol{v}, U)=0$ 表示对一切 $\boldsymbol{u} \in U$ ，均有 $(\boldsymbol{v}, \boldsymbol{u})=0$ 。容易验证 $U^{\perp}$ 是 $V$ 的子空间，称为 $U$ 的正交补空间．容易验证，$V $ 是 $U$ 和 $U^{\perp}$ 的直和。两两正交的子空间的和是正交和，记作 $V_1\perp  V_2\perp\cdots\perp V_k$,容易验证，正交和是直和。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（正交投影）.&lt;/strong&gt; 设 $V=V_1 \perp V_2 \perp \cdots \perp V_k$ ，定义 $V$ 上的线性变换 $E_i(i=$ $1,2, \cdots, h)$ 如下：若 $\boldsymbol{v}=\boldsymbol{v}_1+\cdots+\boldsymbol{v}_i+\cdots+\boldsymbol{v}_k\left(\boldsymbol{v}_i \in V_i\right)$ ，令 $E_i(\boldsymbol{v})=v_i$ 。容易验证 $E_i$ 是 $V$ 上的线性变换，且满足
+$$
+\boldsymbol{E}_i^2=\boldsymbol{E}_i, \quad \boldsymbol{E}_i \boldsymbol{E}_j=\mathbf{0}(i \neq j), \quad \boldsymbol{E}_1+\boldsymbol{E}_2+\cdots+\boldsymbol{E}_k=I_V
+$$
+线性变换 $E_i$ 称为 $V$ 到 $V_i$ 上的正交投影（简称投影）．&lt;/p&gt;
+&lt;h3 id=&#34;伴随&#34;&gt;伴随
+&lt;/h3&gt;&lt;p&gt;考虑内积空间中的线性变换，内积空间中的线性变换通常被称为线性算子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（伴随算子）.&lt;/strong&gt; 设 $\varphi$ 是内积空间 $V$ 上的线性算子，若存在 $V$ 上的线性算子 $\varphi^{*}$ ，使等式
+$$
+(\varphi(\boldsymbol{\alpha}), \boldsymbol{\beta})=\left(\boldsymbol{\alpha}, \varphi^{*}(\boldsymbol{\beta})\right)
+$$
+对一切 $\alpha, \beta \in V$ 成立，则称 $\varphi^{*}$ 是 $\varphi$ 的伴随算子，简称为 $\varphi$ 的伴随．容易验证对于有限维内积空间，伴随存在且唯一。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（伴随矩阵）.&lt;/strong&gt; 标准正交基下线性算子 $\varphi$ 的表示矩阵为 $A$,则 $\varphi^{*}$ 的表示矩阵为 $A^{&amp;rsquo;}$(酉空间内为$\bar{A^{&amp;rsquo;}}$).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题 3.&lt;/strong&gt; 设 $V$ 是 $n$ 维内积空间，$\varphi$ 是 $V$ 上的线性算子．&lt;br&gt;
+（1）若 $U$ 是 $\varphi$ 的不变子空间，则 $U^{\perp}$ 是 $\varphi^{*}$ 的不变子空间；&lt;br&gt;
+（2）若 $\varphi$ 的全体特征值为 $\lambda_1, \lambda_2, \cdots, \lambda_n$ ，则 $\varphi^{*}$ 的全体特征值为 $\bar{\lambda}_1, \bar{\lambda}_2, \cdots, \bar{\lambda}_n$ ．&lt;/p&gt;
+&lt;h3 id=&#34;内积空间的同构正交变换和酉变换&#34;&gt;内积空间的同构、正交变换和酉变换
+&lt;/h3&gt;&lt;p&gt;内积运算是否可以在线性映射中保持同构，是本小节研究的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（保持内积的同构）.&lt;/strong&gt; 设 $V$ 与 $U$ 是域 $\mathbb{K}$ 上的内积空间， $\mathbb{K}$ 是实数域或复数域，$\varphi$ 是 $V \rightarrow U$ 的线性映射．若对任意的 $x, y \in V$ ，有
+$$
+(\varphi(\boldsymbol{x}), \varphi(\boldsymbol{y}))=(\boldsymbol{x}, \boldsymbol{y})
+$$
+则称 $\varphi$ 是 $V \rightarrow U$ 的保持内积的线性映射．又若 $\varphi$ 作为线性映射是同构，则称 $\varphi$是内积空间 $V$ 到 $U$ 上的保积同构．&lt;/p&gt;
+&lt;p&gt;容易验证，给定线性映射，则线性映射保持范数$\iff$线性映射保持内积。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2（保积同构的等价描述）.&lt;/strong&gt; 设 $V$ 与 $U$ 都是 $n$ 维内积空间（同为实空间或同为复空间），若 $\varphi$ 是 $V \rightarrow U$ 的线性映射，则下列命题等价：&lt;br&gt;
+（1）$\varphi$ 保持内积；&lt;br&gt;
+（2）$\varphi$ 是保积同构；&lt;br&gt;
+（3）$\varphi$ 将 $V$ 的任一组标准正交基变成 $U$ 的一组标准正交基；&lt;br&gt;
+（4）$\varphi$ 将 $V$ 的某一组标准正交基变成 $U$ 的一组标准正交基．&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;内积空间存在保积同构$\iff$维数相同，现在来研究线性变换，即线性算子的保积同构。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 3（正交算子，酉算子）.&lt;/strong&gt; 设 $\varphi$ 是内积空间 $V$ 上保持内积的线性变换，若 $V$ 是欧氏空间，则称 $\varphi$ 为正交变换或正交算子；若 $V$ 是酉空间，则称 $\varphi$ 为酉变换或酉算子。&lt;/p&gt;
+&lt;p&gt;按照定理2进行理解，正交变换或者正交算子可以将任意一组正交基映射到其他正交基。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4（保积算子的伴随）.&lt;/strong&gt; 设 $\varphi$ 是欧氏空间或酉空间上的线性变换，则 $\varphi$ 是正交变换或酉变换的充分必要条件是 $\varphi$ 非异，且
+$$
+\varphi^{*}=\varphi^{-1}
+$$&lt;/p&gt;
+&lt;p&gt;将上述定义定理翻译为代数形式：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4（正交矩阵，酉矩阵）.&lt;/strong&gt; 设 $\boldsymbol{A}$ 是 $n$ 阶实方阵，若 $\boldsymbol{A}^{\prime}=\boldsymbol{A}^{-1}$ ，则称 $\boldsymbol{A}$ 是正交矩阵．设 $C$是 $n$ 阶复方阵，若 $\bar{C}^{\prime}=C^{-1}$ ，则称 $\boldsymbol{C}$ 是酉矩阵。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5（正交矩阵，酉矩阵的伴随，或者性质）.&lt;/strong&gt; 设 $\varphi$ 是欧氏空间（酉空间）$V$ 上的正交变换（酉变换），则在 $V$的任一组标准正交基下，$\varphi$ 的表示矩阵是正交矩阵（酉矩阵）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 6（正交阵，酉矩阵的等价条件）.&lt;/strong&gt; $A$ 为正交阵（酉矩阵），以下结论等价&lt;br&gt;
+（1）$A$ 的行向量是 $\mathbb{R}_n$（$\mathbb{C}_n$） 的一组标准正交基。&lt;br&gt;
+（2）$A$ 的列向量是 $\mathbb{R}^n$（$\mathbb{C}^n$） 的一组标准正交基。&lt;/p&gt;
+&lt;p&gt;可以使用定理6判断一个矩阵是不是酉矩阵或者正交矩阵（利用正交的定义，求夹角余弦），当然，定义是最好的判定方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;补充：&lt;/strong&gt; 正交是比线性无关的条件来的要强的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 7（正交矩阵，酉矩阵的性质）.&lt;/strong&gt; 酉矩阵 $A$,则&lt;br&gt;
+（1）行列式模长为1（正交矩阵行列式为正负1）&lt;br&gt;
+（2）特征值模长为1（正交矩阵一样）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 8（QR分解）.&lt;/strong&gt; 设 $\boldsymbol{A}$ 是 $n$ 阶实（复）矩阵，则 $\boldsymbol{A}$ 可分解为
+$$
+A=Q R
+$$
+其中 $Q$ 是正交（西）矩阵， $\boldsymbol{R}$ 是一个主对角线上的元素均大于等于零的上三角阵，并且若 $A$ 是非异阵，则这样的分解必唯一．&lt;/p&gt;
+&lt;h3 id=&#34;自伴随算子&#34;&gt;自伴随算子
 &lt;/h3&gt;&lt;h3 id=&#34;复正规算子&#34;&gt;复正规算子
 &lt;/h3&gt;&lt;h3 id=&#34;实正规算子&#34;&gt;实正规算子
 &lt;/h3&gt;&lt;h3 id=&#34;谱分解与极分解&#34;&gt;谱分解与极分解
