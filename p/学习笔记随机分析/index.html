@@ -11,7 +11,7 @@
 <meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-03-23T20:12:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-04-22T22:12:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
 <meta name="twitter:title" content="学习笔记|随机分析">
 <meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
@@ -144,7 +144,20 @@
         <li><a href="#伊藤引理与鞅表示定理">伊藤引理与鞅表示定理</a></li>
       </ol>
     </li>
-    <li><a href="#测度变换">测度变换</a></li>
+    <li><a href="#测度变换">测度变换</a>
+      <ol>
+        <li><a href="#radon-nikodym定理">Radon-Nikodym定理</a></li>
+        <li><a href="#girsanov-定理">Girsanov 定理</a></li>
+      </ol>
+    </li>
+    <li><a href="#sde">SDE</a>
+      <ol>
+        <li><a href="#存在性和唯一性">存在性和唯一性</a></li>
+        <li><a href="#强解和弱解">强解和弱解</a></li>
+        <li><a href="#feynman-kac公式和komogorov反向方程">Feynman-Kac公式和Komogorov反向方程</a></li>
+        <li><a href="#fokker-pkanck方程和komogorov前向方程">Fokker-Pkanck方程和Komogorov前向方程</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -225,7 +238,7 @@
 
 
                 <time class="article-time--reading">
-                    26 minute read
+                    30 minute read
                 </time>
             </div>
         
@@ -243,9 +256,12 @@
     <h2 id="课程介绍">课程介绍
 </h2><p>台湾交通大学吴庆堂老师随机分析，课程视频：<a class="link" href="https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
     >金融随机分析</a>.</p>
-<p>参考网站：(國立交通大學開放式課程 (NCTU OCW))[http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;gid=1&amp;nid=234&amp;page=3].</p>
+<p>参考网站：<a class="link" href="http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;gid=1&amp;nid=234&amp;page=3"  target="_blank" rel="noopener"
+    >國立交通大學開放式課程 (NCTU OCW)</a>.</p>
 <p>参考资料：<a class="link" href="https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html"  target="_blank" rel="noopener"
     >北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义</a>.</p>
+<p>参考讲义：<a class="link" href="https://people.iiis.tsinghua.edu.cn/~jianli/courses/ATCS2023spring/Lecture%202.pdf"  target="_blank" rel="noopener"
+    > Selected Topics in Learning, Prediction and Optimization</a></p>
 <h2 id="期望与积分">期望与积分
 </h2><p><strong>Definition 1.21.</strong> The function
 $$
@@ -963,7 +979,152 @@ $$
 for all $t \geq 0$.<br>
 <strong>Remark.</strong> 域流相同意味着信息量相同，可以使用随机微积分来表示也是合理的事情。值得注意的是，虽然我们可以从理论层面上进行说明，但是定理中提到的 $H_t$ 是非常难找的。</p>
 <h2 id="测度变换">测度变换
-</h2>
+</h2><p>经典Radon-Nikodym定理到Girsanov变换，不再详细描述，写几个定理方便本人快速回顾。</p>
+<h3 id="radon-nikodym定理">Radon-Nikodym定理
+</h3><p><strong>Theorem 9.43 (Radon-Nikodym Theorem).</strong> $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ $\iff$ there exists an $\mathcal{F}$-measurable function $Z \geq 0$ such that
+$$
+\int_{\Omega} X d \mathbb{Q}=\int_{\Omega} X Z d \mathbb{P}
+$$
+for all $\mathcal{F}$-measurable functions $X \geq 0$.</p>
+<p><strong>Definition 9.45(R-N导数).</strong> The function $Z$ is called the Radon-Nikodym density or Radon-Nikodym derivative of $\mathbb{Q}$ with respect to $\mathbb{P}$ and we write
+$$
+Z:=\frac{d \mathbb{Q}}{d \mathbb{P}} .
+$$</p>
+<p><strong>Notation 9.46（R-N导数满足符号相消）.</strong> In general, we write
+$$
+\mathbb{E}_{\mathbb{Q}}[X]=\int_{\Omega} X d \mathbb{Q} .
+$$
+Therefore, (9.9) implies
+$$
+\mathbb{E}_{\mathbb{Q}}[X]=\int_{\Omega} X d \mathbb{Q}=\int_{\Omega} X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}} d \mathbb{P}=\mathbb{E}\left[X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}}\right]=\mathbb{E}_{\mathbb{P}}\left[X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}}\right] .
+$$</p>
+<p><strong>Remark 9.47(简化判定，对示性函数适合即可).</strong> The probability measure $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ if and only if there exists an $\mathcal{F}$-measurable random variable $Z$ such that
+$$
+\mathbb{Q}(A)=\int_A Z d \mathbb{P}=\int_A \frac{d \mathbb{Q}}{d \mathbb{P}} d \mathbb{P}
+$$</p>
+<p>for all $A \in \mathcal{F}$.</p>
+<p>测度变换后，随机变量的分布会发生变化，如何去求变化后的分布，主要依赖于RN定理和条件概率，RN导数虽然形式上写为导数的形式，实际上是线性的，具有链式法则，也符合可逆准则，接下来介绍有关条件概率的RN导数的性质：</p>
+<p><strong>Proposition 9.51（RN导数的限制-条件期望）.</strong> Suppose that  $\mathbb{P}$ and $ \mathbb{Q} $ are two probability measures on a measurable space $(\Omega, \mathcal{F})$ and that $\mathbb{Q} \ll \mathbb{P}$ on $\mathcal{F}$ with density $Z$. If $\mathcal{G}$ is a $\sigma$-algebra contained in $\mathcal{F}$, then<br>
+(1) $\mathbb{Q} \ll \mathbb{P}$ on $\mathcal{G}$;<br>
+(2) the corresponding density is given by
+$$
+\left.\frac{d \mathbb{Q}}{d \mathbb{P}}\right|_{\mathcal{G}}=\mathbb{E}[Z \mid \mathcal{G}], \quad \mathbb{P}-\text { a.s. }
+$$</p>
+<p><strong>Proposition 9.52(条件期望的测度变换).</strong>  Suppose  that  $\mathbb{Q} \sim \mathbb{P}$ on $\mathcal{F}$ with density function $Z=\frac{d \mathbb{Q}}{d \mathbb{P}}$ and that $\mathcal{G} \subset \mathcal{F}$ is another $\sigma$-algebra. then, for any $\mathcal{F}$-measurable random variable $Y \geq 0$,
+$$
+\mathbb{E}_{\mathbb{Q}}[Y \mid \mathcal{G}]=\frac{\mathbb{E}[Y Z \mid \mathcal{G}]}{\mathbb{E}[Z \mid \mathcal{G}]}, \quad \mathbb{Q} \text {-a.s. }
+$$</p>
+<h3 id="girsanov-定理">Girsanov 定理
+</h3><p>Define
+$$
+Z_t(X)=\exp \left(\int_0^t X_u d W_u-\frac{1}{2} \int_0^t X_u^2 d u\right) .
+$$
+$\left(Z_t\right)$ satisfies
+$$
+Z_t(X)=1+\int_0^t Z_u X_u d W_u .
+$$
+This implies that $\left(Z_t\right)$ is a continuous local martingale with $\mathbb{E}\left[Z_0\right]=1$.</p>
+<p>Define a measure $\tilde{\mathbb{P}}$ on $\mathcal{F}_T$ by
+$$
+\tilde{\mathbb{P}}_T(A)=\int_A Z_T(X) d \mathbb{P} \quad \text { for all } A \in \mathcal{F}_T
+$$</p>
+<p><strong>Theorem 9.57 (Girsanov Theorem).</strong> Assume that $Z(X)=\left(Z_t(X)\right)$ defined by up is a martingale. Define the process $\tilde{W}=\left(\tilde{W}_t\right)_{0 \leq t&lt;\infty}$ by
+$$
+\tilde{W}_t:=W_t-\int_0^t X_s d s
+$$
+Then for each fixed $T \in[0, \infty),\left(\tilde{W}_t, \mathcal{F}_t\right)_{0 \leq t \leq T}$ is a Brownian motion on $\left(\Omega, \mathcal{F}, \tilde{\mathbb{P}}_T\right)$.</p>
+<h2 id="sde">SDE
+</h2><h3 id="存在性和唯一性">存在性和唯一性
+</h3><p><strong>Theorem 10.8 (Existence and uniqueness theorem for stochastic differential equation).</strong> Let $T&gt;0$ and let $b, \sigma\left(b:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^n, \sigma:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^{n \times m}\right)$ be measurable functions satisfying
+$$
+|b(t, x)|+|\sigma(t, x)| \leq C(1+|x|) \quad \text { for all } x \in \mathbb{R}^n, t \in[0, T]
+$$
+for some constant $C$, where $|\sigma|^2=\sum_{i=1} \sum_{j=1}\left|\sigma_{i j}\right|^2$, and
+$$
+|b(t, x)-b(t, y)|+|\sigma(t, x)-\sigma(t, y)| \leq D|x-y| \quad \text { for all } x, y \in \mathbb{R}^n, t \in[0, T]
+$$
+for some constant $D$. Let $Z$ be a random variable which is independent of $\mathcal{F}_T^W$, the $\sigma$ algebra generated by $\left(W_s: 0 \leq s \leq T\right)$, and $\mathbb{E}|Z|^2&lt;\infty$. Then the stochastic differential equation
+$$
+d X_t=b\left(t, X_t\right) d t+\sigma\left(t, X_t\right) d W_t, \quad 0 \leq t \leq T, X_0=Z
+$$
+has a unique $t$-continuous solution $X_t$ with the properties that
+(i) $X_t$ is adapted to $\mathcal{F}_t^W \vee \sigma(Z)$;
+(ii) $\mathbb{E}\left[\int_0^T\left|X_t\right|^2 d t\right]&lt;\infty$.</p>
+<h3 id="强解和弱解">强解和弱解
+</h3><p>以下内容来自：<a class="link" href="https://zhuanlan.zhihu.com/p/341594982"  target="_blank" rel="noopener"
+    >随机微分方程的强解与弱解</a></p>
+<hr>
+<p>考虑以下一维 $\operatorname{SDE}$（对多维情况是类似的）：
+$$
+\left\{\begin{array}{l}
+X_t-X_0=\int_0^t b\left(s, X_s\right) d s+\int_0^t \sigma\left(s, X_s\right) d B_s, t \in[0, T], \\
+X_0=\xi .
+\end{array}\right.
+$$
+<strong>强解:</strong> 设 $\left(B_t\right)_{t \geq 0}$ 是一个给定的布朗运动，$\xi$ 与 $\left(B_t\right)_{t \geq 0}$ 独立， $\mathscr{F}_t=\sigma(\xi, B(s), 0 \leq s \leq t)$ 。若 $\left(X_t\right)_{t \geq 0}$ 是关于 $\mathscr{F}_t$ 渐进可测的满足 $X_0=\xi$ ，a．e．且对 $\forall t \in[0, T]$ 有（1）a．e．成立，则称 $\left(X_t\right)_{t \geq 0}$ 是满足方程 $(1),(2)$的一个强解。</p>
+<p><strong>弱解:</strong> 设 $\left(\hat{B}_t\right)_{t \geq 0}$ 是某一概率空间 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ 上的某一布朗运动，$X_0$ 是 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ 上的随机变量且与 $\xi$ 同分布，与 $\left(\hat{B}_t\right)_{t \geq 0}$ 独立， $\mathscr{F}_t=\sigma\left(X_0, B \hat{(s)}, 0 \leq s \leq t\right)$ 。若 $\left(X_t\right)_{t \geq 0}$ 是关于 $\mathscr{F}_t$ 渐进可测的且对于 $\forall t \in[0, T]$ 有（1）a．e．成立（注意此时（1）中 $d B_s$ 为 $d \hat{B}_s$ ）。此时称 $X(t)$ 为方程（1），（2）的一个弱解［1］。</p>
+<p><strong>联系与区别.</strong> 可以看到，对于强解，是事先给定了概率空间 $(\Omega, \mathscr{F}, P)$ 以及 $\left(B_t\right)_{t \geq 0}$ 和 $\xi$ ，这三者都是确定的，我们需要在这个概率空间 $(\Omega, \mathscr{F}, P)$ 上来寻找满足 $(1),(2)$ 的 $\left(X_t\right)_{t \geq 0}$ 。而对于弱解，只需要存在某一个概率空间 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ ，并且是对某一个布朗运动有（1）且对（2）是分布意义下成立就行了，明显比强解的要求更为宽松，也就是说强解一定是弱解，反过来不一定成立的。</p>
+<hr>
+<p>SDE的强解和弱解归根结底是由于随机过程的域流所包含的信息量造成的，一般的，我们在布朗运动的域流下讨论SDE，这时若可以求解SDE，得到的解是强解；若 $X_t$ 的域流大于布朗运动的域流，则不可以用布朗运动来表示 $X_t$,此时需要引入一组其他的布朗运动和概率测度并且配套新的域流，才能得到SDE的解，这时的解为弱解。</p>
+<h3 id="feynman-kac公式和komogorov反向方程">Feynman-Kac公式和Komogorov反向方程
+</h3><p>Feynman-Kac公式 告诉我们可以使用概率方法去求解PDE。</p>
+<p><strong>Theorem 10.13 (Feynman-Kac formula).</strong> Consider the stochastic differential equation
+$$
+d X_t=\beta\left(t, X_t\right) d t+\gamma\left(t, X_t\right) d W_t .
+$$
+Let $f$ be a Borel-measurable function. Fix $T&gt;0$ and let $t \in[0, T]$ be given. Define the function
+$$
+g(t, x)=\mathbb{E}^{t, x}\left[f\left(X_T\right)\right]=\mathbb{E}\left[f\left(X_T\right) \mid X_t=x\right] .
+$$
+Assume that $g(t, x)&lt;\infty$ for all $(t, x)$. Then $g(t, x)$ satisfies the partial differential equation
+$$
+g_t(t, x)+\beta(t, x) g_x(t, x)+\frac{1}{2} \gamma^2(t, x) g_{x x}(t, x)=0
+$$
+with the terminal condition $g(T, x)=f(x)$ for all $x$.</p>
+<p><strong>Remark.</strong> In general, there is no closed form solution of the above PDE. Feyman-Kac formula says that the solution of the above PDE can be written as the <strong>expectation of certain stochastic process</strong>, defined by the up SDE.</p>
+<p><strong>Komogorov Backward Equation (KBE):</strong> An important corollary of Feyman-Kac formula is that the function $F(t, x)=P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)$ (for fixed $t^{\prime}, x^{\prime}$ and $t^{\prime}&gt;t$ ) satisfies the first PDE in Eq equation 1. Namely, the following
+$$
+\frac{\partial P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial t}(t, x)+b(t, x) \frac{\partial P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial x}(t, x)+\frac{1}{2} \sigma^2(t, x) \frac{\partial^2 P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial x^2}(t, x)=0
+$$
+This equation is also known as Komogorov Backward Equation (KBE). One way to see this is as follows: for fixed $t^{\prime}$ with $t^{\prime}=T$, let $F(T, x)=\Phi(x)=\delta_{x^{\prime}}(x)$. Hence, we can see that
+$$
+F(t, x)=\mathbb{E}_{t, x}\left[\Phi\left(X_T\right)\right]=\mathbb{E}\left[\delta_{x^{\prime}}\left(X_T\right) \mid X_t=x\right]=P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)
+$$</p>
+<h3 id="fokker-pkanck方程和komogorov前向方程">Fokker-Pkanck方程和Komogorov前向方程
+</h3><p>之前的Feynman-Kac公式可以将PDE求解转化为SDE求解，本小节的Fokker-Pkanck方程可以将SDE的求解转化为PDE的求解。
+$$
+\left\{\begin{aligned}
+d X_s &amp; =b\left(s, X_s\right) d s+\sigma\left(s, X_s\right) d W_s \\
+X_t &amp; =x
+\end{aligned}\right.
+$$</p>
+<p><strong>Theorem 3 (Fokker Planck Equation / Kolmogorov Forward Equation)</strong> Assume that $b(x)$ is $C^1$ and $\sigma(x)$ is $C^2$. For $\rho \in C^2$, define
+$$
+\mathcal{L}^{*} \rho(x)=-\sum_{i=1}^n \frac{\partial}{\partial x^i}\left(b^i(x) \rho(x)\right)+\frac{1}{2} \sum_{i, j=1}^n \sum_{k=1}^m \frac{\partial^2}{\partial x^i \partial x^j}\left(\sigma^{i k}(x) \sigma^{j k}(x) \rho(x)\right) .
+$$
+Suppose that the density $p_t(x)$ exists and is $C^1$ in $t, C^2$ in $x$. Then
+$$
+\frac{\partial}{\partial t} p_t(x)=\mathcal{L}^{*} p_t(x), t \in[0, T]
+$$
+i.e. the density $p_t(x)$ of $X_t$ must satisfy the Fokker Planck Equation (Kolmogorov Forward Equation).</p>
+<p>交叉学院的课程中有一个关于Fokker-Planck方程很好的应用，虽然是用其得到分布再求转移核，但是我在这里引用该段落主要是为了强调OU过程的转移核是高斯分布，这在扩散模型的推导中是非常重要的：</p>
+<p><strong>Definition 4 (Ornstein-Uhlenbeck Process)</strong> The Ornstein-Uhlenbeck process $x_t$ is defined by the following stochastic differential equation:
+$$
+d x_t=-\theta x_t d t+\sigma d W_t
+$$
+where $\theta&gt;0$ and $\sigma&gt;0$ are parameters and $W_t$ denotes the Brownian motion process.  Note that the $O U$ process is a stationary process.</p>
+<p>The Ornstein-Uhlenbeck process can also be described in terms of a probability density function, $P(x, t)$, which specifies the probability of finding the process in the state $x$ at time $t$. This function satisfies the Fokker-Planck equation
+$$
+\frac{\partial P}{\partial t}=\theta \frac{\partial}{\partial x}(x P)+D \frac{\partial^2 P}{\partial x^2}
+$$
+where $D=\sigma^2 / 2$. This is a linear parabolic partial differential equation which can be solved by a variety of techniques. The transition probability, also known as the Green&rsquo;s function, $P\left(x, t \mid x^{\prime}, t^{\prime}\right)$ is a Gaussian with mean $x^{\prime} e^{-\theta\left(t-t^{\prime}\right)}$ and variance $\frac{D}{\theta}\left(1-e^{-2 \theta\left(t-t^{\prime}\right)}\right)$ :
+$$
+P\left(x, t \mid x^{\prime}, t^{\prime}\right)=\sqrt{\frac{\theta}{2 \pi D\left(1-e^{-2 \theta\left(t-t^{\prime}\right)}\right)}} \exp \left[-\frac{\theta}{2 D} \frac{\left(x-x^{\prime} e^{-\theta\left(t-t^{\prime}\right)}\right)^2}{1-e^{-2 \theta\left(t-t^{\prime}\right)}}\right]
+$$
+This gives the probability of the state $x$ occurring at time $t$ given initial state $x^{\prime}$ at time $t^{\prime}&lt;t$. Equivalently, $P\left(x, t \mid x^{\prime}, t^{\prime}\right)$ is the solution of the Fokker-Planck equation with initial condition $P\left(x, t^{\prime}\right)=\delta\left(x-x^{\prime}\right)$.</p>
+<hr>
+<p>本人在24年在做采样有关的研究，这促使我去系统的学习了随机分析的知识，今年再次看到台湾交通大学吴老师的课程，讲的非常好，特再次学习并写下该笔记，常读常新。</p>
+
 </section>
 
 
@@ -998,7 +1159,7 @@ for all $t \geq 0$.<br>
 
 
         <span>
-            Last updated on Mar 23, 2025 20:12 CST
+            Last updated on Apr 22, 2025 22:12 CST
         </span>
     </section></footer>
 
