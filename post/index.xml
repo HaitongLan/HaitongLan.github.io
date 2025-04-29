@@ -7,7 +7,37 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Fri, 14 Mar 2025 19:24:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Apr 2025 15:48:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>学习笔记|现代数字信号处理选学</title>
+        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</link>
+        <pubDate>Mon, 28 Apr 2025 15:48:05 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</guid>
+        <description>&lt;img src="http://localhost:1313/post_file/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/cover.png" alt="Featured image of post 学习笔记|现代数字信号处理选学" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+&lt;/h2&gt;&lt;p&gt;张颢老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张颢老师的课程中能感受到浓浓的工程师思维，并不会拘谨于定义定理的条条框框，而是按照逻辑穿针引线的将知识串起来，由此发现知识背后隐含的哲学思想，这也是张老师讲课的宗旨：每节课让学生学会一种思想。&lt;/p&gt;
+&lt;p&gt;张颢老师所讲的数字信号处理、随机过程、现代信号处理（二）课程本人之前都学过一些，最近发现张老师的信号处理（一）课程还没有学过，并且最近需要补充一些估计和机器学习的理论，所以才学习该课程，该课程虽说是现代数字信号处理，但是讲的偏统计，更像统计推断和机器学习的结合。&lt;/p&gt;
+&lt;p&gt;由于张老师讲课不重点强调定义定理，所以从头到尾整理张老师的推导是非常大的工程量，本人将贴出学习笔记，并在重点部分加以补充。&lt;/p&gt;
+&lt;p&gt;参考视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;现代数字信号处理I 张颢 2023年秋&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;推荐视频：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;现代数字信号处理II 张颢 2024年春&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;随机过程 张颢 2024年春&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;数字信号处理 张颢 2023年秋&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;推荐阅读：&lt;a class=&#34;link&#34; href=&#34;https://qhbk.tsinghua.edu.cn/xqh/2024-12/06/content_99183515.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;张颢：在讲台之上，与热爱同行&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;张颢老师对于能熟练的推导公式说：“无他，惟手熟尔。”听张老师的课程一行一行的写下来，并且时常温习，将会带来很大的收获。&lt;/p&gt;
+&lt;h2 id=&#34;最优线性估计&#34;&gt;最优线性估计
+&lt;/h2&gt;&lt;h2 id=&#34;线性估计的正交性原理&#34;&gt;线性估计的正交性原理
+&lt;/h2&gt;&lt;h2 id=&#34;卡尔曼滤波&#34;&gt;卡尔曼滤波
+&lt;/h2&gt;&lt;h2 id=&#34;核方法&#34;&gt;核方法
+&lt;/h2&gt;</description>
+        </item>
+        <item>
         <title>学习笔记|随机分析</title>
         <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</link>
         <pubDate>Fri, 14 Mar 2025 19:24:05 +0800</pubDate>
@@ -16,9 +46,12 @@
         <description>&lt;img src="http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png" alt="Featured image of post 学习笔记|随机分析" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;台湾交通大学吴庆堂老师随机分析，课程视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;amp;share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;金融随机分析&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;参考网站：(國立交通大學開放式課程 (NCTU OCW))[http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;amp;gid=1&amp;amp;nid=234&amp;amp;page=3].&lt;/p&gt;
+&lt;p&gt;参考网站：&lt;a class=&#34;link&#34; href=&#34;http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;amp;gid=1&amp;amp;nid=234&amp;amp;page=3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;國立交通大學開放式課程 (NCTU OCW)&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;参考资料：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;参考讲义：&lt;a class=&#34;link&#34; href=&#34;https://people.iiis.tsinghua.edu.cn/~jianli/courses/ATCS2023spring/Lecture%202.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt; Selected Topics in Learning, Prediction and Optimization&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;期望与积分&#34;&gt;期望与积分
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition 1.21.&lt;/strong&gt; The function
 $$
@@ -736,7 +769,152 @@ $$
 for all $t \geq 0$.&lt;br&gt;
 &lt;strong&gt;Remark.&lt;/strong&gt; 域流相同意味着信息量相同，可以使用随机微积分来表示也是合理的事情。值得注意的是，虽然我们可以从理论层面上进行说明，但是定理中提到的 $H_t$ 是非常难找的。&lt;/p&gt;
 &lt;h2 id=&#34;测度变换&#34;&gt;测度变换
-&lt;/h2&gt;</description>
+&lt;/h2&gt;&lt;p&gt;经典Radon-Nikodym定理到Girsanov变换，不再详细描述，写几个定理方便本人快速回顾。&lt;/p&gt;
+&lt;h3 id=&#34;radon-nikodym定理&#34;&gt;Radon-Nikodym定理
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Theorem 9.43 (Radon-Nikodym Theorem).&lt;/strong&gt; $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ $\iff$ there exists an $\mathcal{F}$-measurable function $Z \geq 0$ such that
+$$
+\int_{\Omega} X d \mathbb{Q}=\int_{\Omega} X Z d \mathbb{P}
+$$
+for all $\mathcal{F}$-measurable functions $X \geq 0$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 9.45(R-N导数).&lt;/strong&gt; The function $Z$ is called the Radon-Nikodym density or Radon-Nikodym derivative of $\mathbb{Q}$ with respect to $\mathbb{P}$ and we write
+$$
+Z:=\frac{d \mathbb{Q}}{d \mathbb{P}} .
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Notation 9.46（R-N导数满足符号相消）.&lt;/strong&gt; In general, we write
+$$
+\mathbb{E}_{\mathbb{Q}}[X]=\int_{\Omega} X d \mathbb{Q} .
+$$
+Therefore, (9.9) implies
+$$
+\mathbb{E}_{\mathbb{Q}}[X]=\int_{\Omega} X d \mathbb{Q}=\int_{\Omega} X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}} d \mathbb{P}=\mathbb{E}\left[X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}}\right]=\mathbb{E}_{\mathbb{P}}\left[X \cdot \frac{d \mathbb{Q}}{d \mathbb{P}}\right] .
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark 9.47(简化判定，对示性函数适合即可).&lt;/strong&gt; The probability measure $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ if and only if there exists an $\mathcal{F}$-measurable random variable $Z$ such that
+$$
+\mathbb{Q}(A)=\int_A Z d \mathbb{P}=\int_A \frac{d \mathbb{Q}}{d \mathbb{P}} d \mathbb{P}
+$$&lt;/p&gt;
+&lt;p&gt;for all $A \in \mathcal{F}$.&lt;/p&gt;
+&lt;p&gt;测度变换后，随机变量的分布会发生变化，如何去求变化后的分布，主要依赖于RN定理和条件概率，RN导数虽然形式上写为导数的形式，实际上是线性的，具有链式法则，也符合可逆准则，接下来介绍有关条件概率的RN导数的性质：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 9.51（RN导数的限制-条件期望）.&lt;/strong&gt; Suppose that  $\mathbb{P}$ and $ \mathbb{Q} $ are two probability measures on a measurable space $(\Omega, \mathcal{F})$ and that $\mathbb{Q} \ll \mathbb{P}$ on $\mathcal{F}$ with density $Z$. If $\mathcal{G}$ is a $\sigma$-algebra contained in $\mathcal{F}$, then&lt;br&gt;
+(1) $\mathbb{Q} \ll \mathbb{P}$ on $\mathcal{G}$;&lt;br&gt;
+(2) the corresponding density is given by
+$$
+\left.\frac{d \mathbb{Q}}{d \mathbb{P}}\right|_{\mathcal{G}}=\mathbb{E}[Z \mid \mathcal{G}], \quad \mathbb{P}-\text { a.s. }
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 9.52(条件期望的测度变换).&lt;/strong&gt;  Suppose  that  $\mathbb{Q} \sim \mathbb{P}$ on $\mathcal{F}$ with density function $Z=\frac{d \mathbb{Q}}{d \mathbb{P}}$ and that $\mathcal{G} \subset \mathcal{F}$ is another $\sigma$-algebra. then, for any $\mathcal{F}$-measurable random variable $Y \geq 0$,
+$$
+\mathbb{E}_{\mathbb{Q}}[Y \mid \mathcal{G}]=\frac{\mathbb{E}[Y Z \mid \mathcal{G}]}{\mathbb{E}[Z \mid \mathcal{G}]}, \quad \mathbb{Q} \text {-a.s. }
+$$&lt;/p&gt;
+&lt;h3 id=&#34;girsanov-定理&#34;&gt;Girsanov 定理
+&lt;/h3&gt;&lt;p&gt;Define
+$$
+Z_t(X)=\exp \left(\int_0^t X_u d W_u-\frac{1}{2} \int_0^t X_u^2 d u\right) .
+$$
+$\left(Z_t\right)$ satisfies
+$$
+Z_t(X)=1+\int_0^t Z_u X_u d W_u .
+$$
+This implies that $\left(Z_t\right)$ is a continuous local martingale with $\mathbb{E}\left[Z_0\right]=1$.&lt;/p&gt;
+&lt;p&gt;Define a measure $\tilde{\mathbb{P}}$ on $\mathcal{F}_T$ by
+$$
+\tilde{\mathbb{P}}_T(A)=\int_A Z_T(X) d \mathbb{P} \quad \text { for all } A \in \mathcal{F}_T
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 9.57 (Girsanov Theorem).&lt;/strong&gt; Assume that $Z(X)=\left(Z_t(X)\right)$ defined by up is a martingale. Define the process $\tilde{W}=\left(\tilde{W}_t\right)_{0 \leq t&amp;lt;\infty}$ by
+$$
+\tilde{W}_t:=W_t-\int_0^t X_s d s
+$$
+Then for each fixed $T \in[0, \infty),\left(\tilde{W}_t, \mathcal{F}_t\right)_{0 \leq t \leq T}$ is a Brownian motion on $\left(\Omega, \mathcal{F}, \tilde{\mathbb{P}}_T\right)$.&lt;/p&gt;
+&lt;h2 id=&#34;sde&#34;&gt;SDE
+&lt;/h2&gt;&lt;h3 id=&#34;存在性和唯一性&#34;&gt;存在性和唯一性
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Theorem 10.8 (Existence and uniqueness theorem for stochastic differential equation).&lt;/strong&gt; Let $T&amp;gt;0$ and let $b, \sigma\left(b:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^n, \sigma:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^{n \times m}\right)$ be measurable functions satisfying
+$$
+|b(t, x)|+|\sigma(t, x)| \leq C(1+|x|) \quad \text { for all } x \in \mathbb{R}^n, t \in[0, T]
+$$
+for some constant $C$, where $|\sigma|^2=\sum_{i=1} \sum_{j=1}\left|\sigma_{i j}\right|^2$, and
+$$
+|b(t, x)-b(t, y)|+|\sigma(t, x)-\sigma(t, y)| \leq D|x-y| \quad \text { for all } x, y \in \mathbb{R}^n, t \in[0, T]
+$$
+for some constant $D$. Let $Z$ be a random variable which is independent of $\mathcal{F}_T^W$, the $\sigma$ algebra generated by $\left(W_s: 0 \leq s \leq T\right)$, and $\mathbb{E}|Z|^2&amp;lt;\infty$. Then the stochastic differential equation
+$$
+d X_t=b\left(t, X_t\right) d t+\sigma\left(t, X_t\right) d W_t, \quad 0 \leq t \leq T, X_0=Z
+$$
+has a unique $t$-continuous solution $X_t$ with the properties that
+(i) $X_t$ is adapted to $\mathcal{F}_t^W \vee \sigma(Z)$;
+(ii) $\mathbb{E}\left[\int_0^T\left|X_t\right|^2 d t\right]&amp;lt;\infty$.&lt;/p&gt;
+&lt;h3 id=&#34;强解和弱解&#34;&gt;强解和弱解
+&lt;/h3&gt;&lt;p&gt;以下内容来自：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/341594982&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;随机微分方程的强解与弱解&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;考虑以下一维 $\operatorname{SDE}$（对多维情况是类似的）：
+$$
+\left\{\begin{array}{l}
+X_t-X_0=\int_0^t b\left(s, X_s\right) d s+\int_0^t \sigma\left(s, X_s\right) d B_s, t \in[0, T], \\
+X_0=\xi .
+\end{array}\right.
+$$
+&lt;strong&gt;强解:&lt;/strong&gt; 设 $\left(B_t\right)_{t \geq 0}$ 是一个给定的布朗运动，$\xi$ 与 $\left(B_t\right)_{t \geq 0}$ 独立， $\mathscr{F}_t=\sigma(\xi, B(s), 0 \leq s \leq t)$ 。若 $\left(X_t\right)_{t \geq 0}$ 是关于 $\mathscr{F}_t$ 渐进可测的满足 $X_0=\xi$ ，a．e．且对 $\forall t \in[0, T]$ 有（1）a．e．成立，则称 $\left(X_t\right)_{t \geq 0}$ 是满足方程 $(1),(2)$的一个强解。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;弱解:&lt;/strong&gt; 设 $\left(\hat{B}_t\right)_{t \geq 0}$ 是某一概率空间 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ 上的某一布朗运动，$X_0$ 是 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ 上的随机变量且与 $\xi$ 同分布，与 $\left(\hat{B}_t\right)_{t \geq 0}$ 独立， $\mathscr{F}_t=\sigma\left(X_0, B \hat{(s)}, 0 \leq s \leq t\right)$ 。若 $\left(X_t\right)_{t \geq 0}$ 是关于 $\mathscr{F}_t$ 渐进可测的且对于 $\forall t \in[0, T]$ 有（1）a．e．成立（注意此时（1）中 $d B_s$ 为 $d \hat{B}_s$ ）。此时称 $X(t)$ 为方程（1），（2）的一个弱解［1］。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;联系与区别.&lt;/strong&gt; 可以看到，对于强解，是事先给定了概率空间 $(\Omega, \mathscr{F}, P)$ 以及 $\left(B_t\right)_{t \geq 0}$ 和 $\xi$ ，这三者都是确定的，我们需要在这个概率空间 $(\Omega, \mathscr{F}, P)$ 上来寻找满足 $(1),(2)$ 的 $\left(X_t\right)_{t \geq 0}$ 。而对于弱解，只需要存在某一个概率空间 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ ，并且是对某一个布朗运动有（1）且对（2）是分布意义下成立就行了，明显比强解的要求更为宽松，也就是说强解一定是弱解，反过来不一定成立的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;SDE的强解和弱解归根结底是由于随机过程的域流所包含的信息量造成的，一般的，我们在布朗运动的域流下讨论SDE，这时若可以求解SDE，得到的解是强解；若 $X_t$ 的域流大于布朗运动的域流，则不可以用布朗运动来表示 $X_t$,此时需要引入一组其他的布朗运动和概率测度并且配套新的域流，才能得到SDE的解，这时的解为弱解。&lt;/p&gt;
+&lt;h3 id=&#34;feynman-kac公式和komogorov反向方程&#34;&gt;Feynman-Kac公式和Komogorov反向方程
+&lt;/h3&gt;&lt;p&gt;Feynman-Kac公式 告诉我们可以使用概率方法去求解PDE。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 10.13 (Feynman-Kac formula).&lt;/strong&gt; Consider the stochastic differential equation
+$$
+d X_t=\beta\left(t, X_t\right) d t+\gamma\left(t, X_t\right) d W_t .
+$$
+Let $f$ be a Borel-measurable function. Fix $T&amp;gt;0$ and let $t \in[0, T]$ be given. Define the function
+$$
+g(t, x)=\mathbb{E}^{t, x}\left[f\left(X_T\right)\right]=\mathbb{E}\left[f\left(X_T\right) \mid X_t=x\right] .
+$$
+Assume that $g(t, x)&amp;lt;\infty$ for all $(t, x)$. Then $g(t, x)$ satisfies the partial differential equation
+$$
+g_t(t, x)+\beta(t, x) g_x(t, x)+\frac{1}{2} \gamma^2(t, x) g_{x x}(t, x)=0
+$$
+with the terminal condition $g(T, x)=f(x)$ for all $x$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; In general, there is no closed form solution of the above PDE. Feyman-Kac formula says that the solution of the above PDE can be written as the &lt;strong&gt;expectation of certain stochastic process&lt;/strong&gt;, defined by the up SDE.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Komogorov Backward Equation (KBE):&lt;/strong&gt; An important corollary of Feyman-Kac formula is that the function $F(t, x)=P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)$ (for fixed $t^{\prime}, x^{\prime}$ and $t^{\prime}&amp;gt;t$ ) satisfies the first PDE in Eq equation 1. Namely, the following
+$$
+\frac{\partial P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial t}(t, x)+b(t, x) \frac{\partial P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial x}(t, x)+\frac{1}{2} \sigma^2(t, x) \frac{\partial^2 P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)}{\partial x^2}(t, x)=0
+$$
+This equation is also known as Komogorov Backward Equation (KBE). One way to see this is as follows: for fixed $t^{\prime}$ with $t^{\prime}=T$, let $F(T, x)=\Phi(x)=\delta_{x^{\prime}}(x)$. Hence, we can see that
+$$
+F(t, x)=\mathbb{E}_{t, x}\left[\Phi\left(X_T\right)\right]=\mathbb{E}\left[\delta_{x^{\prime}}\left(X_T\right) \mid X_t=x\right]=P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)
+$$&lt;/p&gt;
+&lt;h3 id=&#34;fokker-pkanck方程和komogorov前向方程&#34;&gt;Fokker-Pkanck方程和Komogorov前向方程
+&lt;/h3&gt;&lt;p&gt;之前的Feynman-Kac公式可以将PDE求解转化为SDE求解，本小节的Fokker-Pkanck方程可以将SDE的求解转化为PDE的求解。
+$$
+\left\{\begin{aligned}
+d X_s &amp;amp; =b\left(s, X_s\right) d s+\sigma\left(s, X_s\right) d W_s \\
+X_t &amp;amp; =x
+\end{aligned}\right.
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 3 (Fokker Planck Equation / Kolmogorov Forward Equation)&lt;/strong&gt; Assume that $b(x)$ is $C^1$ and $\sigma(x)$ is $C^2$. For $\rho \in C^2$, define
+$$
+\mathcal{L}^{*} \rho(x)=-\sum_{i=1}^n \frac{\partial}{\partial x^i}\left(b^i(x) \rho(x)\right)+\frac{1}{2} \sum_{i, j=1}^n \sum_{k=1}^m \frac{\partial^2}{\partial x^i \partial x^j}\left(\sigma^{i k}(x) \sigma^{j k}(x) \rho(x)\right) .
+$$
+Suppose that the density $p_t(x)$ exists and is $C^1$ in $t, C^2$ in $x$. Then
+$$
+\frac{\partial}{\partial t} p_t(x)=\mathcal{L}^{*} p_t(x), t \in[0, T]
+$$
+i.e. the density $p_t(x)$ of $X_t$ must satisfy the Fokker Planck Equation (Kolmogorov Forward Equation).&lt;/p&gt;
+&lt;p&gt;交叉学院的课程中有一个关于Fokker-Planck方程很好的应用，虽然是用其得到分布再求转移核，但是我在这里引用该段落主要是为了强调OU过程的转移核是高斯分布，这在扩散模型的推导中是非常重要的：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition 4 (Ornstein-Uhlenbeck Process)&lt;/strong&gt; The Ornstein-Uhlenbeck process $x_t$ is defined by the following stochastic differential equation:
+$$
+d x_t=-\theta x_t d t+\sigma d W_t
+$$
+where $\theta&amp;gt;0$ and $\sigma&amp;gt;0$ are parameters and $W_t$ denotes the Brownian motion process.  Note that the $O U$ process is a stationary process.&lt;/p&gt;
+&lt;p&gt;The Ornstein-Uhlenbeck process can also be described in terms of a probability density function, $P(x, t)$, which specifies the probability of finding the process in the state $x$ at time $t$. This function satisfies the Fokker-Planck equation
+$$
+\frac{\partial P}{\partial t}=\theta \frac{\partial}{\partial x}(x P)+D \frac{\partial^2 P}{\partial x^2}
+$$
+where $D=\sigma^2 / 2$. This is a linear parabolic partial differential equation which can be solved by a variety of techniques. The transition probability, also known as the Green&amp;rsquo;s function, $P\left(x, t \mid x^{\prime}, t^{\prime}\right)$ is a Gaussian with mean $x^{\prime} e^{-\theta\left(t-t^{\prime}\right)}$ and variance $\frac{D}{\theta}\left(1-e^{-2 \theta\left(t-t^{\prime}\right)}\right)$ :
+$$
+P\left(x, t \mid x^{\prime}, t^{\prime}\right)=\sqrt{\frac{\theta}{2 \pi D\left(1-e^{-2 \theta\left(t-t^{\prime}\right)}\right)}} \exp \left[-\frac{\theta}{2 D} \frac{\left(x-x^{\prime} e^{-\theta\left(t-t^{\prime}\right)}\right)^2}{1-e^{-2 \theta\left(t-t^{\prime}\right)}}\right]
+$$
+This gives the probability of the state $x$ occurring at time $t$ given initial state $x^{\prime}$ at time $t^{\prime}&amp;lt;t$. Equivalently, $P\left(x, t \mid x^{\prime}, t^{\prime}\right)$ is the solution of the Fokker-Planck equation with initial condition $P\left(x, t^{\prime}\right)=\delta\left(x-x^{\prime}\right)$.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本人在24年在做采样有关的研究，这促使我去系统的学习了随机分析的知识，今年再次看到台湾交通大学吴老师的课程，讲的非常好，特再次学习并写下该笔记，常读常新。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>学习笔记|课题组讨论班</title>
@@ -1267,7 +1445,8 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; （1）如果 $f,g$ 为凸函数，$h$是不过原点的直线，那么等式成立 $\iff$ KKT条件。&lt;br&gt;（2）对于任意的 $f,g,h$ 函数，有 等式成立 $\Rightarrow$ KKT条件。&lt;/p&gt;
 &lt;h2 id=&#34;information-measures-for-discrete-systems&#34;&gt;Information Measures for Discrete Systems
-&lt;/h2&gt;&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
+&lt;/h2&gt;&lt;p&gt;暂时搁置了。。。。陈伯宁老师的课程录屏被他们学校剪辑发出，效果真的不忍直视，等以后有时间再学。&lt;/p&gt;
+&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
 &lt;/h2&gt;&lt;h2 id=&#34;data-transmission-and-channel-capacity&#34;&gt;Data Transmission and Channel Capacity
 &lt;/h2&gt;&lt;h2 id=&#34;differential-entropy-and-gaussian-channels&#34;&gt;Differential Entropy and Gaussian Channels
 &lt;/h2&gt;&lt;h2 id=&#34;lossy-data-compression-and-transmission&#34;&gt;Lossy Data Compression and Transmission
@@ -1280,11 +1459,19 @@ $$
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</guid>
         <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png" alt="Featured image of post 学习笔记|数理统计" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
-&lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，参考网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;统计学1&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;统计学2&lt;/a&gt;;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&amp;amp;si=XVTZSHO2CrYsZoek&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;交大數理統計學&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;amp;si=obMWmZkBRTFQJYUo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;陳鄰安老師 - 高等統計學&lt;/a&gt;。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;统计学1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;统计学2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&amp;amp;si=XVTZSHO2CrYsZoek&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;交大數理統計學&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;amp;si=obMWmZkBRTFQJYUo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;陳鄰安老師 - 高等統計學&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;陈老师的高等统计学没有讲义，而且讲的过于简单，本人使用了Casella的统计推断进行学习，并且配合一些其他的统计课程进行的补充。&lt;/p&gt;
 &lt;h2 id=&#34;fundamentals-of-probability-theory&#34;&gt;Fundamentals of probability theory
 &lt;/h2&gt;&lt;h3 id=&#34;random-variable&#34;&gt;Random Variable
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Define 1(random variable).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. &lt;br&gt;
@@ -1977,7 +2164,12 @@ $$
 $$
 其中 $\alpha \in[0,1]$ 是给定的显著性水平．注意到之前我们定义了的左侧为 $T$ 的检验水准（size）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定义 1(UMP).&lt;/strong&gt; 检验水准为 $\alpha$ 的检验 $T_{*}$ 是&lt;strong&gt;一致最优势（UMP）检验&lt;/strong&gt;，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．&lt;/p&gt;
-</description>
+&lt;h2 id=&#34;渐进分析&#34;&gt;渐进分析
+&lt;/h2&gt;&lt;h2 id=&#34;采样&#34;&gt;采样
+&lt;/h2&gt;&lt;h3 id=&#34;逆分布生成&#34;&gt;逆分布生成
+&lt;/h3&gt;&lt;h3 id=&#34;接受拒绝采样&#34;&gt;接受拒绝采样
+&lt;/h3&gt;&lt;h3 id=&#34;重要性采样&#34;&gt;重要性采样
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>学习笔记|高等代数</title>
@@ -3776,7 +3968,7 @@ $$
 &lt;h3 id=&#34;自伴随矩阵的正交相似标准型&#34;&gt;自伴随矩阵的正交相似标准型
 &lt;/h3&gt;&lt;p&gt;之前我们讨论了线性空间中的矩阵对角化以及对应的条件，现在如果将范围限定在内积空间之下，规定过渡矩阵为正交矩阵，是否能有更加简单的结果。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定义 1（正交相似和酉相似）.&lt;/strong&gt; 设 $\boldsymbol{A}, \boldsymbol{B}$ 是 $n$ 阶实矩阵，若存在正交矩阵 $P$ ，使 $B=P^{\prime} A P$ ，则称 $B$ 和 $\boldsymbol{A}$ 正交相似．设 $\boldsymbol{A}, \boldsymbol{B}$ 是 $n$ 阶复矩阵，若存在酉矩阵 $P$ ，使 $B=\bar{P}^{\prime} A P$ ，则称 $\boldsymbol{B}$ 和 $\boldsymbol{A}$ 酉相似．&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;定义 2（自伴随算子、矩阵）.&lt;/strong&gt; 设 $\varphi$ 是内积空间 $V$ 上的线性变换，$\varphi^&lt;em&gt;$ 是 $\varphi$ 的伴随，若 $\varphi^&lt;/em&gt;=\varphi$ ，则称 $\varphi$ 是自伴随算子，当 $V$ 是欧氏空间时，$\varphi$ 也称为对称算子或对称变换；当 $V$是酉空间时，$\varphi$ 也称为 Hermite 算子或 Hermite 变换．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（自伴随算子、矩阵）.&lt;/strong&gt; 设 $\varphi$ 是内积空间 $V$ 上的线性变换，$\varphi^{*}$ 是 $\varphi$ 的伴随，若 $\varphi^{*}=\varphi$ ，则称 $\varphi$ 是自伴随算子，当 $V$ 是欧氏空间时，$\varphi$ 也称为对称算子或对称变换；当 $V$是酉空间时，$\varphi$ 也称为 Hermite 算子或 Hermite 变换．&lt;/p&gt;
 &lt;p&gt;引入自伴随算子是为了阐述正交相似和自伴随算子之间的关系，自伴随算子使用矩阵表达具有很简单的方式，即 $A = A^{&amp;rsquo;}$，也称之为自伴随矩阵（实对称阵和Hermite阵）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 3（自伴随矩阵的性质）.&lt;/strong&gt; 自伴随矩阵的特征值都为实数，且不同特征值的特征向量相互正交，即特征子空间相互正交。&lt;/p&gt;
 &lt;p&gt;正交子空间是一种更强的直和，自伴随矩阵具有很好的性质，我们先研究自伴随矩阵的正交相似标准型，下一个小节再拓展到正规矩阵。&lt;/p&gt;

@@ -7,7 +7,77 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Fri, 14 Mar 2025 19:24:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Apr 2025 15:48:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>学习笔记|现代数字信号处理选学</title>
+        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</link>
+        <pubDate>Mon, 28 Apr 2025 15:48:05 +0800</pubDate>
+        
+        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</guid>
+        <description>&lt;img src="http://localhost:1313/post_file/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/cover.png" alt="Featured image of post 学习笔记|现代数字信号处理选学" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+&lt;/h2&gt;&lt;p&gt;张颢老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张颢老师的课程中能感受到浓浓的工程师思维，并不会拘谨于定义定理的条条框框，而是按照逻辑穿针引线的将知识串起来，由此发现知识背后隐含的哲学思想，这也是张老师讲课的宗旨：每节课让学生学会一种思想。&lt;/p&gt;
+&lt;p&gt;张颢老师所讲的数字信号处理、随机过程、现代信号处理（二）课程本人之前都学过一些，最近发现张老师的信号处理（一）课程还没有学过，并且最近需要补充一些估计和机器学习的理论，所以才学习该课程，该课程虽说是现代数字信号处理，但是讲的偏统计，更像统计推断和机器学习的结合。&lt;/p&gt;
+&lt;p&gt;由于张老师讲课不重点强调定义定理，所以从头到尾整理张老师的推导是非常大的工程量，本人将贴出学习笔记，并在重点部分加以补充。&lt;/p&gt;
+&lt;p&gt;参考视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;现代数字信号处理I 张颢 2023年秋&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;推荐视频：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;现代数字信号处理II 张颢 2024年春&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;随机过程 张颢 2024年春&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;数字信号处理 张颢 2023年秋&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;推荐阅读：&lt;a class=&#34;link&#34; href=&#34;https://qhbk.tsinghua.edu.cn/xqh/2024-12/06/content_99183515.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;张颢：在讲台之上，与热爱同行&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;张颢老师对于能熟练的推导公式说：“无他，惟手熟尔。”听张老师的课程一行一行的写下来，并且时常温习，将会带来很大的收获。&lt;/p&gt;
+&lt;h2 id=&#34;最佳线性无偏估计&#34;&gt;最佳线性无偏估计
+&lt;/h2&gt;&lt;p&gt;有一本小册子，推荐大家阅读：&lt;a class=&#34;link&#34; href=&#34;https://www2.stat.duke.edu/~pdh10/Teaching/721/Materials/ch2blue.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Best Linear Unbiased Estimation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义（最佳线性无偏估计（BLUE，Best Linear unbiased estimator））.&lt;/strong&gt; 设 $\hat{\theta}$ 是参数 $\theta$ 的线性无偏估计。如果对 $\theta$ 的任意一个线性无偏估计 $\theta^{*}$ ，有 $\operatorname{var}\left(\theta^{*}\right) \geq \operatorname{var}(\hat{\theta})$ ，则称 $\hat{\theta}$ 是参数 $\theta$ 的 BLUE 。&lt;/p&gt;
+&lt;p&gt;对于高维回归问题，我们不能比较方差，只能对比协方差矩阵，那么针对于协方差矩阵，如何定义这个最优性呢，我们需要引入关于半正定矩阵的一种度量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition  (Loewner order).&lt;/strong&gt; For two positive semidefinite matrices $\Sigma_1$ and $\Sigma_2$ of the same size, we say that $\Sigma_1&amp;gt;\Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive definite, and that $\Sigma_1 \geq \Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive semidefinite.&lt;/p&gt;
+&lt;p&gt;容易证明，UMVUE的协方差矩阵正是上述定义意义下的最小。则对于高维回归分析，最佳的估计量的协方差矩阵在上意义下最小，我们需要做的就是求出该UMVUE。首先铺垫以下定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（UMVUE 的充要条件，Rao 1952）&lt;/strong&gt; 设 $X \sim P_\theta$ 为参数空间 $\Theta$ 上的一个统计模型，定义在样本空间 $\mathcal{X}$ 上。设 $\hat{\theta}(X)$ 是参数 $\theta$ 的一个无偏估计量，即对所有 $\theta \in \Theta$ ，有：
+$$
+\mathbb{E}_\theta[\hat{\theta}(X)]=\theta
+$$
+则以下两个命题等价：&lt;br&gt;
+1．$\hat{\theta}(X)$ 是 $\theta$ 的 UMVUE（在所有无偏估计量中具有最小方差）；&lt;br&gt;
+2．对于所有满足 $\mathbb{E}_\theta[U(X)]=0$ 的统计量 $U(X)$ ，都有：
+$$
+\operatorname{Cov}_\theta(\hat{\theta}(X), U(X))=0 \quad \forall \theta \in \Theta \text {. }
+$$&lt;/p&gt;
+&lt;p&gt;Gauss-Markov定理高斯我们，BLUE就是普通的最小二乘解：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 5(Gauss-Markov定理).&lt;/strong&gt; Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be of rank $p$, and let
+$$
+\mathbf{y}=\mathbf{X} \boldsymbol{\beta}+\sigma \boldsymbol{\epsilon}, \boldsymbol{\epsilon} \sim P
+$$
+for some $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, where $\mathcal{P}$ is a class of mean-zero isotropic distributions on $\mathbb{R}^n$. If $\check{\boldsymbol{\beta}}$ is a linear unbiased estimator of $\boldsymbol{\beta}$ so that $E[\check{\boldsymbol{\beta}}]=\boldsymbol{\beta}$ for all $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, then
+$$
+\operatorname{Var}[\check{\boldsymbol{\beta}}] \geq \operatorname{Var}[\hat{\boldsymbol{\beta}}],
+$$
+where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.&lt;/p&gt;
+&lt;p&gt;最小二乘是BLUE，这是非常non-trivial的点，因为OLS没有考虑任何的相关性，只是使得协方差矩阵的迹最小，而BLUE是协方差矩阵意义上的最小。
+&lt;a href=&#34;https://imgse.com/i/pEHnQvn&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHnQvn.jpg&#34; alt=&#34;pEHnQvn.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;线性估计的正交性原理&#34;&gt;线性估计的正交性原理
+&lt;/h2&gt;&lt;p&gt;该章节主要引出Wiener滤波和Wiener-Hopf方程，与常规滤波器的介绍方式不同，这节的介绍更偏向于统计，给出了统计形式的Wiener-Hopf方程。
+&lt;a href=&#34;https://imgse.com/i/pEHebef&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHebef.jpg&#34; alt=&#34;pEHebef.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://imgse.com/i/pEHeXFg&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHeXFg.jpg&#34; alt=&#34;pEHeXFg.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://imgse.com/i/pEHmSln&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHmSln.jpg&#34; alt=&#34;pEHmSln.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;平稳随机序列线性估计&#34;&gt;平稳随机序列线性估计
+&lt;/h2&gt;&lt;p&gt;上一个小节我们得到了Winener-Hopf方程，但是对于硬件结构来说，矩阵求逆是一个非常大的开销，我们自然有想法对该求逆矩阵进行研究。
+&lt;a href=&#34;https://imgse.com/i/pEHnyVK&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHnyVK.jpg&#34; alt=&#34;pEHnyVK.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;卡尔曼滤波&#34;&gt;卡尔曼滤波
+&lt;/h2&gt;&lt;p&gt;Wiener的思想是将系统视为黑箱，但是有些时候我们需要知道系统内部的一些情况，才可以更好的控制、以及跟踪，张老师对跟踪这一次颇有理解，认为跟踪实际上是预估-校正，这也是卡尔曼滤波的核心思想。&lt;/p&gt;
+&lt;p&gt;张老师认为卡尔曼滤波有三个核心思想：1.将黑箱系统变为白箱。2.预估校正法。3.残差推断。&lt;/p&gt;
+&lt;p&gt;另外，卡尔曼滤波还方便人们使用先验知识对系统内部的建模。
+&lt;a href=&#34;https://imgse.com/i/pEHnW2d&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHnW2d.jpg&#34; alt=&#34;pEHnW2d.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://imgse.com/i/pEHnfxA&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/04/29/pEHnfxA.jpg&#34; alt=&#34;pEHnfxA.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;核方法&#34;&gt;核方法
+&lt;/h2&gt;</description>
+        </item>
+        <item>
         <title>学习笔记|随机分析</title>
         <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</link>
         <pubDate>Fri, 14 Mar 2025 19:24:05 +0800</pubDate>
@@ -1415,7 +1485,8 @@ $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; （1）如果 $f,g$ 为凸函数，$h$是不过原点的直线，那么等式成立 $\iff$ KKT条件。&lt;br&gt;（2）对于任意的 $f,g,h$ 函数，有 等式成立 $\Rightarrow$ KKT条件。&lt;/p&gt;
 &lt;h2 id=&#34;information-measures-for-discrete-systems&#34;&gt;Information Measures for Discrete Systems
-&lt;/h2&gt;&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
+&lt;/h2&gt;&lt;p&gt;暂时搁置了。。。。陈伯宁老师的课程录屏被他们学校剪辑发出，效果真的不忍直视，等以后有时间再学。&lt;/p&gt;
+&lt;h2 id=&#34;lossless-data-compression&#34;&gt;Lossless Data Compression
 &lt;/h2&gt;&lt;h2 id=&#34;data-transmission-and-channel-capacity&#34;&gt;Data Transmission and Channel Capacity
 &lt;/h2&gt;&lt;h2 id=&#34;differential-entropy-and-gaussian-channels&#34;&gt;Differential Entropy and Gaussian Channels
 &lt;/h2&gt;&lt;h2 id=&#34;lossy-data-compression-and-transmission&#34;&gt;Lossy Data Compression and Transmission
@@ -1428,11 +1499,19 @@ $$
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</guid>
         <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png" alt="Featured image of post 学习笔记|数理统计" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
-&lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，参考网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;统计学1&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;统计学2&lt;/a&gt;;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&amp;amp;si=XVTZSHO2CrYsZoek&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;交大數理統計學&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;amp;si=obMWmZkBRTFQJYUo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;陳鄰安老師 - 高等統計學&lt;/a&gt;。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;统计学1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;统计学2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&amp;amp;si=XVTZSHO2CrYsZoek&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;交大數理統計學&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;amp;si=obMWmZkBRTFQJYUo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;陳鄰安老師 - 高等統計學&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;陈老师的高等统计学没有讲义，而且讲的过于简单，本人使用了Casella的统计推断进行学习，并且配合一些其他的统计课程进行的补充。&lt;/p&gt;
 &lt;h2 id=&#34;fundamentals-of-probability-theory&#34;&gt;Fundamentals of probability theory
 &lt;/h2&gt;&lt;h3 id=&#34;random-variable&#34;&gt;Random Variable
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Define 1(random variable).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. &lt;br&gt;
@@ -2085,6 +2164,8 @@ $$
 &lt;/ul&gt;
 &lt;p&gt;现在讨论近似区间估计的问题，这类问题实际上很简单，即我们对样本的分布一无所知，但可以由CLT保证当样本量趋于无穷时，$\frac{\overline{ X } -\mu}{\sigma \sqrt{n}} \xrightarrow{\mathcal{D}} Z$，我们唯一需要做的就是构造 $\frac{\overline{ X } -\mu}{\sigma \sqrt{n}}$,但是这种枢轴量是无意义的，我们可以进一步构造 $\frac{\sigma}{S}\frac{\overline{ X } -\mu}{\sigma \sqrt{n}}$,再由Slutsky定理（$S^2$依概率收敛到 $\sigma^2$，另外一半式子依分布收敛到标准正态分布）、连续映射定理（$S$依概率收敛到 $\sigma$）以及CLT得到 $\frac{\overline{ X } -\mu}{S \sqrt{n}}$依分布收敛到标准正态分布，则可以反解出 $\mu$ 的近似置信区间。&lt;/p&gt;
 &lt;p&gt;一般而言，对于 $\mu$ 的近似区间估计，最后都会将分母的 $\sigma$ 换成 $S$,再由Slutsky定理保证收敛。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;还有一些区间估计的内容，我们在假设检验的章节进行描述。&lt;/p&gt;
 &lt;h2 id=&#34;假设检验&#34;&gt;假设检验
 &lt;/h2&gt;&lt;p&gt;我们所说的统计模型可以分为估计和假设检验两类，假设检验是不可以用估计的方法去做的。&lt;/p&gt;
 &lt;p&gt;在统计推断中, 参数的估计量的导
@@ -2125,7 +2206,92 @@ $$
 $$
 其中 $\alpha \in[0,1]$ 是给定的显著性水平．注意到之前我们定义了的左侧为 $T$ 的检验水准（size）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定义 1(UMP).&lt;/strong&gt; 检验水准为 $\alpha$ 的检验 $T_{*}$ 是&lt;strong&gt;一致最优势（UMP）检验&lt;/strong&gt;，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．&lt;/p&gt;
-</description>
+&lt;h3 id=&#34;似然比检验&#34;&gt;似然比检验
+&lt;/h3&gt;&lt;p&gt;我们先给出一个直观的检验方式，并之后给出其理论。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 1（似然比检验）.&lt;/strong&gt; 关于检验 $H_0: \theta \in \Theta_0$ 对 $H_1: \theta \in \Theta_0^{\mathrm{C}}$ 的似然比检验统计量是
+$$
+\lambda(\boldsymbol{x})=\frac{\sup_{\theta_0} L(\theta \mid \boldsymbol{x})}{\sup _\theta L(\theta \mid \boldsymbol{x})}
+$$
+任何一个拒绝区域的形式为 $\{\boldsymbol{x}: \lambda(\boldsymbol{x}) \leqslant c\}$ 的检验都叫做似然比检验（likelihood ratio test,LRT），$c$ 为任意 $[0,1]$ 的数。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 直观理解似然比检验，如果 $\Theta_0$ 的最大似然越大，那么比值越高，零假设为真的概率就越高，所以拒绝域设置为小于一个阈值。&lt;/p&gt;
+&lt;p&gt;最大似然比检验的求法也非常简单，先求出 $\lambda(x)$,再使得显著水平为 $\alpha$ 即可，一般对其显著水平的时候需要利用函数的一些性质得出等价判决域，该步骤的计算量很大，并且比较需要技巧性，也是后续需要引入p值的源头。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;推断 $\mu$ :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\sigma$ 已知，构造标准正态&lt;/li&gt;
+&lt;li&gt;$\sigma$ 未知，构造$t$ 分布，$\frac{\bar{X}-\mu}{S/\sqrt{n}}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;推断 $\sigma$:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不管 $\mu$ 已知还是未知，构造 $\Chi^2(n-1)$，$\frac{(n-1)S^2}{\sigma^2}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;假设检验的评价&#34;&gt;假设检验的评价
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义 1(无偏性).&lt;/strong&gt; 一个功效函数为 $\beta(\theta)$ 的检验是无偏的，如果对于每一个 $\theta^{\prime} \in \Theta_0^{\mathrm{C}}$ 和 $\theta^{\prime \prime} \in \Theta_0$ 有 $\beta\left(\theta^{\prime}\right) \geqslant \beta\left(\theta^{\prime \prime}\right)$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2(UMP).&lt;/strong&gt; 检验水准为 $\alpha$ 的检验 $T_{*}$ 是&lt;strong&gt;一致最优势（UMP）检验&lt;/strong&gt;，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．&lt;/p&gt;
+&lt;p&gt;为了找出UMP，我们先从简单假设开始，对于简单假设，以下定理说明必定存在UMP,且UMP的形式是确定的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（Neyman-Pearson引理）.&lt;/strong&gt; 对于简单假设$H_0:\theta = \theta_0,H_1:\theta = \theta_1$,构造判决域满足如下条件:&lt;br&gt;
+（1）$C=\left\{X\mid \frac{L(\theta_0\mid X)}{L(\theta_1\mid X)}\leq k\right\}$&lt;br&gt;
+（2）$\alpha = P(X\in C\mid \Theta_0)$&lt;br&gt;
+则该判决域为UMP。&lt;/p&gt;
+&lt;p&gt;使用N-P引理可以对简单假设的UMP进行求解，但是我们的最终目标是要求得一般假设，求取的手法一般是归化到简单假设，我们可以将常见的假设划分为以下四种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;简单假设，UMP存在。&lt;/li&gt;
+&lt;li&gt;单侧假设，$H_0:\theta = \theta_0,H_1:\theta\leq\theta_0$,UMP一般存在，可以归化到简单形式进行求解。&lt;/li&gt;
+&lt;li&gt;双侧假设，$H_0:\theta = \theta_0,H_1:\theta\neq\theta_0$,UMP一般不存在&lt;/li&gt;
+&lt;li&gt;复合单侧假设，$H_0:\theta \leq \theta_0,H_1:\theta\gneq\theta_0$,UMP可能存在，由下面的定理保证。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;定义 4（单调似然比，MLR）.&lt;/strong&gt; 令 $f_n(x \mid \theta)$ 表示样本 $\boldsymbol{X}=\left(X_1, \cdots, X_n\right)$ 的联合密度（质量）函数；令 $T=T(\boldsymbol{X})$ 表示一个统计量。如果对于 $\theta_1 \in \Omega_1$ 和 $\theta_2 \in \Omega_2\left(\theta_1&amp;lt;\theta_2\right)$ ，都有似然比 $f_n\left(x \mid \theta_2\right) / f_n\left(x \mid \theta_1\right)$ 是关于 $T(\boldsymbol{X})$ 的单调（非增或非降的）函数，且该似然比中 $\boldsymbol{X}$ 的信息只包含在 $T(\boldsymbol{X})$ 中，那么称 $\boldsymbol{X}$ 的分布相对于统计量 $T(\boldsymbol{X})$ 具有单调似然比（Monotone Likelihood Ratio，MLR）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5（Karlin－Rubin）&lt;/strong&gt; 考虑检验 $H_0: \theta \leqslant \theta_0$ 对 $H_1: \theta&amp;gt;\theta_0$ ．设 $T$ 是一个关于 $\theta$ 的充分统计量并且 $T$ 的概率密度函数或概率质量函数的族 ${g(t \mid \theta): \theta \in \Theta}$ 关于 $\theta$ 具有 MLR．则对于任何 $t_0$ ，＂当且仅当 $T&amp;gt;t_0$ 时拒绝 $H_0$＂的检验是一个 UMP 水平为 $\alpha$ 的检验，其中 $\alpha=P_{\theta_0}\left(T&amp;gt;t_0\right)$ ．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 这仅仅是一种形式的K-R定理，该定理对于复合单侧检验普遍成立，需要利用直觉去判断判决域，非常符合直观，个人觉得用另外一种方式概括该定理是合理的：对于复合单侧检验，若为单调似然比，则UMP存在，判决域可根据直觉判断。&lt;/p&gt;
+&lt;h3 id=&#34;f-分布&#34;&gt;F-分布
+&lt;/h3&gt;&lt;p&gt;在此处暂停一下，引入F-分布，并总结一下统计学三大分布：$\Chi^2,t,F$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引理1（关于 $\chi^2$ 随机变量的若干事实）&lt;/strong&gt; 以 $\chi_p^2$ 记自由度为 $p$ 的 $\chi^2$ 随机变量．&lt;br&gt;
+a．如果 $Z$ 是 $\mathrm{N}(0,1)$ 随机变量，则 $Z^2 \sim \chi_1^2$ ，即标准正态随机变量的平方是 $\chi^2$ 随机变量；&lt;br&gt;
+b．如果 $X_1, \cdots, X_n$ 独立且 $X_i \sim \chi_{p_i}^2$ ，则 $X_1+\cdots+X_n \sim \chi_{p_1+\cdots+p_n}^2$ ，即独立的 $\chi^2$随机变量之和仍为 $\chi^2$ 随机变量，且其自由度为原随机变量自由度之和．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2(F分布).&lt;/strong&gt; 设随机样本 $X_1, \cdots, X_n$ 取自服从 $\mathrm{n}\left(\mu_X, \sigma_X^2\right)$ 分布的总体，随机样本 $Y_1, \cdots, Y_m$ 取自服从 $\mathrm{n}\left(\mu_Y, \sigma_Y^2\right)$ 分布的总体，且与 $X_1, \cdots, X_n$ 独立．则称随机变量
+$$F=\frac{\left(S_X^2 / \sigma_X^2\right)}{\left(S_Y^2 / \sigma_Y^2\right)}$$&lt;/p&gt;
+&lt;p&gt;服从自由度为 $n-1$ 和 $m-1$ 的 Snedecor $F$ 分布 （Snedecor＇s $F$ distribution with $n-1$ and $m-1$ degrees of freedom）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（F分布的性质）.&lt;/strong&gt; （1）$F\sim f(p,q)\Rightarrow \frac{1}{F}\sim f(q,p)$&lt;br&gt;
+（2）对于F分布的分位数，有 $F_\alpha(p,q) = \frac{1}{f_{1-\alpha}(q,p)}$&lt;/p&gt;
+&lt;p&gt;引入F分布的理由是因为需要对 $\sigma_x/\sigma_y$ 进行假设检验或者区间估计，使用F分布构造分位数会将问题变的十分简便，在之前的估计中，若比较两个分布，我们经常需要做 $\sigma_x = \sigma_y$ 的假设，现在也可以对该假设进行检验了。&lt;/p&gt;
+&lt;h3 id=&#34;p值&#34;&gt;p值
+&lt;/h3&gt;&lt;h3 id=&#34;再谈区间估计&#34;&gt;再谈区间估计
+&lt;/h3&gt;&lt;p&gt;在习题中不难发现，假设检验和区间估计具有类似的方法，再加上我们之前在区间估计中定义置信度为 $1-\alpha$,不禁让人联想，二者是否是同一个东西。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（假设检验等价于区间估计）.&lt;/strong&gt; 对每一个 $\theta_0 \in \Theta$ ，设 $A\left(\theta_0\right)$ 是 $H_0: \theta=\theta_0$ 的一个水平为 $\alpha$ 的检验的接受区域．对每一个 $x \in \mathcal{X}$ ，在参数空间里定义一个集合 $C(x)$
+$$
+C(\boldsymbol{x})=\left{\theta_0: \boldsymbol{x} \in A\left(\theta_0\right)\right}
+$$
+则随机集合 $C(\boldsymbol{x})$ 是一个 $1-\alpha$ 置信集合．反之，设 $C(\boldsymbol{x})$ 是一个 $1-\alpha$ 置信集合．对任意的 $\theta_0 \in \Theta$ ，定义
+$$
+A\left(\theta_0\right)=\left{\boldsymbol{x}: \theta_0 \in C(\boldsymbol{x})\right}
+$$
+则 $A\left(\theta_0\right)$ 是 $H_0: \theta=\theta_0$ 的一个水平为 $\alpha$ 的检验的接受区域．&lt;/p&gt;
+&lt;p&gt;所以使用假设检验得到判决域再进行反转得到置信区间也是一种置信区间的求法；在假设检验中，我们定义了UMP，那么UMP反转到区间估计是什么呢，我们自然也想定义一个一致最优区间估计。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（一致最精确置信区间，UMA）.&lt;/strong&gt; 一个在一类 $1-\alpha$ 置信区间上最小化假值覆盖率的置信区间叫做一致最精确置信区间（Uniformly Most Accurate，UMA）。&lt;/p&gt;
+&lt;p&gt;UMP一般是单侧的，UMA也是如此，并且二者相互对应：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（UMP与UMA）.&lt;/strong&gt; 设 $\boldsymbol{X} \sim f(\boldsymbol{x} \mid \theta)$ ，其中 $\theta$ 是一个实值参数．对于每个 $\theta_0 \in \Theta$ ，设 $A^&lt;em&gt;\left(\theta_0\right)$ 是关于 $H_0: \theta=\theta_0$ 对 $H_1: \theta&amp;gt;\theta_0$ 的一个 UMP 水平 $\alpha$ 检验的接受区域。设 $C^&lt;/em&gt;(\boldsymbol{x})$ 是通过反转上述 UMP 接受区域所建立的 $1-\alpha$ 置信集合．则对于任何其他的 $1-\alpha$ 置信集合 $C$ ，有
+$P_\theta\left(\theta^{\prime} \in C^*(\boldsymbol{X})\right) \leqslant P_\theta\left(\theta^{\prime} \in C(\boldsymbol{X})\right)$ 对于所有的 $\theta^{\prime}&amp;lt;\theta$ 成立。&lt;/p&gt;
+&lt;p&gt;同样的，我们可以对置信区间定义无偏性：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4（无偏性）.&lt;/strong&gt; 置信区间 $C(x)$ 是无偏的，如果 $P_\theta(\theta^{&amp;rsquo;}\in C(X))\leq1-\alpha$ 对于所有的 $\theta\neq\theta^{&amp;rsquo;}$ 成立。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 假值覆盖率小于真值覆盖率，这与假设检验的思想一致，实际上二者也是相互对应的。&lt;/p&gt;
+&lt;p&gt;接下来谈一个我们在区间估计中没有提到的问题，我们自然希望一个区间估计的长度最小，那么该长度最小和UMA有何关系呢，由于下面的定理，UMA（假值覆盖率最小的置信区间）也称为Neyman最短区间，通过该名字也可以看出，极小化假值覆盖率带有期望长度最优某种程度上的保证。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理5（Pratt定理）.&lt;/strong&gt; 设 $X$ 是一个实值随机变量，$X \sim f(x \mid \theta)$ ，其中 $\theta$ 是一个实值参数．设 $C(x)=[L(x), U(x)]$ 是一个关于 $\theta$ 的置信区间．如果 $L(x)$ 和 $U(x)$都是 $x$ 的增函数，则对于任意的值 $\theta^&lt;em&gt;$ ，有
+$$
+E_{\theta &lt;em&gt;}(\text { Length }[C(X)])=\int_{\theta \neq \theta^&lt;/em&gt;} P_{\theta^&lt;/em&gt;}(\theta \in C(X)) \mathrm{d} \theta
+$$
+该定理讲的是 $C(X)$ 的期望长度等于假值覆盖概率的求和（积分），积分域取遍参数的所有假值．&lt;/p&gt;
+&lt;h2 id=&#34;渐进分析&#34;&gt;渐进分析
+&lt;/h2&gt;&lt;h3 id=&#34;点估计&#34;&gt;点估计
+&lt;/h3&gt;&lt;h3 id=&#34;假设检验-1&#34;&gt;假设检验
+&lt;/h3&gt;&lt;h3 id=&#34;bootstrap&#34;&gt;Bootstrap
+&lt;/h3&gt;&lt;h2 id=&#34;采样&#34;&gt;采样
+&lt;/h2&gt;&lt;h3 id=&#34;逆分布生成&#34;&gt;逆分布生成
+&lt;/h3&gt;&lt;h3 id=&#34;接受拒绝采样&#34;&gt;接受拒绝采样
+&lt;/h3&gt;&lt;h3 id=&#34;重要性采样&#34;&gt;重要性采样
+&lt;/h3&gt;&lt;h3 id=&#34;mcmc&#34;&gt;MCMC
+&lt;/h3&gt;&lt;h3 id=&#34;序贯蒙特卡洛采样&#34;&gt;序贯蒙特卡洛采样
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>学习笔记|高等代数</title>
