@@ -1498,7 +1498,7 @@ $$
         <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/cover.png" alt="Featured image of post 学习笔记|数理统计" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png" alt="Featured image of post 学习笔记|数理统计" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
 &lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听。&lt;/p&gt;
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ol&gt;
@@ -2260,25 +2260,25 @@ $$F=\frac{\left(S_X^2 / \sigma_X^2\right)}{\left(S_Y^2 / \sigma_Y^2\right)}$$&lt
 &lt;/h3&gt;&lt;p&gt;在习题中不难发现，假设检验和区间估计具有类似的方法，再加上我们之前在区间估计中定义置信度为 $1-\alpha$,不禁让人联想，二者是否是同一个东西。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 1（假设检验等价于区间估计）.&lt;/strong&gt; 对每一个 $\theta_0 \in \Theta$ ，设 $A\left(\theta_0\right)$ 是 $H_0: \theta=\theta_0$ 的一个水平为 $\alpha$ 的检验的接受区域．对每一个 $x \in \mathcal{X}$ ，在参数空间里定义一个集合 $C(x)$
 $$
-C(\boldsymbol{x})=\left{\theta_0: \boldsymbol{x} \in A\left(\theta_0\right)\right}
+C(\boldsymbol{x})=\left\{\theta_0: \boldsymbol{x} \in A\left(\theta_0\right)\right\}
 $$
 则随机集合 $C(\boldsymbol{x})$ 是一个 $1-\alpha$ 置信集合．反之，设 $C(\boldsymbol{x})$ 是一个 $1-\alpha$ 置信集合．对任意的 $\theta_0 \in \Theta$ ，定义
 $$
-A\left(\theta_0\right)=\left{\boldsymbol{x}: \theta_0 \in C(\boldsymbol{x})\right}
+A\left(\theta_0\right)=\left\{\boldsymbol{x}: \theta_0 \in C(\boldsymbol{x})\right\}
 $$
 则 $A\left(\theta_0\right)$ 是 $H_0: \theta=\theta_0$ 的一个水平为 $\alpha$ 的检验的接受区域．&lt;/p&gt;
 &lt;p&gt;所以使用假设检验得到判决域再进行反转得到置信区间也是一种置信区间的求法；在假设检验中，我们定义了UMP，那么UMP反转到区间估计是什么呢，我们自然也想定义一个一致最优区间估计。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定义 2（一致最精确置信区间，UMA）.&lt;/strong&gt; 一个在一类 $1-\alpha$ 置信区间上最小化假值覆盖率的置信区间叫做一致最精确置信区间（Uniformly Most Accurate，UMA）。&lt;/p&gt;
 &lt;p&gt;UMP一般是单侧的，UMA也是如此，并且二者相互对应：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;定理 3（UMP与UMA）.&lt;/strong&gt; 设 $\boldsymbol{X} \sim f(\boldsymbol{x} \mid \theta)$ ，其中 $\theta$ 是一个实值参数．对于每个 $\theta_0 \in \Theta$ ，设 $A^&lt;em&gt;\left(\theta_0\right)$ 是关于 $H_0: \theta=\theta_0$ 对 $H_1: \theta&amp;gt;\theta_0$ 的一个 UMP 水平 $\alpha$ 检验的接受区域。设 $C^&lt;/em&gt;(\boldsymbol{x})$ 是通过反转上述 UMP 接受区域所建立的 $1-\alpha$ 置信集合．则对于任何其他的 $1-\alpha$ 置信集合 $C$ ，有
-$P_\theta\left(\theta^{\prime} \in C^*(\boldsymbol{X})\right) \leqslant P_\theta\left(\theta^{\prime} \in C(\boldsymbol{X})\right)$ 对于所有的 $\theta^{\prime}&amp;lt;\theta$ 成立。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（UMP与UMA）.&lt;/strong&gt; 设 $\boldsymbol{X} \sim f(\boldsymbol{x} \mid \theta)$ ，其中 $\theta$ 是一个实值参数．对于每个 $\theta_0 \in \Theta$ ，设 $A^{*}\left(\theta_0\right)$ 是关于 $H_0: \theta=\theta_0$ 对 $H_1: \theta&amp;gt;\theta_0$ 的一个 UMP 水平 $\alpha$ 检验的接受区域。设 $C^*(\boldsymbol{x})$ 是通过反转上述 UMP 接受区域所建立的 $1-\alpha$ 置信集合．则对于任何其他的 $1-\alpha$ 置信集合 $C$ ，有
+$P_\theta\left(\theta^{\prime} \in C^{*}(\boldsymbol{X})\right) \leqslant P_\theta\left(\theta^{\prime} \in C(\boldsymbol{X})\right)$ 对于所有的 $\theta^{\prime}&amp;lt;\theta$ 成立。&lt;/p&gt;
 &lt;p&gt;同样的，我们可以对置信区间定义无偏性：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定义 4（无偏性）.&lt;/strong&gt; 置信区间 $C(x)$ 是无偏的，如果 $P_\theta(\theta^{&amp;rsquo;}\in C(X))\leq1-\alpha$ 对于所有的 $\theta\neq\theta^{&amp;rsquo;}$ 成立。&lt;br&gt;
 &lt;strong&gt;注.&lt;/strong&gt; 假值覆盖率小于真值覆盖率，这与假设检验的思想一致，实际上二者也是相互对应的。&lt;/p&gt;
 &lt;p&gt;接下来谈一个我们在区间估计中没有提到的问题，我们自然希望一个区间估计的长度最小，那么该长度最小和UMA有何关系呢，由于下面的定理，UMA（假值覆盖率最小的置信区间）也称为Neyman最短区间，通过该名字也可以看出，极小化假值覆盖率带有期望长度最优某种程度上的保证。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;定理5（Pratt定理）.&lt;/strong&gt; 设 $X$ 是一个实值随机变量，$X \sim f(x \mid \theta)$ ，其中 $\theta$ 是一个实值参数．设 $C(x)=[L(x), U(x)]$ 是一个关于 $\theta$ 的置信区间．如果 $L(x)$ 和 $U(x)$都是 $x$ 的增函数，则对于任意的值 $\theta^&lt;em&gt;$ ，有
+&lt;p&gt;&lt;strong&gt;定理5（Pratt定理）.&lt;/strong&gt; 设 $X$ 是一个实值随机变量，$X \sim f(x \mid \theta)$ ，其中 $\theta$ 是一个实值参数．设 $C(x)=[L(x), U(x)]$ 是一个关于 $\theta$ 的置信区间．如果 $L(x)$ 和 $U(x)$都是 $x$ 的增函数，则对于任意的值 $\theta^{*}$ ，有
 $$
-E_{\theta &lt;em&gt;}(\text { Length }[C(X)])=\int_{\theta \neq \theta^&lt;/em&gt;} P_{\theta^&lt;/em&gt;}(\theta \in C(X)) \mathrm{d} \theta
+E_{\theta^{*}}(\text { Length }[C(X)])=\int_{\theta \neq \theta^{*}} P_{\theta^{*}}(\theta \in C(X)) \mathrm{d} \theta
 $$
 该定理讲的是 $C(X)$ 的期望长度等于假值覆盖概率的求和（积分），积分域取遍参数的所有假值．&lt;/p&gt;
 &lt;h2 id=&#34;渐进分析&#34;&gt;渐进分析
