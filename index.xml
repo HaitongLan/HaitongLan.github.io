@@ -1510,6 +1510,11 @@ $$
     &gt;交大數理統計學&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;youtube课程：&lt;a class=&#34;link&#34; href=&#34;https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;amp;si=obMWmZkBRTFQJYUo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;陳鄰安老師 - 高等統計學&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;教材：Introduction to Mathematical Statistics ，Hogg&lt;/li&gt;
+&lt;li&gt;教材：统计推断，Casella&lt;/li&gt;
+&lt;li&gt;教材：应用随机过程，Ross&lt;/li&gt;
+&lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;统计计算&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;陈老师的高等统计学没有讲义，而且讲的过于简单，本人使用了Casella的统计推断进行学习，并且配合一些其他的统计课程进行的补充。&lt;/p&gt;
 &lt;h2 id=&#34;fundamentals-of-probability-theory&#34;&gt;Fundamentals of probability theory
@@ -1862,12 +1867,11 @@ $$
 $$
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Remark.&lt;/strong&gt; C-R bound同样可以表示为 $\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{nI(\theta)}$,其中 $I(\theta)$ 为 Fisher information。若我们可以找到一个无偏统计量，使得该无偏统计量的方差为 C-R bound，则该统计量就是 UMVUE，并且我们定义这个统计量为 efficient estimator(有效估计量)，是所有无偏估计量中最有效的统计量，并且定义，C-R bound 比上真实估计量的方差为 efficiency。&lt;/p&gt;
-&lt;h2 id=&#34;continue-to-point-estimation-umvue&#34;&gt;Continue to Point Estimation-UMVUE
-&lt;/h2&gt;&lt;p&gt;我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，
+&lt;h3 id=&#34;sufficient-statistics-and-coditional-expectation&#34;&gt;Sufficient statistics and Coditional expectation
+&lt;/h3&gt;&lt;p&gt;我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，
 因为我们只是去验证而不是去寻找，本章节我们将引入充分统计量(Sufficient statistics)
 的概念，并发掘一套寻找UMVUE的方法。&lt;/p&gt;
-&lt;h3 id=&#34;sufficient-statistics-and-coditional-expectation&#34;&gt;Sufficient statistics and Coditional expectation
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Def 1(Sufficient statistics).&lt;/strong&gt; Let $X_1;\cdots ;X_n$ be a random sample from a distribution with p.d.f
+&lt;p&gt;&lt;strong&gt;Def 1(Sufficient statistics).&lt;/strong&gt; Let $X_1;\cdots ;X_n$ be a random sample from a distribution with p.d.f
 $f(x; \theta); \theta \in \Theta$. We call a statistic $U = u(X_1;\cdots ;X_n)$ a
 Sufficient statistics if, for any
 value $U = u$, the conditional p.d.f $f(X_1;\cdots ;X_n;\theta\mid u)$ and its
@@ -2283,14 +2287,262 @@ $$
 该定理讲的是 $C(X)$ 的期望长度等于假值覆盖概率的求和（积分），积分域取遍参数的所有假值．&lt;/p&gt;
 &lt;h2 id=&#34;渐进分析&#34;&gt;渐进分析
 &lt;/h2&gt;&lt;h3 id=&#34;点估计&#34;&gt;点估计
-&lt;/h3&gt;&lt;h3 id=&#34;假设检验-1&#34;&gt;假设检验
-&lt;/h3&gt;&lt;h3 id=&#34;bootstrap&#34;&gt;Bootstrap
-&lt;/h3&gt;&lt;h2 id=&#34;采样&#34;&gt;采样
-&lt;/h2&gt;&lt;h3 id=&#34;逆分布生成&#34;&gt;逆分布生成
-&lt;/h3&gt;&lt;h3 id=&#34;接受拒绝采样&#34;&gt;接受拒绝采样
-&lt;/h3&gt;&lt;h3 id=&#34;重要性采样&#34;&gt;重要性采样
-&lt;/h3&gt;&lt;h3 id=&#34;mcmc&#34;&gt;MCMC
-&lt;/h3&gt;&lt;h3 id=&#34;序贯蒙特卡洛采样&#34;&gt;序贯蒙特卡洛采样
+&lt;/h3&gt;&lt;p&gt;主要分析MLE的一些渐进特性。
+&lt;strong&gt;定理 1（MLE 的一致性）.&lt;/strong&gt; 设 $X_1, X_2, \cdots$ 是 iid $f(x \mid \theta)$ 的，$L(\theta \mid \boldsymbol{x})$ $=\prod_{i=1}^n f\left(x_i \mid \theta\right)$ 是似然函数，而 $\hat{\theta}$ 表示 $\theta$ 的 MLE．设 $\tau(\theta)$ 是 $\theta$ 的一个连续函数．那么在杂录 10．6．2 的关于 $f(x \mid \theta)$ ，从而也就是对 $L(\theta \mid \boldsymbol{x})$ 的正则性条件之下，对于每个 $\epsilon&amp;gt;0$ 和每个 $\theta \in \Theta$ ，有
+$$
+\lim _{n \rightarrow \infty} P_\theta(|\tau(\hat{\theta})-\tau(\theta)| \geqslant \epsilon)=0
+$$
+这就是说，此 $\tau(\hat{\theta})$ 是 $\tau(\theta)$ 的一个一致估计量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（极限方差）.&lt;/strong&gt; 对于一个估计量 $T_n$ ，如果 $\lim _{n \rightarrow \infty} k_n \operatorname{Var} T_n=\tau^2&amp;lt;\infty$ ，其中 $\left\{k_n\right\}$ 是个常数序列，则 $\tau^2$ 叫做极限方差（limiting variance）或方差的极限。&lt;/p&gt;
+&lt;p&gt;极限方差并不能很好的度量渐进性能，更常用的是下面的渐进方差：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 3（渐进方差）.&lt;/strong&gt; 对于一个估计量 $T_n$ ，假定有依分布收敛 $k_n\left(T_n-\tau(\theta)\right) \rightarrow \mathrm{N}(0,\sigma^2)$ ，则参数 $\sigma^2$ 叫做 $T_n$ 的渐近方差或 $T_n$ 的极限分布的方差．&lt;/p&gt;
+&lt;p&gt;渐进方差一般小于极限方差，我们希望一个统计量在极限状态下表现是UMVUE，有以下定义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 4（渐进有效）.&lt;/strong&gt; 一个估计量序列 $W_n$ 关于一个参数 $\tau(\theta)$ 是渐近有效的，如果 $\sqrt{n}\left[W_n-\tau(\theta)\right] \xrightarrow{L} \mathrm{n}(0, v(\theta))$ 而且
+$$
+v(\theta)=\frac{\left[\tau^{\prime}(\theta)\right]^2}{\mathrm{E}_\theta\left(\left(\frac{\partial}{\partial \theta} \log f(X \mid \theta)\right)^2\right)},
+$$
+就是说，$W_n$ 的渐近方差达到了 Cramér－Rao 下界．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 5（MLE 的渐近有效性）&lt;/strong&gt;  设 $X_1, X_2, \cdots$ 是 iid $f(x \mid \theta), \theta$ 的 MLE 记作 $\hat{\theta}$ ，设 $\tau(\theta)$ 是 $\theta$ 的一个连续函数．那么在对 $L(\theta \mid \boldsymbol{x})$ 的正则性条件之下，
+$$
+\sqrt{n}[\tau(\hat{\theta})-\tau(\theta)] \stackrel{L}{\rightarrow} \mathrm{n}(0, v(\theta)),
+$$
+其中 $u(\theta)$ 是 Cramér－Rao下界．就是说，$\tau(\hat{\theta})$ 是 $\tau(\theta)$ 的一个相合且渐近有效的估计量．&lt;/p&gt;
+&lt;p&gt;监禁有效本身就意味着一致性。&lt;/p&gt;
+&lt;h3 id=&#34;稳健性&#34;&gt;稳健性
+&lt;/h3&gt;&lt;p&gt;应该是很有趣的一个主题，Casella的书并没有着重介绍，以后补上。&lt;/p&gt;
+&lt;h3 id=&#34;假设检验-1&#34;&gt;假设检验
+&lt;/h3&gt;&lt;p&gt;主要关心LRT的渐进分布。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 10．3．1（LRT 的渐近分布简单 $H_0$，Wilks定理）&lt;/strong&gt; 关于检验 $H_0: \theta=\theta_0$ 对 $H_1: \theta \neq \theta_0$ ，设 $X_1, \cdots, X_n$ 是 iid $f(x \mid \theta), \hat{\theta}$ 是 $\theta$ 的 MLE，并且 $f(x \mid \theta)$ 满足在杂录 10.6 .2 中的正则性条件．则在 $H_0$ 之下，当 $n \rightarrow \infty$ ，
+$$
+-2 \log \lambda(\boldsymbol{X}) \xrightarrow{L} \chi_1^2,
+$$
+其中 $\chi_1^2$ 是一个具有自由度 1 的 $\chi^2$ 分布随机变量．&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; wilks定理有高维形式，$\Chi^2$ 分布自由度$=\dim \Theta-\Theta_0$&lt;/p&gt;
+&lt;p&gt;在LRT中，决策域的具体数值非常难求，利用渐进理论可以简单的求解。&lt;/p&gt;
+&lt;h3 id=&#34;bootstrap&#34;&gt;Bootstrap
+&lt;/h3&gt;&lt;p&gt;自助法，一种Resampling的方法，构造插件分布（Plag-in estimator）。&lt;/p&gt;
+&lt;p&gt;自举的基本思想是，可以通过对样本数据（样本→总体）进行重新采样并对重新采样数据中的样本（→样本）执行有关样本的推理来建模。由于总体未知，因此样本统计量中相对于其总体值的真正误差是未知的。在 bootstrap-resamples 中，“总体”实际上是样本，这是已知的;因此，从重新采样的数据（重新采样→样本）中推断“真实”样本的质量是可衡量的。&lt;/p&gt;
+&lt;p&gt;使用全部数据构建估计量的计算量是非常大的，使用自助法可以减少计算量，并且达到对统计量的良好估计，一般可以具有一致性。&lt;/p&gt;
+&lt;p&gt;Resampling领域有很强的理论性和应用性，日后可以读论文去学习。&lt;/p&gt;
+&lt;h2 id=&#34;回归&#34;&gt;回归
+&lt;/h2&gt;&lt;p&gt;关于回归的知识可以参考&lt;a class=&#34;link&#34; href=&#34;https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/#%E6%9C%80%E4%BD%B3%E7%BA%BF%E6%80%A7%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;另一篇博客&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;采样&#34;&gt;采样
+&lt;/h2&gt;&lt;p&gt;采样并不是频率派数理统计的核心，而是贝叶斯学派的核心，频率派处理数据重点在优化，贝叶斯派重点在处理后验分布，由于后验分布非常复杂，所以会使用变分推断和采样的方式进行估计。&lt;/p&gt;
+&lt;h3 id=&#34;逆分布生成&#34;&gt;逆分布生成
+&lt;/h3&gt;&lt;p&gt;非常朴素的生成方式，参考另一篇&lt;a class=&#34;link&#34; href=&#34;https://haitonglan.github.io/p/bayesian-signal-processing/#inverse-distribution-function&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;博客&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;大部分我们熟知的分布都可以由逆分布采样。&lt;/p&gt;
+&lt;p&gt;但是后验分布的复杂程度是超出我们想象的，逆分布生成法局限性太大，需要构造其他的采样方法，接下来介绍几种Monte Carlo采样方法。&lt;/p&gt;
+&lt;h3 id=&#34;接受拒绝采样&#34;&gt;接受拒绝采样
+&lt;/h3&gt;&lt;p&gt;令 $c$ 是一个常数，使得&lt;/p&gt;
+&lt;p&gt;$$
+\frac{f(y)}{g(y)} \leqslant c \quad \forall y
+$$
+那么，我们用下述技术模拟出具有密度 $f$ 的连续分布函数的随机变量:&lt;br&gt;
+&lt;strong&gt;步骤 1：&lt;/strong&gt; 模拟具有密度 $g$ 的随机变量 $Y$ ，并且模拟一个随机数 $U$ ．&lt;br&gt;
+&lt;strong&gt;步骤 2：&lt;/strong&gt; 如果 $U \leqslant \frac{f(Y)}{c g(Y)}$ ，那么置 $X=Y$ ．否则返回步骤 1 ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;命题.&lt;/strong&gt;  由拒绝法生成的随机变量 $X$ 具有密度 $f$ ．&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明.&lt;/strong&gt; 令 $X$ 是得到的值，而以 $N$ 记必需重复的次数．那么&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+\mathrm{P}\{X \leqslant x\} &amp; =\mathrm{P}\left\{Y_N \leqslant x\right\} \\
+&amp; =\mathrm{P}\{Y \leqslant x \mid U \leqslant f(Y) / c g(Y)\} \\
+&amp; =\frac{\mathrm{P}\{Y \leqslant x, U \leqslant f(Y) / c g(Y)\}}{K} \\
+&amp; =\frac{\int \mathrm{P}\{Y \leqslant x, U \leqslant f(Y) / c g(Y) \mid Y=y\} g(y) \mathrm{d} y}{K} \\
+&amp; =\frac{\int_{-\infty}^x(f(y) / c g(y)) g(y) \mathrm{d} y}{K} \\
+&amp; =\frac{\int_{-\infty}^x f(y) \mathrm{d} y}{K c}
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;其中 $K=\mathrm{P}\{U \leqslant f(Y) / c g(Y)\}$ ，令 $x \rightarrow \infty$ ，表明 $K=1 / c$ ，故而完成了证明，&lt;/p&gt;
+&lt;p&gt;可以参考张颢老师在现代数字信号处理（二）中贝叶斯信号处理部分，先对有限支撑集进行采样，再拓展到无限支撑集，非常直观。&lt;/p&gt;
+&lt;p&gt;但是接受拒绝采样无法处理值域无限的情况，我们先介绍Monte-Carlo积分，再引入重要性采样和MCMC。&lt;/p&gt;
+&lt;h3 id=&#34;monte-carlo积分&#34;&gt;Monte-Carlo积分
+&lt;/h3&gt;&lt;p&gt;Monte-Carlo积分是一种数值积分算法，我们不关心其数值积分性质，重点关心其概率方面的性质。&lt;/p&gt;
+&lt;p&gt;考虑函数
+$$
+I=\int_{\Omega} f(\overline{\mathbf{x}}) d \overline{\mathbf{x}}
+$$
+其中 $\Omega$ 是 $\mathbb{R}^m$ 的一个子集，它的体积是：
+$$
+V=\int_{\Omega} d \overline{\mathbf{x}}
+$$
+朴素的蒙特卡罗方法是在 $\Omega$ 上均匀采样点：给定 $N$ 个均匀样本，
+$$
+\overline{\mathbf{x}}_1, \cdots, \overline{\mathbf{x}}_N \in \Omega
+$$
+可以被近似为：
+$$
+I \approx Q_N \equiv V \frac{1}{N} \sum_{i=1}^N f\left(\overline{\mathbf{x}}_i\right)=V\langle f\rangle
+$$
+这是因为大数定律确保以下结论成立：
+$$
+\lim _{N \rightarrow \infty} Q_N=I
+$$&lt;/p&gt;
+&lt;p&gt;可以对原始的函数进行&lt;strong&gt;拆分&lt;/strong&gt;，得到如下形式
+$$
+I=\int_{\Omega} f(\overline{\mathbf{x}})p(\overline{\mathbf{x}}) d \overline{\mathbf{x}}
+$$
+根据WLLN，若生成
+$$
+\overline{\mathbf{x}}_1, \cdots, \overline{\mathbf{x}}_N \sim p(x)
+$$
+则可以利用
+$$
+I \approx  \frac{1}{N} \sum_{i=1}^N f\left(\overline{\mathbf{x}}_i\right)
+$$
+来近似积分。&lt;/p&gt;
+&lt;p&gt;值得注意的是，Monte-Carlo积分的收敛速率和精度与梯形公式相似。&lt;/p&gt;
+&lt;p&gt;由于Monte-Carlo积分可以对后验分布进行处理，所以使用该积分进行采样的后续处理也是合适的，我们将在下一节引入重要性采样，该采样方法一开始是为了减少Monte-Carlo积分的方差，其本身也可以用来做采样。&lt;/p&gt;
+&lt;h3 id=&#34;重要性采样&#34;&gt;重要性采样
+&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;这里摘取知乎上一位答主的回答：&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/557279067&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一些常见的方差缩减方法&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;假设我们要估计 $\theta=\mathbb{E}_f[h(X)]$ ，其中 $X$ 的PDF是 $f$ 。令 $g$ 为另一PDF，其满足当 $f(x) \neq 0, ~ g(x) \neq 0$ ，即 $f$ 和 $g$ 的支集相等。那么，
+$$
+\theta=\mathbb{E}_f[h(X)]=\int h(x) \frac{f(x)}{g(x)} g(x) d x=\mathbb{E}_g\left[\frac{h(X) f(X)}{g(X)}\right]
+$$
+初始的模拟是从密度 $f$ 中生成 $n$ 个 $X$ 的值，并取 $\hat{\theta}_n=\sum h\left(X_j\right) / n$ 。另一种模拟是从密度 $g$ 中生成 $n$ 个 $X$ 的值，并设
+$$
+\hat{\theta}_{n, i s}=\sum_{j=1}^n \frac{h\left(X_j\right) f\left(X_j\right)}{g\left(X_j\right)}
+$$
+这里 $\hat{\theta}_{n, i s}$ 叫作 $\theta$ 的重要性采样估计。我们通常定义 $h^{*}(x)=h(x) f(x) / g(x)$ ，因此 $\theta=\mathbb{E}_g\left[h^{*}(X)\right]$ 。&lt;/p&gt;
+&lt;p&gt;令 X 为联合PDF为 $f$ 的随机向量，并不失一般性地假设 $h(\mathrm{X}) \geq 0$ 。重要性采样估计的方差是
+$$
+\begin{gathered}
+\operatorname{Var}_g\left(h^{*}(\mathrm{X})\right)=\int h(\mathrm{x})^2 g(\mathrm{x}) d \mathrm{x}-\theta^2 \\
+\quad=\int h(\mathrm{x})^2 \frac{f(\mathrm{x})}{g(\mathrm{x})} f(\mathrm{x}) d \mathrm{x}-\theta^2
+\end{gathered}
+$$
+而初始估计的方差是 $\operatorname{Var}_f(h(\mathrm{X}))=\int h(\mathrm{x})^2 f(\mathrm{x}) d \mathrm{x}-\theta^2$ ，所以方差的缩减是
+$$
+\operatorname{Var}_f(h(\mathrm{X}))-\operatorname{Var}_g\left(h^{*}(\mathrm{X})\right)=\int h(\mathrm{x})^2\left(1-\frac{f(\mathrm{x})}{g(\mathrm{x})}\right) f(\mathrm{x}) d \mathrm{x}
+$$
+为了实现方差缩减，上面的积分应该是正的，这要求&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当 $h^2(\mathrm{x}) f(\mathrm{x})$ 小时，$f(\mathrm{x}) / g(\mathrm{x})&amp;lt;1$ ，&lt;/li&gt;
+&lt;li&gt;当 $h^2(\mathrm{x}) f(\mathrm{x})$ 大时，$f(\mathrm{x}) / g(\mathrm{x})&amp;gt;1$ 。
+若密度 $f$ 的重要的部分定义在区域 $A$ ，则上面的要求指出当 x 在 $A$ 中时，$f(\mathrm{x}) / g(\mathrm{x})$ 很小，即密度 $g$ 给 $A$ 更多的权重，所以这个方法叫作重要性采样。由于 $h$ 包含了一个稀有事件，所以在状态空间中 $h(\mathrm{x})=0$ 。我们选择 $g$ ，使得我们经常从状态空间中 $h(\mathrm{x}) \neq 0$ 的部分抽样。因此，重要性采样对于稀有事件模拟很有用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;若我们选择 $g(\mathrm{x})=h(\mathrm{x}) f(\mathrm{x}) / \theta$ ，我们会得到一个方差为 0 的估计，但这显然是不实际的。然而，这告诉我们，我们可以选择 $g(\cdot)$ ，使得它和 $h(\cdot) f(\cdot)$ 相似。特别地，我们可以使得 $g(\mathrm{x})$ 和 $h(\mathrm{x}) f(\mathrm{x})$ 在同一个值 $\mathrm{x}^{*}$ 上取到最大值，这叫作最大值原则。有时最大值原则难以应用，比如 $\mathrm{x}^{*}=\arg \max _{\mathrm{x}} h(\mathrm{x}) f(\mathrm{x})$ 有无数多解。这时我们可以通过缩放 $f$ 来选取 $g$ 。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;＂重要性＂一词的直观解释&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;＂重要性采样＂之名正是来源于对高贡献区域的聚焦：在估计 $\mathbb{E}_p[f(X)]$ 时，只有那些使 $f(x) p(x)$ 较大的 $x$ 值对积分贡献显著，被称为＂重要点＂。理想的 $q(x)$ 会对这些重要点给予更高采样概率，而对贡献小的点减少采样，以降低方差。直观地，当 $f(x)$ 很大时，样本点在该处的权重 $p(x) / q(x)$ 较小，多个样本共同估计可获得稳定的贡献；而在 $f(x)$ 很小的区域，即使权重较大，其对期望的贡献也微不足道。统计理论指出，若 $q$ 对重要区域加大权重，那么估计方差会显著减小 。总之，＂重要性＂一词反映了：理想的采样策略应更多采样那些对期望值贡献最大的区域，从而实现高效无偏估计。&lt;/p&gt;
+&lt;p&gt;实际上可以利用Jensen不等式求出重要性采样方差的一个lower bound，在$g\propto|h|f$ 时可以取到等号，即方差最小。值得注意的是，使用重要性采样算出的方差要小于接受拒绝采样。&lt;/p&gt;
+&lt;p&gt;gpt的一份&lt;a class=&#34;link&#34; href=&#34;https://chatgpt.com/s/dr_6811df7ee51481918829486d4a707f59&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;回答&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;重要性采样重采样sir&#34;&gt;重要性采样重采样（SIR）
+&lt;/h3&gt;&lt;p&gt;将重要性采样和重采样进行结合可以得到SIR：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法步骤&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;设：&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标分布（如后验）：$\pi(x) \propto p(x) \cdot L(x)$ ，其中 $p(x)$ 是先验，$L(x)$ 是似然；&lt;/li&gt;
+&lt;li&gt;提议分布（容易采样）：$q(x)$ ，需满足 $\pi(x)&amp;gt;0 \Rightarrow q(x)&amp;gt;0$ ；&lt;/li&gt;
+&lt;li&gt;我们的目标是得到近似服从 $\pi(x)$ 的样本集。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;采样阶段（Sampling）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从提议分布 $q(x)$ 中采样 $N$ 个样本：
+$$
+x_1, x_2, \ldots, x_N \sim q(x)
+$$&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;重要性加权（Importance Weighting）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为每个样本计算未归一化权重：
+$$
+w_i=\frac{\pi\left(x_i\right)}{q\left(x_i\right)} \propto \frac{p\left(x_i\right) L\left(x_i\right)}{q\left(x_i\right)}
+$$
+归一化权重：
+$$
+\tilde{w}_i=\frac{w_i}{\sum_{j=1}^N w_j}
+$$&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;重采样阶段（Resampling）&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;根据归一化权重 $\tilde{w}_i$ 从 $\left\{x_1, \ldots, x_N\right\}$ 中进行有放回采样，采样 $M \leq N$ 个样本，得到：
+$$
+x^{*(1)}, x^{*(2)}, \ldots, x^{*(M)} \sim \operatorname{Categorical}\left(\tilde{w}_1, \ldots, \tilde{w}_N\right)
+$$
+最终样本集 $x^{*(1)}, \ldots, x^{*(M)}$ 可视为来自目标后验 $\pi(x)$ 的近似样本。&lt;/p&gt;
+&lt;p&gt;SIR难以处理高维数据，需要进一步引入序贯蒙特卡洛采样，转化为低纬度数据后再进行SIR，我们将在后续章节介绍该技术。&lt;/p&gt;
+&lt;h3 id=&#34;方差缩减技术&#34;&gt;方差缩减技术
+&lt;/h3&gt;&lt;h4 id=&#34;对偶立变量法&#34;&gt;对偶（立）变量法
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;定理 1.&lt;/strong&gt; 设 $g$ 为单调函数，$U \sim U(0,1)$ ，则 $\operatorname{Cov}(g(U), g(1-U)) \leq 0$ 。&lt;/p&gt;
+&lt;p&gt;定理1可以推广到如下情形。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 2.&lt;/strong&gt; 设 $h\left(x_1, x_2, \ldots, x_n\right)$ 是关于每个自变量单调的函数，$U_1, U_2, \ldots, U_n$ 相互独立同 $\mathrm{U}(0,1)$ 分布，则 $\operatorname{Cov}\left(h\left(U_1, U_2, \ldots, U_n\right), h\left(1-U_1, 1-U_2, \ldots, 1-U_n\right)\right) \leq 0$ 。&lt;/p&gt;
+&lt;p&gt;对均匀随机数 $U$ 最常见的变换是逆变换 $X=F^{-1}(U)$ 。下面的定理给出了提高 $I=E X$ 估计精度的方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3（对立变量法）&lt;/strong&gt; 设 $F(x)$ 为连续分布函数，$U \sim \mathrm{U}(0,1), X=F^{-1}(U), Y=F^{-1}(1-U)$ ， $Z=\frac{X+Y}{2}$ ，则 $X$ 与 $Y$ 同分布 $F(x)$ 且 $\operatorname{Cov}(X, Y) \leq 0$ ，
+$$
+\operatorname{Var}(Z) \leq \frac{1}{2} \operatorname{Var}(X)
+$$&lt;/p&gt;
+&lt;h4 id=&#34;条件期望法&#34;&gt;条件期望法
+&lt;/h4&gt;&lt;p&gt;进行统计估计时，如果有额外的相关信息，利用这样的信息可以提高估计精度。比如，对随机变量 $Y$ ，如果 $Y$ 服从某种模型，在估计 $I=E Y$ 时应当尽量利用模型信息。&lt;/p&gt;
+&lt;p&gt;设变量 $X$ 与 $Y$ 不独立，根据Rao－Blackwell不等式：
+$$
+\operatorname{Var}{\mathrm{E}(Y \mid X)} \leq \operatorname{Var}(Y)
+$$
+又
+$$
+\mathrm{E}{\mathrm{E}(Y \mid X)}=\mathrm{E} Y=I
+$$
+所以，对 $Z=\mathrm{E}(Y \mid X)$ 抽样，用 $Z$ 的样本平均值来估计 $I=\mathrm{E} Y$ 比直接用 $Y$ 的样本平均值的精度更高。这种改善随机模拟估计精度的方法叫做条件期望法，或Rao－Blackwell方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例14．5&lt;/strong&gt; 设 $X \sim p(x), \varepsilon \sim \mathrm{N}\left(0, \sigma^2\right)$ 且与 $X$ 独立，
+$$
+Y=\psi(X)+\varepsilon
+$$
+估计 $I=\mathrm{E} Y$ 。
+可以用条件分布抽样法对二元随机向量 $\boldsymbol{Z}=(X, Y)$ 抽样产生 $Y$ 的样本。从 $p(\cdot)$ 抽样得 $X_1, X_2, \ldots, X_N$ ，独立地从 $\mathrm{N}\left(0, \sigma^2\right)$ 抽样得 $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_N$ ，令
+$$
+Y_i=\psi\left(X_i\right)+\varepsilon_i, i=1,2, \ldots, N
+$$
+然后用 $Y_1, Y_2, \ldots, Y_N$ 的样本平均值估计 $E Y$ ：
+$$
+\hat{I}_1=\frac{1}{N} \sum_{i=1}^N Y_i
+$$
+估计方差为
+$$
+\operatorname{Var}\left(\hat{I}_1\right)=\frac{\operatorname{Var}\left(Y_1\right)}{N}=\frac{\operatorname{Var}\left(\psi\left(X_1\right)\right)}{N}+\frac{\sigma^2}{N} .
+$$
+另一方面，注意 $E(Y \mid X)=\psi(X)$ ，也可以只对 $X$ 抽样然后用条件期望法估计 $E Y$ ：
+$$
+\hat{I}_2=\frac{1}{N} \sum_i \psi\left(X_i\right)
+$$
+估计方差为
+$$
+\operatorname{Var}\left(\hat{I}_2\right)=\frac{\operatorname{Var}\left(\psi\left(X_1\right)\right)}{N}&amp;lt;\operatorname{Var}\left(\hat{I}_1\right)
+$$
+这个例子演示了条件期望法可以缩减误差方差的原因：对 $Y$ 抽样分成两步进行：第一步对 $X$ 抽样，第二步利用 $Y \mid X$ 的条件分布对 $Y$ 抽样。所以使用 $Y$ 的样本估计 $E Y$ 包含了第二步对 $Y$ 抽样的随机误差，而使用 $X$ 的函数 $E(Y \mid X)=\psi(X)$ 的抽样来估计 $E Y$ 则避免了第二步对 $Y$ 抽样引起的随机误差。&lt;/p&gt;
+&lt;h4 id=&#34;控制变量法&#34;&gt;控制变量法
+&lt;/h4&gt;&lt;p&gt;同样假设我们要用模拟来估计 $\mathrm{E}[g(\boldsymbol{X})]$ ，其中 $\boldsymbol{X}=\left(X_1, \cdots, X_n\right)$ ．但是现在假设对于某个 $f, f(\boldsymbol{X})$ 的期望值已知（例如 $\mathrm{E}[f(\boldsymbol{X})]=\mu$ ）．那么，对于任意常数 $a$ ，我们也可以用
+$$
+W=g(\boldsymbol{X})+a(f(\boldsymbol{X})-\mu)
+$$
+作为 $\mathrm{E}[g(\boldsymbol{X})]$ 的估计．现在，
+$$
+\operatorname{Var}(W)=\operatorname{Var}(g(\boldsymbol{X}))+a^2 \operatorname{Var}(f(\boldsymbol{X}))+2 a \operatorname{Cov}(g(\boldsymbol{X}), f(\boldsymbol{X}))
+$$
+简单的计算说明了上式当
+$$
+a=\frac{-\operatorname{Cov}(f(\boldsymbol{X}), g(\boldsymbol{X}))}{\operatorname{Var}(f(\boldsymbol{X}))}
+$$
+时达到最小，而对于这个值 $a$ ，
+$$
+\operatorname{Var}(W)=\operatorname{Var}(g(\boldsymbol{X}))-\frac{[\operatorname{Cov}(f(\boldsymbol{X}), g(\boldsymbol{X}))]^2}{\operatorname{Var}(f(\boldsymbol{X}))}
+$$
+因为 $\operatorname{Var}(f(\boldsymbol{X}))$ 和 $\operatorname{Cov}(f(\boldsymbol{X}), g(\boldsymbol{X}))$ 通常是不知道的，所以应该用模拟的数据来估计这些量。&lt;/p&gt;
+&lt;p&gt;将上式除以 $\operatorname{Var}(g(\boldsymbol{X}))$ 得出
+$$
+\frac{\operatorname{Var}(W)}{\operatorname{Var}(g(\boldsymbol{X}))}=1-\operatorname{Corr}^2(f(\boldsymbol{X}), g(\boldsymbol{X}))
+$$
+其中 $\operatorname{Corr}(X, Y)$ 是 $X$ 和 $Y$ 之间的相关系数．因此，当 $f(\boldsymbol{X})$ 和 $g(\boldsymbol{X})$ 强相关时，使用控制变量将大大地降低模拟估计的方差．&lt;/p&gt;
+&lt;h3 id=&#34;mcmc&#34;&gt;MCMC
+&lt;/h3&gt;&lt;p&gt;之前我们提到过贝叶斯学派的核心，MCMC和变分推断，MCMC速度慢但是精度高，变分推断速度快但是精度低，我们将详细介绍两种MCMC算法，Metropolis-Hasting算法和Gibbs算法。&lt;/p&gt;
+&lt;h3 id=&#34;序贯蒙特卡洛采样粒子滤波器&#34;&gt;序贯蒙特卡洛采样（粒子滤波器）
 &lt;/h3&gt;</description>
         </item>
         <item>
@@ -4848,13 +5100,9 @@ $$&lt;/p&gt;
 &lt;h3 id=&#34;accept-reject-sampling&#34;&gt;Accept-reject sampling
 &lt;/h3&gt;&lt;h3 id=&#34;importance-sampling&#34;&gt;Importance sampling
 &lt;/h3&gt;&lt;h3 id=&#34;markov-chain-monte-carlomcmc&#34;&gt;Markov chain Monte Carlo(MCMC)
-&lt;/h3&gt;&lt;style&gt;
-body {
-    font-family: &#39;微软雅黑&#39;, sans-serif; /* 使用微软雅黑作为首选字体,如果不可用则回退到无衬线字体 */
-    --article-font-size: 3.5
-    line-height: 1.6; /* 设置行间距为字体大小的1.6倍,提高可读性 */
-}
-&lt;/style&gt;
+&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;这三个章节的内容可以看另一篇&lt;a class=&#34;link&#34; href=&#34;https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/#%E9%87%87%E6%A0%B7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;博客&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
         <item>
