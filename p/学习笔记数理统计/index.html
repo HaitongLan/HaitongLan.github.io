@@ -161,7 +161,12 @@
             <li><a href="#控制变量法">控制变量法</a></li>
           </ol>
         </li>
-        <li><a href="#mcmc">MCMC</a></li>
+        <li><a href="#mcmc">MCMC</a>
+          <ol>
+            <li><a href="#metropolis-hasting算法">Metropolis-Hasting算法</a></li>
+            <li><a href="#gibbs算法">Gibbs算法</a></li>
+          </ol>
+        </li>
         <li><a href="#序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）</a></li>
       </ol>
     </li>
@@ -245,7 +250,7 @@
 
 
                 <time class="article-time--reading">
-                    38 minute read
+                    40 minute read
                 </time>
             </div>
         
@@ -1304,7 +1309,65 @@ $$
 其中 $\operatorname{Corr}(X, Y)$ 是 $X$ 和 $Y$ 之间的相关系数．因此，当 $f(\boldsymbol{X})$ 和 $g(\boldsymbol{X})$ 强相关时，使用控制变量将大大地降低模拟估计的方差．</p>
 <h3 id="mcmc">MCMC
 </h3><p>之前我们提到过贝叶斯学派的核心，MCMC和变分推断，MCMC速度慢但是精度高，变分推断速度快但是精度低，我们将详细介绍两种MCMC算法，Metropolis-Hasting算法和Gibbs算法。</p>
-<h3 id="序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）
+<h4 id="metropolis-hasting算法">Metropolis-Hasting算法
+</h4><p>个人认为MCMC是一种很逆天的算法，已知Markov过程的稳态分布去求转移概率，在离散情况下的表现就是由一个 $n$ 维向量确定 $n^2$ 维矩阵，是很难处理的问题。</p>
+<p>如何得到有平稳分布的转移概率矩阵？一个充分条件是转移概率满足细致平衡条件。如果存在 $\left\{\pi_j, j \in S\right\}$ ， $\pi_j \geq 0, \sum_{j \in S} \pi_j=1$ ，使得
+$$
+\pi_i p_{i j}=\pi_j p_{j i}, \forall i \neq j
+$$
+称这样的马氏链为<strong>细致平衡的（detailed balanced）</strong>，这时 $\left\{\pi_j\right\}$ 是 $\left\{X_t\right\}$ 的平稳分布。</p>
+<p>设随机变量 $X$ 分布为 $\pi(x), x \in \mathcal{X}$ 。 为论述简单起见仍假设 $\mathcal{X}$ 是离散集合。算法需要一个试转移概率函数 $T(y \mid x), x, y \in \mathcal{X}$ ，满足 $0 \leq T(y \mid x) \leq 1, \sum_y T(y \mid x)=1$ ，并且
+$$
+T(y \mid x)&gt;0 \Leftrightarrow T(x \mid y)&gt;0 .
+$$
+算法首先从 $\mathcal{X}$ 中<strong>任意取</strong>初值 $X^{(0)}$ 。设经过 $t$ 步后算法的当前状态为 $X^{(t)}$ ，则下一步由试转移分布 $T\left(y \mid X^{(t)}\right)$ <strong>抽取</strong> $Y$ ，并生成 $U \sim U(0,1)$ ，然后按如下规则转移：
+$$
+X^{(t+1)}= \begin{cases}Y &amp; \text { if } U \leq r\left(X^{(t)}, Y\right) \\ X^{(t)} &amp; \text { other. }\end{cases}
+$$
+其中(<strong>接收$y$的概率为</strong>)
+$$
+r(x, y)=\min \left\{1, \frac{\pi(y) T(x \mid y)}{\pi(x) T(y \mid x)}\right\}
+$$
+在MH算法中如果取 $T(y \mid x)=T(x \mid y)$ ，则 $r(x, y)=\min \left(1, \frac{\pi(y)}{\pi(x)}\right)$ ，相应的算法称为Metropolis抽样法。如果取 $T(y \mid x)=g(y)$（不依赖于 $x$ ），则 $r(x, y)=\min \left(1, \frac{\pi(y) / g(y)}{\pi(x) / g(x)}\right)$ ，相应的算法称为Metropolis独立抽样法，和重要抽样有相似之处，试抽样分布 $g(\cdot)$ 经常取为相对重尾的分布。</p>
+<p>在MH算法中，目标分布 $\pi(x)$ 可以用差一个常数倍的 $\tilde{\pi}(x)=C \pi(x)$ 代替，这样关于目标分布仅知道差一个常数倍的 $\tilde{\pi}(x)$ 的情形，也可以使用此算法。</p>
+<p>下面说明MH抽样方法的<strong>合理性</strong>。
+我们来验证MH抽样的转移概率 $A(x, y)=P\left(X^{(t+1)}=y \mid X^{(t)}=x\right)$ 满足细致平衡条件。 <strong>易见</strong>
+$$
+A(x, y)= \begin{cases}T(y \mid x) r(x, y), &amp; y \neq x \\ T(x \mid x)+\sum_{z \neq x} T(z \mid x)[1-r(x, z)], &amp; y=x\end{cases}
+$$</p>
+<hr>
+<p>说明该“易见”：</p>
+<p><strong>情况1：</strong>$y \neq x$</p>
+<ul>
+<li>只有当抽样 $Y=y$ 且接受它时，才会从 $x$ 转移到 $y$ 。</li>
+<li>抽样 $Y=y$ 的概率是 $T(y \mid x)$ ，</li>
+<li>接受 $y$ 的概率是 $r(x, y)$ ，</li>
+</ul>
+<p>因此，
+$$
+A(x, y)=T(y \mid x) \cdot r(x, y), \quad y \neq x
+$$
+<strong>情况2：</strong>$y=x$（即＂留在原地＂）
+有两种情况会导致留在原地：
+1．从试转移分布中采样到 $Y=x$ ，然后接受（总是接受）；
+2．从试转移分布中采样到 $Y=z \neq x$ ，但拒绝了（即 $U&gt;r(x, z)$ ）
+所以，转移回 $x$ 的概率为：</p>
+<p>$$
+A(x, x)=T(x \mid x) \cdot 1+\sum_{z \neq x} T(z \mid x) \cdot(1-r(x, z))
+$$
+即：
+$$
+A(x, x)=T(x \mid x)+\sum_{z \neq x} T(z \mid x)[1-r(x, z)]
+$$</p>
+<hr>
+<p>于是当 $x \neq y$ 时
+$$
+\pi(x) A(x, y)=\pi(x) T(y \mid x) \min \left\{1, \frac{\pi(y) T(x \mid y)}{\pi(x) T(y \mid x)}\right\}=\min \{\pi(x) T(y \mid x), \pi(y) T(x \mid y)\}
+$$
+等式右侧关于 $x, y$ 是对称的，所以等式左侧把 $x, y$ 交换后仍相等。所以，MH构造的马氏链以 $\{\pi(x)\}$ 为平稳分布。多数情况下MH构造的马氏链也以 $\{\pi(x)\}$ 为极限分布。</p>
+<p>从构造的 $r$ 可以看出，MH算法也可以由接收拒绝的思想去理解，并且从构造的接受拒绝策略来看，已经有了Langevin采样的思想，即向概率密度高的方向移动。</p>
+<h4 id="gibbs算法">Gibbs算法
+</h4><h3 id="序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）
 </h3>
 </section>
 
