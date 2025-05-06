@@ -1493,13 +1493,13 @@ $$
 &lt;/h2&gt;</description>
         </item>
         <item>
-        <title>学习笔记|数理统计</title>
-        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</link>
+        <title>学习笔记|统计学基础</title>
+        <link>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</link>
         <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png" alt="Featured image of post 学习笔记|数理统计" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
-&lt;/h2&gt;&lt;p&gt;统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听。&lt;/p&gt;
+        <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</guid>
+        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png" alt="Featured image of post 学习笔记|统计学基础" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
+&lt;/h2&gt;&lt;p&gt;数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。&lt;/p&gt;
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1515,9 +1515,15 @@ $$
 &lt;li&gt;教材：应用随机过程，Ross&lt;/li&gt;
 &lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;统计计算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/rdpeng/advstatcomp/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Advanced Statistical Computing&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www2.cs.arizona.edu/~pachecoj/courses/csc535_fall20/lectures/mcmc.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Markov chain Monte Carlo methods&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;b站up：&lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/497536319&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;徐芝兰&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;陈老师的高等统计学没有讲义，而且讲的过于简单，本人使用了Casella的统计推断进行学习，并且配合一些其他的统计课程进行的补充。&lt;/p&gt;
-&lt;h2 id=&#34;fundamentals-of-probability-theory&#34;&gt;Fundamentals of probability theory
+&lt;p&gt;还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。&lt;/p&gt;
+&lt;h2 id=&#34;概率论基础&#34;&gt;概率论基础
 &lt;/h2&gt;&lt;h3 id=&#34;random-variable&#34;&gt;Random Variable
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Define 1(random variable).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. &lt;br&gt;
 &lt;strong&gt;Remark.&lt;/strong&gt;&lt;/p&gt;
@@ -1691,7 +1697,7 @@ $$&lt;/li&gt;
 即
 $$M_{\bar{X}}(t)M_{X_1-\bar{X},\ldots,X_n-\bar{X}}(t_1,\ldots,t_n) = M_{\bar{X},X_1-\bar{X},\ldots,X_n-\bar{X}}(t,t_1,\ldots,t_n)$$.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;statistical-inference---point-estimation&#34;&gt;Statistical Inference - Point Estimation
+&lt;h2 id=&#34;点估计&#34;&gt;点估计
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Problem in statistics&lt;/strong&gt;:&lt;br&gt;
 A random variables $X$ with p.d.f. of the form $f(x, \theta)$ where function $f$ is known but parameter $\theta$ is unknown. We want to gain knowledge about $\theta$.&lt;br&gt;
 What we have for inference:&lt;br&gt;
@@ -2014,7 +2020,7 @@ $\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$&lt;br&gt;
 $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。&lt;/p&gt;
-&lt;h2 id=&#34;confidence-interval&#34;&gt;Confidence Interval
+&lt;h2 id=&#34;置信区间&#34;&gt;置信区间
 &lt;/h2&gt;&lt;p&gt;在谈置信区间之间，我们先补充一些必要的概率论知识。&lt;/p&gt;
 &lt;h3 id=&#34;order-statistic-t-distribution&#34;&gt;Order statistic, t-distribution
 &lt;/h3&gt;&lt;p&gt;首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：&lt;/p&gt;
@@ -2095,7 +2101,7 @@ T=\frac{Z}{\sqrt{\frac{\chi^2(r)}{r}}}
 $$
 a t-distribution with $r$ degrees of freedom.&lt;br&gt;
 &lt;strong&gt;Remark.&lt;/strong&gt; t分布是偶对称分布，有 $f_T(-x) = f_T(x)$,另外，t分布只与其自由度 $r$ 相关，由 $r$ 所唯一确定，考虑到我们之前曾经提到 $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2$,可以将任意一个正态分布标准化为标准正态分布，再比上 $\sqrt{\frac{S^2}{n-1}}=\frac{S}{\sigma}$ 来得到 t分布。&lt;/p&gt;
-&lt;h3 id=&#34;confidence-interval-1&#34;&gt;Confidence Interval
+&lt;h3 id=&#34;confidence-interval&#34;&gt;Confidence Interval
 &lt;/h3&gt;&lt;p&gt;之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Def 1(C.I.).&lt;/strong&gt; Suppose that we have a random sample from $f(x, \theta)$. For $0&amp;lt;\alpha&amp;lt;1$, if there exists two statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ satisfying
 $$
@@ -2286,7 +2292,7 @@ E_{\theta^{*}}(\text { Length }[C(X)])=\int_{\theta \neq \theta^{*}} P_{\theta^{
 $$
 该定理讲的是 $C(X)$ 的期望长度等于假值覆盖概率的求和（积分），积分域取遍参数的所有假值．&lt;/p&gt;
 &lt;h2 id=&#34;渐进分析&#34;&gt;渐进分析
-&lt;/h2&gt;&lt;h3 id=&#34;点估计&#34;&gt;点估计
+&lt;/h2&gt;&lt;h3 id=&#34;点估计-1&#34;&gt;点估计
 &lt;/h3&gt;&lt;p&gt;主要分析MLE的一些渐进特性。
 &lt;strong&gt;定理 1（MLE 的一致性）.&lt;/strong&gt; 设 $X_1, X_2, \cdots$ 是 iid $f(x \mid \theta)$ 的，$L(\theta \mid \boldsymbol{x})$ $=\prod_{i=1}^n f\left(x_i \mid \theta\right)$ 是似然函数，而 $\hat{\theta}$ 表示 $\theta$ 的 MLE．设 $\tau(\theta)$ 是 $\theta$ 的一个连续函数．那么在杂录 10．6．2 的关于 $f(x \mid \theta)$ ，从而也就是对 $L(\theta \mid \boldsymbol{x})$ 的正则性条件之下，对于每个 $\epsilon&amp;gt;0$ 和每个 $\theta \in \Theta$ ，有
 $$
@@ -2600,8 +2606,189 @@ $$
 等式右侧关于 $x, y$ 是对称的，所以等式左侧把 $x, y$ 交换后仍相等。所以，MH构造的马氏链以 $\{\pi(x)\}$ 为平稳分布。多数情况下MH构造的马氏链也以 $\{\pi(x)\}$ 为极限分布。&lt;/p&gt;
 &lt;p&gt;从构造的 $r$ 可以看出，MH算法也可以由接收拒绝的思想去理解，并且从构造的接受拒绝策略来看，已经有了Langevin采样的思想，即向概率密度高的方向移动。&lt;/p&gt;
 &lt;h4 id=&#34;gibbs算法&#34;&gt;Gibbs算法
-&lt;/h4&gt;&lt;h3 id=&#34;序贯蒙特卡洛采样粒子滤波器&#34;&gt;序贯蒙特卡洛采样（粒子滤波器）
-&lt;/h3&gt;</description>
+&lt;/h4&gt;&lt;p&gt;在M-H算法中是需要接收拒绝的，当采样分布高维度时，拒绝率将会无限趋近于1，这将导致我们无法进行正常的采样，为了解决该问题，我们需要使得其接受率尽可能的大，Gibbs采样算法就是可以适合高维采样的算法，可以将其视作M-H算法的特殊情况，即Proposal设置为满条件分布。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义（满条件分布）.&lt;/strong&gt; 对于一个变量集合 $x_I=\left\{x_i: i \in I\right\}(I \subseteq\{1,2, \cdots, k\})$ 和补集变量 $x_{-I}=\left\{x_i: i \notin I\right\}$ ，满条件分布定义为：
+$$
+p\left(x_I \mid x_{-I}\right)=\frac{p(x)}{\int p(x) d x_I} \propto p(x)
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法原理&lt;/strong&gt;：将 Gibbs 看作 Metropolis－Hastings，其中旧状态是 $x=\left(x_i, x_{-i}\right)$ ，新状态是 $x^{\prime}=\left(x_i^{\prime}, x_{-i}\right)$ 。
+由于仅更新了 $x_i$ ，且 proposal 是 $\pi\left(x_i^{\prime} \mid x_{-i}\right)$ ，我们写接受概率为：&lt;/p&gt;
+&lt;p&gt;$$
+\alpha\left(x, x^{\prime}\right)=\min \left(1, \frac{\pi\left(x^{\prime}\right) \pi\left(x_i \mid x_{-i}\right)}{\pi(x) \pi\left(x_i^{\prime} \mid x_{-i}\right)}\right)
+$$
+注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\pi(x)=\pi\left(x_i, x_{-i}\right)$&lt;/li&gt;
+&lt;li&gt;$\pi\left(x^{\prime}\right)=\pi\left(x_i^{\prime}, x_{-i}\right)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此上式变为：
+$$
+\alpha\left(x, x^{\prime}\right)=\min \left(1, \frac{\pi\left(x_i^{\prime}, x_{-i}\right) \pi\left(x_i \mid x_{-i}\right)}{\pi\left(x_i, x_{-i}\right) \pi\left(x_i^{\prime} \mid x_{-i}\right)}\right)
+$$
+利用条件概率定义：
+$$
+\begin{aligned}
+&amp;amp; \pi\left(x_i, x_{-i}\right)=\pi\left(x_i \mid x_{-i}\right) \pi\left(x_{-i}\right) \\
+&amp;amp; \pi\left(x_i^{\prime}, x_{-i}\right)=\pi\left(x_i^{\prime} \mid x_{-i}\right) \pi\left(x_{-i}\right)
+\end{aligned}
+$$
+代入后可以发现：
+$$
+\alpha\left(x, x^{\prime}\right)=\min \left(1, \frac{\pi\left(x_i^{\prime} \mid x_{-i}\right) \pi\left(x_{-i}\right) \pi\left(x_i \mid x_{-i}\right)}{\pi\left(x_i \mid x_{-i}\right) \pi\left(x_{-i}\right) \pi\left(x_i^{\prime} \mid x_{-i}\right)}\right)=\min (1,1)=1
+$$&lt;/p&gt;
+&lt;p&gt;则Gibbs采样每步只会更新一个变量，每个循环更新所有的多维变量，接受率始终为1，但是对单个变量的采样中，可能还会需要M-H算法进行采样。注意，Gibbs算法每步只更新一个参数是重要的，只有这样才能保证细致平衡条件，也就是说，Gibbs采样是沿着坐标轴采样的。&lt;/p&gt;
+&lt;h4 id=&#34;mcmc的理论保证&#34;&gt;MCMC的理论保证
+&lt;/h4&gt;&lt;p&gt;MCMC算法非常的丰富，我们仅仅阐述了两种最基础的MCMC算法，有一些基于物理学思想的MCMC算法也非常有意思，例如哈密顿蒙特卡洛、朗之万蒙特卡洛，以后有机会我们再介绍，本章节我们从Markov链的理论出发，再次回顾MCMC算法，很大部分参考视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV17L411v7wr/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【贝叶斯统计】MCMC理论2 Metropolis-Hastings与two-stage Gibbs的理论&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;另外，本人之前阅读过关于Langevin MCMC的一些论文，可见该&lt;a class=&#34;link&#34; href=&#34;https://haitonglan.github.io/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;网页&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 （转移核）.&lt;/strong&gt; Let $(X, \mathcal{A})$ and $(Y, \mathcal{B})$ be measurable spaces. A Markov kernel with source $(X, \mathcal{A})$ and target $(Y, \mathcal{B})$, sometimes written as $\kappa:(X, \mathcal{A}) \rightarrow(Y, \mathcal{B})$, is a function $\kappa: \mathcal{B} \times X \rightarrow[0,1]$ with the following properties:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;For every (fixed) $B_0 \in \mathcal{B}$, the map $x \mapsto \kappa\left(B_0, x\right)$ is $\mathcal{A}$-measurable&lt;/li&gt;
+&lt;li&gt;For every (fixed) $x_0 \in X$, the map $B \mapsto \kappa\left(B, x_0\right)$ is a &lt;strong&gt;probability measure&lt;/strong&gt; on $(Y, \mathcal{B})$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In other words it associates to each point $x \in X$ a probability measure $\kappa(d y \mid x): B \mapsto \kappa(B, x)$ on $(Y, \mathcal{B})$ such that, for every measurable set $B \in \mathcal{B}$, the map $x \mapsto \kappa(B, x)$ is measurable with respect to the $\sigma$-algebra $\mathcal{A} .$&lt;/p&gt;
+&lt;p&gt;在基础的Markov链中，我们应该都接触过不可约的概念，MCMC理论中使用的不可约比常见的不可约条件稍弱：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 （ $\varphi$－irreducibility）.&lt;/strong&gt; $\phi$－不可约性：存在一个非零测度 $\phi$ ，使得从任意 $x$ ，对任何测度为正的集合 $A$ ，都有某个时间 $n$ 使 $k^n(x, A)&amp;gt;0$ ；&lt;/p&gt;
+&lt;p&gt;我们提到过细致平衡条件，以下的运算说明&lt;strong&gt;满足细致平衡条件的分布是稳态分布&lt;/strong&gt;：
+$$
+\begin{aligned}
+p(z) &amp;amp; =\sum_{z^{\prime}} p^{(\text {prev })}\left(z^{\prime}\right) T\left(z^{\prime}, z\right) \\
+&amp;amp; =\sum_{z^{\prime}} p^{(\text {prev })}(z) T\left(z, z^{\prime}\right) \\
+&amp;amp; =p^{(\text {prev })}(z) \sum_{z^{\prime}} T\left(z, z^{\prime}\right) \\
+&amp;amp; =p^{(\text {prev })}(z) \sum_{z^{\prime}} p\left(z^{\prime} \mid z\right) \\
+&amp;amp; =p^{(\text {prev })}(z) \sum_{z^{\prime}} \frac{p\left(z^{\prime}, z\right)}{p(z)} \\
+&amp;amp; =p^{(\text {prev })}(z) \frac{p(z)}{p(z)} \\
+&amp;amp; =p^{(\text {prev })}(z)
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;在前面的算法中，我们直接使用细致平衡构造稳态分布，但是对于一个Markov链是否会收敛到稳态分布，以及稳态分布是否可以用来推断缺一无所知，我们接下来回答这两个问题。&lt;/p&gt;
+&lt;p&gt;对于连续时间Markov链，为了利于问题的分析，我们引入一个“最小单元”：&lt;br&gt;
+&lt;strong&gt;定义 （Atom）.&lt;/strong&gt; 一个集合 $A \subseteq \mathcal{X}$ 被称为一个 原子（atom），如果存在一个概率测度 $\nu$ 使得对于所有 $x \in A$ 和所有 $B \in$ $\mathcal{B}$ 有：
+$$
+P(x, B)=\nu(B)
+$$
+也就是说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从集合 A 中的任何状态出发，下一步转移的分布是完全一样的，等于 $\nu$ ；&lt;/li&gt;
+&lt;li&gt;因此，集合 $A$＂忘记了＂进入这个集合前的所有历史，是一个概率上的再生点（regeneration point）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;于是我们可以进而讨论Atom的暂态和常返态，对于MCMC，我们自然希望所有的状态都是常返态，我们将使用更强力的定义来作为以后的条件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义（Harris recurrent）.&lt;/strong&gt; 链 $\left\{X_n\right\}$ 被称为是 Harris recurrent，如果它是 $\phi$－不可约的，并且满足：
+对于所有 $A \in \mathcal{B}$ 满足 $\phi(A)&amp;gt;0$ ，对所有初始状态 $x \in \mathcal{X}$ ，几乎必然无限次访问 $A$ ：
+$$
+\mathbb{P}_x\left(X_n \in A \text { infinitely often }\right)=1
+$$
+换句话说：
+所有测度为正的集合 $A$ ，链几乎总会返回无数次。&lt;/p&gt;
+&lt;p&gt;在 Harris recurrent 基础上，若存在不变概率测度 𝜋，则成Markov链为 &lt;strong&gt;Positive Harris recurrent&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（收敛定理）.&lt;/strong&gt;  任意Positive Harris recurrent且非周期的Markovb链，对于所有初始状态 $x \in \mathcal{X}$ ，转移概率 $P^n(x, \cdot)$ 弱收敛到不变测度 $\pi$ ：
+$$
+\lim _{n \rightarrow \infty}\left|P^n(x, \cdot)-\pi(\cdot)\right|&lt;em&gt;{T V}=0
+$$
+这里 $|\cdot|&lt;/em&gt;{T V}$ 表示 全变差距离（total variation distance）。&lt;/p&gt;
+&lt;p&gt;收敛定理表明了满足一定条件下的Markov链可以收敛到稳态分布，我们之前推导出来过M-H算法的转移核，可以验证其复合收敛定理的假设。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（遍历性定理）.&lt;/strong&gt; 设 $\left\{X_n\right\}$ 是 positive Harris recurrent 且 aperiodic 的 Markov 链，不变分布为 $\pi$ 。那么，
+对任何 $f \in L^1(\pi)$ ，有：
+$$
+\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=0}^{n-1} f\left(X_k\right)=\int f d \pi \quad \text { a.s. } \quad \forall X_0=x
+$$&lt;/p&gt;
+&lt;p&gt;遍历性定理对标的是SLLN，但是这并不是trivial的，因为SLLN要求随机样本，是iid的，但是对于Markov链，样本是强相关的，正因为有了Markov链的遍历性定理，才让我们的采样得以发挥作用，使用生成的后验分布样本去计算一些统计量，这些统计量是一致的。&lt;/p&gt;
+&lt;p&gt;M-H算法和Gibbs算法是最简单的MCMC算法，其对假设的要求都是最弱的，也容易验证其收敛定理和遍历性定理都是成立的，但是对于一些更复杂的算法，这两个定理未必会成立，这时就需要具体问题具体分析，去检查MCMC带来的误差了。&lt;/p&gt;
+&lt;p&gt;在实际的数值实验中，MCMC会有各种各样的问题，不同分布的处理方式也多种多样，很可能会碰到MCMC不能良好采样的问题，例如当分布不一致有界时，M-H算法拒绝率可能会很高，甚至最后也不会收敛。&lt;/p&gt;
+&lt;h3 id=&#34;序贯蒙特卡洛采样粒子滤波器&#34;&gt;序贯蒙特卡洛采样（粒子滤波器）
+&lt;/h3&gt;&lt;p&gt;在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯推断基础&#34;&gt;贝叶斯推断基础
+&lt;/h2&gt;&lt;p&gt;时间充足会补上这部分。&lt;/p&gt;
+&lt;h2 id=&#34;精确推断&#34;&gt;精确推断
+&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的。&lt;/p&gt;
+&lt;h3 id=&#34;mcmc-1&#34;&gt;MCMC
+&lt;/h3&gt;&lt;p&gt;采样章节中有详细描述。&lt;/p&gt;
+&lt;h3 id=&#34;em算法&#34;&gt;EM算法
+&lt;/h3&gt;&lt;p&gt;学过很多次EM算法，感觉始终没有学明白，借此机会用比较统计的眼光将其学明白。&lt;/p&gt;
+&lt;h3 id=&#34;信念传播&#34;&gt;信念传播
+&lt;/h3&gt;&lt;h2 id=&#34;近似推断&#34;&gt;近似推断
+&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的，在现在这个大数据的时代，后验分布已经不是我们可以理解的样子，我们几乎不可能去得到精确的后验分布，近似推断是现代贝叶斯推断主流的方法。&lt;/p&gt;
+&lt;p&gt;本章节主要介绍Laplace近似和变分推断，有一个写的不错的ppt：
+&lt;a class=&#34;link&#34; href=&#34;https://jmhl.org/wp-content/uploads/2013/11/slidescharlesuniversitylaplacevi2013.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Laplace Approximation and Variational Inference, Cambridge University&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;laplace近似&#34;&gt;Laplace近似
+&lt;/h3&gt;&lt;p&gt;Laplace近似本质上是观察到泰勒展开第二项和高斯核的相似之处，并利用MLE的观点，将推断问题转化为了优化问题。&lt;/p&gt;
+&lt;p&gt;上面的讲义中对Laplace的描述十分清晰，这里直接复制粘贴过来：
+&lt;a href=&#34;https://imgse.com/i/pELSoB4&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/06/pELSoB4.png&#34; alt=&#34;pELSoB4.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+Lplacce近似只是使用高斯分布对单模态（单峰）分布的近似，对于多模态问题难以处理，但是好处就是其非常简单，方便我们将几乎任意的分布用高斯分布来近似。&lt;/p&gt;
+&lt;p&gt;有了对后验分布的有效近似，我们便可以使用后它去完成一些估计和推断。&lt;/p&gt;
+&lt;h3 id=&#34;变分推断&#34;&gt;变分推断
+&lt;/h3&gt;&lt;p&gt;由于Laplace分布局限性很大，对于多模态的分布难以近似，这里引入一种更强力的算法，变分推断，也是现代贝叶斯处理的主流。&lt;/p&gt;
+&lt;p&gt;先介绍两篇不错的paper，介绍的非常清晰：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2108.13083&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;An Introduction to Variational Inference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/1601.00670&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Variational Inference: A Review for Statisticians&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;变分推断的出发点非常简单，在合适的分布族中任选分布，使得该分布和后验分布之间的KL散度最小，即
+$$
+\min_q KL(p(z\mid x)\mid\mid q(z)) = \min_q \mathbb{E}_p \log\frac{p(z\mid x)}{q(z)}
+$$
+但是这里依然需要用到后验分布的具体形式，我们是不能知道后验分布的，为了尽可能减少后验分布的出现，我们考虑反向KL散度（KL散度并不是距离）：
+$$
+\min_q KL(q(z)\mid\mid p(z\mid x)) = \min_q \mathbb{E}_q \log\frac{q(z)}{p(z\mid x)}
+$$
+这样虽然看着后验分布占比比较少，但是还是规避不了使用后验分布，其实后验分布之所以难以知道，并不是因为似然和先验分布，而是因为归一化常数难以计算，如果该归一化常数与优化问题无关就好了，继续对该式进行处理：
+$$
+\begin{aligned}
+KL(q(\mathbf{z}) | p(\mathbf{z} \mid \mathbf{x}))&amp;amp;=\mathbb{E}_q[\log q(\mathbf{z})]-\mathbb{E}_q[\log p(\mathbf{z}, \mathbf{x})]+\log p(\mathbf{x}) \\
+&amp;amp; = -ELBO(q)+\log p(\mathbf{x})
+\end{aligned}
+$$
+考虑对 $q$ 的优化问题，可见确实与归一化常数无关，且最小化KL散度等价于最大化ELBO，这样在只有似然和先验分布的条件下，我们也可以对该问题做优化了，在优化之前，我们先用另外一种形式表达ELBO，观察其蕴含的另外意义：
+$$
+\begin{aligned}
+\log p(x) &amp;amp; =\log \int_{z \in Z} p(x, z) \mathrm{d} z \\
+&amp;amp; =\log \int_{z \in Z} p(x, z) \frac{q(z)}{q(z)} \mathrm{d} z, \\
+&amp;amp; =\log \mathbb{E}_{z \sim Q(z)}\left[\frac{p(x, z)}{q(z)}\right], \\
+&amp;amp; \geq \mathbb{E}_{z \sim Q(z)}[\log p(x, z)]-\mathbb{E}_{z \sim Q(z)}[\log q(z)] \\
+&amp;amp; \geq \operatorname{ELBO}(Q) .
+\end{aligned}
+$$
+可见，最大化ELBO，在某种意义上，提供了似然函数的下界，也可以作为最大似然的证据。&lt;/p&gt;
+&lt;p&gt;现在来对最大化ELBO问题进行求解，这时泛函上的优化，需要用&lt;strong&gt;变分方法&lt;/strong&gt;进行求解，这里不列出变分过程了，就是变分等于零，最后可以得到：
+$$
+q^{*}(z) \propto p(x, z)\propto p(z\mid x)
+$$
+结果是既在意料之外也在情理之中的，既然做后验估计，那么最好的估计就是后验分布本身，也是挺有戏剧性的，这又回到了一开始的矛盾上，不知道后验分布，怎么使用后验分布呢，这又引出了变分推断的另外一个核心点：&lt;strong&gt;在限制的分布族下最最优化&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我们在之前为了简单，将正向KL散度换成了反向的KL散度，这带来什么影响了呢，我们为什么要用反向KL散度呢，对于正向KL散度，如果将表达式写出来的话，为了保证KL散度的存在性，需要有$supp(p)\subseteq supp(q)$,这将会使得偏向于&lt;strong&gt;估计后验分布的均值&lt;/strong&gt;，对于反向KL散度，需要有$supp(q)\subseteq supp(p)$,这表明我们构造的分布支撑集是更小的，偏向于&lt;strong&gt;估计后验分布的模态&lt;/strong&gt;，而后者才是统计推断中更需要的，如果仅仅得到一个均值上正确的估计，我们会失去更多的性质。&lt;/p&gt;
+&lt;p&gt;既然有了对分布集的界定，接下来就是做优化了，在分布集限制下的优化是一个非常困难的问题，一般是需要神经网络去学习的（可以参考diffuison和VAE），为了得到更好的解析性质，我们进而讨论&lt;strong&gt;平均场假设下的变分推断&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;平均场假设也特别简单，就是假设 $q(z)$ 的各个维度独立，忽略其维度之间的相关性，再对ELBO进行处理：&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+  ELBO(q)&amp;=\mathbb{E}_{q(z)}[\log p(x, z)]-\mathbb{E}_{q(z)}[\log q(z)]\\&amp;=\mathbb{E}_{q_j\left(z_j\right)}\left[\mathbb{E}_{q_{-j}\left(z_{\neg j}\right)}[\log p(x, z)]\right]-\mathbb{E}_{q_j\left(z_j\right)}\left[\log q_j\left(z_j\right)\right]+\operatorname{const}
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;该优化问题我们之前遇到过，用同样的变分方式对其进行求解，可以得到最优解公式：
+$$
+q_j^{*}\left(z_j\right) \propto \exp \left(\mathbb{E}_{q_{-j}}[\log p(x, z)]\right) \propto \exp \left(\mathbb{E}_{q_{-j}}[\log p(z_j\mid z_{-j}, x)]\right)
+$$
+虽然这也是后验分布的形式，但是在对目标分布做假设之后求取隐变量，是近似可解的，对于每一个变量都是取最优，并且是互相依赖的&lt;strong&gt;满条件分布形式&lt;/strong&gt;，很自然的需要使用迭代法，这里的迭代法命名为坐标上升变分推断，详见下图：
+&lt;a href=&#34;https://imgse.com/i/pELCd91&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/07/pELCd91.png&#34; alt=&#34;pELCd91.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+单调递增有上界，CAVI迭代一般是会收敛到上界的，另外，CAVI可以被看作消息传递算法的一种。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;讨论.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;VI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CAVI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CAVI与Gibbs采样&lt;/strong&gt;：都使用了满条件分布，迭代形式非常一致（特别是二维的情况，几乎一样），但是本质目的不同，一个为了产生样本，一个为了近似推断，这也反应了我们的近似推断是合理的，在某些条件下可以逼近精确推断。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;因果推断&#34;&gt;因果推断
+&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
+&lt;h2 id=&#34;充分降维&#34;&gt;充分降维
+&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
+&lt;h2 id=&#34;lasso问题&#34;&gt;Lasso问题
+&lt;/h2&gt;&lt;p&gt;十几年前很火的问题，2024年的时候了解过一些，这里再续上之前学的东西，用来作为高维统计的入门。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>学习笔记|高等代数</title>
@@ -4732,10 +4919,9 @@ Afshin Rostamizadeh,and Ameet Talwalkar&lt;br&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;产品开发与营销&lt;/p&gt;
+&lt;p&gt;参考书目：课堂讲义&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;参考书目：课堂讲义
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
