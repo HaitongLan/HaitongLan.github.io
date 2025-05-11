@@ -1515,11 +1515,14 @@ $$
 &lt;li&gt;教材：应用随机过程，Ross&lt;/li&gt;
 &lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;统计计算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/rdpeng/advstatcomp/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Advanced Statistical Computing&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www2.cs.arizona.edu/~pachecoj/courses/csc535_fall20/lectures/mcmc.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Markov chain Monte Carlo methods&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;b站up：&lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/497536319&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;徐芝兰&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。&lt;/p&gt;
 &lt;h2 id=&#34;概率论基础&#34;&gt;概率论基础
 &lt;/h2&gt;&lt;h3 id=&#34;random-variable&#34;&gt;Random Variable
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Define 1(random variable).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. &lt;br&gt;
@@ -2695,16 +2698,96 @@ $$&lt;/p&gt;
 &lt;p&gt;在实际的数值实验中，MCMC会有各种各样的问题，不同分布的处理方式也多种多样，很可能会碰到MCMC不能良好采样的问题，例如当分布不一致有界时，M-H算法拒绝率可能会很高，甚至最后也不会收敛。&lt;/p&gt;
 &lt;h3 id=&#34;序贯蒙特卡洛采样粒子滤波器&#34;&gt;序贯蒙特卡洛采样（粒子滤波器）
 &lt;/h3&gt;&lt;p&gt;在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。&lt;/p&gt;
-&lt;h2 id=&#34;变分推断&#34;&gt;变分推断
-&lt;/h2&gt;&lt;p&gt;贝叶斯统计的核心是采样和变分推断，本章介绍变分推断方法。&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯推断基础&#34;&gt;贝叶斯推断基础
+&lt;/h2&gt;&lt;p&gt;时间充足会补上这部分。&lt;/p&gt;
+&lt;h2 id=&#34;精确推断&#34;&gt;精确推断
+&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的。&lt;/p&gt;
+&lt;h3 id=&#34;mcmc-1&#34;&gt;MCMC
+&lt;/h3&gt;&lt;p&gt;采样章节中有详细描述。&lt;/p&gt;
+&lt;h3 id=&#34;em算法&#34;&gt;EM算法
+&lt;/h3&gt;&lt;p&gt;学过很多次EM算法，感觉始终没有学明白，借此机会用比较统计的眼光将其学明白。&lt;/p&gt;
+&lt;h3 id=&#34;信念传播&#34;&gt;信念传播
+&lt;/h3&gt;&lt;h2 id=&#34;近似推断&#34;&gt;近似推断
+&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的，在现在这个大数据的时代，后验分布已经不是我们可以理解的样子，我们几乎不可能去得到精确的后验分布，近似推断是现代贝叶斯推断主流的方法。&lt;/p&gt;
+&lt;p&gt;本章节主要介绍Laplace近似和变分推断，有一个写的不错的ppt：
+&lt;a class=&#34;link&#34; href=&#34;https://jmhl.org/wp-content/uploads/2013/11/slidescharlesuniversitylaplacevi2013.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Laplace Approximation and Variational Inference, Cambridge University&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;laplace近似&#34;&gt;Laplace近似
+&lt;/h3&gt;&lt;p&gt;Laplace近似本质上是观察到泰勒展开第二项和高斯核的相似之处，并利用MLE的观点，将推断问题转化为了优化问题。&lt;/p&gt;
+&lt;p&gt;上面的讲义中对Laplace的描述十分清晰，这里直接复制粘贴过来：
+&lt;a href=&#34;https://imgse.com/i/pELSoB4&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/06/pELSoB4.png&#34; alt=&#34;pELSoB4.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+Lplacce近似只是使用高斯分布对单模态（单峰）分布的近似，对于多模态问题难以处理，但是好处就是其非常简单，方便我们将几乎任意的分布用高斯分布来近似。&lt;/p&gt;
+&lt;p&gt;有了对后验分布的有效近似，我们便可以使用后它去完成一些估计和推断。&lt;/p&gt;
+&lt;h3 id=&#34;变分推断&#34;&gt;变分推断
+&lt;/h3&gt;&lt;p&gt;由于Laplace分布局限性很大，对于多模态的分布难以近似，这里引入一种更强力的算法，变分推断，也是现代贝叶斯处理的主流。&lt;/p&gt;
+&lt;p&gt;先介绍两篇不错的paper，介绍的非常清晰：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2108.13083&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;An Introduction to Variational Inference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/1601.00670&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Variational Inference: A Review for Statisticians&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;变分推断的出发点非常简单，在合适的分布族中任选分布，使得该分布和后验分布之间的KL散度最小，即
+$$
+\min_q KL(p(z\mid x)\mid\mid q(z)) = \min_q \mathbb{E}_p \log\frac{p(z\mid x)}{q(z)}
+$$
+但是这里依然需要用到后验分布的具体形式，我们是不能知道后验分布的，为了尽可能减少后验分布的出现，我们考虑反向KL散度（KL散度并不是距离）：
+$$
+\min_q KL(q(z)\mid\mid p(z\mid x)) = \min_q \mathbb{E}_q \log\frac{q(z)}{p(z\mid x)}
+$$
+这样虽然看着后验分布占比比较少，但是还是规避不了使用后验分布，其实后验分布之所以难以知道，并不是因为似然和先验分布，而是因为归一化常数难以计算，如果该归一化常数与优化问题无关就好了，继续对该式进行处理：
+$$
+\begin{aligned}
+KL(q(\mathbf{z}) | p(\mathbf{z} \mid \mathbf{x}))&amp;amp;=\mathbb{E}_q[\log q(\mathbf{z})]-\mathbb{E}_q[\log p(\mathbf{z}, \mathbf{x})]+\log p(\mathbf{x}) \\
+&amp;amp; = -ELBO(q)+\log p(\mathbf{x})
+\end{aligned}
+$$
+考虑对 $q$ 的优化问题，可见确实与归一化常数无关，且最小化KL散度等价于最大化ELBO，这样在只有似然和先验分布的条件下，我们也可以对该问题做优化了，在优化之前，我们先用另外一种形式表达ELBO，观察其蕴含的另外意义：
+$$
+\begin{aligned}
+\log p(x) &amp;amp; =\log \int_{z \in Z} p(x, z) \mathrm{d} z \\
+&amp;amp; =\log \int_{z \in Z} p(x, z) \frac{q(z)}{q(z)} \mathrm{d} z, \\
+&amp;amp; =\log \mathbb{E}_{z \sim Q(z)}\left[\frac{p(x, z)}{q(z)}\right], \\
+&amp;amp; \geq \mathbb{E}_{z \sim Q(z)}[\log p(x, z)]-\mathbb{E}_{z \sim Q(z)}[\log q(z)] \\
+&amp;amp; \geq \operatorname{ELBO}(Q) .
+\end{aligned}
+$$
+可见，最大化ELBO，在某种意义上，提供了似然函数的下界，也可以作为最大似然的证据。&lt;/p&gt;
+&lt;p&gt;现在来对最大化ELBO问题进行求解，这时泛函上的优化，需要用&lt;strong&gt;变分方法&lt;/strong&gt;进行求解，这里不列出变分过程了，就是变分等于零，最后可以得到：
+$$
+q^{*}(z) \propto p(x, z)\propto p(z\mid x)
+$$
+结果是既在意料之外也在情理之中的，既然做后验估计，那么最好的估计就是后验分布本身，也是挺有戏剧性的，这又回到了一开始的矛盾上，不知道后验分布，怎么使用后验分布呢，这又引出了变分推断的另外一个核心点：&lt;strong&gt;在限制的分布族下最最优化&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我们在之前为了简单，将正向KL散度换成了反向的KL散度，这带来什么影响了呢，我们为什么要用反向KL散度呢，对于正向KL散度，如果将表达式写出来的话，为了保证KL散度的存在性，需要有$supp(p)\subseteq supp(q)$,这将会使得偏向于&lt;strong&gt;估计后验分布的均值&lt;/strong&gt;，对于反向KL散度，需要有$supp(q)\subseteq supp(p)$,这表明我们构造的分布支撑集是更小的，偏向于&lt;strong&gt;估计后验分布的模态&lt;/strong&gt;，而后者才是统计推断中更需要的，如果仅仅得到一个均值上正确的估计，我们会失去更多的性质。&lt;/p&gt;
+&lt;p&gt;既然有了对分布集的界定，接下来就是做优化了，在分布集限制下的优化是一个非常困难的问题，一般是需要神经网络去学习的（可以参考diffuison和VAE），为了得到更好的解析性质，我们进而讨论&lt;strong&gt;平均场假设下的变分推断&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;平均场假设也特别简单，就是假设 $q(z)$ 的各个维度独立，忽略其维度之间的相关性，再对ELBO进行处理：&lt;/p&gt;
+&lt;div&gt;
+$$
+\begin{aligned}
+  ELBO(q)&amp;=\mathbb{E}_{q(z)}[\log p(x, z)]-\mathbb{E}_{q(z)}[\log q(z)]\\&amp;=\mathbb{E}_{q_j\left(z_j\right)}\left[\mathbb{E}_{q_{-j}\left(z_{\neg j}\right)}[\log p(x, z)]\right]-\mathbb{E}_{q_j\left(z_j\right)}\left[\log q_j\left(z_j\right)\right]+\operatorname{const}
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;该优化问题我们之前遇到过，用同样的变分方式对其进行求解，可以得到最优解公式：
+$$
+q_j^{*}\left(z_j\right) \propto \exp \left(\mathbb{E}_{q_{-j}}[\log p(x, z)]\right) \propto \exp \left(\mathbb{E}_{q_{-j}}[\log p(z_j\mid z_{-j}, x)]\right)
+$$
+虽然这也是后验分布的形式，但是在对目标分布做假设之后求取隐变量，是近似可解的，对于每一个变量都是取最优，并且是互相依赖的&lt;strong&gt;满条件分布形式&lt;/strong&gt;，很自然的需要使用迭代法，这里的迭代法命名为坐标上升变分推断，详见下图：
+&lt;a href=&#34;https://imgse.com/i/pELCd91&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/07/pELCd91.png&#34; alt=&#34;pELCd91.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;
+单调递增有上界，CAVI迭代一般是会收敛到上界的，另外，CAVI可以被看作消息传递算法的一种。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;讨论.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;VI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CAVI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CAVI与Gibbs采样&lt;/strong&gt;：都使用了满条件分布，迭代形式非常一致（特别是二维的情况，几乎一样），但是本质目的不同，一个为了产生样本，一个为了近似推断，这也反应了我们的近似推断是合理的，在某些条件下可以逼近精确推断。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;因果推断&#34;&gt;因果推断
-&lt;/h2&gt;&lt;p&gt;加入此章节的原因是因为本人最近在准备保研，一些老师的研究方向为因果推断，但是因为本人不是统计学出身，并不知道这个东西是什么，所以学来科普使用。&lt;/p&gt;
-&lt;h2 id=&#34;贝叶斯参数估计基础&#34;&gt;贝叶斯参数估计基础
-&lt;/h2&gt;&lt;p&gt;在考虑要不要加？？&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
+&lt;h2 id=&#34;充分降维&#34;&gt;充分降维
+&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
 &lt;h2 id=&#34;lasso问题&#34;&gt;Lasso问题
 &lt;/h2&gt;&lt;p&gt;十几年前很火的问题，2024年的时候了解过一些，这里再续上之前学的东西，用来作为高维统计的入门。&lt;/p&gt;
-&lt;h2 id=&#34;em算法&#34;&gt;EM算法
-&lt;/h2&gt;&lt;p&gt;学过很多次EM算法，感觉始终没有学明白，借此机会用比较统计的眼光将其学明白。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -4836,10 +4919,9 @@ Afshin Rostamizadeh,and Ameet Talwalkar&lt;br&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;产品开发与营销&lt;/p&gt;
+&lt;p&gt;参考书目：课堂讲义&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;参考书目：课堂讲义
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
