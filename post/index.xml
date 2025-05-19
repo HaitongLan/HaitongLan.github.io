@@ -79,14 +79,22 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.&lt;/p&gt;
 &lt;a href=&#34;https://imgse.com/i/pEXP5zn&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/11/pEXP5zn.jpg&#34; alt=&#34;pEXP5zn.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://imgse.com/i/pEXP4Rs&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/11/pEXP4Rs.jpg&#34; alt=&#34;pEXP4Rs.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://imgse.com/i/pEXPhGj&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/11/pEXPhGj.jpg&#34; alt=&#34;pEXPhGj.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;正则化&#34;&gt;正则化
-&lt;/h3&gt;&lt;p&gt;机器学习中的经典概念，这里主要设计 $L_1$ 和 $L_2$ 正则化的推导，分析bias和var的trade-off，并介绍了和贝叶斯建模的联系。
+&lt;h2 id=&#34;正则化&#34;&gt;正则化
+&lt;/h2&gt;&lt;p&gt;机器学习中的经典概念，这里主要设计 $L_1$ 和 $L_2$ 正则化的推导，分析bias和var的trade-off，并介绍了和贝叶斯建模的联系。
 &lt;a href=&#34;https://imgse.com/i/pEjRIDf&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/15/pEjRIDf.jpg&#34; alt=&#34;pEjRIDf.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://imgse.com/i/pEjR5KP&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/15/pEjR5KP.jpg&#34; alt=&#34;pEjR5KP.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;lms算法&#34;&gt;LMS算法
-&lt;/h3&gt;&lt;p&gt;一种可变统计环境下MSE意义下的最优化算法。
+&lt;h2 id=&#34;lms算法&#34;&gt;LMS算法
+&lt;/h2&gt;&lt;p&gt;一种可变统计环境下MSE意义下的最优化算法。
 &lt;a href=&#34;https://imgse.com/i/pEjRob8&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/15/pEjRob8.jpg&#34; alt=&#34;pEjRob8.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://imgse.com/i/pEjRhvt&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/15/pEjRhvt.jpg&#34; alt=&#34;pEjRhvt.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一阶优化算法&#34;&gt;一阶优化算法
+&lt;/h2&gt;&lt;p&gt;介绍了几种一阶优化算法，以及其收敛性分析。
+&lt;a href=&#34;https://imgse.com/i/pExPV00&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPV00.jpg&#34; alt=&#34;pExPV00.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://imgse.com/i/pExPF6s&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPF6s.jpg&#34; alt=&#34;pExPF6s.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;递归最小二乘rls&#34;&gt;递归最小二乘(RLS)
+&lt;/h2&gt;&lt;p&gt;可变统计环境下的最小二乘：递归最小二乘(RLS)。
+&lt;a href=&#34;https://imgse.com/i/pExPkXn&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPkXn.jpg&#34; alt=&#34;pExPkXn.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;https://imgse.com/i/pExPEmq&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPEmq.jpg&#34; alt=&#34;pExPEmq.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
