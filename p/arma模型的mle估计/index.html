@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="时间序列的最优线性预测与参数估计">
+<title>ARMA模型的MLE估计</title>
+
+<link rel='canonical' href='http://localhost:1313/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.3992df218c917ad7ef00e79bf94b2b168ae28760447801f38a3033814fd3f1b7.css">
+<meta property='og:title' content="ARMA模型的MLE估计">
+<meta property='og:description' content="时间序列的最优线性预测与参数估计">
+<meta property='og:url' content='http://localhost:1313/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/'>
+<meta property='og:site_name' content='Haitong Lan'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-26T08:00:00&#43;08:00'/><meta property='article:modified_time' content='2025-05-26T08:22:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/ARMA_MLE/cover.png' />
+<meta name="twitter:title" content="ARMA模型的MLE估计">
+<meta name="twitter:description" content="时间序列的最优线性预测与参数估计"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/post_file/ARMA_MLE/cover.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+<style>
+    :root {
+        --article-font-family: "Noto Serif", var(--base-font-family);
+    }
+</style>
+<script>  
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
+		
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended">
+
+
+        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#exact-likelihood">Exact likelihood</a></li>
+    <li><a href="#other">Other</a></li>
+    <li><a href="#解释迭代算法为cholesky分解">解释迭代算法为Cholesky分解</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/">
+                
+                    <img src="/post_file/ARMA_MLE/cover.png" loading="lazy" alt="Featured image of post ARMA模型的MLE估计" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/math/" >
+                Math
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/">ARMA模型的MLE估计</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            时间序列的最优线性预测与参数估计
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 26, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>正在搞一些时间序列的东西，暂时用来记录，日后完整。</p>
+<h2 id="exact-likelihood">Exact likelihood
+</h2><p>使用完整的历史信息构建似然和迭代</p>
+<p><strong>迭代</strong>：</p>
+<p>Wold 表示
+$$
+\gamma_k=\sigma^2 \sum_{j=0}^{\infty} \psi_j \psi_{j+k}, \quad k=0,1,2, \ldots
+$$
+$$
+\psi_j= \begin{cases}1, &amp; j=0, \\ b_j+\sum_{k=1}^p a_k \psi_{j-k}, &amp; j=1,2, \ldots\end{cases}
+$$
+Toeplitz 协方差矩阵建模
+$$
+Y_t= \begin{cases}X_t / \sigma, &amp; t=1,2, \ldots, m \\ A(\mathscr{B}) X_t / \sigma, &amp; t=m+1, \ldots\end{cases}
+$$
+$$
+E\left(Y_s Y_t\right)= \begin{cases}\sigma^{-2} \gamma_{t-s}, &amp; 1 \leq s \leq t \leq m, \\ \sigma^{-2}\left[\gamma_{t-s}-\sum_{j=1}^p a_j \gamma_{t-s-j}\right], &amp; 1 \leq s \leq m&lt;t, \ \sum_{j=0}^q b_j b_{j+t-s}, &amp; t \geq s&gt;m,\end{cases}
+$$
+Innovations Algorithm，Durbin-Levinson Algorithm，递归实现 Cholesky 分解的算法
+$$
+\left\{\begin{array}{l}
+\nu_0=E Y_1^2 \\
+\theta_{n, n-k}=\left[E\left(Y_{n+1} Y_{k+1}\right)-\sum_{j=0}^{k-1} \theta_{k, k-j} \theta_{n, n-j} \nu_j\right] / \nu_k \\
+\quad 0 \leq k \leq n-1 \\
+\nu_n=E Y_{n+1}^2-\sum_{k=0}^{n-1} \theta_{n, n-k}^2 \nu_k
+\end{array}\right.
+$$
+<strong>Cholesky 分解下的精确高斯似然</strong>：</p>
+<p>利用Cholesky 分解思想引入残差构造似然
+$$
+L\left(\beta, \sigma^2\right)=\frac{\exp \left(-\frac{1}{2 \sigma^2} \sum_{k=1}^N Z_k^2 / \nu_{k-1}\right)}{(2 \pi)^{N / 2}\left(\sigma^{2 N} \nu_0 \nu_1 \cdots \nu_{N-1}\right)^{1 / 2}}
+$$
+正交投影残差
+$$
+S(\beta)=\sum_{k=1}^N Z_k^2 / \nu_{k-1}
+$$
+$$
+l(\beta)  =\frac{1}{N} \ln \left(\nu_0 \nu_1 \cdots \nu_{N-1}\right)+\ln [S(\beta) / N]
+$$
+$$
+\hat{\sigma}^2=\frac{1}{N} S(\hat{\beta})
+$$</p>
+<h2 id="other">Other
+</h2><p><a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
+    >Improved Maximum Likelihood Estimation of ARMA Models</a>:</p>
+<p>A closed form expression
+of the ARMA exact likelihood function was firstly given in <a class="link" href="https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb"  target="_blank" rel="noopener"
+    >The exact likelihood function for a mixed autoregressive-moving average process</a>. Afterwards, the focus shifted to
+finding expressions of the exact likelihood being more suitable for its computation <a class="link" href="https://www.jstor.org/stable/2335242"  target="_blank" rel="noopener"
+    >An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process</a>,<a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
+    >Computation of the exact likelihood function of an arima process</a></p>
+<h2 id="解释迭代算法为cholesky分解">解释迭代算法为Cholesky分解
+</h2><p><strong>用 Innovations Algorithm 实现 Cholesky 分解</strong> 的过程。我们以 <strong>一个长度为 3 的高斯向量</strong> $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。</p>
+<p><strong>假设的协方差矩阵</strong></p>
+<p>我们假设 $Y$ 是平稳的高斯序列，有以下协方差结构：
+$$
+\Gamma = \begin{bmatrix}
+\gamma_0 &amp; \gamma_1 &amp; \gamma_2 \\
+\gamma_1 &amp; \gamma_0 &amp; \gamma_1 \\
+\gamma_2 &amp; \gamma_1 &amp; \gamma_0
+\end{bmatrix}
+$$
+例如取数值：
+$$
+\gamma_0 = 1,\quad \gamma_1 = 0.5,\quad \gamma_2 = 0.25
+$$
+于是：
+$$
+\Gamma = \begin{bmatrix}
+1 &amp; 0.5 &amp; 0.25 \\
+0.5 &amp; 1 &amp; 0.5 \\
+0.25 &amp; 0.5 &amp; 1
+\end{bmatrix}
+$$
+我们要构造：
+$$
+\Gamma = C D C^T
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$C$：单位对角下三角矩阵，包含预测系数 $\theta_{i,j}$</li>
+<li>$D = \mathrm{diag}(\nu_0, \nu_1, \nu_2)$：预测误差方差（新息方差）</li>
+</ul>
+<p>然后我们就能得到 Cholesky 因子 $L = C D^{1/2}$，满足 $\Gamma = L L^T$</p>
+<p><strong>第一步</strong>：计算 $\nu_0 = \mathbb{E}[Y_1^2] = \gamma_0 = 1$</p>
+<p><strong>第二步</strong>：计算 $\theta_{1,1}$ 和 $\nu_1$
+$$
+\theta_{1,1} = \frac{\mathbb{E}[Y_2 Y_1]}{\nu_0} = \frac{\gamma_1}{\nu_0} = \frac{0.5}{1} = 0.5
+$$
+$$
+\nu_1 = \mathbb{E}[Y_2^2] - \theta_{1,1}^2 \nu_0 = \gamma_0 - (0.5)^2 \cdot 1 = 1 - 0.25 = 0.75
+$$
+<strong>第三步</strong>：计算 $\theta_{2,2}$、$\theta_{2,1}$，以及 $\nu_2$</p>
+<p>按递推公式先计算：
+$$
+\theta_{2,1} = \frac{\mathbb{E}[Y_3 Y_1]}{\nu_0} = \frac{\gamma_2}{\nu_0} = \frac{0.25}{1} = 0.25
+$$
+再计算：
+$$
+\theta_{2,2} = \frac{\gamma_1 - \theta_{1,1} \cdot \theta_{2,1} \cdot \nu_0}{\nu_1}
+= \frac{0.5 - (0.5)(0.25)(1)}{0.75} = \frac{0.5 - 0.125}{0.75} = \frac{0.375}{0.75} = 0.5
+$$
+然后计算：
+$$
+\nu_2 = \gamma_0 - \theta_{2,1}^2 \nu_0 - \theta_{2,2}^2 \nu_1 = 1 - 0.25^2 \cdot 1 - 0.5^2 \cdot 0.75 = 1 - 0.0625 - 0.1875 = 0.75
+$$</p>
+<p>得到 $C$ 和 $D$:
+$$
+C = \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0.5 &amp; 1 &amp; 0 \\
+0.25 &amp; 0.5 &amp; 1
+\end{bmatrix}, \quad
+D = \mathrm{diag}(1,\ 0.75,\ 0.75)
+$$</p>
+<p><strong>可见，$C$ 正是我们在高斯假设中得到的对新息线性变换的矩阵。</strong></p>
+<p>得到 Cholesky 因子 $L = C D^{1/2}$:</p>
+<p>$$
+D^{1/2} = \mathrm{diag}(1,\ \sqrt{0.75},\ \sqrt{0.75}) \approx \mathrm{diag}(1,\ 0.866,\ 0.866)
+$$</p>
+<p>逐行乘：</p>
+<p>$$
+L=C D^{1 / 2}=\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0.5 &amp; 1 &amp; 0 \\
+0.25 &amp; 0.5 &amp; 1
+\end{array}\right]\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0.866 &amp; 0 \\
+0 &amp; 0 &amp; 0.866
+\end{array}\right]=\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0.5 &amp; 0.866 &amp; 0 \\
+0.25 &amp; 0.433 &amp; 0.866
+\end{array}\right]
+$$</p>
+<p>最终结果：验证
+$$
+\Gamma = L L^T
+\Rightarrow \text{构造出的 } L \text{ 正是 } \Gamma \text{ 的 Cholesky 分解}
+$$</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on May 26, 2025 08:22 CST
+        </span>
+    </section></footer>
+
+<footer class="article-footer">
+    <section>
+        Page views:<span id="busuanzi_value_page_pv">Loading</span>
+    </section>
+</footer>
+
+
+    
+        
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
+    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
+    crossorigin="anonymous"
+/>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+    onload="
+    window.addEventListener('DOMContentLoaded', function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: false},
+                {left: '\\$$', right: '\\\\$$', display: true}
+            ]
+        });
+    });
+"></script>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e7%8e%b0%e4%bb%a3%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/cover.png" loading="lazy" data-key="" data-hash="/post_file/现代数字信号处理/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|现代数字信号处理选学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" data-key="" data-hash="/post_file/随机分析/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|随机分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|课题组讨论班</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|信息论</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/Cover1.png" loading="lazy" data-key="" data-hash="/post_file/数理统计/Cover1.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">学习笔记|统计学基础</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Haitong&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script>
+<script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+<script defer src="https://cn.vercount.one/js"></script>
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(http://localhost:1313/icons/backTop.svg);
+    }
+</style>
+
+
+<style>
+    #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+
+    </body>
+</html>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  });
+</script>
+
