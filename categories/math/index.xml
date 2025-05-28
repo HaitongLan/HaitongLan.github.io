@@ -56,8 +56,7 @@ $$
 \hat{\sigma}^2=\frac{1}{N} S(\hat{\beta})
 $$&lt;/p&gt;
 &lt;h2 id=&#34;other&#34;&gt;Other
-&lt;/h2&gt;&lt;p&gt;Innovations Algorithm 本质上是用递推公式构造 𝐿 (Cholesky分解)矩阵的每一行&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Improved Maximum Likelihood Estimation of ARMA Models&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;A closed form expression
 of the ARMA exact likelihood function was firstly given in &lt;a class=&#34;link&#34; href=&#34;https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -65,6 +64,96 @@ of the ARMA exact likelihood function was firstly given in &lt;a class=&#34;link
 finding expressions of the exact likelihood being more suitable for its computation &lt;a class=&#34;link&#34; href=&#34;https://www.jstor.org/stable/2335242&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process&lt;/a&gt;,&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Computation of the exact likelihood function of an arima process&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;解释迭代算法为cholesky分解&#34;&gt;解释迭代算法为Cholesky分解
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;用 Innovations Algorithm 实现 Cholesky 分解&lt;/strong&gt; 的过程。我们以 &lt;strong&gt;一个长度为 3 的高斯向量&lt;/strong&gt; $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设的协方差矩阵&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们假设 $Y$ 是平稳的高斯序列，有以下协方差结构：
+$$
+\Gamma = \begin{bmatrix}
+\gamma_0 &amp;amp; \gamma_1 &amp;amp; \gamma_2 \\
+\gamma_1 &amp;amp; \gamma_0 &amp;amp; \gamma_1 \\
+\gamma_2 &amp;amp; \gamma_1 &amp;amp; \gamma_0
+\end{bmatrix}
+$$
+例如取数值：
+$$
+\gamma_0 = 1,\quad \gamma_1 = 0.5,\quad \gamma_2 = 0.25
+$$
+于是：
+$$
+\Gamma = \begin{bmatrix}
+1 &amp;amp; 0.5 &amp;amp; 0.25 \\
+0.5 &amp;amp; 1 &amp;amp; 0.5 \\
+0.25 &amp;amp; 0.5 &amp;amp; 1
+\end{bmatrix}
+$$
+我们要构造：
+$$
+\Gamma = C D C^T
+$$&lt;/p&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$C$：单位对角下三角矩阵，包含预测系数 $\theta_{i,j}$&lt;/li&gt;
+&lt;li&gt;$D = \mathrm{diag}(\nu_0, \nu_1, \nu_2)$：预测误差方差（新息方差）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后我们就能得到 Cholesky 因子 $L = C D^{1/2}$，满足 $\Gamma = L L^T$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步&lt;/strong&gt;：计算 $\nu_0 = \mathbb{E}[Y_1^2] = \gamma_0 = 1$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步&lt;/strong&gt;：计算 $\theta_{1,1}$ 和 $\nu_1$
+$$
+\theta_{1,1} = \frac{\mathbb{E}[Y_2 Y_1]}{\nu_0} = \frac{\gamma_1}{\nu_0} = \frac{0.5}{1} = 0.5
+$$
+$$
+\nu_1 = \mathbb{E}[Y_2^2] - \theta_{1,1}^2 \nu_0 = \gamma_0 - (0.5)^2 \cdot 1 = 1 - 0.25 = 0.75
+$$
+&lt;strong&gt;第三步&lt;/strong&gt;：计算 $\theta_{2,2}$、$\theta_{2,1}$，以及 $\nu_2$&lt;/p&gt;
+&lt;p&gt;按递推公式先计算：
+$$
+\theta_{2,1} = \frac{\mathbb{E}[Y_3 Y_1]}{\nu_0} = \frac{\gamma_2}{\nu_0} = \frac{0.25}{1} = 0.25
+$$
+再计算：
+$$
+\theta_{2,2} = \frac{\gamma_1 - \theta_{1,1} \cdot \theta_{2,1} \cdot \nu_0}{\nu_1}
+= \frac{0.5 - (0.5)(0.25)(1)}{0.75} = \frac{0.5 - 0.125}{0.75} = \frac{0.375}{0.75} = 0.5
+$$
+然后计算：
+$$
+\nu_2 = \gamma_0 - \theta_{2,1}^2 \nu_0 - \theta_{2,2}^2 \nu_1 = 1 - 0.25^2 \cdot 1 - 0.5^2 \cdot 0.75 = 1 - 0.0625 - 0.1875 = 0.75
+$$&lt;/p&gt;
+&lt;p&gt;得到 $C$ 和 $D$:
+$$
+C = \begin{bmatrix}
+1 &amp;amp; 0 &amp;amp; 0 \\
+0.5 &amp;amp; 1 &amp;amp; 0 \\
+0.25 &amp;amp; 0.5 &amp;amp; 1
+\end{bmatrix}, \quad
+D = \mathrm{diag}(1,\ 0.75,\ 0.75)
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可见，$C$ 正是我们在高斯假设中得到的对新息线性变换的矩阵。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;得到 Cholesky 因子 $L = C D^{1/2}$:&lt;/p&gt;
+&lt;p&gt;$$
+D^{1/2} = \mathrm{diag}(1,\ \sqrt{0.75},\ \sqrt{0.75}) \approx \mathrm{diag}(1,\ 0.866,\ 0.866)
+$$&lt;/p&gt;
+&lt;p&gt;逐行乘：&lt;/p&gt;
+&lt;p&gt;$$
+L=C D^{1 / 2}=\left[\begin{array}{ccc}
+1 &amp;amp; 0 &amp;amp; 0 \\
+0.5 &amp;amp; 1 &amp;amp; 0 \\
+0.25 &amp;amp; 0.5 &amp;amp; 1
+\end{array}\right]\left[\begin{array}{ccc}
+1 &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 0.866 &amp;amp; 0 \\
+0 &amp;amp; 0 &amp;amp; 0.866
+\end{array}\right]=\left[\begin{array}{ccc}
+1 &amp;amp; 0 &amp;amp; 0 \\
+0.5 &amp;amp; 0.866 &amp;amp; 0 \\
+0.25 &amp;amp; 0.433 &amp;amp; 0.866
+\end{array}\right]
+$$&lt;/p&gt;
+&lt;p&gt;最终结果：验证
+$$
+\Gamma = L L^T
+\Rightarrow \text{构造出的 } L \text{ 正是 } \Gamma \text{ 的 Cholesky 分解}
+$$&lt;/p&gt;
 </description>
         </item>
         <item>

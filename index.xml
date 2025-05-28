@@ -1682,6 +1682,7 @@ $$
 &lt;li&gt;教材：Introduction to Mathematical Statistics ，Hogg&lt;/li&gt;
 &lt;li&gt;教材：统计推断，Casella&lt;/li&gt;
 &lt;li&gt;教材：应用随机过程，Ross&lt;/li&gt;
+&lt;li&gt;教材：统计机器学习，李航&lt;/li&gt;
 &lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;统计计算&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;网页：&lt;a class=&#34;link&#34; href=&#34;https://bookdown.org/rdpeng/advstatcomp/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2853,10 +2854,11 @@ $$
 &lt;p&gt;在 Harris recurrent 基础上，若存在不变概率测度 𝜋，则成Markov链为 &lt;strong&gt;Positive Harris recurrent&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理（收敛定理）.&lt;/strong&gt;  任意Positive Harris recurrent且非周期的Markovb链，对于所有初始状态 $x \in \mathcal{X}$ ，转移概率 $P^n(x, \cdot)$ 弱收敛到不变测度 $\pi$ ：
 $$
-\lim _{n \rightarrow \infty}\left|P^n(x, \cdot)-\pi(\cdot)\right|&lt;em&gt;{T V}=0
+\lim _{n \rightarrow \infty}\left|P^n(x, \cdot)-\pi(\cdot)\right|_{T V}=0
 $$
-这里 $|\cdot|&lt;/em&gt;{T V}$ 表示 全变差距离（total variation distance）。&lt;/p&gt;
+这里 $|\cdot|_{T V}$ 表示 全变差距离（total variation distance）。&lt;/p&gt;
 &lt;p&gt;收敛定理表明了满足一定条件下的Markov链可以收敛到稳态分布，我们之前推导出来过M-H算法的转移核，可以验证其复合收敛定理的假设。&lt;/p&gt;
+&lt;p&gt;细致平衡只能保证 π 是不变分布（stationary distribution），但不能保证马尔可夫链从&lt;strong&gt;任意初始状态收敛到 π&lt;/strong&gt;。而我们做推断时关心的是收敛性，所以还需要 Harris recurrence 等条件。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理（遍历性定理）.&lt;/strong&gt; 设 $\left\{X_n\right\}$ 是 positive Harris recurrent 且 aperiodic 的 Markov 链，不变分布为 $\pi$ 。那么，
 对任何 $f \in L^1(\pi)$ ，有：
 $$
@@ -2870,11 +2872,48 @@ $$&lt;/p&gt;
 &lt;h2 id=&#34;贝叶斯推断基础&#34;&gt;贝叶斯推断基础
 &lt;/h2&gt;&lt;p&gt;时间充足会补上这部分。&lt;/p&gt;
 &lt;h2 id=&#34;精确推断&#34;&gt;精确推断
-&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，在推断的过程中使用了精确的后验分布，所以称为精确推断；对于近似推断，有Laplace 近似、变分推断等等，在推断的过程中对后验分布进行了近似，所以称为近似推断。&lt;/p&gt;
 &lt;h3 id=&#34;mcmc-1&#34;&gt;MCMC
 &lt;/h3&gt;&lt;p&gt;采样章节中有详细描述。&lt;/p&gt;
+&lt;p&gt;对真实后验分布的采样，且有Markov链的遍历性定理作为保证，使用的是真实后验，所以为精确推断。&lt;/p&gt;
 &lt;h3 id=&#34;em算法&#34;&gt;EM算法
-&lt;/h3&gt;&lt;p&gt;学过很多次EM算法，感觉始终没有学明白，借此机会用比较统计的眼光将其学明白。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;本章节主要参考李航的统计学习方法，讲的并不是很贝叶斯，但是原理其实差不多，贝叶斯视角可以将隐变量当成先验分布。&lt;/p&gt;
+&lt;p&gt;对于含有隐变量的概率模型参数的极大似然或最大后验估计，这里不会详细的推导EM算法，而是讲主要的思想和结果列出。&lt;/p&gt;
+&lt;p&gt;期望最大化（EM）算法，主要用来解决完全数据未知，即含有隐变量情况下的最大似然估计，有
+$$
+L(\theta)\geq B(\theta,\theta^{(i)})
+$$
+采用下方迭代
+$$
+\begin{aligned}
+\theta^{(i+1)} &amp;amp;= \argmax_\theta B(\theta,\theta^{(i)})\\
+&amp;amp; =\arg \max _\theta\left(\sum_Z P\left(Z \mid Y, \theta^{(i)}\right) \log P(Y, Z \mid \theta)\right) \\
+&amp;amp; =\arg \max _\theta Q\left(\theta, \theta^{(i)}\right)
+\end{aligned}
+$$
+$Y$ 为数据，$Z$ 为隐变量，$Q\left(\theta, \theta^{(i)}\right)$ 为完全数据的条件似然，EM算法就是&lt;strong&gt;最大化完全数据的条件似然&lt;/strong&gt;的算法，可以&lt;strong&gt;优化似然的下界&lt;/strong&gt;，给出EM算法的形式如下：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://imgse.com/i/pVp3BIf&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/28/pVp3BIf.md.png&#34; alt=&#34;pVp3BIf.png&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 1（EM的似然函数递增）.&lt;/strong&gt; 设 $P(Y \mid \theta)$ 为观测数据的似然函数，$\theta^{(i)}(i=1,2, \cdots)$ 为 EM 算法得到的参数估计序列，$P\left(Y \mid \theta^{(i)}\right)(i=1,2, \cdots)$ 为对应的似然函数序列，则 $P\left(Y \mid \theta^{(i)}\right)$ 是单调递增的，即
+$$
+P\left(Y \mid \theta^{(i+1)}\right) \geqslant P\left(Y \mid \theta^{(i)}\right)
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 事实上，大多数似然函数是有上界的，这也保证了一般EM算法会收敛，但是能否收敛到全局最大值是没有保证的，另外，EM算法对初始值的选取非常敏感。&lt;/p&gt;
+&lt;p&gt;可以用F函数来解释EM算法，并且给出GEM（广义EM）算法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义 2（ $\boldsymbol{F}$ 函数）.&lt;/strong&gt; 假设隐变量数据 $Z$ 的概率分布为 $\tilde{P}(Z)$ ，定义分布 $\tilde{P}$ 与参数 $\theta$ 的函数 $F(\tilde{P}, \theta)$ 如下：
+$$
+F(\bar{P}, \theta)=E_{\tilde{P}}[\log P(Y, Z \mid \theta)]+H(\tilde{P})
+$$
+称为 $F$ 函数。式中 $H(\tilde{P})=-E_{\tilde{P}} \log \tilde{P}(Z)$ 是分布 $\tilde{P}(Z)$ 的熵。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 3(F函数的最大值意味着似然的最大值).&lt;/strong&gt; 设 $L(\theta)=\log P(Y \mid \theta)$ 为观测数据的对数似然函数，$\theta^{(i)}, i=1,2, \cdots$ ，为 EM 算法得到的参数估计序列。如果 $F(\tilde{P}, \theta)$ 在 $\tilde{P}^*$和 $\theta^*$ 有局部极大值，那么 $L(\theta)$ 也在 $\theta^*$ 有局部极大值。类似地，如果 $F(\tilde{P}, \theta)$ 在 $\tilde{P}^*$和 $\theta^*$ 达到全局最大值，那么 $L(\theta)$ 也在 $\theta^*$ 达到全局最大值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理 4（MM算法）.&lt;/strong&gt; EM 算法的一次迭代可由 $F$ 函数的极大－极大算法实现，设 $\theta^{(i)}$ 为第 $i$ 次迭代参数 $\theta$ 的估计，$\tilde{P}^{(i)}$ 为第 $i$ 次迭代函数 $\tilde{P}$ 的估计。在第 $i+1$次选代的两步为：&lt;br&gt;
+（1）对固定的 $\theta^{(i)}$ ，求 $\tilde{P}^{(i+1)}$ 使 $F\left(\tilde{P}, \theta^{(i)}\right)$ 极大化；&lt;br&gt;
+（2）对固定的 $\tilde{P}^{(i+1)}$ ，求 $\theta^{(i+1)}$ 使 $F\left(\tilde{P}^{(i+1)}, \theta\right)$ 极大化。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 事实上，若对隐变量的估计 $\tilde{P}(Z)$ 取到最优，此时 $F\left(\tilde{P}^{(i+1)}, \theta\right)=Q\left(\theta, \theta^{(i)}\right)+H\left(\tilde{P}^{(i+1)}\right)$ ，再对 $\theta$ 优化等价于EM算法，所以说MM算法是EM算法的拓展版本。&lt;/p&gt;
+&lt;p&gt;利用MM算法，我们可以搞出其他的GEM算法，例如，考虑 $Q$ 函数不好优化，在M步可以每次不取到最优，而是有改进即可；或者在M步的时候每次对满条件分布进行优化，即估计其他参数，只对一个参数进行优化，再按这种步骤把参数全部优化一遍完成M步，这种方式与变分推断中的CAVI方法非常像，我们会在变分推断的章节中谈一谈VI和EM算法的关系，以及推广EM算法到变分EM算法。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;为什么EM算法是精确推断？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在E步中，我们需要计算完全数据的条件似然 $Q\left(\theta, \theta^{(i)}\right)=E_Z\left[\log P(Y, Z \mid \theta) \mid Y, \theta^{(i)}\right]$，期望的意义是在 $P(Z\mid Y,\theta^{(i)})$ 下的，使用的是精确的后验，所以称其为精确推断，其实判断贝叶斯推断的精确与否，就是判断其是否使用了真正的后验概率，还是近似的后验概率。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;信念传播&#34;&gt;信念传播
 &lt;/h3&gt;&lt;h2 id=&#34;近似推断&#34;&gt;近似推断
 &lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的，在现在这个大数据的时代，后验分布已经不是我们可以理解的样子，我们几乎不可能去得到精确的后验分布，近似推断是现代贝叶斯推断主流的方法。&lt;/p&gt;
@@ -2947,16 +2986,43 @@ $$
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;讨论.&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;VI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CAVI与EM算法&lt;/strong&gt;：后续补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VI与EM算法&lt;/strong&gt;：一个使用了精确后验，一个使用近似后验，考虑下一个小节描述的变分EM算法，其实变分推断可以看作EM算法在使用近似后验下的推广，也可以使用MM算法进行解释。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CAVI与Gibbs采样&lt;/strong&gt;：都使用了满条件分布，迭代形式非常一致（特别是二维的情况，几乎一样），但是本质目的不同，一个为了产生样本，一个为了近似推断，这也反应了我们的近似推断是合理的，在某些条件下可以逼近精确推断。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;变分em算法&#34;&gt;变分EM算法
+&lt;/h3&gt;&lt;p&gt;变分推理中，可以通过迭代的方法最大化证据下界，这时算法是 EM 算法的推广，称为变分 EM 算法。&lt;/p&gt;
+&lt;p&gt;假设模型是联合概率分布 $p(x, z \mid \theta)$ ，其中 $x$ 是观测变量，$z$ 是隐变量，$\theta$ 是参数。目标是通过观测数据的概率（证据） $\log p(x \mid \theta)$ 的最大化，估计模型的参数 $\theta$ 。使用变分推理，导入平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ ，定义证据下界
+$$
+ELBO(q, \theta)=E_q[\log p(x, z \mid \theta)]-E_q[\log q(z)]
+$$
+通过迭代，分别以 $q$ 和 $\theta$ 为变量对证据下界进行最大化，就得到变分 EM 算法：&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;算法（变分 EM 算法）&lt;/strong&gt;
+循环执行以下E步和M步，直到收敛。&lt;br&gt;
+（1） E 步：固定 $\theta$ ，求 $ELBO(q, \theta)$ 对 $q$ 的最大化。&lt;br&gt;
+（2） M 步：固定 $q$ ，求 $L(q, \theta)$ 对 $\theta$ 的最大化。&lt;br&gt;
+给出模型参数 $\theta$ 的估计值。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;可见，在E步中，使用的后验分布是近似后验 $q(z)$ ，并不是精确后验分布。&lt;/p&gt;
+&lt;p&gt;变分 EM 算法的迭代过程中，以下关系成立：
+$$
+\log p\left(x \mid \theta^{(t-1)}\right)=ELBO\left(q^{(t)}, \theta^{(t-1)}\right) \leqslant ELBO\left(q^{(t)}, \theta^{(t)}\right) \leqslant \log p\left(x \mid \theta^{(t)}\right)
+$$
+其中上角标 $t-1$ 和 $t$ 表示迭代次数，左边的等式基于 E 步计算和变分推理原理，中间的不等式基于 $M$ 步计算，右边的不等式基于变分推理原理。说明每次迭代都保证&lt;strong&gt;观测数据的似然不递减&lt;/strong&gt;。因此，变分 EM 算法一定收敛，但可能收敛到局部最优。&lt;/p&gt;
+&lt;p&gt;EM 算法实际也是对证据下界进行最大化。联系 MM 算法，则其中的 F 函数就是ELBO。 EM 算法假设 $q(z)=p(z \mid x)$ 且 $p(z \mid x)$ 容易计算，而变分 EM 算法则考虑一般情况使用容易计算的平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ 。当模型复杂时，EM 算法末必可用，但变分 EM 算法仍然可以使用。&lt;/p&gt;
 &lt;h2 id=&#34;因果推断&#34;&gt;因果推断
 &lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
 &lt;h2 id=&#34;充分降维&#34;&gt;充分降维
 &lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
 &lt;h2 id=&#34;lasso问题&#34;&gt;Lasso问题
 &lt;/h2&gt;&lt;p&gt;十几年前很火的问题，2024年的时候了解过一些，这里再续上之前学的东西，用来作为高维统计的入门。&lt;/p&gt;
+&lt;h2 id=&#34;统计学习&#34;&gt;统计学习
+&lt;/h2&gt;&lt;p&gt;这个板块用来记录一些统计学习的小结论。&lt;/p&gt;
+&lt;h3 id=&#34;最大熵模型&#34;&gt;最大熵模型
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;最大熵原理.&lt;/strong&gt; 最大熵准则是一种选择随机变量统计特性最符合客观情况的准则，也称为最大信息原理。该准则由E.T. Jaynes于1957年提出，其核心思想是在只掌握关于未知分布的部分知识时，应该选取符合这些知识但熵值最大的概率分布。&lt;/p&gt;
+&lt;p&gt;满足最大熵原理的分布模型都叫做最大熵模型。&lt;/p&gt;
+&lt;p&gt;事实上，最大熵原理与最大似然原理等价，实际中也使用MLE进行最大熵模型的训练。&lt;/p&gt;
+&lt;p&gt;我们在MM算法中构造的F函数，也可以看作一种最大熵原理的应用，正因为如此，EM算法才可以使用MM算法来解释（最大似然）。&lt;/p&gt;
 </description>
         </item>
         <item>
