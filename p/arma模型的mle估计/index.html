@@ -103,9 +103,20 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#exact-likelihood">Exact likelihood</a></li>
+    <li><a href="#mle">MLE</a>
+      <ol>
+        <li><a href="#新息迭代方法">新息迭代方法</a></li>
+        <li><a href="#解释新息迭代算法为cholesky分解">解释新息迭代算法为Cholesky分解</a></li>
+      </ol>
+    </li>
+    <li><a href="#现有的arma参数求解器">现有的arma参数求解器</a>
+      <ol>
+        <li><a href="#matlab">Matlab</a></li>
+        <li><a href="#mathematica">Mathematica</a></li>
+        <li><a href="#r">R</a></li>
+      </ol>
+    </li>
     <li><a href="#other">Other</a></li>
-    <li><a href="#解释迭代算法为cholesky分解">解释迭代算法为Cholesky分解</a></li>
   </ol>
 </nav>
         </div>
@@ -182,7 +193,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    4 minute read
                 </time>
             </div>
         
@@ -197,9 +208,32 @@
     <section class="article-content">
     
     
-    <p>正在搞一些时间序列的东西，暂时用来记录，日后完整。</p>
-<h2 id="exact-likelihood">Exact likelihood
-</h2><p>使用完整的历史信息构建似然和迭代</p>
+    <p>暂时用来记录，日后完整。</p>
+<h2 id="mle">MLE
+</h2><p>$$
+\begin{equation}
+\begin{aligned}
+&amp; \underset{\boldsymbol{a},\boldsymbol{b},\theta}{\mathrm{minimize}} &amp;  &amp; \sum_{t=1}^n \rho_\theta(\epsilon_t)\\
+&amp; \mathrm{subject\quad to}&amp;&amp;    {\epsilon}_t = {y}_t - a_0 - \sum_{i=1}^p a_i{y}_{t-i} - \sum_{j=1}^q b_j {\epsilon}_{t-q},\text{ for }t=1,\ldots,n,\\
+&amp; &amp;&amp; \text{moduli of the roots  are greater than one}.
+\end{aligned}
+\end{equation}
+$$</p>
+<p>ARMA的精确MLE一般可以通过两种方式得到：</p>
+<ol>
+<li>状态空间演化，Kalman 滤波的思想，可见 Maximum Likelihood Fitting of ARMA Models to Time Series with Missing Observations</li>
+<li>新息迭代法，本质是协方差矩阵的 Cholesky 分解，重要的是新息迭代法本身就提供了一种求解精确MLE的迭代形式</li>
+</ol>
+<p>精确似然所带来的优化问题是非常难求解的：</p>
+<ol>
+<li>新息迭代，那么算法的复杂度会非常高</li>
+<li>直接使用线性规划方法，例如内点法，需要对新息的非线性约束进行处理，导致优化的问题严重非凸，只能找到局部最优解</li>
+<li>ARMA 稳定性和可逆性的要求是非常难满足的，要求AR和MA部分的根在单位圆之外，对于比较高阶的模型，没有闭式的求根公式</li>
+</ol>
+<p>对于稳定性和可逆性的约束，一般用Jones reparametrization进行处理，可以将优化问题变成无约束问题。</p>
+<p>除了精确MLE，还有条件MLE，即仅仅使用ARMA的模型，而忽略掉前 $m(m = \max(p,q))$ 个数据的分布,在数据量比较少时偏差很大，而且一般也需要数值求解。</p>
+<h3 id="新息迭代方法">新息迭代方法
+</h3><p>使用完整的历史信息构建似然和迭代</p>
 <p><strong>迭代</strong>：</p>
 <p>Wold 表示
 $$
@@ -239,17 +273,8 @@ $$
 $$
 \hat{\sigma}^2=\frac{1}{N} S(\hat{\beta})
 $$</p>
-<h2 id="other">Other
-</h2><p><a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
-    >Improved Maximum Likelihood Estimation of ARMA Models</a>:</p>
-<p>A closed form expression
-of the ARMA exact likelihood function was firstly given in <a class="link" href="https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb"  target="_blank" rel="noopener"
-    >The exact likelihood function for a mixed autoregressive-moving average process</a>. Afterwards, the focus shifted to
-finding expressions of the exact likelihood being more suitable for its computation <a class="link" href="https://www.jstor.org/stable/2335242"  target="_blank" rel="noopener"
-    >An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process</a>,<a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
-    >Computation of the exact likelihood function of an arima process</a></p>
-<h2 id="解释迭代算法为cholesky分解">解释迭代算法为Cholesky分解
-</h2><p><strong>用 Innovations Algorithm 实现 Cholesky 分解</strong> 的过程。我们以 <strong>一个长度为 3 的高斯向量</strong> $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。</p>
+<h3 id="解释新息迭代算法为cholesky分解">解释新息迭代算法为Cholesky分解
+</h3><p><strong>用 Innovations Algorithm 实现 Cholesky 分解</strong> 的过程。我们以 <strong>一个长度为 3 的高斯向量</strong> $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。</p>
 <p><strong>假设的协方差矩阵</strong></p>
 <p>我们假设 $Y$ 是平稳的高斯序列，有以下协方差结构：
 $$
@@ -338,6 +363,84 @@ $$
 \Gamma = L L^T
 \Rightarrow \text{构造出的 } L \text{ 正是 } \Gamma \text{ 的 Cholesky 分解}
 $$</p>
+<h2 id="现有的arma参数求解器">现有的arma参数求解器
+</h2><h3 id="matlab">Matlab
+</h3><p><code>EstMdl = estimate(Mdl,y)</code></p>
+<ol>
+<li>使用Box书中的方法根据请款产生初始参数估计，作为迭代起点</li>
+<li>确保初始迭代解满足约束要求</li>
+<li>设置负对数似然目标函数</li>
+<li>根据稳定性、可逆性、平稳性等设置约束条件<code>arimaNonLineqrConstraints</code></li>
+<li>调用<code>fmincon</code>进行优化</li>
+<li>检查优化情况，改进数值问题匹配模型</li>
+<li>计算后续结果，输出模型</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">初始化：</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Estimate</span> <span class="n">parameters</span> <span class="n">of</span> <span class="n">an</span> <span class="n">ARIMAX</span> <span class="n">model</span> <span class="n">by</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">approaches</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">If</span> <span class="n">the</span> <span class="n">model</span> <span class="n">has</span> <span class="n">a</span> <span class="n">regression</span> <span class="n">component</span> <span class="n">OR</span> <span class="n">no</span> <span class="n">MA</span> <span class="n">component</span><span class="p">,</span> <span class="n">then</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">estimate</span> <span class="n">the</span> <span class="n">constant</span><span class="p">,</span> <span class="n">AR</span><span class="p">,</span> <span class="ow">and</span> <span class="n">predictor</span> <span class="n">coefficients</span> <span class="n">by</span> <span class="n">OLS</span> <span class="n">regression</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="n">After</span> <span class="n">the</span> <span class="n">ARX</span> <span class="n">component</span> <span class="n">is</span> <span class="n">estimated</span><span class="p">,</span> <span class="n">a</span> <span class="n">subsequent</span> <span class="n">estimation</span> <span class="n">of</span> <span class="n">any</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">MA</span> <span class="n">coefficients</span> <span class="n">is</span> <span class="n">made</span> <span class="n">by</span> <span class="n">applying</span> <span class="n">the</span> <span class="n">auto</span><span class="o">-</span><span class="n">covariance</span> <span class="n">approach</span> <span class="n">outlined</span> 
+</span></span><span class="line"><span class="cl">      <span class="ow">in</span> <span class="n">Box</span><span class="p">,</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Reinsel</span> <span class="p">(</span><span class="n">Appendix</span> <span class="n">A6</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pages</span> <span class="mi">220</span><span class="o">-</span><span class="mi">21</span><span class="p">),</span> <span class="n">to</span> <span class="n">the</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">filtered</span> <span class="n">residuals</span> <span class="n">obtained</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">step</span><span class="p">,</span> <span class="n">modified</span> <span class="n">to</span> <span class="n">account</span> 
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="n">any</span> <span class="n">user</span><span class="o">-</span><span class="n">specified</span> <span class="n">coefficient</span> <span class="n">values</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">If</span> <span class="n">the</span> <span class="n">model</span> <span class="n">has</span> <span class="n">no</span> <span class="n">regression</span> <span class="n">component</span> <span class="n">AND</span> <span class="n">an</span> <span class="n">MA</span> <span class="n">component</span><span class="p">,</span> <span class="n">then</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">estimate</span> <span class="n">the</span> <span class="n">AR</span> <span class="ow">and</span> <span class="n">MA</span> <span class="n">coefficients</span> <span class="n">by</span> <span class="n">the</span> <span class="n">auto</span><span class="o">-</span><span class="n">covariance</span> <span class="n">method</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">outlined</span> <span class="ow">in</span> <span class="n">Box</span><span class="p">,</span> <span class="n">Jenkins</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Reinsel</span> <span class="p">(</span><span class="n">Appendix</span> <span class="n">A6</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">pages</span> <span class="mi">220</span><span class="o">-</span><span class="mi">21</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">modified</span> <span class="n">to</span> <span class="n">account</span> <span class="k">for</span> <span class="n">any</span> <span class="n">user</span><span class="o">-</span><span class="n">specified</span> <span class="n">coefficient</span> <span class="n">values</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">目标函数：</span>
+</span></span><span class="line"><span class="cl"><span class="n">F</span>  <span class="o">=</span> <span class="err">@</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">nLogLike</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">YData</span><span class="p">,</span> <span class="n">XData</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">Mdl</span><span class="p">,</span> <span class="n">AR</span><span class="o">.</span><span class="n">Lags</span><span class="p">,</span> <span class="n">MA</span><span class="o">.</span><span class="n">Lags</span><span class="p">,</span> <span class="n">maxPQ</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">isDistributionT</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">userSpecifiedY0</span><span class="p">,</span> <span class="n">userSpecifiedE0</span><span class="p">,</span> <span class="n">userSpecifiedV0</span><span class="p">,</span> <span class="n">trapValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">优化：</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">nLogL</span><span class="p">,</span> <span class="n">exitflag</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmincon</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">conStruct</span><span class="o">.</span><span class="n">Aeq</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">beq</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">lb</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">ub</span><span class="p">,</span> <span class="n">conStruct</span><span class="o">.</span><span class="n">nonLinear</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>fmincon</code> 默认调用内点法</p>
+<h3 id="mathematica">Mathematica
+</h3><h3 id="r">R
+</h3><h2 id="other">Other
+</h2><p><a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
+    >Improved Maximum Likelihood Estimation of ARMA Models</a>:</p>
+<p>A closed form expression
+of the ARMA exact likelihood function was firstly given in <a class="link" href="https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb"  target="_blank" rel="noopener"
+    >The exact likelihood function for a mixed autoregressive-moving average process</a>. Afterwards, the focus shifted to
+finding expressions of the exact likelihood being more suitable for its computation <a class="link" href="https://www.jstor.org/stable/2335242"  target="_blank" rel="noopener"
+    >An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process</a>,<a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
+    >Computation of the exact likelihood function of an arima process</a></p>
 
 </section>
 

@@ -13,9 +13,32 @@
         <pubDate>Mon, 26 May 2025 08:00:00 +0800</pubDate>
         
         <guid>http://localhost:1313/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/ARMA_MLE/cover.png" alt="Featured image of post ARMA模型的MLE估计" /&gt;&lt;p&gt;正在搞一些时间序列的东西，暂时用来记录，日后完整。&lt;/p&gt;
-&lt;h2 id=&#34;exact-likelihood&#34;&gt;Exact likelihood
-&lt;/h2&gt;&lt;p&gt;使用完整的历史信息构建似然和迭代&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/post_file/ARMA_MLE/cover.png" alt="Featured image of post ARMA模型的MLE估计" /&gt;&lt;p&gt;暂时用来记录，日后完整。&lt;/p&gt;
+&lt;h2 id=&#34;mle&#34;&gt;MLE
+&lt;/h2&gt;&lt;p&gt;$$
+\begin{equation}
+\begin{aligned}
+&amp;amp; \underset{\boldsymbol{a},\boldsymbol{b},\theta}{\mathrm{minimize}} &amp;amp;  &amp;amp; \sum_{t=1}^n \rho_\theta(\epsilon_t)\\
+&amp;amp; \mathrm{subject\quad to}&amp;amp;&amp;amp;    {\epsilon}_t = {y}_t - a_0 - \sum_{i=1}^p a_i{y}_{t-i} - \sum_{j=1}^q b_j {\epsilon}_{t-q},\text{ for }t=1,\ldots,n,\\
+&amp;amp; &amp;amp;&amp;amp; \text{moduli of the roots  are greater than one}.
+\end{aligned}
+\end{equation}
+$$&lt;/p&gt;
+&lt;p&gt;ARMA的精确MLE一般可以通过两种方式得到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;状态空间演化，Kalman 滤波的思想，可见 Maximum Likelihood Fitting of ARMA Models to Time Series with Missing Observations&lt;/li&gt;
+&lt;li&gt;新息迭代法，本质是协方差矩阵的 Cholesky 分解，重要的是新息迭代法本身就提供了一种求解精确MLE的迭代形式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;精确似然所带来的优化问题是非常难求解的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新息迭代，那么算法的复杂度会非常高&lt;/li&gt;
+&lt;li&gt;直接使用线性规划方法，例如内点法，需要对新息的非线性约束进行处理，导致优化的问题严重非凸，只能找到局部最优解&lt;/li&gt;
+&lt;li&gt;ARMA 稳定性和可逆性的要求是非常难满足的，要求AR和MA部分的根在单位圆之外，对于比较高阶的模型，没有闭式的求根公式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于稳定性和可逆性的约束，一般用Jones reparametrization进行处理，可以将优化问题变成无约束问题。&lt;/p&gt;
+&lt;p&gt;除了精确MLE，还有条件MLE，即仅仅使用ARMA的模型，而忽略掉前 $m(m = \max(p,q))$ 个数据的分布,在数据量比较少时偏差很大，而且一般也需要数值求解。&lt;/p&gt;
+&lt;h3 id=&#34;新息迭代方法&#34;&gt;新息迭代方法
+&lt;/h3&gt;&lt;p&gt;使用完整的历史信息构建似然和迭代&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;迭代&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;Wold 表示
 $$
@@ -55,17 +78,8 @@ $$
 $$
 \hat{\sigma}^2=\frac{1}{N} S(\hat{\beta})
 $$&lt;/p&gt;
-&lt;h2 id=&#34;other&#34;&gt;Other
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Improved Maximum Likelihood Estimation of ARMA Models&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;A closed form expression
-of the ARMA exact likelihood function was firstly given in &lt;a class=&#34;link&#34; href=&#34;https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The exact likelihood function for a mixed autoregressive-moving average process&lt;/a&gt;. Afterwards, the focus shifted to
-finding expressions of the exact likelihood being more suitable for its computation &lt;a class=&#34;link&#34; href=&#34;https://www.jstor.org/stable/2335242&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process&lt;/a&gt;,&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Computation of the exact likelihood function of an arima process&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;解释迭代算法为cholesky分解&#34;&gt;解释迭代算法为Cholesky分解
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;用 Innovations Algorithm 实现 Cholesky 分解&lt;/strong&gt; 的过程。我们以 &lt;strong&gt;一个长度为 3 的高斯向量&lt;/strong&gt; $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。&lt;/p&gt;
+&lt;h3 id=&#34;解释新息迭代算法为cholesky分解&#34;&gt;解释新息迭代算法为Cholesky分解
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;用 Innovations Algorithm 实现 Cholesky 分解&lt;/strong&gt; 的过程。我们以 &lt;strong&gt;一个长度为 3 的高斯向量&lt;/strong&gt; $Y = (Y_1, Y_2, Y_3)^T$ 为例，协方差矩阵为 $\Gamma_3$。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;假设的协方差矩阵&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我们假设 $Y$ 是平稳的高斯序列，有以下协方差结构：
 $$
@@ -154,6 +168,84 @@ $$
 \Gamma = L L^T
 \Rightarrow \text{构造出的 } L \text{ 正是 } \Gamma \text{ 的 Cholesky 分解}
 $$&lt;/p&gt;
+&lt;h2 id=&#34;现有的arma参数求解器&#34;&gt;现有的arma参数求解器
+&lt;/h2&gt;&lt;h3 id=&#34;matlab&#34;&gt;Matlab
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;EstMdl = estimate(Mdl,y)&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用Box书中的方法根据请款产生初始参数估计，作为迭代起点&lt;/li&gt;
+&lt;li&gt;确保初始迭代解满足约束要求&lt;/li&gt;
+&lt;li&gt;设置负对数似然目标函数&lt;/li&gt;
+&lt;li&gt;根据稳定性、可逆性、平稳性等设置约束条件&lt;code&gt;arimaNonLineqrConstraints&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;调用&lt;code&gt;fmincon&lt;/code&gt;进行优化&lt;/li&gt;
+&lt;li&gt;检查优化情况，改进数值问题匹配模型&lt;/li&gt;
+&lt;li&gt;计算后续结果，输出模型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;初始化：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;Estimate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;an&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ARIMAX&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;one&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;following&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;approaches&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;If&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;has&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OR&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;no&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MA&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;then&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;estimate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;constant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;predictor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coefficients&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OLS&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;After&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ARX&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;estimated&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subsequent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;estimation&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;any&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;MA&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coefficients&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;made&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;applying&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;covariance&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;approach&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;outlined&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Box&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Jenkins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Reinsel&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Appendix&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pages&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;220&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;filtered&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;residuals&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obtained&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;step&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;modified&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;account&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;any&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;specified&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coefficient&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;If&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;has&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;no&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AND&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;an&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MA&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;then&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;estimate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AR&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MA&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coefficients&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;by&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;covariance&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;outlined&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Box&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Jenkins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Reinsel&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Appendix&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pages&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;220&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;modified&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;account&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;any&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;specified&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coefficient&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;目标函数：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nLogLike&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;YData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;XData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Mdl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Lags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MA&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Lags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maxPQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;isDistributionT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;options&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;userSpecifiedY0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userSpecifiedE0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;userSpecifiedV0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;trapValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;优化：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;coefficients&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nLogL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exitflag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fmincon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;X0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Aeq&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;beq&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ub&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conStruct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nonLinear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;options&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;fmincon&lt;/code&gt; 默认调用内点法&lt;/p&gt;
+&lt;h3 id=&#34;mathematica&#34;&gt;Mathematica
+&lt;/h3&gt;&lt;h3 id=&#34;r&#34;&gt;R
+&lt;/h3&gt;&lt;h2 id=&#34;other&#34;&gt;Other
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Improved Maximum Likelihood Estimation of ARMA Models&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;A closed form expression
+of the ARMA exact likelihood function was firstly given in &lt;a class=&#34;link&#34; href=&#34;https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The exact likelihood function for a mixed autoregressive-moving average process&lt;/a&gt;. Afterwards, the focus shifted to
+finding expressions of the exact likelihood being more suitable for its computation &lt;a class=&#34;link&#34; href=&#34;https://www.jstor.org/stable/2335242&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;An Algorithm for the Exact Likelihood of a Mixed Autoregressive-Moving Average Process&lt;/a&gt;,&lt;a class=&#34;link&#34; href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00949657708810151&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Computation of the exact likelihood function of an arima process&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -244,6 +336,9 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.&lt;/p&gt;
 &lt;/h2&gt;&lt;p&gt;可变统计环境下的最小二乘：递归最小二乘(RLS)。
 &lt;a href=&#34;https://imgse.com/i/pExPkXn&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPkXn.jpg&#34; alt=&#34;pExPkXn.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;
 &lt;a href=&#34;https://imgse.com/i/pExPEmq&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/05/19/pExPEmq.jpg&#34; alt=&#34;pExPEmq.jpg&#34; border=&#34;0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;凸优化基础&#34;&gt;凸优化基础
+&lt;/h2&gt;&lt;p&gt;简单的介绍了一下凸分析、线性规划和内点法。
+&lt;a href=&#34;https://imgse.com/i/pVCkuQK&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/06/02/pVCkuQK.jpg&#34; alt=&#34;pVCkuQK.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
