@@ -105,6 +105,7 @@
   <ol>
     <li><a href="#mle">MLE</a>
       <ol>
+        <li><a href="#jones-reparametrization">Jones reparametrization</a></li>
         <li><a href="#新息迭代方法">新息迭代方法</a></li>
         <li><a href="#解释新息迭代算法为cholesky分解">解释新息迭代算法为Cholesky分解</a></li>
       </ol>
@@ -116,7 +117,12 @@
         <li><a href="#r">R</a></li>
       </ol>
     </li>
-    <li><a href="#other">Other</a></li>
+    <li><a href="#other">Other</a>
+      <ol>
+        <li><a href="#重要定理">重要定理</a></li>
+        <li><a href="#论文中的一些结论">论文中的一些结论</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -193,7 +199,7 @@
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -230,8 +236,33 @@ $$</p>
 <li>直接使用线性规划方法，例如内点法，需要对新息的非线性约束进行处理，导致优化的问题严重非凸，只能找到局部最优解</li>
 <li>ARMA 稳定性和可逆性的要求是非常难满足的，要求AR和MA部分的根在单位圆之外，对于比较高阶的模型，没有闭式的求根公式</li>
 </ol>
-<p>对于稳定性和可逆性的约束，一般用Jones reparametrization进行处理，可以将优化问题变成无约束问题。</p>
+<p>对于稳定性和可逆性的约束 $S_p\times S_q$ ：
+$$
+\begin{aligned}
+&amp; S_p=\left\{\phi \in \mathbb{R}^p \mid 1-\phi_1 z-\ldots-\phi_p z^p \neq 0 \forall z \in \mathbb{C} \text { s.t. }|z| \leq 1\right\} \\
+&amp; S_q=\left\{\theta \in \mathbb{R}^q \mid 1+\theta_1 z+\ldots+\theta_p z^q \neq 0 \forall z \in \mathbb{C} \text { s.t. }|z| \leq 1\right\} .
+\end{aligned}
+$$
+一般用Jones reparametrization进行处理，可以通过引入变量的形式将该约束变为无约束。</p>
 <p>除了精确MLE，还有条件MLE，即仅仅使用ARMA的模型，而忽略掉前 $m(m = \max(p,q))$ 个数据的分布,在数据量比较少时偏差很大，而且一般也需要数值求解。</p>
+<h3 id="jones-reparametrization">Jones reparametrization
+</h3><p>Jones reparametrization 旨在处理平稳型和可逆性的非线性约束，
+而偏自相关函数与模型的可逆性和稳定性有着天然的关系：</p>
+<p><a class="link" href="https://sci-hub.se/10.2307/2336259"  target="_blank" rel="noopener"
+    >A note on enforcing stationarity in autoregressive-moving
+average models</a>：</p>
+<p><strong>Theorem.</strong> We have that $y^{(k)} \in C_k$ if and only if $\left|y_k^{(k)}\right|&lt;1$ and $y^{(k-1)} \in C_{k-1}$, where
+$$
+y_i^{(k-1)}=\left(y_i^{(k)}-y_k^{(k)} y_{k-i}^{(k)}\right) /\left\{1-\left(y_k^{(k)}\right)^2\right\} \quad(i=1, \ldots, k-1)
+$$
+For an autoregressive process of order $n, y^{(k)}$ solves the Yule-Walker equations of order $k$ for $k \leqslant n$. Thus for testing $y^{(n)} \in C_n$, the $n$ conditions $\left|y_k^{(k)}\right|&lt;1$ are obvious, since $r_k \equiv y_k^{(k)}$ are partial autocorrelations.</p>
+<p>凑巧的是 reverse Levinson-Durbin 提供了从 PACF 推出 AR 系数的方法（双射），本质还是使用Levinson-Durbin进行迭代，这样，我们就可以将对复杂的非线性约束转化到对PACF的约束上（$[-1,1]$）,从而迭代的优化PACF，最后才用PACF表达出AR系数。</p>
+<p>Jones reparametrization进一步的对PACF进行了处理，将其变为无约束优化：
+$$
+a_k=\frac{1-\exp \left(-u_k\right)}{1+\exp \left(-u_k\right)}, \quad k=1, \ldots, p
+$$</p>
+<p>同样，对MA部分也可以使用类似的 Jones reparametrization。</p>
+<p>可以发现，尽管使用Jones reparametrization可以解决非线性约束的问题，但是我们使用 $$u_i\rightarrow PACF\rightarrow a_i \rightarrow L(\theta)$$ 的方法依然会将所有的参数杂糅在一起，而且每一步优化的迭代非常复杂,使用Jones reparametrization并没有解决目标函数的非凸，也并没有降低计算复杂度，只是解决了一个非线性约束。</p>
 <h3 id="新息迭代方法">新息迭代方法
 </h3><p>使用完整的历史信息构建似然和迭代</p>
 <p><strong>迭代</strong>：</p>
@@ -433,7 +464,127 @@ $$</p>
 <h3 id="mathematica">Mathematica
 </h3><h3 id="r">R
 </h3><h2 id="other">Other
-</h2><p><a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
+</h2><h3 id="重要定理">重要定理
+</h3><p>AR模型协方差递推公式：</p>
+<p><strong>定理（Yule－Walker方程）</strong>$A R(p)$ 序列的自协方差函数满足
+$$
+\boldsymbol{\gamma}_n=\Gamma_n \boldsymbol{a}_n, \quad \gamma_0=\boldsymbol{\gamma}_n^T \boldsymbol{a}_n+\sigma^2, \quad n \geq p,
+$$
+即
+$$
+\begin{aligned}
+\gamma_k &amp; =a_1 \gamma_{k-1}+a_2 \gamma_{k-2}+\cdots+a_p \gamma_{k-p}, \quad k \geq 1 \\
+A(\mathscr{B}) \gamma_k &amp; =0, \quad k \geq 1 \\
+A(\mathscr{B}) \gamma_0 &amp; =\gamma_0-a_1 \gamma_1-a_2 \gamma_2-\cdots-a_p \gamma_p=\sigma^2
+\end{aligned}
+$$
+特别地，当 $n=p$ 时
+$$
+\Gamma_p\left(\begin{array}{c}
+a_1 \\
+a_2 \\
+\ldots \\
+a_p
+\end{array}\right)=\left(\begin{array}{c}
+\gamma_1 \\
+\gamma_2 \\
+\ldots \\
+\gamma_p
+\end{array}\right)
+$$
+记 $\phi_0=1, \phi_1=-a_1, \ldots, \phi_p=-a_p$ ，则 $A(z)=\sum_{j=0}^p \phi_j z^j, ~ \mathrm{AR}$ 模型可写成 $\sum_{j=0}^p \phi_j X_{t-j}=\varepsilon_t$ 。 Yule－Walker方程可写成
+$$
+\left(\begin{array}{cccc}
+\gamma_0 &amp; \gamma_1 &amp; \cdots &amp; \gamma_p \\
+\gamma_1 &amp; \gamma_0 &amp; \cdots &amp; \gamma_{p-1} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\gamma_p &amp; \gamma_{p-1} &amp; \cdots &amp; \gamma_0
+\end{array}\right)\left(\begin{array}{c}
+\phi_0 \\
+\phi_1 \\
+\vdots \\
+\phi_p
+\end{array}\right)=\left(\begin{array}{c}
+\sigma^2 \\
+0 \\
+\vdots \\
+0
+\end{array}\right)
+$$</p>
+<p>使用Yule-Walker系数系数不止可以对AR模型进行处理，对于平稳序列的线性预测都可以使用Yule-Walker系数。</p>
+<p><strong>定理（Y－W系数的最小相位性）</strong> 如果实数列 $\gamma_k, k=0,1, \ldots, n$ 使得
+$$
+\Gamma_{n+1} \triangleq\left(\begin{array}{cccc}
+\gamma_0 &amp; \gamma_1 &amp; \cdots &amp; \gamma_n \\
+\gamma_1 &amp; \gamma_0 &amp; \cdots &amp; \gamma_{n-1} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\gamma_n &amp; \gamma_{n-1} &amp; \cdots &amp; \gamma_0
+\end{array}\right)&gt;0
+$$
+则解出的 $n$ 阶Yuler－Walker系数 $\boldsymbol{a}_n$ 满足如下最小相位条件：
+$$
+1-\sum_{j=1}^n a_{n j} z^j \neq 0, \quad|z| \leq 1 .
+$$
+最小相位性就是以 $\boldsymbol{a}_n$ 为系数的 $\mathrm{AR}(p)$ 模型能表示成因果性线性平稳列的充分必要条件。一般的线性平稳列的自协方差列正定，所以其任意 $n$ 阶Yuler－Walker系数都满足最小相位条件。</p>
+<p>下面的Levinson-Durbin 递推定理提供了一种递归计算Y-W系数的方法。</p>
+<p><strong>定理（Levinson-Durbin 递推）</strong> 如果 $\Gamma_{n+1}$ 正定，则 $\gamma_k, k=0,1, \ldots, n$ 的 $1,2, \ldots, n, n+1$ 阶Yuler－Walker系数 $\left\{a_{i j}, i=1, \ldots, n+1, j=1, \ldots, i\right\}$ 和均方误差 $\sigma_k^2$ 可以如下递推计算：
+$$
+\begin{aligned}
+\sigma_0^2 &amp; =\gamma_0 \\
+a_{1,1} &amp; =\gamma_1 / \gamma_0 \\
+\sigma_k^2 &amp; =\sigma_{k-1}^2\left(1-a_{k, k}^2\right) \\
+a_{k+1, k+1} &amp; =\frac{\gamma_{k+1}-a_{k, 1} \gamma_k-a_{k, 2} \gamma_{k-1}-\cdots-a_{k, k} \gamma_1}{\gamma_0-a_{k, 1} \gamma_1-a_{k, 2} \gamma_2-\cdots-a_{k, k} \gamma_k} \\
+a_{k+1, j} &amp; =a_{k, j}-a_{k+1, k+1} a_{k, k+1-j}, \quad 1 \leq j \leq k
+\end{aligned}
+$$
+其中
+$$
+\sigma_k^2=E\left(X_{k+1}-\left(a_{k, 1} X_k+\cdots+a_{k, k} X_1\right)\right)^2
+$$
+是用 $X_k, X_{k-1}, \ldots, X_1$ 预测 $X_{k+1}$ 的均方误差。<br>
+<strong>注.</strong> 关于 $\sigma_k^2$ ，记 $\boldsymbol{X}_k=\left(X_k, X_{k-1}, \ldots, X_1\right)^T$ ，有：
+$$
+\begin{aligned}
+\sigma_k^2 &amp; =E\left[X_{k+1}-\boldsymbol{a}_k^T \boldsymbol{X}_k\right]^2 \\
+&amp; =E\left[\left(X_{k+1}-\boldsymbol{a}_k^T \boldsymbol{X}_k\right) X_{k+1}\right]-E\left[\left(X_{k+1}-\boldsymbol{a}_k^T \boldsymbol{X}_k\right) \boldsymbol{a}_k^T \boldsymbol{X}_k\right] \\
+&amp; =\gamma_0-\boldsymbol{a}_k^T\left(\gamma_1 \cdots \gamma_k\right)^T-0 \quad \text { (根据Y-W方程) } \\
+&amp; =\gamma_0-a_{k, 1} \gamma_1-\cdots-a_{k, k} \gamma_k
+\end{aligned}
+$$
+这是 $a_{k+1, k+1}$ 的递推公式的分母，所以 $a_{k+1, k+1}$ 的递推公式也可以写成
+$$
+a_{k+1, k+1}=\frac{\gamma_{k+1}-a_{k, 1} \gamma_k-a_{k, 2} \gamma_{k-1}-\cdots-a_{k, k} \gamma_1}{\sigma_k^2}
+$$
+注意 $\sigma_k^2$ 是用 $k$ 个历史值预报第 $k+1$ 个的最小均方误差线性预测的均方误差。
+<a href="https://imgse.com/i/pVCY9l8"><img src="https://s21.ax1x.com/2025/06/03/pVCY9l8.png" alt="pVCY9l8.png" border="0" /></a></p>
+<p><strong>定义（偏相关系数）</strong> 如果 $\Gamma_n$ 正定，称 $a_{n, n}$ 为 $\left\{X_t\right\}$ 或 $\left\{\gamma_k\right\}$ 的 $n$ 阶偏（自）相关系数。 序列 $\left\{a_{n, n}, n=1,2, \ldots\right\}$ 称为 $\left\{X_t\right\}$ 或 $\left\{\gamma_k\right\}$ 的 $n$ 阶偏（自）相关函数。</p>
+<p>偏自相关是 $X_1$ 和 $X_{n+1}$ 之间的如下意义下的偏相关系数：
+$$
+\begin{aligned}
+a_{n, n}=\operatorname{Corr}[ &amp; X_1-L\left(X_1 \mid X_2, \ldots, X_n\right) \\
+&amp; \left.X_{n+1}-L\left(X_{n+1} \mid X_2, \ldots, X_n\right)\right]
+\end{aligned}
+$$
+即 $a_{n, n}$ 为 $X_1$ 和 $X_{n+1}$ 扣除 $X_2, \ldots, X_n$ 的线性影响后的相关系数。<br>
+设 $\left\{X_t\right\}$ 是AR $(p)$ 序列。其自协方差函数正定。由Yule－Walker方程知其 $n$ 阶 $(n \geq p) \mathrm{Y}-\mathrm{W}$ 系数为
+$$
+\begin{aligned}
+\boldsymbol{a}_n &amp; =\left(a_1, \ldots, a_p, 0, \ldots, 0\right)^T \
+&amp; =\left(a_{n, 1}, a_{n, 2}, \ldots, a_{n, n}\right)^T, \quad n \geq p
+\end{aligned}
+$$
+其偏相关系数满足
+$$
+a_{n, n}= \begin{cases}a_p \neq 0, &amp; n=p \\ 0, &amp; n&gt;p\end{cases}
+$$
+称此性质为 $\operatorname{AR}(p)$ 序列的相关系数 $p$ 后截尾。
+反之，如果一个零均值平稳列偏相关系数 $p$ 后截尾，则它必是AR $(p)$ 序列（见下面的定理）。</p>
+<p><strong>定理（AR序列的偏相关函数条件）</strong> 设零均值平稳列 $\left\{X_t\right\}$ 的自协方差函数 $\left\{\gamma_k\right\}$ 是正定序列，则 $\left\{X_t\right\}$ 是 $A R(p)$ 序列的充分必要条件是，它的偏相关系数 $\left\{a_{n, n}\right\} p$ 后截尾。</p>
+<hr>
+<p>实际操作中，我们使用经验估计量估计协方差，再通过Levinson-Durbin 递推获得偏自相关系数，偏自相关系数在MLE的重参数化中具有重大作用。</p>
+<hr>
+<h3 id="论文中的一些结论">论文中的一些结论
+</h3><p><a class="link" href="https://www.tandfonline.com/doi/abs/10.1080/00949657708810151"  target="_blank" rel="noopener"
     >Improved Maximum Likelihood Estimation of ARMA Models</a>:</p>
 <p>A closed form expression
 of the ARMA exact likelihood function was firstly given in <a class="link" href="https://www.semanticscholar.org/paper/The-exact-likelihood-function-for-a-mixed-average-Newbold/118f71e01209b254aa3aedd97d7036424182aceb"  target="_blank" rel="noopener"
