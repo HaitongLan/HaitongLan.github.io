@@ -199,7 +199,7 @@
 
 
                 <time class="article-time--reading">
-                    7 minute read
+                    8 minute read
                 </time>
             </div>
         
@@ -406,6 +406,8 @@ $$</p>
 <li>检查优化情况，改进数值问题匹配模型</li>
 <li>计算后续结果，输出模型</li>
 </ol>
+<p>构造了专用的负对数似然计算函数，内部 <code>internal.econ.arimaxMex</code> 使用C语言快速迭代的计算残差，上述优化问题中关于残差的第一条约束已经隐藏进似然函数的计算中。</p>
+<p>非线性约束<code>arimaNonLineqrConstraints</code>就是直白的特征根在单位圆的外部，然后使用内点法障碍函数处理该非线性约束，所以最后该约束未必是满足的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
