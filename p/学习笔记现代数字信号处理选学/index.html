@@ -114,7 +114,15 @@
     <li><a href="#一阶优化算法">一阶优化算法</a></li>
     <li><a href="#递归最小二乘rls">递归最小二乘(RLS)</a></li>
     <li><a href="#凸优化基础">凸优化基础</a></li>
-    <li><a href="#doa估计">DOA估计</a></li>
+    <li><a href="#阵列信号处理">阵列信号处理</a>
+      <ol>
+        <li><a href="#doa估计">DOA估计</a></li>
+        <li><a href="#doa估计的-c-r-bound">DOA估计的 C-R Bound</a></li>
+        <li><a href="#mimo">MIMO</a></li>
+      </ol>
+    </li>
+    <li><a href="#时频分析">时频分析</a></li>
+    <li><a href="#贝叶斯信号处理">贝叶斯信号处理</a></li>
   </ol>
 </nav>
         </div>
@@ -195,7 +203,7 @@
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -213,9 +221,15 @@
     <h2 id="课程介绍">课程介绍
 </h2><p>张颢老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张颢老师的课程中能感受到浓浓的工程师思维，并不会拘谨于定义定理的条条框框，而是按照逻辑穿针引线的将知识串起来，由此发现知识背后隐含的哲学思想，这也是张老师讲课的宗旨：每节课让学生学会一种思想。</p>
 <p>张颢老师所讲的数字信号处理、随机过程、现代信号处理（二）课程本人之前都学过一些，最近发现张老师的信号处理（一）课程还没有学过，并且最近需要补充一些估计和机器学习的理论，所以才学习该课程，该课程虽说是现代数字信号处理，但是讲的偏统计，更像统计推断和机器学习的结合。</p>
+<p>选学了部分的现代信号处理（一），这里的笔记同样有现代信号处理（二）的内容。</p>
 <p>由于张老师讲课不重点强调定义定理，所以从头到尾整理张老师的推导是非常大的工程量，本人将贴出学习笔记，并在重点部分加以补充。</p>
-<p>参考视频：<a class="link" href="https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web"  target="_blank" rel="noopener"
-    >现代数字信号处理I 张颢 2023年秋</a></p>
+<p>参考视频：</p>
+<ol>
+<li><a class="link" href="https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web"  target="_blank" rel="noopener"
+    >现代数字信号处理I 张颢 2023年秋</a></li>
+<li><a class="link" href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
+    >现代数字信号处理II 张颢 2024年春</a></li>
+</ol>
 <p>推荐视频：</p>
 <ol>
 <li><a class="link" href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
@@ -295,11 +309,25 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
 <h2 id="凸优化基础">凸优化基础
 </h2><p>简单的介绍了一下凸分析、线性规划和内点法。
 <a href="https://imgse.com/i/pVCkuQK"><img src="https://s21.ax1x.com/2025/06/02/pVCkuQK.jpg" alt="pVCkuQK.jpg" border="0" /></a></p>
-<h2 id="doa估计">DOA估计
-</h2><p>阵列信号处理基础，MUSIC算法和ESPRIT算法。
+<h2 id="阵列信号处理">阵列信号处理
+</h2><p>现代数字信号处理（二）中的阵列信号处理部分。</p>
+<h3 id="doa估计">DOA估计
+</h3><p>阵列信号处理基础，MUSIC算法和ESPRIT算法。
 <a href="https://imgse.com/i/pVeXJTe"><img src="https://s21.ax1x.com/2025/06/26/pVeXJTe.jpg" alt="pVeXJTe.jpg" border="0"></a>
 <a href="https://imgse.com/i/pVeXtFH"><img src="https://s21.ax1x.com/2025/06/26/pVeXtFH.jpg" alt="pVeXtFH.jpg" border="0"></a>
 <a href="https://imgse.com/i/pVeXGwD"><img src="https://s21.ax1x.com/2025/06/26/pVeXGwD.jpg" alt="pVeXGwD.jpg" border="0"></a></p>
+<h3 id="doa估计的-c-r-bound">DOA估计的 C-R Bound
+</h3><p>依托于点估计中的C-R Bound ，张老师用一整节课对DOA基本模型求Fisher信息矩阵，错误还是蛮多的，不过很受益，以后还是要系统的学一下多元微积分，只靠数学分析的基础还是远远不够的。
+<a href="https://imgse.com/i/pVm04Fs"><img src="https://s21.ax1x.com/2025/06/26/pVm04Fs.jpg" alt="pVm04Fs.jpg" border="0"></a></p>
+<h3 id="mimo">MIMO
+</h3><p>久闻大名的MIMO技术，这里仅仅从信道容量视角介绍MIMO，并无具体算法的介绍，以后有机会一定要学一下MIMO的东西，还是挺有意思的。
+<a href="https://imgse.com/i/pVm0IWq"><img src="https://s21.ax1x.com/2025/06/26/pVm0IWq.jpg" alt="pVm0IWq.jpg" border="0"></a>
+<a href="https://imgse.com/i/pVm05Yn"><img src="https://s21.ax1x.com/2025/06/26/pVm05Yn.jpg" alt="pVm05Yn.jpg" border="0"></a></p>
+<h2 id="时频分析">时频分析
+</h2><p>主要介绍小波变换及相关理论。</p>
+<h2 id="贝叶斯信号处理">贝叶斯信号处理
+</h2><p>之前整理过，见另一篇<a class="link" href="https://haitonglan.github.io/p/bayesian-signal-processing/"  target="_blank" rel="noopener"
+    >博客</a>.</p>
 
 </section>
 
