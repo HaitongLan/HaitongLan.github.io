@@ -11,7 +11,7 @@
 <meta property='og:description' content="数理统计、贝叶斯统计、高维统计、统计学习等基础">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-05-01T22:32:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-06-30T22:43:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png' />
 <meta name="twitter:title" content="学习笔记|统计学基础">
 <meta name="twitter:description" content="数理统计、贝叶斯统计、高维统计、统计学习等基础"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png' />
@@ -103,7 +103,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#课程介绍">课程介绍</a></li>
+    <li><a href="#介绍">介绍</a></li>
     <li><a href="#概率论基础">概率论基础</a>
       <ol>
         <li><a href="#random-variable">Random Variable</a></li>
@@ -171,7 +171,6 @@
         <li><a href="#序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）</a></li>
       </ol>
     </li>
-    <li><a href="#贝叶斯推断基础">贝叶斯推断基础</a></li>
     <li><a href="#精确推断">精确推断</a>
       <ol>
         <li><a href="#mcmc-1">MCMC</a></li>
@@ -186,12 +185,23 @@
         <li><a href="#变分em算法">变分EM算法</a></li>
       </ol>
     </li>
-    <li><a href="#因果推断">因果推断</a></li>
-    <li><a href="#充分降维">充分降维</a></li>
-    <li><a href="#lasso问题">Lasso问题</a></li>
+    <li><a href="#随机过程">随机过程</a>
+      <ol>
+        <li><a href="#gaussian-过程">Gaussian 过程</a></li>
+      </ol>
+    </li>
     <li><a href="#统计学习">统计学习</a>
       <ol>
         <li><a href="#最大熵模型">最大熵模型</a></li>
+      </ol>
+    </li>
+    <li><a href="#有意向整理">有意向整理</a>
+      <ol>
+        <li><a href="#因果推断">因果推断</a></li>
+        <li><a href="#充分降维">充分降维</a></li>
+        <li><a href="#最优传输">最优传输</a></li>
+        <li><a href="#lasso问题">LASSO问题</a></li>
+        <li><a href="#贝叶斯推断基础">贝叶斯推断基础</a></li>
       </ol>
     </li>
   </ol>
@@ -274,7 +284,7 @@
 
 
                 <time class="article-time--reading">
-                    54 minute read
+                    57 minute read
                 </time>
             </div>
         
@@ -289,8 +299,8 @@
     <section class="article-content">
     
     
-    <h2 id="课程介绍">课程介绍
-</h2><p>数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。</p>
+    <h2 id="介绍">介绍
+</h2><p>这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一起，可以很好的联系起来相互对比，是不错的学习方式。</p>
 <p>参考：</p>
 <ol>
 <li>网站：<a class="link" href="https://ocw.nycu.edu.tw/?post_type=course_page&amp;p=25566"  target="_blank" rel="noopener"
@@ -313,8 +323,10 @@
     >Markov chain Monte Carlo methods</a></li>
 <li>b站up：<a class="link" href="https://space.bilibili.com/497536319"  target="_blank" rel="noopener"
     >徐芝兰</a>.</li>
+<li>b站课程：<a class="link" href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
+    >随机过程 张颢 2024年春</a></li>
 </ol>
-<p>还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。</p>
+<p>数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。</p>
 <h2 id="概率论基础">概率论基础
 </h2><h3 id="random-variable">Random Variable
 </h3><p><strong>Define 1(random variable).</strong> Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. <br>
@@ -1491,8 +1503,6 @@ $$</p>
 <p>在实际的数值实验中，MCMC会有各种各样的问题，不同分布的处理方式也多种多样，很可能会碰到MCMC不能良好采样的问题，例如当分布不一致有界时，M-H算法拒绝率可能会很高，甚至最后也不会收敛。</p>
 <h3 id="序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）
 </h3><p>在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。</p>
-<h2 id="贝叶斯推断基础">贝叶斯推断基础
-</h2><p>时间充足会补上这部分。</p>
 <h2 id="精确推断">精确推断
 </h2><p>贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，在推断的过程中使用了精确的后验分布，所以称为精确推断；对于近似推断，有Laplace 近似、变分推断等等，在推断的过程中对后验分布进行了近似，所以称为近似推断。</p>
 <h3 id="mcmc-1">MCMC
@@ -1632,12 +1642,116 @@ $$
 $$
 其中上角标 $t-1$ 和 $t$ 表示迭代次数，左边的等式基于 E 步计算和变分推理原理，中间的不等式基于 $M$ 步计算，右边的不等式基于变分推理原理。说明每次迭代都保证<strong>观测数据的似然不递减</strong>。因此，变分 EM 算法一定收敛，但可能收敛到局部最优。</p>
 <p>EM 算法实际也是对证据下界进行最大化。联系 MM 算法，则其中的 F 函数就是ELBO。 EM 算法假设 $q(z)=p(z \mid x)$ 且 $p(z \mid x)$ 容易计算，而变分 EM 算法则考虑一般情况使用容易计算的平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ 。当模型复杂时，EM 算法末必可用，但变分 EM 算法仍然可以使用。</p>
-<h2 id="因果推断">因果推断
-</h2><p>有意向学习</p>
-<h2 id="充分降维">充分降维
-</h2><p>有意向学习</p>
-<h2 id="lasso问题">Lasso问题
-</h2><p>十几年前很火的问题，2024年的时候了解过一些，这里再续上之前学的东西，用来作为高维统计的入门。</p>
+<h2 id="随机过程">随机过程
+</h2><h3 id="gaussian-过程">Gaussian 过程
+</h3><p>参考：<a class="link" href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
+    >张灏老师随机过程</a></p>
+<p>这里借鉴了张灏老师的课程，介绍了高斯的线性性质，条件高斯分布，高斯的高阶矩等等。</p>
+<p>Gaussian过程的定义很简单，<strong>任意有限维的随机变量都服从联合高斯分布的过程</strong>，对比随机分析中的布朗运动，可见布朗运动是一类特殊的高斯过程。</p>
+<p>Gaussian 过程的特征函数如下：
+$$
+\varphi_{\mathbf{X}}(\mathbf{t})=\mathbb{E}\left[e^{i \mathbf{t}^{\top} \mathbf{X}}\right]=\exp \left(i \mathbf{t}^{\top} \boldsymbol{\mu}-\frac{1}{2} \mathbf{t}^{\top} \boldsymbol{\Sigma} \mathbf{t}\right), \quad \mathbf{t} \in \mathbb{R}^n
+$$</p>
+<p><strong>定理（Gaussian过程的线性性质）.</strong> $\mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，对任意线性变换 $\mathbf{Y}=A \mathbf{X}+\mathbf{b}$ ，其中 $A \in \mathbb{R}^{m \times n}, ~ \mathbf{b} \in \mathbb{R}^m$ ，则：
+$$
+\mathbf{Y} \sim \mathcal{N}\left(A \boldsymbol{\mu}+\mathbf{b}, A \boldsymbol{\Sigma} A^{\top}\right)
+$$</p>
+<p>联合高斯具有线性性质，但是高斯的组合未必是高斯，见如下定理：</p>
+<p><strong>定理（边缘高斯到联合高斯）.</strong> 以下两种情况可以判断由边缘分布到联合分布的高斯性质：<br>
+（1）若 $X_1,\cdots,X_n$ 独立且均为Gaussian，则联合Gaussian。<br>
+（2）$\forall \alpha\in \mathbb{R}^n,\alpha^TX\sim N\iff $ 联合高斯。</p>
+<p>在数理统计中有一个基本定理，就是样本均值 $\bar{X}$ 和样本方差 $S$ 相互独立，张老师在课堂上对于Gaussian分布验证了该定理，这里不详细写出该例子，总之构造了一些随机变量，最后发现 $S$ 的自由度为 $n-1$，$\bar{X}$ 自由度为1，显示了二者独立，且 $n-1$ 的出现给样本方差的分母本质带来了更有意思的解释。</p>
+<p><strong>定理（条件高斯分布）.</strong> 设随机向量：
+$$
+\left[\begin{array}{l}
+\mathbf{X} \\
+\mathbf{Y}
+\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
+\boldsymbol{\mu}_X \\
+\boldsymbol{\mu}_Y
+\end{array}\right],\left[\begin{array}{ll}
+\boldsymbol{\Sigma}_{X X} &amp; \boldsymbol{\Sigma}_{X Y} \\
+\boldsymbol{\Sigma}_{Y X} &amp; \boldsymbol{\Sigma}_{Y Y}
+\end{array}\right]\right)
+$$
+则，给定 $\mathbf{Y}=\mathbf{y}, \mathbf{X} \mid \mathbf{Y}=\mathbf{y}$ 服从条件高斯分布：
+$$
+\mathbf{X} \mid \mathbf{Y}=\mathbf{y} \sim \mathcal{N}\left(\boldsymbol{\mu}_{X \mid Y}, \boldsymbol{\Sigma}_{X \mid Y}\right)
+$$
+其中条件均值：
+$$
+\boldsymbol{\mu}_{X \mid Y}=\boldsymbol{\mu}_X+\boldsymbol{\Sigma}_{X Y} \boldsymbol{\Sigma}_{Y Y}^{-1}\left(\mathbf{y}-\boldsymbol{\mu}_Y\right)
+$$
+条件协方差：
+$$
+\boldsymbol{\Sigma}_{X \mid Y}=\boldsymbol{\Sigma}_{X X}-\boldsymbol{\Sigma}_{X Y} \boldsymbol{\Sigma}_{Y Y}^{-1} \boldsymbol{\Sigma}_{Y X}
+$$
+<strong>注.</strong> （1）该定理由矩阵求逆公式和条件pdf的定义直接导出，矩阵求逆公式对于Gaussian分布来说本质是在配方。<br>
+（2）条件均值和协方差的形式非常有趣：条件均值是MSE下的最优估计，条件的信息以投影的形式加入原始信息，只有Gaussian才有如此好的条件期望，可以简单的线性预测；条件协方差在矩阵正定的意义下变小，说明随着信息的增大，未知在减小。</p>
+<p>接下来讨论Gaussian分布的高阶矩，包括线性和非线性处理。</p>
+<p><strong>定理（一元Gaussian的高阶矩）.</strong> 令随机变量 $X \sim \mathcal{N}\left(\mu, \sigma^2\right)$ ，则奇数阶中心矩为0，偶数阶中心矩为
+$$
+\mathbb{E}\left[(X-\mu)^{2 n}\right]=(2 n-1)!!\cdot \sigma^{2 n}
+$$
+其中 $(2 n-1)!!=1 \cdot 3 \cdot 5 \cdots(2 n-1)$ 是奇数阶双阶乘。<br>
+<strong>注.</strong> 该定理为直接积分然后递推得出，与点火公式的推导很像。</p>
+<p><strong>定理（Isserlis 定理）.</strong> 设 $X_1, \ldots, X_{2 n}$ 是 零均值的多元高斯变量，即：
+$$
+\left(X_1, \ldots, X_{2 n}\right) \sim \mathcal{N}(0, \Sigma)
+$$
+则：
+$$
+\mathbb{E}\left[X_1 X_2 \ldots X_{2 n}\right]=\sum_{\text {all pairings }} \prod_{(i, j)} \mathbb{E}\left[X_i X_j\right]
+$$
+其中：</p>
+<ul>
+<li>每个配对（pairing）是将 ${1,2, \ldots, 2 n}$ 分成 $n$ 个两两不重叠的对子；</li>
+<li>总共有 $(2 n-1)$ ！！个这样的配对;</li>
+<li>对每个配对，取所有对应协方差的乘积;</li>
+<li>奇数阶的高阶矩为0。<br>
+<strong>注.</strong> Isserlis定理反应了Gaussian的高阶矩由二阶协方差决定，这很符号高斯分布完全依赖于均值和方差的事实。</li>
+</ul>
+<p>Isserlis定理与free cumulants的定理非常的像，在cumulants的意义下，也有以下类似的更一般的定理，不依赖于Gaussian分布，在介绍该定理之前，需要先介绍累积量，累积量一般可以写成矩的组合。</p>
+<p><strong>定义（累积量）.</strong> 设 $X$ 是一个随机变量，它的矩母函数（moment generating function）是：
+$$
+M_X(t)=\mathbb{E}\left[e^{t X}\right]
+$$
+则定义其 <strong>累积生成函数（cumulant generating function）</strong> 为：
+$$
+K_X(t)=\log M_X(t)
+$$
+第 $n$ 阶累积量 $\kappa_n$ 就是 $K_X(t)$ 在 $t=0$ 处的 $n$ 阶导数：
+$$
+\kappa_n=\left.\frac{d^n}{d t^n} \log \mathbb{E}\left[e^{t X}\right]\right|_{t=0}
+$$
+<strong>注.</strong> 累积量是相比于矩更加高阶的工具，可以更好的反应随机变量的结构性，是最小生成集，无冗余信息，另外，在随机矩阵等非交换概率工具中，还会有自由累积量（free cumulants），在理论分析中具有更大的用处。最后，累积量天然与图论有关，所以在概率图模型中也具有重大作用。</p>
+<p><strong>定理（Leonov–Shiryaev 定理）.</strong> 设 $X_1, \ldots, X_n$ 是一组随机变量，则：
+$$
+\mathbb{E}\left[X_1 X_2 \cdots X_n\right]=\sum_{\pi \in \mathcal{P}(n)} \prod_{B \in \pi} \kappa(B)
+$$
+其中：</p>
+<ul>
+<li>$\mathcal{P}(n)$ 是 $\{1,2, \ldots, n\}$ 的所有划分（partition）；</li>
+<li>对每个划分 $\pi=\left\{B_1, \ldots, B_k\right\}$ ，其中每个 $B_j \subset\{1, \ldots, n\}$ ，我们定义：
+$$
+\kappa\left(B_j\right)=\text { Cumulant of the random variables indexed by } B_j
+$$
+即，对每个子集 $B=\left\{i_1, \ldots, i_m\right\}$ ，
+$$
+\kappa(B):=\kappa\left(X_{i_1}, \ldots, X_{i_m}\right)
+$$</li>
+</ul>
+<p>接下来的定理有利于求解Gaussian通过非线性函数作用的期望。</p>
+<p><strong>定理（Price 定理）.</strong> 假设：</p>
+<ul>
+<li>$X=\left(X_1, \ldots, X_n\right)^T \sim \mathcal{N}(0, \Sigma)$ ，一个零均值的高斯随机向量，协方差矩阵为 $\Sigma$（正定）；</li>
+<li>$f: \mathbb{R}^n \rightarrow \mathbb{R}$ 是一个满足一定光滑条件的函数，比如可微且被期望包络（技术条件保证期望和导数可以交换）；</li>
+</ul>
+<p>则Price 定理表明：
+$$
+\frac{\partial}{\partial \Sigma_{i j}} \mathbb{E}[f(X)]=\frac{1}{2} \mathbb{E}\left[\frac{\partial^2 f(X)}{\partial x_i \partial x_j}\right]
+$$
+<strong>注.</strong> 一般我们需要分析Gaussian经过非线性系统后的分布，主要是一阶矩和二阶矩，即Price定理左边的项（除去求导），利用Price定理，一般右侧的项容易求，然后再求解一个初值ODE问题即可得到 $\mathbb{E}[f(X)]$。</p>
 <h2 id="统计学习">统计学习
 </h2><p>这个板块用来记录一些统计学习的小结论。</p>
 <h3 id="最大熵模型">最大熵模型
@@ -1645,7 +1759,13 @@ $$
 <p>满足最大熵原理的分布模型都叫做最大熵模型。</p>
 <p>事实上，最大熵原理与最大似然原理等价，实际中也使用MLE进行最大熵模型的训练。</p>
 <p>我们在MM算法中构造的F函数，也可以看作一种最大熵原理的应用，正因为如此，EM算法才可以使用MM算法来解释（最大似然）。</p>
-
+<h2 id="有意向整理">有意向整理
+</h2><h3 id="因果推断">因果推断
+</h3><h3 id="充分降维">充分降维
+</h3><h3 id="最优传输">最优传输
+</h3><h3 id="lasso问题">LASSO问题
+</h3><h3 id="贝叶斯推断基础">贝叶斯推断基础
+</h3>
 </section>
 
 
@@ -1680,7 +1800,7 @@ $$
 
 
         <span>
-            Last updated on May 01, 2025 22:32 CST
+            Last updated on Jun 30, 2025 22:43 CST
         </span>
     </section></footer>
 

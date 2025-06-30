@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="中国科学院大学张颢老师现代数字信号处理课程选学课程笔记">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="中国科学院大学张颢老师现代数字信号处理课程笔记">
 <title>学习笔记|现代数字信号处理选学</title>
 
 <link rel='canonical' href='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/'>
 
 <link rel="stylesheet" href="/scss/style.min.3992df218c917ad7ef00e79bf94b2b168ae28760447801f38a3033814fd3f1b7.css">
 <meta property='og:title' content="学习笔记|现代数字信号处理选学">
-<meta property='og:description' content="中国科学院大学张颢老师现代数字信号处理课程选学课程笔记">
+<meta property='og:description' content="中国科学院大学张颢老师现代数字信号处理课程笔记">
 <meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/'>
 <meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-04-28T15:48:05&#43;08:00'/><meta property='article:modified_time' content='2025-05-11T21:26:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-04-28T15:48:05&#43;08:00'/><meta property='article:modified_time' content='2025-06-29T14:18:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/cover.png' />
 <meta name="twitter:title" content="学习笔记|现代数字信号处理选学">
-<meta name="twitter:description" content="中国科学院大学张颢老师现代数字信号处理课程选学课程笔记"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="中国科学院大学张颢老师现代数字信号处理课程笔记"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='http://localhost:1313/post_file/%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/cover.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -121,7 +121,12 @@
         <li><a href="#mimo">MIMO</a></li>
       </ol>
     </li>
-    <li><a href="#时频分析">时频分析</a></li>
+    <li><a href="#时频分析">时频分析</a>
+      <ol>
+        <li><a href="#stft和-wigner-ville-变换">STFT和 Wigner-Ville 变换</a></li>
+        <li><a href="#小波分析和-paserval-frame">小波分析和 Paserval frame</a></li>
+      </ol>
+    </li>
     <li><a href="#贝叶斯信号处理">贝叶斯信号处理</a></li>
   </ol>
 </nav>
@@ -167,7 +172,7 @@
     
         
         <h3 class="article-subtitle">
-            中国科学院大学张颢老师现代数字信号处理课程选学课程笔记
+            中国科学院大学张颢老师现代数字信号处理课程笔记
         </h3>
         
     </div>
@@ -324,7 +329,12 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
 <a href="https://imgse.com/i/pVm0IWq"><img src="https://s21.ax1x.com/2025/06/26/pVm0IWq.jpg" alt="pVm0IWq.jpg" border="0"></a>
 <a href="https://imgse.com/i/pVm05Yn"><img src="https://s21.ax1x.com/2025/06/26/pVm05Yn.jpg" alt="pVm05Yn.jpg" border="0"></a></p>
 <h2 id="时频分析">时频分析
-</h2><p>主要介绍小波变换及相关理论。</p>
+</h2><p>比较传统的信号处理内容，现在几乎很少用时频分析来分析信号，本科期间曾经学习过信号与系统、数字信号处理、通信原理这些时频分析的课程，一直很疑惑这种方法在如今是否有什么用途，于是学了这个章节的内容，张老师由该章节直接引出了压缩感知和稀疏恢复，还是很惊喜的。</p>
+<h3 id="stft和-wigner-ville-变换">STFT和 Wigner-Ville 变换
+</h3><p><a href="https://imgse.com/i/pVnBE5j"><img src="https://s21.ax1x.com/2025/06/29/pVnBE5j.jpg" alt="pVnBE5j.jpg" border="0"></a>
+<a href="https://imgse.com/i/pVnBkVg"><img src="https://s21.ax1x.com/2025/06/29/pVnBkVg.jpg" alt="pVnBkVg.jpg" border="0"></a></p>
+<h3 id="小波分析和-paserval-frame">小波分析和 Paserval frame
+</h3><p><a href="https://imgse.com/i/pVnBAaQ"><img src="https://s21.ax1x.com/2025/06/29/pVnBAaQ.jpg" alt="pVnBAaQ.jpg" border="0"></a></p>
 <h2 id="贝叶斯信号处理">贝叶斯信号处理
 </h2><p>之前整理过，见另一篇<a class="link" href="https://haitonglan.github.io/p/bayesian-signal-processing/"  target="_blank" rel="noopener"
     >博客</a>.</p>
@@ -363,7 +373,7 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
 
 
         <span>
-            Last updated on May 11, 2025 21:26 CST
+            Last updated on Jun 29, 2025 14:18 CST
         </span>
     </section></footer>
 
