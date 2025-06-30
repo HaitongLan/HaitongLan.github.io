@@ -1551,8 +1551,8 @@ $$
         <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
         
         <guid>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png" alt="Featured image of post 学习笔记|统计学基础" /&gt;&lt;h2 id=&#34;课程介绍&#34;&gt;课程介绍
-&lt;/h2&gt;&lt;p&gt;数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png" alt="Featured image of post 学习笔记|统计学基础" /&gt;&lt;h2 id=&#34;介绍&#34;&gt;介绍
+&lt;/h2&gt;&lt;p&gt;这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一起，可以很好的联系起来相互对比，是不错的学习方式。&lt;/p&gt;
 &lt;p&gt;参考：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;网站：&lt;a class=&#34;link&#34; href=&#34;https://ocw.nycu.edu.tw/?post_type=course_page&amp;amp;p=25566&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1575,8 +1575,10 @@ $$
     &gt;Markov chain Monte Carlo methods&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;b站up：&lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/497536319&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;徐芝兰&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;b站课程：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;随机过程 张颢 2024年春&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。&lt;/p&gt;
+&lt;p&gt;数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。&lt;/p&gt;
 &lt;h2 id=&#34;概率论基础&#34;&gt;概率论基础
 &lt;/h2&gt;&lt;h3 id=&#34;random-variable&#34;&gt;Random Variable
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Define 1(random variable).&lt;/strong&gt; Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. &lt;br&gt;
@@ -2753,8 +2755,6 @@ $$&lt;/p&gt;
 &lt;p&gt;在实际的数值实验中，MCMC会有各种各样的问题，不同分布的处理方式也多种多样，很可能会碰到MCMC不能良好采样的问题，例如当分布不一致有界时，M-H算法拒绝率可能会很高，甚至最后也不会收敛。&lt;/p&gt;
 &lt;h3 id=&#34;序贯蒙特卡洛采样粒子滤波器&#34;&gt;序贯蒙特卡洛采样（粒子滤波器）
 &lt;/h3&gt;&lt;p&gt;在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。&lt;/p&gt;
-&lt;h2 id=&#34;贝叶斯推断基础&#34;&gt;贝叶斯推断基础
-&lt;/h2&gt;&lt;p&gt;时间充足会补上这部分。&lt;/p&gt;
 &lt;h2 id=&#34;精确推断&#34;&gt;精确推断
 &lt;/h2&gt;&lt;p&gt;贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，在推断的过程中使用了精确的后验分布，所以称为精确推断；对于近似推断，有Laplace 近似、变分推断等等，在推断的过程中对后验分布进行了近似，所以称为近似推断。&lt;/p&gt;
 &lt;h3 id=&#34;mcmc-1&#34;&gt;MCMC
@@ -2894,12 +2894,116 @@ $$
 $$
 其中上角标 $t-1$ 和 $t$ 表示迭代次数，左边的等式基于 E 步计算和变分推理原理，中间的不等式基于 $M$ 步计算，右边的不等式基于变分推理原理。说明每次迭代都保证&lt;strong&gt;观测数据的似然不递减&lt;/strong&gt;。因此，变分 EM 算法一定收敛，但可能收敛到局部最优。&lt;/p&gt;
 &lt;p&gt;EM 算法实际也是对证据下界进行最大化。联系 MM 算法，则其中的 F 函数就是ELBO。 EM 算法假设 $q(z)=p(z \mid x)$ 且 $p(z \mid x)$ 容易计算，而变分 EM 算法则考虑一般情况使用容易计算的平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ 。当模型复杂时，EM 算法末必可用，但变分 EM 算法仍然可以使用。&lt;/p&gt;
-&lt;h2 id=&#34;因果推断&#34;&gt;因果推断
-&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
-&lt;h2 id=&#34;充分降维&#34;&gt;充分降维
-&lt;/h2&gt;&lt;p&gt;有意向学习&lt;/p&gt;
-&lt;h2 id=&#34;lasso问题&#34;&gt;Lasso问题
-&lt;/h2&gt;&lt;p&gt;十几年前很火的问题，2024年的时候了解过一些，这里再续上之前学的东西，用来作为高维统计的入门。&lt;/p&gt;
+&lt;h2 id=&#34;随机过程&#34;&gt;随机过程
+&lt;/h2&gt;&lt;h3 id=&#34;gaussian-过程&#34;&gt;Gaussian 过程
+&lt;/h3&gt;&lt;p&gt;参考：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;amp;vd_source=b6424cece237934105a841d3b575c671&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;张灏老师随机过程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里借鉴了张灏老师的课程，介绍了高斯的线性性质，条件高斯分布，高斯的高阶矩等等。&lt;/p&gt;
+&lt;p&gt;Gaussian过程的定义很简单，&lt;strong&gt;任意有限维的随机变量都服从联合高斯分布的过程&lt;/strong&gt;，对比随机分析中的布朗运动，可见布朗运动是一类特殊的高斯过程。&lt;/p&gt;
+&lt;p&gt;Gaussian 过程的特征函数如下：
+$$
+\varphi_{\mathbf{X}}(\mathbf{t})=\mathbb{E}\left[e^{i \mathbf{t}^{\top} \mathbf{X}}\right]=\exp \left(i \mathbf{t}^{\top} \boldsymbol{\mu}-\frac{1}{2} \mathbf{t}^{\top} \boldsymbol{\Sigma} \mathbf{t}\right), \quad \mathbf{t} \in \mathbb{R}^n
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（Gaussian过程的线性性质）.&lt;/strong&gt; $\mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，对任意线性变换 $\mathbf{Y}=A \mathbf{X}+\mathbf{b}$ ，其中 $A \in \mathbb{R}^{m \times n}, ~ \mathbf{b} \in \mathbb{R}^m$ ，则：
+$$
+\mathbf{Y} \sim \mathcal{N}\left(A \boldsymbol{\mu}+\mathbf{b}, A \boldsymbol{\Sigma} A^{\top}\right)
+$$&lt;/p&gt;
+&lt;p&gt;联合高斯具有线性性质，但是高斯的组合未必是高斯，见如下定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（边缘高斯到联合高斯）.&lt;/strong&gt; 以下两种情况可以判断由边缘分布到联合分布的高斯性质：&lt;br&gt;
+（1）若 $X_1,\cdots,X_n$ 独立且均为Gaussian，则联合Gaussian。&lt;br&gt;
+（2）$\forall \alpha\in \mathbb{R}^n,\alpha^TX\sim N\iff $ 联合高斯。&lt;/p&gt;
+&lt;p&gt;在数理统计中有一个基本定理，就是样本均值 $\bar{X}$ 和样本方差 $S$ 相互独立，张老师在课堂上对于Gaussian分布验证了该定理，这里不详细写出该例子，总之构造了一些随机变量，最后发现 $S$ 的自由度为 $n-1$，$\bar{X}$ 自由度为1，显示了二者独立，且 $n-1$ 的出现给样本方差的分母本质带来了更有意思的解释。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（条件高斯分布）.&lt;/strong&gt; 设随机向量：
+$$
+\left[\begin{array}{l}
+\mathbf{X} \\
+\mathbf{Y}
+\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
+\boldsymbol{\mu}_X \\
+\boldsymbol{\mu}_Y
+\end{array}\right],\left[\begin{array}{ll}
+\boldsymbol{\Sigma}_{X X} &amp;amp; \boldsymbol{\Sigma}_{X Y} \\
+\boldsymbol{\Sigma}_{Y X} &amp;amp; \boldsymbol{\Sigma}_{Y Y}
+\end{array}\right]\right)
+$$
+则，给定 $\mathbf{Y}=\mathbf{y}, \mathbf{X} \mid \mathbf{Y}=\mathbf{y}$ 服从条件高斯分布：
+$$
+\mathbf{X} \mid \mathbf{Y}=\mathbf{y} \sim \mathcal{N}\left(\boldsymbol{\mu}_{X \mid Y}, \boldsymbol{\Sigma}_{X \mid Y}\right)
+$$
+其中条件均值：
+$$
+\boldsymbol{\mu}_{X \mid Y}=\boldsymbol{\mu}_X+\boldsymbol{\Sigma}_{X Y} \boldsymbol{\Sigma}_{Y Y}^{-1}\left(\mathbf{y}-\boldsymbol{\mu}_Y\right)
+$$
+条件协方差：
+$$
+\boldsymbol{\Sigma}_{X \mid Y}=\boldsymbol{\Sigma}_{X X}-\boldsymbol{\Sigma}_{X Y} \boldsymbol{\Sigma}_{Y Y}^{-1} \boldsymbol{\Sigma}_{Y X}
+$$
+&lt;strong&gt;注.&lt;/strong&gt; （1）该定理由矩阵求逆公式和条件pdf的定义直接导出，矩阵求逆公式对于Gaussian分布来说本质是在配方。&lt;br&gt;
+（2）条件均值和协方差的形式非常有趣：条件均值是MSE下的最优估计，条件的信息以投影的形式加入原始信息，只有Gaussian才有如此好的条件期望，可以简单的线性预测；条件协方差在矩阵正定的意义下变小，说明随着信息的增大，未知在减小。&lt;/p&gt;
+&lt;p&gt;接下来讨论Gaussian分布的高阶矩，包括线性和非线性处理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（一元Gaussian的高阶矩）.&lt;/strong&gt; 令随机变量 $X \sim \mathcal{N}\left(\mu, \sigma^2\right)$ ，则奇数阶中心矩为0，偶数阶中心矩为
+$$
+\mathbb{E}\left[(X-\mu)^{2 n}\right]=(2 n-1)!!\cdot \sigma^{2 n}
+$$
+其中 $(2 n-1)!!=1 \cdot 3 \cdot 5 \cdots(2 n-1)$ 是奇数阶双阶乘。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; 该定理为直接积分然后递推得出，与点火公式的推导很像。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（Isserlis 定理）.&lt;/strong&gt; 设 $X_1, \ldots, X_{2 n}$ 是 零均值的多元高斯变量，即：
+$$
+\left(X_1, \ldots, X_{2 n}\right) \sim \mathcal{N}(0, \Sigma)
+$$
+则：
+$$
+\mathbb{E}\left[X_1 X_2 \ldots X_{2 n}\right]=\sum_{\text {all pairings }} \prod_{(i, j)} \mathbb{E}\left[X_i X_j\right]
+$$
+其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个配对（pairing）是将 ${1,2, \ldots, 2 n}$ 分成 $n$ 个两两不重叠的对子；&lt;/li&gt;
+&lt;li&gt;总共有 $(2 n-1)$ ！！个这样的配对;&lt;/li&gt;
+&lt;li&gt;对每个配对，取所有对应协方差的乘积;&lt;/li&gt;
+&lt;li&gt;奇数阶的高阶矩为0。&lt;br&gt;
+&lt;strong&gt;注.&lt;/strong&gt; Isserlis定理反应了Gaussian的高阶矩由二阶协方差决定，这很符号高斯分布完全依赖于均值和方差的事实。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Isserlis定理与free cumulants的定理非常的像，在cumulants的意义下，也有以下类似的更一般的定理，不依赖于Gaussian分布，在介绍该定理之前，需要先介绍累积量，累积量一般可以写成矩的组合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义（累积量）.&lt;/strong&gt; 设 $X$ 是一个随机变量，它的矩母函数（moment generating function）是：
+$$
+M_X(t)=\mathbb{E}\left[e^{t X}\right]
+$$
+则定义其 &lt;strong&gt;累积生成函数（cumulant generating function）&lt;/strong&gt; 为：
+$$
+K_X(t)=\log M_X(t)
+$$
+第 $n$ 阶累积量 $\kappa_n$ 就是 $K_X(t)$ 在 $t=0$ 处的 $n$ 阶导数：
+$$
+\kappa_n=\left.\frac{d^n}{d t^n} \log \mathbb{E}\left[e^{t X}\right]\right|_{t=0}
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 累积量是相比于矩更加高阶的工具，可以更好的反应随机变量的结构性，是最小生成集，无冗余信息，另外，在随机矩阵等非交换概率工具中，还会有自由累积量（free cumulants），在理论分析中具有更大的用处。最后，累积量天然与图论有关，所以在概率图模型中也具有重大作用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（Leonov–Shiryaev 定理）.&lt;/strong&gt; 设 $X_1, \ldots, X_n$ 是一组随机变量，则：
+$$
+\mathbb{E}\left[X_1 X_2 \cdots X_n\right]=\sum_{\pi \in \mathcal{P}(n)} \prod_{B \in \pi} \kappa(B)
+$$
+其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\mathcal{P}(n)$ 是 $\{1,2, \ldots, n\}$ 的所有划分（partition）；&lt;/li&gt;
+&lt;li&gt;对每个划分 $\pi=\left\{B_1, \ldots, B_k\right\}$ ，其中每个 $B_j \subset\{1, \ldots, n\}$ ，我们定义：
+$$
+\kappa\left(B_j\right)=\text { Cumulant of the random variables indexed by } B_j
+$$
+即，对每个子集 $B=\left\{i_1, \ldots, i_m\right\}$ ，
+$$
+\kappa(B):=\kappa\left(X_{i_1}, \ldots, X_{i_m}\right)
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来的定理有利于求解Gaussian通过非线性函数作用的期望。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定理（Price 定理）.&lt;/strong&gt; 假设：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$X=\left(X_1, \ldots, X_n\right)^T \sim \mathcal{N}(0, \Sigma)$ ，一个零均值的高斯随机向量，协方差矩阵为 $\Sigma$（正定）；&lt;/li&gt;
+&lt;li&gt;$f: \mathbb{R}^n \rightarrow \mathbb{R}$ 是一个满足一定光滑条件的函数，比如可微且被期望包络（技术条件保证期望和导数可以交换）；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;则Price 定理表明：
+$$
+\frac{\partial}{\partial \Sigma_{i j}} \mathbb{E}[f(X)]=\frac{1}{2} \mathbb{E}\left[\frac{\partial^2 f(X)}{\partial x_i \partial x_j}\right]
+$$
+&lt;strong&gt;注.&lt;/strong&gt; 一般我们需要分析Gaussian经过非线性系统后的分布，主要是一阶矩和二阶矩，即Price定理左边的项（除去求导），利用Price定理，一般右侧的项容易求，然后再求解一个初值ODE问题即可得到 $\mathbb{E}[f(X)]$。&lt;/p&gt;
 &lt;h2 id=&#34;统计学习&#34;&gt;统计学习
 &lt;/h2&gt;&lt;p&gt;这个板块用来记录一些统计学习的小结论。&lt;/p&gt;
 &lt;h3 id=&#34;最大熵模型&#34;&gt;最大熵模型
@@ -2907,7 +3011,13 @@ $$
 &lt;p&gt;满足最大熵原理的分布模型都叫做最大熵模型。&lt;/p&gt;
 &lt;p&gt;事实上，最大熵原理与最大似然原理等价，实际中也使用MLE进行最大熵模型的训练。&lt;/p&gt;
 &lt;p&gt;我们在MM算法中构造的F函数，也可以看作一种最大熵原理的应用，正因为如此，EM算法才可以使用MM算法来解释（最大似然）。&lt;/p&gt;
-</description>
+&lt;h2 id=&#34;有意向整理&#34;&gt;有意向整理
+&lt;/h2&gt;&lt;h3 id=&#34;因果推断&#34;&gt;因果推断
+&lt;/h3&gt;&lt;h3 id=&#34;充分降维&#34;&gt;充分降维
+&lt;/h3&gt;&lt;h3 id=&#34;最优传输&#34;&gt;最优传输
+&lt;/h3&gt;&lt;h3 id=&#34;lasso问题&#34;&gt;LASSO问题
+&lt;/h3&gt;&lt;h3 id=&#34;贝叶斯推断基础&#34;&gt;贝叶斯推断基础
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>学习笔记|高等代数</title>
