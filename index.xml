@@ -5240,7 +5240,7 @@ $$
 &lt;ol&gt;
 &lt;li&gt;若 $\varphi$ 的特征值全是实数，则 $\varphi$是自伴随算子；&lt;/li&gt;
 &lt;li&gt;若 $\varphi$ 的特征值全是非负实数，则 $\varphi$ 是半正定自伴随算子；&lt;/li&gt;
-&lt;li&gt;若 $\varphi$ 的 4特征值全是正实数，则 $\varphi$ 是正定自伴随算子；&lt;/li&gt;
+&lt;li&gt;若 $\varphi$ 的特征值全是正实数，则 $\varphi$ 是正定自伴随算子；&lt;/li&gt;
 &lt;li&gt;若 $\varphi$ 的特征值的模长等于 1 ，则 $\varphi$是酉算子（理解：酉矩阵正交相似于其他酉矩阵，行向量模长为1）。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;推论 4（极分解）.&lt;/strong&gt; 设 $\boldsymbol{A}$ 是 $n$ 阶实矩阵，则存在 $n$ 阶正交矩阵 $\boldsymbol{Q}$ 以及 $n$ 阶半正定实对称阵 $\boldsymbol{S}$ ，使 $\boldsymbol{A}=\boldsymbol{Q S}$ ．设 $\boldsymbol{B}$ 是 $n$ 阶复矩阵，则存在 $n$ 阶酉矩阵 $\boldsymbol{U}$ 以及 $n$ 阶半正定 Hermite 矩阵 $\boldsymbol{H}$ ，使 $\boldsymbol{B}=\boldsymbol{U} \boldsymbol{H}$ ．当 $\boldsymbol{A}, \boldsymbol{B}$ 为非异阵时，上述分解式被唯一确定．&lt;br&gt;
@@ -5377,6 +5377,31 @@ $$
 &lt;p&gt;当 $A$ 列满秩时，最小二乘解（最佳逼近解）的形式与我们所熟知的一致。&lt;/p&gt;
 &lt;h3 id=&#34;终章&#34;&gt;终章
 &lt;/h3&gt;&lt;p&gt;笔者用了两个多月的时间学完了高等代数，并配套进行了整理，高等代数的广度和深度都比国内的线性代数课程要大得多，也难得多，接下来的时间就是做一做高等代数的题准备一些考试。&lt;/p&gt;
+&lt;h3 id=&#34;面试复习小记&#34;&gt;面试复习小记
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;2025/7/4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;矩阵对角化充要条件&lt;/strong&gt; ：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$n$ 个无关的特征向量或特征子空间的直和为全空间。&lt;/li&gt;
+&lt;li&gt;完备的特征向量系：代数重数等于几何重数。&lt;/li&gt;
+&lt;li&gt;极小多项式无重根（所有不变因子为单根）。&lt;/li&gt;
+&lt;li&gt;初等因子都是一次多项式。&lt;/li&gt;
+&lt;li&gt;特征子空间 $=$ 根子空间。&lt;/li&gt;
+&lt;li&gt;自伴随算子必然可以正交对角化。&lt;/li&gt;
+&lt;li&gt;正规算子（$AA^{&amp;rsquo;}=A^{&amp;rsquo;}A$）必然可以复正交对角化。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;任意方阵的根子空间的正交直和都为全空间，因为有广义特征向量的存在，特征子空间是特殊的根子空间。&lt;/p&gt;
+&lt;p&gt;相似$\iff$特征矩阵$\lambda$相抵$\iff$有相同的不变因子$\iff$有相同的初等因子&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;矩阵分解或变换&lt;/strong&gt; ：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;相抵：$PAQ$&lt;/li&gt;
+&lt;li&gt;相似：$P^{-1}AQ$&lt;/li&gt;
+&lt;li&gt;合同：$C^{&amp;rsquo;}AC$&lt;/li&gt;
+&lt;li&gt;QR分解：$QR$&lt;/li&gt;
+&lt;li&gt;正定矩阵分解：$CC^{&amp;rsquo;}$&lt;/li&gt;
+&lt;li&gt;极分解：$QS$&lt;/li&gt;
+&lt;li&gt;正交相似：$P^{-1}AQ = P^{&amp;rsquo;}AQ$&lt;/li&gt;
+&lt;li&gt;正交相抵（SVD）：$Q^{&amp;rsquo;}AP=\Sigma$&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         <item>
@@ -6172,16 +6197,20 @@ $$&lt;/p&gt;
         <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/about-me/</guid>
-        <description>&lt;p&gt;I&amp;rsquo;m a third year undergraduate student from &lt;a class=&#34;link&#34; href=&#34;https://www.bupt.edu.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Beijing University of Posts and Telecommunications(BUPT)&lt;/a&gt;. My research interest includes machine learning ,signal processing and sampling.&lt;/p&gt;
-&lt;p&gt;I am very fortunate to be a visiting student of  &lt;a class=&#34;link&#34; href=&#34;https://lsec.cc.ac.cn/~mjj/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Prof. Junjie Ma&lt;/a&gt; of &lt;a class=&#34;link&#34; href=&#34;https://amss.cas.cn/sy/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Academy of Mathematics and Systems Science(AMSS)&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;I am currently an undergraduate student at &lt;a class=&#34;link&#34; href=&#34;https://www.bupt.edu.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Beijing University of Posts and Telecommunications (BUPT)&lt;/a&gt;, with research interests in signal processing, optimization, and statistics.&lt;/p&gt;
+&lt;p&gt;I will begin my master’s studies in Computer Science and Technology at &lt;a class=&#34;link&#34; href=&#34;https://www.shanghaitech.edu.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ShanghaiTech University&lt;/a&gt; in the autumn semester of 2026, under the supervision of Prof. &lt;a class=&#34;link&#34; href=&#34;https://faculty.sist.shanghaitech.edu.cn/zhao/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ziping Zhao&lt;/a&gt;, whose research focuses on optimization and signal processing.&lt;/p&gt;
+&lt;p&gt;From June 2024 to June 2025, I was a visiting student in the group of Prof. &lt;a class=&#34;link&#34; href=&#34;http://www.junjiema2.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Junjie Ma&lt;/a&gt; at the &lt;a class=&#34;link&#34; href=&#34;https://www.amss.ac.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Academy of Mathematics and Systems Science(AMSS)&lt;/a&gt;. During this period, I conducted research related to sampling and diffusion models. It is a great honor to explore everything in the academic world under the guidance of Prof. Ma!&lt;/p&gt;
+&lt;p&gt;I am eager to pursue engaging theoretical research driven by my curiosity and passion, with the aim of deepening my understanding and exploration of the world.&lt;/p&gt;
 &lt;p&gt;You can find my CV here: &lt;a class=&#34;link&#34; href=&#34;CV.pdf&#34; &gt;Haitong Lan&amp;rsquo;s Curriculum Vitae&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you want to chat with me or have any questions, please feel free to contact me!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;My contact information&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;QQ : 1517609268&lt;/li&gt;
-&lt;li&gt;Wechat &amp;amp; Phone: 15505405918&lt;/li&gt;
 &lt;li&gt;e-mail:lanhaitong@bupt.edu.cn&lt;/li&gt;
 &lt;/ul&gt;
 </description>
