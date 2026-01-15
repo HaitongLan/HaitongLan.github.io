@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Tue, 14 Oct 2025 22:38:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 May 2025 08:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>ARMA模型的MLE估计</title>
         <link>http://localhost:1313/p/arma%E6%A8%A1%E5%9E%8B%E7%9A%84mle%E4%BC%B0%E8%AE%A1/</link>
         <pubDate>Mon, 26 May 2025 08:00:00 +0800</pubDate>
@@ -6274,9 +6274,18 @@ $$&lt;/p&gt;
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/research/</guid>
-        <description>&lt;p&gt;&lt;font size=5&gt; Parameter estimation of time series &lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font size=5&gt; Optimization &lt;/font&gt;&lt;/p&gt;
-</description>
+        <description>&lt;h2 id=&#34;parameter-estimation-of-time-series&#34;&gt;Parameter estimation of time series
+&lt;/h2&gt;&lt;p&gt;等有积累了再详细写。。。目前还是小白&lt;/p&gt;
+&lt;h3 id=&#34;arma&#34;&gt;ARMA
+&lt;/h3&gt;&lt;p&gt;推进的主课题。&lt;/p&gt;
+&lt;h3 id=&#34;garch-m&#34;&gt;GARCH-M
+&lt;/h3&gt;&lt;p&gt;研究道路上的低垂果实。&lt;/p&gt;
+&lt;h3 id=&#34;varma&#34;&gt;VARMA
+&lt;/h3&gt;&lt;p&gt;下一步想做的。&lt;/p&gt;
+&lt;h2 id=&#34;optimization&#34;&gt;Optimization
+&lt;/h2&gt;&lt;h2 id=&#34;diffusion-models&#34;&gt;Diffusion models
+&lt;/h2&gt;&lt;h2 id=&#34;optimal-transport&#34;&gt;Optimal Transport
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>Search</title>
