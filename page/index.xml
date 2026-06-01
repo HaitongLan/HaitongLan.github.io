@@ -57,8 +57,13 @@
         <description>&lt;p&gt;I hope this page will be a place where I can share my life and work. I will update it regularly with my latest news and updates. Just keep going!&lt;/p&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;August 12 2025&lt;/strong&gt; | The first news! After a month-long stay at ShanghaiTech University, my summer vacation has begun!
-&lt;a href=&#34;https://imgse.com/i/pVd5Ipt&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/08/12/pVd5Ipt.jpg&#34; alt=&#34;pVd5Ipt.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;June 01 2026&lt;/strong&gt;  | Tuned in to the OT+OPT Workshop online! Gained a lot of inspiring insights into the latest research in optimization and optimal transport.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;August 12 2025&lt;/strong&gt; | The first news! After a month-long stay at ShanghaiTech University, my summer vacation has begun!
+&lt;a href=&#34;https://imgse.com/i/pVd5Ipt&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/08/12/pVd5Ipt.jpg&#34; alt=&#34;pVd5Ipt.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
@@ -68,9 +73,13 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/research/</guid>
-        <description>&lt;p&gt;&lt;font size=5&gt; Parameter estimation of time series &lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;font size=5&gt; Optimization &lt;/font&gt;&lt;/p&gt;
-</description>
+        <description>&lt;h2 id=&#34;parameter-estimation-of-time-series&#34;&gt;Parameter estimation of time series
+&lt;/h2&gt;&lt;h3 id=&#34;arma-and-varma&#34;&gt;ARMA and VARMA
+&lt;/h3&gt;&lt;h3 id=&#34;tvp-model&#34;&gt;TVP model
+&lt;/h3&gt;&lt;h2 id=&#34;optimization&#34;&gt;Optimization
+&lt;/h2&gt;&lt;h2 id=&#34;diffusion-models&#34;&gt;Diffusion models
+&lt;/h2&gt;&lt;h2 id=&#34;optimal-transport&#34;&gt;Optimal Transport
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>Search</title>
