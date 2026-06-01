@@ -22,7 +22,7 @@
     &gt;Junjie Ma&lt;/a&gt; at the &lt;a class=&#34;link&#34; href=&#34;https://www.amss.ac.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Academy of Mathematics and Systems Science(AMSS)&lt;/a&gt;. During this period, I conducted research related to sampling and diffusion models. It is a great honor to explore everything in the academic world under the guidance of Prof. Ma!&lt;/p&gt;
 &lt;p&gt;I am eager to pursue engaging theoretical research driven by my curiosity and passion, with the aim of deepening my understanding and exploration of the world.&lt;/p&gt;
-&lt;p&gt;You can find my CV here: &lt;a class=&#34;link&#34; href=&#34;CV.pdf&#34; &gt;Haitong Lan&amp;rsquo;s Curriculum Vitae&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- You can find my CV here: [Haitong Lan&#39;s Curriculum Vitae](CV.pdf). --&gt;
 &lt;p&gt;If you want to chat with me or have any questions, please feel free to contact me!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;My contact information&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -61,6 +61,9 @@
 &lt;p&gt;&lt;strong&gt;June 01 2026&lt;/strong&gt;  | Tuned in to the OT+OPT Workshop online! Gained a lot of inspiring insights into the latest research in optimization and optimal transport.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;May 18 2026&lt;/strong&gt; | Completed my undergraduate graduation thesis defense at BUPT.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;August 12 2025&lt;/strong&gt; | The first news! After a month-long stay at ShanghaiTech University, my summer vacation has begun!
 &lt;a href=&#34;https://imgse.com/i/pVd5Ipt&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/08/12/pVd5Ipt.jpg&#34; alt=&#34;pVd5Ipt.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -76,10 +79,11 @@
         <description>&lt;h2 id=&#34;parameter-estimation-of-time-series&#34;&gt;Parameter estimation of time series
 &lt;/h2&gt;&lt;h3 id=&#34;arma-and-varma&#34;&gt;ARMA and VARMA
 &lt;/h3&gt;&lt;h3 id=&#34;tvp-model&#34;&gt;TVP model
-&lt;/h3&gt;&lt;h2 id=&#34;optimization&#34;&gt;Optimization
-&lt;/h2&gt;&lt;h2 id=&#34;diffusion-models&#34;&gt;Diffusion models
-&lt;/h2&gt;&lt;h2 id=&#34;optimal-transport&#34;&gt;Optimal Transport
-&lt;/h2&gt;</description>
+&lt;/h3&gt;&lt;h2 id=&#34;want-to-study&#34;&gt;Want to study
+&lt;/h2&gt;&lt;h3 id=&#34;diffusion-model&#34;&gt;Diffusion Model
+&lt;/h3&gt;&lt;h3 id=&#34;optimal-transport&#34;&gt;Optimal Transport
+&lt;/h3&gt;&lt;h3 id=&#34;optimization-on-a-probability-space&#34;&gt;Optimization on a Probability Space
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>Search</title>
