@@ -1,107 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Bayes method, objective function and sampling.">
-<title>Bayesian signal processing</title>
-
-<link rel='canonical' href='http://localhost:1313/p/bayesian-signal-processing/'>
-
-<link rel="stylesheet" href="/scss/style.min.47a915f54ec9b54f73dcd3a27c2e314feaecdab65094d4b60d73fdabb46ab89a.css">
-<meta property='og:title' content="Bayesian signal processing">
-<meta property='og:description' content="Bayes method, objective function and sampling.">
-<meta property='og:url' content='http://localhost:1313/p/bayesian-signal-processing/'>
-<meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Signal processing' /><meta property='article:published_time' content='2024-08-14T20:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-08-19T00:21:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/Bayesian_signal_processing/cover.png' />
-<meta name="twitter:title" content="Bayesian signal processing">
-<meta name="twitter:description" content="Bayes method, objective function and sampling."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/post_file/Bayesian_signal_processing/cover.png' />
-    <link rel="shortcut icon" href="/favicon-v2.ico" />
-
-  
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayesian signal processing — Haitong Lan</title>
+<meta name="description" content="Bayes method, objective function and sampling.">
+<link rel="canonical" href="https://HaitongLan.github.io/p/bayesian-signal-processing/"><link rel="icon" href="/favicon-v2.ico">
+<link rel="stylesheet" href="/academic.css?v=2e98de68f5ce71d9805749d3eede8d41">
+<link rel="stylesheet" href="/academic-syntax.css">
 
 
-<style>
-    :root {
-        --article-font-family: "Noto Serif", var(--base-font-family);
-    }
-</style>
-<script>  
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script defer src="/math.js"></script>
 
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended">
-
-
-        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Back</span>
-            </a>
-        </div>
-    
-
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
+</head>
+<body><a class="skip" href="#main">Skip to content</a><div class="shell">
+<header class="site-header"><a class="name" href="/">Haitong Lan</a>
+<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
+<main id="main"><article><header class="page-heading"><h1>Bayesian signal processing</h1><p class="meta">August 14, 2024 · 13 min read · Math, Note</p><p class="lead">Bayes method, objective function and sampling.</p></header>
+<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
     <li><a href="#introduce-to-bayes-method">Introduce to bayes method</a>
       <ol>
@@ -123,118 +41,23 @@
       </ol>
     </li>
   </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/bayesian-signal-processing/">
-                
-                    <img src="/post_file/Bayesian_signal_processing/cover.png" loading="lazy" alt="Featured image of post Bayesian signal processing" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/math/" >
-                Math
-            </a>
-        
-            <a href="/categories/note/" >
-                Note
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/bayesian-signal-processing/">Bayesian signal processing</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            Bayes method, objective function and sampling.
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Aug 14, 2024</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    13 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-
-    <section class="article-content">
-    
-    
-    <h1 id="centerbayesian-signal-processingcenter"><center>Bayesian signal processing</center>
-</h1><p>该博客为张颢老师所讲的<a class="link" href="https://www.bilibili.com/video/BV1Rm421H7Dc?p=15&amp;vd_source=6cb8982c017348075d81bfccb9a89ae5"  target="_blank" rel="noopener"
-    >现代信号处理的贝叶斯信号处理部分</a>的课程个人学习笔记,涵盖贝叶斯公式的含义,贝叶斯学派与频率学派的关系,贝叶斯统计模型的目标函数,蒙特卡洛采样和贝叶斯滤波的内容。</p>
-<h2 id="introduce-to-bayes-method">Introduce to bayes method
-</h2><h3 id="bayes-and-frequency">Bayes and frequency
-</h3><p>使用贝叶斯公式并不意味着在使用贝叶斯方法,频率学派也会经常使用贝叶斯公式,早在贝叶斯之前,贝叶斯公式就已经在Laplce等数学家中非常娴熟的应用,贝叶斯方法在思想上面的含义要远远大于数学形式上的贝叶斯公式。</p>
-<p>摘抄知乎上<a class="link" href="https://www.zhihu.com/question/20587681?rf=29467800"  target="_blank" rel="noopener"
-    >Xiangyu Wang的回答</a>：频率学派和贝叶斯学派最大的差别其实产生于对参数空间的认知上。所谓参数空间,就是你关心的那个参数可能的取值范围。频率学派（其实就是当年的Fisher）并不关心参数空间的所有细节,他们相信数据都是在这个空间里的“某个”参数值下产生的（虽然你不知道那个值是啥）,所以他们的方法论一开始就是从“哪个值最有可能是真实值”这个角度出发的。于是就有了最大似然（maximum likelihood）以及置信区间（confidence interval）这样的东西,你从名字就可以看出来他们关心的就是我有多大把握去圈出那个唯一的真实参数。而贝叶斯学派恰恰相反,他们关心参数空间里的每一个值,因为他们觉得我们又没有上帝视角,怎么可能知道哪个值是真的呢？所以参数空间里的每个值都有可能是真实模型使用的值,区别只是概率不同而已。于是他们才会引入先验分布（prior distribution）和后验分布（posterior distribution）这样的概念来设法找出参数空间上的每个值的概率。最好诠释这种差别的例子就是想象如果你的后验分布是双峰的,频率学派的方法会去选这两个峰当中较高的那一个对应的值作为他们的最好猜测,而贝叶斯学派则会同时报告这两个值,并给出对应的概率。</p>
+</nav></details>
+<div class="prose"><h1 id="centerbayesian-signal-processingcenter"><center>Bayesian signal processing</center></h1>
+<p>该博客为张颢老师所讲的<a href="https://www.bilibili.com/video/BV1Rm421H7Dc?p=15&vd_source=6cb8982c017348075d81bfccb9a89ae5">现代信号处理的贝叶斯信号处理部分</a>的课程个人学习笔记,涵盖贝叶斯公式的含义,贝叶斯学派与频率学派的关系,贝叶斯统计模型的目标函数,蒙特卡洛采样和贝叶斯滤波的内容。</p>
+<h2 id="introduce-to-bayes-method">Introduce to bayes method</h2>
+<h3 id="bayes-and-frequency">Bayes and frequency</h3>
+<p>使用贝叶斯公式并不意味着在使用贝叶斯方法,频率学派也会经常使用贝叶斯公式,早在贝叶斯之前,贝叶斯公式就已经在Laplce等数学家中非常娴熟的应用,贝叶斯方法在思想上面的含义要远远大于数学形式上的贝叶斯公式。</p>
+<p>摘抄知乎上<a href="https://www.zhihu.com/question/20587681?rf=29467800">Xiangyu Wang的回答</a>：频率学派和贝叶斯学派最大的差别其实产生于对参数空间的认知上。所谓参数空间,就是你关心的那个参数可能的取值范围。频率学派（其实就是当年的Fisher）并不关心参数空间的所有细节,他们相信数据都是在这个空间里的“某个”参数值下产生的（虽然你不知道那个值是啥）,所以他们的方法论一开始就是从“哪个值最有可能是真实值”这个角度出发的。于是就有了最大似然（maximum likelihood）以及置信区间（confidence interval）这样的东西,你从名字就可以看出来他们关心的就是我有多大把握去圈出那个唯一的真实参数。而贝叶斯学派恰恰相反,他们关心参数空间里的每一个值,因为他们觉得我们又没有上帝视角,怎么可能知道哪个值是真的呢？所以参数空间里的每个值都有可能是真实模型使用的值,区别只是概率不同而已。于是他们才会引入先验分布（prior distribution）和后验分布（posterior distribution）这样的概念来设法找出参数空间上的每个值的概率。最好诠释这种差别的例子就是想象如果你的后验分布是双峰的,频率学派的方法会去选这两个峰当中较高的那一个对应的值作为他们的最好猜测,而贝叶斯学派则会同时报告这两个值,并给出对应的概率。</p>
 <p>假如我们有一个统计模型$f(x,\theta)$去估计原始数据$x$的分布,频率学派认为$\theta$是固定的,尽管我们现在还没有办法得到,贝叶斯学派认为$\theta$是随机的,是服从一个概率分布的随机变量。</p>
-<h3 id="bayes-the-science-of-cognitive-law">Bayes: The Science of cognitive law
-</h3><p>贝叶斯的观点是符合人脑的认知规律的,也是现代认知心理学的基础：在认识一件事物之前,我们会先对这个事物有一定的认知,在与事物接触的过程中,我们的认知会逐渐的发生变化,或加强我们的认知,或减弱我们的认知,我们的认知从而得到了进步,这与马原中所说的认知随着实践螺旋式上升也有异曲同工之妙。贝叶斯公式就是表述了这个认知的过程：
+<h3 id="bayes-the-science-of-cognitive-law">Bayes: The Science of cognitive law</h3>
+<p>贝叶斯的观点是符合人脑的认知规律的,也是现代认知心理学的基础：在认识一件事物之前,我们会先对这个事物有一定的认知,在与事物接触的过程中,我们的认知会逐渐的发生变化,或加强我们的认知,或减弱我们的认知,我们的认知从而得到了进步,这与马原中所说的认知随着实践螺旋式上升也有异曲同工之妙。贝叶斯公式就是表述了这个认知的过程：
 $$
 \begin{equation}
 P(\theta \mid X)=\frac{P(X \mid \theta) P(\theta)}{P(X)}
 \end{equation}
 $$
 贝叶斯学派通过引入三个名词对贝叶斯公式进行解释：</p>
-<div class="table-wrapper"><table>
+<table>
 <thead>
 <tr>
 <th style="text-align:center">名词</th>
@@ -255,7 +78,7 @@ $$
 <td style="text-align:center">$P(\theta \mid X)$</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>先验分布就是在接触事物数据之前我们已经有的认知,似然是在接触事物的过程中,在给定先验知识的条件下我们对数据的认知,后验分布是我们在数据的基础上对事物的认知,机器学习中的“Learning”这一概念,很大程度上就是贝叶斯方法中的使用后验分布去调整先验分布,当数据量足够大的时候,$P(\theta)$就越来越接近真实的概率模型,另外,分母$P(X)$经常被成为贝叶斯因子。</p>
 <p>我们再来观察特殊的情况。如果数据与先验独立,即$X \perp \theta$,有$P(\theta \mid X)=P(\theta)$,即先验等于后验,也就是说在接触数据的过程中,我们并没有学到有用的信息。如果$P(\theta)=0$,我们的先验分布和后验分布会一直等于0,所以在很多机器学习算法中设置初始迭代解的时候,会避开零概率的设置。</p>
 <hr>
@@ -318,8 +141,8 @@ $$
 $$
 可见,后验分布可以当作某种似然与先验分布的线性凸组合,当$n$足够大时,数据的加权十分大,就可以忘记先验,当$\sigma_x$足够大时,数据的信任度很低,学习的权重会尽可能的减少,从而保持先验,其实这种似然和先验分布都是Guassian分布的情况下就是简化的线性高斯模型,可以有更统一的矩阵描述形式。
 <hr>
-<h2 id="statistical-decision-theory">Statistical decision theory
-</h2><p>贝叶斯方法的核心观点就是利用后验分布去学习统计模型$\hat{\theta}(x)$,去对先验分布进行优化,那么就需要我们定义一种度量$d(\hat{\theta}(x),\theta)$,从而通过最小化这种度量的方式完成先验分布的优化,$d(\hat{\theta}(x),\theta)$是随机的,所以我们希望消除他的随机性求平均距离,即我们的目标为</p>
+<h2 id="statistical-decision-theory">Statistical decision theory</h2>
+<p>贝叶斯方法的核心观点就是利用后验分布去学习统计模型$\hat{\theta}(x)$,去对先验分布进行优化,那么就需要我们定义一种度量$d(\hat{\theta}(x),\theta)$,从而通过最小化这种度量的方式完成先验分布的优化,$d(\hat{\theta}(x),\theta)$是随机的,所以我们希望消除他的随机性求平均距离,即我们的目标为</p>
 <div>
 $$
 \begin{equation}
@@ -344,8 +167,8 @@ $$
 E[d(\hat{\theta}(x), \theta)]=\frac{1}{N}\sum_{k=1}^Nd(\theta_k, \hat{\theta}_k(x))
 $$
 贝叶斯学派则是尽可能削弱数据的随机性,认为已经发生的实验就是确定的,将问题的重心转化到后验分布的计算上,在后面我们会看到,使用贝叶斯方法处理统计模型的关键就是得到后验分布以及如何处理后验分布。</p>
-<h3 id="choice-of-measurement">Choice of measurement
-</h3><ol>
+<h3 id="choice-of-measurement">Choice of measurement</h3>
+<ol>
 <li>
 <p>MSE</p>
 <p>选择度量为均方误差,可以定义风险(忽略了数据的随机性)：
@@ -550,13 +373,13 @@ E[\theta \mid x]=\frac{a+b}{n+a+b}\frac{a}{a+b}+\frac{n}{n+a+b}\frac{x}{n}
 $$
 依然是某种实验中的均值与先验分布均值的线性凸组合,从我们在上一个章节中的Gauss分布似然到这个章节的伯努利分布似然,最后都得到了线性凸组合的学习形式,这可能并不是一种偶然,这些简单的例子给我们启发：在高维空间中,复杂分布的学习过程也可能是迭代的线性凸组合。</p>
 <hr>
-<h2 id="sampling">Sampling
-</h2><p>使用Bayes方法的核心在于后验分布的处理，但是后验分布的形式往往是极其复杂的，极大多数的后验分布都是难以去积分甚至不可积的，统计中常用的方法就是<strong>生成</strong>符合后验分布的样本，从而利用样本代替解析表达的分布进行计算，这种生成样本的方法又被称作<strong>采样</strong>。</p>
+<h2 id="sampling">Sampling</h2>
+<p>使用Bayes方法的核心在于后验分布的处理，但是后验分布的形式往往是极其复杂的，极大多数的后验分布都是难以去积分甚至不可积的，统计中常用的方法就是<strong>生成</strong>符合后验分布的样本，从而利用样本代替解析表达的分布进行计算，这种生成样本的方法又被称作<strong>采样</strong>。</p>
 <blockquote>
 <p><strong>模拟</strong>是指把某一现实的或抽象的系统的某种特征或部分状态， 用另一系统（称为模拟模型）来代替或近似。 为了解决某问题， 把它变成一个概率模型的求解问题， 然后产生符合模型的大量随机数， 对产生的随机数进行分析从而求解问题， 这种方法叫做<strong>随机模拟</strong>方法， 又称为<strong>蒙特卡洛</strong>(Monte Carlo)方法。</p>
 </blockquote>
-<h3 id="inverse-distribution-function">Inverse distribution function
-</h3><p>逆分布采样的描述很简单，目标生成随机变量$X\sim F(X)$的样本($F(x)$为累计分布函数)，只需要生成随机样本$Y\sim F^{-1}(U)$即可，$Y$即想要得到的分布，$U$为服从标准正态分布的随机变量。</p>
+<h3 id="inverse-distribution-function">Inverse distribution function</h3>
+<p>逆分布采样的描述很简单，目标生成随机变量$X\sim F(X)$的样本($F(x)$为累计分布函数)，只需要生成随机样本$Y\sim F^{-1}(U)$即可，$Y$即想要得到的分布，$U$为服从标准正态分布的随机变量。</p>
 <p>这样来看，生成随机变量的样本的过程就很简单，第一步，生成均匀分布的样本(可以利用线性同余法等方法生成)，第二步，求得目标分布累积分布函数的逆，第三步，代入累积分布函数的逆求得目标样本。</p>
 <p>现在简单的<strong>证明</strong>一下随机变量$Y$与随机变量$X$服从同一个分布，求$Y$的累积分布函数：
 $$
@@ -592,481 +415,16 @@ f_{X Y}(x, y) &amp;=f_{XY}(\rho \cos\theta,\rho \sin\theta)\
 \end{equation}
 $$</p>
 <hr>
-<h3 id="accept-reject-sampling">Accept-reject sampling
-</h3><h3 id="importance-sampling">Importance sampling
-</h3><h3 id="markov-chain-monte-carlomcmc">Markov chain Monte Carlo(MCMC)
-</h3><hr>
-<p>这三个章节的内容可以看另一篇<a class="link" href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/#%E9%87%87%E6%A0%B7"  target="_blank" rel="noopener"
-    >博客</a>.</p>
+<h3 id="accept-reject-sampling">Accept-reject sampling</h3>
+<h3 id="importance-sampling">Importance sampling</h3>
+<h3 id="markov-chain-monte-carlomcmc">Markov chain Monte Carlo(MCMC)</h3>
+<hr>
+<p>这三个章节的内容可以看另一篇<a href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/#%E9%87%87%E6%A0%B7">博客</a>.</p>
+</div>
 
-</section>
+<p class="back"><a href="/post/">← All posts</a></p></article></main>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+</div></body></html>
 
 
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/signal-processing/">Signal Processing</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    <section class="article-lastmod">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            Last updated on Aug 19, 2024 00:21 CST
-        </span>
-    </section></footer>
-
-<footer class="article-footer">
-    <section>
-        Page views:<span id="busuanzi_value_page_pv">Loading</span>
-    </section>
-</footer>
-
-
-    
-        
-
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
-    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
-    crossorigin="anonymous"
-/>
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-    onload="
-    window.addEventListener('DOMContentLoaded', function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: true}
-            ]
-        });
-    });
-"></script>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/noteot-opt-workshop/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/OT&#43;OPT/cover1.jpg" loading="lazy" data-key="" data-hash="/post_file/OT&#43;OPT/cover1.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Note|OT&#43;OPT Workshop</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e7%8e%b0%e4%bb%a3%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/cover.png" loading="lazy" data-key="" data-hash="/post_file/现代数字信号处理/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|现代数字信号处理选学</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" data-key="" data-hash="/post_file/随机分析/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|随机分析</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|课题组讨论班</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|信息论</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2024 - 
-        
-        2026 Haitong&#39;s blog
-    </section>
-    
-    
-    <section class="powerby">
-             
-                
-                
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-
-                <p>16 articles have been published | A total of 103.0k words.</p>
-
-
-    </section>
-
-</footer>
-
-<script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
-      pangu.spacingPage();
-    });
-</script>
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script>
-<script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-
-
-
-
-<script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
-    crossorigin="anonymous"
-></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
-    crossorigin="anonymous"
-/>
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
-</script>
-
-<script defer src="https://cn.vercount.one/js"></script>
-<style>
-    #backTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        z-index: 99;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        background-image: url(http://localhost:1313/icons/backTop.svg);
-    }
-</style>
-
-
-<style>
-    #TableOfContents > ul, ol {
-        ul, ol {
-            display: none;
-        }
-        .open {
-            display: block;
-        }
-    }
-</style>
-
-<script>
-    function initTocHide() {
-        
-        let toc = document.querySelector(".widget--toc");
-        if (!toc) {
-            return;
-        }
-        
-        window.addEventListener('scroll', function() {
-            
-            let openUl = document.querySelectorAll(".open");
-            if (openUl.length > 0) {
-              openUl.forEach((ul) => {
-                ul.classList.remove("open")
-              })
-            }
-            
-            let currentLi = document.querySelector(".active-class");
-            if (!currentLi) {
-                return
-            }
-            
-            if (currentLi.children.length > 1) {
-                currentLi.children[1].classList.add("open")
-            }
-            
-            let ul = currentLi.parentElement;
-            do {
-                ul.classList.add("open");
-                ul = ul.parentElement.parentElement
-            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
-        });
-    }
-    initTocHide()
-</script>
-
-
-
-
-
-
-    </body>
-</html>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "\\[", right: "\\]", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false}
-      ],
-      throwOnError: false
-    });
-  });
-</script>
 

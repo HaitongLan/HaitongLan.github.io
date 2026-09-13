@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coursework on Haitong Lan</title>
+    <link>https://HaitongLan.github.io/tags/coursework/</link>
+    <description>Recent content in Coursework on Haitong Lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Haitong&#39;s blog</copyright>
+    <lastBuildDate>Sat, 17 Aug 2024 00:21:05 +0800</lastBuildDate>
+    <atom:link href="https://HaitongLan.github.io/tags/coursework/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Undergraduate coursework and mathematical modeling</title>
+      <link>https://HaitongLan.github.io/p/undergraduate-coursework-and-modeling/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/p/undergraduate-coursework-and-modeling/</guid>
+      <description>本科阶段的课程论文、海报及数学建模比赛材料，按课程与比赛分类整理。 课程论文与海报 数值计算：非均匀节点有限差分方法 大二上学期“计算方法”课程的</description>
+    </item>
+  </channel>
+</rss>

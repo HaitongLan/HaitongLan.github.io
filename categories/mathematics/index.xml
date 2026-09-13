@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on Haitong Lan</title>
+    <link>https://HaitongLan.github.io/categories/mathematics/</link>
+    <description>Recent content in Mathematics on Haitong Lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Haitong&#39;s blog</copyright>
+    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://HaitongLan.github.io/categories/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convex Optimization</title>
+      <link>https://HaitongLan.github.io/p/convex-optimization/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/p/convex-optimization/</guid>
+      <description>This notebook will record my study of convex optimization during graduate school. I will add definitions, proofs, worked examples, and questions as I work through the subject.&#xA;Study log September 13, 2026 — Notebook created. Study entries will follow.&#xA;Notes To be added as my study progresses.&#xA;Questions I will collect questions and points to revisit here.&#xA;References Reading materials will be listed here as I use them.</description>
+    </item>
+    <item>
+      <title>Optimal Transport</title>
+      <link>https://HaitongLan.github.io/p/optimal-transport/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/p/optimal-transport/</guid>
+      <description>This notebook will record my study of optimal transport during graduate school. I will add definitions, derivations, examples, and questions as I work through the subject.&#xA;Study log September 13, 2026 — Notebook created. Study entries will follow.&#xA;Notes To be added as my study progresses.&#xA;Questions I will collect questions and points to revisit here.&#xA;References Reading materials will be listed here as I use them.</description>
+    </item>
+    <item>
+      <title>Undergraduate coursework and mathematical modeling</title>
+      <link>https://HaitongLan.github.io/p/undergraduate-coursework-and-modeling/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/p/undergraduate-coursework-and-modeling/</guid>
+      <description>本科阶段的课程论文、海报及数学建模比赛材料，按课程与比赛分类整理。 课程论文与海报 数值计算：非均匀节点有限差分方法 大二上学期“计算方法”课程的</description>
+    </item>
+  </channel>
+</rss>

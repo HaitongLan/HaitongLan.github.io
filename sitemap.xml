@@ -2,110 +2,119 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://HaitongLan.github.io/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/categories/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/tags/convex-optimization/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/p/convex-optimization/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/categories/mathematics/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/tags/optimal-transport/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/p/optimal-transport/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/tags/optimization/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/post/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/tags/</loc>
+    <lastmod>2026-09-13T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/categories/math/</loc>
     <lastmod>2026-06-01T12:38:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://HaitongLan.github.io/categories/note/</loc>
     <lastmod>2026-06-01T12:38:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/math/</loc>
+    <loc>https://HaitongLan.github.io/p/noteot-opt-workshop/</loc>
     <lastmod>2026-06-01T12:38:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/note/</loc>
+    <loc>https://HaitongLan.github.io/tags/reading/</loc>
     <lastmod>2026-06-01T12:38:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/noteot-opt-workshop/</loc>
-    <lastmod>2026-06-01T12:38:05+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2026-06-01T12:38:05+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/reading/</loc>
-    <lastmod>2026-06-01T12:38:05+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-06-01T12:38:05+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/note/</loc>
+    <loc>https://HaitongLan.github.io/tags/note/</loc>
     <lastmod>2025-06-30T22:43:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</loc>
     <lastmod>2025-06-29T14:18:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</loc>
     <lastmod>2025-04-22T22:12:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</loc>
     <lastmod>2025-03-10T19:24:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/</loc>
     <lastmod>2025-03-07T13:00:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2025-06-30T22:43:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2025-04-07T21:36:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/course-notes/</loc>
+    <loc>https://HaitongLan.github.io/p/course-notes/</loc>
     <lastmod>2025-06-11T22:59:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/diffusion/</loc>
+    <loc>https://HaitongLan.github.io/tags/diffusion/</loc>
     <lastmod>2024-12-02T16:50:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/machine-learning/</loc>
+    <loc>https://HaitongLan.github.io/categories/machine-learning/</loc>
     <lastmod>2024-12-02T16:50:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/</loc>
+    <loc>https://HaitongLan.github.io/tags/sampling/</loc>
     <lastmod>2024-12-02T16:50:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/tutorial/</loc>
+    <loc>https://HaitongLan.github.io/p/sampling-and-diffusion/</loc>
     <lastmod>2024-12-02T16:50:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/score-based-variational-inference-for-inverse-problems/</loc>
-    <lastmod>2024-09-19T20:00:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/mathematical-modeling/</loc>
+    <loc>https://HaitongLan.github.io/tags/coursework/</loc>
     <lastmod>2024-08-17T00:21:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/my-mathematical-modeling/</loc>
+    <loc>https://HaitongLan.github.io/tags/mathematical-modeling/</loc>
     <lastmod>2024-08-17T00:21:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/bayesian-signal-processing/</loc>
+    <loc>https://HaitongLan.github.io/tags/numerical-analysis/</loc>
+    <lastmod>2024-08-17T00:21:05+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/tags/signal-processing/</loc>
     <lastmod>2024-08-19T00:21:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/signal-processing/</loc>
+    <loc>https://HaitongLan.github.io/p/undergraduate-coursework-and-modeling/</loc>
+    <lastmod>2024-08-17T00:21:05+08:00</lastmod>
+  </url><url>
+    <loc>https://HaitongLan.github.io/p/bayesian-signal-processing/</loc>
     <lastmod>2024-08-19T00:21:05+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/correlation-operation-and-random-signal-processing/</loc>
-    <lastmod>2024-08-07T23:30:00+08:00</lastmod>
+    <loc>https://HaitongLan.github.io/about-me/</loc>
+    <lastmod>2026-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/a-non-uniform-node-finite-difference-algorithm/</loc>
-    <lastmod>2024-08-07T00:22:00+08:00</lastmod>
+    <loc>https://HaitongLan.github.io/page/</loc>
+    <lastmod>2026-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/smld-and-sde-for-diffusion-model/</loc>
-    <lastmod>2024-08-06T16:50:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/tutorial-of-markdown/</loc>
-    <lastmod>2024-08-05T12:14:10+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/about-me/</loc>
-    <lastmod>2024-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/page/</loc>
-    <lastmod>2024-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://HaitongLan.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/links/</loc>
+    <loc>https://HaitongLan.github.io/links/</loc>
   </url><url>
-    <loc>http://localhost:1313/news/</loc>
+    <loc>https://HaitongLan.github.io/news/</loc>
   </url><url>
-    <loc>http://localhost:1313/research/</loc>
+    <loc>https://HaitongLan.github.io/research/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://HaitongLan.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/testtag/</loc>
+    <loc>https://HaitongLan.github.io/tags/testtag/</loc>
   </url>
 </urlset>

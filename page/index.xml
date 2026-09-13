@@ -1,98 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Pages on Haitong Lan</title>
-        <link>http://localhost:1313/page/</link>
-        <description>Recent content in Pages on Haitong Lan</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Sat, 03 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>About me</title>
-        <link>http://localhost:1313/about-me/</link>
-        <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/about-me/</guid>
-        <description>&lt;p&gt;I am currently an undergraduate student at &lt;a class=&#34;link&#34; href=&#34;https://www.bupt.edu.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Beijing University of Posts and Telecommunications (BUPT)&lt;/a&gt;, with research interests in signal processing, optimization, and statistics.&lt;/p&gt;
-&lt;p&gt;I will begin my master’s studies in Computer Science and Technology at &lt;a class=&#34;link&#34; href=&#34;https://www.shanghaitech.edu.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ShanghaiTech University&lt;/a&gt; in the autumn semester of 2026, under the supervision of Prof. &lt;a class=&#34;link&#34; href=&#34;https://faculty.sist.shanghaitech.edu.cn/zhao/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Ziping Zhao&lt;/a&gt;, whose research focuses on optimization and signal processing.&lt;/p&gt;
-&lt;p&gt;From June 2024 to June 2025, I was a visiting student in the group of Prof. &lt;a class=&#34;link&#34; href=&#34;http://www.junjiema2.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Junjie Ma&lt;/a&gt; at the &lt;a class=&#34;link&#34; href=&#34;https://www.amss.ac.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Academy of Mathematics and Systems Science(AMSS)&lt;/a&gt;. During this period, I conducted research related to sampling and diffusion models. It is a great honor to explore everything in the academic world under the guidance of Prof. Ma!&lt;/p&gt;
-&lt;p&gt;I am eager to pursue engaging theoretical research driven by my curiosity and passion, with the aim of deepening my understanding and exploration of the world.&lt;/p&gt;
-&lt;!-- You can find my CV here: [Haitong Lan&#39;s Curriculum Vitae](CV.pdf). --&gt;
-&lt;p&gt;If you want to chat with me or have any questions, please feel free to contact me!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;My contact information&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;QQ : 1517609268&lt;/li&gt;
-&lt;li&gt;e-mail:lanhaitong@bupt.edu.cn&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>Archives</title>
-        <link>http://localhost:1313/archives/</link>
-        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/archives/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Links</title>
-        <link>http://localhost:1313/links/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/links/</guid>
-        <description>&lt;p&gt;The links below are some of my favorite sites and blogs, which serve as quick access points for me and recommendations for you.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>News</title>
-        <link>http://localhost:1313/news/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/news/</guid>
-        <description>&lt;p&gt;I hope this page will be a place where I can share my life and work. I will update it regularly with my latest news and updates. Just keep going!&lt;/p&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;June 01 2026&lt;/strong&gt;  | Tuned in to the OT+OPT Workshop online! Gained a lot of inspiring insights into the latest research in optimization and optimal transport.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;May 18 2026&lt;/strong&gt; | Completed my undergraduate graduation thesis defense at BUPT.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;August 12 2025&lt;/strong&gt; | The first news! After a month-long stay at ShanghaiTech University, my summer vacation has begun!
-&lt;a href=&#34;https://imgse.com/i/pVd5Ipt&#34;&gt;&lt;img src=&#34;https://s21.ax1x.com/2025/08/12/pVd5Ipt.jpg&#34; alt=&#34;pVd5Ipt.jpg&#34; border=&#34;0&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>Research</title>
-        <link>http://localhost:1313/research/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/research/</guid>
-        <description>&lt;h2 id=&#34;parameter-estimation-of-time-series&#34;&gt;Parameter estimation of time series
-&lt;/h2&gt;&lt;h3 id=&#34;arma-and-varma&#34;&gt;ARMA and VARMA
-&lt;/h3&gt;&lt;h3 id=&#34;tvp-model&#34;&gt;TVP model
-&lt;/h3&gt;&lt;h2 id=&#34;want-to-study&#34;&gt;Want to study
-&lt;/h2&gt;&lt;h3 id=&#34;diffusion-model&#34;&gt;Diffusion Model
-&lt;/h3&gt;&lt;h3 id=&#34;optimal-transport&#34;&gt;Optimal Transport
-&lt;/h3&gt;&lt;h3 id=&#34;optimization-on-a-probability-space&#34;&gt;Optimization on a Probability Space
-&lt;/h3&gt;</description>
-        </item>
-        <item>
-        <title>Search</title>
-        <link>http://localhost:1313/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/search/</guid>
-        <description></description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>Pages on Haitong Lan</title>
+    <link>https://HaitongLan.github.io/page/</link>
+    <description>Recent content in Pages on Haitong Lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Haitong&#39;s blog</copyright>
+    <lastBuildDate>Wed, 09 Sep 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://HaitongLan.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About me</title>
+      <link>https://HaitongLan.github.io/about-me/</link>
+      <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/about-me/</guid>
+      <description>I am a first-year master&amp;rsquo;s student in Computer Science and Technology at ShanghaiTech University, advised by Prof. Ziping Zhao. I began my graduate studies in September 2026.&#xA;My research interests are in optimization, particularly optimization on probability spaces and over probability distributions, and statistics. I am drawn to the mathematical foundations of these areas and the connections between them.&#xA;Previously, I completed my undergraduate studies at Beijing University of Posts and Telecommunications (BUPT).</description>
+    </item>
+    <item>
+      <title>Archives</title>
+      <link>https://HaitongLan.github.io/archives/</link>
+      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/archives/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Links</title>
+      <link>https://HaitongLan.github.io/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/links/</guid>
+      <description>The links below are some of my favorite sites and blogs, which serve as quick access points for me and recommendations for you.</description>
+    </item>
+    <item>
+      <title>News</title>
+      <link>https://HaitongLan.github.io/news/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/news/</guid>
+      <description>I hope this page will be a place where I can share my life and work. I will update it regularly with my latest news and updates. Just keep going!&#xA;September 09 2026 | I officially began my graduate studies at ShanghaiTech University. I look forward to learning, exploring new ideas, and making meaningful research progress.&#xA;June 01 2026 | Tuned in to the OT+OPT Workshop online! Gained a lot of inspiring insights into the latest research in optimization and optimal transport.</description>
+    </item>
+    <item>
+      <title>Research interests</title>
+      <link>https://HaitongLan.github.io/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/research/</guid>
+      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Optimization I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
+    </item>
+    <item>
+      <title>Search</title>
+      <link>https://HaitongLan.github.io/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/search/</guid>
+      <description></description>
+    </item>
+  </channel>
 </rss>

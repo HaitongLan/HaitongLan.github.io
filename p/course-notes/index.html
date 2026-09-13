@@ -1,207 +1,36 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="BUPT&QMUL course study notes">
-<title>Course notes</title>
-
-<link rel='canonical' href='http://localhost:1313/p/course-notes/'>
-
-<link rel="stylesheet" href="/scss/style.min.47a915f54ec9b54f73dcd3a27c2e314feaecdab65094d4b60d73fdabb46ab89a.css">
-<meta property='og:title' content="Course notes">
-<meta property='og:description' content="BUPT&QMUL course study notes">
-<meta property='og:url' content='http://localhost:1313/p/course-notes/'>
-<meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-11T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-06-11T22:59:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/cover.png' />
-<meta name="twitter:title" content="Course notes">
-<meta name="twitter:description" content="BUPT&QMUL course study notes"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/cover.png' />
-    <link rel="shortcut icon" href="/favicon-v2.ico" />
-
-  
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course notes — Haitong Lan</title>
+<meta name="description" content="BUPT&amp;QMUL course study notes">
+<link rel="canonical" href="https://HaitongLan.github.io/p/course-notes/"><link rel="icon" href="/favicon-v2.ico">
+<link rel="stylesheet" href="/academic.css?v=2e98de68f5ce71d9805749d3eede8d41">
+<link rel="stylesheet" href="/academic-syntax.css">
 
 
-<style>
-    :root {
-        --article-font-family: "Noto Serif", var(--base-font-family);
-    }
-</style>
-<script>  
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script defer src="/math.js"></script>
 
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended">
-
-
-        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Back</span>
-            </a>
-        </div>
-    
-
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
+</head>
+<body><a class="skip" href="#main">Skip to content</a><div class="shell">
+<header class="site-header"><a class="name" href="/">Haitong Lan</a>
+<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
+<main id="main"><article><header class="page-heading"><h1>Course notes</h1><p class="meta">January 11, 2025 · 3 min read · Note</p><p class="lead">BUPT&amp;QMUL course study notes</p></header>
+<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
     <li><a href="#大一">大一</a></li>
     <li><a href="#大二">大二</a></li>
     <li><a href="#大三">大三</a></li>
     <li><a href="#大四">大四</a></li>
   </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/course-notes/">
-                
-                    <img src="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/cover.png" loading="lazy" alt="Featured image of post Course notes" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/note/" >
-                Note
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/course-notes/">Course notes</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            BUPT&amp;QMUL course study notes
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 11, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    3 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-
-    <section class="article-content">
-    
-    
-    <h1 id="centercourse-notescenter"><center>Course notes</center>
-</h1><p>这篇blog用于记录和整理北京邮电大学&amp;QMUL合办专业——电信工程及管理(Telecommunications engineering and management)专业学习笔记，以及一些课程教材推荐。</p>
-<h2 id="大一">大一
-</h2><ol>
+</nav></details>
+<div class="prose"><h1 id="centercourse-notescenter"><center>Course notes</center></h1>
+<p>这篇blog用于记录和整理北京邮电大学&amp;QMUL合办专业——电信工程及管理(Telecommunications engineering and management)专业学习笔记，以及一些课程教材推荐。</p>
+<h2 id="大一">大一</h2>
+<ol>
 <li>
 <p>高等数学</p>
 <p>参考书目：1) Advanced Mathematics，By Jianhua Yuan,et al<br>
@@ -214,7 +43,7 @@
 </li>
 <li>
 <p>大学物理</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e5%a4%a7%e5%ad%a6%e7%89%a9%e7%90%86/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86/note.pdf">note</a><br>
 参考书目：1) Physics for Scientists and Engineers with Modern
 Physics: D. C. Giancoli.<br>
                  2) Berkeley Physics Course<br>
@@ -229,61 +58,57 @@ Physics: D. C. Giancoli.<br>
 <p>C语言程序设计基础</p>
 </li>
 </ol>
-<h2 id="大二">大二
-</h2><ol>
+<h2 id="大二">大二</h2>
+<ol>
 <li>
 <p>数字电路设计</p>
-<p>课程笔记:<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%95%b0%e5%ad%97%e7%94%b5%e8%b7%af%e8%ae%be%e8%ae%a1/note.pdf" >note</a>
+<p>课程笔记:<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/note.pdf">note</a>
 <br>
 参考书目:Digital Design: Principles and Practices, 5th edition by John F. Wakerly</p>
 </li>
 <li>
 <p>JAVA</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/JAVA/note.pdf" >note</a>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/JAVA/note.pdf">note</a>
 <br>
 参考书目：Head First Java, 3rd Edition by Kathy Sierra, Bert Bates, Trisha Gee</p>
 </li>
 <li>
 <p>概率论与随机过程</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%a6%82%e7%8e%87%e8%ae%ba%e4%b8%8e%e9%9a%8f%e6%9c%ba%e8%bf%87%e7%a8%8b/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/note.pdf">note</a><br>
 参考书目：概率论与随机过程,作者:周清 张丽华<br>
-参考课程：<a class="link" href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >随机过程 张颢 2024年春</a></p>
+参考课程：<a href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">随机过程 张颢 2024年春</a></p>
 </li>
 <li>
 <p>计算机网络</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/note.pdf">note</a><br>
 参考书目：Computer Networking: A Top-Down Approach,Authors:PictureJames F. Kurose,PictureKeith W. Ross</p>
 </li>
 <li>
 <p>数字信号处理</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/note.pdf">note</a><br>
 参考书目：Discrete Time Signal Processing by Alan V. Oppenheim and Ronald W. Schafer.<br>
-参考课程：<a class="link" href="https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >数字信号处理 张颢 2023年秋</a></p>
+参考课程：<a href="https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">数字信号处理 张颢 2023年秋</a></p>
 </li>
 <li>
 <p>工程数学</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e5%b7%a5%e7%a8%8b%e6%95%b0%e5%ad%a6/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6/note.pdf">note</a><br>
 参考书目：Engineering Mathematics，By Xia Shi</p>
 </li>
 <li>
 <p>信号与系统</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e4%bf%a1%e5%8f%b7%e4%b8%8e%e7%b3%bb%e7%bb%9f/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/note.pdf">note</a><br>
 参考书目：Signals and Systems 2nd Edition，by Alan Oppenheim , Alan Willsky , S. Nawab</p>
 </li>
 <li>
 <p>AI导论</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/AI%e5%af%bc%e8%ae%ba/note1.pdf" >note</a><br>
-强化学习基础：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/AI%e5%af%bc%e8%ae%ba/note2.pdf" >note</a><br>
-参考课程：1) <a class="link" href="https://www.bilibili.com/video/BV16Y4y1M7DX/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >强化学习基础 （本科生课程） 北京邮电大学 鲁鹏</a><br>
-                 2) <a class="link" href="https://www.bilibili.com/video/BV18P4y1a7Fw/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >机器视觉教学课程</a></p>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/AI%E5%AF%BC%E8%AE%BA/note1.pdf">note</a><br>
+强化学习基础：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/AI%E5%AF%BC%E8%AE%BA/note2.pdf">note</a><br>
+参考课程：1) <a href="https://www.bilibili.com/video/BV16Y4y1M7DX/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">强化学习基础 （本科生课程） 北京邮电大学 鲁鹏</a><br>
+                 2) <a href="https://www.bilibili.com/video/BV18P4y1a7Fw/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">机器视觉教学课程</a></p>
 </li>
 <li>
 <p>电子电路基础</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e7%94%b5%e5%ad%90%e7%94%b5%e8%b7%af%e5%9f%ba%e7%a1%80/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/note.pdf">note</a><br>
 参考书目：1) 新概念模拟电路，作者：杨建国<br>
                  2) 模拟电子技术基础（第五版）,作者：童诗白等</p>
 </li>
@@ -293,557 +118,91 @@ Physics: D. C. Giancoli.<br>
 </li>
 <li>
 <p>数据结构</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/note.pdf">note</a><br>
 参考书目：数据结构，作者：严蔚敏</p>
 </li>
 <li>
 <p>企业管理</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e4%bc%81%e4%b8%9a%e7%ae%a1%e7%90%86/note.pdf" >note</a><br>
-参考视频：<a class="link" href="https://www.bilibili.com/video/BV1Dx411w7Xg/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >【元首的愤怒】北邮国院大二企业管理期末考试</a></p>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86/note.pdf">note</a><br>
+参考视频：<a href="https://www.bilibili.com/video/BV1Dx411w7Xg/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">【元首的愤怒】北邮国院大二企业管理期末考试</a></p>
 </li>
 </ol>
-<h2 id="大三">大三
-</h2><ol>
+<h2 id="大三">大三</h2>
+<ol>
 <li>
 <p>通信原理</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e9%80%9a%e4%bf%a1%e5%8e%9f%e7%90%86/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/note.pdf">note</a><br>
 参考书目： 1) 通信原理（第4版） 周炯磐 庞沁华 续大我 吴伟陵 杨鸿文<br>
                    2) Fundamentals of Communication Systems.John G.Proakis;Masoud Salehi</p>
 </li>
 <li>
 <p>电磁场与电磁波</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e7%94%b5%e7%a3%81%e5%9c%ba%e4%b8%8e%e7%94%b5%e7%a3%81%e6%b3%a2/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%94%B5%E7%A3%81%E5%9C%BA%E4%B8%8E%E7%94%B5%E7%A3%81%E6%B3%A2/note.pdf">note</a><br>
 参考书目：Electromagnetic Field Theory Fundamentals,Guru</p>
 </li>
 <li>
 <p>机器学习</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/note.pdf">note</a><br>
 参考书目：1) Foundations of Machine Learning,second edition,Mehryar Mohri,
 Afshin Rostamizadeh,and Ameet Talwalkar<br>
                  2) Understanding Machine Learning:From Theory to Algorithms,by Cambridge University Press.<br>
-参考课程：<a class="link" href="https://youtu.be/lWGdFeMsjzg?si=zmQMDz-2WF8gwkkg_"  target="_blank" rel="noopener"
-    >Introduction to Machine Learning</a></p>
+参考课程：<a href="https://youtu.be/lWGdFeMsjzg?si=zmQMDz-2WF8gwkkg_">Introduction to Machine Learning</a></p>
 </li>
 <li>
 <p>网络编程</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e7%bd%91%e7%bb%9c%e7%bc%96%e7%a8%8b/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/note.pdf">note</a><br>
 参考书目：An Introduction to Network Programming with Java, by Jan Graba, 3rd Edition</p>
 </li>
 <li>
 <p>数字系统设计</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%95%b0%e5%ad%97%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/note.pdf">note</a><br>
 参考书目：Circuit design with VHDL by Pedroni, Volnei A</p>
 </li>
 <li>
 <p>微波工程</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e5%be%ae%e6%b3%a2/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%BE%AE%E6%B3%A2/note.pdf">note</a><br>
 参考书目：Microwave  Engineering,by David M. Pozar.
 <a href="https://imgse.com/i/pVeX8eO"><img src="https://s21.ax1x.com/2025/06/26/pVeX8eO.jpg" alt="pVeX8eO.jpg" border="0" /></a></p>
 </li>
 <li>
 <p>微处理器系统设计</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e5%be%ae%e5%a4%84%e7%90%86%e5%99%a8/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 <li>
 <p>软件工程</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e8%bd%af%e5%b7%a5/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E5%B7%A5/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 <li>
 <p>产品开发与营销</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e4%ba%a7%e5%bc%80/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E4%BA%A7%E5%BC%80/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 </ol>
-<h2 id="大四">大四
-</h2><ol>
+<h2 id="大四">大四</h2>
+<ol>
 <li>
 <p>无线通信</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e6%97%a0%e7%ba%bf%e9%80%9a%e4%bf%a1/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 <li>
 <p>宽带技术与光纤</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e5%ae%bd%e5%b8%a6%e6%8a%80%e6%9c%af%e4%b8%8e%e5%85%89%e7%ba%a4/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%BD%E5%B8%A6%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%85%89%E7%BA%A4/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 <li>
 <p>企业战术战略</p>
-<p>课程笔记：<a class="link" href="/post_file/%e8%af%be%e7%a8%8b%e7%ac%94%e8%ae%b0/%e4%bc%81%e4%b8%9a%e6%88%98%e6%9c%af%e6%88%98%e7%95%a5/note.pdf" >note</a><br>
+<p>课程笔记：<a href="/post_file/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E4%BC%81%E4%B8%9A%E6%88%98%E6%9C%AF%E6%88%98%E7%95%A5/note.pdf">note</a><br>
 参考书目：课堂讲义</p>
 </li>
 </ol>
+</div>
 
-</section>
+<p class="back"><a href="/post/">← All posts</a></p></article></main>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+</div></body></html>
 
 
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/note/">Note</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    <section class="article-lastmod">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            Last updated on Jun 11, 2025 22:59 CST
-        </span>
-    </section></footer>
-
-<footer class="article-footer">
-    <section>
-        Page views:<span id="busuanzi_value_page_pv">Loading</span>
-    </section>
-</footer>
-
-
-    
-        
-
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
-    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
-    crossorigin="anonymous"
-/>
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-    onload="
-    window.addEventListener('DOMContentLoaded', function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: true}
-            ]
-        });
-    });
-"></script>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e7%8e%b0%e4%bb%a3%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/cover.png" loading="lazy" data-key="" data-hash="/post_file/现代数字信号处理/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|现代数字信号处理选学</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" data-key="" data-hash="/post_file/随机分析/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|随机分析</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|课题组讨论班</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|信息论</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/Cover1.png" loading="lazy" data-key="" data-hash="/post_file/数理统计/Cover1.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|统计学基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2024 - 
-        
-        2026 Haitong&#39;s blog
-    </section>
-    
-    
-    <section class="powerby">
-             
-                
-                
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-
-                <p>16 articles have been published | A total of 103.0k words.</p>
-
-
-    </section>
-
-</footer>
-
-<script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
-      pangu.spacingPage();
-    });
-</script>
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script>
-<script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-
-
-
-
-<script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
-    crossorigin="anonymous"
-></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
-    crossorigin="anonymous"
-/>
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
-</script>
-
-<script defer src="https://cn.vercount.one/js"></script>
-<style>
-    #backTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        z-index: 99;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        background-image: url(http://localhost:1313/icons/backTop.svg);
-    }
-</style>
-
-
-<style>
-    #TableOfContents > ul, ol {
-        ul, ol {
-            display: none;
-        }
-        .open {
-            display: block;
-        }
-    }
-</style>
-
-<script>
-    function initTocHide() {
-        
-        let toc = document.querySelector(".widget--toc");
-        if (!toc) {
-            return;
-        }
-        
-        window.addEventListener('scroll', function() {
-            
-            let openUl = document.querySelectorAll(".open");
-            if (openUl.length > 0) {
-              openUl.forEach((ul) => {
-                ul.classList.remove("open")
-              })
-            }
-            
-            let currentLi = document.querySelector(".active-class");
-            if (!currentLi) {
-                return
-            }
-            
-            if (currentLi.children.length > 1) {
-                currentLi.children[1].classList.add("open")
-            }
-            
-            let ul = currentLi.parentElement;
-            do {
-                ul.classList.add("open");
-                ul = ul.parentElement.parentElement
-            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
-        });
-    }
-    initTocHide()
-</script>
-
-
-
-
-
-
-    </body>
-</html>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "\\[", right: "\\]", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false}
-      ],
-      throwOnError: false
-    });
-  });
-</script>
 

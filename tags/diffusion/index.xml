@@ -1,42 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Diffusion on Haitong Lan</title>
-        <link>http://localhost:1313/tags/diffusion/</link>
-        <description>Recent content in Diffusion on Haitong Lan</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Mon, 02 Dec 2024 16:50:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/diffusion/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Sampling is as easy as learning the score: theory for diffusion models with minimal data assumptions</title>
-        <link>http://localhost:1313/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/</link>
-        <pubDate>Mon, 02 Dec 2024 16:50:00 +0800</pubDate>
-        
-        <guid>http://localhost:1313/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/sampling_theory/cover.png" alt="Featured image of post Sampling is as easy as learning the score: theory for diffusion models with minimal data assumptions" /&gt;&lt;p&gt;Lab&amp;rsquo;s group meeting on December 2.The article &lt;em&gt;Sampling is as easy as learning the score: theory for diffusion models with minimal data assumptions&lt;/em&gt; was shared at the group meeting, see the pdf of this slide:&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post_file/sampling_theory/Diffusion.pdf&#34; &gt;Slide&lt;/a&gt;.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Score-Based Variational Inference for Inverse Problems</title>
-        <link>http://localhost:1313/p/score-based-variational-inference-for-inverse-problems/</link>
-        <pubDate>Thu, 19 Sep 2024 20:00:00 +0800</pubDate>
-        
-        <guid>http://localhost:1313/p/score-based-variational-inference-for-inverse-problems/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/Score-Based_Variational_Inference_for_Inverse_Problems/cover.png" alt="Featured image of post Score-Based Variational Inference for Inverse Problems" /&gt;&lt;h1 id=&#34;centerscore-based-variational-inference-for-inverse-problemscenter&#34;&gt;&lt;center&gt;Score-Based Variational Inference for Inverse Problems&lt;/center&gt;
-&lt;/h1&gt;&lt;p&gt;Lab&amp;rsquo;s group meeting on September 1.The article &lt;em&gt;Score-Based Variational Inference for Inverse Problems&lt;/em&gt; was shared at the group meeting,
-see the pdf of this tutorial:&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post_file/Score-Based_Variational_Inference_for_Inverse_Problems/Score_VI_for_Inverse_problem.pdf&#34; &gt;Score-Based Variational Inference for Inverse Problems&lt;/a&gt;.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>SMLD and SDE for diffusion model</title>
-        <link>http://localhost:1313/p/smld-and-sde-for-diffusion-model/</link>
-        <pubDate>Tue, 06 Aug 2024 16:50:00 +0800</pubDate>
-        
-        <guid>http://localhost:1313/p/smld-and-sde-for-diffusion-model/</guid>
-        <description>&lt;img src="http://localhost:1313/post_file/SMLD_and_SDE/cover1.png" alt="Featured image of post SMLD and SDE for diffusion model" /&gt;&lt;h1 id=&#34;centersmld-and-sde-for-diffusion-modelcenter&#34;&gt;&lt;center&gt;SMLD and SDE for diffusion model&lt;/center&gt;
-&lt;/h1&gt;&lt;p&gt;Lab&amp;rsquo;s group meeting on August 1 . I summarized two articles about diffusion model by Song Yang:&lt;em&gt;SCORE-BASED GENERATIVE MODELING THROUGH STOCHASTIC DIFFERENTIAL EQUATIONS&lt;/em&gt; and &lt;em&gt;Generative Modeling by Estimating Gradients of the Data Distribution&lt;/em&gt; . For detailed information, see the pdf of this tutorial:&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post_file/SMLD_and_SDE/tutorial.pdf&#34; &gt;SMLD and SDE&lt;/a&gt;.&lt;/p&gt;
-</description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>Diffusion on Haitong Lan</title>
+    <link>https://HaitongLan.github.io/tags/diffusion/</link>
+    <description>Recent content in Diffusion on Haitong Lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Haitong&#39;s blog</copyright>
+    <lastBuildDate>Mon, 02 Dec 2024 16:50:00 +0800</lastBuildDate>
+    <atom:link href="https://HaitongLan.github.io/tags/diffusion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sampling and diffusion models</title>
+      <link>https://HaitongLan.github.io/p/sampling-and-diffusion/</link>
+      <pubDate>Mon, 02 Dec 2024 16:50:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/p/sampling-and-diffusion/</guid>
+      <description>This page collects my group meeting slides and reading materials on sampling and diffusion models from August to December 2024.&#xA;Score-based generative modeling: SMLD and SDE August 2024 · Group meeting presentation&#xA;A reading presentation on Yang Song&amp;rsquo;s Generative Modeling by Estimating Gradients of the Data Distribution and Score-Based Generative Modeling through Stochastic Differential Equations, covering score-based generative models and their SDE formulation.&#xA;Slides: SMLD and SDE (PDF)&#xA;Score-based variational inference for inverse problems September 2024 · Group meeting presentation</description>
+    </item>
+  </channel>
 </rss>

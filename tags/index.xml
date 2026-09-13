@@ -1,52 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Tags on Haitong Lan</title>
-        <link>http://localhost:1313/tags/</link>
-        <description>Recent content in Tags on Haitong Lan</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Haitong&#39;s blog</copyright>
-        <lastBuildDate>Mon, 01 Jun 2026 12:38:05 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Reading</title>
-        <link>http://localhost:1313/tags/reading/</link>
-        <pubDate>Mon, 01 Jun 2026 12:38:05 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/reading/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Note</title>
-        <link>http://localhost:1313/tags/note/</link>
-        <pubDate>Mon, 28 Apr 2025 15:48:05 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/note/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Diffusion</title>
-        <link>http://localhost:1313/tags/diffusion/</link>
-        <pubDate>Mon, 02 Dec 2024 16:50:00 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/diffusion/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Mathematical Modeling</title>
-        <link>http://localhost:1313/tags/mathematical-modeling/</link>
-        <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/mathematical-modeling/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Signal Processing</title>
-        <link>http://localhost:1313/tags/signal-processing/</link>
-        <pubDate>Wed, 14 Aug 2024 20:00:00 +0800</pubDate>
-        
-        <guid>http://localhost:1313/tags/signal-processing/</guid>
-        <description></description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>Tags on Haitong Lan</title>
+    <link>https://HaitongLan.github.io/tags/</link>
+    <description>Recent content in Tags on Haitong Lan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Haitong&#39;s blog</copyright>
+    <lastBuildDate>Sun, 13 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://HaitongLan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convex Optimization</title>
+      <link>https://HaitongLan.github.io/tags/convex-optimization/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/convex-optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimal Transport</title>
+      <link>https://HaitongLan.github.io/tags/optimal-transport/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/optimal-transport/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimization</title>
+      <link>https://HaitongLan.github.io/tags/optimization/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reading</title>
+      <link>https://HaitongLan.github.io/tags/reading/</link>
+      <pubDate>Mon, 01 Jun 2026 12:38:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/reading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Note</title>
+      <link>https://HaitongLan.github.io/tags/note/</link>
+      <pubDate>Mon, 28 Apr 2025 15:48:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/note/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Diffusion</title>
+      <link>https://HaitongLan.github.io/tags/diffusion/</link>
+      <pubDate>Mon, 02 Dec 2024 16:50:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/diffusion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sampling</title>
+      <link>https://HaitongLan.github.io/tags/sampling/</link>
+      <pubDate>Mon, 02 Dec 2024 16:50:00 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/sampling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coursework</title>
+      <link>https://HaitongLan.github.io/tags/coursework/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/coursework/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mathematical Modeling</title>
+      <link>https://HaitongLan.github.io/tags/mathematical-modeling/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/mathematical-modeling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Numerical Analysis</title>
+      <link>https://HaitongLan.github.io/tags/numerical-analysis/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/numerical-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Signal Processing</title>
+      <link>https://HaitongLan.github.io/tags/signal-processing/</link>
+      <pubDate>Sat, 17 Aug 2024 00:21:05 +0800</pubDate>
+      <guid>https://HaitongLan.github.io/tags/signal-processing/</guid>
+      <description></description>
+    </item>
+  </channel>
 </rss>

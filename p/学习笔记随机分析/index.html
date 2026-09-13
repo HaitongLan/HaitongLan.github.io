@@ -1,107 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
-<title>学习笔记|随机分析</title>
-
-<link rel='canonical' href='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
-
-<link rel="stylesheet" href="/scss/style.min.47a915f54ec9b54f73dcd3a27c2e314feaecdab65094d4b60d73fdabb46ab89a.css">
-<meta property='og:title' content="学习笔记|随机分析">
-<meta property='og:description' content="台湾交通大学吴庆堂老师随机分析课程笔记">
-<meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/'>
-<meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-03-14T19:24:05&#43;08:00'/><meta property='article:modified_time' content='2025-04-22T22:12:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
-<meta name="twitter:title" content="学习笔记|随机分析">
-<meta name="twitter:description" content="台湾交通大学吴庆堂老师随机分析课程笔记"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/post_file/%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/cover.png' />
-    <link rel="shortcut icon" href="/favicon-v2.ico" />
-
-  
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习笔记|随机分析 — Haitong Lan</title>
+<meta name="description" content="台湾交通大学吴庆堂老师随机分析课程笔记">
+<link rel="canonical" href="https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/"><link rel="icon" href="/favicon-v2.ico">
+<link rel="stylesheet" href="/academic.css?v=2e98de68f5ce71d9805749d3eede8d41">
+<link rel="stylesheet" href="/academic-syntax.css">
 
 
-<style>
-    :root {
-        --article-font-family: "Noto Serif", var(--base-font-family);
-    }
-</style>
-<script>  
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script defer src="/math.js"></script>
 
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended">
-
-
-        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Back</span>
-            </a>
-        </div>
-    
-
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
+</head>
+<body><a class="skip" href="#main">Skip to content</a><div class="shell">
+<header class="site-header"><a class="name" href="/">Haitong Lan</a>
+<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
+<main id="main"><article><header class="page-heading"><h1>学习笔记|随机分析</h1><p class="meta">March 14, 2025 · 30 min read · Note, Math</p><p class="lead">台湾交通大学吴庆堂老师随机分析课程笔记</p></header>
+<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
     <li><a href="#课程介绍">课程介绍</a></li>
     <li><a href="#期望与积分">期望与积分</a>
@@ -159,111 +77,14 @@
       </ol>
     </li>
   </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
-                
-                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" alt="Featured image of post 学习笔记|随机分析" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/note/" >
-                Note
-            </a>
-        
-            <a href="/categories/math/" >
-                Math
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">学习笔记|随机分析</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            台湾交通大学吴庆堂老师随机分析课程笔记
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 14, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    30 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-
-    <section class="article-content">
-    
-    
-    <h2 id="课程介绍">课程介绍
-</h2><p>台湾交通大学吴庆堂老师随机分析，课程视频：<a class="link" href="https://www.bilibili.com/video/BV1v54y1S78c/?p=24&amp;share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >金融随机分析</a>.</p>
-<p>参考网站：<a class="link" href="http://ocw.nctu.edu.tw/course_detail.php?bgid=1&amp;gid=1&amp;nid=234&amp;page=3"  target="_blank" rel="noopener"
-    >國立交通大學開放式課程 (NCTU OCW)</a>.</p>
-<p>参考资料：<a class="link" href="https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html"  target="_blank" rel="noopener"
-    >北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义</a>.</p>
-<p>参考讲义：<a class="link" href="https://people.iiis.tsinghua.edu.cn/~jianli/courses/ATCS2023spring/Lecture%202.pdf"  target="_blank" rel="noopener"
-    > Selected Topics in Learning, Prediction and Optimization</a></p>
-<h2 id="期望与积分">期望与积分
-</h2><p><strong>Definition 1.21.</strong> The function
+</nav></details>
+<div class="prose"><h2 id="课程介绍">课程介绍</h2>
+<p>台湾交通大学吴庆堂老师随机分析，课程视频：<a href="https://www.bilibili.com/video/BV1v54y1S78c/?p=24&share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">金融随机分析</a>.</p>
+<p>参考网站：<a href="http://ocw.nctu.edu.tw/course_detail.php?bgid=1&gid=1&nid=234&page=3">國立交通大學開放式課程 (NCTU OCW)</a>.</p>
+<p>参考资料：<a href="https://www.math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/index.html">北京大学数学科学学院金融数学系《金融中的随机数学》1班的讲义</a>.</p>
+<p>参考讲义：<a href="https://people.iiis.tsinghua.edu.cn/~jianli/courses/ATCS2023spring/Lecture%202.pdf"> Selected Topics in Learning, Prediction and Optimization</a></p>
+<h2 id="期望与积分">期望与积分</h2>
+<p><strong>Definition 1.21.</strong> The function
 $$
 \mathbb{I}_A(\omega)= \begin{cases}0, &amp; \text { if } \omega \notin A \\ 1, &amp; \text { if } \omega \in A\end{cases}
 $$
@@ -295,8 +116,8 @@ which is called the integral of $X$ with respect to $\mathbb{P}$ over $A$.<br>
 $$
 \int_A X d \mathbb{P}&lt;\infty \quad \Longleftrightarrow \quad \int_A|X| d \mathbb{P}&lt;\infty .
 $$</p>
-<h3 id="条件期望和条件概率">条件期望和条件概率
-</h3><p>初等概率论中没有条件期望是随机变量的概念，所定义的条件概率也仅仅是数值，只可以处理对于某一特定条件下的概率，但是条件期望应该是对所以可能发生的事件作为given来说的，所以我们有必要更严谨的处理这一点。</p>
+<h3 id="条件期望和条件概率">条件期望和条件概率</h3>
+<p>初等概率论中没有条件期望是随机变量的概念，所定义的条件概率也仅仅是数值，只可以处理对于某一特定条件下的概率，但是条件期望应该是对所以可能发生的事件作为given来说的，所以我们有必要更严谨的处理这一点。</p>
 <p>吴庆堂老师关于条件期望的定义讲的很棒，本人看过一些高等概率论的讲义，均没有吴庆堂老师老师的定义方式更加循循善诱，吴庆堂老师先从普通的集合条件概率开始，然后构造 $\Omega$ 的 decomposition 作为条件,再构造由离散型r.v.诱导的decomposition，最后根据直觉定义以 $\sigma-$代数作为条件的条件期望，再诱导出条件概率，十分精彩，现在我们来也拙略的模仿这种形式，依照直觉导出条件期望这个在初等概率论中触不可及的名词。</p>
 <p>基于集合的条件概率是容易定义的，基于随机变量的确定取值求取条件概率也是初等概率论中就提到的东西，我们这里从$\Omega$ 的 decomposition开始，进行描述。</p>
 <p>Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Let $\mathcal{D}=\left\{D_1, D_2, \ldots, D_n\right\}$ satisfy<br>
@@ -451,9 +272,9 @@ $$</p>
 $$
 \mathbb{E}[Y \mid \mathcal{G}]=\mathbb{E}[Y]
 $$</p>
-<h2 id="离散鞅">离散鞅
-</h2><h3 id="鞅">鞅
-</h3><p><strong>Definition 2.30(信息流).</strong>
+<h2 id="离散鞅">离散鞅</h2>
+<h3 id="鞅">鞅</h3>
+<p><strong>Definition 2.30(信息流).</strong>
 (1) A sequence of $\sigma$-algebra $\left(\mathcal{F}_n\right)_{n \geq 1}$ is called a filtration if $\mathcal{F}_n \subseteq$ $\mathcal{F}_{n+1}$ for all $n \geq 1$.<br>
 (2) A probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}_n\right)$ is called a filtered probability space, and is denoted by $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ or $\left(\Omega, \mathcal{F},\left(\mathcal{F}_n\right), \mathbb{P}\right)$.</p>
 <p><strong>Definition 2．32（鞅）.</strong> Let $\left(X_n\right)_{n \geq 1}$ be a sequence of random variables and $\left(\mathcal{F}_n\right)_{n \geq 1}$ is a filtration．We say $\left(X_n, \mathcal{F}_n\right)$ is a martingale（平赌，鞅 or say $\left(X_n\right)$ is a martingale with respect to $\left(\mathcal{F}_n\right),\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－martingale）if<br>
@@ -469,8 +290,8 @@ $\left(\mathrm{c}^{\prime \prime}\right) \int_A X_n d \mathbb{P}=\int_A X_m d \m
 （2）$\left(X_n\right)$ is an $\left(\mathcal{F}_n\right)$－supermartingale（劣赌，上鞅）if $X_n \geq \mathbb{E}\left(X_{n+1} \mid \mathcal{F}_n\right)$ for all $n P$－a．s．<br>
 <strong>Remark.</strong> 鞅既是上鞅也是下鞅。</p>
 <p><strong>Theorem 2.39(构造下鞅).</strong> Let $\left(X_n, \mathcal{F}_n\right)$ be a submartingale and let $\varphi$ be an increasing convex function defined on $\mathbb{R}$. If $\varphi\left(X_n\right)$ is integrable for all $n$, then $\left(\varphi\left(X_n\right)\right)$ is a submartingale w.r.t. $\mathcal{F}_n$.</p>
-<h3 id="鞅变换和doob分解">鞅变换和Doob分解
-</h3><p><strong>Definition 2.45（可预测过程）.</strong> If $M_n \in \mathcal{F}_{n-1}$ for all $n$, we say that the stochastic process $\left(M_n\right)$ is an $\left(\mathcal{F}_n\right)$-<strong>predictable process</strong>.</p>
+<h3 id="鞅变换和doob分解">鞅变换和Doob分解</h3>
+<p><strong>Definition 2.45（可预测过程）.</strong> If $M_n \in \mathcal{F}_{n-1}$ for all $n$, we say that the stochastic process $\left(M_n\right)$ is an $\left(\mathcal{F}_n\right)$-<strong>predictable process</strong>.</p>
 <p><strong>Definition 2.46(鞅变换).</strong><br>
 (1) Let $\left(X_n, \mathcal{F}_n\right)$ be a stochastic process and let $M=\left(M_n, \mathcal{F}_{n-1}\right)$<br>
 be a predictable process, then the stochastic process
@@ -489,8 +310,8 @@ X_n=Y_n+Z_n,
 $$
 where $\left(Y_n, \mathcal{F}_n\right)$ is a <strong>martingale</strong> and $\left(Z_n\right)$ is an <strong>increasing predictable process</strong>.<br>
 <strong>Remark.</strong> 下鞅可以分解为增长过程和鞅，这也是符合直觉的定理。值得注意的是，这种分解是唯一的。</p>
-<h3 id="停时">停时
-</h3><p>Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}<em>t\right)</em>{t=0,1,2, \ldots, T}$.</p>
+<h3 id="停时">停时</h3>
+<p>Consider a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with filtration $\mathbb{F}=\left(\mathcal{F}<em>t\right)</em>{t=0,1,2, \ldots, T}$.</p>
 <p><strong>Definition 5.1(停时).</strong> A random variable $\tau: \Omega \longrightarrow{0,1,2, \ldots, T} \cup{+\infty}$ is called a stopping time with respect to $\mathbb{F}$ if
 $$
 {\tau=t} \in \mathcal{F}_t
@@ -516,10 +337,10 @@ $$</p>
 (1) $M$ is a $\mathbb{Q}$-martingale;<br>
 (2) For any stopping time $\tau$, the stopped process $M_{\tau \wedge t}$ is a $\mathbb{Q}$-martingale;<br>
 (3) $\mathbb{E}_{\mathbb{Q}}\left[M_{\tau \wedge t}\right]=M_0$ for any stopping time $\tau$.</p>
-<h2 id="连续时间随机过程">连续时间随机过程
-</h2><p>从离散时间随机过程到连续时间随机过程发生了非常大的跳跃，最主要是因为域流 $\mathcal{F}_t$ 的理解变得困难，我们无法举出一些很好的例子，只能沿用从离散观点带来的直觉。</p>
-<h3 id="随机过程">随机过程
-</h3><p>Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $I \subset[0, \infty)$ be an interval．</p>
+<h2 id="连续时间随机过程">连续时间随机过程</h2>
+<p>从离散时间随机过程到连续时间随机过程发生了非常大的跳跃，最主要是因为域流 $\mathcal{F}_t$ 的理解变得困难，我们无法举出一些很好的例子，只能沿用从离散观点带来的直觉。</p>
+<h3 id="随机过程">随机过程</h3>
+<p>Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and let $I \subset[0, \infty)$ be an interval．</p>
 <p><strong>Definition 7．1（随机过程）．</strong> A real－valued stochastic process $X=\left(X_t\right)_{t \in I}$ is a family of random variables $\left(X_t: t \in I\right)$ on $(\Omega, \mathcal{F})$ ．
 ．</p>
 <p><strong>Remark 7.2 (经典解释方法：二元函数).</strong>（1）We may regard the stochastic process $X$ as a function of two variables
@@ -582,8 +403,8 @@ $$
 $$<br>
 <strong>Remark.</strong> 该定义是包含离散情况的停时定义的，实际上，在离散情况下，这两者等价。</p>
 <p>剩下的就是定义停时生成的 $\sigma-$代数 $\mathcal{F}_T$，这一点的定义与离散情况下的一致，我们也只能借用离散型的直观去想象该 $\sigma-$代数：即到达时间 $T$ 所能获得的最细分（最多的）信息量。</p>
-<h3 id="一致收敛一致可积">一致收敛，一致可积
-</h3><p><strong>Definition B．4（一致收敛）.</strong> $\left(f_n\right)$ is said to <strong>converge uniformly</strong> to $f$ on A ，if for all $\varepsilon&gt;0$ ，there exists an $N=N(\varepsilon)&gt;0$（independent of x），such that for $n \geq N$ ，
+<h3 id="一致收敛一致可积">一致收敛，一致可积</h3>
+<p><strong>Definition B．4（一致收敛）.</strong> $\left(f_n\right)$ is said to <strong>converge uniformly</strong> to $f$ on A ，if for all $\varepsilon&gt;0$ ，there exists an $N=N(\varepsilon)&gt;0$（independent of x），such that for $n \geq N$ ，
 $$
 \left|f_n(x)-f(x)\right|&lt;\varepsilon
 $$
@@ -620,9 +441,9 @@ $$
 $$
 whenever $\mathbb{P}(E)&lt;\delta$.</p>
 <p>我们今后谈论的随机过程大多数都是一致可积的，例如 $Z\in L^1(\mathbb{P})$,则 $\{\mathbb{E}[Z\mid \mathcal{g}],\mathcal{g}\in \mathcal{F}\}$ 一致可积。</p>
-<h2 id="连续鞅">连续鞅
-</h2><h3 id="鞅与局部鞅">鞅与局部鞅
-</h3><p><strong>Definition 7.16（鞅）.</strong> (1) A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a martingale (with respect to $\mathbb{P}$ and $\mathbb{F}$ ) if<br>
+<h2 id="连续鞅">连续鞅</h2>
+<h3 id="鞅与局部鞅">鞅与局部鞅</h3>
+<p><strong>Definition 7.16（鞅）.</strong> (1) A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a martingale (with respect to $\mathbb{P}$ and $\mathbb{F}$ ) if<br>
 (a) $X_t \in L^1(\mathbb{P})$ for all $t \geq 0$;<br>
 (b) $X$ is adapted;<br>
 (c) For $0 \leq s \leq t&lt;\infty$,<br>
@@ -649,8 +470,8 @@ $$
 $$
 for all $t \geq 0$, is a martingale.<br>
 <strong>Remark.</strong> 这也符合我们的直觉，一个随机变量绝对可积，也正意味着其变化量不会特别大，如果一个停时鞅满足这点，也可以通过控制收敛定理证明其是鞅。</p>
-<h3 id="doob-mayer-decoposition">Doob-Mayer decoposition
-</h3><p>在离散情况的Doob分解中，我们用到了可预测的概念，对于连续的情况我们需要重新定义可预测这一概念。</p>
+<h3 id="doob-mayer-decoposition">Doob-Mayer decoposition</h3>
+<p>在离散情况的Doob分解中，我们用到了可预测的概念，对于连续的情况我们需要重新定义可预测这一概念。</p>
 <p><strong>Definition 7.30（可预测）.</strong> Let $\bar{\Omega}=\Omega \times(0, \infty)$.<br>
 (1) $\mathcal{P}$ is called a previsible $\sigma$-algebra if it is <strong>generated</strong> by all <strong>left-continuous, adapted</strong> process on $\bar{\Omega}$.<br>
 (2) A stochastic process $X$ is called <strong>previsible</strong> if $X$ is <strong>measurable</strong> with respect to a previsible $\sigma$-algebra $\mathcal{P}$ over $\bar{\Omega}$.<br>
@@ -692,8 +513,8 @@ is called a cross variation (or quadratic covariation) of $M$ and $N$.</p>
 （2） $\lim _{|\Pi| \rightarrow 0} \sum_{k=1}^m\left(M_{t_k}-M_{t_{k-1}}\right)\left(N_{t_k}-N_{t_{k-1}}\right)=\langle M, N\rangle_t$ in probability．<br>
 （3）$c$ 为常数，则 $\langle cM \rangle_t = c^2\langle M\rangle_t$(可以利用杜布分解的推论证明)<br>
 （4）$M_t,N_t$ 独立，则 $\langle M,N \rangle_t = 0$.</p>
-<h3 id="半鞅">半鞅
-</h3><p>在定义随即微积分的时候，我们会用到半鞅的概念，该概念是对鞅和局部鞅的进一步推广。</p>
+<h3 id="半鞅">半鞅</h3>
+<p>在定义随即微积分的时候，我们会用到半鞅的概念，该概念是对鞅和局部鞅的进一步推广。</p>
 <p><strong>Definition 7.40（半鞅）.</strong> A stochastic process $X=\left(X_t\right)_{t \geq 0}$ is called a <strong>semimartingale (半鞅)</strong> if $X$ is an adapted process with the decomposition
 $$
 X_t=X_0+M_t+A_t
@@ -704,9 +525,9 @@ where $\left(M_t\right)$ is a local martingale with $M_0=0$ and $\left(A_t\right
 <p><strong>Lemma 7.42（连续有界变差鞅是常数）.</strong> A continuous local martingale of bounded variation is constant $\mathbb{P}$-a.s.</p>
 <p><strong>Remark 7.43(连续非常数鞅必然无界变差).</strong> A continuous non-constant local martingale is not of bounded variation.</p>
 <p>布朗运动是连续非常数鞅，其没有有界变差，所以是不可以对布朗运动定义黎曼积分的，正因为如此，我们需要在后续章节引入随即微积分。</p>
-<h2 id="布朗运动">布朗运动
-</h2><h3 id="从随机游走到布朗运动">从随机游走到布朗运动
-</h3><p>$X_t$ 是以 $\frac{1}{2}$ 的概率取 $\{1,-1\}$ 的随机变量。</p>
+<h2 id="布朗运动">布朗运动</h2>
+<h3 id="从随机游走到布朗运动">从随机游走到布朗运动</h3>
+<p>$X_t$ 是以 $\frac{1}{2}$ 的概率取 $\{1,-1\}$ 的随机变量。</p>
 <p><strong>Definition 8.1（随机游走）.</strong> Define
 $$
 \begin{aligned}
@@ -739,8 +560,8 @@ are independent<br>
 (ii) (adaptivity) For each $t \geq 0, W_t$ is $\mathcal{F}_t$-measurable;<br>
 (iii) (independent of future increment) For $0 \leq s \leq t, W_t-W_s$ is independent of $\mathcal{F}_s$.</p>
 <p>介绍两个基础的性质：$\mathbb{E}\left[W_s W_t\right]=s \wedge t$，布朗运动关于其域流是鞅。</p>
-<h3 id="布朗运动的样本轨道">布朗运动的样本轨道
-</h3><p><strong>Theorem 8.16.</strong> 处处不可微，处处不单调
+<h3 id="布朗运动的样本轨道">布朗运动的样本轨道</h3>
+<p><strong>Theorem 8.16.</strong> 处处不可微，处处不单调
 (1) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is <strong>nowhere differentiable</strong>.<br>
 (2) For almost every $\omega \in \Omega$, the Brownian sample path $W$.( $\omega$ ) is <strong>monotone in no interval</strong>.</p>
 <p><strong>Theorem 8.17 (Law of Iterated logarithm).</strong> For almost every $\omega \in \Omega$, we have</p>
@@ -780,16 +601,16 @@ d W_t \cdot d t=0 \\
 d t \cdot d t=0
 \end{gathered}
 $$</p>
-<h3 id="指数鞅">指数鞅
-</h3><p>对于实际的一些问题，我们可能想找到一种只有正值的鞅。</p>
+<h3 id="指数鞅">指数鞅</h3>
+<p>对于实际的一些问题，我们可能想找到一种只有正值的鞅。</p>
 <p><strong>Definition 8.21（指数鞅）.</strong> Let $\left(W_t\right)$ be a Brownian motion with filtration $\left(\mathcal{F}_t\right), \sigma \in \mathbb{R}$. The exponential martingale corresponding to $\sigma$ is defined by
 $$
 Z_t=\exp \left(\sigma W_t-\frac{\sigma^2}{2} t\right)
 $$</p>
 <p><strong>Theorem 8.22（指数鞅是鞅）.</strong> $\left(Z_t, \mathcal{F}_t\right)_{t \geq 0}$ is a martingale.</p>
 <p>上述定理的证明很有意思，用到了正态分布的mgf。</p>
-<h3 id="高维布朗运动">高维布朗运动
-</h3><p>有了一维的布朗运动，我们很容易定义高维的布朗运动，但是高维的布朗运动可能并不是如此的直观，因为高维空间实在是太大了。</p>
+<h3 id="高维布朗运动">高维布朗运动</h3>
+<p>有了一维的布朗运动，我们很容易定义高维的布朗运动，但是高维的布朗运动可能并不是如此的直观，因为高维空间实在是太大了。</p>
 <p><strong>Definition 8.23（高维布朗运动）.</strong> A $d$-dimensional stochastic process $B=\left(B_t\right)_{t \geq 0}=\left(\left(B_t^1, B_t^2, \cdots, B_t^d\right)\right)_{t \geq 0}$ is called a $\underline{d \text {-dimensional Brownian motion }}$ if every $\left(B_t^i\right)_{t \geq 0}$ is a 1 -dimensional Brownian motion and $\left(B_t^1\right),\left(B_t^2\right), \ldots,\left(B_t^d\right)$ are <strong>independent</strong>.</p>
 <p>布朗运动是鞅，鞅什么时候能是布朗运动，下面定理告诉了我们这一点：</p>
 <p><strong>Theorem 8.25 (Lévy Theorem).</strong> Let $M=\left(M^1, M^2, \cdots, M^d\right)$ be a d-dimensional <strong>continuous local martingale</strong> with respect to $\left(\mathcal{F}_t\right)$ and $M_0=0 \mathbb{P}$-a.s. If
@@ -803,8 +624,8 @@ then $M$ is a d-dimensional Brownian motion.</p>
 (1) If $d=1, B_t(\omega)$ visits 0 <strong>infinite many times</strong>(0点常返).
 (2) If $d=2, B_t(\omega)$ does not hit the origin after time 0 , however it <strong>hits every ball with center at the origin</strong>（0点邻域常返）.<br>
 (3) If $d \geq 3,\left|B_t(\omega)\right| \longrightarrow \infty$ as $t \rightarrow \infty$(非常返，必定跑到无穷远处，即使一维布朗运动有重对数定理作为sup，但是高维情况仍然不是可以想象到的).</p>
-<h2 id="随机微积分">随机微积分
-</h2><p>绝大多数随机微积分的教材都是从布朗运动出发，本课程从鞅出发，并扩展到对半鞅的随机微积分，由于布朗运动是鞅，所以该随机微积分的定义是相当广泛的，先介绍引入随机微积分的必要性，为什么不能用普通的微积分表示对鞅的积分。</p>
+<h2 id="随机微积分">随机微积分</h2>
+<p>绝大多数随机微积分的教材都是从布朗运动出发，本课程从鞅出发，并扩展到对半鞅的随机微积分，由于布朗运动是鞅，所以该随机微积分的定义是相当广泛的，先介绍引入随机微积分的必要性，为什么不能用普通的微积分表示对鞅的积分。</p>
 <p>Let $I=[0, \infty), M \in \mathcal{M}^{2, \text { loc }}$ ．</p>
 <p><strong>Goal</strong>．Define an integral $\int H_s d M_s$ for a martingale $M$ and some suitable process $H$ ．</p>
 <p>最先的想法：Consider the Riemann-Stieltjes（R-S.） integral
@@ -815,8 +636,8 @@ where $f$ is continuous，$\alpha$ is of <strong>bounded variation</strong> and 
 <p><strong>Question．</strong> 能否仿照这种做法来定义 $\int H_s d M_s$ 呢？</p>
 <p><strong>Answer．</strong> No，if $M$ is a continuous non-constant local martingale， then $M$ is <strong>not of bounded variation</strong>．</p>
 <p>正因为非常数鞅不是有界变差过程，会导致区间分割的时候取左端点积分还是右端点积分会导致数值的不同，这也是需要定义随机微积分的必要性，有很多种随机微积分的定法，比如取左端点（Ito integral），中点（Fisk-Stratonovich integral），右端点（backward Itˆo integral），但是最常用的随机微积分是伊藤微积分，它具有一些很好的性质（其他的定义不具有的），就是积分后保持鞅性。</p>
-<h3 id="关于鞅的随机微积分">关于鞅的随机微积分
-</h3><p><strong>Def 9.1（简单过程）.</strong> Define $\mathcal{E}^b=$ the collection of all <strong>bounded previsible</strong> (与定义中轨道的左连续对应) simple processes, i.e., all processes $H$ of the form
+<h3 id="关于鞅的随机微积分">关于鞅的随机微积分</h3>
+<p><strong>Def 9.1（简单过程）.</strong> Define $\mathcal{E}^b=$ the collection of all <strong>bounded previsible</strong> (与定义中轨道的左连续对应) simple processes, i.e., all processes $H$ of the form
 $$
 H_t(\omega)=\sum_{i=0}^{n-1} h^i(\omega) \mathbb{I}_{\left(t_i, t_{i+1}\right]}(t)
 $$
@@ -901,8 +722,8 @@ $$
 \int_0^t\left|H_u K_u\right| d\langle M, N\rangle_u \leq\left(\int_0^t H_u^2 d\langle M\rangle_u\right)^{1 / 2}\left(\int_0^t K_u^2 d\langle N\rangle_u\right)^{1 / 2}
 $$
 $\mathbb{P}$-a.s.</p>
-<h3 id="局部鞅半鞅随机微积分">局部鞅、半鞅随机微积分
-</h3><p>利用局部鞅的性质，选择一组停时，便可以将对局部鞅的积分转化为对鞅的积分：</p>
+<h3 id="局部鞅半鞅随机微积分">局部鞅、半鞅随机微积分</h3>
+<p>利用局部鞅的性质，选择一组停时，便可以将对局部鞅的积分转化为对鞅的积分：</p>
 <p><strong>Definition 9.18(局部鞅随机微积分).</strong> For $M \in \mathcal{M}^{c, \text { loc }}$ and $X \in \mathcal{L}^*(M)$, the stochastic integral of $X$ with respect to $M$ is defined by
 $$
 \int_0^t X_s d M_s=\int_0^t X_s I_{\left\{T_n \geq s\right\}} d M_{s \wedge T_n} \quad \text { on }\left\{0 \leq t \leq T_n\right\}
@@ -940,8 +761,8 @@ $$
 = &amp; \int_0^s E[X(u) Y(u)] d u
 \end{aligned}
 $$</p>
-<h3 id="伊藤引理与鞅表示定理">伊藤引理与鞅表示定理
-</h3><p>伊藤引理，就是随机微积分中的链式法则。</p>
+<h3 id="伊藤引理与鞅表示定理">伊藤引理与鞅表示定理</h3>
+<p>伊藤引理，就是随机微积分中的链式法则。</p>
 <p><strong>Theorem 9.27 (one-dimensional Itô Formula, continuous form).</strong> Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a $C^2$-function and let $X=\left(X_t, \mathcal{F}_t\right)$ be a continuous semimartingale with the decomposition
 $$
 X_t=X_0+M_t+A_t
@@ -978,10 +799,10 @@ M_t=\mathbb{E}\left[M_0\right]+\sum_{i=1}^n \int_0^t H_s^i d W_s^i, \quad \mathb
 $$
 for all $t \geq 0$.<br>
 <strong>Remark.</strong> 域流相同意味着信息量相同，可以使用随机微积分来表示也是合理的事情。值得注意的是，虽然我们可以从理论层面上进行说明，但是定理中提到的 $H_t$ 是非常难找的。</p>
-<h2 id="测度变换">测度变换
-</h2><p>经典Radon-Nikodym定理到Girsanov变换，不再详细描述，写几个定理方便本人快速回顾。</p>
-<h3 id="radon-nikodym定理">Radon-Nikodym定理
-</h3><p><strong>Theorem 9.43 (Radon-Nikodym Theorem).</strong> $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ $\iff$ there exists an $\mathcal{F}$-measurable function $Z \geq 0$ such that
+<h2 id="测度变换">测度变换</h2>
+<p>经典Radon-Nikodym定理到Girsanov变换，不再详细描述，写几个定理方便本人快速回顾。</p>
+<h3 id="radon-nikodym定理">Radon-Nikodym定理</h3>
+<p><strong>Theorem 9.43 (Radon-Nikodym Theorem).</strong> $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$ on $\mathcal{F}$ $\iff$ there exists an $\mathcal{F}$-measurable function $Z \geq 0$ such that
 $$
 \int_{\Omega} X d \mathbb{Q}=\int_{\Omega} X Z d \mathbb{P}
 $$
@@ -1014,8 +835,8 @@ $$</p>
 $$
 \mathbb{E}_{\mathbb{Q}}[Y \mid \mathcal{G}]=\frac{\mathbb{E}[Y Z \mid \mathcal{G}]}{\mathbb{E}[Z \mid \mathcal{G}]}, \quad \mathbb{Q} \text {-a.s. }
 $$</p>
-<h3 id="girsanov-定理">Girsanov 定理
-</h3><p>Define
+<h3 id="girsanov-定理">Girsanov 定理</h3>
+<p>Define
 $$
 Z_t(X)=\exp \left(\int_0^t X_u d W_u-\frac{1}{2} \int_0^t X_u^2 d u\right) .
 $$
@@ -1033,9 +854,9 @@ $$
 \tilde{W}_t:=W_t-\int_0^t X_s d s
 $$
 Then for each fixed $T \in[0, \infty),\left(\tilde{W}_t, \mathcal{F}_t\right)_{0 \leq t \leq T}$ is a Brownian motion on $\left(\Omega, \mathcal{F}, \tilde{\mathbb{P}}_T\right)$.</p>
-<h2 id="sde">SDE
-</h2><h3 id="存在性和唯一性">存在性和唯一性
-</h3><p><strong>Theorem 10.8 (Existence and uniqueness theorem for stochastic differential equation).</strong> Let $T&gt;0$ and let $b, \sigma\left(b:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^n, \sigma:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^{n \times m}\right)$ be measurable functions satisfying
+<h2 id="sde">SDE</h2>
+<h3 id="存在性和唯一性">存在性和唯一性</h3>
+<p><strong>Theorem 10.8 (Existence and uniqueness theorem for stochastic differential equation).</strong> Let $T&gt;0$ and let $b, \sigma\left(b:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^n, \sigma:[0, T] \times \mathbb{R}^n \rightarrow \mathbb{R}^{n \times m}\right)$ be measurable functions satisfying
 $$
 |b(t, x)|+|\sigma(t, x)| \leq C(1+|x|) \quad \text { for all } x \in \mathbb{R}^n, t \in[0, T]
 $$
@@ -1050,9 +871,8 @@ $$
 has a unique $t$-continuous solution $X_t$ with the properties that
 (i) $X_t$ is adapted to $\mathcal{F}_t^W \vee \sigma(Z)$;
 (ii) $\mathbb{E}\left[\int_0^T\left|X_t\right|^2 d t\right]&lt;\infty$.</p>
-<h3 id="强解和弱解">强解和弱解
-</h3><p>以下内容来自：<a class="link" href="https://zhuanlan.zhihu.com/p/341594982"  target="_blank" rel="noopener"
-    >随机微分方程的强解与弱解</a></p>
+<h3 id="强解和弱解">强解和弱解</h3>
+<p>以下内容来自：<a href="https://zhuanlan.zhihu.com/p/341594982">随机微分方程的强解与弱解</a></p>
 <hr>
 <p>考虑以下一维 $\operatorname{SDE}$（对多维情况是类似的）：
 $$
@@ -1066,8 +886,8 @@ $$
 <p><strong>联系与区别.</strong> 可以看到，对于强解，是事先给定了概率空间 $(\Omega, \mathscr{F}, P)$ 以及 $\left(B_t\right)_{t \geq 0}$ 和 $\xi$ ，这三者都是确定的，我们需要在这个概率空间 $(\Omega, \mathscr{F}, P)$ 上来寻找满足 $(1),(2)$ 的 $\left(X_t\right)_{t \geq 0}$ 。而对于弱解，只需要存在某一个概率空间 $(\hat{\Omega}, \hat{\mathscr{F}}, \hat{P})$ ，并且是对某一个布朗运动有（1）且对（2）是分布意义下成立就行了，明显比强解的要求更为宽松，也就是说强解一定是弱解，反过来不一定成立的。</p>
 <hr>
 <p>SDE的强解和弱解归根结底是由于随机过程的域流所包含的信息量造成的，一般的，我们在布朗运动的域流下讨论SDE，这时若可以求解SDE，得到的解是强解；若 $X_t$ 的域流大于布朗运动的域流，则不可以用布朗运动来表示 $X_t$,此时需要引入一组其他的布朗运动和概率测度并且配套新的域流，才能得到SDE的解，这时的解为弱解。</p>
-<h3 id="feynman-kac公式和komogorov反向方程">Feynman-Kac公式和Komogorov反向方程
-</h3><p>Feynman-Kac公式 告诉我们可以使用概率方法去求解PDE。</p>
+<h3 id="feynman-kac公式和komogorov反向方程">Feynman-Kac公式和Komogorov反向方程</h3>
+<p>Feynman-Kac公式 告诉我们可以使用概率方法去求解PDE。</p>
 <p><strong>Theorem 10.13 (Feynman-Kac formula).</strong> Consider the stochastic differential equation
 $$
 d X_t=\beta\left(t, X_t\right) d t+\gamma\left(t, X_t\right) d W_t .
@@ -1090,8 +910,8 @@ This equation is also known as Komogorov Backward Equation (KBE). One way to see
 $$
 F(t, x)=\mathbb{E}_{t, x}\left[\Phi\left(X_T\right)\right]=\mathbb{E}\left[\delta_{x^{\prime}}\left(X_T\right) \mid X_t=x\right]=P\left(x_{t^{\prime}}=x^{\prime} \mid x_t=x\right)
 $$</p>
-<h3 id="fokker-pkanck方程和komogorov前向方程">Fokker-Pkanck方程和Komogorov前向方程
-</h3><p>之前的Feynman-Kac公式可以将PDE求解转化为SDE求解，本小节的Fokker-Pkanck方程可以将SDE的求解转化为PDE的求解。
+<h3 id="fokker-pkanck方程和komogorov前向方程">Fokker-Pkanck方程和Komogorov前向方程</h3>
+<p>之前的Feynman-Kac公式可以将PDE求解转化为SDE求解，本小节的Fokker-Pkanck方程可以将SDE的求解转化为PDE的求解。
 $$
 \left\{\begin{aligned}
 d X_s &amp; =b\left(s, X_s\right) d s+\sigma\left(s, X_s\right) d W_s \\
@@ -1124,475 +944,11 @@ $$
 This gives the probability of the state $x$ occurring at time $t$ given initial state $x^{\prime}$ at time $t^{\prime}&lt;t$. Equivalently, $P\left(x, t \mid x^{\prime}, t^{\prime}\right)$ is the solution of the Fokker-Planck equation with initial condition $P\left(x, t^{\prime}\right)=\delta\left(x-x^{\prime}\right)$.</p>
 <hr>
 <p>本人在24年在做采样有关的研究，这促使我去系统的学习了随机分析的知识，今年再次看到台湾交通大学吴老师的课程，讲的非常好，特再次学习并写下该笔记，常读常新。</p>
+</div>
 
-</section>
+<p class="back"><a href="/post/">← All posts</a></p></article></main>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+</div></body></html>
 
 
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/note/">Note</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    <section class="article-lastmod">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            Last updated on Apr 22, 2025 22:12 CST
-        </span>
-    </section></footer>
-
-<footer class="article-footer">
-    <section>
-        Page views:<span id="busuanzi_value_page_pv">Loading</span>
-    </section>
-</footer>
-
-
-    
-        
-
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
-    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
-    crossorigin="anonymous"
-/>
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-    onload="
-    window.addEventListener('DOMContentLoaded', function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: true}
-            ]
-        });
-    });
-"></script>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e7%8e%b0%e4%bb%a3%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/cover.png" loading="lazy" data-key="" data-hash="/post_file/现代数字信号处理/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|现代数字信号处理选学</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|课题组讨论班</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|信息论</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/Cover1.png" loading="lazy" data-key="" data-hash="/post_file/数理统计/Cover1.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|统计学基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e9%ab%98%e7%ad%89%e4%bb%a3%e6%95%b0/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/高等代数/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|高等代数</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2024 - 
-        
-        2026 Haitong&#39;s blog
-    </section>
-    
-    
-    <section class="powerby">
-             
-                
-                
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-
-                <p>16 articles have been published | A total of 103.0k words.</p>
-
-
-    </section>
-
-</footer>
-
-<script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
-      pangu.spacingPage();
-    });
-</script>
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script>
-<script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-
-
-
-
-<script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
-    crossorigin="anonymous"
-></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
-    crossorigin="anonymous"
-/>
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
-</script>
-
-<script defer src="https://cn.vercount.one/js"></script>
-<style>
-    #backTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        z-index: 99;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        background-image: url(http://localhost:1313/icons/backTop.svg);
-    }
-</style>
-
-
-<style>
-    #TableOfContents > ul, ol {
-        ul, ol {
-            display: none;
-        }
-        .open {
-            display: block;
-        }
-    }
-</style>
-
-<script>
-    function initTocHide() {
-        
-        let toc = document.querySelector(".widget--toc");
-        if (!toc) {
-            return;
-        }
-        
-        window.addEventListener('scroll', function() {
-            
-            let openUl = document.querySelectorAll(".open");
-            if (openUl.length > 0) {
-              openUl.forEach((ul) => {
-                ul.classList.remove("open")
-              })
-            }
-            
-            let currentLi = document.querySelector(".active-class");
-            if (!currentLi) {
-                return
-            }
-            
-            if (currentLi.children.length > 1) {
-                currentLi.children[1].classList.add("open")
-            }
-            
-            let ul = currentLi.parentElement;
-            do {
-                ul.classList.add("open");
-                ul = ul.parentElement.parentElement
-            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
-        });
-    }
-    initTocHide()
-</script>
-
-
-
-
-
-
-    </body>
-</html>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "\\[", right: "\\]", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false}
-      ],
-      throwOnError: false
-    });
-  });
-</script>
 

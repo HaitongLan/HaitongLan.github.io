@@ -1,107 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="数理统计、贝叶斯统计、高维统计、统计学习等基础">
-<title>学习笔记|统计学基础</title>
-
-<link rel='canonical' href='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/'>
-
-<link rel="stylesheet" href="/scss/style.min.47a915f54ec9b54f73dcd3a27c2e314feaecdab65094d4b60d73fdabb46ab89a.css">
-<meta property='og:title' content="学习笔记|统计学基础">
-<meta property='og:description' content="数理统计、贝叶斯统计、高维统计、统计学习等基础">
-<meta property='og:url' content='http://localhost:1313/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/'>
-<meta property='og:site_name' content='Haitong Lan'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Note' /><meta property='article:published_time' content='2025-01-26T00:21:05&#43;08:00'/><meta property='article:modified_time' content='2025-06-30T22:43:05&#43;08:00'/><meta property='og:image' content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png' />
-<meta name="twitter:title" content="学习笔记|统计学基础">
-<meta name="twitter:description" content="数理统计、贝叶斯统计、高维统计、统计学习等基础"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/post_file/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/Cover1.png' />
-    <link rel="shortcut icon" href="/favicon-v2.ico" />
-
-  
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习笔记|统计学基础 — Haitong Lan</title>
+<meta name="description" content="数理统计、贝叶斯统计、高维统计、统计学习等基础">
+<link rel="canonical" href="https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/"><link rel="icon" href="/favicon-v2.ico">
+<link rel="stylesheet" href="/academic.css?v=2e98de68f5ce71d9805749d3eede8d41">
+<link rel="stylesheet" href="/academic-syntax.css">
 
 
-<style>
-    :root {
-        --article-font-family: "Noto Serif", var(--base-font-family);
-    }
-</style>
-<script>  
-		(function () {
-		    const customFont = document.createElement('link');
-		    customFont.href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500..700;1,400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap";
-		
-		    customFont.type = "text/css";
-		    customFont.rel = "stylesheet";
-		
-		    document.head.appendChild(customFont);
-		}());
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script defer src="/math.js"></script>
 
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="c5a3be3e-ab5c-4ee5-a8e7-ac2f1a3501a1"></script>
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended">
-
-
-        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
-</svg>
-
-
-
-                <span>Back</span>
-            </a>
-        </div>
-    
-
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
+</head>
+<body><a class="skip" href="#main">Skip to content</a><div class="shell">
+<header class="site-header"><a class="name" href="/">Haitong Lan</a>
+<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
+<main id="main"><article><header class="page-heading"><h1>学习笔记|统计学基础</h1><p class="meta">January 26, 2025 · 57 min read · Note, Math</p><p class="lead">数理统计、贝叶斯统计、高维统计、统计学习等基础</p></header>
+<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
     <li><a href="#介绍">介绍</a></li>
     <li><a href="#概率论基础">概率论基础</a>
@@ -205,131 +123,29 @@
       </ol>
     </li>
   </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/">
-                
-                    <img src="/post_file/%e6%95%b0%e7%90%86%e7%bb%9f%e8%ae%a1/Cover1.png" loading="lazy" alt="Featured image of post 学习笔记|统计学基础" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/note/" >
-                Note
-            </a>
-        
-            <a href="/categories/math/" >
-                Math
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/">学习笔记|统计学基础</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            数理统计、贝叶斯统计、高维统计、统计学习等基础
-        </h3>
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 26, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    57 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-
-    <section class="article-content">
-    
-    
-    <h2 id="介绍">介绍
-</h2><p>这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一起，可以很好的联系起来相互对比，是不错的学习方式。</p>
+</nav></details>
+<div class="prose"><h2 id="介绍">介绍</h2>
+<p>这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一起，可以很好的联系起来相互对比，是不错的学习方式。</p>
 <p>参考：</p>
 <ol>
-<li>网站：<a class="link" href="https://ocw.nycu.edu.tw/?post_type=course_page&amp;p=25566"  target="_blank" rel="noopener"
-    >统计学1</a></li>
-<li>网站：<a class="link" href="https://ocw.nycu.edu.tw/?post_type=course_page&amp;p=25439"  target="_blank" rel="noopener"
-    >统计学2</a></li>
-<li>youtube课程：<a class="link" href="https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&amp;si=XVTZSHO2CrYsZoek"  target="_blank" rel="noopener"
-    >交大數理統計學</a></li>
-<li>youtube课程：<a class="link" href="https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&amp;si=obMWmZkBRTFQJYUo"  target="_blank" rel="noopener"
-    >陳鄰安老師 - 高等統計學</a></li>
+<li>网站：<a href="https://ocw.nycu.edu.tw/?post_type=course_page&p=25566">统计学1</a></li>
+<li>网站：<a href="https://ocw.nycu.edu.tw/?post_type=course_page&p=25439">统计学2</a></li>
+<li>youtube课程：<a href="https://youtube.com/playlist?list=PLRklqGYqFmaLQlgeVi_tyKY12QjqS48N-&si=XVTZSHO2CrYsZoek">交大數理統計學</a></li>
+<li>youtube课程：<a href="https://youtube.com/playlist?list=PLj6E8qlqmkFvneoIIsf3yPr_TVPy6qimA&si=obMWmZkBRTFQJYUo">陳鄰安老師 - 高等統計學</a></li>
 <li>教材：Introduction to Mathematical Statistics ，Hogg</li>
 <li>教材：统计推断，Casella</li>
 <li>教材：应用随机过程，Ross</li>
 <li>教材：统计机器学习，李航</li>
-<li>网页：<a class="link" href="https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html"  target="_blank" rel="noopener"
-    >统计计算</a></li>
-<li>网页：<a class="link" href="https://bookdown.org/rdpeng/advstatcomp/"  target="_blank" rel="noopener"
-    >Advanced Statistical Computing</a>.</li>
-<li>网页：<a class="link" href="https://www2.cs.arizona.edu/~pachecoj/courses/csc535_fall20/lectures/mcmc.pdf"  target="_blank" rel="noopener"
-    >Markov chain Monte Carlo methods</a></li>
-<li>b站up：<a class="link" href="https://space.bilibili.com/497536319"  target="_blank" rel="noopener"
-    >徐芝兰</a>.</li>
-<li>b站课程：<a class="link" href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >随机过程 张颢 2024年春</a></li>
+<li>网页：<a href="https://www.math.pku.edu.cn/teachers/lidf/docs/statcomp/html/_statcompbook/index.html">统计计算</a></li>
+<li>网页：<a href="https://bookdown.org/rdpeng/advstatcomp/">Advanced Statistical Computing</a>.</li>
+<li>网页：<a href="https://www2.cs.arizona.edu/~pachecoj/courses/csc535_fall20/lectures/mcmc.pdf">Markov chain Monte Carlo methods</a></li>
+<li>b站up：<a href="https://space.bilibili.com/497536319">徐芝兰</a>.</li>
+<li>b站课程：<a href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">随机过程 张颢 2024年春</a></li>
 </ol>
 <p>数理统计部分大多数是统计研究院陳鄰安老师数理统计，陈老师年纪比较大了，但是是很有激情的老师，他的课值得一听，其余部分没有参考统一的教科书，会将学习的出处贴出来。还有一些参考零零散散的遍布在文章的各处，用到的时候会提及。</p>
-<h2 id="概率论基础">概率论基础
-</h2><h3 id="random-variable">Random Variable
-</h3><p><strong>Define 1(random variable).</strong> Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. <br>
+<h2 id="概率论基础">概率论基础</h2>
+<h3 id="random-variable">Random Variable</h3>
+<p><strong>Define 1(random variable).</strong> Let $(\Omega, \mathcal{F}, P)$ be a probability space and $(E, \mathcal{E})$ a measurable space. Then an $(E, \mathcal{E})$-valued random variable is a measurable function $X: \Omega \rightarrow E$. <br>
 <strong>Remark.</strong></p>
 <ol>
 <li>随机变量是从样本空间到$\mathbb{R}$的映射，概率测度是从$\sigma$-域到$[0,1]$的映射，并且满足整个样本空间的测度等于1。在实际中我们一般不会考虑原来的样本空间，因为一般考虑由随机变量诱导出来的概率测度，它是由博雷尔集($\mathcal{B}$)到$\mathbb{R}$的映射。</li>
@@ -386,8 +202,8 @@ $$</p>
 </ul>
 <p><strong>Thm 4.</strong> m.g.f. $M_x(t)$ and its distribution (p.d.f. or d.f.) forms a $1-1$ functions.</p>
 <p><strong>Thm 5.</strong> $\quad M_X^{(k)}(0)=E\left[X^k\right], k=1,2, \cdots$</p>
-<h3 id="probability-distribution">Probability distribution
-</h3><p><strong>Def 1.</strong> Gamma function $\Gamma(\alpha)=\int_0^{\infty} x^{\alpha-1} e^{-x} d x$<br>
+<h3 id="probability-distribution">Probability distribution</h3>
+<p><strong>Def 1.</strong> Gamma function $\Gamma(\alpha)=\int_0^{\infty} x^{\alpha-1} e^{-x} d x$<br>
 <strong>Properties:</strong></p>
 <ol>
 <li>$\Gamma(\alpha)=(\alpha-1) \Gamma(\alpha-1)$, if $\alpha&gt;1$</li>
@@ -419,8 +235,8 @@ M_X^{\prime \prime}(t) &amp; =\alpha(\alpha+1)(1-\beta t)^{-\alpha-2} \beta^2 \\
 &amp; \Rightarrow \text { Variance } \sigma^2=M_X^{\prime \prime}(0)-\left(M_X^{\prime}(0)\right)^2=\alpha(\alpha+1) \beta^2-(\alpha \beta)^2=\alpha \beta^2
 \end{aligned}
 $$</p>
-<h3 id="random-voctor">Random Voctor
-</h3><p><strong>Definition 1.</strong>  Suppose that the random variables $X$ and $Y$
+<h3 id="random-voctor">Random Voctor</h3>
+<p><strong>Definition 1.</strong>  Suppose that the random variables $X$ and $Y$
 are defined to assume values in $\displaystyle I\subseteq \mathbb {R}$.
 We say that $n$ random variables $X_1, \ldots, X_n$ are <strong>i.i.d(Independent and identically distributed random variables)</strong>.  If and only if</p>
 <ul>
@@ -458,8 +274,8 @@ $$
 <br>
 <strong>Remark.</strong> 可以用该方法构造从$n$个随机变量的联合分布到另外$n$个随机变量联合分布的映射(注意映射到的值域)，
 然后再通过积分的方式获得边缘联合分布。</p>
-<h3 id="statistical-basis">Statistical basis
-</h3><p><strong>Def 1(随机样本).</strong> If a sequence of r.v.&rsquo;s $X_1,\cdots,X_n$ are i.i.d.,then they are called a <strong>random sample</strong>.</p>
+<h3 id="statistical-basis">Statistical basis</h3>
+<p><strong>Def 1(随机样本).</strong> If a sequence of r.v.&rsquo;s $X_1,\cdots,X_n$ are i.i.d.,then they are called a <strong>random sample</strong>.</p>
 <p><strong>Def 2(统计量和参数).</strong> Any function $g(X_1,\cdots,X_n)$ of a random sample $X_1,\cdots,X_n$ which is
 not dependent on a parameter $\theta$ is called a <strong>statistic</strong>.<br>
 <strong>Note.</strong> If $X$ is a random sample with p.d.f. $f(x;\theta)$, where $\theta$ is an unknown constant, then $\theta$ is called <strong>parameter</strong>.<strong>统计量是一个可观察的随机变量</strong>，这是它与统计参数的直接区别 ，统计参数包含一个不可观察的随机变量从而可以描述统计总体。 统计参数必须要在整体数据都可被观察的时候才能计算，例如，一个完美的人口普查。</p>
@@ -501,8 +317,8 @@ $$</li>
 即
 $$M_{\bar{X}}(t)M_{X_1-\bar{X},\ldots,X_n-\bar{X}}(t_1,\ldots,t_n) = M_{\bar{X},X_1-\bar{X},\ldots,X_n-\bar{X}}(t,t_1,\ldots,t_n)$$.</li>
 </ol>
-<h2 id="点估计">点估计
-</h2><p><strong>Problem in statistics</strong>:<br>
+<h2 id="点估计">点估计</h2>
+<p><strong>Problem in statistics</strong>:<br>
 A random variables $X$ with p.d.f. of the form $f(x, \theta)$ where function $f$ is known but parameter $\theta$ is unknown. We want to gain knowledge about $\theta$.<br>
 What we have for inference:<br>
 There is a random sample $X_1, \ldots, X_n$ from $f(x, \theta)$.
@@ -518,8 +334,8 @@ $$
 \text { Want to find a rule to decide if we accept or reject } H_0 .
 \end{array}\right.
 $$</p>
-<h3 id="unbiased-and-consistent">Unbiased and consistent
-</h3><p><strong>Def 1（估计量）.</strong> We call a statistic $\hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right)$ an <strong>estimator</strong> of parameter $\theta$ if it is used to estimate $\theta$. If $X_1=x_1, \ldots, X_n=x_n$ are observed, then $\hat{\theta}=\hat{\theta}\left(x_1, \ldots, x_n\right)$ is called an <strong>estimate</strong> of $\theta$.</p>
+<h3 id="unbiased-and-consistent">Unbiased and consistent</h3>
+<p><strong>Def 1（估计量）.</strong> We call a statistic $\hat{\theta}=\hat{\theta}\left(X_1, \ldots, X_n\right)$ an <strong>estimator</strong> of parameter $\theta$ if it is used to estimate $\theta$. If $X_1=x_1, \ldots, X_n=x_n$ are observed, then $\hat{\theta}=\hat{\theta}\left(x_1, \ldots, x_n\right)$ is called an <strong>estimate</strong> of $\theta$.</p>
 <p><strong>Def 2(无偏估计).</strong> We call an estimator $\theta$ unbiased for $\theta$ if it satisfies
 $$
 \begin{gathered}
@@ -588,8 +404,8 @@ $$
 $$
 The <strong>sample $k_{t h}$ moment</strong> is defined by $\frac{1}{n} \sum_{i=1}^n X_i{ }^k$.<br>
 <strong>Remark.</strong> 假设方差有限，样本原点矩是原点矩的无偏估计量和一致性估计量 (WLLN)。</p>
-<h3 id="point-estimation-method">Point estimation method
-</h3><p><strong>Method 1:矩估计，Method of Moments, MoM</strong><br>
+<h3 id="point-estimation-method">Point estimation method</h3>
+<p><strong>Method 1:矩估计，Method of Moments, MoM</strong><br>
 使用样本矩估计原点矩，然后反解出参数 $\theta$ 作为 $\hat{\theta}$。<br>
 If $\theta=\left(\theta_1, \ldots, \theta_k\right)$ is $k$-variate, the method of moment estimator $\left(\hat{\theta_1}, \ldots, \hat{\theta_k}\right)$ solves $\theta_1, \ldots, \theta_k$ for
 $$
@@ -637,8 +453,8 @@ $$</p>
 $$
 \hat{h(\theta)} = h(\hat{\theta})
 $$</p>
-<h3 id="umvue">UMVUE
-</h3><p>现在我们有了两种点估计的方法，矩估计方法和最大似然估计方法，我们可以得到一些估计量，并且判断它们的无偏性和一致性，但是如何进一步评判一个统计量的好坏仍然是现在不知道的，接下来我们要定义一种对统计量好坏的度量，先启发的想，方差代表了统计量测度集中的程度，对于点估计而言，我们自然是希望方差越小越好：</p>
+<h3 id="umvue">UMVUE</h3>
+<p>现在我们有了两种点估计的方法，矩估计方法和最大似然估计方法，我们可以得到一些估计量，并且判断它们的无偏性和一致性，但是如何进一步评判一个统计量的好坏仍然是现在不知道的，接下来我们要定义一种对统计量好坏的度量，先启发的想，方差代表了统计量测度集中的程度，对于点估计而言，我们自然是希望方差越小越好：</p>
 <div>
 $$
 \begin{aligned}
@@ -677,8 +493,8 @@ $$
 $$
 </div>
 <p><strong>Remark.</strong> C-R bound同样可以表示为 $\operatorname{Var}_\theta \hat{\tau}(\theta) \geq \frac{\left(\tau^{\prime}(\theta)\right)^2}{nI(\theta)}$,其中 $I(\theta)$ 为 Fisher information。若我们可以找到一个无偏统计量，使得该无偏统计量的方差为 C-R bound，则该统计量就是 UMVUE，并且我们定义这个统计量为 efficient estimator(有效估计量)，是所有无偏估计量中最有效的统计量，并且定义，C-R bound 比上真实估计量的方差为 efficiency。</p>
-<h3 id="sufficient-statistics-and-coditional-expectation">Sufficient statistics and Coditional expectation
-</h3><p>我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，
+<h3 id="sufficient-statistics-and-coditional-expectation">Sufficient statistics and Coditional expectation</h3>
+<p>我们在上一节中介绍了 UMVUE,但是使用 C-R bound来寻找UMVUE 不是一种很聪明的方法，
 因为我们只是去验证而不是去寻找，本章节我们将引入充分统计量(Sufficient statistics)
 的概念，并发掘一套寻找UMVUE的方法。</p>
 <p><strong>Def 1(Sufficient statistics).</strong> Let $X_1;\cdots ;X_n$ be a random sample from a distribution with p.d.f
@@ -722,8 +538,8 @@ The conditional variance $\operatorname{Var}(Y \mid X)$ is $\operatorname{Var}(Y
 <strong>Reamrk.</strong>(1)可以看作tower性质的一个特例；
 (2)可以得出一个不等式 $\operatorname{Var}(Y)\geq\operatorname{Var}(E(Y \mid X))$,
 可以直观的理解为，依据已经发生事件做出的判断相比于直接对事件本身做出判断的方差更小，更可靠。</p>
-<h3 id="completeness">Completeness
-</h3><p><strong>Thm 1(Rao-Blackwell).</strong> If $\hat{\tau}\left(X_1, \ldots, X_n\right)$ is unbiased for $\tau(\theta)$ and $U$ is a sufficient statistic, then<br>
+<h3 id="completeness">Completeness</h3>
+<p><strong>Thm 1(Rao-Blackwell).</strong> If $\hat{\tau}\left(X_1, \ldots, X_n\right)$ is unbiased for $\tau(\theta)$ and $U$ is a sufficient statistic, then<br>
 (a) $E_\theta\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]$ is a statistic.<br>
 (b) $E_\theta\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]$ is unbiased for $\tau(\theta)$.<br>
 (c) $Var_\theta\left(E\left[\hat{\tau}\left(X_1, \ldots, X_n\right) \mid U\right]\right) \leq Var_\theta\left(\hat{\tau}\left(X_1, \ldots, X_n\right)\right), \forall \theta \in \Theta$.<br>
@@ -824,10 +640,10 @@ $\Rightarrow I\left(X_1=0\right)$ is unbiased for $e^{-\lambda}$<br>
 $\Rightarrow \mathrm{E}\left(I\left(X_1=0\right) \mid \sum_{i=1}^n X_i\right)$ is UMVUE of $e^{-\lambda}$.</p>
 <hr>
 <p>上述章节为统计学（一）的所有内容，下面的章节为统计学（二）的内容。</p>
-<h2 id="置信区间">置信区间
-</h2><p>在谈置信区间之间，我们先补充一些必要的概率论知识。</p>
-<h3 id="order-statistic-t-distribution">Order statistic, t-distribution
-</h3><p>首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：</p>
+<h2 id="置信区间">置信区间</h2>
+<p>在谈置信区间之间，我们先补充一些必要的概率论知识。</p>
+<h3 id="order-statistic-t-distribution">Order statistic, t-distribution</h3>
+<p>首先再谈变数转换，对于 $(X_1,\cdots,X_n)\rightarrow (Y_1,\cdots,Y_n)$ 若存在双射关系，则可以直接通过求Jacobian行列式的方式进行 p.d.f. 的转换，但若是序列之间并不存在双射关系，该如何做变数转换呢，下面给出一种通用的算法：</p>
 <p>设 $(X_1,\cdots,X_n)\in \mathscr{A},$ 映射到的 $(Y_1,\cdots,Y_n)\in \mathscr{B}$ ,we can represent $\mathscr{A}$ as the <strong>union</strong> of a finite number, say $k$, of mutually disjoint sets $A_1, A_2, \ldots, A_k$ so that
 $$
 y_1=u_1\left(x_1, x_2, \ldots, x_n\right), \ldots, \quad y_n=u_n\left(x_1, x_2, \ldots, x_n\right)
@@ -905,8 +721,8 @@ T=\frac{Z}{\sqrt{\frac{\chi^2(r)}{r}}}
 $$
 a t-distribution with $r$ degrees of freedom.<br>
 <strong>Remark.</strong> t分布是偶对称分布，有 $f_T(-x) = f_T(x)$,另外，t分布只与其自由度 $r$ 相关，由 $r$ 所唯一确定，考虑到我们之前曾经提到 $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2$,可以将任意一个正态分布标准化为标准正态分布，再比上 $\sqrt{\frac{S^2}{n-1}}=\frac{S}{\sigma}$ 来得到 t分布。</p>
-<h3 id="confidence-interval">Confidence Interval
-</h3><p>之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：</p>
+<h3 id="confidence-interval">Confidence Interval</h3>
+<p>之前介绍的点估计是一种经典的统计推断方法，在一致性的保证下，估计量可以依概率收敛到真实参数，但是点估计的缺陷也是明显的，对于连续分布而言，我们的估计量是服从某一分布的，那么就必然有 $P(\hat{\theta} = \theta) = 0$,一个点对于连续分布是测度为零的，或许这在提示我们，想获得概率上的保证，估计一个区间也是可行的方法：</p>
 <p><strong>Def 1(C.I.).</strong> Suppose that we have a random sample from $f(x, \theta)$. For $0&lt;\alpha&lt;1$, if there exists two statistics $T_1=t_1\left(X_1, \ldots, X_n\right)$ and $T_2=t_2\left(X_1, \ldots, X_n\right)$ satisfying
 $$
 1-\alpha=P\left(T_1 \leq \theta \leq T_2\right)
@@ -960,8 +776,8 @@ $$
 <li>推断 $\sigma^2$,构造 $\chi^2$分布作为枢轴量。</li>
 </ol>
 <hr>
-<h3 id="近似置信区间">近似置信区间
-</h3><p>在有些时候我们并不知道母体分布，需要使用大样本理论去推断参数的近似置信区间。</p>
+<h3 id="近似置信区间">近似置信区间</h3>
+<p>在有些时候我们并不知道母体分布，需要使用大样本理论去推断参数的近似置信区间。</p>
 <p>下面介绍一些简单的大样本理论，首先说明一点，之前我们提到了mgf唯一对应随机变量的分布，其实这种对应是分布函数意义上的确定，也就是在分布函数的意义上相等，如果用mgf进行极限分布的推断，只可以得到依分布收敛的结果。</p>
 <p><strong>定理 1 （连续性定理）.</strong> 令随机变量 $X_n$ 和 $X$ 的 CDF $F_n$ 和 $F$ 为对应它们的矩母函数为 $\phi_n$ 和 $\phi$ ．那么， $\phi_n(t) \rightarrow \phi(t) \forall t\iff X_n \xrightarrow{\mathcal{D}} X$ ．</p>
 <p><strong>定理 2（经典CLT）.</strong> 令 $\left\{X_n\right\}$ 为均值为 $\mu$ ，方差为 $\sigma^2&lt;\infty$ 的i．i．d随机变量序列．那么，
@@ -980,13 +796,13 @@ $$
 <p>一般而言，对于 $\mu$ 的近似区间估计，最后都会将分母的 $\sigma$ 换成 $S$,再由Slutsky定理保证收敛。</p>
 <hr>
 <p>还有一些区间估计的内容，我们在假设检验的章节进行描述。</p>
-<h2 id="假设检验">假设检验
-</h2><p>我们所说的统计模型可以分为估计和假设检验两类，假设检验是不可以用估计的方法去做的。</p>
+<h2 id="假设检验">假设检验</h2>
+<p>我们所说的统计模型可以分为估计和假设检验两类，假设检验是不可以用估计的方法去做的。</p>
 <p>在统计推断中, 参数的估计量的导
 出是基于一些原则(例如无偏性、不变性、充分性、替代原理、似然原理、Bayes
 原理等), 而不是基于损失函数和风险函数.</p>
-<h3 id="基本模型">基本模型
-</h3><p>Hogg 的书中这一部分描写的有点让人困扰，接下来使用邵军老师数理统计的内容,这部分内容的写法更加偏向于描述而不是下定义：</p>
+<h3 id="基本模型">基本模型</h3>
+<p>Hogg 的书中这一部分描写的有点让人困扰，接下来使用邵军老师数理统计的内容,这部分内容的写法更加偏向于描述而不是下定义：</p>
 <p>设 $X$ 是取自总体 $P \in \mathcal{P}$ 的一个样本．<strong>统计决策</strong>是指我们观察 $X$ 之后采取的行动，例如，关于 $P$ 的结论或 $P$ 的特征．贯穿本节，我们用 $\mathbb{A}$ 表示可允许行动的集合。设 $\mathcal{F}_{\mathbf{A}}$ 是 $\mathbb{A}$ 上的 $\sigma$ 域。可测空间 $\left(\mathbb{A}, \mathcal{F}_{\mathbf{A}}\right)$ 称为行动空间。设 $\mathscr{X}$ 是 $X$ 的值域， $\mathcal{F}_{\mathscr{X}}$ 是 $\mathscr{X}$ 的一个 $\sigma$ 域。<strong>决策准则</strong>是 $\left(\mathscr{X}, \mathcal{F}_{\mathscr{X}}\right)$ 到 $\left(\mathbb{A}, \mathcal{F}_{\mathrm{A}}\right)$ 上的一个可测函数（统计量）$T$ 。如果决策准则 $T$ 已选定，则一旦观测到 $X$ 我们就可采取行动 $T(X) \in \mathbb{A}$ ．</p>
 <p>设 $\mathcal{P}$ 是一分布族， $\mathcal{P}_0 \subset \mathcal{P}, \mathcal{P}_1=\left\{P \in \mathcal{P}: P \notin \mathcal{P}_0\right\}$ ．<strong>假设检验问题</strong>可描述为确定下面两种说法哪一个为真：
 $$
@@ -1020,8 +836,8 @@ $$
 $$
 其中 $\alpha \in[0,1]$ 是给定的显著性水平．注意到之前我们定义了的左侧为 $T$ 的检验水准（size）。</p>
 <p><strong>定义 1(UMP).</strong> 检验水准为 $\alpha$ 的检验 $T_{*}$ 是<strong>一致最优势（UMP）检验</strong>，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．</p>
-<h3 id="似然比检验">似然比检验
-</h3><p>我们先给出一个直观的检验方式，并之后给出其理论。</p>
+<h3 id="似然比检验">似然比检验</h3>
+<p>我们先给出一个直观的检验方式，并之后给出其理论。</p>
 <p><strong>定义 1（似然比检验）.</strong> 关于检验 $H_0: \theta \in \Theta_0$ 对 $H_1: \theta \in \Theta_0^{\mathrm{C}}$ 的似然比检验统计量是
 $$
 \lambda(\boldsymbol{x})=\frac{\sup_{\theta_0} L(\theta \mid \boldsymbol{x})}{\sup _\theta L(\theta \mid \boldsymbol{x})}
@@ -1040,8 +856,8 @@ $$
 <li>不管 $\mu$ 已知还是未知，构造 $\Chi^2(n-1)$，$\frac{(n-1)S^2}{\sigma^2}$</li>
 </ol>
 <hr>
-<h3 id="假设检验的评价">假设检验的评价
-</h3><p><strong>定义 1(无偏性).</strong> 一个功效函数为 $\beta(\theta)$ 的检验是无偏的，如果对于每一个 $\theta^{\prime} \in \Theta_0^{\mathrm{C}}$ 和 $\theta^{\prime \prime} \in \Theta_0$ 有 $\beta\left(\theta^{\prime}\right) \geqslant \beta\left(\theta^{\prime \prime}\right)$ ．</p>
+<h3 id="假设检验的评价">假设检验的评价</h3>
+<p><strong>定义 1(无偏性).</strong> 一个功效函数为 $\beta(\theta)$ 的检验是无偏的，如果对于每一个 $\theta^{\prime} \in \Theta_0^{\mathrm{C}}$ 和 $\theta^{\prime \prime} \in \Theta_0$ 有 $\beta\left(\theta^{\prime}\right) \geqslant \beta\left(\theta^{\prime \prime}\right)$ ．</p>
 <p><strong>定义 2(UMP).</strong> 检验水准为 $\alpha$ 的检验 $T_{*}$ 是<strong>一致最优势（UMP）检验</strong>，当且仅当对所有 $P \in \mathcal{P}_1$ 和显著水平为 $\alpha$ 的 $T, \beta_{T_{*}}(P) \geqslant \beta_T(P)$ ．</p>
 <p>为了找出UMP，我们先从简单假设开始，对于简单假设，以下定理说明必定存在UMP,且UMP的形式是确定的。</p>
 <p><strong>定理 3（Neyman-Pearson引理）.</strong> 对于简单假设$H_0:\theta = \theta_0,H_1:\theta = \theta_1$,构造判决域满足如下条件:<br>
@@ -1058,8 +874,8 @@ $$
 <p><strong>定义 4（单调似然比，MLR）.</strong> 令 $f_n(x \mid \theta)$ 表示样本 $\boldsymbol{X}=\left(X_1, \cdots, X_n\right)$ 的联合密度（质量）函数；令 $T=T(\boldsymbol{X})$ 表示一个统计量。如果对于 $\theta_1 \in \Omega_1$ 和 $\theta_2 \in \Omega_2\left(\theta_1&lt;\theta_2\right)$ ，都有似然比 $f_n\left(x \mid \theta_2\right) / f_n\left(x \mid \theta_1\right)$ 是关于 $T(\boldsymbol{X})$ 的单调（非增或非降的）函数，且该似然比中 $\boldsymbol{X}$ 的信息只包含在 $T(\boldsymbol{X})$ 中，那么称 $\boldsymbol{X}$ 的分布相对于统计量 $T(\boldsymbol{X})$ 具有单调似然比（Monotone Likelihood Ratio，MLR）。</p>
 <p><strong>定理 5（Karlin－Rubin）</strong> 考虑检验 $H_0: \theta \leqslant \theta_0$ 对 $H_1: \theta&gt;\theta_0$ ．设 $T$ 是一个关于 $\theta$ 的充分统计量并且 $T$ 的概率密度函数或概率质量函数的族 ${g(t \mid \theta): \theta \in \Theta}$ 关于 $\theta$ 具有 MLR．则对于任何 $t_0$ ，＂当且仅当 $T&gt;t_0$ 时拒绝 $H_0$＂的检验是一个 UMP 水平为 $\alpha$ 的检验，其中 $\alpha=P_{\theta_0}\left(T&gt;t_0\right)$ ．<br>
 <strong>注.</strong> 这仅仅是一种形式的K-R定理，该定理对于复合单侧检验普遍成立，需要利用直觉去判断判决域，非常符合直观，个人觉得用另外一种方式概括该定理是合理的：对于复合单侧检验，若为单调似然比，则UMP存在，判决域可根据直觉判断。</p>
-<h3 id="f-分布">F-分布
-</h3><p>在此处暂停一下，引入F-分布，并总结一下统计学三大分布：$\Chi^2,t,F$.</p>
+<h3 id="f-分布">F-分布</h3>
+<p>在此处暂停一下，引入F-分布，并总结一下统计学三大分布：$\Chi^2,t,F$.</p>
 <p><strong>引理1（关于 $\chi^2$ 随机变量的若干事实）</strong> 以 $\chi_p^2$ 记自由度为 $p$ 的 $\chi^2$ 随机变量．<br>
 a．如果 $Z$ 是 $\mathrm{N}(0,1)$ 随机变量，则 $Z^2 \sim \chi_1^2$ ，即标准正态随机变量的平方是 $\chi^2$ 随机变量；<br>
 b．如果 $X_1, \cdots, X_n$ 独立且 $X_i \sim \chi_{p_i}^2$ ，则 $X_1+\cdots+X_n \sim \chi_{p_1+\cdots+p_n}^2$ ，即独立的 $\chi^2$随机变量之和仍为 $\chi^2$ 随机变量，且其自由度为原随机变量自由度之和．</p>
@@ -1069,9 +885,9 @@ $$F=\frac{\left(S_X^2 / \sigma_X^2\right)}{\left(S_Y^2 / \sigma_Y^2\right)}$$</p
 <p><strong>定理 3（F分布的性质）.</strong> （1）$F\sim f(p,q)\Rightarrow \frac{1}{F}\sim f(q,p)$<br>
 （2）对于F分布的分位数，有 $F_\alpha(p,q) = \frac{1}{f_{1-\alpha}(q,p)}$</p>
 <p>引入F分布的理由是因为需要对 $\sigma_x/\sigma_y$ 进行假设检验或者区间估计，使用F分布构造分位数会将问题变的十分简便，在之前的估计中，若比较两个分布，我们经常需要做 $\sigma_x = \sigma_y$ 的假设，现在也可以对该假设进行检验了。</p>
-<h3 id="p值">p值
-</h3><h3 id="再谈区间估计">再谈区间估计
-</h3><p>在习题中不难发现，假设检验和区间估计具有类似的方法，再加上我们之前在区间估计中定义置信度为 $1-\alpha$,不禁让人联想，二者是否是同一个东西。</p>
+<h3 id="p值">p值</h3>
+<h3 id="再谈区间估计">再谈区间估计</h3>
+<p>在习题中不难发现，假设检验和区间估计具有类似的方法，再加上我们之前在区间估计中定义置信度为 $1-\alpha$,不禁让人联想，二者是否是同一个东西。</p>
 <p><strong>定理 1（假设检验等价于区间估计）.</strong> 对每一个 $\theta_0 \in \Theta$ ，设 $A\left(\theta_0\right)$ 是 $H_0: \theta=\theta_0$ 的一个水平为 $\alpha$ 的检验的接受区域．对每一个 $x \in \mathcal{X}$ ，在参数空间里定义一个集合 $C(x)$
 $$
 C(\boldsymbol{x})=\left\{\theta_0: \boldsymbol{x} \in A\left(\theta_0\right)\right\}
@@ -1095,9 +911,9 @@ $$
 E_{\theta^{*}}(\text { Length }[C(X)])=\int_{\theta \neq \theta^{*}} P_{\theta^{*}}(\theta \in C(X)) \mathrm{d} \theta
 $$
 该定理讲的是 $C(X)$ 的期望长度等于假值覆盖概率的求和（积分），积分域取遍参数的所有假值．</p>
-<h2 id="渐进分析">渐进分析
-</h2><h3 id="点估计-1">点估计
-</h3><p>主要分析MLE的一些渐进特性。
+<h2 id="渐进分析">渐进分析</h2>
+<h3 id="点估计-1">点估计</h3>
+<p>主要分析MLE的一些渐进特性。
 <strong>定理 1（MLE 的一致性）.</strong> 设 $X_1, X_2, \cdots$ 是 iid $f(x \mid \theta)$ 的，$L(\theta \mid \boldsymbol{x})$ $=\prod_{i=1}^n f\left(x_i \mid \theta\right)$ 是似然函数，而 $\hat{\theta}$ 表示 $\theta$ 的 MLE．设 $\tau(\theta)$ 是 $\theta$ 的一个连续函数．那么在杂录 10．6．2 的关于 $f(x \mid \theta)$ ，从而也就是对 $L(\theta \mid \boldsymbol{x})$ 的正则性条件之下，对于每个 $\epsilon&gt;0$ 和每个 $\theta \in \Theta$ ，有
 $$
 \lim _{n \rightarrow \infty} P_\theta(|\tau(\hat{\theta})-\tau(\theta)| \geqslant \epsilon)=0
@@ -1118,10 +934,10 @@ $$
 $$
 其中 $u(\theta)$ 是 Cramér－Rao下界．就是说，$\tau(\hat{\theta})$ 是 $\tau(\theta)$ 的一个相合且渐近有效的估计量．</p>
 <p>监禁有效本身就意味着一致性。</p>
-<h3 id="稳健性">稳健性
-</h3><p>应该是很有趣的一个主题，Casella的书并没有着重介绍，以后补上。</p>
-<h3 id="假设检验-1">假设检验
-</h3><p>主要关心LRT的渐进分布。</p>
+<h3 id="稳健性">稳健性</h3>
+<p>应该是很有趣的一个主题，Casella的书并没有着重介绍，以后补上。</p>
+<h3 id="假设检验-1">假设检验</h3>
+<p>主要关心LRT的渐进分布。</p>
 <p><strong>定理 10．3．1（LRT 的渐近分布简单 $H_0$，Wilks定理）</strong> 关于检验 $H_0: \theta=\theta_0$ 对 $H_1: \theta \neq \theta_0$ ，设 $X_1, \cdots, X_n$ 是 iid $f(x \mid \theta), \hat{\theta}$ 是 $\theta$ 的 MLE，并且 $f(x \mid \theta)$ 满足在杂录 10.6 .2 中的正则性条件．则在 $H_0$ 之下，当 $n \rightarrow \infty$ ，
 $$
 -2 \log \lambda(\boldsymbol{X}) \xrightarrow{L} \chi_1^2,
@@ -1129,23 +945,21 @@ $$
 其中 $\chi_1^2$ 是一个具有自由度 1 的 $\chi^2$ 分布随机变量．<br>
 <strong>注.</strong> wilks定理有高维形式，$\Chi^2$ 分布自由度$=\dim \Theta-\Theta_0$</p>
 <p>在LRT中，决策域的具体数值非常难求，利用渐进理论可以简单的求解。</p>
-<h3 id="bootstrap">Bootstrap
-</h3><p>自助法，一种Resampling的方法，构造插件分布（Plag-in estimator）。</p>
+<h3 id="bootstrap">Bootstrap</h3>
+<p>自助法，一种Resampling的方法，构造插件分布（Plag-in estimator）。</p>
 <p>自举的基本思想是，可以通过对样本数据（样本→总体）进行重新采样并对重新采样数据中的样本（→样本）执行有关样本的推理来建模。由于总体未知，因此样本统计量中相对于其总体值的真正误差是未知的。在 bootstrap-resamples 中，“总体”实际上是样本，这是已知的;因此，从重新采样的数据（重新采样→样本）中推断“真实”样本的质量是可衡量的。</p>
 <p>使用全部数据构建估计量的计算量是非常大的，使用自助法可以减少计算量，并且达到对统计量的良好估计，一般可以具有一致性。</p>
 <p>Resampling领域有很强的理论性和应用性，日后可以读论文去学习。</p>
-<h2 id="回归">回归
-</h2><p>关于回归的知识可以参考<a class="link" href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/#%E6%9C%80%E4%BD%B3%E7%BA%BF%E6%80%A7%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1"  target="_blank" rel="noopener"
-    >另一篇博客</a>.</p>
-<h2 id="采样">采样
-</h2><p>采样并不是频率派数理统计的核心，而是贝叶斯学派的核心，频率派处理数据重点在优化，贝叶斯派重点在处理后验分布，由于后验分布非常复杂，所以会使用变分推断和采样的方式进行估计。</p>
-<h3 id="逆分布生成">逆分布生成
-</h3><p>非常朴素的生成方式，参考另一篇<a class="link" href="https://haitonglan.github.io/p/bayesian-signal-processing/#inverse-distribution-function"  target="_blank" rel="noopener"
-    >博客</a>.</p>
+<h2 id="回归">回归</h2>
+<p>关于回归的知识可以参考<a href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/#%E6%9C%80%E4%BD%B3%E7%BA%BF%E6%80%A7%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1">另一篇博客</a>.</p>
+<h2 id="采样">采样</h2>
+<p>采样并不是频率派数理统计的核心，而是贝叶斯学派的核心，频率派处理数据重点在优化，贝叶斯派重点在处理后验分布，由于后验分布非常复杂，所以会使用变分推断和采样的方式进行估计。</p>
+<h3 id="逆分布生成">逆分布生成</h3>
+<p>非常朴素的生成方式，参考另一篇<a href="https://haitonglan.github.io/p/bayesian-signal-processing/#inverse-distribution-function">博客</a>.</p>
 <p>大部分我们熟知的分布都可以由逆分布采样。</p>
 <p>但是后验分布的复杂程度是超出我们想象的，逆分布生成法局限性太大，需要构造其他的采样方法，接下来介绍几种Monte Carlo采样方法。</p>
-<h3 id="接受拒绝采样">接受拒绝采样
-</h3><p>令 $c$ 是一个常数，使得</p>
+<h3 id="接受拒绝采样">接受拒绝采样</h3>
+<p>令 $c$ 是一个常数，使得</p>
 <p>$$
 \frac{f(y)}{g(y)} \leqslant c \quad \forall y
 $$
@@ -1169,8 +983,8 @@ $$
 <p>其中 $K=\mathrm{P}\{U \leqslant f(Y) / c g(Y)\}$ ，令 $x \rightarrow \infty$ ，表明 $K=1 / c$ ，故而完成了证明，</p>
 <p>可以参考张颢老师在现代数字信号处理（二）中贝叶斯信号处理部分，先对有限支撑集进行采样，再拓展到无限支撑集，非常直观。</p>
 <p>但是接受拒绝采样无法处理值域无限的情况，我们先介绍Monte-Carlo积分，再引入重要性采样和MCMC。</p>
-<h3 id="monte-carlo积分">Monte-Carlo积分
-</h3><p>Monte-Carlo积分是一种数值积分算法，我们不关心其数值积分性质，重点关心其概率方面的性质。</p>
+<h3 id="monte-carlo积分">Monte-Carlo积分</h3>
+<p>Monte-Carlo积分是一种数值积分算法，我们不关心其数值积分性质，重点关心其概率方面的性质。</p>
 <p>考虑函数
 $$
 I=\int_{\Omega} f(\overline{\mathbf{x}}) d \overline{\mathbf{x}}
@@ -1206,10 +1020,9 @@ $$
 来近似积分。</p>
 <p>值得注意的是，Monte-Carlo积分的收敛速率和精度与梯形公式相似。</p>
 <p>由于Monte-Carlo积分可以对后验分布进行处理，所以使用该积分进行采样的后续处理也是合适的，我们将在下一节引入重要性采样，该采样方法一开始是为了减少Monte-Carlo积分的方差，其本身也可以用来做采样。</p>
-<h3 id="重要性采样">重要性采样
-</h3><hr>
-<p>这里摘取知乎上一位答主的回答：<a class="link" href="https://zhuanlan.zhihu.com/p/557279067"  target="_blank" rel="noopener"
-    >一些常见的方差缩减方法</a>:</p>
+<h3 id="重要性采样">重要性采样</h3>
+<hr>
+<p>这里摘取知乎上一位答主的回答：<a href="https://zhuanlan.zhihu.com/p/557279067">一些常见的方差缩减方法</a>:</p>
 <p>假设我们要估计 $\theta=\mathbb{E}_f[h(X)]$ ，其中 $X$ 的PDF是 $f$ 。令 $g$ 为另一PDF，其满足当 $f(x) \neq 0, ~ g(x) \neq 0$ ，即 $f$ 和 $g$ 的支集相等。那么，
 $$
 \theta=\mathbb{E}_f[h(X)]=\int h(x) \frac{f(x)}{g(x)} g(x) d x=\mathbb{E}_g\left[\frac{h(X) f(X)}{g(X)}\right]
@@ -1241,10 +1054,9 @@ $$
 <p><strong>＂重要性＂一词的直观解释</strong></p>
 <p>＂重要性采样＂之名正是来源于对高贡献区域的聚焦：在估计 $\mathbb{E}_p[f(X)]$ 时，只有那些使 $f(x) p(x)$ 较大的 $x$ 值对积分贡献显著，被称为＂重要点＂。理想的 $q(x)$ 会对这些重要点给予更高采样概率，而对贡献小的点减少采样，以降低方差。直观地，当 $f(x)$ 很大时，样本点在该处的权重 $p(x) / q(x)$ 较小，多个样本共同估计可获得稳定的贡献；而在 $f(x)$ 很小的区域，即使权重较大，其对期望的贡献也微不足道。统计理论指出，若 $q$ 对重要区域加大权重，那么估计方差会显著减小 。总之，＂重要性＂一词反映了：理想的采样策略应更多采样那些对期望值贡献最大的区域，从而实现高效无偏估计。</p>
 <p>实际上可以利用Jensen不等式求出重要性采样方差的一个lower bound，在$g\propto|h|f$ 时可以取到等号，即方差最小。值得注意的是，使用重要性采样算出的方差要小于接受拒绝采样。</p>
-<p>gpt的一份<a class="link" href="https://chatgpt.com/s/dr_6811df7ee51481918829486d4a707f59"  target="_blank" rel="noopener"
-    >回答</a>.</p>
-<h3 id="重要性采样重采样sir">重要性采样重采样（SIR）
-</h3><p>将重要性采样和重采样进行结合可以得到SIR：</p>
+<p>gpt的一份<a href="https://chatgpt.com/s/dr_6811df7ee51481918829486d4a707f59">回答</a>.</p>
+<h3 id="重要性采样重采样sir">重要性采样重采样（SIR）</h3>
+<p>将重要性采样和重采样进行结合可以得到SIR：</p>
 <p><strong>算法步骤</strong><br>
 <strong>设：</strong><br></p>
 <ul>
@@ -1280,9 +1092,9 @@ x^{*(1)}, x^{*(2)}, \ldots, x^{*(M)} \sim \operatorname{Categorical}\left(\tilde
 $$
 最终样本集 $x^{*(1)}, \ldots, x^{*(M)}$ 可视为来自目标后验 $\pi(x)$ 的近似样本。</p>
 <p>SIR难以处理高维数据，需要进一步引入序贯蒙特卡洛采样，转化为低纬度数据后再进行SIR，我们将在后续章节介绍该技术。</p>
-<h3 id="方差缩减技术">方差缩减技术
-</h3><h4 id="对偶立变量法">对偶（立）变量法
-</h4><p><strong>定理 1.</strong> 设 $g$ 为单调函数，$U \sim U(0,1)$ ，则 $\operatorname{Cov}(g(U), g(1-U)) \leq 0$ 。</p>
+<h3 id="方差缩减技术">方差缩减技术</h3>
+<h4 id="对偶立变量法">对偶（立）变量法</h4>
+<p><strong>定理 1.</strong> 设 $g$ 为单调函数，$U \sim U(0,1)$ ，则 $\operatorname{Cov}(g(U), g(1-U)) \leq 0$ 。</p>
 <p>定理1可以推广到如下情形。</p>
 <p><strong>定理 2.</strong> 设 $h\left(x_1, x_2, \ldots, x_n\right)$ 是关于每个自变量单调的函数，$U_1, U_2, \ldots, U_n$ 相互独立同 $\mathrm{U}(0,1)$ 分布，则 $\operatorname{Cov}\left(h\left(U_1, U_2, \ldots, U_n\right), h\left(1-U_1, 1-U_2, \ldots, 1-U_n\right)\right) \leq 0$ 。</p>
 <p>对均匀随机数 $U$ 最常见的变换是逆变换 $X=F^{-1}(U)$ 。下面的定理给出了提高 $I=E X$ 估计精度的方法。</p>
@@ -1290,8 +1102,8 @@ $$
 $$
 \operatorname{Var}(Z) \leq \frac{1}{2} \operatorname{Var}(X)
 $$</p>
-<h4 id="条件期望法">条件期望法
-</h4><p>进行统计估计时，如果有额外的相关信息，利用这样的信息可以提高估计精度。比如，对随机变量 $Y$ ，如果 $Y$ 服从某种模型，在估计 $I=E Y$ 时应当尽量利用模型信息。</p>
+<h4 id="条件期望法">条件期望法</h4>
+<p>进行统计估计时，如果有额外的相关信息，利用这样的信息可以提高估计精度。比如，对随机变量 $Y$ ，如果 $Y$ 服从某种模型，在估计 $I=E Y$ 时应当尽量利用模型信息。</p>
 <p>设变量 $X$ 与 $Y$ 不独立，根据Rao－Blackwell不等式：
 $$
 \operatorname{Var}{\mathrm{E}(Y \mid X)} \leq \operatorname{Var}(Y)
@@ -1327,8 +1139,8 @@ $$
 \operatorname{Var}\left(\hat{I}_2\right)=\frac{\operatorname{Var}\left(\psi\left(X_1\right)\right)}{N}&lt;\operatorname{Var}\left(\hat{I}_1\right)
 $$
 这个例子演示了条件期望法可以缩减误差方差的原因：对 $Y$ 抽样分成两步进行：第一步对 $X$ 抽样，第二步利用 $Y \mid X$ 的条件分布对 $Y$ 抽样。所以使用 $Y$ 的样本估计 $E Y$ 包含了第二步对 $Y$ 抽样的随机误差，而使用 $X$ 的函数 $E(Y \mid X)=\psi(X)$ 的抽样来估计 $E Y$ 则避免了第二步对 $Y$ 抽样引起的随机误差。</p>
-<h4 id="控制变量法">控制变量法
-</h4><p>同样假设我们要用模拟来估计 $\mathrm{E}[g(\boldsymbol{X})]$ ，其中 $\boldsymbol{X}=\left(X_1, \cdots, X_n\right)$ ．但是现在假设对于某个 $f, f(\boldsymbol{X})$ 的期望值已知（例如 $\mathrm{E}[f(\boldsymbol{X})]=\mu$ ）．那么，对于任意常数 $a$ ，我们也可以用
+<h4 id="控制变量法">控制变量法</h4>
+<p>同样假设我们要用模拟来估计 $\mathrm{E}[g(\boldsymbol{X})]$ ，其中 $\boldsymbol{X}=\left(X_1, \cdots, X_n\right)$ ．但是现在假设对于某个 $f, f(\boldsymbol{X})$ 的期望值已知（例如 $\mathrm{E}[f(\boldsymbol{X})]=\mu$ ）．那么，对于任意常数 $a$ ，我们也可以用
 $$
 W=g(\boldsymbol{X})+a(f(\boldsymbol{X})-\mu)
 $$
@@ -1350,10 +1162,10 @@ $$
 \frac{\operatorname{Var}(W)}{\operatorname{Var}(g(\boldsymbol{X}))}=1-\operatorname{Corr}^2(f(\boldsymbol{X}), g(\boldsymbol{X}))
 $$
 其中 $\operatorname{Corr}(X, Y)$ 是 $X$ 和 $Y$ 之间的相关系数．因此，当 $f(\boldsymbol{X})$ 和 $g(\boldsymbol{X})$ 强相关时，使用控制变量将大大地降低模拟估计的方差．</p>
-<h3 id="mcmc">MCMC
-</h3><p>之前我们提到过贝叶斯学派的核心，MCMC和变分推断，MCMC速度慢但是精度高，变分推断速度快但是精度低，我们将详细介绍两种MCMC算法，Metropolis-Hasting算法和Gibbs算法。</p>
-<h4 id="metropolis-hasting算法">Metropolis-Hasting算法
-</h4><p>个人认为MCMC是一种很逆天的算法，已知Markov过程的稳态分布去求转移概率，在离散情况下的表现就是由一个 $n$ 维向量确定 $n^2$ 维矩阵，是很难处理的问题。</p>
+<h3 id="mcmc">MCMC</h3>
+<p>之前我们提到过贝叶斯学派的核心，MCMC和变分推断，MCMC速度慢但是精度高，变分推断速度快但是精度低，我们将详细介绍两种MCMC算法，Metropolis-Hasting算法和Gibbs算法。</p>
+<h4 id="metropolis-hasting算法">Metropolis-Hasting算法</h4>
+<p>个人认为MCMC是一种很逆天的算法，已知Markov过程的稳态分布去求转移概率，在离散情况下的表现就是由一个 $n$ 维向量确定 $n^2$ 维矩阵，是很难处理的问题。</p>
 <p>如何得到有平稳分布的转移概率矩阵？一个充分条件是转移概率满足细致平衡条件。如果存在 $\left\{\pi_j, j \in S\right\}$ ， $\pi_j \geq 0, \sum_{j \in S} \pi_j=1$ ，使得
 $$
 \pi_i p_{i j}=\pi_j p_{j i}, \forall i \neq j
@@ -1409,8 +1221,8 @@ $$
 $$
 等式右侧关于 $x, y$ 是对称的，所以等式左侧把 $x, y$ 交换后仍相等。所以，MH构造的马氏链以 $\{\pi(x)\}$ 为平稳分布。多数情况下MH构造的马氏链也以 $\{\pi(x)\}$ 为极限分布。</p>
 <p>从构造的 $r$ 可以看出，MH算法也可以由接收拒绝的思想去理解，并且从构造的接受拒绝策略来看，已经有了Langevin采样的思想，即向概率密度高的方向移动。</p>
-<h4 id="gibbs算法">Gibbs算法
-</h4><p>在M-H算法中是需要接收拒绝的，当采样分布高维度时，拒绝率将会无限趋近于1，这将导致我们无法进行正常的采样，为了解决该问题，我们需要使得其接受率尽可能的大，Gibbs采样算法就是可以适合高维采样的算法，可以将其视作M-H算法的特殊情况，即Proposal设置为满条件分布。</p>
+<h4 id="gibbs算法">Gibbs算法</h4>
+<p>在M-H算法中是需要接收拒绝的，当采样分布高维度时，拒绝率将会无限趋近于1，这将导致我们无法进行正常的采样，为了解决该问题，我们需要使得其接受率尽可能的大，Gibbs采样算法就是可以适合高维采样的算法，可以将其视作M-H算法的特殊情况，即Proposal设置为满条件分布。</p>
 <p><strong>定义（满条件分布）.</strong> 对于一个变量集合 $x_I=\left\{x_i: i \in I\right\}(I \subseteq\{1,2, \cdots, k\})$ 和补集变量 $x_{-I}=\left\{x_i: i \notin I\right\}$ ，满条件分布定义为：
 $$
 p\left(x_I \mid x_{-I}\right)=\frac{p(x)}{\int p(x) d x_I} \propto p(x)
@@ -1441,11 +1253,9 @@ $$
 \alpha\left(x, x^{\prime}\right)=\min \left(1, \frac{\pi\left(x_i^{\prime} \mid x_{-i}\right) \pi\left(x_{-i}\right) \pi\left(x_i \mid x_{-i}\right)}{\pi\left(x_i \mid x_{-i}\right) \pi\left(x_{-i}\right) \pi\left(x_i^{\prime} \mid x_{-i}\right)}\right)=\min (1,1)=1
 $$</p>
 <p>则Gibbs采样每步只会更新一个变量，每个循环更新所有的多维变量，接受率始终为1，但是对单个变量的采样中，可能还会需要M-H算法进行采样。注意，Gibbs算法每步只更新一个参数是重要的，只有这样才能保证细致平衡条件，也就是说，Gibbs采样是沿着坐标轴采样的。</p>
-<h4 id="mcmc的理论保证">MCMC的理论保证
-</h4><p>MCMC算法非常的丰富，我们仅仅阐述了两种最基础的MCMC算法，有一些基于物理学思想的MCMC算法也非常有意思，例如哈密顿蒙特卡洛、朗之万蒙特卡洛，以后有机会我们再介绍，本章节我们从Markov链的理论出发，再次回顾MCMC算法，很大部分参考视频：<a class="link" href="https://www.bilibili.com/video/BV17L411v7wr/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >【贝叶斯统计】MCMC理论2 Metropolis-Hastings与two-stage Gibbs的理论</a>.</p>
-<p>另外，本人之前阅读过关于Langevin MCMC的一些论文，可见该<a class="link" href="https://haitonglan.github.io/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/"  target="_blank" rel="noopener"
-    >网页</a>.</p>
+<h4 id="mcmc的理论保证">MCMC的理论保证</h4>
+<p>MCMC算法非常的丰富，我们仅仅阐述了两种最基础的MCMC算法，有一些基于物理学思想的MCMC算法也非常有意思，例如哈密顿蒙特卡洛、朗之万蒙特卡洛，以后有机会我们再介绍，本章节我们从Markov链的理论出发，再次回顾MCMC算法，很大部分参考视频：<a href="https://www.bilibili.com/video/BV17L411v7wr/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">【贝叶斯统计】MCMC理论2 Metropolis-Hastings与two-stage Gibbs的理论</a>.</p>
+<p>另外，本人之前阅读过关于Langevin MCMC的一些论文，可见该<a href="https://haitonglan.github.io/p/sampling-is-as-easy-as-learning-the-score-theory-for-diffusion-models-with-minimal-data-assumptions/">网页</a>.</p>
 <p><strong>定义 （转移核）.</strong> Let $(X, \mathcal{A})$ and $(Y, \mathcal{B})$ be measurable spaces. A Markov kernel with source $(X, \mathcal{A})$ and target $(Y, \mathcal{B})$, sometimes written as $\kappa:(X, \mathcal{A}) \rightarrow(Y, \mathcal{B})$, is a function $\kappa: \mathcal{B} \times X \rightarrow[0,1]$ with the following properties:</p>
 <ol>
 <li>For every (fixed) $B_0 \in \mathcal{B}$, the map $x \mapsto \kappa\left(B_0, x\right)$ is $\mathcal{A}$-measurable</li>
@@ -1501,15 +1311,15 @@ $$</p>
 <p>遍历性定理对标的是SLLN，但是这并不是trivial的，因为SLLN要求随机样本，是iid的，但是对于Markov链，样本是强相关的，正因为有了Markov链的遍历性定理，才让我们的采样得以发挥作用，使用生成的后验分布样本去计算一些统计量，这些统计量是一致的。</p>
 <p>M-H算法和Gibbs算法是最简单的MCMC算法，其对假设的要求都是最弱的，也容易验证其收敛定理和遍历性定理都是成立的，但是对于一些更复杂的算法，这两个定理未必会成立，这时就需要具体问题具体分析，去检查MCMC带来的误差了。</p>
 <p>在实际的数值实验中，MCMC会有各种各样的问题，不同分布的处理方式也多种多样，很可能会碰到MCMC不能良好采样的问题，例如当分布不一致有界时，M-H算法拒绝率可能会很高，甚至最后也不会收敛。</p>
-<h3 id="序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）
-</h3><p>在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。</p>
-<h2 id="精确推断">精确推断
-</h2><p>贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，在推断的过程中使用了精确的后验分布，所以称为精确推断；对于近似推断，有Laplace 近似、变分推断等等，在推断的过程中对后验分布进行了近似，所以称为近似推断。</p>
-<h3 id="mcmc-1">MCMC
-</h3><p>采样章节中有详细描述。</p>
+<h3 id="序贯蒙特卡洛采样粒子滤波器">序贯蒙特卡洛采样（粒子滤波器）</h3>
+<p>在重要性采样中我们曾经提到过，对于高维分布，重要性采样效率极低，序贯蒙特卡洛采样就是利用重要性采样解决高维采样的一种方法。</p>
+<h2 id="精确推断">精确推断</h2>
+<p>贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，在推断的过程中使用了精确的后验分布，所以称为精确推断；对于近似推断，有Laplace 近似、变分推断等等，在推断的过程中对后验分布进行了近似，所以称为近似推断。</p>
+<h3 id="mcmc-1">MCMC</h3>
+<p>采样章节中有详细描述。</p>
 <p>对真实后验分布的采样，且有Markov链的遍历性定理作为保证，使用的是真实后验，所以为精确推断。</p>
-<h3 id="em算法">EM算法
-</h3><p>本章节主要参考李航的统计学习方法，讲的并不是很贝叶斯，但是原理其实差不多，贝叶斯视角可以将隐变量当成先验分布。</p>
+<h3 id="em算法">EM算法</h3>
+<p>本章节主要参考李航的统计学习方法，讲的并不是很贝叶斯，但是原理其实差不多，贝叶斯视角可以将隐变量当成先验分布。</p>
 <p>对于含有隐变量的概率模型参数的极大似然或最大后验估计，这里不会详细的推导EM算法，而是讲主要的思想和结果列出。</p>
 <p>期望最大化（EM）算法，主要用来解决完全数据未知，即含有隐变量情况下的最大似然估计，有
 $$
@@ -1546,26 +1356,23 @@ $$
 <p><strong>为什么EM算法是精确推断？</strong></p>
 <p>在E步中，我们需要计算完全数据的条件似然 $Q\left(\theta, \theta^{(i)}\right)=E_Z\left[\log P(Y, Z \mid \theta) \mid Y, \theta^{(i)}\right]$，期望的意义是在 $P(Z\mid Y,\theta^{(i)})$ 下的，使用的是精确的后验，所以称其为精确推断，其实判断贝叶斯推断的精确与否，就是判断其是否使用了真正的后验概率，还是近似的后验概率。</p>
 <hr>
-<h3 id="信念传播">信念传播
-</h3><h2 id="近似推断">近似推断
-</h2><p>贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的，在现在这个大数据的时代，后验分布已经不是我们可以理解的样子，我们几乎不可能去得到精确的后验分布，近似推断是现代贝叶斯推断主流的方法。</p>
+<h3 id="信念传播">信念传播</h3>
+<h2 id="近似推断">近似推断</h2>
+<p>贝叶斯推断可分为精确推断和近似推断，对于精确推断，有EM算法、MCMC、belief propagation等等，其核心目标是对后验分布的精确计算；对于近似推断，有Laplace 近似、变分推断等等，主要对后验分布进行近似，用以达到推断的目的，在现在这个大数据的时代，后验分布已经不是我们可以理解的样子，我们几乎不可能去得到精确的后验分布，近似推断是现代贝叶斯推断主流的方法。</p>
 <p>本章节主要介绍Laplace近似和变分推断，有一个写的不错的ppt：
-<a class="link" href="https://jmhl.org/wp-content/uploads/2013/11/slidescharlesuniversitylaplacevi2013.pdf"  target="_blank" rel="noopener"
-    >The Laplace Approximation and Variational Inference, Cambridge University</a>.</p>
-<h3 id="laplace近似">Laplace近似
-</h3><p>Laplace近似本质上是观察到泰勒展开第二项和高斯核的相似之处，并利用MLE的观点，将推断问题转化为了优化问题。</p>
+<a href="https://jmhl.org/wp-content/uploads/2013/11/slidescharlesuniversitylaplacevi2013.pdf">The Laplace Approximation and Variational Inference, Cambridge University</a>.</p>
+<h3 id="laplace近似">Laplace近似</h3>
+<p>Laplace近似本质上是观察到泰勒展开第二项和高斯核的相似之处，并利用MLE的观点，将推断问题转化为了优化问题。</p>
 <p>上面的讲义中对Laplace的描述十分清晰，这里直接复制粘贴过来：
 <a href="https://imgse.com/i/pELSoB4"><img src="https://s21.ax1x.com/2025/05/06/pELSoB4.png" alt="pELSoB4.png" border="0" /></a>
 Lplacce近似只是使用高斯分布对单模态（单峰）分布的近似，对于多模态问题难以处理，但是好处就是其非常简单，方便我们将几乎任意的分布用高斯分布来近似。</p>
 <p>有了对后验分布的有效近似，我们便可以使用后它去完成一些估计和推断。</p>
-<h3 id="变分推断">变分推断
-</h3><p>由于Laplace分布局限性很大，对于多模态的分布难以近似，这里引入一种更强力的算法，变分推断，也是现代贝叶斯处理的主流。</p>
+<h3 id="变分推断">变分推断</h3>
+<p>由于Laplace分布局限性很大，对于多模态的分布难以近似，这里引入一种更强力的算法，变分推断，也是现代贝叶斯处理的主流。</p>
 <p>先介绍两篇不错的paper，介绍的非常清晰：</p>
 <ol>
-<li><a class="link" href="https://arxiv.org/pdf/2108.13083"  target="_blank" rel="noopener"
-    >An Introduction to Variational Inference</a></li>
-<li><a class="link" href="https://arxiv.org/pdf/1601.00670"  target="_blank" rel="noopener"
-    >Variational Inference: A Review for Statisticians</a></li>
+<li><a href="https://arxiv.org/pdf/2108.13083">An Introduction to Variational Inference</a></li>
+<li><a href="https://arxiv.org/pdf/1601.00670">Variational Inference: A Review for Statisticians</a></li>
 </ol>
 <p>变分推断的出发点非常简单，在合适的分布族中任选分布，使得该分布和后验分布之间的KL散度最小，即
 $$
@@ -1621,8 +1428,8 @@ $$
 <li><strong>VI与EM算法</strong>：一个使用了精确后验，一个使用近似后验，考虑下一个小节描述的变分EM算法，其实变分推断可以看作EM算法在使用近似后验下的推广，也可以使用MM算法进行解释。</li>
 <li><strong>CAVI与Gibbs采样</strong>：都使用了满条件分布，迭代形式非常一致（特别是二维的情况，几乎一样），但是本质目的不同，一个为了产生样本，一个为了近似推断，这也反应了我们的近似推断是合理的，在某些条件下可以逼近精确推断。</li>
 </ol>
-<h3 id="变分em算法">变分EM算法
-</h3><p>变分推理中，可以通过迭代的方法最大化证据下界，这时算法是 EM 算法的推广，称为变分 EM 算法。</p>
+<h3 id="变分em算法">变分EM算法</h3>
+<p>变分推理中，可以通过迭代的方法最大化证据下界，这时算法是 EM 算法的推广，称为变分 EM 算法。</p>
 <p>假设模型是联合概率分布 $p(x, z \mid \theta)$ ，其中 $x$ 是观测变量，$z$ 是隐变量，$\theta$ 是参数。目标是通过观测数据的概率（证据） $\log p(x \mid \theta)$ 的最大化，估计模型的参数 $\theta$ 。使用变分推理，导入平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ ，定义证据下界
 $$
 ELBO(q, \theta)=E_q[\log p(x, z \mid \theta)]-E_q[\log q(z)]
@@ -1642,10 +1449,9 @@ $$
 $$
 其中上角标 $t-1$ 和 $t$ 表示迭代次数，左边的等式基于 E 步计算和变分推理原理，中间的不等式基于 $M$ 步计算，右边的不等式基于变分推理原理。说明每次迭代都保证<strong>观测数据的似然不递减</strong>。因此，变分 EM 算法一定收敛，但可能收敛到局部最优。</p>
 <p>EM 算法实际也是对证据下界进行最大化。联系 MM 算法，则其中的 F 函数就是ELBO。 EM 算法假设 $q(z)=p(z \mid x)$ 且 $p(z \mid x)$ 容易计算，而变分 EM 算法则考虑一般情况使用容易计算的平均场 $q(z)=\prod_{i=1}^n q\left(z_i\right)$ 。当模型复杂时，EM 算法末必可用，但变分 EM 算法仍然可以使用。</p>
-<h2 id="随机过程">随机过程
-</h2><h3 id="gaussian-过程">Gaussian 过程
-</h3><p>参考：<a class="link" href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&amp;vd_source=b6424cece237934105a841d3b575c671"  target="_blank" rel="noopener"
-    >张灏老师随机过程</a></p>
+<h2 id="随机过程">随机过程</h2>
+<h3 id="gaussian-过程">Gaussian 过程</h3>
+<p>参考：<a href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">张灏老师随机过程</a></p>
 <p>这里借鉴了张灏老师的课程，介绍了高斯的线性性质，条件高斯分布，高斯的高阶矩等等。</p>
 <p>Gaussian过程的定义很简单，<strong>任意有限维的随机变量都服从联合高斯分布的过程</strong>，对比随机分析中的布朗运动，可见布朗运动是一类特殊的高斯过程。</p>
 <p>Gaussian 过程的特征函数如下：
@@ -1752,488 +1558,24 @@ $$
 \frac{\partial}{\partial \Sigma_{i j}} \mathbb{E}[f(X)]=\frac{1}{2} \mathbb{E}\left[\frac{\partial^2 f(X)}{\partial x_i \partial x_j}\right]
 $$
 <strong>注.</strong> 一般我们需要分析Gaussian经过非线性系统后的分布，主要是一阶矩和二阶矩，即Price定理左边的项（除去求导），利用Price定理，一般右侧的项容易求，然后再求解一个初值ODE问题即可得到 $\mathbb{E}[f(X)]$。</p>
-<h2 id="统计学习">统计学习
-</h2><p>这个板块用来记录一些统计学习的小结论。</p>
-<h3 id="最大熵模型">最大熵模型
-</h3><p><strong>最大熵原理.</strong> 最大熵准则是一种选择随机变量统计特性最符合客观情况的准则，也称为最大信息原理。该准则由E.T. Jaynes于1957年提出，其核心思想是在只掌握关于未知分布的部分知识时，应该选取符合这些知识但熵值最大的概率分布。</p>
+<h2 id="统计学习">统计学习</h2>
+<p>这个板块用来记录一些统计学习的小结论。</p>
+<h3 id="最大熵模型">最大熵模型</h3>
+<p><strong>最大熵原理.</strong> 最大熵准则是一种选择随机变量统计特性最符合客观情况的准则，也称为最大信息原理。该准则由E.T. Jaynes于1957年提出，其核心思想是在只掌握关于未知分布的部分知识时，应该选取符合这些知识但熵值最大的概率分布。</p>
 <p>满足最大熵原理的分布模型都叫做最大熵模型。</p>
 <p>事实上，最大熵原理与最大似然原理等价，实际中也使用MLE进行最大熵模型的训练。</p>
 <p>我们在MM算法中构造的F函数，也可以看作一种最大熵原理的应用，正因为如此，EM算法才可以使用MM算法来解释（最大似然）。</p>
-<h2 id="有意向整理">有意向整理
-</h2><h3 id="因果推断">因果推断
-</h3><h3 id="充分降维">充分降维
-</h3><h3 id="最优传输">最优传输
-</h3><h3 id="lasso问题">LASSO问题
-</h3><h3 id="贝叶斯推断基础">贝叶斯推断基础
-</h3>
-</section>
+<h2 id="有意向整理">有意向整理</h2>
+<h3 id="因果推断">因果推断</h3>
+<h3 id="充分降维">充分降维</h3>
+<h3 id="最优传输">最优传输</h3>
+<h3 id="lasso问题">LASSO问题</h3>
+<h3 id="贝叶斯推断基础">贝叶斯推断基础</h3>
+</div>
+
+<p class="back"><a href="/post/">← All posts</a></p></article></main>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+</div></body></html>
 
 
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/note/">Note</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    <section class="article-lastmod">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            Last updated on Jun 30, 2025 22:43 CST
-        </span>
-    </section></footer>
-
-<footer class="article-footer">
-    <section>
-        Page views:<span id="busuanzi_value_page_pv">Loading</span>
-    </section>
-</footer>
-
-
-    
-        
-
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" 
-    integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" 
-    crossorigin="anonymous"
-/>
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-    onload="
-    window.addEventListener('DOMContentLoaded', function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: false},
-                {left: '\\$$', right: '\\\\$$', display: true}
-            ]
-        });
-    });
-"></script>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e7%8e%b0%e4%bb%a3%e6%95%b0%e5%ad%97%e4%bf%a1%e5%8f%b7%e5%a4%84%e7%90%86/cover.png" loading="lazy" data-key="" data-hash="/post_file/现代数字信号处理/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|现代数字信号处理选学</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e9%9a%8f%e6%9c%ba%e5%88%86%e6%9e%90/cover.png" loading="lazy" data-key="" data-hash="/post_file/随机分析/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|随机分析</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e8%ae%a8%e8%ae%ba%e7%8f%ad/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/讨论班/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|课题组讨论班</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e4%bf%a1%e6%81%af%e8%ae%ba/cover.png" loading="lazy" data-key="" data-hash="/post_file/信息论/cover.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|信息论</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/post_file/%e9%ab%98%e7%ad%89%e4%bb%a3%e6%95%b0/cover.jpg" loading="lazy" data-key="" data-hash="/post_file/高等代数/cover.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">学习笔记|高等代数</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2024 - 
-        
-        2026 Haitong&#39;s blog
-    </section>
-    
-    
-    <section class="powerby">
-             
-                
-                
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-
-                <p>16 articles have been published | A total of 103.0k words.</p>
-
-
-    </section>
-
-</footer>
-
-<script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
-      pangu.spacingPage();
-    });
-</script>
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script>
-<script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-
-
-
-
-<script
-    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
-    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
-    crossorigin="anonymous"
-></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
-    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
-    crossorigin="anonymous"
-/>
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
-</script>
-
-<script defer src="https://cn.vercount.one/js"></script>
-<style>
-    #backTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        z-index: 99;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        background-image: url(http://localhost:1313/icons/backTop.svg);
-    }
-</style>
-
-
-<style>
-    #TableOfContents > ul, ol {
-        ul, ol {
-            display: none;
-        }
-        .open {
-            display: block;
-        }
-    }
-</style>
-
-<script>
-    function initTocHide() {
-        
-        let toc = document.querySelector(".widget--toc");
-        if (!toc) {
-            return;
-        }
-        
-        window.addEventListener('scroll', function() {
-            
-            let openUl = document.querySelectorAll(".open");
-            if (openUl.length > 0) {
-              openUl.forEach((ul) => {
-                ul.classList.remove("open")
-              })
-            }
-            
-            let currentLi = document.querySelector(".active-class");
-            if (!currentLi) {
-                return
-            }
-            
-            if (currentLi.children.length > 1) {
-                currentLi.children[1].classList.add("open")
-            }
-            
-            let ul = currentLi.parentElement;
-            do {
-                ul.classList.add("open");
-                ul = ul.parentElement.parentElement
-            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
-        });
-    }
-    initTocHide()
-</script>
-
-
-
-
-
-
-    </body>
-</html>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    renderMathInElement(document.body, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "\\[", right: "\\]", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false}
-      ],
-      throwOnError: false
-    });
-  });
-</script>
 
