@@ -21,7 +21,7 @@
       <link>https://HaitongLan.github.io/p/optimal-transport/</link>
       <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
       <guid>https://HaitongLan.github.io/p/optimal-transport/</guid>
-      <description>This notebook will record my study of optimal transport during graduate school. I will add definitions, derivations, examples, and questions as I work through the subject.&#xA;Study log September 13, 2026 — Notebook created. Study entries will follow.&#xA;Notes To be added as my study progresses.&#xA;Questions I will collect questions and points to revisit here.&#xA;References Reading materials will be listed here as I use them.</description>
+      <description>An ongoing study notebook on computational optimal transport. The main idea in these notes is to understand how deterministic transport maps lead naturally to couplings and the Kantorovich relaxation. Theoretical Foundations Monge Problem Motivation: suppose two discrete measures contain the same total mass. A deterministic transport assigns the mass at each source point to exactly one target point. In the uniform case, this reduces to a matching problem. Definition 1</description>
     </item>
   </channel>
 </rss>

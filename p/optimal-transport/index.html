@@ -18,24 +18,699 @@
 <body><a class="skip" href="#main">Skip to content</a><div class="shell">
 <header class="site-header"><a class="name" href="/">Haitong Lan</a>
 <nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>Optimal Transport</h1><p class="meta">September 13, 2026 · 1 min read · Mathematics</p><p class="lead">An ongoing study notebook on optimal transport.</p></header>
+<main id="main"><article class="blog-article"><header class="page-heading"><h1>Optimal Transport</h1><p class="meta">September 13, 2026 · 3 min read · Mathematics</p><p class="lead">An ongoing study notebook on optimal transport.</p></header>
 <details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
-    <li><a href="#study-log">Study log</a></li>
-    <li><a href="#notes">Notes</a></li>
-    <li><a href="#questions">Questions</a></li>
-    <li><a href="#references">References</a></li>
+    <li><a href="#theoretical-foundations">Theoretical Foundations</a>
+      <ol>
+        <li><a href="#monge-problem">Monge Problem</a></li>
+        <li><a href="#kantorovich-relaxation">Kantorovich Relaxation</a></li>
+      </ol>
+    </li>
   </ol>
 </nav></details>
-<div class="prose"><p>This notebook will record my study of optimal transport during graduate school. I will add definitions, derivations, examples, and questions as I work through the subject.</p>
-<h2 id="study-log">Study log</h2>
-<p><strong>September 13, 2026</strong> — Notebook created. Study entries will follow.</p>
-<h2 id="notes">Notes</h2>
-<p>To be added as my study progresses.</p>
-<h2 id="questions">Questions</h2>
-<p>I will collect questions and points to revisit here.</p>
-<h2 id="references">References</h2>
-<p>Reading materials will be listed here as I use them.</p>
+<div class="prose"><p>An ongoing study notebook on computational optimal transport. The main idea in these notes is to understand how deterministic transport maps lead naturally to couplings and the Kantorovich relaxation.</p>
+<h2 id="theoretical-foundations">Theoretical Foundations</h2>
+<h3 id="monge-problem">Monge Problem</h3>
+<p>Motivation: suppose two discrete measures contain the same total mass. A deterministic transport assigns the mass at each source point to exactly one target point. In the uniform case, this reduces to a matching problem.</p>
+<p><strong>Definition 1 (Discrete Measure, 离散测度).</strong> A discrete probability measure on points $x_1,\ldots,x_n$ is
+$$
+
+
+\alpha=\sum_{i=1}^n a_i\delta_{x_i},
+\qquad
+a_i\geq0,
+\qquad
+\sum_{i=1}^n a_i=1.
+
+
+
+$$
+
+Similarly,
+$$
+
+
+\beta=\sum_{j=1}^m b_j\delta_{y_j}.
+
+
+
+$$
+
+The vectors $a=(a_1,\ldots,a_n)^\top$ and $b=(b_1,\ldots,b_m)^\top$ record the masses, while the Dirac measures record their locations.</p>
+<p><strong>Definition 2 (Discrete Monge Transport).</strong> A deterministic transport assigns each source point $x_i$ to one target point,
+$$
+
+
+T(x_i)=y_{\sigma(i)}.
+
+
+
+$$
+
+For uniform measures with $n=m$ and $a=b=\mathbf 1_n/n$, this is equivalent to a permutation $\sigma\in\operatorname{Perm}(n)$. If
+$$
+
+
+C_{ij}=c(x_i,y_j),
+
+
+
+$$
+
+the matching problem is
+$$
+
+
+\min_{\sigma\in\operatorname{Perm}(n)}
+\frac1n\sum_{i=1}^n C_{i,\sigma(i)}.
+
+
+
+$$
+</p>
+<p>The discrete formulation suggests the general question: how should a map $T$ act on an entire measure?</p>
+<p><strong>Definition 3 (Push-forward Measure, 前推测度).</strong> Let $T:\mathcal X\to\mathcal Y$ be measurable and let $\alpha$ be a measure on $\mathcal X$. The push-forward of $\alpha$ by $T$ is the measure $T_\#\alpha$ on $\mathcal Y$ defined by
+$$
+
+
+(T_\#\alpha)(B)
+=
+\alpha(T^{-1}(B)),
+\qquad
+B\subseteq\mathcal Y.
+
+
+
+$$
+
+Thus $T$ moves points, while $T_\#$ moves measures:
+$$
+
+
+T:\mathcal X\to\mathcal Y,
+\qquad
+T_\#:\mathcal M_+(\mathcal X)\to\mathcal M_+(\mathcal Y).
+
+
+
+$$
+</p>
+<p>The definition means that the mass observed in $B\subseteq\mathcal Y$ after transport is exactly the mass that originally lay in its preimage $T^{-1}(B)$.</p>
+<p><strong>Proposition 4 (Integration Formula).</strong> For any integrable function $f:\mathcal Y\to\mathbb R$,
+$$
+
+
+\int_{\mathcal Y} f(y)\,d(T_\#\alpha)(y)
+=
+\int_{\mathcal X} f(T(x))\,d\alpha(x).
+
+
+
+$$
+</p>
+<p><strong>Remark 5 (Push-forward of Densities).</strong> Suppose $\mathcal X=\mathcal Y=\mathbb R^d$, $T$ is smooth and bijective, and
+$$
+
+
+d\alpha(x)=\rho_\alpha(x)\,dx,
+\qquad
+d\beta(y)=\rho_\beta(y)\,dy,
+\qquad
+\beta=T_\#\alpha.
+
+
+
+$$
+
+Then the change-of-variables formula gives
+$$
+
+
+\rho_\alpha(x)
+=
+\rho_\beta(T(x))
+\left|\det DT(x)\right|.
+
+
+
+$$
+
+Equivalently,
+$$
+
+
+\rho_\beta(y)
+=
+\frac{\rho_\alpha(T^{-1}(y))}
+{\left|\det DT(T^{-1}(y))\right|}.
+
+
+
+$$
+
+The Jacobian appears because the map changes local volume as well as location.</p>
+<p><strong>Remark 6 (Measures and Random Variables, 测度与随机变量).</strong> A random variable is a measurable map
+$$
+
+
+X:(\Omega,\mathcal F,P)\to\mathcal X.
+
+
+
+$$
+
+Its distribution is precisely the push-forward of $P$ by $X$:
+$$
+
+
+\alpha=X_\#P.
+
+
+
+$$
+
+Indeed,
+$$
+
+
+\alpha(A)
+=
+P(X\in A)
+=
+P(X^{-1}(A)).
+
+
+
+$$
+
+If $T:\mathcal X\to\mathcal Y$ and
+$$
+
+
+Y=T(X),
+
+
+
+$$
+
+then
+$$
+
+
+\operatorname{Law}(Y)
+=
+T_\#\alpha
+=
+T_\#(X_\#P)
+=
+(T\circ X)_\#P.
+
+
+
+$$
+
+Hence
+$$
+
+
+X\sim\alpha,
+\qquad
+T_\#\alpha=\beta
+\quad\Longrightarrow\quad
+T(X)\sim\beta.
+
+
+
+$$
+
+This is the probabilistic meaning of transport: applying the deterministic map $T$ to samples from $\alpha$ produces samples from $\beta$.</p>
+<p><strong>Definition 7 (Pull-back Operator, 后拉算子).</strong> Let $T:\mathcal X\to\mathcal Y$ and let $f:\mathcal Y\to\mathbb R$. The pull-back of $f$ by $T$ is
+$$
+
+
+T^\# f
+=
+f\circ T,
+
+
+
+$$
+
+that is,
+$$
+
+
+(T^\#f)(x)=f(T(x)).
+
+
+
+$$
+</p>
+<p><strong>Remark 8 (Push-forward vs. Pull-back).</strong> The two operations act on different objects and in opposite directions:
+$$
+
+
+T_\#:
+\mathcal M_+(\mathcal X)
+\to
+\mathcal M_+(\mathcal Y),
+
+
+
+$$
+
+while
+$$
+
+
+T^\#:
+\{f:\mathcal Y\to\mathbb R\}
+\to
+\{f:\mathcal X\to\mathbb R\}.
+
+
+
+$$
+
+Measures are pushed forward, while functions are naturally pulled back. Their relation is
+$$
+
+
+\int_{\mathcal Y} f\,d(T_\#\alpha)
+=
+\int_{\mathcal X} T^\#f\,d\alpha.
+
+
+
+$$
+
+For densities,
+$$
+
+
+\rho_\alpha
+=
+|\det DT|\,T^\#\rho_\beta,
+
+
+
+$$
+
+so the density is not obtained by a naive pull-back alone.</p>
+<p><strong>Definition 9 (Monge Problem).</strong> Given probability measures $\alpha$ on $\mathcal X$ and $\beta$ on $\mathcal Y$, and a cost $c:\mathcal X\times\mathcal Y\to\mathbb R$, the Monge problem is
+$$
+
+
+\inf_{T:\,T_\#\alpha=\beta}
+\int_{\mathcal X} c(x,T(x))\,d\alpha(x).
+
+
+
+$$
+
+The constraint $T_\#\alpha=\beta$ requires $T$ to transport the source measure exactly onto the target measure.</p>
+<p>The essential restriction is determinism: for each $x$, all mass located at $x$ must be sent to the single point $T(x)$. Consequently, a Monge map need not exist. For example,
+$$
+
+
+\alpha=\delta_0,
+\qquad
+\beta=\frac12\delta_{-1}+\frac12\delta_1
+
+
+
+$$
+
+cannot be connected by any deterministic map, because $T_\#\delta_0$ is always a single Dirac measure.</p>
+<h3 id="kantorovich-relaxation">Kantorovich Relaxation</h3>
+<p><strong>Why relax Monge?</strong></p>
+<p>Motivation: the Monge formulation has two structural difficulties. First, the deterministic constraint forbids mass splitting and can make the feasible set empty. Second, optimization over maps satisfying $T_\#\alpha=\beta$ has poor convex structure. Kantorovich replaces a deterministic map by a coupling, allowing a source mass to be split among several targets and turning the problem into linear optimization over a convex set.</p>
+<p><strong>Definition 1 (Admissible Coupling, 可行耦合).</strong> For discrete measures
+$$
+
+
+\alpha=\sum_{i=1}^n a_i\delta_{x_i},
+\qquad
+\beta=\sum_{j=1}^m b_j\delta_{y_j},
+
+
+
+$$
+
+an admissible coupling is a nonnegative matrix
+$$
+
+
+P\in\mathbb R_+^{n\times m}
+
+
+
+$$
+
+satisfying
+$$
+
+
+P\mathbf1_m=a,
+\qquad
+P^\top\mathbf1_n=b.
+
+
+
+$$
+
+The admissible set is
+$$
+
+
+U(a,b)
+=
+\left\{
+P\in\mathbb R_+^{n\times m}:
+P\mathbf1_m=a,\;
+P^\top\mathbf1_n=b
+\right\}.
+
+
+
+$$
+
+Here $P_{ij}$ is the amount of mass transported from $x_i$ to $y_j$.</p>
+<p>The constraints have a direct conservation interpretation:
+$$
+
+
+\sum_j P_{ij}=a_i,
+\qquad
+\sum_i P_{ij}=b_j.
+
+
+
+$$
+</p>
+<p><strong>Definition 2 (Discrete Kantorovich Problem).</strong> Let
+$$
+
+
+C_{ij}=c(x_i,y_j).
+
+
+
+$$
+
+The discrete Kantorovich problem is
+$$
+
+
+L_C(a,b)
+=
+\min_{P\in U(a,b)}
+\langle C,P\rangle
+=
+\min_{P\in U(a,b)}
+\sum_{i,j} C_{ij}P_{ij}.
+
+
+
+$$
+
+Unlike a permutation, a row of $P$ may contain several positive entries, so the mass at one source point may be split among several targets.</p>
+<p><strong>Birkhoff polytope and matching.</strong></p>
+<p><strong>Definition 3 (Birkhoff Polytope).</strong> The Birkhoff polytope is the set of doubly stochastic matrices
+$$
+
+
+\mathcal B_n
+=
+\left\{
+Q\in\mathbb R_+^{n\times n}:
+Q\mathbf1_n=\mathbf1_n,\;
+Q^\top\mathbf1_n=\mathbf1_n
+\right\}.
+
+
+
+$$
+
+For uniform measures,
+$$
+
+
+a=b=\frac{\mathbf1_n}{n},
+
+
+
+$$
+
+the admissible set satisfies
+$$
+
+
+U\left(\frac{\mathbf1_n}{n},\frac{\mathbf1_n}{n}\right)
+=
+\frac1n\mathcal B_n.
+
+
+
+$$
+</p>
+<p><strong>Theorem 4 (Birkhoff&ndash;von Neumann).</strong> Every doubly stochastic matrix is a convex combination of permutation matrices:
+$$
+
+
+Q
+=
+\sum_{k=1}^K \lambda_k P_{\sigma_k},
+\qquad
+\lambda_k\geq0,
+\qquad
+\sum_{k=1}^K\lambda_k=1.
+
+
+
+$$
+
+Equivalently, the extreme points of $\mathcal B_n$ are exactly the permutation matrices.</p>
+<p><strong>Remark 5 (Tightness for Assignment Problems).</strong> Although Kantorovich couplings allow mass splitting, the Birkhoff&ndash;von Neumann theorem shows that every feasible plan for uniform measures is a convex combination of permutation couplings. Because the objective is linear, an optimum is attained at a permutation coupling; thus the relaxation has the same value as the matching problem.</p>
+<p><strong>Couplings as joint distributions.</strong></p>
+<p>The matrix formulation is only the discrete representation of a more general object. For arbitrary measures, the transport plan is a probability measure on the product space.</p>
+<p><strong>Definition 6 (Coupling of Measures).</strong> Let $\alpha\in\mathcal M_+^1(\mathcal X)$ and $\beta\in\mathcal M_+^1(\mathcal Y)$. A coupling of $\alpha$ and $\beta$ is a probability measure
+$$
+
+
+\pi\in\mathcal M_+^1(\mathcal X\times\mathcal Y)
+
+
+
+$$
+
+whose marginals are $\alpha$ and $\beta$. The set of all such couplings is
+$$
+
+
+\Pi(\alpha,\beta)
+=
+\left\{
+\pi:
+(\operatorname{proj}_{\mathcal X})_\#\pi=\alpha,\;
+(\operatorname{proj}_{\mathcal Y})_\#\pi=\beta
+\right\}.
+
+
+
+$$
+</p>
+<p>In the discrete case,
+$$
+
+
+\pi
+=
+\sum_{i,j}P_{ij}\delta_{(x_i,y_j)}.
+
+
+
+$$
+
+The coefficients $P_{ij}$ contain the transport masses, while the constraints
+$$
+
+
+\sum_jP_{ij}=a_i,
+\qquad
+\sum_iP_{ij}=b_j
+
+
+
+$$
+
+ensure that the marginals of $\pi$ are exactly $\alpha$ and $\beta$.</p>
+<p><strong>Remark 7 (Why the Joint Distribution Matters).</strong> Knowing $\alpha$ and $\beta$ determines only the marginal laws of $X$ and $Y$, not how they are connected. A coupling
+$$
+
+
+\pi=\operatorname{Law}(X,Y)
+
+
+
+$$
+
+specifies this dependence structure. In transport language, $\alpha$ tells us where the mass starts, $\beta$ tells us where it ends, and $\pi$ tells us which source mass is connected to which target mass.</p>
+<p>For a given $x$, the conditional distribution
+$$
+
+
+\pi(dy\mid x)
+
+
+
+$$
+
+describes how the mass at $x$ is distributed over target locations. A Monge transport is the special deterministic case
+$$
+
+
+\pi(dy\mid x)=\delta_{T(x)}(dy).
+
+
+
+$$
+</p>
+<p><strong>Definition 8 (Kantorovich Problem).</strong> The Kantorovich optimal transport cost is
+$$
+
+
+L_c(\alpha,\beta)
+=
+\inf_{\pi\in\Pi(\alpha,\beta)}
+\int_{\mathcal X\times\mathcal Y}
+c(x,y)\,d\pi(x,y).
+
+
+
+$$
+
+The feasible set is always nonempty because the independent coupling
+$$
+
+
+\alpha\otimes\beta
+
+
+
+$$
+
+belongs to $\Pi(\alpha,\beta)$. Under standard regularity assumptions on the spaces and cost, an optimal coupling exists.</p>
+<p><strong>Remark 9 (Expectation Form).</strong> If
+$$
+
+
+(X,Y)\sim\pi,
+
+
+
+$$
+
+then
+$$
+
+
+\int_{\mathcal X\times\mathcal Y}
+c(x,y)\,d\pi(x,y)
+=
+\mathbb E_\pi[c(X,Y)].
+
+
+
+
+
+$$
+
+The marginals determine the two distributions separately; the optimization chooses their optimal dependence structure according to the cost $c$.</p>
+<p><strong>Proposition 10 (Monge-induced Coupling).</strong> If $T_\#\alpha=\beta$, then the map
+$$
+
+
+x\mapsto(x,T(x))
+
+
+
+$$
+
+induces the coupling
+$$
+
+
+\pi_T
+=
+(\operatorname{Id},T)_\#\alpha.
+
+
+
+$$
+
+Its marginals are $\alpha$ and $\beta$. Its transport cost is the same as the cost of the map:
+$$
+
+
+=
+\int c\,d\pi_T
+=
+\int_{\mathcal X}c(x,T(x))\,d\alpha(x).
+
+
+
+$$
+</p>
+<p>Thus every Monge transport defines a Kantorovich coupling:
+$$
+
+
+\{\text{Monge-induced couplings}\}
+\subseteq
+\Pi(\alpha,\beta).
+
+
+
+$$
+
+The converse is generally false because a coupling may split the mass at one $x$ among several values of $y$.</p>
+<p><strong>Remark 11 (Monge vs. Kantorovich).</strong> The difference can be summarized probabilistically:
+$$
+
+
+\text{Monge: }Y=T(X),
+
+
+
+$$
+
+whereas
+$$
+
+
+\text{Kantorovich: }(X,Y)\sim\pi,
+\qquad
+X\sim\alpha,
+\qquad
+Y\sim\beta.
+
+
+
+$$
+
+Monge searches over deterministic dependence structures; Kantorovich searches over all couplings. When an optimal Kantorovich coupling is concentrated on the graph
+$$
+
+
+\{(x,T(x)):x\in\mathcal X\},
+
+
+
+$$
+
+the relaxed solution reduces again to a Monge transport map.</p>
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>
