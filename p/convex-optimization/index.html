@@ -5,7 +5,7 @@
 <title>Convex Optimization — Haitong Lan</title>
 <meta name="description" content="An ongoing study notebook on convex optimization.">
 <link rel="canonical" href="https://HaitongLan.github.io/p/convex-optimization/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=f5315714264216ed9ddd1dfea14ab9fa">
+<link rel="stylesheet" href="/academic.css?v=3ed198be3d9e0016f950233d90fa856d">
 <link rel="stylesheet" href="/academic-syntax.css">
 
 
@@ -18,28 +18,237 @@
 <body><a class="skip" href="#main">Skip to content</a><div class="shell">
 <header class="site-header"><a class="name" href="/">Haitong Lan</a>
 <nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>Convex Optimization</h1><p class="meta">September 13, 2026 · 1 min read · Mathematics</p><p class="lead">An ongoing study notebook on convex optimization.</p></header>
+<main id="main"><article class="blog-article"><header class="page-heading"><h1>Convex Optimization</h1><p class="meta">September 13, 2026 · 4 min read · Mathematics</p><p class="lead">An ongoing study notebook on convex optimization.</p></header>
 <details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
-    <li><a href="#study-log">Study log</a></li>
-    <li><a href="#notes">Notes</a></li>
-    <li><a href="#questions">Questions</a></li>
-    <li><a href="#references">References</a></li>
+    <li><a href="#convex-sets-and-cones">Convex Sets and Cones</a>
+      <ol>
+        <li><a href="#from-lines-to-line-segments">From lines to line segments</a></li>
+        <li><a href="#combining-points">Combining points</a></li>
+        <li><a href="#operations-that-preserve-convexity">Operations that preserve convexity</a></li>
+        <li><a href="#proper-cones-and-generalized-inequalities">Proper cones and generalized inequalities</a></li>
+        <li><a href="#dual-cones-and-dual-norms">Dual cones and dual norms</a></li>
+        <li><a href="#separation-as-a-certificate">Separation as a certificate</a></li>
+      </ol>
+    </li>
+    <li><a href="#convex-functions">Convex Functions</a></li>
   </ol>
 </nav></details>
-<div class="prose"><p>This notebook will record my study of convex optimization during graduate school. I will add definitions, proofs, worked examples, and questions as I work through the subject.</p>
-<h2 id="study-log">Study log</h2>
-<p><strong>September 13, 2026</strong> — Notebook created. Study entries will follow.</p>
-<h2 id="notes">Notes</h2>
-<p>To be added as my study progresses.</p>
-<h2 id="questions">Questions</h2>
-<p>I will collect questions and points to revisit here.</p>
-<h2 id="references">References</h2>
-<p>Reading materials will be listed here as I use them.</p>
+<div class="prose"><p>This notebook records my study of convex optimization during graduate school.</p>
+<h2 id="convex-sets-and-cones">Convex Sets and Cones</h2>
+<h3 id="from-lines-to-line-segments">From lines to line segments</h3>
+<p><strong>Definition 1 (Affine Set, 仿射集).</strong> A set $C\subseteq\mathbb R^n$ is affine if, for any $x_1,x_2\in C$ and $\theta\in\mathbb R$,</p>
+$$
+\theta x_1+(1-\theta)x_2\in C.
+$$
+<p>Allowing every real $\theta$ means that the entire line through $x_1$ and $x_2$ lies in $C$. If we restrict $\theta$ to $[0,1]$, only the line segment between the two points is required to stay in the set. This gives the central geometric notion below.</p>
+<p><strong>Definition 2 (Convex Set, 凸集).</strong> A set $C\subseteq\mathbb R^n$ is convex if, for any $x_1,x_2\in C$ and $\theta\in[0,1]$,</p>
+$$
+\theta x_1+(1-\theta)x_2\in C.
+$$
+<p>Every affine set is therefore convex, but the converse is generally false. A norm ball is convex, while its boundary is generally not: a chord joining two boundary points usually passes through the interior.</p>
+<p>An ellipsoid is an affine image of a Euclidean ball. If $A$ is nonsingular and $P=AA^\top\succ0$, then</p>
+$$
+\mathcal E=\lbrace x_c+Au:\|u\|_2\leq1\rbrace
+=\lbrace x:(x-x_c)^\top P^{-1}(x-x_c)\leq1\rbrace.
+$$
+<p>The second description follows from $u=A^{-1}(x-x_c)$ and $\|u\|_2^2=(x-x_c)^\top(AA^\top)^{-1}(x-x_c)$.</p>
+<h3 id="combining-points">Combining points</h3>
+<p><strong>Definition 3 (Convex Combination, 凸组合).</strong> A convex combination of $x_1,\ldots,x_k$ is</p>
+$$
+x=\sum_{i=1}^k\theta_i x_i,
+\qquad \theta_i\geq0,
+\qquad \sum_{i=1}^k\theta_i=1.
+$$
+<p>The nonnegative weights keep the result between the points, while the unit-sum condition makes the construction invariant under translations. Repeatedly applying the two-point definition shows that a set is convex if and only if it contains every finite convex combination of its points.</p>
+<p><strong>Definition 4 (Convex Hull, 凸包).</strong> The convex hull of $C$ is</p>
+$$
+\operatorname{conv} C=\left\lbrace\sum_{i=1}^k\theta_i x_i:
+x_i\in C,\ \theta_i\geq0,\ \sum_{i=1}^k\theta_i=1\right\rbrace.
+$$
+<p>It is the smallest convex set containing $C$: the displayed set is convex and contains $C$, while every convex set containing $C$ must contain all such combinations.</p>
+<p>If the unit-sum condition is removed, scaling becomes possible and we obtain a cone.</p>
+<p><strong>Definition 5 (Conic Combination, 锥组合).</strong> A conic combination is</p>
+$$
+x=\sum_{i=1}^k\theta_i x_i,
+\qquad \theta_i\geq0.
+$$
+<p><strong>Definition 6 (Convex Cone, 凸锥).</strong> A set $K$ is a convex cone if</p>
+$$
+x_1,x_2\in K,\quad \theta_1,\theta_2\geq0
+\quad\Longrightarrow\quad
+\theta_1x_1+\theta_2x_2\in K.
+$$
+<p>Typical examples are $\mathbb R_+^n$, the positive-semidefinite cone $\mathbb S_+^n$, and the second-order cone</p>
+$$
+\mathcal Q^{n+1}=\lbrace(x,t)\in\mathbb R^{n+1}:\|x\|_2\leq t\rbrace.
+$$
+<h3 id="operations-that-preserve-convexity">Operations that preserve convexity</h3>
+<p><strong>Proposition 7.</strong> Convexity is preserved by the following operations.</p>
+<ul>
+<li>
+<p><strong>Intersection.</strong> If every $C_\alpha$ is convex, then $\bigcap_\alpha C_\alpha$ is convex.</p>
+</li>
+<li>
+<p><strong>Affine image.</strong> If $C$ is convex and $f(x)=Ax+b$, then $f(C)$ is convex.</p>
+</li>
+<li>
+<p><strong>Affine inverse image.</strong> If $C$ is convex, then $\lbrace x:Ax+b\in C\rbrace$ is convex.</p>
+</li>
+<li>
+<p><strong>Perspective mapping.</strong> The image of a convex set contained in $\lbrace(x,t):t>0\rbrace$ under $P(x,t)=x/t$ is convex.</p>
+</li>
+<li>
+<p><strong>Linear-fractional mapping.</strong> On $c^\top x+d>0$, the image of a convex set under</p>
+$$
+  f(x)=\frac{Ax+b}{c^\top x+d}
+  $$
+<p>is convex.</p>
+</li>
+</ul>
+<p>The first three facts follow directly by taking a convex combination and checking membership. For perspective maps, if $u_i=x_i/t_i$ and $0\leq\theta\leq1$, then</p>
+$$
+\theta u_1+(1-\theta)u_2
+=\frac{\lambda x_1+(1-\lambda)x_2}{\lambda t_1+(1-\lambda)t_2},
+$$
+<p>where</p>
+$$
+\lambda=\frac{\theta/t_1}{\theta/t_1+(1-\theta)/t_2}\in[0,1].
+$$
+<p>Thus the left-hand side is the perspective image of a convex combination of the original points. A linear-fractional map is an affine map followed by a perspective map, so the final claim follows from the same argument.</p>
+<p>As an important example,</p>
+$$
+\lbrace x:\|Ax+b\|_2\leq c^\top x+d\rbrace
+$$
+<p>is convex: $x\mapsto(Ax+b,c^\top x+d)$ is affine, and $\lbrace(u,t):\|u\|_2\leq t\rbrace$ is the second-order cone. The set above is therefore an affine inverse image of a convex cone.</p>
+<h3 id="proper-cones-and-generalized-inequalities">Proper cones and generalized inequalities</h3>
+<p><strong>Motivation: what should “larger” mean for a vector?</strong> For real numbers, $a\leq b$ means exactly that $b-a\in\mathbb R_+$. To generalize this idea, choose a set $K$ of directions that count as nonnegative, and declare $x\preceq_K y$ when $y-x\in K$. The question is then: what properties of $K$ make this relation behave like an inequality?</p>
+<p><strong>Definition 8 (Proper Cone, 正则锥).</strong> A cone $K$ is proper if it is closed, convex, pointed, and has nonempty interior:</p>
+$$
+K\cap(-K)=\lbrace0\rbrace,
+\qquad \operatorname{int}K\neq\varnothing.
+$$
+<p>Each condition has a specific role. For a nonempty convex cone, $0\in K$, so $x\preceq_K x$ (reflexivity). Closure under addition gives transitivity: if $y-x\in K$ and $z-y\in K$, then $z-x=(z-y)+(y-x)\in K$. Pointedness gives antisymmetry: if both $y-x$ and $x-y$ lie in $K$, then $y-x=0$, so $x=y$.</p>
+<p>The cone structure also makes the order compatible with nonnegative scaling and addition. For example,</p>
+$$
+x\preceq_K y\quad\Longrightarrow\quad
+\alpha x+z\preceq_K\alpha y+z,
+\qquad \alpha\geq0.
+$$
+<p><strong>Why require a proper cone, rather than just a pointed convex cone?</strong> A nonempty pointed convex cone already defines a partial order. Closedness and nonempty interior are extra regularity conditions useful in optimization: closedness ensures inequalities survive limits, while nonempty interior makes strict inequalities possible in the ambient space and stable under sufficiently small perturbations.</p>
+<p>For example, $K=\lbrace(t,0):t\geq0\rbrace\subset\mathbb R^2$ defines a partial order, but has empty interior in $\mathbb R^2$. Consequently, the interior-based strict inequality below would never hold. Conversely, a cone containing a line fails antisymmetry: a nonzero direction on that line would count as both nonnegative and nonpositive. Thus “proper” packages the order properties together with the regularity needed for strict feasibility and duality; it is not the minimal assumption for every possible partial order.</p>
+<p><strong>Definition 9 (Generalized Inequality, 广义不等式).</strong> A proper cone $K$ induces the partial order</p>
+$$
+x\preceq_K y\quad\Longleftrightarrow\quad y-x\in K,
+$$
+<p>and its strict version</p>
+$$
+x\prec_K y\quad\Longleftrightarrow\quad y-x\in\operatorname{int}K.
+$$
+<p>For $K=\mathbb R_+^n$, this is componentwise inequality. For $K=\mathbb S_+^n$,</p>
+$$
+A\preceq B\quad\Longleftrightarrow\quad B-A\succeq0,
+$$
+<p>which is the Loewner order on symmetric matrices. This viewpoint lets scalar, vector, and matrix inequalities share one language. The order need not be total: under componentwise order, $(1,0)$ and $(0,1)$ are incomparable. Also, $x\prec_K y$ means that $y-x$ lies in the interior, not merely that $x\preceq_K y$ and $x\neq y$.</p>
+<h3 id="dual-cones-and-dual-norms">Dual cones and dual norms</h3>
+<p><strong>Motivation: which scalar measurements respect this order?</strong> Once $K$ tells us which vectors are nonnegative, we may want to turn a vector inequality into an ordinary scalar inequality. Every linear functional on $\mathbb R^n$ has the form $x\mapsto y^\top x$. For this measurement to preserve the order, we need</p>
+$$
+u\preceq_K v\quad\Longrightarrow\quad y^\top u\leq y^\top v.
+$$
+<p>Since $v-u\in K$, this is equivalent to requiring $y^\top x\geq0$ for every $x\in K$. Collecting exactly those admissible measurements gives the following definition.</p>
+<p><strong>Definition 10 (Dual Cone, 对偶锥).</strong> The dual cone of $K$ is</p>
+$$
+K^*=\lbrace y:y^\top x\geq0\text{ for every }x\in K\rbrace.
+$$
+<p>Thus $K$ specifies positive directions, $x\preceq_K y$ compares vectors using those directions, and $K^*$ collects the linear measurements that are nonnegative on them. The proper cone $K$ itself induces the generalized inequality; constructing $K^*$ is not a prerequisite. In fact, the dual cone can be defined even when $K$ is not proper. When $K$ is proper, its dual is also proper and can additionally induce its own order.</p>
+<p>For example, if $K=\mathbb R_+^n$, then all weights in an order-preserving linear measurement must be nonnegative. A negative weight $y_i$ would assign a negative value to the nonnegative coordinate vector $e_i$. Hence $(\mathbb R_+^n)^*=\mathbb R_+^n$: the orthant is self-dual, although a general cone need not be.</p>
+<p><strong>Why this becomes useful in constrained optimization.</strong> Consider a minimization problem with a cone inequality</p>
+$$
+\min_x f_0(x)\qquad\text{subject to }g(x)\preceq_K0.
+$$
+<p>Feasibility means $-g(x)\in K$. We want a scalar Lagrangian $L(x,\lambda)=f_0(x)+\lambda^\top g(x)$ whose constraint term is nonpositive at every feasible point. This gives a lower bound on the feasible objective. The definition of the dual cone supplies exactly the required sign condition:</p>
+$$
+\lambda\in K^*,\quad -g(x)\in K
+\quad\Longrightarrow\quad
+\lambda^\top g(x)\leq0.
+$$
+<p>Consequently, for every feasible $x$,</p>
+$$
+q(\lambda):=\inf_z L(z,\lambda)
+\leq L(x,\lambda)\leq f_0(x),
+\qquad \lambda\in K^*.
+$$
+<p>Here the infimum is over the underlying domain of the objective and constraint functions. This is the lower-bound mechanism of Lagrange duality: the primal constraint uses $K$, and the dual multiplier belongs to $K^*$. For the ordinary scalar constraint $g(x)\leq0$, both cones are $\mathbb R_+$, recovering the familiar multiplier condition $\lambda\geq0$. This lower-bound argument does not itself require convexity or assert that the best bound equals the primal optimum.</p>
+<p>The next definitions quantify the size of linear measurements. This will let us compute the dual of a norm cone explicitly.</p>
+<p><strong>Definition 11 ($\ell_p$ Norm, $\ell_p$ 范数).</strong> For $x=(x_1,\ldots,x_n)\in\mathbb R^n$ and $1\leq p<\infty$, the $\ell_p$ norm is</p>
+$$
+\|x\|_p=\left(\sum_{i=1}^n|x_i|^p\right)^{1/p}.
+$$
+<p>For $p=\infty$, it is defined by</p>
+$$
+\|x\|_\infty=\max_{1\leq i\leq n}|x_i|.
+$$
+<p>Important special cases are the $\ell_1$ norm $\|x\|_1=\sum_i|x_i|$, the Euclidean norm $\|x\|_2=(\sum_i x_i^2)^{1/2}$, and the maximum norm $\|x\|_\infty=\max_i|x_i|$. Strictly speaking, $\ell_p$ denotes the norm of a finite-dimensional vector or a sequence; the corresponding norm for a measurable function $f$ is the $L_p$ norm</p>
+$$
+\|f\|_{L_p}=\left(\int |f(t)|^p\,dt\right)^{1/p},
+\qquad
+\|f\|_{L_\infty}=\operatorname*{ess\,sup}_t|f(t)|.
+$$
+<p>Unless stated otherwise, this notebook uses $\|\cdot\|_p$ for the finite-dimensional $\ell_p$ norm.</p>
+<p><strong>Definition 12 (Dual Norm, 对偶范数).</strong> The dual norm is</p>
+$$
+\|y\|_*=\sup_{\|x\|\leq1}y^\top x.
+$$
+<p>It immediately yields the generalized Cauchy&ndash;Schwarz inequality $y^\top x\leq\|y\|_*\|x\|$. For conjugate exponents satisfying $1/p+1/q=1$, Hölder&rsquo;s inequality gives</p>
+$$
+\|\cdot\|_p^*=\|\cdot\|_q.
+$$
+<p>In particular, $\|\cdot\|_2$ is self-dual, while $\|\cdot\|_1^*=\|\cdot\|_\infty$.</p>
+<p><strong>Proposition 13 (Norm-Cone Duality).</strong> For</p>
+$$
+K=\lbrace(x,t):\|x\|\leq t\rbrace,
+$$
+<p>the dual cone is</p>
+$$
+K^*=\lbrace(y,s):\|y\|_*\leq s\rbrace.
+$$
+<p>Indeed, $(y,s)\in K^*$ precisely when $y^\top x+st\geq0$ for all $\|x\|\leq t$. After scaling to $t=1$, the smallest possible value is $s-\|y\|_*$. It is nonnegative exactly when $\|y\|_*\leq s$. Because the Euclidean norm is self-dual, the second-order cone is also self-dual.</p>
+<p><strong>Theorem 14 (Dual of a Proper Cone).</strong> If $K$ is a proper cone, then $K^*$ is also a proper cone. For closed convex cones,</p>
+$$
+K\text{ is pointed}\quad\Longleftrightarrow\quad
+\operatorname{int}K^*\neq\varnothing,
+$$
+$$
+\operatorname{int}K\neq\varnothing\quad\Longleftrightarrow\quad
+K^*\text{ is pointed}.
+$$
+<p>These relations explain why the four conditions defining a proper cone are preserved under duality.</p>
+<h3 id="separation-as-a-certificate">Separation as a certificate</h3>
+<p><strong>Definition 15 (Separating Hyperplane, 分离超平面).</strong> A hyperplane</p>
+$$
+H=\lbrace x:a^\top x=b\rbrace,\qquad a\neq0,
+$$
+<p>separates $C$ and $D$ if</p>
+$$
+a^\top x\leq b\leq a^\top y
+\qquad\text{for every }x\in C\text{ and }y\in D.
+$$
+<p><strong>Theorem 16 (Separating Hyperplane Theorem, 分离超平面定理).</strong> If $C,D\subseteq\mathbb R^n$ are nonempty, disjoint, convex sets, then there exist $a\neq0$ and $b$ that separate them. Additional assumptions, such as one set being open or one set being compact while the other is closed, give strict or strong forms of separation.</p>
+<p>Separation turns geometric nonintersection into a linear certificate. Separating a point from a convex feasible set, for example, produces an inequality witnessing infeasibility. The same mechanism later leads to supporting hyperplanes, optimality conditions, Farkas&rsquo; lemma, and Lagrange duality.</p>
+<p>The logical chain of this section is</p>
+$$
+\text{convex combinations}
+\longrightarrow \text{convex sets and cones}
+\longrightarrow \text{cone-induced orders}
+\longrightarrow \text{dual cones}
+\longrightarrow \text{separation certificates}.
+$$
+<h2 id="convex-functions">Convex Functions</h2>
+<p>The geometry above concerns feasible sets. The next step is to study objective functions whose epigraphs are convex.</p>
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
 </div></body></html>
 
 

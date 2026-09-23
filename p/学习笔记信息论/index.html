@@ -5,7 +5,7 @@
 <title>学习笔记|信息论 — Haitong Lan</title>
 <meta name="description" content="台湾交通大学陈伯宁老师信息论课程笔记">
 <link rel="canonical" href="https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=f5315714264216ed9ddd1dfea14ab9fa">
+<link rel="stylesheet" href="/academic.css?v=3ed198be3d9e0016f950233d90fa856d">
 <link rel="stylesheet" href="/academic-syntax.css">
 
 
@@ -57,28 +57,34 @@
 </li>
 </ol>
 <p>这三条公理也对应着人类对于世界的认知:我们所生活的世界是温和的。就如同高斯分布是满足熵最大分布的原理一样，符合现实世界的分布必然不是重尾的，而是测度集中的。上述三条公理将导出<strong>唯一</strong>的可以度量信息的函数：
+</p>
 $$
 \text { self-information of an event }=\log _2 \frac{1}{\text { event probability }} \text { bits. }
 $$
+<p>
 该公式与物理中熵的定义不谋而合，有故事称香农一开始并不是给该信息量命名为信息熵，是香农的老师建议，才将该度量命名为信息熵。</p>
 <p>我们假设信息以一定的处理方式在发送端进行处理:
 <a href="https://imgse.com/i/pElax8U"><img src="https://s21.ax1x.com/2025/02/22/pElax8U.png" alt="pElax8U.png" border="0" /></a>
 现在有了信息的度量，那么是否可以度量出一种code，可以最紧凑的表达信息，<strong>香农第一定理</strong>便是回答了这个问题：
+</p>
 $$\text{Min Compression rate} = \text{entropy of } (Z_1,Z_2,\cdots,Z_n)$$
+<p>
 香农虽然回答了该问题，说明<strong>信息的压缩有一个极限</strong>，但是并没有给出具体的编码方式，直到50年之后turbo码的出现才第一次逼近了这个极限。值得注意的是，在逼近这个极限时，压缩编码$U_1,\cdots,U_n$是渐进均匀分布的，且是 i.i.d.的随机变量，该定理也进一步方便了后续的信道编码处理与分析。</p>
 <p>香农第二定律研究了信息在含有噪声的信道下传输的特性，从很多领域中我们都可以看到<strong>可靠传输</strong>这样的概念，但是真正严谨的可靠性传输并不是指0差错，而是可以用 $\epsilon-\sigma$ 语言去描述的渐进无差错概率，而差错不可能是0，因为香农研究在大样本背景下的编码和通信。</p>
 <p>所以对于信源将原始信息 $Z$ 压缩为的 $U$,我们必须进一步将其编码，添加冗余，使其在信道中即使受了噪声影响，通过接收端的解码也可以恢复原来的信息，这就是Channel encoder的作用，一般而言，信源和信道编码器都是分开研究的，不过也有学者将二者放在一起进行研究。</p>
 <p>那么是否真的有这样一种编码，可以让 <strong>差错概率渐进为0</strong> 吗，香农第二定律回答了该问题：
+</p>
 $$
 \text{Channel capacity is the max reliable transmission code rate for a noisy channel.}
 $$
+<p>
 香农是从数学的角度定义了互信息，然后证明该定理的，但是与第一定律一样，并没有得出具体的编码形式，而是证明了确有编码可以达到该效果。（这里的描述是不严谨的，但是可以方便我们很快的了解香农的工作）</p>
 <p>至于香农第三定律，需要引入更多的名词才能介绍。</p>
 <p>香农的信息论并不只是简单的这三条定理，其定理证明的背后也蕴含着一套方法论，就是不找出具体的方法，但是从数学上证明确有此事，这样的方法论也融合到了很多的学科之中。</p>
 <h2 id="overview-on-suprema-and-limits">Overview on Suprema and Limits</h2>
 <p><strong>Definition 1(Upper bound of a set).</strong><br>
 $\mathcal{A} \subset \mathbb{R}$ is bounded above $\Longleftrightarrow(\exists u \in \mathbb{R})$ such that $(\forall a \in \mathcal{A}), a \leq u$.</p>
-<p><strong>Definition 2(Least upper bound or supremum).</strong>  Suppose $\mathcal{A}$ is a non-empty subset of $\mathbb{R}$. Then, we say that a real number $s$ is a least upper bound or supremum of $\mathcal{A}$ if $s$ is an upper bound of the set $\mathcal{A}$ and if $s \leq s^{\prime}$ for each upper bound $s^{\prime}$ of $\mathcal{A}$. In this case, we write $s=\sup \mathcal{A}$; other notations are $s=\sup _{x \in \mathcal{A}} x$ and $s=\sup {x: x \in \mathcal{A}}$.</p>
+<p><strong>Definition 2(Least upper bound or supremum).</strong>  Suppose $\mathcal{A}$ is a non-empty subset of $\mathbb{R}$. Then, we say that a real number $s$ is a least upper bound or supremum of $\mathcal{A}$ if $s$ is an upper bound of the set $\mathcal{A}$ and if $s \leq s^{\prime}$ for each upper bound $s^{\prime}$ of $\mathcal{A}$. In this case, we write $s=\sup \mathcal{A}$; other notations are $s=\sup _{x \in \mathcal{A}} x$ and $s=\sup \{x: x \in \mathcal{A}\}$.</p>
 <p><strong>Completeness Axiom 3(Least upper bound property).</strong>  Let $\mathcal{A}$ be a non-empty subset of $\mathbb{R}$ that is bounded above. Then $\mathcal{A}$ has a least upper bound.</p>
 <p><strong>Definition 3 (Maximum)</strong> If $supA ∈ \mathcal{A}$, then supA is also called the maximum of
 $A$ and is denoted by $\max A$. However, if $supA \notin A$, then we say that the maximum
@@ -86,13 +92,13 @@ of $A$ does not exist.</p>
 <p><strong>Property 4 (Properties of the supremum).</strong></p>
 <ol>
 <li>
-<p>The supremum of any set in $\mathbb{R} \cup{-\infty, \infty}$ always exits.</p>
+<p>The supremum of any set in $\mathbb{R} \cup\{-\infty, \infty\}$ always exits.</p>
 </li>
 <li>
-<p>If $-\infty&lt;\sup \mathcal{A}&lt;\infty$, then $(\forall \varepsilon&gt;0)\left(\exists a_0 \in \mathcal{A}\right) a_0&gt;\sup \mathcal{A}-\varepsilon$.</p>
+<p>If $-\infty<\sup \mathcal{A}<\infty$, then $(\forall \varepsilon>0)\left(\exists a_0 \in \mathcal{A}\right) a_0>\sup \mathcal{A}-\varepsilon$.</p>
 </li>
 <li>
-<p>If $\sup \mathcal{A}=\infty$, then $(\forall L \in \mathbb{R})\left(\exists B_0 \in \mathcal{A}\right) B_0&gt;L$.</p>
+<p>If $\sup \mathcal{A}=\infty$, then $(\forall L \in \mathbb{R})\left(\exists B_0 \in \mathcal{A}\right) B_0>L$.</p>
 </li>
 <li>
 <p>If $\sup \mathcal{A}=-\infty$, then $\mathcal{A}$ is empty.</p>
@@ -107,54 +113,68 @@ of $A$ does not exist.</p>
 <li>$\sup(A\cdot B)\ge \sup(A)\cdot\sup(B)$</li>
 </ol>
 <p>在通信序列中，经常需要分析序列极限，然而可能会遇到极限不存在的情况，影响分析，如何使得极限必然存在呢？</p>
-<p><strong>Definition 6 (limsup and liminf)。</strong> The limit supremum of $\left\{a_n\right\}_{n=1}^{\infty}$ is the extended real number in $\mathbb{R} \cup{-\infty, \infty}$ defined by
+<p><strong>Definition 6 (limsup and liminf)。</strong> The limit supremum of $\left\\{a_n\right\\}\_{n=1}^{\infty}$ is the extended real number in $\mathbb{R} \cup\{-\infty, \infty\}$ defined by
+</p>
 $$
-\limsup _{n \rightarrow \infty} a_n:=\lim_{n \rightarrow \infty}\left(\sup _{k \geq n} a_k\right),
+\limsup _{n \rightarrow \infty} a_n:=\lim\_{n \rightarrow \infty}\left(\sup \_{k \geq n} a_k\right),
 $$
-and the limit infimum of $\left\{a_n\right\}_{n=1}^{\infty}$ is the extended real number defined by
+<p>
+and the limit infimum of $\left\\{a_n\right\\}\_{n=1}^{\infty}$ is the extended real number defined by
+</p>
 $$
-\liminf _{n \rightarrow \infty} a_n:=\lim _{n \rightarrow \infty}\left(\inf _{k \geq n} a_k\right)
+\liminf \_{n \rightarrow \infty} a_n:=\lim \_{n \rightarrow \infty}\left(\inf \_{k \geq n} a_k\right)
 $$
+<p>
 Some also use the notations $\overline{\lim }$ and $\underline{\mathrm{lim}}$ to denote limsup and liminf, respectively.</p>
-<p><strong>Lemma 7 (Limit).</strong> For a sequence $\left\{a_n\right\}_{n=1}^{\infty}$,
+<p><strong>Lemma 7 (Limit).</strong> For a sequence $\left\\{a_n\right\\}\_{n=1}^{\infty}$,
+</p>
 $$
-\lim _{n \rightarrow \infty} a_n=L \Longleftrightarrow \limsup _{n \rightarrow \infty} a_n=\liminf _{n \rightarrow \infty} a_n=L
-$$</p>
+\lim \_{n \rightarrow \infty} a_n=L \Longleftrightarrow \limsup \_{n \rightarrow \infty} a_n=\liminf \_{n \rightarrow \infty} a_n=L
+$$
 <p><strong>Property 8 .</strong> 都大则大，都小则小，避免耦合：
+</p>
 $$
 \begin{aligned}
-\liminf _{n \rightarrow \infty} a_n+\liminf _{n \rightarrow \infty} b_n &amp; \leq \liminf _{n \rightarrow \infty}\left(a_n+b_n\right) \\
-&amp; \leq \limsup _{n \rightarrow \infty} a_n+\liminf _{n \rightarrow \infty} b_n \\
-&amp; \leq \limsup _{n \rightarrow \infty}\left(a_n+b_n\right) \\
-&amp; \leq \limsup _{n \rightarrow \infty} a_n+\limsup _{n \rightarrow \infty} b_n .
+\liminf \_{n \rightarrow \infty} a_n+\liminf \_{n \rightarrow \infty} b_n & \leq \liminf \_{n \rightarrow \infty}\left(a_n+b_n\right) \\\
+& \leq \limsup \_{n \rightarrow \infty} a_n+\liminf \_{n \rightarrow \infty} b_n \\\
+& \leq \limsup \_{n \rightarrow \infty}\left(a_n+b_n\right) \\\
+& \leq \limsup \_{n \rightarrow \infty} a_n+\limsup \_{n \rightarrow \infty} b_n .
 \end{aligned}
-$$</p>
+$$
 <h2 id="overview-in-probability-and-random-processes">Overview in Probability and Random Processes</h2>
 <h3 id="random-variables-and-random-processes">Random Variables and Random Processes</h3>
 <p><strong>Def 1(r.v.).</strong> A random variable $X$ defined over the probability space $(\Omega, \mathcal{F}, P)$ is a real-valued function $X: \Omega \rightarrow \mathbb{R}$ that is measurable (or $\mathcal{F}$-measurable), i.e., satisfying the property that
+</p>
 $$
-X^{-1}((-\infty, t]):=\{\omega \in \Omega: X(\omega) \leq t\} \in \mathcal{F}
+X^{-1}((-\infty, t]):=\\{\omega \in \Omega: X(\omega) \leq t\\} \in \mathcal{F}
 $$
+<p>
 for each real $t$.<br>
 <strong>Remark.</strong> r.v.是$\mathcal{F}\textbf{可测映射}$</p>
 <p><strong>Def 2(Borel sets).</strong> he Borel $\sigma$-field of $\mathbb{R}$, denoted by $\mathscr{B}(\mathbb{R})$, is the smallest $\sigma$-field of subsets of $\mathbb{R}$ containing all open intervals in $\mathbb{R}$. The elements of $\mathscr{B}(\mathbb{R})$ are called Borel sets.</p>
 <p><strong>Def 3(r.v.诱导的测度).</strong> For any random variable $X$, we use $P_X$ to denote the probability distribution on $\mathscr{B}(\mathbb{R})$ induced by $X$, given by
+</p>
 $$
 P_X(B):=\operatorname{Pr}[X \in B]=P(w \in \Omega: X(w) \in B), \quad B \in \mathscr{B}(\mathbb{R})
 $$
+<p>
 Note that the quantities $P_X(B), B \in \mathscr{B}(\mathbb{R})$, fully characterize the random variable $X$ as they determine the probabilities of all events that concern $X$.<br>
 <strong>Remark.</strong> 在很多概率的书籍中，$P_X$ 专用来表示随机变量诱导的测度，用来对 $X$ 映射到的可测集合操作，$P$表示原始概率空间上的测度，用来对 $\mathcal{F}$ 进行操作，而 $\operatorname{Pr}$侧重于描述随机变量事件的概率（the probability that）。</p>
-<p>这里不严格的定义随机过程，而是强调离散时间随机过程，即以序列 $I$ 表示的随机变量的集合 $\{X_i\mid i\in I\}$为随机过程。</p>
+<p>这里不严格的定义随机过程，而是强调离散时间随机过程，即以序列 $I$ 表示的随机变量的集合 $\\{X_i\mid i\in I\\}$为随机过程。</p>
 <h3 id="properties-of-random-processes">Properties of random processes</h3>
 <p><strong>Definition 1($\mathbb{T}$-invariant).</strong> An event $E$ is said to be $\mathbb{T}$-invariant with respect to the left-shift (or shift transformation) $\mathbb{T}: \mathcal{X}^{\infty} \rightarrow \mathcal{X}^{\infty}$ if
+</p>
 $$
 \mathbb{T} E \subseteq E
 $$
+<p>
 where
+</p>
 $$
-\mathbb{T} E:={\mathbb{T} \boldsymbol{x}: \boldsymbol{x} \in E} \quad \text { and } \quad \mathbb{T} \boldsymbol{x}:=\mathbb{T}\left(x_1, x_2, x_3, \ldots\right)=\left(x_2, x_3, \ldots\right) .
+\mathbb{T} E:=\{\mathbb{T} \boldsymbol{x}: \boldsymbol{x} \in E\} \quad \text { and } \quad \mathbb{T} \boldsymbol{x}:=\mathbb{T}\left(x_1, x_2, x_3, \ldots\right)=\left(x_2, x_3, \ldots\right) .
 $$
-<strong>Remark.</strong> 可以定义该映射的逆映射：$\mathbb{T}^{-1} E:=\left\{\boldsymbol{x} \in \mathcal{X}^{\infty}: \mathbb{T} \boldsymbol{x} \in E\right\}$。这里是以通信系统为目的讨论的，所以强调了对事件的移位操作，强调时不变，对于概率论视角或者遍历论视角，更统一的方法是定义$\mathbb{T}$不变测度。</p>
+<p>
+<strong>Remark.</strong> 可以定义该映射的逆映射：$\mathbb{T}^{-1} E:=\left\\{\boldsymbol{x} \in \mathcal{X}^{\infty}: \mathbb{T} \boldsymbol{x} \in E\right\\}$。这里是以通信系统为目的讨论的，所以强调了对事件的移位操作，强调时不变，对于概率论视角或者遍历论视角，更统一的方法是定义$\mathbb{T}$不变测度。</p>
 <p><strong>Def 2(Ergodic sets).</strong> 对于事件 $E$,若 $\mathbb{T} E = E = \mathbb{T}^{-1} E$,称该事件为 Ergodic sets。</p>
 <p><strong>Def 3(随机过程的分类)</strong></p>
 <ol>
@@ -164,14 +184,18 @@ $$
 </ol>
 <p><a href="https://imgse.com/i/pEJ9sat"><img src="https://s21.ax1x.com/2025/03/04/pEJ9sat.png" alt="pEJ9sat.png" border="0" /></a></p>
 <p><strong>Remark.</strong> 遍历性与平稳性没有关系，平稳性说的是分布不随时间变化(i.d.),遍历性说的是该系统是封闭的，即该性质得以让我们从任何一点观察一随机过程，只要观察的时间足够长(SLLN),就可以推断该随机过程的分布。遍历性可以保证样本均值收敛到常数，但是未必是期望。</p>
-<p><strong>Theorem 4(Pointwise ergodic theorem)</strong> Consider a discrete-time stationary random process, $\boldsymbol{X}=\left\{X_n\right\}_{n=1}^{\infty}$. For real-valued function $f(\cdot)$ on $\mathbb{R}$ with finite mean (i.e., $\left|E\left[f\left(X_n\right)\right]\right|&lt;\infty$ ), there exists a random variable $Y$ such that
+<p><strong>Theorem 4(Pointwise ergodic theorem)</strong> Consider a discrete-time stationary random process, $\boldsymbol{X}=\left\\{X_n\right\\}\_{n=1}^{\infty}$. For real-valued function $f(\cdot)$ on $\mathbb{R}$ with finite mean (i.e., $\left|E\left[f\left(X_n\right)\right]\right|<\infty$ ), there exists a random variable $Y$ such that
+</p>
 $$
-\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f\left(X_k\right)=Y \quad \text { with probability } 1
+\lim \_{n \rightarrow \infty} \frac{1}{n} \sum\_{k=1}^n f\left(X_k\right)=Y \quad \text { with probability } 1
 $$
+<p>
 If, in addition to stationarity, the process is also ergodic, then
+</p>
 $$
-\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f\left(X_k\right)=E\left[f\left(X_1\right)\right] \quad \text { with probability } 1 .
+\lim \_{n \rightarrow \infty} \frac{1}{n} \sum\_{k=1}^n f\left(X_k\right)=E\left[f\left(X_1\right)\right] \quad \text { with probability } 1 .
 $$
+<p>
 <strong>Remark.</strong>
 一些工程类教材经常把该定理当作遍历性的定义，
 因为借助遍历性这一概念只是想利用SLLN，但是这样的定义是狭隘的，
@@ -181,38 +205,38 @@ $$
 <p>为了介绍LLN，有必要先介绍随机变量序列的收敛：</p>
 <p><strong>Definition 1 (Convergence modes for random sequences).</strong></p>
 <ol>
-<li><strong>Pointwise convergence</strong> on $\Omega$. $\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ pointwise on $\Omega$ if
+<li><strong>Pointwise convergence</strong> on $\Omega$. $\left\\{X_n\right\\}\_{n=1}^{\infty}$ is said to converge to $X$ pointwise on $\Omega$ if
 $$
-\lim _{n \rightarrow \infty} X_n(\omega)=X(\omega) \text { for all } \omega \in \Omega
+\lim \_{n \rightarrow \infty} X_n(\omega)=X(\omega) \text { for all } \omega \in \Omega
 $$
 This notion of convergence, which is familiar to us from real analysis,
 is denoted by $X_n \xrightarrow{p . w .} X$.该收敛并没有考虑随机的因素，而是考虑映射
 $X$ 本身的收敛。</li>
-<li><strong>Almost sure convergence</strong> or convergence with probability 1. $\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ with probability 1 , if
+<li><strong>Almost sure convergence</strong> or convergence with probability 1. $\left\\{X_n\right\\}_{n=1}^{\infty}$ is said to converge to $X$ with probability 1 , if
 $$
-P\left\{\omega \in \Omega: \lim _{n \rightarrow \infty} X_n(\omega)=X(\omega)\right\}=1
+P\left\\{\omega \in \Omega: \lim \_{n \rightarrow \infty} X_n(\omega)=X(\omega)\right\\}=1
 $$
 Almost sure convergence is denoted by $X_n \xrightarrow{\text { a.s. }} X$; note that it is nothing but a probabilistic version of pointwise convergence.</li>
 <li><strong>Convergencein probability</strong>.
-$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in probability, if for any $\varepsilon&gt;0$,
+$\left\\{X_n\right\\}\_{n=1}^{\infty}$ is said to converge to $X$ in probability, if for any $\varepsilon>0$,
 $$
-\lim _{n \rightarrow \infty} P\left\{\omega \in \Omega:\left|X_n(\omega)-X(\omega)\right|&gt;\varepsilon\right\}=\lim _{n \rightarrow \infty} \operatorname{Pr}\left\{\left|X_n-X\right|&gt;\varepsilon\right\}=0
+\lim \_{n \rightarrow \infty} P\left\\{\omega \in \Omega:\left|X_n(\omega)-X(\omega)\right|>\varepsilon\right\\}=\lim \_{n \rightarrow \infty} \operatorname{Pr}\left\\{\left|X_n-X\right|>\varepsilon\right\\}=0
 $$
 This mode of convergence is denoted by $X_n \xrightarrow{p} X$.</li>
 <li><strong>Convergence in $r$ th mean</strong>.
-$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in $r$ th mean, if
+$\left\\{X_n\right\\}\_{n=1}^{\infty}$ is said to converge to $X$ in $r$ th mean, if
 $$
-\lim _{n \rightarrow \infty} E\left[\left|X-X_n\right|^r\right]=0
+\lim \_{n \rightarrow \infty} E\left[\left|X-X_n\right|^r\right]=0
 $$
 This is denoted by $X_n \xrightarrow{\mathcal{L}_r} X$.</li>
 <li><strong>Convergence in distribution</strong>.
-$\left\{X_n\right\}_{n=1}^{\infty}$ is said to converge to $X$ in distribution, if
+$\left\\{X_n\right\\}\_{n=1}^{\infty}$ is said to converge to $X$ in distribution, if
 $$
-\lim _{n \rightarrow \infty} F_{X_n}(x)=F_X(x)
+\lim \_{n \rightarrow \infty} F\_{X_n}(x)=F_X(x)
 $$
 for every continuity point of $F(x)$, where
 $$
-F_{X_n}(x)=\operatorname{Pr}\left\{X_n \leq x\right\} \quad \text { and } \quad F_X(x)=\operatorname{Pr}\{X \leq x\}
+F\_{X_n}(x)=\operatorname{Pr}\left\\{X_n \leq x\right\\} \quad \text { and } \quad F_X(x)=\operatorname{Pr}\\{X \leq x\\}
 $$
 We denote this notion of convergence by $X_n \xrightarrow{d} X$.</li>
 </ol>
@@ -221,35 +245,38 @@ We denote this notion of convergence by $X_n \xrightarrow{d} X$.</li>
 <a href="https://imgse.com/i/pEJ92RS"><img src="https://s21.ax1x.com/2025/03/04/pEJ92RS.png" alt="pEJ92RS.png" border="0" /></a></p>
 <p><strong>Theorem B. 9 (Monotone convergence theorem)</strong><br>
 $\left.\begin{array}{l}
-\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\
-\text { (ii) }(\forall n) Y \leq X_n \leq X_{n+1} \\
-\text { (iii) } E[|Y|]&lt;\infty\end{array}\right\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.</p>
+\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\\
+\text { (ii) }(\forall n) Y \leq X_n \leq X\_{n+1} \\\
+ \text { (iii) } E[|Y|]<\infty\end{array}\right\\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.</p>
 <p><strong>Theorem B. 10 (Dominated convergence theorem)</strong><br></p>
-<p>$\left.\begin{array}{l}\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\
-\text { (ii) }(\forall n)\left|X_n\right| \leq Y \\
-\text { (iii) } E[|Y|]&lt;\infty\end{array}\right\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.</p>
+<p>$\left.\begin{array}{l}\text { (i) }X_n \xrightarrow{\text { a.s. }} X\\\
+\text { (ii) }(\forall n)\left|X_n\right| \leq Y \\\
+ \text { (iii) } E[|Y|]<\infty\end{array}\right\\} \Rightarrow X_n \xrightarrow{L_1} X \quad \Rightarrow \quad E\left[X_n\right] \rightarrow E[X]$.</p>
 <p>The implication of $X_n \xrightarrow{L_1} X$ to $E\left[X_n\right] \rightarrow E[X]$ can be easily seen from
+</p>
 $$
 \left|E\left[X_n\right]-E[X]\right|=\left|E\left[X_n-X\right]\right| \leq E\left[\left|X_n-X\right|\right] .
-$$</p>
+$$
 <hr>
 <p><strong>Observation B. 8 (Uniqueness of convergence).</strong></p>
 <ol>
 <li>If $X_n \xrightarrow{p . w .} X$ and $X_n \xrightarrow{p . w .} Y$, then $X=Y$ pointwise. That is, $(\forall \omega \in \Omega)$ $X(\omega)=Y(\omega)$.</li>
-<li>If $X_n \xrightarrow{\text { a.s. }} X$ and $X_n \xrightarrow{\text { a.s. }} Y$ (or $X_n \xrightarrow{p} X$ and $X_n \xrightarrow{p} Y$ ) (or $X_n \xrightarrow{\mathcal{L}_r} X$ and $X_n \xrightarrow{\mathcal{L}_r} Y$ ), then $X=Y$ with probability 1. That is, $\operatorname{Pr}\{X=Y\}=1$.</li>
+<li>If $X_n \xrightarrow{\text { a.s. }} X$ and $X_n \xrightarrow{\text { a.s. }} Y$ (or $X_n \xrightarrow{p} X$ and $X_n \xrightarrow{p} Y$ ) (or $X_n \xrightarrow{\mathcal{L}_r} X$ and $X_n \xrightarrow{\mathcal{L}_r} Y$ ), then $X=Y$ with probability 1. That is, $\operatorname{Pr}\\{X=Y\\}=1$.</li>
 <li>$X_n \xrightarrow{d} X$ and $X_n \xrightarrow{d} Y$, then $F_X(x)=F_Y(x)$ for all $x$.</li>
 </ol>
 <h3 id="ergodicity-and-laws-of-large-numbersclt">Ergodicity and Laws of Large Numbers，CLT</h3>
-<p><strong>Theorem B. 13 (Weak law of large numbers)</strong> Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of uncorrelated random variables with common mean $E\left[X_i\right]=\mu$. If the variables also have common variance, or more generally,</p>
+<p><strong>Theorem B. 13 (Weak law of large numbers)</strong> Let $\left\\{X_n\right\\}\_{n=1}^{\infty}$ be a sequence of uncorrelated random variables with common mean $E\left[X_i\right]=\mu$. If the variables also have common variance, or more generally,</p>
 <div>
 $$
 \lim_{n \rightarrow \infty} \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}\left[X_i\right]=0, \quad\left(\text { equivalently }, \frac{\mathrm{X}_1+\cdots+\mathrm{X}_{\mathrm{n}}}{\mathrm{n}} \xrightarrow{\mathcal{L}_2}-\right)
 $$
 </div>
 <p>then the sample average
+</p>
 $$
 \frac{X_1+\cdots+X_n}{n}
 $$
+<p>
 converges to the mean $\mu$ in <strong>probability</strong>.
 <br>
 Proof By Chebyshev&rsquo;s inequality,</p>
@@ -259,20 +286,22 @@ $$
 $$
 </div>
 <p>Note that the right-hand side of the above Chebyshev&rsquo;s inequality is just the second moment of the difference between the $n$-sample average and the mean $\mu$. Thus, the variance constraint is equivalent to the statement that $X_n \xrightarrow{\mathcal{L}_2} \mu$ <strong>implies</strong> $X_n \xrightarrow{p} \mu$.</p>
-<p><strong>Theorem B. 14 (Kolmogorov&rsquo;s strong law of large numbers)</strong> Let $\left\{X_n\right\}_{n=1}^{\infty}$ be a sequence of independent random variables with common mean $E\left[X_n\right]=\mu$. If either</p>
+<p><strong>Theorem B. 14 (Kolmogorov&rsquo;s strong law of large numbers)</strong> Let $\left\\{X_n\right\\}\_{n=1}^{\infty}$ be a sequence of independent random variables with common mean $E\left[X_n\right]=\mu$. If either</p>
 <ol>
 <li>$X_n$ &rsquo;s are identically distributed; or</li>
 <li>$X_n$ &rsquo;s are square-integrable  with variances satisfying
 $$
-\sum_{i=1}^{\infty} \frac{\operatorname{Var}\left[X_i\right]}{i^2}&lt;\infty
+\sum_{i=1}^{\infty} \frac{\operatorname{Var}\left[X_i\right]}{i^2}<\infty
 $$</li>
 </ol>
 <p>then
+</p>
 $$
 \frac{X_1+\cdots+X_n}{n} \xrightarrow{\text { a.s. }} \mu .
 $$
+<p>
 <strong>Remark.</strong>
-$SLLN\Rightarrow Pr\{\lim\}$,$WLLN\Rightarrow \lim Pr\{\}$,
+$SLLN\Rightarrow Pr\\{\lim\\}$,$WLLN\Rightarrow \lim Pr\\{\\}$,
 WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.收敛,Kolmogorov&rsquo;s strong law of large numbers对函数序列极限依然适用。</p>
 <p>逐点遍历原理是SLLN的一种。</p>
 <p>直观地说，遍历性意味着系统没有“可分解的部分”，任何在变换
@@ -284,32 +313,40 @@ WLLN是估计量的依概率收敛，SLLN是估计量的依概率1收敛或a.s.�
 如果是普通是事件，根据我们测量的环境不同，可能会发生变化(不同样本轨道的统计特性不同)，
 但是如果是 𝑇-不变事件，就可以保证该事件要么不发生，要么对于所有样本点发生，这也保证了
 不同的环境测量出的事件一致，这是SLLN或者逐点遍历原理的一种现实意义。</p>
-<p><strong>Theorem B. 15 (Central limit theorem)</strong> If $\left\{X_n\right\}_{n=1}^{\infty}$ is a sequence of i.i.d. random variables with finite common marginal mean $\mu$ and variance $\sigma^2$, then</p>
-<p>$$
+<p><strong>Theorem B. 15 (Central limit theorem)</strong> If $\left\\{X_n\right\\}_{n=1}^{\infty}$ is a sequence of i.i.d. random variables with finite common marginal mean $\mu$ and variance $\sigma^2$, then</p>
+$$
 \frac{1}{\sqrt{n}} \sum_{i=1}^n\left(X_i-\mu\right) \xrightarrow{d} Z \sim \mathcal{N}\left(0, \sigma^2\right)
-$$</p>
+$$
 <p>where the convergence is in distribution (as $n \rightarrow \infty$ ) and $Z \sim \mathcal{N}\left(0, \sigma^2\right)$ is a Gaussian distributed random variable with mean 0 and variance $\sigma^2$.</p>
 <h3 id="lagrange-multipliers-technique-and-kkt-conditions">Lagrange Multipliers Technique and KKT Conditions</h3>
 <p><strong>Definition B. 16 (Convexity)</strong> Consider a <strong>convex set</strong> $ \mathcal{O} \in \mathbb{R}^m$, where $m$ is a fixed positive integer. Then, a function $f: \mathcal{O} \rightarrow \mathbb{R}$ is said to be convex over $\mathcal{O}$ if for every $\underline{x}, \underline{y}$ in $\mathcal{O}$ and $0 \leq \lambda \leq 1$,
+</p>
 $$
 f(\lambda \underline{x}+(1-\lambda) \underline{y}) \leq \lambda f(\underline{x})+(1-\lambda) f(\underline{y})
 $$
+<p>
 Furthermore, a function $f$ is said to be <strong>strictly convex</strong> if equality holds only when $\lambda=0$ or $\lambda=1$.<br>
 <strong>Remark.</strong> 凸集对线性凸组合保持封闭，函数的凸性是针对定义域和函数特性而言的，值得注意的式，满足convex的函数在凸集上二阶导非负。</p>
 <p><strong>Definition B. 17 (Concavity)</strong> A function $f$ is concave if $-f$ is convex.</p>
 <p><strong>Theorem B. 18 (Jensen&rsquo;s inequality)</strong> If $f: \mathcal{O} \rightarrow \mathbb{R}$ is convex over a convex set $\mathcal{O} \subset \mathbb{R}^m$, and $\underline{X}=\left(X_1, X_2, \ldots, X_m\right)^T$ is an m-dimensional random vector with alphabet $\mathcal{X} \subset \mathcal{O}$, then
+</p>
 $$
 \mathbb{E}[f(\underline{X})] \geq f(\mathbb{E}[\underline{X}])
 $$
+<p>
 Moreover, if $f$ is strictly convex, then <strong>equality</strong> in the above inequality immediately implies $\underline{X}=E[\underline{X}]$ with probability 1.</p>
 <p>接下来考虑优化问题：Optimization of a function $f(\boldsymbol{x})$ over $\boldsymbol{x}=\left(x_1, \ldots, x_n\right) \in \mathcal{X} \subseteq \mathbb{R}^n$
+</p>
 $$
-\min _{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}),
+\min \_{\boldsymbol{x} \in \mathcal{Q}} f(\boldsymbol{x}),
 $$
+<p>
 where
+</p>
 $$
-\mathcal{Q}:=\left\{\boldsymbol{x} \in \mathcal{X}: g_i(\boldsymbol{x}) \leq 0 \text { for } 1 \leq i \leq m \text { and } h_i(\boldsymbol{x})=0 \text { for } 1 \leq j \leq \ell\right\}
+\mathcal{Q}:=\left\\{\boldsymbol{x} \in \mathcal{X}: g_i(\boldsymbol{x}) \leq 0 \text { for } 1 \leq i \leq m \text { and } h_i(\boldsymbol{x})=0 \text { for } 1 \leq j \leq \ell\right\\}
 $$
+<p>
 可以利用拉格朗日乘子法，将该问题转化为无约束的对偶问题：</p>
 <div>
 $$
@@ -339,7 +376,7 @@ $$
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
 </div></body></html>
 
 

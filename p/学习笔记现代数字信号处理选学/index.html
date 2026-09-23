@@ -5,7 +5,7 @@
 <title>学习笔记|现代数字信号处理选学 — Haitong Lan</title>
 <meta name="description" content="中国科学院大学张灏老师现代数字信号处理课程笔记">
 <link rel="canonical" href="https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=f5315714264216ed9ddd1dfea14ab9fa">
+<link rel="stylesheet" href="/academic.css?v=3ed198be3d9e0016f950233d90fa856d">
 <link rel="stylesheet" href="/academic-syntax.css">
 
 
@@ -69,29 +69,36 @@
 <p>张颢老师对于能熟练的推导公式说：“无他，惟手熟尔。”听张老师的课程一行一行的写下来，并且时常温习，将会带来很大的收获。</p>
 <h2 id="最佳线性无偏估计">最佳线性无偏估计</h2>
 <p>有一本小册子，推荐大家阅读：<a href="https://www2.stat.duke.edu/~pdh10/Teaching/721/Materials/ch2blue.pdf">Best Linear Unbiased Estimation</a></p>
-<p><strong>定义（最佳线性无偏估计（BLUE，Best Linear unbiased estimator））.</strong> 设 $\hat{\theta}$ 是参数 $\theta$ 的线性无偏估计。如果对 $\theta$ 的任意一个线性无偏估计 $\theta^{*}$ ，有 $\operatorname{var}\left(\theta^{*}\right) \geq \operatorname{var}(\hat{\theta})$ ，则称 $\hat{\theta}$ 是参数 $\theta$ 的 BLUE 。</p>
+<p><strong>定义（最佳线性无偏估计（BLUE，Best Linear unbiased estimator））.</strong> 设 $\hat{\theta}$ 是参数 $\theta$ 的线性无偏估计。如果对 $\theta$ 的任意一个线性无偏估计 $\theta^{\*}$ ，有 $\operatorname{var}\left(\theta^{\*}\right) \geq \operatorname{var}(\hat{\theta})$ ，则称 $\hat{\theta}$ 是参数 $\theta$ 的 BLUE 。</p>
 <p>对于高维回归问题，我们不能比较方差，只能对比协方差矩阵，那么针对于协方差矩阵，如何定义这个最优性呢，我们需要引入关于半正定矩阵的一种度量。</p>
-<p><strong>Definition  (Loewner order).</strong> For two positive semidefinite matrices $\Sigma_1$ and $\Sigma_2$ of the same size, we say that $\Sigma_1&gt;\Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive definite, and that $\Sigma_1 \geq \Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive semidefinite.</p>
+<p><strong>Definition  (Loewner order).</strong> For two positive semidefinite matrices $\Sigma_1$ and $\Sigma_2$ of the same size, we say that $\Sigma_1>\Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive definite, and that $\Sigma_1 \geq \Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive semidefinite.</p>
 <p>容易证明，UMVUE的协方差矩阵正是上述定义意义下的最小。则对于高维回归分析，最佳的估计量的协方差矩阵在上意义下最小，我们需要做的就是求出该UMVUE。首先铺垫以下定理：</p>
 <p><strong>定理（UMVUE 的充要条件，Rao 1952）</strong> 设 $X \sim P_\theta$ 为参数空间 $\Theta$ 上的一个统计模型，定义在样本空间 $\mathcal{X}$ 上。设 $\hat{\theta}(X)$ 是参数 $\theta$ 的一个无偏估计量，即对所有 $\theta \in \Theta$ ，有：
+</p>
 $$
-\mathbb{E}_\theta[\hat{\theta}(X)]=\theta
+\mathbb{E}\_\theta[\hat{\theta}(X)]=\theta
 $$
+<p>
 则以下两个命题等价：<br>
 1．$\hat{\theta}(X)$ 是 $\theta$ 的 UMVUE（在所有无偏估计量中具有最小方差）；<br>
 2．对于所有满足 $\mathbb{E}_\theta[U(X)]=0$ 的统计量 $U(X)$ ，都有：
+</p>
 $$
-\operatorname{Cov}_\theta(\hat{\theta}(X), U(X))=0 \quad \forall \theta \in \Theta \text {. }
-$$</p>
+\operatorname{Cov}\_\theta(\hat{\theta}(X), U(X))=0 \quad \forall \theta \in \Theta \text {. }
+$$
 <p>Gauss-Markov定理高斯我们，BLUE就是普通的最小二乘解：</p>
 <p><strong>Theorem 5(Gauss-Markov定理).</strong> Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be of rank $p$, and let
+</p>
 $$
 \mathbf{y}=\mathbf{X} \boldsymbol{\beta}+\sigma \boldsymbol{\epsilon}, \boldsymbol{\epsilon} \sim P
 $$
+<p>
 for some $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, where $\mathcal{P}$ is a class of mean-zero isotropic distributions on $\mathbb{R}^n$. If $\check{\boldsymbol{\beta}}$ is a linear unbiased estimator of $\boldsymbol{\beta}$ so that $E[\check{\boldsymbol{\beta}}]=\boldsymbol{\beta}$ for all $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, then
+</p>
 $$
 \operatorname{Var}[\check{\boldsymbol{\beta}}] \geq \operatorname{Var}[\hat{\boldsymbol{\beta}}],
 $$
+<p>
 where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
 <p>最小二乘是BLUE，这是非常non-trivial的点，因为OLS没有考虑任何的相关性，只是使得协方差矩阵的迹最小，而BLUE是协方差矩阵意义上的最小。
 <a href="https://imgse.com/i/pEHnQvn"><img src="https://s21.ax1x.com/2025/04/29/pEHnQvn.jpg" alt="pEHnQvn.jpg" border="0" /></a></p>
@@ -163,7 +170,7 @@ where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
 </div></body></html>
 
 

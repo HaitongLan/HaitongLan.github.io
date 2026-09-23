@@ -5,7 +5,7 @@
 <title>Bayesian signal processing — Haitong Lan</title>
 <meta name="description" content="Bayes method, objective function and sampling.">
 <link rel="canonical" href="https://HaitongLan.github.io/p/bayesian-signal-processing/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=f5315714264216ed9ddd1dfea14ab9fa">
+<link rel="stylesheet" href="/academic.css?v=3ed198be3d9e0016f950233d90fa856d">
 <link rel="stylesheet" href="/academic-syntax.css">
 
 
@@ -51,11 +51,13 @@
 <p>假如我们有一个统计模型$f(x,\theta)$去估计原始数据$x$的分布,频率学派认为$\theta$是固定的,尽管我们现在还没有办法得到,贝叶斯学派认为$\theta$是随机的,是服从一个概率分布的随机变量。</p>
 <h3 id="bayes-the-science-of-cognitive-law">Bayes: The Science of cognitive law</h3>
 <p>贝叶斯的观点是符合人脑的认知规律的,也是现代认知心理学的基础：在认识一件事物之前,我们会先对这个事物有一定的认知,在与事物接触的过程中,我们的认知会逐渐的发生变化,或加强我们的认知,或减弱我们的认知,我们的认知从而得到了进步,这与马原中所说的认知随着实践螺旋式上升也有异曲同工之妙。贝叶斯公式就是表述了这个认知的过程：
+</p>
 $$
 \begin{equation}
 P(\theta \mid X)=\frac{P(X \mid \theta) P(\theta)}{P(X)}
 \end{equation}
 $$
+<p>
 贝叶斯学派通过引入三个名词对贝叶斯公式进行解释：</p>
 <table>
 <thead>
@@ -85,21 +87,25 @@ $$
 <p><strong>Example: Naive Bayes</strong></p>
 <p>朴素贝叶斯是一种简单的机器学习分类器,分类任务就是在给定某些特征
 $\lbrace F_i \rbrace_{i=1}^N$(Features)的条件下,判断某一事物的分类$C$(Catogories),即我们需要获得：$P(C \mid F_1:F_N)$,数据是给定条件,分类是随机变量,这就是贝叶斯方法中所说的后验分布,我们可以使用先验分布和似然来表示该后验分布：
+</p>
 $$
 \begin{equation}
 P(C \mid F_1:F_N)=\frac{P(F_1:F_N \mid C) P(C)}{P(F_1:F_N)}
 \end{equation}
 $$
+<p>
 对不同特征求给定条件的联合分布是比较困难的,naive bayes做了一个假设,在给定分类条件下,不同特征之间相互独立,即我们可以重写上述公式为
+</p>
 $$
 \begin{equation}
 P(C \mid F_1:F_N)=\frac{\prod_{i=1}^N P(F_i \mid C) P(C)}{P(F_1:F_N)}
 \end{equation}
 $$
+<p>
 分母可以通过统计样本得出,但是并不重要,因为所有的后验分布共享一个分母,当分类器判别样本时,都具有相同的权重。</p>
 <hr>
 <p><strong>Example:Use bayes to process Gaussian distribution</strong></p>
-<p>联想DDPM中求$q(x_{t-1} \mid x_t,x_0)$的过程,我们使用贝叶斯公式去计算似然和先验都为Gausssian分布的情况,即$\lbrace X_1,&hellip;,X_N \rbrace \overset{\mathrm{iid}}{\sim}N(\mu,\sigma_x^2)$,$\mu\sim N(\mu_\theta,\sigma_\mu^2)$,已知先验分布和似然,去求后验分布,即</p>
+<p>联想DDPM中求$q(x_{t-1} \mid x_t,x_0)$的过程,我们使用贝叶斯公式去计算似然和先验都为Gausssian分布的情况,即$\lbrace X_1,...,X_N \rbrace \overset{\mathrm{iid}}{\sim}N(\mu,\sigma_x^2)$,$\mu\sim N(\mu_\theta,\sigma_\mu^2)$,已知先验分布和似然,去求后验分布,即</p>
 <div>
 $$
 \begin{equation}
@@ -163,46 +169,58 @@ E[d(\hat{\theta}(x), \theta)]&=\iint d(\theta, \hat{\theta}(x)) P_{x, \theta}\le
 $$
 </div>
 <p>可见,频率学派尽可能的削弱$\theta$的随机性,因为他们认为$\theta$是确定的（所以在频率学派中有极大化似然这种方法）,但是频率学派种所需要的似然往往是不可以直接计算的,因此有了经验风险极小化(Empirical Risk Minimization,ERM)理论,该理论一般将样本均值取代理论均值,即
+</p>
 $$
 E[d(\hat{\theta}(x), \theta)]=\frac{1}{N}\sum_{k=1}^Nd(\theta_k, \hat{\theta}_k(x))
 $$
+<p>
 贝叶斯学派则是尽可能削弱数据的随机性,认为已经发生的实验就是确定的,将问题的重心转化到后验分布的计算上,在后面我们会看到,使用贝叶斯方法处理统计模型的关键就是得到后验分布以及如何处理后验分布。</p>
 <h3 id="choice-of-measurement">Choice of measurement</h3>
 <ol>
 <li>
 <p>MSE</p>
 <p>选择度量为均方误差,可以定义风险(忽略了数据的随机性)：
+</p>
 $$
-\begin{equation}
-R(\theta, \hat{\theta})=\int(\theta-\hat{\theta})^2 P(\theta \mid x) d \theta
-\end{equation}
-$$
+    \begin{equation}
+    R(\theta, \hat{\theta})=\int(\theta-\hat{\theta})^2 P(\theta \mid x) d \theta
+    \end{equation}
+    $$
+<p>
 由拉格朗日乘子法,最优的$\hat{\theta}$在风险函数的导数为零处,即使得$\nabla_{\hat{\theta}} R(\theta, \hat{\theta})=0$,我们求解该式,可以得到
+</p>
 $$
 \begin{equation}
 \hat{\theta}^*=\frac{\int \theta p(\theta \mid x) d \theta}{\int p(\theta \mid x) d \theta}=\int \theta p(\theta \mid x) d \theta=E[\theta \mid x]
 \end{equation}
 $$
+<p>
 这与频率学派下的MMSE最优解不谋而合,都是均方误差的形式,但是各自的随机变量不同,由此可见,条件期望就是均方误差意义下的最优估计。</p>
 </li>
 <li>
 <p>MAE</p>
 <p>平均绝对误差意义下,风险函数为
+</p>
 $$
-\begin{equation}
-R(\theta, \hat{\theta})=\int\mid \theta-\hat{\theta}\mid P(\theta \mid x) d \theta
-\end{equation}
-$$
+    \begin{equation}
+    R(\theta, \hat{\theta})=\int\mid \theta-\hat{\theta}\mid P(\theta \mid x) d \theta
+    \end{equation}
+    $$
+<p>
 由于风险函数存在绝对值,所以无法直接求导,我们可以将绝对值拆开写为
+</p>
 $$
-\begin{equation}
-R(\theta, \hat{\theta})=-\int_{-\infin}^{\hat{\theta}}( \theta-\hat{\theta}) P(\theta \mid x) d \theta+\int_{\hat{\theta}}^{+\infin}(\theta-\hat{\theta}) P(\theta \mid x) d \theta
-\end{equation}
-$$
+    \begin{equation}
+    R(\theta, \hat{\theta})=-\int_{-\infin}^{\hat{\theta}}( \theta-\hat{\theta}) P(\theta \mid x) d \theta+\int_{\hat{\theta}}^{+\infin}(\theta-\hat{\theta}) P(\theta \mid x) d \theta
+    \end{equation}
+    $$
+<p>
 现在我们就可以利用变上下限积分的技巧对风险函数进行求导,求导的过程就是把$\theta-\hat{\theta}$拆开,使得积分的变上限不在积分变量之内,在利用求导法则正常求导即可,可以求得：
+</p>
 $$
 \nabla_{\hat{\theta}} R(\theta, \hat{\theta})=\int_{-\infty}^{\hat{\theta}} p(\theta \mid x) d \theta-\int_{\hat{\theta}}^{+\infty} p(\theta \mid x) d \theta=0
 $$
+<p>
 直观的观察这个式子,当风险函数的导数等于0时,$\hat{\theta}$就是平分后验分布概率密度函数面积的垂直于$\theta$轴的直线,也就是统计量中的中位数,即中位数是MAE意义下的最优估计。</p>
 </li>
 <li>
@@ -255,11 +273,13 @@ P(\theta \mid x) & =\frac{P(x \mid \theta) P(\theta)}{P(x)} \\
 $$
 </div>
 <p>接下来,我们考虑当先验分布服从标准均匀分布的情况下后验概率的计算,即计算
+</p>
 $$
 \begin{equation}
 P(\theta \mid x)=\frac{\theta^x(1-\theta)^{n-x}}{\int_0^1 \theta^x(1-\theta)^{n-x} d \theta}
 \end{equation}
 $$
+<p>
 在计算后验概率之前,我们需要引入<em>Beta</em>分布来辅助我们的贝叶斯因子的计算,<em>Beta</em>分布的pdf为</p>
 <div>
 $$
@@ -273,10 +293,12 @@ f(x ; \alpha, \beta)
 \end{equation}
 $$
 </div>
-<p>其中,$\alpha,\beta&gt;0$,$\Gamma(x)$是Gamma函数,有性质
+<p>其中,$\alpha,\beta>0$,$\Gamma(x)$是Gamma函数,有性质
+</p>
 $$
-\Gamma(x)=\int_0^{+\infty} t^{x-1} e^{-t} d t(x&gt;0)=(x-1)!
+\Gamma(x)=\int_0^{+\infty} t^{x-1} e^{-t} d t(x>0)=(x-1)!
 $$
+<p>
 <em>Beta</em>函数$B(\alpha, \beta)$的定义为$B(\alpha, \beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1} \mathbf{d} t$,现在我们来<strong>证明</strong>$\mathrm{~B}(\alpha, \beta)=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$:</p>
 <p>观察<em>Beta</em>函数的定义,类似卷积的定义,注意到：</p>
 <div>
@@ -331,11 +353,13 @@ $$
 $$
 </div>
 <p>则我们计算出来的后验分布最终形式为
+</p>
 $$
 \begin{equation}
 P(\theta, x)=\frac{(n+1)!}{x!(n-x)!} \theta^x(1-\theta)^{n-x}
 \end{equation}
 $$
+<p>
 可见该后验分布实际上是服从<em>Beta</em>分布的。根据MSE意义下的最优估计,有</p>
 <div>
 $$
@@ -352,25 +376,33 @@ $$
 </div>
 <p>至此,我们求得了后验分布和MSE意义下的模型最优估计。
 如果再进一步的处理该条件期望,我们可以得到线型凸组合的形式：
+</p>
 $$
 E[\theta \mid x]=\frac{n}{n+2}\frac{x}{n}+\frac{2}{n+2}\frac{1}{2}
 $$
+<p>
 $\frac{x}{n}$反应了似然意义上的某种均值,$\frac{1}{2}$为先验分布的均值,这也显示了在伯努利实验的情况下,最优估计的过程是不断线性凸组合的过程。</p>
 <hr>
 <p><strong>Example:Conjugate prior</strong></p>
 <p>在上个例子中,我们一开始假设先验分布服从标准均匀分布,但是我们根据伯努利的似然求出后验分布之后,发现后验分布并不服从标准均匀分布,而是服从<em>Beta</em>分布,这说明我们的先验分布并没有反映事物的客观性质,在统计学中,如果我们的先验分布和后验分布的分布类型一致,我们就称该先验分布为共轭先验。</p>
 <p>在一些比较简单的概率模型中,共轭先验是已知的并且可以提前制定的,例如当似然服从伯努利分布时,共轭先验为<em>Beta</em>分布,但是更多的(绝大多数的)概率模型的共轭先验是难以得到的。我们沿用上一个例子的情景,令先验分布为<em>Beta</em>分布,即
+</p>
 $$
 P(\theta)=\frac{(a+b+1)!}{(a-1)!(b-1)!}\theta^{a-1}(1-\theta)^{b-1}
 $$
+<p>
 使用与上一个例子同样的方法去求后验分布和条件期望,最终可以求得条件期望为
+</p>
 $$
 E[\theta \mid x] = \frac{x+a}{n+a+b}
 $$
+<p>
 同样的,该条件期望也可以写成线型图组合的形式,即
+</p>
 $$
 E[\theta \mid x]=\frac{a+b}{n+a+b}\frac{a}{a+b}+\frac{n}{n+a+b}\frac{x}{n}
 $$
+<p>
 依然是某种实验中的均值与先验分布均值的线性凸组合,从我们在上一个章节中的Gauss分布似然到这个章节的伯努利分布似然,最后都得到了线性凸组合的学习形式,这可能并不是一种偶然,这些简单的例子给我们启发：在高维空间中,复杂分布的学习过程也可能是迭代的线性凸组合。</p>
 <hr>
 <h2 id="sampling">Sampling</h2>
@@ -382,38 +414,43 @@ $$
 <p>逆分布采样的描述很简单，目标生成随机变量$X\sim F(X)$的样本($F(x)$为累计分布函数)，只需要生成随机样本$Y\sim F^{-1}(U)$即可，$Y$即想要得到的分布，$U$为服从标准正态分布的随机变量。</p>
 <p>这样来看，生成随机变量的样本的过程就很简单，第一步，生成均匀分布的样本(可以利用线性同余法等方法生成)，第二步，求得目标分布累积分布函数的逆，第三步，代入累积分布函数的逆求得目标样本。</p>
 <p>现在简单的<strong>证明</strong>一下随机变量$Y$与随机变量$X$服从同一个分布，求$Y$的累积分布函数：
+</p>
 $$
 \begin{equation}
 \begin{aligned}
-F_Y(y)&amp; =P(y\leq Y)\
-&amp; =P(F^{-1}(u)\leq Y)\
-&amp; =P(u\leq F(Y))\
-&amp; =F(Y)
+F_Y(y)& =P(y\leq Y)\\
+& =P(F^{-1}(u)\leq Y)\\
+& =P(u\leq F(Y))\\
+& =F(Y)
 \end{aligned}
 \end{equation}
 $$
+<p>
 可见，$Y$的累积分布函数实际上就是$X$的累积分布函数，所以它们两个是同一个随机变量，如此，对于易于求得逆累积分布的随机变量，我们便可以通过这种方法求得符合该分布的样本，例如指数分布、泊松分布。</p>
 <hr>
 <p><strong>Example:Sampling for Gaussian Distribution</strong>
 Guassian分布的逆分布函数并不好求，虽然我们可以通过中心极限定理生成Gaussian分布，但那种方法并不属于逆分布生成，Box-Muller算法是一种经典的Gaussian分布生成算法，使用了极坐标变换来处理Gaussian分布难以求逆的问题，接下来我们介绍这种方法。</p>
 <p>假设我们目标求得两个独立同分布的标准高斯随机变量，$X_1,X_2\overset{\mathrm{iid}}{\sim} N(0,1)$，则它们的联合概率密度为
+</p>
 $$
 \begin{equation}
 \begin{aligned}
-f_{X Y}(x, y) &amp; =\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{x^2}{2 \sigma^2}\right) \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{y^2}{2 \sigma^2}\right) \
-&amp; =\frac{1}{2 \pi } \exp \left(-\frac{x^2+y^2}{2 }\right)
+f_{X Y}(x, y) & =\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{x^2}{2 \sigma^2}\right) \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{y^2}{2 \sigma^2}\right) \\
+& =\frac{1}{2 \pi } \exp \left(-\frac{x^2+y^2}{2 }\right)
 \end{aligned}
 \end{equation}
 $$
+<p>
 对该联合概率密度进行极坐标变换，有
+</p>
 $$
 \begin{equation}
 \begin{aligned}
-f_{X Y}(x, y) &amp;=f_{XY}(\rho \cos\theta,\rho \sin\theta)\
-&amp;=\frac{1}{2 \pi } \exp \left(-\frac{\rho^2}{2 }\right)\rho
+f_{X Y}(x, y) &=f_{XY}(\rho \cos\theta,\rho \sin\theta)\\
+&=\frac{1}{2 \pi } \exp \left(-\frac{\rho^2}{2 }\right)\rho
 \end{aligned}
 \end{equation}
-$$</p>
+$$
 <hr>
 <h3 id="accept-reject-sampling">Accept-reject sampling</h3>
 <h3 id="importance-sampling">Importance sampling</h3>
@@ -423,7 +460,7 @@ $$</p>
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/noisierier">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
+<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
 </div></body></html>
 
 

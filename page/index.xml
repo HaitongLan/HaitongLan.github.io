@@ -7,15 +7,8 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Haitong&#39;s blog</copyright>
-    <lastBuildDate>Wed, 09 Sep 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://HaitongLan.github.io/page/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About me</title>
-      <link>https://HaitongLan.github.io/about-me/</link>
-      <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://HaitongLan.github.io/about-me/</guid>
-      <description>I am a first-year master&amp;rsquo;s student in Computer Science and Technology at ShanghaiTech University, advised by Prof. Ziping Zhao. I began my graduate studies in September 2026.&#xA;My research interests are in optimization, particularly optimization on probability spaces and over probability distributions, and statistics. I am drawn to the mathematical foundations of these areas and the connections between them.&#xA;Previously, I completed my undergraduate studies at Beijing University of Posts and Telecommunications (BUPT).</description>
-    </item>
     <item>
       <title>Archives</title>
       <link>https://HaitongLan.github.io/archives/</link>
@@ -42,7 +35,7 @@
       <link>https://HaitongLan.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://HaitongLan.github.io/research/</guid>
-      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Optimization I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
+      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Statistics I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
     </item>
     <item>
       <title>Search</title>

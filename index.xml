@@ -14,7 +14,7 @@
       <link>https://HaitongLan.github.io/p/convex-optimization/</link>
       <pubDate>Sun, 13 Sep 2026 00:00:00 +0800</pubDate>
       <guid>https://HaitongLan.github.io/p/convex-optimization/</guid>
-      <description>This notebook will record my study of convex optimization during graduate school. I will add definitions, proofs, worked examples, and questions as I work through the subject.&#xA;Study log September 13, 2026 — Notebook created. Study entries will follow.&#xA;Notes To be added as my study progresses.&#xA;Questions I will collect questions and points to revisit here.&#xA;References Reading materials will be listed here as I use them.</description>
+      <description>This notebook records my study of convex optimization during graduate school. Convex Sets and Cones From lines to line segments Definition 1 (Affine Set, 仿射集). A set $C\subseteq\mathbb R^n$ is affine if, for any $x_1,x_2\in C$ and $\theta\in\mathbb R$, $$ \theta x_1+(1-\theta)x_2\in C. $$ Allowing every real $\theta$ means that the entire line through $x_1$ and $x_2$ lies in $C$. If we restrict $\theta$ to $[0,1]$,</description>
     </item>
     <item>
       <title>Optimal Transport</title>
@@ -101,13 +101,6 @@
       <description>Bayesian signal processing 该博客为张颢老师所讲的现代信号处理的贝叶斯信号处理部分的课程个人学习笔记,涵盖贝叶斯公式的含义,贝叶斯学派与频率学派的关系,贝叶斯统计</description>
     </item>
     <item>
-      <title>About me</title>
-      <link>https://HaitongLan.github.io/about-me/</link>
-      <pubDate>Sat, 03 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://HaitongLan.github.io/about-me/</guid>
-      <description>I am a first-year master&amp;rsquo;s student in Computer Science and Technology at ShanghaiTech University, advised by Prof. Ziping Zhao. I began my graduate studies in September 2026.&#xA;My research interests are in optimization, particularly optimization on probability spaces and over probability distributions, and statistics. I am drawn to the mathematical foundations of these areas and the connections between them.&#xA;Previously, I completed my undergraduate studies at Beijing University of Posts and Telecommunications (BUPT).</description>
-    </item>
-    <item>
       <title>Archives</title>
       <link>https://HaitongLan.github.io/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -133,7 +126,7 @@
       <link>https://HaitongLan.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://HaitongLan.github.io/research/</guid>
-      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Optimization I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
+      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Statistics I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
     </item>
     <item>
       <title>Search</title>
