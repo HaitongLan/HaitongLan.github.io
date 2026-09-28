@@ -10,3 +10,4 @@
 .blog-article .prose h3{font-size:22px;font-weight:600;line-height:1.5;margin:32px 0 14px}
 .blog-article .prose h4,.blog-article .prose h5,.blog-article .prose h6{font-size:18px;font-weight:600;line-height:1.6;margin:26px 0 12px}
 @media(max-width:600px){.blog-article .page-heading h1{font-size:29px}.blog-article .prose h1{font-size:27px}.blog-article .prose h2{font-size:24px;margin-top:36px}.blog-article .prose h3{font-size:21px}}
+.publications{list-style:none;padding:0;margin:0}.publications li{padding:8px 0 16px;border-bottom:1px solid var(--rule)}.publications cite{display:block;font-size:19px;font-style:normal;font-weight:600;line-height:1.5}.publication-authors{display:block;font-size:16px;margin-top:3px}.publications .meta{display:block;margin-top:3px}.home-publications cite{font-size:16px;font-weight:500}.home-publications .publication-authors{font-size:14px}.home-publications .meta{font-size:13px}

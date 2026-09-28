@@ -5,7 +5,7 @@
 <title>Optimal Transport — Haitong Lan</title>
 <meta name="description" content="An ongoing study notebook on optimal transport.">
 <link rel="canonical" href="https://HaitongLan.github.io/p/optimal-transport/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=3ed198be3d9e0016f950233d90fa856d">
+<link rel="stylesheet" href="/academic.css?v=fb30df055541d00a17f817b530d50088">
 <link rel="stylesheet" href="/academic-syntax.css">
 
 
@@ -17,14 +17,15 @@
 </head>
 <body><a class="skip" href="#main">Skip to content</a><div class="shell">
 <header class="site-header"><a class="name" href="/">Haitong Lan</a>
-<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>Optimal Transport</h1><p class="meta">September 13, 2026 · 3 min read · Mathematics</p><p class="lead">An ongoing study notebook on optimal transport.</p></header>
+<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
+<main id="main"><article class="blog-article"><header class="page-heading"><h1>Optimal Transport</h1><p class="meta">September 13, 2026 · 4 min read · Mathematics</p><p class="lead">An ongoing study notebook on optimal transport.</p></header>
 <details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
   <ol>
     <li><a href="#theoretical-foundations">Theoretical Foundations</a>
       <ol>
         <li><a href="#monge-problem">Monge Problem</a></li>
         <li><a href="#kantorovich-relaxation">Kantorovich Relaxation</a></li>
+        <li><a href="#wasserstein-distance">Wasserstein Distance</a></li>
       </ol>
     </li>
   </ol>
@@ -344,7 +345,7 @@ $$
 
 cannot be connected by any deterministic map, because $T_\#\delta_0$ is always a single Dirac measure.</p>
 <h3 id="kantorovich-relaxation">Kantorovich Relaxation</h3>
-<p><strong>Why relax Monge?</strong></p>
+<p>Why relax Monge?</p>
 <p>Motivation: the Monge formulation has two structural difficulties. First, the deterministic constraint forbids mass splitting and can make the feasible set empty. Second, optimization over maps satisfying $T_\#\alpha=\beta$ has poor convex structure. Kantorovich replaces a deterministic map by a coupling, allowing a source mass to be split among several targets and turning the problem into linear optimization over a convex set.</p>
 <p><strong>Definition 1 (Admissible Coupling, 可行耦合).</strong> For discrete measures
 $$
@@ -436,7 +437,7 @@ L_C(a,b)
 $$
 
 Unlike a permutation, a row of $P$ may contain several positive entries, so the mass at one source point may be split among several targets.</p>
-<p><strong>Birkhoff polytope and matching.</strong></p>
+<p>Birkhoff polytope and matching.</p>
 <p><strong>Definition 3 (Birkhoff Polytope).</strong> The Birkhoff polytope is the set of doubly stochastic matrices
 $$
 
@@ -493,7 +494,7 @@ $$
 
 Equivalently, the extreme points of $\mathcal B_n$ are exactly the permutation matrices.</p>
 <p><strong>Remark 5 (Tightness for Assignment Problems).</strong> Although Kantorovich couplings allow mass splitting, the Birkhoff&ndash;von Neumann theorem shows that every feasible plan for uniform measures is a convex combination of permutation couplings. Because the objective is linear, an optimum is attained at a permutation coupling; thus the relaxation has the same value as the matching problem.</p>
-<p><strong>Couplings as joint distributions.</strong></p>
+<p>Couplings as joint distributions.</p>
 <p>The matrix formulation is only the discrete representation of a more general object. For arbitrary measures, the transport plan is a probability measure on the product space.</p>
 <p><strong>Definition 6 (Coupling of Measures).</strong> Let $\alpha\in\mathcal M_+^1(\mathcal X)$ and $\beta\in\mathcal M_+^1(\mathcal Y)$. A coupling of $\alpha$ and $\beta$ is a probability measure
 $$
@@ -711,6 +712,75 @@ $$
 $$
 
 the relaxed solution reduces again to a Monge transport map.</p>
+<h3 id="wasserstein-distance">Wasserstein Distance</h3>
+<p><strong>Definition 1 (Discrete Wasserstein distance).</strong> Let $a,b\in\Sigma_n$, and let $D\in\mathbb R_+^{n\times n}$ be a metric matrix on $\{1,\ldots,n\}$. For $p\geq1$, define
+$$
+
+W_p(a,b)=L_{D^p}(a,b)^{1/p}=\left(\min_{P\in U(a,b)}\sum_{i,j}D_{ij}^pP_{ij}\right)^{1/p}.
+
+$$
+
+Here $D^p$ is taken entrywise.</p>
+<p><strong>Remark 2.</strong> When $p$ is positive and at most one, the inequality
+$$
+
+(x+y)^p\leq x^p+y^p
+
+$$
+
+shows that the entrywise power $D^p$ is also a metric. Consequently, $W_p^p=L_{D^p}$ is a distance, although $W_p$ itself need not satisfy the triangle inequality when $p<1$.</p>
+<p><strong>Definition 3 (Continuous Wasserstein distance).</strong> Let $(\mathcal X,d)$ be a metric space, let $\alpha,\beta\in\mathcal M_+^1(\mathcal X)$, and let $p\geq1$. Then
+$$
+
+W_p(\alpha,\beta)=\left(\inf_{\pi\in\Pi(\alpha,\beta)}\int_{\mathcal X\times\mathcal X}d(x,y)^p\,d\pi(x,y)\right)^{1/p}.
+
+$$
+</p>
+<p><strong>Remark 4 (Random-variable interpretation and $W_\infty$).</strong> If $(X,Y)\sim\pi$, then
+$$
+
+W_p(\alpha,\beta)=\inf_{\pi\in\Pi(\alpha,\beta)}\bigl(\mathbb E_\pi[d(X,Y)^p]\bigr)^{1/p}=\inf_{\pi\in\Pi(\alpha,\beta)}\|d(X,Y)\|_{L^p(\pi)}.
+
+$$
+
+Thus $W_p$ minimizes the $L^p$ transportation distance over joint distributions with the prescribed marginals.</p>
+<p>For $p=+\infty$, define
+$$
+
+W_\infty(\alpha,\beta)=\inf_{\pi\in\Pi(\alpha,\beta)}\operatorname*{ess\,sup}_{(x,y)\sim\pi}d(x,y)=\inf_{\pi\in\Pi(\alpha,\beta)}\|d(X,Y)\|_{L^\infty(\pi)}.
+
+$$
+
+Finite $p$ measures an averaged transportation cost, whereas $W_\infty$ minimizes the largest transportation distance carrying nonzero mass.</p>
+<p><strong>Definition 5 (Weak convergence).</strong> On a compact space $\mathcal X$, a sequence $\alpha_k\in\mathcal M_+^1(\mathcal X)$ converges weakly to $\alpha$, written $\alpha_k\rightharpoonup\alpha$, if for every $g\in C(\mathcal X)$,
+$$
+
+\int_{\mathcal X}g(x)\,d\alpha_k(x)\longrightarrow\int_{\mathcal X}g(x)\,d\alpha(x).
+
+$$
+</p>
+<p><strong>Remark 6 (Convergence in distribution and Wasserstein distance).</strong> If $X_k\sim\alpha_k$ and $X\sim\alpha$, then
+$$
+
+\alpha_k\rightharpoonup\alpha\quad\Longleftrightarrow\quad X_k\xrightarrow{d}X.
+
+$$
+
+On a compact metric space,
+$$
+
+W_p(\alpha_k,\alpha)\longrightarrow0\quad\Longleftrightarrow\quad\alpha_k\rightharpoonup\alpha.
+
+$$
+</p>
+<p><strong>Proposition 7 (Centering decomposition).</strong> Define $\widetilde\alpha=T_{m_\alpha\#}\alpha$ and $\widetilde\beta=T_{m_\beta\#}\beta$. These centered measures have zero mean, and
+$$
+
+W_2(\alpha,\beta)^2=W_2(\widetilde\alpha,\widetilde\beta)^2+\|m_\alpha-m_\beta\|^2.
+
+$$
+
+In short, the squared distance separates the difference in means from the discrepancy between the centered distributions.</p>
 </div>
 
 <p class="back"><a href="/post/">← All posts</a></p></article></main>

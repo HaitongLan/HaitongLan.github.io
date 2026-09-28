@@ -10,46 +10,46 @@
     <lastBuildDate>Mon, 30 Jun 2025 22:43:05 +0800</lastBuildDate>
     <atom:link href="https://HaitongLan.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>学习笔记|现代数字信号处理选学</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</link>
+      <title>Selected Topics in Modern Digital Signal Processing</title>
+      <link>https://HaitongLan.github.io/p/selected-topics-in-modern-digital-signal-processing/</link>
       <pubDate>Mon, 28 Apr 2025 15:48:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%8E%B0%E4%BB%A3%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%80%89%E5%AD%A6/</guid>
+      <guid>https://HaitongLan.github.io/p/selected-topics-in-modern-digital-signal-processing/</guid>
       <description>课程介绍 张灏老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张灏老师的课程中能感受到浓浓的工程师</description>
     </item>
     <item>
-      <title>学习笔记|随机分析</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</link>
+      <title>Stochastic Analysis</title>
+      <link>https://HaitongLan.github.io/p/stochastic-analysis/</link>
       <pubDate>Fri, 14 Mar 2025 19:24:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%9A%8F%E6%9C%BA%E5%88%86%E6%9E%90/</guid>
+      <guid>https://HaitongLan.github.io/p/stochastic-analysis/</guid>
       <description>课程介绍 台湾交通大学吴庆堂老师随机分析，课程视频：金融随机分析. 参考网站：國立交通大學開放式課程 (NCTU OCW). 参考资料：北京大学数学科学学院金融数学系</description>
     </item>
     <item>
-      <title>学习笔记|课题组讨论班</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</link>
+      <title>Advanced Probability Theory</title>
+      <link>https://HaitongLan.github.io/p/advanced-probability-theory/</link>
       <pubDate>Mon, 10 Mar 2025 19:24:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%AF%BE%E9%A2%98%E7%BB%84%E8%AE%A8%E8%AE%BA%E7%8F%AD/</guid>
+      <guid>https://HaitongLan.github.io/p/advanced-probability-theory/</guid>
       <description>高等概率论 王拓学长分享的高等概率论，讲义和视频见讨论班网页 Seminar Information 在开始之前，先提出一些启发性的问题，概率论中的 Event,Probability,random variable,distribution of r.v.,independ</description>
     </item>
     <item>
-      <title>学习笔记|信息论</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/</link>
+      <title>Information Theory</title>
+      <link>https://HaitongLan.github.io/p/information-theory/</link>
       <pubDate>Tue, 18 Feb 2025 00:21:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BF%A1%E6%81%AF%E8%AE%BA/</guid>
+      <guid>https://HaitongLan.github.io/p/information-theory/</guid>
       <description>课程介绍 信息论（2019年春）台湾交通大学陈伯宁，哔哩哔哩视频：信息论（2019年春）台湾交通大学陈伯宁,参考网站：消息理論,参考书籍：An</description>
     </item>
     <item>
-      <title>学习笔记|统计学基础</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</link>
+      <title>Advanced Algebra</title>
+      <link>https://HaitongLan.github.io/p/advanced-algebra/</link>
       <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%9F%BA%E7%A1%80/</guid>
-      <description>介绍 这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一</description>
+      <guid>https://HaitongLan.github.io/p/advanced-algebra/</guid>
+      <description>课程介绍 谢启鸿老师高等代数学，参考网站：谢启鸿高等代数官方博客,b站课程：数学专业 高等代数学-复旦大学-谢启鸿-高清。 第一章 行列式 可以由递归</description>
     </item>
     <item>
-      <title>学习笔记|高等代数</title>
-      <link>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</link>
+      <title>Foundations of Mathematical Statistics</title>
+      <link>https://HaitongLan.github.io/p/foundations-of-mathematical-statistics/</link>
       <pubDate>Sun, 26 Jan 2025 00:21:05 +0800</pubDate>
-      <guid>https://HaitongLan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/</guid>
-      <description>课程介绍 谢启鸿老师高等代数学，参考网站：谢启鸿高等代数官方博客,b站课程：数学专业 高等代数学-复旦大学-谢启鸿-高清。 第一章 行列式 可以由递归</description>
+      <guid>https://HaitongLan.github.io/p/foundations-of-mathematical-statistics/</guid>
+      <description>介绍 这篇笔记用以记录统计学中的经典Topic，包含数理统计、贝叶斯统计、高维统计、随机过程、机器学习等等，持续更新，个人觉得将这些东西放在一</description>
     </item>
     <item>
       <title>Course notes</title>

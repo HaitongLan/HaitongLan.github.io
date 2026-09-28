@@ -31,11 +31,18 @@
       <description>I hope this page will be a place where I can share my life and work. I will update it regularly with my latest news and updates. Just keep going!&#xA;September 09 2026 | I officially began my graduate studies at ShanghaiTech University. I look forward to learning, exploring new ideas, and making meaningful research progress.&#xA;June 01 2026 | Tuned in to the OT+OPT Workshop online! Gained a lot of inspiring insights into the latest research in optimization and optimal transport.</description>
     </item>
     <item>
+      <title>Publications</title>
+      <link>https://HaitongLan.github.io/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://HaitongLan.github.io/publications/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Research interests</title>
       <link>https://HaitongLan.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://HaitongLan.github.io/research/</guid>
-      <description>My current research focuses on optimization for time series models. I am also interested in exploring optimization on probability spaces and over probability distributions.&#xA;Optimization &amp;amp; Statistics I am currently studying optimization for autoregressive moving-average (ARMA) and time-varying parameter (TVP) models.&#xA;Optimization on probability spaces and distributions This is a direction I would like to explore in the future; I have not yet begun research in this area.</description>
+      <description>These directions concern optimization problems in statistical inference, structured models, and spaces of probability distributions.&#xA;Optimization for statistical inference Statistical inference often requires solving optimization problems to estimate unknown parameters or latent structure from data. Key questions include how to design objectives that reflect the statistical model and algorithms that remain reliable under noise and limited observations.&#xA;Optimization with Low-Rank and Sparse Structures Low-rank and sparse structures appear in many estimation and recovery problems.</description>
     </item>
     <item>
       <title>Search</title>
