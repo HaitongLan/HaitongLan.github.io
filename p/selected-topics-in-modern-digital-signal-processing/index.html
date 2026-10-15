@@ -1,177 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Selected Topics in Modern Digital Signal Processing — Haitong Lan</title>
-<meta name="description" content="Lecture notes from Professor Hao Zhang’s modern digital signal processing course at the University of Chinese Academy of Sciences.">
-<link rel="canonical" href="https://HaitongLan.github.io/p/selected-topics-in-modern-digital-signal-processing/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=fb30df055541d00a17f817b530d50088">
-<link rel="stylesheet" href="/academic-syntax.css">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
-<script defer src="/math.js"></script>
-
-</head>
-<body><a class="skip" href="#main">Skip to content</a><div class="shell">
-<header class="site-header"><a class="name" href="/">Haitong Lan</a>
-<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>Selected Topics in Modern Digital Signal Processing</h1><p class="meta">April 28, 2025 · 5 min read · Note, Math</p><p class="lead">Lecture notes from Professor Hao Zhang’s modern digital signal processing course at the University of Chinese Academy of Sciences.</p></header>
-<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
-  <ol>
-    <li><a href="#课程介绍">课程介绍</a></li>
-    <li><a href="#最佳线性无偏估计">最佳线性无偏估计</a></li>
-    <li><a href="#线性估计的正交性原理">线性估计的正交性原理</a></li>
-    <li><a href="#平稳随机序列线性估计">平稳随机序列线性估计</a></li>
-    <li><a href="#卡尔曼滤波">卡尔曼滤波</a></li>
-    <li><a href="#核方法">核方法</a></li>
-    <li><a href="#正则化">正则化</a></li>
-    <li><a href="#lms算法">LMS算法</a></li>
-    <li><a href="#一阶优化算法">一阶优化算法</a></li>
-    <li><a href="#递归最小二乘rls">递归最小二乘(RLS)</a></li>
-    <li><a href="#凸优化基础">凸优化基础</a></li>
-    <li><a href="#阵列信号处理">阵列信号处理</a>
-      <ol>
-        <li><a href="#doa估计">DOA估计</a></li>
-        <li><a href="#doa估计的-c-r-bound">DOA估计的 C-R Bound</a></li>
-        <li><a href="#mimo">MIMO</a></li>
-      </ol>
-    </li>
-    <li><a href="#时频分析">时频分析</a>
-      <ol>
-        <li><a href="#stft和-wigner-ville-变换">STFT和 Wigner-Ville 变换</a></li>
-        <li><a href="#小波分析和-paserval-frame">小波分析和 Paserval frame</a></li>
-      </ol>
-    </li>
-    <li><a href="#稀疏信号处理">稀疏信号处理</a></li>
-    <li><a href="#贝叶斯信号处理">贝叶斯信号处理</a></li>
-  </ol>
-</nav></details>
-<div class="prose"><h2 id="课程介绍">课程介绍</h2>
-<p>张灏老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张灏老师的课程中能感受到浓浓的工程师思维，并不会拘谨于定义定理的条条框框，而是按照逻辑穿针引线的将知识串起来，由此发现知识背后隐含的哲学思想，这也是张老师讲课的宗旨：每节课让学生学会一种思想。</p>
-<p>张灏老师所讲的数字信号处理、随机过程、现代信号处理（二）课程本人之前都学过一些，最近发现张老师的信号处理（一）课程还没有学过，并且最近需要补充一些估计和机器学习的理论，所以才学习该课程，该课程虽说是现代数字信号处理，但是讲的偏统计，更像统计推断和机器学习的结合。</p>
-<p>选学了部分的现代信号处理（一），这里的笔记同样有现代信号处理（二）的内容。</p>
-<p>由于张老师讲课不重点强调定义定理，所以从头到尾整理张老师的推导是非常大的工程量，本人将贴出学习笔记，并在重点部分加以补充。</p>
-<p>参考视频：</p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web">现代数字信号处理I 张颢 2023年秋</a></li>
-<li><a href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">现代数字信号处理II 张颢 2024年春</a></li>
-</ol>
-<p>推荐视频：</p>
-<ol>
-<li><a href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">现代数字信号处理II 张颢 2024年春</a></li>
-<li><a href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">随机过程 张颢 2024年春</a></li>
-<li><a href="https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">数字信号处理 张颢 2023年秋</a></li>
-</ol>
-<p>推荐阅读：<a href="https://qhbk.tsinghua.edu.cn/xqh/2024-12/06/content_99183515.html">张颢：在讲台之上，与热爱同行</a></p>
-<p>张颢老师对于能熟练的推导公式说：“无他，惟手熟尔。”听张老师的课程一行一行的写下来，并且时常温习，将会带来很大的收获。</p>
-<h2 id="最佳线性无偏估计">最佳线性无偏估计</h2>
-<p>有一本小册子，推荐大家阅读：<a href="https://www2.stat.duke.edu/~pdh10/Teaching/721/Materials/ch2blue.pdf">Best Linear Unbiased Estimation</a></p>
-<p><strong>定义（最佳线性无偏估计（BLUE，Best Linear unbiased estimator））.</strong> 设 $\hat{\theta}$ 是参数 $\theta$ 的线性无偏估计。如果对 $\theta$ 的任意一个线性无偏估计 $\theta^{\*}$ ，有 $\operatorname{var}\left(\theta^{\*}\right) \geq \operatorname{var}(\hat{\theta})$ ，则称 $\hat{\theta}$ 是参数 $\theta$ 的 BLUE 。</p>
-<p>对于高维回归问题，我们不能比较方差，只能对比协方差矩阵，那么针对于协方差矩阵，如何定义这个最优性呢，我们需要引入关于半正定矩阵的一种度量。</p>
-<p><strong>Definition  (Loewner order).</strong> For two positive semidefinite matrices $\Sigma_1$ and $\Sigma_2$ of the same size, we say that $\Sigma_1>\Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive definite, and that $\Sigma_1 \geq \Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive semidefinite.</p>
-<p>容易证明，UMVUE的协方差矩阵正是上述定义意义下的最小。则对于高维回归分析，最佳的估计量的协方差矩阵在上意义下最小，我们需要做的就是求出该UMVUE。首先铺垫以下定理：</p>
-<p><strong>定理（UMVUE 的充要条件，Rao 1952）</strong> 设 $X \sim P_\theta$ 为参数空间 $\Theta$ 上的一个统计模型，定义在样本空间 $\mathcal{X}$ 上。设 $\hat{\theta}(X)$ 是参数 $\theta$ 的一个无偏估计量，即对所有 $\theta \in \Theta$ ，有：
-</p>
-$$
-\mathbb{E}\_\theta[\hat{\theta}(X)]=\theta
-$$
-<p>
-则以下两个命题等价：<br>
-1．$\hat{\theta}(X)$ 是 $\theta$ 的 UMVUE（在所有无偏估计量中具有最小方差）；<br>
-2．对于所有满足 $\mathbb{E}_\theta[U(X)]=0$ 的统计量 $U(X)$ ，都有：
-</p>
-$$
-\operatorname{Cov}\_\theta(\hat{\theta}(X), U(X))=0 \quad \forall \theta \in \Theta \text {. }
-$$
-<p>Gauss-Markov定理高斯我们，BLUE就是普通的最小二乘解：</p>
-<p><strong>Theorem 5(Gauss-Markov定理).</strong> Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be of rank $p$, and let
-</p>
-$$
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Selected Topics in Modern Digital Signal Processing — Haitong Lan</title>
+<meta name=description content="Lecture notes from Professor Hao Zhang’s modern digital signal processing course at the University of Chinese Academy of Sciences."><link rel=canonical href=https://HaitongLan.github.io/p/selected-topics-in-modern-digital-signal-processing/><link rel=icon type=image/x-icon href="/favicon-v2.ico?v=ht-20261014"><link rel=stylesheet href="/academic.css?v=18f8d06f258ff87b66289c4bed194dc5"><link rel=stylesheet href=/academic-syntax.css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,tags:"ams"},output:{displayOverflow:"linebreak",linebreaks:{inline:!0,width:"100%"}},startup:{elements:[".blog-article"]}}</script><script defer src=https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js></script></head><body class=blog-page><a class=skip href=#main>Skip to content</a><div class=shell><header class=site-header><a class=name href=/>Haitong Lan</a><nav aria-label="Main navigation"><a href=/>Home</a><a href=/research/>Research</a><a href=/publications/>Publications</a><a href=/post/ aria-current=page>Blogs</a></nav></header><main id=main><div class=article-layout><article class=blog-article><header class=page-heading><h1>Selected Topics in Modern Digital Signal Processing</h1><p class=meta>April 28, 2025 · 5 min read · Note, Math</p><p class=lead>Lecture notes from Professor Hao Zhang’s modern digital signal processing course at the University of Chinese Academy of Sciences.</p></header><div class=prose><h2 id=课程介绍>课程介绍</h2><p>张灏老师是本人听过讲课讲的最好的老师，上课不会带任何书本或讲稿，每节课都在像讲故事一样讲数学，从张灏老师的课程中能感受到浓浓的工程师思维，并不会拘谨于定义定理的条条框框，而是按照逻辑穿针引线的将知识串起来，由此发现知识背后隐含的哲学思想，这也是张老师讲课的宗旨：每节课让学生学会一种思想。</p><p>张灏老师所讲的数字信号处理、随机过程、现代信号处理（二）课程本人之前都学过一些，最近发现张老师的信号处理（一）课程还没有学过，并且最近需要补充一些估计和机器学习的理论，所以才学习该课程，该课程虽说是现代数字信号处理，但是讲的偏统计，更像统计推断和机器学习的结合。</p><p>选学了部分的现代信号处理（一），这里的笔记同样有现代信号处理（二）的内容。</p><p>由于张老师讲课不重点强调定义定理，所以从头到尾整理张老师的推导是非常大的工程量，本人将贴出学习笔记，并在重点部分加以补充。</p><p>参考视频：</p><ol><li><a href="https://www.bilibili.com/video/BV1zw411c7PC/?share_source=copy_web">现代数字信号处理I 张颢 2023年秋</a></li><li><a href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">现代数字信号处理II 张颢 2024年春</a></li></ol><p>推荐视频：</p><ol><li><a href="https://www.bilibili.com/video/BV1Rm421H7Dc/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">现代数字信号处理II 张颢 2024年春</a></li><li><a href="https://www.bilibili.com/video/BV1Rz42127xT/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">随机过程 张颢 2024年春</a></li><li><a href="https://www.bilibili.com/video/BV1vQ4y1p79b/?share_source=copy_web&vd_source=b6424cece237934105a841d3b575c671">数字信号处理 张颢 2023年秋</a></li></ol><p>推荐阅读：<a href=https://qhbk.tsinghua.edu.cn/xqh/2024-12/06/content_99183515.html>张颢：在讲台之上，与热爱同行</a></p><p>张颢老师对于能熟练的推导公式说：“无他，惟手熟尔。”听张老师的课程一行一行的写下来，并且时常温习，将会带来很大的收获。</p><h2 id=最佳线性无偏估计>最佳线性无偏估计</h2><p>有一本小册子，推荐大家阅读：<a href=https://www2.stat.duke.edu/~pdh10/Teaching/721/Materials/ch2blue.pdf>Best Linear Unbiased Estimation</a></p><p><strong>定义（最佳线性无偏估计（BLUE，Best Linear unbiased estimator））.</strong> 设 $\hat{\theta}$ 是参数 $\theta$ 的线性无偏估计。如果对 $\theta$ 的任意一个线性无偏估计 $\theta^{\*}$ ，有 $\operatorname{var}\left(\theta^{\*}\right) \geq \operatorname{var}(\hat{\theta})$ ，则称 $\hat{\theta}$ 是参数 $\theta$ 的 BLUE 。</p><p>对于高维回归问题，我们不能比较方差，只能对比协方差矩阵，那么针对于协方差矩阵，如何定义这个最优性呢，我们需要引入关于半正定矩阵的一种度量。</p><p><strong>Definition (Loewner order).</strong> For two positive semidefinite matrices $\Sigma_1$ and $\Sigma_2$ of the same size, we say that $\Sigma_1>\Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive definite, and that $\Sigma_1 \geq \Sigma_2$ if $\Sigma_1-\Sigma_2$ is positive semidefinite.</p><p>容易证明，UMVUE的协方差矩阵正是上述定义意义下的最小。则对于高维回归分析，最佳的估计量的协方差矩阵在上意义下最小，我们需要做的就是求出该UMVUE。首先铺垫以下定理：</p><p><strong>定理（UMVUE 的充要条件，Rao 1952）</strong> 设 $X \sim P_\theta$ 为参数空间 $\Theta$ 上的一个统计模型，定义在样本空间 $\mathcal{X}$ 上。设 $\hat{\theta}(X)$ 是参数 $\theta$ 的一个无偏估计量，即对所有 $\theta \in \Theta$ ，有：</p>$$
+\mathbb{E}_\theta[\hat{\theta}(X)]=\theta
+$$<p>则以下两个命题等价：<br>1．$\hat{\theta}(X)$ 是 $\theta$ 的 UMVUE（在所有无偏估计量中具有最小方差）；<br>2．对于所有满足 $\mathbb{E}_\theta[U(X)]=0$ 的统计量 $U(X)$ ，都有：</p>$$
+\operatorname{Cov}_\theta(\hat{\theta}(X), U(X))=0 \quad \forall \theta \in \Theta \text {. }
+$$<p>Gauss-Markov定理高斯我们，BLUE就是普通的最小二乘解：</p><p><strong>Theorem 5(Gauss-Markov定理).</strong> Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be of rank $p$, and let</p>$$
 \mathbf{y}=\mathbf{X} \boldsymbol{\beta}+\sigma \boldsymbol{\epsilon}, \boldsymbol{\epsilon} \sim P
-$$
-<p>
-for some $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, where $\mathcal{P}$ is a class of mean-zero isotropic distributions on $\mathbb{R}^n$. If $\check{\boldsymbol{\beta}}$ is a linear unbiased estimator of $\boldsymbol{\beta}$ so that $E[\check{\boldsymbol{\beta}}]=\boldsymbol{\beta}$ for all $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, then
-</p>
-$$
+$$<p>for some $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, where $\mathcal{P}$ is a class of mean-zero isotropic distributions on $\mathbb{R}^n$. If $\check{\boldsymbol{\beta}}$ is a linear unbiased estimator of $\boldsymbol{\beta}$ so that $E[\check{\boldsymbol{\beta}}]=\boldsymbol{\beta}$ for all $(\boldsymbol{\beta}, \sigma, P) \in \mathbb{R}^p \times \mathbb{R}^{+} \times \mathcal{P}$, then</p>$$
 \operatorname{Var}[\check{\boldsymbol{\beta}}] \geq \operatorname{Var}[\hat{\boldsymbol{\beta}}],
-$$
-<p>
-where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p>
-<p>最小二乘是BLUE，这是非常non-trivial的点，因为OLS没有考虑任何的相关性，只是使得协方差矩阵的迹最小，而BLUE是协方差矩阵意义上的最小。
-<a href="https://imgse.com/i/pEHnQvn"><img src="https://s21.ax1x.com/2025/04/29/pEHnQvn.jpg" alt="pEHnQvn.jpg" border="0" /></a></p>
-<h2 id="线性估计的正交性原理">线性估计的正交性原理</h2>
-<p>该章节主要引出Wiener滤波和Wiener-Hopf方程，与常规滤波器的介绍方式不同，这节的介绍更偏向于统计，给出了统计形式的Wiener-Hopf方程。
-<a href="https://imgse.com/i/pEHebef"><img src="https://s21.ax1x.com/2025/04/29/pEHebef.jpg" alt="pEHebef.jpg" border="0" /></a>
-<a href="https://imgse.com/i/pEHeXFg"><img src="https://s21.ax1x.com/2025/04/29/pEHeXFg.jpg" alt="pEHeXFg.jpg" border="0" /></a>
-<a href="https://imgse.com/i/pEHmSln"><img src="https://s21.ax1x.com/2025/04/29/pEHmSln.jpg" alt="pEHmSln.jpg" border="0" /></a></p>
-<h2 id="平稳随机序列线性估计">平稳随机序列线性估计</h2>
-<p>上一个小节我们得到了Winener-Hopf方程，但是对于硬件结构来说，矩阵求逆是一个非常大的开销，我们自然有想法对该求逆矩阵进行研究。
-<a href="https://imgse.com/i/pEHnyVK"><img src="https://s21.ax1x.com/2025/04/29/pEHnyVK.jpg" alt="pEHnyVK.jpg" border="0" /></a></p>
-<h2 id="卡尔曼滤波">卡尔曼滤波</h2>
-<p>Wiener的思想是将系统视为黑箱，但是有些时候我们需要知道系统内部的一些情况，才可以更好的控制、以及跟踪，张老师对跟踪这一次颇有理解，认为跟踪实际上是预估-校正，这也是卡尔曼滤波的核心思想。</p>
-<p>张老师认为卡尔曼滤波有三个核心思想：1.将黑箱系统变为白箱。2.预估校正法。3.残差推断。</p>
-<p>另外，卡尔曼滤波还方便人们使用先验知识对系统内部的建模。
-<a href="https://imgse.com/i/pEHnW2d"><img src="https://s21.ax1x.com/2025/04/29/pEHnW2d.jpg" alt="pEHnW2d.jpg" border="0"></a>
-<a href="https://imgse.com/i/pEHnfxA"><img src="https://s21.ax1x.com/2025/04/29/pEHnfxA.jpg" alt="pEHnfxA.jpg" border="0"></a></p>
-<h2 id="核方法">核方法</h2>
-<p>主要讲述SVM和Kernel，参考张老师的课堂和李航的《统计学习方法》。
-<a href="https://imgse.com/i/pEXP5zn"><img src="https://s21.ax1x.com/2025/05/11/pEXP5zn.jpg" alt="pEXP5zn.jpg" border="0"></a>
-<a href="https://imgse.com/i/pEXP4Rs"><img src="https://s21.ax1x.com/2025/05/11/pEXP4Rs.jpg" alt="pEXP4Rs.jpg" border="0"></a>
-<a href="https://imgse.com/i/pEXPhGj"><img src="https://s21.ax1x.com/2025/05/11/pEXPhGj.jpg" alt="pEXPhGj.jpg" border="0"></a></p>
-<h2 id="正则化">正则化</h2>
-<p>机器学习中的经典概念，这里主要设计 $L_1$ 和 $L_2$ 正则化的推导，分析bias和var的trade-off，并介绍了和贝叶斯建模的联系。
-<a href="https://imgse.com/i/pEjRIDf"><img src="https://s21.ax1x.com/2025/05/15/pEjRIDf.jpg" alt="pEjRIDf.jpg" border="0"></a>
-<a href="https://imgse.com/i/pEjR5KP"><img src="https://s21.ax1x.com/2025/05/15/pEjR5KP.jpg" alt="pEjR5KP.jpg" border="0"></a></p>
-<h2 id="lms算法">LMS算法</h2>
-<p>一种可变统计环境下MSE意义下的最优化算法。
-<a href="https://imgse.com/i/pEjRob8"><img src="https://s21.ax1x.com/2025/05/15/pEjRob8.jpg" alt="pEjRob8.jpg" border="0"></a>
-<a href="https://imgse.com/i/pEjRhvt"><img src="https://s21.ax1x.com/2025/05/15/pEjRhvt.jpg" alt="pEjRhvt.jpg" border="0"></a></p>
-<h2 id="一阶优化算法">一阶优化算法</h2>
-<p>介绍了几种一阶优化算法，以及其收敛性分析。
-<a href="https://imgse.com/i/pExPV00"><img src="https://s21.ax1x.com/2025/05/19/pExPV00.jpg" alt="pExPV00.jpg" border="0"></a>
-<a href="https://imgse.com/i/pExPF6s"><img src="https://s21.ax1x.com/2025/05/19/pExPF6s.jpg" alt="pExPF6s.jpg" border="0"></a></p>
-<h2 id="递归最小二乘rls">递归最小二乘(RLS)</h2>
-<p>可变统计环境下的最小二乘：递归最小二乘(RLS)。
-<a href="https://imgse.com/i/pExPkXn"><img src="https://s21.ax1x.com/2025/05/19/pExPkXn.jpg" alt="pExPkXn.jpg" border="0"></a>
-<a href="https://imgse.com/i/pExPEmq"><img src="https://s21.ax1x.com/2025/05/19/pExPEmq.jpg" alt="pExPEmq.jpg" border="0"></a></p>
-<h2 id="凸优化基础">凸优化基础</h2>
-<p>简单的介绍了一下凸分析、线性规划和内点法。
-<a href="https://imgse.com/i/pVCkuQK"><img src="https://s21.ax1x.com/2025/06/02/pVCkuQK.jpg" alt="pVCkuQK.jpg" border="0" /></a></p>
-<h2 id="阵列信号处理">阵列信号处理</h2>
-<p>现代数字信号处理（二）中的阵列信号处理部分。</p>
-<h3 id="doa估计">DOA估计</h3>
-<p>阵列信号处理基础，MUSIC算法和ESPRIT算法。
-<a href="https://imgse.com/i/pVeXJTe"><img src="https://s21.ax1x.com/2025/06/26/pVeXJTe.jpg" alt="pVeXJTe.jpg" border="0"></a>
-<a href="https://imgse.com/i/pVeXtFH"><img src="https://s21.ax1x.com/2025/06/26/pVeXtFH.jpg" alt="pVeXtFH.jpg" border="0"></a>
-<a href="https://imgse.com/i/pVeXGwD"><img src="https://s21.ax1x.com/2025/06/26/pVeXGwD.jpg" alt="pVeXGwD.jpg" border="0"></a></p>
-<h3 id="doa估计的-c-r-bound">DOA估计的 C-R Bound</h3>
-<p>依托于点估计中的C-R Bound ，张老师用一整节课对DOA基本模型求Fisher信息矩阵，错误还是蛮多的，不过很受益，以后还是要系统的学一下多元微积分，只靠数学分析的基础还是远远不够的。
-<a href="https://imgse.com/i/pVm04Fs"><img src="https://s21.ax1x.com/2025/06/26/pVm04Fs.jpg" alt="pVm04Fs.jpg" border="0"></a></p>
-<h3 id="mimo">MIMO</h3>
-<p>久闻大名的MIMO技术，这里仅仅从信道容量视角介绍MIMO，并无具体算法的介绍，以后有机会一定要学一下MIMO的东西，还是挺有意思的。
-<a href="https://imgse.com/i/pVm0IWq"><img src="https://s21.ax1x.com/2025/06/26/pVm0IWq.jpg" alt="pVm0IWq.jpg" border="0"></a>
-<a href="https://imgse.com/i/pVm05Yn"><img src="https://s21.ax1x.com/2025/06/26/pVm05Yn.jpg" alt="pVm05Yn.jpg" border="0"></a></p>
-<h2 id="时频分析">时频分析</h2>
-<p>比较传统的信号处理内容，现在几乎很少用时频分析来分析信号，本科期间曾经学习过信号与系统、数字信号处理、通信原理这些时频分析的课程，一直很疑惑这种方法在如今是否有什么用途，于是学了这个章节的内容，张老师由该章节直接引出了压缩感知和稀疏恢复，还是很惊喜的。</p>
-<h3 id="stft和-wigner-ville-变换">STFT和 Wigner-Ville 变换</h3>
-<p><a href="https://imgse.com/i/pVnBE5j"><img src="https://s21.ax1x.com/2025/06/29/pVnBE5j.jpg" alt="pVnBE5j.jpg" border="0"></a>
-<a href="https://imgse.com/i/pVnBkVg"><img src="https://s21.ax1x.com/2025/06/29/pVnBkVg.jpg" alt="pVnBkVg.jpg" border="0"></a></p>
-<h3 id="小波分析和-paserval-frame">小波分析和 Paserval frame</h3>
-<p><a href="https://imgse.com/i/pVnBAaQ"><img src="https://s21.ax1x.com/2025/06/29/pVnBAaQ.jpg" alt="pVnBAaQ.jpg" border="0"></a></p>
-<h2 id="稀疏信号处理">稀疏信号处理</h2>
-<p>LASSO问题，次梯度，近端梯度。
-<a href="https://imgse.com/i/pV4kxZ8"><img src="https://s21.ax1x.com/2025/09/19/pV4kxZ8.jpg" alt="pV4kxZ8.jpg" border="0"></a>
-<a href="https://imgse.com/i/pV4kjqf"><img src="https://s21.ax1x.com/2025/09/19/pV4kjqf.jpg" alt="pV4kjqf.jpg" border="0"></a></p>
-<h2 id="贝叶斯信号处理">贝叶斯信号处理</h2>
-<p>之前整理过，见另一篇<a href="https://haitonglan.github.io/p/bayesian-signal-processing/">博客</a>.</p>
-</div>
-
-<p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
-</div></body></html>
-
-
-
+$$<p>where $\hat{\boldsymbol{\beta}}$ is the OLS estimator.</p><p>最小二乘是BLUE，这是非常non-trivial的点，因为OLS没有考虑任何的相关性，只是使得协方差矩阵的迹最小，而BLUE是协方差矩阵意义上的最小。
+<a href=https://imgse.com/i/pEHnQvn><img src=https://s21.ax1x.com/2025/04/29/pEHnQvn.jpg alt=pEHnQvn.jpg border=0></a></p><h2 id=线性估计的正交性原理>线性估计的正交性原理</h2><p>该章节主要引出Wiener滤波和Wiener-Hopf方程，与常规滤波器的介绍方式不同，这节的介绍更偏向于统计，给出了统计形式的Wiener-Hopf方程。
+<a href=https://imgse.com/i/pEHebef><img src=https://s21.ax1x.com/2025/04/29/pEHebef.jpg alt=pEHebef.jpg border=0></a>
+<a href=https://imgse.com/i/pEHeXFg><img src=https://s21.ax1x.com/2025/04/29/pEHeXFg.jpg alt=pEHeXFg.jpg border=0></a>
+<a href=https://imgse.com/i/pEHmSln><img src=https://s21.ax1x.com/2025/04/29/pEHmSln.jpg alt=pEHmSln.jpg border=0></a></p><h2 id=平稳随机序列线性估计>平稳随机序列线性估计</h2><p>上一个小节我们得到了Winener-Hopf方程，但是对于硬件结构来说，矩阵求逆是一个非常大的开销，我们自然有想法对该求逆矩阵进行研究。
+<a href=https://imgse.com/i/pEHnyVK><img src=https://s21.ax1x.com/2025/04/29/pEHnyVK.jpg alt=pEHnyVK.jpg border=0></a></p><h2 id=卡尔曼滤波>卡尔曼滤波</h2><p>Wiener的思想是将系统视为黑箱，但是有些时候我们需要知道系统内部的一些情况，才可以更好的控制、以及跟踪，张老师对跟踪这一次颇有理解，认为跟踪实际上是预估-校正，这也是卡尔曼滤波的核心思想。</p><p>张老师认为卡尔曼滤波有三个核心思想：1.将黑箱系统变为白箱。2.预估校正法。3.残差推断。</p><p>另外，卡尔曼滤波还方便人们使用先验知识对系统内部的建模。
+<a href=https://imgse.com/i/pEHnW2d><img src=https://s21.ax1x.com/2025/04/29/pEHnW2d.jpg alt=pEHnW2d.jpg border=0></a>
+<a href=https://imgse.com/i/pEHnfxA><img src=https://s21.ax1x.com/2025/04/29/pEHnfxA.jpg alt=pEHnfxA.jpg border=0></a></p><h2 id=核方法>核方法</h2><p>主要讲述SVM和Kernel，参考张老师的课堂和李航的《统计学习方法》。
+<a href=https://imgse.com/i/pEXP5zn><img src=https://s21.ax1x.com/2025/05/11/pEXP5zn.jpg alt=pEXP5zn.jpg border=0></a>
+<a href=https://imgse.com/i/pEXP4Rs><img src=https://s21.ax1x.com/2025/05/11/pEXP4Rs.jpg alt=pEXP4Rs.jpg border=0></a>
+<a href=https://imgse.com/i/pEXPhGj><img src=https://s21.ax1x.com/2025/05/11/pEXPhGj.jpg alt=pEXPhGj.jpg border=0></a></p><h2 id=正则化>正则化</h2><p>机器学习中的经典概念，这里主要设计 $L_1$ 和 $L_2$ 正则化的推导，分析bias和var的trade-off，并介绍了和贝叶斯建模的联系。
+<a href=https://imgse.com/i/pEjRIDf><img src=https://s21.ax1x.com/2025/05/15/pEjRIDf.jpg alt=pEjRIDf.jpg border=0></a>
+<a href=https://imgse.com/i/pEjR5KP><img src=https://s21.ax1x.com/2025/05/15/pEjR5KP.jpg alt=pEjR5KP.jpg border=0></a></p><h2 id=lms算法>LMS算法</h2><p>一种可变统计环境下MSE意义下的最优化算法。
+<a href=https://imgse.com/i/pEjRob8><img src=https://s21.ax1x.com/2025/05/15/pEjRob8.jpg alt=pEjRob8.jpg border=0></a>
+<a href=https://imgse.com/i/pEjRhvt><img src=https://s21.ax1x.com/2025/05/15/pEjRhvt.jpg alt=pEjRhvt.jpg border=0></a></p><h2 id=一阶优化算法>一阶优化算法</h2><p>介绍了几种一阶优化算法，以及其收敛性分析。
+<a href=https://imgse.com/i/pExPV00><img src=https://s21.ax1x.com/2025/05/19/pExPV00.jpg alt=pExPV00.jpg border=0></a>
+<a href=https://imgse.com/i/pExPF6s><img src=https://s21.ax1x.com/2025/05/19/pExPF6s.jpg alt=pExPF6s.jpg border=0></a></p><h2 id=递归最小二乘rls>递归最小二乘(RLS)</h2><p>可变统计环境下的最小二乘：递归最小二乘(RLS)。
+<a href=https://imgse.com/i/pExPkXn><img src=https://s21.ax1x.com/2025/05/19/pExPkXn.jpg alt=pExPkXn.jpg border=0></a>
+<a href=https://imgse.com/i/pExPEmq><img src=https://s21.ax1x.com/2025/05/19/pExPEmq.jpg alt=pExPEmq.jpg border=0></a></p><h2 id=凸优化基础>凸优化基础</h2><p>简单的介绍了一下凸分析、线性规划和内点法。
+<a href=https://imgse.com/i/pVCkuQK><img src=https://s21.ax1x.com/2025/06/02/pVCkuQK.jpg alt=pVCkuQK.jpg border=0></a></p><h2 id=阵列信号处理>阵列信号处理</h2><p>现代数字信号处理（二）中的阵列信号处理部分。</p><h3 id=doa估计>DOA估计</h3><p>阵列信号处理基础，MUSIC算法和ESPRIT算法。
+<a href=https://imgse.com/i/pVeXJTe><img src=https://s21.ax1x.com/2025/06/26/pVeXJTe.jpg alt=pVeXJTe.jpg border=0></a>
+<a href=https://imgse.com/i/pVeXtFH><img src=https://s21.ax1x.com/2025/06/26/pVeXtFH.jpg alt=pVeXtFH.jpg border=0></a>
+<a href=https://imgse.com/i/pVeXGwD><img src=https://s21.ax1x.com/2025/06/26/pVeXGwD.jpg alt=pVeXGwD.jpg border=0></a></p><h3 id=doa估计的-c-r-bound>DOA估计的 C-R Bound</h3><p>依托于点估计中的C-R Bound ，张老师用一整节课对DOA基本模型求Fisher信息矩阵，错误还是蛮多的，不过很受益，以后还是要系统的学一下多元微积分，只靠数学分析的基础还是远远不够的。
+<a href=https://imgse.com/i/pVm04Fs><img src=https://s21.ax1x.com/2025/06/26/pVm04Fs.jpg alt=pVm04Fs.jpg border=0></a></p><h3 id=mimo>MIMO</h3><p>久闻大名的MIMO技术，这里仅仅从信道容量视角介绍MIMO，并无具体算法的介绍，以后有机会一定要学一下MIMO的东西，还是挺有意思的。
+<a href=https://imgse.com/i/pVm0IWq><img src=https://s21.ax1x.com/2025/06/26/pVm0IWq.jpg alt=pVm0IWq.jpg border=0></a>
+<a href=https://imgse.com/i/pVm05Yn><img src=https://s21.ax1x.com/2025/06/26/pVm05Yn.jpg alt=pVm05Yn.jpg border=0></a></p><h2 id=时频分析>时频分析</h2><p>比较传统的信号处理内容，现在几乎很少用时频分析来分析信号，本科期间曾经学习过信号与系统、数字信号处理、通信原理这些时频分析的课程，一直很疑惑这种方法在如今是否有什么用途，于是学了这个章节的内容，张老师由该章节直接引出了压缩感知和稀疏恢复，还是很惊喜的。</p><h3 id=stft和-wigner-ville-变换>STFT和 Wigner-Ville 变换</h3><p><a href=https://imgse.com/i/pVnBE5j><img src=https://s21.ax1x.com/2025/06/29/pVnBE5j.jpg alt=pVnBE5j.jpg border=0></a>
+<a href=https://imgse.com/i/pVnBkVg><img src=https://s21.ax1x.com/2025/06/29/pVnBkVg.jpg alt=pVnBkVg.jpg border=0></a></p><h3 id=小波分析和-paserval-frame>小波分析和 Paserval frame</h3><p><a href=https://imgse.com/i/pVnBAaQ><img src=https://s21.ax1x.com/2025/06/29/pVnBAaQ.jpg alt=pVnBAaQ.jpg border=0></a></p><h2 id=稀疏信号处理>稀疏信号处理</h2><p>LASSO问题，次梯度，近端梯度。
+<a href=https://imgse.com/i/pV4kxZ8><img src=https://s21.ax1x.com/2025/09/19/pV4kxZ8.jpg alt=pV4kxZ8.jpg border=0></a>
+<a href=https://imgse.com/i/pV4kjqf><img src=https://s21.ax1x.com/2025/09/19/pV4kjqf.jpg alt=pV4kjqf.jpg border=0></a></p><h2 id=贝叶斯信号处理>贝叶斯信号处理</h2><p>之前整理过，见另一篇<a href=https://haitonglan.github.io/p/bayesian-signal-processing/>博客</a>.</p></div><p class=back><a href=/post/>← All posts</a></p></article><aside class=article-sidebar aria-label="Article contents"><details class=sidebar-toc><summary>Contents</summary><nav id=TableOfContents><ol><li><a href=#课程介绍>课程介绍</a></li><li><a href=#最佳线性无偏估计>最佳线性无偏估计</a></li><li><a href=#线性估计的正交性原理>线性估计的正交性原理</a></li><li><a href=#平稳随机序列线性估计>平稳随机序列线性估计</a></li><li><a href=#卡尔曼滤波>卡尔曼滤波</a></li><li><a href=#核方法>核方法</a></li><li><a href=#正则化>正则化</a></li><li><a href=#lms算法>LMS算法</a></li><li><a href=#一阶优化算法>一阶优化算法</a></li><li><a href=#递归最小二乘rls>递归最小二乘(RLS)</a></li><li><a href=#凸优化基础>凸优化基础</a></li><li><a href=#阵列信号处理>阵列信号处理</a><ol><li><a href=#doa估计>DOA估计</a></li><li><a href=#doa估计的-c-r-bound>DOA估计的 C-R Bound</a></li><li><a href=#mimo>MIMO</a></li></ol></li><li><a href=#时频分析>时频分析</a><ol><li><a href=#stft和-wigner-ville-变换>STFT和 Wigner-Ville 变换</a></li><li><a href=#小波分析和-paserval-frame>小波分析和 Paserval frame</a></li></ol></li><li><a href=#稀疏信号处理>稀疏信号处理</a></li><li><a href=#贝叶斯信号处理>贝叶斯信号处理</a></li></ol></nav></details></aside></div><a class=article-return href=/post/ aria-label="Return to the previous page">← Back</a><script defer src=/article.js></script></main><footer>© 2026 Haitong Lan <span><a href=/links/>Links</a> · <a href=/index.xml>RSS</a></span></footer></div></body></html>

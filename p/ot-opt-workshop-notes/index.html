@@ -1,50 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OT&#43;OPT Workshop Notes — Haitong Lan</title>
-<meta name="description" content="Notes from the OT&#43;OPT workshop.">
-<link rel="canonical" href="https://HaitongLan.github.io/p/ot-opt-workshop-notes/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=fb30df055541d00a17f817b530d50088">
-<link rel="stylesheet" href="/academic-syntax.css">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
-<script defer src="/math.js"></script>
-
-</head>
-<body><a class="skip" href="#main">Skip to content</a><div class="shell">
-<header class="site-header"><a class="name" href="/">Haitong Lan</a>
-<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>OT&#43;OPT Workshop Notes</h1><p class="meta">June 1, 2026 · 2 min read · Note, Math</p><p class="lead">Notes from the OT&#43;OPT workshop.</p></header>
-<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
-  <ol>
-    <li><a href="#会议议程">会议议程</a></li>
-    <li><a href="#个人听会记录及总结">个人听会记录及总结</a></li>
-  </ol>
-</nav></details>
-<div class="prose"><p>推荐一个很好的Workshop：<a href="https://sites.google.com/view/ot-opt-2026/workshop">OT+OPT Workshop</a>,后续应该会有回放发布在网络上，会议总体围绕着Optmal Transport和Optimization两个主题展开，还会涉及到Diffusion Model 和 Flow Matching的内容，本人对这些Topic非常感兴趣！这次Workshop提供了线上直播，本人也是直接跟完了全程，受益匪浅。</p>
-<h2 id="会议议程">会议议程</h2>
-<p>见<a href="https://sites.google.com/view/ot-opt-2026/program">网页</a>。</p>
-<h2 id="个人听会记录及总结">个人听会记录及总结</h2>
-<p>个人比较感兴趣的几个工作：</p>
-<p><a href="https://arxiv.org/abs/2512.08176">Worst-case generation via minimax optimization in Wasserstein space</a> 在OT路径上进行Robust优化，并且分析了优化算法的一些性质，从对分布的优化转向在OT路径上优化非常有意思，这种思想可以用在基于分布的生成模型中。</p>
-<p><a href="https://arxiv.org/abs/2602.08118">Schrödinger bridge with transport relaxation</a> 使用Wasserstein空间的一些度量对Schrödinger bridge问题做了惩罚松弛，总觉得跟我们课题组在做的一些时间序列参数估计的思想很像，而且作者提出这种思想能用在时间序列建模中，后续值得思考一下。</p>
-<p><a href="https://arxiv.org/abs/2602.09639">Blind denoising diffusion models and the blessings of dimensionality</a> BDDM，去掉DDPM中对噪声的估计，Sinho一如既往的用Girsanov定理证明Diffusion模型的收敛性，比较有意思的是该收敛性证明可以反过来指导超参数的设计，也能解释blessings of dimensionality这一点。</p>
-<p>以下是听会的时候手写的一些笔记：
-<a href="https://imgchr.com/i/pmARDGn"><img src="https://s41.ax1x.com/2026/06/01/pmARDGn.jpg" alt="pmARDGn.jpg" border="0"></a>
-<a href="https://imgchr.com/i/pmARr2q"><img src="https://s41.ax1x.com/2026/06/01/pmARr2q.jpg" alt="pmARr2q.jpg" border="0"></a>
-<a href="https://imgchr.com/i/pmARw5j"><img src="https://s41.ax1x.com/2026/06/01/pmARw5j.jpg" alt="pmARw5j.jpg" border="0"></a>
-<a href="https://imgchr.com/i/pmARBPs"><img src="https://s41.ax1x.com/2026/06/01/pmARBPs.jpg" alt="pmARBPs.jpg" border="0"></a>
-<a href="https://imgchr.com/i/pmARdaQ"><img src="https://s41.ax1x.com/2026/06/01/pmARdaQ.jpg" alt="pmARdaQ.jpg" border="0"></a>
-最后一天的直播似乎有问题，听不到声音，后续有回放的话我会再补上笔记。</p>
-</div>
-
-<p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
-</div></body></html>
-
-
-
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>OT+OPT Workshop Notes — Haitong Lan</title>
+<meta name=description content="Notes from the OT+OPT workshop."><link rel=canonical href=https://HaitongLan.github.io/p/ot-opt-workshop-notes/><link rel=icon type=image/x-icon href="/favicon-v2.ico?v=ht-20261014"><link rel=stylesheet href="/academic.css?v=18f8d06f258ff87b66289c4bed194dc5"><link rel=stylesheet href=/academic-syntax.css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,tags:"ams"},output:{displayOverflow:"linebreak",linebreaks:{inline:!0,width:"100%"}},startup:{elements:[".blog-article"]}}</script><script defer src=https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js></script></head><body class=blog-page><a class=skip href=#main>Skip to content</a><div class=shell><header class=site-header><a class=name href=/>Haitong Lan</a><nav aria-label="Main navigation"><a href=/>Home</a><a href=/research/>Research</a><a href=/publications/>Publications</a><a href=/post/ aria-current=page>Blogs</a></nav></header><main id=main><div class=article-layout><article class=blog-article><header class=page-heading><h1>OT+OPT Workshop Notes</h1><p class=meta>June 1, 2026 · 2 min read · Note, Math</p><p class=lead>Notes from the OT+OPT workshop.</p></header><div class=prose><p>推荐一个很好的Workshop：<a href=https://sites.google.com/view/ot-opt-2026/workshop>OT+OPT Workshop</a>,后续应该会有回放发布在网络上，会议总体围绕着Optmal Transport和Optimization两个主题展开，还会涉及到Diffusion Model 和 Flow Matching的内容，本人对这些Topic非常感兴趣！这次Workshop提供了线上直播，本人也是直接跟完了全程，受益匪浅。</p><h2 id=会议议程>会议议程</h2><p>见<a href=https://sites.google.com/view/ot-opt-2026/program>网页</a>。</p><h2 id=个人听会记录及总结>个人听会记录及总结</h2><p>个人比较感兴趣的几个工作：</p><p><a href=https://arxiv.org/abs/2512.08176>Worst-case generation via minimax optimization in Wasserstein space</a> 在OT路径上进行Robust优化，并且分析了优化算法的一些性质，从对分布的优化转向在OT路径上优化非常有意思，这种思想可以用在基于分布的生成模型中。</p><p><a href=https://arxiv.org/abs/2602.08118>Schrödinger bridge with transport relaxation</a> 使用Wasserstein空间的一些度量对Schrödinger bridge问题做了惩罚松弛，总觉得跟我们课题组在做的一些时间序列参数估计的思想很像，而且作者提出这种思想能用在时间序列建模中，后续值得思考一下。</p><p><a href=https://arxiv.org/abs/2602.09639>Blind denoising diffusion models and the blessings of dimensionality</a> BDDM，去掉DDPM中对噪声的估计，Sinho一如既往的用Girsanov定理证明Diffusion模型的收敛性，比较有意思的是该收敛性证明可以反过来指导超参数的设计，也能解释blessings of dimensionality这一点。</p><p>以下是听会的时候手写的一些笔记：
+<a href=https://imgchr.com/i/pmARDGn><img src=https://s41.ax1x.com/2026/06/01/pmARDGn.jpg alt=pmARDGn.jpg border=0></a>
+<a href=https://imgchr.com/i/pmARr2q><img src=https://s41.ax1x.com/2026/06/01/pmARr2q.jpg alt=pmARr2q.jpg border=0></a>
+<a href=https://imgchr.com/i/pmARw5j><img src=https://s41.ax1x.com/2026/06/01/pmARw5j.jpg alt=pmARw5j.jpg border=0></a>
+<a href=https://imgchr.com/i/pmARBPs><img src=https://s41.ax1x.com/2026/06/01/pmARBPs.jpg alt=pmARBPs.jpg border=0></a>
+<a href=https://imgchr.com/i/pmARdaQ><img src=https://s41.ax1x.com/2026/06/01/pmARdaQ.jpg alt=pmARdaQ.jpg border=0></a>
+最后一天的直播似乎有问题，听不到声音，后续有回放的话我会再补上笔记。</p></div><p class=back><a href=/post/>← All posts</a></p></article><aside class=article-sidebar aria-label="Article contents"><details class=sidebar-toc><summary>Contents</summary><nav id=TableOfContents><ol><li><a href=#会议议程>会议议程</a></li><li><a href=#个人听会记录及总结>个人听会记录及总结</a></li></ol></nav></details></aside></div><a class=article-return href=/post/ aria-label="Return to the previous page">← Back</a><script defer src=/article.js></script></main><footer>© 2026 Haitong Lan <span><a href=/links/>Links</a> · <a href=/index.xml>RSS</a></span></footer></div></body></html>

@@ -1,369 +1,95 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bayesian signal processing — Haitong Lan</title>
-<meta name="description" content="Bayes method, objective function and sampling.">
-<link rel="canonical" href="https://HaitongLan.github.io/p/bayesian-signal-processing/"><link rel="icon" href="/favicon-v2.ico">
-<link rel="stylesheet" href="/academic.css?v=fb30df055541d00a17f817b530d50088">
-<link rel="stylesheet" href="/academic-syntax.css">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
-<script defer src="/math.js"></script>
-
-</head>
-<body><a class="skip" href="#main">Skip to content</a><div class="shell">
-<header class="site-header"><a class="name" href="/">Haitong Lan</a>
-<nav aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/post/" aria-current="page">Blogs</a></nav></header>
-<main id="main"><article class="blog-article"><header class="page-heading"><h1>Bayesian signal processing</h1><p class="meta">August 14, 2024 · 13 min read · Math, Note</p><p class="lead">Bayes method, objective function and sampling.</p></header>
-<details class="toc"><summary>Contents / 目录</summary><nav id="TableOfContents">
-  <ol>
-    <li><a href="#introduce-to-bayes-method">Introduce to bayes method</a>
-      <ol>
-        <li><a href="#bayes-and-frequency">Bayes and frequency</a></li>
-        <li><a href="#bayes-the-science-of-cognitive-law">Bayes: The Science of cognitive law</a></li>
-      </ol>
-    </li>
-    <li><a href="#statistical-decision-theory">Statistical decision theory</a>
-      <ol>
-        <li><a href="#choice-of-measurement">Choice of measurement</a></li>
-      </ol>
-    </li>
-    <li><a href="#sampling">Sampling</a>
-      <ol>
-        <li><a href="#inverse-distribution-function">Inverse distribution function</a></li>
-        <li><a href="#accept-reject-sampling">Accept-reject sampling</a></li>
-        <li><a href="#importance-sampling">Importance sampling</a></li>
-        <li><a href="#markov-chain-monte-carlomcmc">Markov chain Monte Carlo(MCMC)</a></li>
-      </ol>
-    </li>
-  </ol>
-</nav></details>
-<div class="prose"><h1 id="centerbayesian-signal-processingcenter"><center>Bayesian signal processing</center></h1>
-<p>该博客为张颢老师所讲的<a href="https://www.bilibili.com/video/BV1Rm421H7Dc?p=15&vd_source=6cb8982c017348075d81bfccb9a89ae5">现代信号处理的贝叶斯信号处理部分</a>的课程个人学习笔记,涵盖贝叶斯公式的含义,贝叶斯学派与频率学派的关系,贝叶斯统计模型的目标函数,蒙特卡洛采样和贝叶斯滤波的内容。</p>
-<h2 id="introduce-to-bayes-method">Introduce to bayes method</h2>
-<h3 id="bayes-and-frequency">Bayes and frequency</h3>
-<p>使用贝叶斯公式并不意味着在使用贝叶斯方法,频率学派也会经常使用贝叶斯公式,早在贝叶斯之前,贝叶斯公式就已经在Laplce等数学家中非常娴熟的应用,贝叶斯方法在思想上面的含义要远远大于数学形式上的贝叶斯公式。</p>
-<p>摘抄知乎上<a href="https://www.zhihu.com/question/20587681?rf=29467800">Xiangyu Wang的回答</a>：频率学派和贝叶斯学派最大的差别其实产生于对参数空间的认知上。所谓参数空间,就是你关心的那个参数可能的取值范围。频率学派（其实就是当年的Fisher）并不关心参数空间的所有细节,他们相信数据都是在这个空间里的“某个”参数值下产生的（虽然你不知道那个值是啥）,所以他们的方法论一开始就是从“哪个值最有可能是真实值”这个角度出发的。于是就有了最大似然（maximum likelihood）以及置信区间（confidence interval）这样的东西,你从名字就可以看出来他们关心的就是我有多大把握去圈出那个唯一的真实参数。而贝叶斯学派恰恰相反,他们关心参数空间里的每一个值,因为他们觉得我们又没有上帝视角,怎么可能知道哪个值是真的呢？所以参数空间里的每个值都有可能是真实模型使用的值,区别只是概率不同而已。于是他们才会引入先验分布（prior distribution）和后验分布（posterior distribution）这样的概念来设法找出参数空间上的每个值的概率。最好诠释这种差别的例子就是想象如果你的后验分布是双峰的,频率学派的方法会去选这两个峰当中较高的那一个对应的值作为他们的最好猜测,而贝叶斯学派则会同时报告这两个值,并给出对应的概率。</p>
-<p>假如我们有一个统计模型$f(x,\theta)$去估计原始数据$x$的分布,频率学派认为$\theta$是固定的,尽管我们现在还没有办法得到,贝叶斯学派认为$\theta$是随机的,是服从一个概率分布的随机变量。</p>
-<h3 id="bayes-the-science-of-cognitive-law">Bayes: The Science of cognitive law</h3>
-<p>贝叶斯的观点是符合人脑的认知规律的,也是现代认知心理学的基础：在认识一件事物之前,我们会先对这个事物有一定的认知,在与事物接触的过程中,我们的认知会逐渐的发生变化,或加强我们的认知,或减弱我们的认知,我们的认知从而得到了进步,这与马原中所说的认知随着实践螺旋式上升也有异曲同工之妙。贝叶斯公式就是表述了这个认知的过程：
-</p>
-$$
-\begin{equation}
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Bayesian signal processing — Haitong Lan</title>
+<meta name=description content="Bayes method, objective function and sampling."><link rel=canonical href=https://HaitongLan.github.io/p/bayesian-signal-processing/><link rel=icon type=image/x-icon href="/favicon-v2.ico?v=ht-20261014"><link rel=stylesheet href="/academic.css?v=18f8d06f258ff87b66289c4bed194dc5"><link rel=stylesheet href=/academic-syntax.css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,tags:"ams"},output:{displayOverflow:"linebreak",linebreaks:{inline:!0,width:"100%"}},startup:{elements:[".blog-article"]}}</script><script defer src=https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js></script></head><body class=blog-page><a class=skip href=#main>Skip to content</a><div class=shell><header class=site-header><a class=name href=/>Haitong Lan</a><nav aria-label="Main navigation"><a href=/>Home</a><a href=/research/>Research</a><a href=/publications/>Publications</a><a href=/post/ aria-current=page>Blogs</a></nav></header><main id=main><div class=article-layout><article class=blog-article><header class=page-heading><h1>Bayesian signal processing</h1><p class=meta>August 14, 2024 · 11 min read · Math, Note</p><p class=lead>Bayes method, objective function and sampling.</p></header><div class=prose><h1 id=centerbayesian-signal-processingcenter><center>Bayesian signal processing</center></h1><p>该博客为张颢老师所讲的<a href="https://www.bilibili.com/video/BV1Rm421H7Dc?p=15&vd_source=6cb8982c017348075d81bfccb9a89ae5">现代信号处理的贝叶斯信号处理部分</a>的课程个人学习笔记,涵盖贝叶斯公式的含义,贝叶斯学派与频率学派的关系,贝叶斯统计模型的目标函数,蒙特卡洛采样和贝叶斯滤波的内容。</p><h2 id=introduce-to-bayes-method>Introduce to bayes method</h2><h3 id=bayes-and-frequency>Bayes and frequency</h3><p>使用贝叶斯公式并不意味着在使用贝叶斯方法,频率学派也会经常使用贝叶斯公式,早在贝叶斯之前,贝叶斯公式就已经在Laplce等数学家中非常娴熟的应用,贝叶斯方法在思想上面的含义要远远大于数学形式上的贝叶斯公式。</p><p>摘抄知乎上<a href="https://www.zhihu.com/question/20587681?rf=29467800">Xiangyu Wang的回答</a>：频率学派和贝叶斯学派最大的差别其实产生于对参数空间的认知上。所谓参数空间,就是你关心的那个参数可能的取值范围。频率学派（其实就是当年的Fisher）并不关心参数空间的所有细节,他们相信数据都是在这个空间里的“某个”参数值下产生的（虽然你不知道那个值是啥）,所以他们的方法论一开始就是从“哪个值最有可能是真实值”这个角度出发的。于是就有了最大似然（maximum likelihood）以及置信区间（confidence interval）这样的东西,你从名字就可以看出来他们关心的就是我有多大把握去圈出那个唯一的真实参数。而贝叶斯学派恰恰相反,他们关心参数空间里的每一个值,因为他们觉得我们又没有上帝视角,怎么可能知道哪个值是真的呢？所以参数空间里的每个值都有可能是真实模型使用的值,区别只是概率不同而已。于是他们才会引入先验分布（prior distribution）和后验分布（posterior distribution）这样的概念来设法找出参数空间上的每个值的概率。最好诠释这种差别的例子就是想象如果你的后验分布是双峰的,频率学派的方法会去选这两个峰当中较高的那一个对应的值作为他们的最好猜测,而贝叶斯学派则会同时报告这两个值,并给出对应的概率。</p><p>假如我们有一个统计模型$f(x,\theta)$去估计原始数据$x$的分布,频率学派认为$\theta$是固定的,尽管我们现在还没有办法得到,贝叶斯学派认为$\theta$是随机的,是服从一个概率分布的随机变量。</p><h3 id=bayes-the-science-of-cognitive-law>Bayes: The Science of cognitive law</h3><p>贝叶斯的观点是符合人脑的认知规律的,也是现代认知心理学的基础：在认识一件事物之前,我们会先对这个事物有一定的认知,在与事物接触的过程中,我们的认知会逐渐的发生变化,或加强我们的认知,或减弱我们的认知,我们的认知从而得到了进步,这与马原中所说的认知随着实践螺旋式上升也有异曲同工之妙。贝叶斯公式就是表述了这个认知的过程：</p>$$
 P(\theta \mid X)=\frac{P(X \mid \theta) P(\theta)}{P(X)}
-\end{equation}
-$$
-<p>
-贝叶斯学派通过引入三个名词对贝叶斯公式进行解释：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名词</th>
-<th style="text-align:center">公式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">先验分布(Prior)</td>
-<td style="text-align:center">$P(\theta)$</td>
-</tr>
-<tr>
-<td style="text-align:center">似然(Likelihood)</td>
-<td style="text-align:center">$P(X \mid \theta)$</td>
-</tr>
-<tr>
-<td style="text-align:center">后验分布(Postertor)</td>
-<td style="text-align:center">$P(\theta \mid X)$</td>
-</tr>
-</tbody>
-</table>
-<p>先验分布就是在接触事物数据之前我们已经有的认知,似然是在接触事物的过程中,在给定先验知识的条件下我们对数据的认知,后验分布是我们在数据的基础上对事物的认知,机器学习中的“Learning”这一概念,很大程度上就是贝叶斯方法中的使用后验分布去调整先验分布,当数据量足够大的时候,$P(\theta)$就越来越接近真实的概率模型,另外,分母$P(X)$经常被成为贝叶斯因子。</p>
-<p>我们再来观察特殊的情况。如果数据与先验独立,即$X \perp \theta$,有$P(\theta \mid X)=P(\theta)$,即先验等于后验,也就是说在接触数据的过程中,我们并没有学到有用的信息。如果$P(\theta)=0$,我们的先验分布和后验分布会一直等于0,所以在很多机器学习算法中设置初始迭代解的时候,会避开零概率的设置。</p>
-<hr>
-<p><strong>Example: Naive Bayes</strong></p>
-<p>朴素贝叶斯是一种简单的机器学习分类器,分类任务就是在给定某些特征
-$\lbrace F_i \rbrace_{i=1}^N$(Features)的条件下,判断某一事物的分类$C$(Catogories),即我们需要获得：$P(C \mid F_1:F_N)$,数据是给定条件,分类是随机变量,这就是贝叶斯方法中所说的后验分布,我们可以使用先验分布和似然来表示该后验分布：
-</p>
-$$
-\begin{equation}
+$$<p>贝叶斯学派通过引入三个名词对贝叶斯公式进行解释：</p><table><thead><tr><th style=text-align:center>名词</th><th style=text-align:center>公式</th></tr></thead><tbody><tr><td style=text-align:center>先验分布(Prior)</td><td style=text-align:center>$P(\theta)$</td></tr><tr><td style=text-align:center>似然(Likelihood)</td><td style=text-align:center>$P(X \mid \theta)$</td></tr><tr><td style=text-align:center>后验分布(Postertor)</td><td style=text-align:center>$P(\theta \mid X)$</td></tr></tbody></table><p>先验分布就是在接触事物数据之前我们已经有的认知,似然是在接触事物的过程中,在给定先验知识的条件下我们对数据的认知,后验分布是我们在数据的基础上对事物的认知,机器学习中的“Learning”这一概念,很大程度上就是贝叶斯方法中的使用后验分布去调整先验分布,当数据量足够大的时候,$P(\theta)$就越来越接近真实的概率模型,另外,分母$P(X)$经常被成为贝叶斯因子。</p><p>我们再来观察特殊的情况。如果数据与先验独立,即$X \perp \theta$,有$P(\theta \mid X)=P(\theta)$,即先验等于后验,也就是说在接触数据的过程中,我们并没有学到有用的信息。如果$P(\theta)=0$,我们的先验分布和后验分布会一直等于0,所以在很多机器学习算法中设置初始迭代解的时候,会避开零概率的设置。</p><hr><p><strong>Example: Naive Bayes</strong></p><p>朴素贝叶斯是一种简单的机器学习分类器,分类任务就是在给定某些特征
+$\lbrace F_i \rbrace_{i=1}^N$(Features)的条件下,判断某一事物的分类$C$(Catogories),即我们需要获得：$P(C \mid F_1:F_N)$,数据是给定条件,分类是随机变量,这就是贝叶斯方法中所说的后验分布,我们可以使用先验分布和似然来表示该后验分布：</p>$$
 P(C \mid F_1:F_N)=\frac{P(F_1:F_N \mid C) P(C)}{P(F_1:F_N)}
-\end{equation}
-$$
-<p>
-对不同特征求给定条件的联合分布是比较困难的,naive bayes做了一个假设,在给定分类条件下,不同特征之间相互独立,即我们可以重写上述公式为
-</p>
-$$
-\begin{equation}
+$$<p>对不同特征求给定条件的联合分布是比较困难的,naive bayes做了一个假设,在给定分类条件下,不同特征之间相互独立,即我们可以重写上述公式为</p>$$
 P(C \mid F_1:F_N)=\frac{\prod_{i=1}^N P(F_i \mid C) P(C)}{P(F_1:F_N)}
-\end{equation}
-$$
-<p>
-分母可以通过统计样本得出,但是并不重要,因为所有的后验分布共享一个分母,当分类器判别样本时,都具有相同的权重。</p>
-<hr>
-<p><strong>Example:Use bayes to process Gaussian distribution</strong></p>
-<p>联想DDPM中求$q(x_{t-1} \mid x_t,x_0)$的过程,我们使用贝叶斯公式去计算似然和先验都为Gausssian分布的情况,即$\lbrace X_1,...,X_N \rbrace \overset{\mathrm{iid}}{\sim}N(\mu,\sigma_x^2)$,$\mu\sim N(\mu_\theta,\sigma_\mu^2)$,已知先验分布和似然,去求后验分布,即</p>
-<div>
-$$
-\begin{equation}
+$$<p>分母可以通过统计样本得出,但是并不重要,因为所有的后验分布共享一个分母,当分类器判别样本时,都具有相同的权重。</p><hr><p><strong>Example:Use bayes to process Gaussian distribution</strong></p><p>考虑正态似然与正态先验：$X_1,\ldots,X_N\mid\mu\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma_x^2)$，且先验为 $\mu\sim\mathcal{N}(\mu_\theta,\sigma_\mu^2)$。由贝叶斯公式，后验密度满足</p>$$
+p(\mu\mid x_{1:N})\propto p(x_{1:N}\mid\mu)p(\mu).
+$$<p>忽略与 $\mu$ 无关的项，后验的对数密度为</p>$$
 \begin{aligned}
-& P\left(\mu \mid x_1: x_N\right)=\frac{P\left(x_1: x_N \mid \mu\right) P(\mu)}{P\left(x_1: x_N\right)} \\
-& \propto  \frac{\exp \left\{-\frac{1}{2 \sigma_k^2} \sum_{k=1}^N\left(x_k-\mu_x\right)^2\right\} \exp \left\{-\frac{1}{2 \sigma_\mu^2}\left(\mu-\mu_\theta\right)^2\right\}}{\int_{-\infty}^{+\infty} \exp \left\{-\frac{1}{2 \sigma_x^2} \sum_{k=1}^N\left(x_k-\mu_x\right)^2-\frac{1}{2 \sigma_\mu^2}\left(\mu-\mu_\theta \right)^2\right\} d \mu} 
+\log p(\mu\mid x_{1:N})
+&=-\frac{1}{2}\left(\frac{N}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}\right)\mu^2
++\left(\frac{\sum_{i=1}^N x_i}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right)\mu+C\\
+&=-\frac{1}{2v_N}(\mu-m_N)^2+C',
 \end{aligned}
-\end{equation}
-$$</div>
-<p>拿出分母中指数内的部分(其实也是分子部分)：</p>
-<div>
-$$
-\begin{equation}
-\begin{aligned}
-& -\frac{1}{2 \sigma_x^2} \sum_{k=1}^N\left(x_k-\mu_x\right)^2-\frac{1}{2 \sigma_\mu^2}\left(\mu-\mu_\theta \right)^2 \\
-= & -\frac{1}{2 \sigma_x^2}\left(\sum_{k=1}^N x_k^2+N \mu_x^2- \mu_x \sum_{k=1}^N x_k\right)-\frac{1}{2 \sigma_\mu^2}\left(\mu^2+\mu_\theta^2-2 \mu_\theta \mu\right) \\
-= & \left(-\frac{1}{2 \sigma_x^2}-\frac{1}{2 \sigma_\mu^2}\right) \mu^2+\left(-\frac{-2 \sum_{k=1}^N x_k}{2 \sigma_x^2}-\frac{-2 \mu_\theta}{2 \sigma_\mu^2}\right) \mu+Q\left(x_1:x_N\right) \\
-= & -\frac{1}{2}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}\right)\left(\mu-\left(\frac{\sum_{k=1}^N x_k}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right)\right)^2+Q^{\prime}\left(x_1:x_N\right)
-\end{aligned}
-\end{equation}
-$$</div>
-余项$Q(x_1:x_N)$在分子与分母中都有,且与随机变量$\mu$无关,所以原式可以写做正比于分母也是Gaussian分布的形式：
-$$
-\begin{equation}
-\begin{aligned}
- &P\left(\mu \mid x_1: x_N\right)\\
- &\propto  \frac{\exp \left\{-\frac{1}{2 \sigma_k^2} \sum_{k=1}^N\left(x_k-\mu_x\right)^2\right\} \exp \left\{-\frac{1}{2 \sigma_\mu^2}\left(\mu-\mu_\theta\right)^2\right\}}{\int_{-\infty}^{+\infty} \exp \left\{-\frac{1}{2 \sigma_x^2} \sum_{k=1}^N\left(x_k-\mu_x\right)^2-\frac{1}{2 \sigma_\mu^2}\left(\mu-\mu_\theta \right)^2\right\} d \mu} \\
-&\propto  \frac{\exp \left\{ -\frac{1}{2}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}\right)\left(\mu-\left(\frac{\sum_{k=1}^N x_k}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right)\right)\mathbf{/}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2} \right)^2\right\}}{\int_{-\infty}^{+\infty}\exp \left\{ -\frac{1}{2}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}\right)\left(\mu-\left(\frac{\sum_{k=1}^N x_k}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right)\mathbf{/}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2} \right)\right)^2\right\}d \mu} 
-\end{aligned}
-\end{equation}
-$$
-分母在积分过后与$\mu$无关,可以看作一个加权,综合所有的加权,只需注意分子中Gaussian分布的形式即可,那么我们可以得到：
-$$
-P\left(\mu \mid x_1: x_N\right)\sim N\left(\left(\frac{\sum_{k=1}^N x_k}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right)\mathbf{/}\left(\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2} \right),\frac{\sigma_x^2\sigma_\mu^2}{N\sigma_\mu^2+\sigma_x^2}\right)
-$$
-令$\bar{X} = \frac{1}{N}\sum_{k=1}^N x_k$,可以将后验分布的均值写为
-$$
-\mu =\left(\frac{\frac{n}{\sigma _x^2}}{\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}}\right) \bar{X}+\left(\frac{\frac{1}{\sigma_\mu^2}}{\frac{n}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}}\right) \mu_\theta
-$$
-可见,后验分布可以当作某种似然与先验分布的线性凸组合,当$n$足够大时,数据的加权十分大,就可以忘记先验,当$\sigma_x$足够大时,数据的信任度很低,学习的权重会尽可能的减少,从而保持先验,其实这种似然和先验分布都是Guassian分布的情况下就是简化的线性高斯模型,可以有更统一的矩阵描述形式。
-<hr>
-<h2 id="statistical-decision-theory">Statistical decision theory</h2>
-<p>贝叶斯方法的核心观点就是利用后验分布去学习统计模型$\hat{\theta}(x)$,去对先验分布进行优化,那么就需要我们定义一种度量$d(\hat{\theta}(x),\theta)$,从而通过最小化这种度量的方式完成先验分布的优化,$d(\hat{\theta}(x),\theta)$是随机的,所以我们希望消除他的随机性求平均距离,即我们的目标为</p>
-<div>
-$$
-\begin{equation}
-\hat{\theta}(x) = \underset{\hat{\theta}}{\arg \min }\mathbb{E}_{x,\theta}[d(\hat{\theta}(x),\theta) ] 
-\end{equation}
-$$
-</div>
-<p>平均距离$\mathbb{E}_{x,\theta}[d(\hat{\theta}(x),\theta) ]$ 一般被成为风险(Risk),该目标函数也被称为风险极小化,频率学派和贝叶斯学派对该目标函数有不同方式的处理：</p>
-<div>
-$$
-\begin{equation}
+$$<p>其中</p>$$
+v_N=\left(\frac{N}{\sigma_x^2}+\frac{1}{\sigma_\mu^2}\right)^{-1},\qquad
+m_N=v_N\left(\frac{\sum_{i=1}^N x_i}{\sigma_x^2}+\frac{\mu_\theta}{\sigma_\mu^2}\right).
+$$<p>因此后验分布仍为正态分布：</p>$$
+\mu\mid x_{1:N}\sim\mathcal{N}(m_N,v_N).
+$$<p>令 $\bar X=N^{-1}\sum_{i=1}^N x_i$，后验均值也可写成数据均值与先验均值的加权平均：</p>$$
+m_N=\frac{N/\sigma_x^2}{N/\sigma_x^2+1/\sigma_\mu^2}\,\bar X
++\frac{1/\sigma_\mu^2}{N/\sigma_x^2+1/\sigma_\mu^2}\,\mu_\theta.
+$$<p>样本量增大时，数据在后验均值中的权重增大；似然方差增大时，先验均值的权重相对增大。</p><hr><h2 id=statistical-decision-theory>Statistical decision theory</h2><p>贝叶斯方法的核心观点就是利用后验分布去学习统计模型$\hat{\theta}(x)$,去对先验分布进行优化,那么就需要我们定义一种度量$d(\hat{\theta}(x),\theta)$,从而通过最小化这种度量的方式完成先验分布的优化,$d(\hat{\theta}(x),\theta)$是随机的,所以我们希望消除他的随机性求平均距离,即我们的目标为</p>$$
+\hat{\theta}(x) = \underset{\hat{\theta}}{\arg \min }\mathbb{E}_{x,\theta}[d(\hat{\theta}(x),\theta) ]
+$$<p>平均距离$\mathbb{E}_{x,\theta}[d(\hat{\theta}(x),\theta) ]$ 一般被成为风险(Risk),该目标函数也被称为风险极小化,频率学派和贝叶斯学派对该目标函数有不同方式的处理：</p>$$
 \begin{aligned}
 E[d(\hat{\theta}(x), \theta)]&=\iint d(\theta, \hat{\theta}(x)) P_{x, \theta}\left(x, \theta\right) d x d\theta\\
 &=\iint d(\theta, \hat{\theta}(x)) P_{x\mid \theta}\left(x\mid \theta\right) d xP(\theta) d\theta\\
 &=\iint d(\theta, \hat{\theta}(x)) P_{x\mid \theta}\left(\theta \mid x\right) d \theta P(x) dx\\
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>可见,频率学派尽可能的削弱$\theta$的随机性,因为他们认为$\theta$是确定的（所以在频率学派中有极大化似然这种方法）,但是频率学派种所需要的似然往往是不可以直接计算的,因此有了经验风险极小化(Empirical Risk Minimization,ERM)理论,该理论一般将样本均值取代理论均值,即
-</p>
-$$
+$$<p>可见,频率学派尽可能的削弱$\theta$的随机性,因为他们认为$\theta$是确定的（所以在频率学派中有极大化似然这种方法）,但是频率学派种所需要的似然往往是不可以直接计算的,因此有了经验风险极小化(Empirical Risk Minimization,ERM)理论,该理论一般将样本均值取代理论均值,即</p>$$
 E[d(\hat{\theta}(x), \theta)]=\frac{1}{N}\sum_{k=1}^Nd(\theta_k, \hat{\theta}_k(x))
-$$
-<p>
-贝叶斯学派则是尽可能削弱数据的随机性,认为已经发生的实验就是确定的,将问题的重心转化到后验分布的计算上,在后面我们会看到,使用贝叶斯方法处理统计模型的关键就是得到后验分布以及如何处理后验分布。</p>
-<h3 id="choice-of-measurement">Choice of measurement</h3>
-<ol>
-<li>
-<p>MSE</p>
-<p>选择度量为均方误差,可以定义风险(忽略了数据的随机性)：
-</p>
-$$
-    \begin{equation}
-    R(\theta, \hat{\theta})=\int(\theta-\hat{\theta})^2 P(\theta \mid x) d \theta
-    \end{equation}
-    $$
-<p>
-由拉格朗日乘子法,最优的$\hat{\theta}$在风险函数的导数为零处,即使得$\nabla_{\hat{\theta}} R(\theta, \hat{\theta})=0$,我们求解该式,可以得到
-</p>
-$$
-\begin{equation}
-\hat{\theta}^*=\frac{\int \theta p(\theta \mid x) d \theta}{\int p(\theta \mid x) d \theta}=\int \theta p(\theta \mid x) d \theta=E[\theta \mid x]
-\end{equation}
-$$
-<p>
-这与频率学派下的MMSE最优解不谋而合,都是均方误差的形式,但是各自的随机变量不同,由此可见,条件期望就是均方误差意义下的最优估计。</p>
-</li>
-<li>
-<p>MAE</p>
-<p>平均绝对误差意义下,风险函数为
-</p>
-$$
-    \begin{equation}
-    R(\theta, \hat{\theta})=\int\mid \theta-\hat{\theta}\mid P(\theta \mid x) d \theta
-    \end{equation}
-    $$
-<p>
-由于风险函数存在绝对值,所以无法直接求导,我们可以将绝对值拆开写为
-</p>
-$$
-    \begin{equation}
-    R(\theta, \hat{\theta})=-\int_{-\infin}^{\hat{\theta}}( \theta-\hat{\theta}) P(\theta \mid x) d \theta+\int_{\hat{\theta}}^{+\infin}(\theta-\hat{\theta}) P(\theta \mid x) d \theta
-    \end{equation}
-    $$
-<p>
-现在我们就可以利用变上下限积分的技巧对风险函数进行求导,求导的过程就是把$\theta-\hat{\theta}$拆开,使得积分的变上限不在积分变量之内,在利用求导法则正常求导即可,可以求得：
-</p>
-$$
-\nabla_{\hat{\theta}} R(\theta, \hat{\theta})=\int_{-\infty}^{\hat{\theta}} p(\theta \mid x) d \theta-\int_{\hat{\theta}}^{+\infty} p(\theta \mid x) d \theta=0
-$$
-<p>
-直观的观察这个式子,当风险函数的导数等于0时,$\hat{\theta}$就是平分后验分布概率密度函数面积的垂直于$\theta$轴的直线,也就是统计量中的中位数,即中位数是MAE意义下的最优估计。</p>
-</li>
-<li>
-<p>MAP</p>
-<p>这里的MAP指极大化后验概率的意思,定义度量为：</p>
-<div>
-$$
- \begin{equation}
- d(\theta, \hat{\theta})=\left\{\begin{array}{l}
- 1,|\hat{\theta}-\theta|>\delta \\
- 0,|\hat{\theta}-\theta| \leq \delta
- \end{array}\right.
- \end{equation}
- $$
- </div>
-<p>其中,$\delta$是我们主观挑选的误差容忍数值,当$\delta$足够小时,风险函数可以写为：</p>
- <div>
- $$
- \begin{equation}
- \begin{aligned}
- R(\theta, \hat{\theta}) & =\int d(\theta, \hat{\theta}) p(\theta, x) d \theta \\
- & =\int_{|\hat{\theta}-\theta|>\delta} p(\theta \mid x) d \theta \\
- & =1-\int_{|\hat{\theta}-\theta| \leqslant \delta} p(\theta \mid x) d \theta \\
- & \approx 1-2 \delta p(\theta \mid x)
- \end{aligned}
- \end{equation}
- $$
- </div>
- 那么,我们就可以等价的将最小化风险写为最大化后验概率,即
- $$
- \begin{equation}
- \underset{\hat{\theta}}{\arg \min }R(\theta,\hat{\theta})\iff\underset{\hat{\theta}}{\arg \max }p(\theta \mid x)
- \end{equation}
- $$
- 用统计量来表述的话就是最大化众数。
-</li>
-</ol>
-<hr>
-<p><strong>Example:Use bayes to process Bernoulli distribution</strong></p>
-<p>假设我们有先验分布$\theta$,似然$X\sim B(n,\theta)$,目标计算$\theta$的后验分布以及在均方意义下的最优估计。</p>
-<p>由Bayes公式,有</p>
-<div>
-$$
-\begin{equation}
+$$<p>贝叶斯学派则是尽可能削弱数据的随机性,认为已经发生的实验就是确定的,将问题的重心转化到后验分布的计算上,在后面我们会看到,使用贝叶斯方法处理统计模型的关键就是得到后验分布以及如何处理后验分布。</p><h3 id=choice-of-measurement>Choice of measurement</h3><h4 id=1-mse>1. MSE</h4><p>平方损失对应的贝叶斯风险为</p>$$
+R(\hat\theta\mid x)=\int(\theta-\hat\theta)^2p(\theta\mid x)\,d\theta.
+$$<p>使风险最小的估计是后验均值：</p>$$
+\hat\theta_{\mathrm{MSE}}=\mathbb{E}[\theta\mid x]
+=\int\theta p(\theta\mid x)\,d\theta.
+$$<h4 id=2-mae>2. MAE</h4><p>绝对损失对应的风险为</p>$$
+R(\hat\theta\mid x)=\int|\theta-\hat\theta|p(\theta\mid x)\,d\theta.
+$$<p>其最小值由后验中位数取得。对连续后验分布，最优点满足</p>$$
+\int_{-\infty}^{\hat\theta}p(\theta\mid x)\,d\theta
+=\int_{\hat\theta}^{+\infty}p(\theta\mid x)\,d\theta=\frac12.
+$$<h4 id=3-map>3. MAP</h4><p>最大后验估计选择后验密度的众数：</p>$$
+\hat\theta_{\mathrm{MAP}}\in\operatorname*{arg\,max}_{\theta}p(\theta\mid x).
+$$<p>它也可由小邻域的零一损失得到。令 $d_\delta(\theta,\hat\theta)=\mathbf{1}\{|\theta-\hat\theta|>\delta\}$，则当 $\delta$ 足够小时，最小化后验风险等价于最大化 $p(\hat\theta\mid x)$。</p><hr><p><strong>Example:Use bayes to process Bernoulli distribution</strong></p><p>假设我们有先验分布$\theta$,似然$X\sim B(n,\theta)$,目标计算$\theta$的后验分布以及在均方意义下的最优估计。</p><p>由Bayes公式,有</p>$$
 \begin{aligned}
 P(\theta \mid x) & =\frac{P(x \mid \theta) P(\theta)}{P(x)} \\
 & =\frac{P(x \mid \theta) P(\theta)}{\int P(x, \theta) d \theta}
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>接下来,我们考虑当先验分布服从标准均匀分布的情况下后验概率的计算,即计算
-</p>
-$$
-\begin{equation}
+$$<p>接下来,我们考虑当先验分布服从标准均匀分布的情况下后验概率的计算,即计算</p>$$
 P(\theta \mid x)=\frac{\theta^x(1-\theta)^{n-x}}{\int_0^1 \theta^x(1-\theta)^{n-x} d \theta}
-\end{equation}
-$$
-<p>
-在计算后验概率之前,我们需要引入<em>Beta</em>分布来辅助我们的贝叶斯因子的计算,<em>Beta</em>分布的pdf为</p>
-<div>
-$$
-\begin{equation}
+$$<p>在计算后验概率之前,我们需要引入<em>Beta</em>分布来辅助我们的贝叶斯因子的计算,<em>Beta</em>分布的pdf为</p>$$
 \begin{aligned}
-f(x ; \alpha, \beta) 
+f(x ; \alpha, \beta)
 & =\frac{x^{\alpha-1}(1-x)^{\beta-1}}{\int_0^1 u^{\alpha-1}(1-u)^{\beta-1} d u} \\
 & =\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} x^{\alpha-1}(1-x)^{\beta-1} \\
 & =\frac{1}{\mathrm{~B}(\alpha, \beta)} x^{\alpha-1}(1-x)^{\beta-1}
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>其中,$\alpha,\beta>0$,$\Gamma(x)$是Gamma函数,有性质
-</p>
-$$
+$$<p>其中,$\alpha,\beta>0$,$\Gamma(x)$是Gamma函数,有性质</p>$$
 \Gamma(x)=\int_0^{+\infty} t^{x-1} e^{-t} d t(x>0)=(x-1)!
-$$
-<p>
-<em>Beta</em>函数$B(\alpha, \beta)$的定义为$B(\alpha, \beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1} \mathbf{d} t$,现在我们来<strong>证明</strong>$\mathrm{~B}(\alpha, \beta)=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$:</p>
-<p>观察<em>Beta</em>函数的定义,类似卷积的定义,注意到：</p>
-<div>
-$$
+$$<p><em>Beta</em>函数$B(\alpha, \beta)$的定义为$B(\alpha, \beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1} \mathbf{d} t$,现在我们来<strong>证明</strong>$\mathrm{~B}(\alpha, \beta)=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$:</p><p>观察<em>Beta</em>函数的定义,类似卷积的定义,注意到：</p>$$
 \begin{aligned}
 B(\alpha, \beta)&=\int_0^1 t^{\alpha-1}(x-t)^{\beta-1} \mathbf{d} t\mid_{x=1}
 \\&=f(x)*g(x)\mid_{x=1}
 \end{aligned}
-$$
-</div>
-<p>在上述公式中,我们定义了两个幂函数$f(x): =x^{\alpha-1},g(x):=x^{\beta-1},$这两个幂函数的支撑集应该是[0,1],这样才能满足积分的上下限要求,现在对两个幂级数的卷积进行Laplce变换：</p>
-<div>
-$$
+$$<p>在上述公式中,我们定义了两个幂函数$f(x): =x^{\alpha-1},g(x):=x^{\beta-1},$这两个幂函数的支撑集应该是[0,1],这样才能满足积分的上下限要求,现在对两个幂级数的卷积进行Laplce变换：</p>$$
 \mathcal{L}\left\{x^{\alpha-1} * x^{\beta-1}\right\}=\mathcal{L}\left\{x^{\alpha-1}\right\} \cdot \mathcal{L}\left\{x^{\beta-1}\right\}
-$$
-</div>
-<p>而幂级数的Laplace变换可以和Gamma函数联系起来,即</p>
-<div>
-$$
-\begin{equation}
+$$<p>而幂级数的Laplace变换可以和Gamma函数联系起来,即</p>$$
 \begin{aligned}
 \mathcal{L}\left\{t^a\right\}&=\int_0^{\infty} t^a e^{-s t} d t \\
 &=\frac{1}{s^{a+1}} \int_0^{\infty}(s t)^a e^{-(s t)}(s d t) \\
 &=\frac{1}{s^{a+1}} \int_0^{\infty} \tau^{(a+1)-1} e^{-\tau} d \tau \\
 &=\frac{\Gamma(a+1)}{s^{a+1}}
 \end{aligned}
-\end{equation}$$
-</div>
-<p>继续我们上述的Laplace变换,有</p>
-<div>
-$$
-\begin{equation}
+$$<p>继续我们上述的Laplace变换,有</p>$$
 \begin{aligned}
 \mathcal{L}\left\{x^{\alpha-1}\right\} \cdot \mathcal{L}\left\{x^{\beta-1}\right\}&=\frac{\Gamma(\alpha) \Gamma(\beta)}{s^{\alpha+\beta}} \\
 &=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}\frac{\Gamma(\alpha+\beta-1+1)}{s^{(\alpha+\beta-1)+1}}\\
 &=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)} \mathcal{L}\left\{x^{\alpha+\beta-1}\right\}
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>这时令$x=1$,便可以得到$\mathrm{~B}(\alpha, \beta)=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$,<strong>证毕</strong>。</p>
-<p>现在我们使用<em>Beta</em>函数来计算后验分布,注意,如果令$\alpha = x+1,\beta = n-x+1$,后验分布的贝叶斯因子为$B(\alpha,\beta)=B(x+1,n-x+1)$,那么有</p>
-<div>
-$$
-\begin{equation}
+$$<p>这时令$x=1$,便可以得到$\mathrm{~B}(\alpha, \beta)=\frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$,<strong>证毕</strong>。</p><p>现在我们使用<em>Beta</em>函数来计算后验分布,注意,如果令$\alpha = x+1,\beta = n-x+1$,后验分布的贝叶斯因子为$B(\alpha,\beta)=B(x+1,n-x+1)$,那么有</p>$$
 \begin{aligned}
 \int_0^1 \theta^x(1-\theta)^{n-x} d \theta & =B(x+1, n-x+1) \\
 & =\frac{\Gamma(x+1) \Gamma(n-x+1)}{\Gamma(n+2)} \\
 & =\frac{x!(n-x)!}{(n+1)!}
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>则我们计算出来的后验分布最终形式为
-</p>
-$$
-\begin{equation}
+$$<p>则我们计算出来的后验分布最终形式为</p>$$
 P(\theta, x)=\frac{(n+1)!}{x!(n-x)!} \theta^x(1-\theta)^{n-x}
-\end{equation}
-$$
-<p>
-可见该后验分布实际上是服从<em>Beta</em>分布的。根据MSE意义下的最优估计,有</p>
-<div>
-$$
-\begin{equation}
+$$<p>可见该后验分布实际上是服从<em>Beta</em>分布的。根据MSE意义下的最优估计,有</p>$$
 \begin{aligned}
 E[\theta \mid x] & =\int_0^1 \theta \frac{(n+1)!}{x!(n-x)!} \theta^x(1-\theta)^{n-x} d \theta \\
 & =\frac{(n+1)!}{x!(n-x)!} \int_0^1 \theta^{x+1}(1-\theta)^{n-x} d \theta \\
@@ -371,97 +97,31 @@ E[\theta \mid x] & =\int_0^1 \theta \frac{(n+1)!}{x!(n-x)!} \theta^x(1-\theta)^{
 & =\frac{(n+1)!}{n!(n-x)!} \frac{(x+1)!(n-x)!}{(n+2)!} \\
 & =\frac{x+1}{n+2}
 \end{aligned}
-\end{equation}
-$$
-</div>
-<p>至此,我们求得了后验分布和MSE意义下的模型最优估计。
-如果再进一步的处理该条件期望,我们可以得到线型凸组合的形式：
-</p>
-$$
+$$<p>至此,我们求得了后验分布和MSE意义下的模型最优估计。
+如果再进一步的处理该条件期望,我们可以得到线型凸组合的形式：</p>$$
 E[\theta \mid x]=\frac{n}{n+2}\frac{x}{n}+\frac{2}{n+2}\frac{1}{2}
-$$
-<p>
-$\frac{x}{n}$反应了似然意义上的某种均值,$\frac{1}{2}$为先验分布的均值,这也显示了在伯努利实验的情况下,最优估计的过程是不断线性凸组合的过程。</p>
-<hr>
-<p><strong>Example:Conjugate prior</strong></p>
-<p>在上个例子中,我们一开始假设先验分布服从标准均匀分布,但是我们根据伯努利的似然求出后验分布之后,发现后验分布并不服从标准均匀分布,而是服从<em>Beta</em>分布,这说明我们的先验分布并没有反映事物的客观性质,在统计学中,如果我们的先验分布和后验分布的分布类型一致,我们就称该先验分布为共轭先验。</p>
-<p>在一些比较简单的概率模型中,共轭先验是已知的并且可以提前制定的,例如当似然服从伯努利分布时,共轭先验为<em>Beta</em>分布,但是更多的(绝大多数的)概率模型的共轭先验是难以得到的。我们沿用上一个例子的情景,令先验分布为<em>Beta</em>分布,即
-</p>
-$$
+$$<p>$\frac{x}{n}$反应了似然意义上的某种均值,$\frac{1}{2}$为先验分布的均值,这也显示了在伯努利实验的情况下,最优估计的过程是不断线性凸组合的过程。</p><hr><p><strong>Example:Conjugate prior</strong></p><p>在上个例子中,我们一开始假设先验分布服从标准均匀分布,但是我们根据伯努利的似然求出后验分布之后,发现后验分布并不服从标准均匀分布,而是服从<em>Beta</em>分布,这说明我们的先验分布并没有反映事物的客观性质,在统计学中,如果我们的先验分布和后验分布的分布类型一致,我们就称该先验分布为共轭先验。</p><p>在一些比较简单的概率模型中,共轭先验是已知的并且可以提前制定的,例如当似然服从伯努利分布时,共轭先验为<em>Beta</em>分布,但是更多的(绝大多数的)概率模型的共轭先验是难以得到的。我们沿用上一个例子的情景,令先验分布为<em>Beta</em>分布,即</p>$$
 P(\theta)=\frac{(a+b+1)!}{(a-1)!(b-1)!}\theta^{a-1}(1-\theta)^{b-1}
-$$
-<p>
-使用与上一个例子同样的方法去求后验分布和条件期望,最终可以求得条件期望为
-</p>
-$$
+$$<p>使用与上一个例子同样的方法去求后验分布和条件期望,最终可以求得条件期望为</p>$$
 E[\theta \mid x] = \frac{x+a}{n+a+b}
-$$
-<p>
-同样的,该条件期望也可以写成线型图组合的形式,即
-</p>
-$$
+$$<p>同样的,该条件期望也可以写成线型图组合的形式,即</p>$$
 E[\theta \mid x]=\frac{a+b}{n+a+b}\frac{a}{a+b}+\frac{n}{n+a+b}\frac{x}{n}
-$$
-<p>
-依然是某种实验中的均值与先验分布均值的线性凸组合,从我们在上一个章节中的Gauss分布似然到这个章节的伯努利分布似然,最后都得到了线性凸组合的学习形式,这可能并不是一种偶然,这些简单的例子给我们启发：在高维空间中,复杂分布的学习过程也可能是迭代的线性凸组合。</p>
-<hr>
-<h2 id="sampling">Sampling</h2>
-<p>使用Bayes方法的核心在于后验分布的处理，但是后验分布的形式往往是极其复杂的，极大多数的后验分布都是难以去积分甚至不可积的，统计中常用的方法就是<strong>生成</strong>符合后验分布的样本，从而利用样本代替解析表达的分布进行计算，这种生成样本的方法又被称作<strong>采样</strong>。</p>
-<blockquote>
-<p><strong>模拟</strong>是指把某一现实的或抽象的系统的某种特征或部分状态， 用另一系统（称为模拟模型）来代替或近似。 为了解决某问题， 把它变成一个概率模型的求解问题， 然后产生符合模型的大量随机数， 对产生的随机数进行分析从而求解问题， 这种方法叫做<strong>随机模拟</strong>方法， 又称为<strong>蒙特卡洛</strong>(Monte Carlo)方法。</p>
-</blockquote>
-<h3 id="inverse-distribution-function">Inverse distribution function</h3>
-<p>逆分布采样的描述很简单，目标生成随机变量$X\sim F(X)$的样本($F(x)$为累计分布函数)，只需要生成随机样本$Y\sim F^{-1}(U)$即可，$Y$即想要得到的分布，$U$为服从标准正态分布的随机变量。</p>
-<p>这样来看，生成随机变量的样本的过程就很简单，第一步，生成均匀分布的样本(可以利用线性同余法等方法生成)，第二步，求得目标分布累积分布函数的逆，第三步，代入累积分布函数的逆求得目标样本。</p>
-<p>现在简单的<strong>证明</strong>一下随机变量$Y$与随机变量$X$服从同一个分布，求$Y$的累积分布函数：
-</p>
-$$
-\begin{equation}
+$$<p>依然是某种实验中的均值与先验分布均值的线性凸组合,从我们在上一个章节中的Gauss分布似然到这个章节的伯努利分布似然,最后都得到了线性凸组合的学习形式,这可能并不是一种偶然,这些简单的例子给我们启发：在高维空间中,复杂分布的学习过程也可能是迭代的线性凸组合。</p><hr><h2 id=sampling>Sampling</h2><p>使用Bayes方法的核心在于后验分布的处理，但是后验分布的形式往往是极其复杂的，极大多数的后验分布都是难以去积分甚至不可积的，统计中常用的方法就是<strong>生成</strong>符合后验分布的样本，从而利用样本代替解析表达的分布进行计算，这种生成样本的方法又被称作<strong>采样</strong>。</p><blockquote><p><strong>模拟</strong>是指把某一现实的或抽象的系统的某种特征或部分状态， 用另一系统（称为模拟模型）来代替或近似。 为了解决某问题， 把它变成一个概率模型的求解问题， 然后产生符合模型的大量随机数， 对产生的随机数进行分析从而求解问题， 这种方法叫做<strong>随机模拟</strong>方法， 又称为<strong>蒙特卡洛</strong>(Monte Carlo)方法。</p></blockquote><h3 id=inverse-distribution-function>Inverse distribution function</h3><p>逆分布采样的描述很简单，目标生成随机变量$X\sim F(X)$的样本($F(x)$为累计分布函数)，只需要生成随机样本$Y\sim F^{-1}(U)$即可，$Y$即想要得到的分布，$U$为服从标准正态分布的随机变量。</p><p>这样来看，生成随机变量的样本的过程就很简单，第一步，生成均匀分布的样本(可以利用线性同余法等方法生成)，第二步，求得目标分布累积分布函数的逆，第三步，代入累积分布函数的逆求得目标样本。</p><p>现在简单的<strong>证明</strong>一下随机变量$Y$与随机变量$X$服从同一个分布，求$Y$的累积分布函数：</p>$$
 \begin{aligned}
 F_Y(y)& =P(y\leq Y)\\
 & =P(F^{-1}(u)\leq Y)\\
 & =P(u\leq F(Y))\\
 & =F(Y)
 \end{aligned}
-\end{equation}
-$$
-<p>
-可见，$Y$的累积分布函数实际上就是$X$的累积分布函数，所以它们两个是同一个随机变量，如此，对于易于求得逆累积分布的随机变量，我们便可以通过这种方法求得符合该分布的样本，例如指数分布、泊松分布。</p>
-<hr>
-<p><strong>Example:Sampling for Gaussian Distribution</strong>
-Guassian分布的逆分布函数并不好求，虽然我们可以通过中心极限定理生成Gaussian分布，但那种方法并不属于逆分布生成，Box-Muller算法是一种经典的Gaussian分布生成算法，使用了极坐标变换来处理Gaussian分布难以求逆的问题，接下来我们介绍这种方法。</p>
-<p>假设我们目标求得两个独立同分布的标准高斯随机变量，$X_1,X_2\overset{\mathrm{iid}}{\sim} N(0,1)$，则它们的联合概率密度为
-</p>
-$$
-\begin{equation}
+$$<p>可见，$Y$的累积分布函数实际上就是$X$的累积分布函数，所以它们两个是同一个随机变量，如此，对于易于求得逆累积分布的随机变量，我们便可以通过这种方法求得符合该分布的样本，例如指数分布、泊松分布。</p><hr><p><strong>Example:Sampling for Gaussian Distribution</strong>
+Guassian分布的逆分布函数并不好求，虽然我们可以通过中心极限定理生成Gaussian分布，但那种方法并不属于逆分布生成，Box-Muller算法是一种经典的Gaussian分布生成算法，使用了极坐标变换来处理Gaussian分布难以求逆的问题，接下来我们介绍这种方法。</p><p>假设我们目标求得两个独立同分布的标准高斯随机变量，$X_1,X_2\overset{\mathrm{iid}}{\sim} N(0,1)$，则它们的联合概率密度为</p>$$
 \begin{aligned}
 f_{X Y}(x, y) & =\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{x^2}{2 \sigma^2}\right) \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{y^2}{2 \sigma^2}\right) \\
 & =\frac{1}{2 \pi } \exp \left(-\frac{x^2+y^2}{2 }\right)
 \end{aligned}
-\end{equation}
-$$
-<p>
-对该联合概率密度进行极坐标变换，有
-</p>
-$$
-\begin{equation}
+$$<p>对该联合概率密度进行极坐标变换，有</p>$$
 \begin{aligned}
 f_{X Y}(x, y) &=f_{XY}(\rho \cos\theta,\rho \sin\theta)\\
 &=\frac{1}{2 \pi } \exp \left(-\frac{\rho^2}{2 }\right)\rho
 \end{aligned}
-\end{equation}
-$$
-<hr>
-<h3 id="accept-reject-sampling">Accept-reject sampling</h3>
-<h3 id="importance-sampling">Importance sampling</h3>
-<h3 id="markov-chain-monte-carlomcmc">Markov chain Monte Carlo(MCMC)</h3>
-<hr>
-<p>这三个章节的内容可以看另一篇<a href="https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/#%E9%87%87%E6%A0%B7">博客</a>.</p>
-</div>
-
-<p class="back"><a href="/post/">← All posts</a></p></article></main>
-<footer>© 2026 Haitong Lan <span> <a href="https://github.com/HaitongLan">GitHub</a> · <a href="/links/">Links</a> · <a href="/index.xml">RSS</a></span></footer>
-</div></body></html>
-
-
-
+$$<hr><h3 id=accept-reject-sampling>Accept-reject sampling</h3><h3 id=importance-sampling>Importance sampling</h3><h3 id=markov-chain-monte-carlomcmc>Markov chain Monte Carlo(MCMC)</h3><hr><p>这三个章节的内容可以看另一篇<a href=https://haitonglan.github.io/p/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/#%E9%87%87%E6%A0%B7>博客</a>.</p></div><p class=back><a href=/post/>← All posts</a></p></article><aside class=article-sidebar aria-label="Article contents"><details class=sidebar-toc><summary>Contents</summary><nav id=TableOfContents><ol><li><a href=#introduce-to-bayes-method>Introduce to bayes method</a><ol><li><a href=#bayes-and-frequency>Bayes and frequency</a></li><li><a href=#bayes-the-science-of-cognitive-law>Bayes: The Science of cognitive law</a></li></ol></li><li><a href=#statistical-decision-theory>Statistical decision theory</a><ol><li><a href=#choice-of-measurement>Choice of measurement</a><ol><li><a href=#1-mse>1. MSE</a></li><li><a href=#2-mae>2. MAE</a></li><li><a href=#3-map>3. MAP</a></li></ol></li></ol></li><li><a href=#sampling>Sampling</a><ol><li><a href=#inverse-distribution-function>Inverse distribution function</a></li><li><a href=#accept-reject-sampling>Accept-reject sampling</a></li><li><a href=#importance-sampling>Importance sampling</a></li><li><a href=#markov-chain-monte-carlomcmc>Markov chain Monte Carlo(MCMC)</a></li></ol></li></ol></nav></details></aside></div><a class=article-return href=/post/ aria-label="Return to the previous page">← Back</a><script defer src=/article.js></script></main><footer>© 2026 Haitong Lan <span><a href=/links/>Links</a> · <a href=/index.xml>RSS</a></span></footer></div></body></html>

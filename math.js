@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  if (typeof renderMathInElement === 'function') renderMathInElement(document.querySelector('.prose'), {
+  const article = document.querySelector('.blog-article');
+  if (article && typeof renderMathInElement === 'function') renderMathInElement(article, {
     delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\(', right: '\\)', display: false}, {left: '\\[', right: '\\]', display: true}],
-    throwOnError: false
+    throwOnError: false,
+    strict: 'ignore'
   });
 });
